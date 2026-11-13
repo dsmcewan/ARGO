@@ -151,7 +151,7 @@
     {
       "id": "legacy-source-bundles",
       "availability": "catalog_only",
-      "description": "LEXI 288 files; TELOS 137; claude-config 142, with tree indexes and per-file hashes",
+      "description": "Selected audited source files: LEXI 288; TELOS 137; claude-config 142, with complete tree indexes and per-file hashes. These counts are not full repository inventories.",
       "evidence_paths": [
         "repo-audit/evidence/LEXI-tree.json",
         "repo-audit/evidence/TELOS-tree.json",
@@ -533,11 +533,9 @@
       "status": "future",
       "owner": "mechanics",
       "depends_on": [
-        "W02",
-        "D08",
-        "W03"
+        "W17"
       ],
-      "deliverable": "Reviewed versioned ruleset extension/registry and source-pinned minimal kernel, retaining Tempted Fates compatibility.",
+      "deliverable": "Implementation of the independently reviewed ruleset extension/registry and source-pinned minimal kernel, retaining Tempted Fates compatibility.",
       "acceptance": "Deterministic rule fixtures and replay pass; attribution is retained; no new fields or state model are invented outside contract review.",
       "proposed_paths": [
         "MECHANICS/proposals/",
@@ -611,6 +609,24 @@
       "proposed_paths": [
         "scenarios/",
         "SYSTEMS/proposals/content-import/"
+      ]
+    },
+    {
+      "id": "W17",
+      "title": "Review the licensed ruleset contract extension",
+      "status": "future",
+      "owner": "mechanics + contracts",
+      "depends_on": [
+        "W02",
+        "D08",
+        "D02"
+      ],
+      "deliverable": "A separate versioned ruleset extension proposal covering required state/action fields, registry interface, units and v1 history compatibility.",
+      "acceptance": "Exact licensed rule fixtures map to defined contracts; old Tempted Fates histories retain defined replay; no unreviewed fields or lane-local state models.",
+      "proposed_paths": [
+        "SYSTEMS/proposals/ruleset-extension/",
+        "MECHANICS/proposals/",
+        "packages/contracts/"
       ]
     }
   ],

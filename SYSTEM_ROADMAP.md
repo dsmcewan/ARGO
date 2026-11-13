@@ -101,7 +101,7 @@ World time currently advances only through authorized `advance_time`; one v1 tic
 | Asset | Availability | What it can support / what it cannot prove |
 | --- | --- | --- |
 | [audit-catalogs](repo-audit/evidence/source-manifest.json) | **tracked** — 840 verified blob records and 525 module classifications across the original audit sources and supplied Pantheon folders | Pinned historical evidence; active ARGO/Pantheon implementation has later commits. |
-| [legacy-source-bundles](repo-audit/evidence/LEXI-tree.json) | **catalog_only** — LEXI 288 files; TELOS 137; claude-config 142, with tree indexes and per-file hashes | Restore and verify the exact source bundle for refreshed extraction. Recorded tree IDs must not be relabeled as proven commit IDs. |
+| [legacy-source-bundles](repo-audit/evidence/LEXI-tree.json) | **catalog_only** — Selected audited source files: LEXI 288; TELOS 137; claude-config 142, with complete tree indexes and per-file hashes. These counts are not full repository inventories | Restore and verify the exact source bundle for refreshed extraction. Recorded tree IDs must not be relabeled as proven commit IDs. |
 | [lexi-interfaces](repo-audit/evidence/lexi-routes.json) | **tracked** — 170 route declarations;114 class declarations;104 direct BaseModel/SQLModel subclasses;25 SQLModel table declarations | Not live OpenAPI, a complete physical database inventory, or actor-scoped gameplay APIs. |
 | [scenario-source](SCENARIOS/Tempted_Fates.md) | **tracked** — Supplied 17,573-byte Tempted Fates source with pinned digest | Supplied content is not a public redistribution grant or a complete world dataset. |
 | [gameplay-fixtures](TESTS/fixtures.ts) | **fixture_only** — Synthetic genesis/actors/party/item and observation example; ephemeral test keys and fake transport/model replies | Sufficient for offline substrate proofs, not a production campaign or consent corpus. |
@@ -254,9 +254,10 @@ flowchart TD
   W09 --> W10[W10 headless solo/raid acceptance]
   W10 --> W11[W11 authenticated services / operations]
   D07[D07 identity, rights and consent] --> W11
-  W02 --> W12[W12 licensed ruleset adapter]
-  D08[D08 rules/license choice] --> W12
-  W03 --> W12
+  W02 --> W17[W17 ruleset extension contract review]
+  D08[D08 rules/license choice] --> W17
+  D02 --> W17
+  W17 --> W12[W12 licensed ruleset adapter]
   W12 --> W16[W16 rights-scoped world seed]
   D11[D11 playable content scope] --> W16
   W11 --> W13[W13 session/narration, then voice]
@@ -288,21 +289,22 @@ W14 does not need a gameplay graph. Gameplay design does not need W14: the separ
 | **W09 — Add optional NPC and intervention loops** (autonomy) | W08, D10 | Separate bounded principals consuming authorized views/triggers and submitting optional proposals. No direct ledger/graph writes, forced quests, fabricated consent or hidden-roll disclosure; empty/rejected proposals leave canon unchanged. |
 | **W10 — Pass headless solo/raid and concurrency acceptance** (integration verification) | W07, W08, W09, D06 | End-to-end headless checkpoints, explicit disclosures and failure/recovery workloads. Race contention has deterministic results; solo secrets stay private; no zombie effects; seeded replay and Tempted Fates cutoff/jurisdiction tests remain green. |
 | **W11 — Provide authenticated services and operational recovery** (services + operations) | W10, W04, D07, D04 | Real domain transports, principal/entitlement/consent enforcement, key operations, backups and selected restore guarantees. Authenticated integration tests enforce scope and rights end-to-end; backup/restore drills meet the selected trust model; unavailable services fail closed. |
-| **W12 — Add the selected licensed ruleset adapter** (mechanics) | W02, D08, W03 | Reviewed versioned ruleset extension/registry and source-pinned minimal kernel, retaining Tempted Fates compatibility. Deterministic rule fixtures and replay pass; attribution is retained; no new fields or state model are invented outside contract review. |
+| **W12 — Add the selected licensed ruleset adapter** (mechanics) | W17 | Implementation of the independently reviewed ruleset extension/registry and source-pinned minimal kernel, retaining Tempted Fates compatibility. Deterministic rule fixtures and replay pass; attribution is retained; no new fields or state model are invented outside contract review. |
 | **W13 — Build player-facing session/narration then voice** (gateway + presentation) | W10, W11, W12, W16 | Intent/session coordinator over rulings and scoped views; text interaction first, voice after turn/cancellation/disclosure semantics pass. Prose cannot mutate truth; partial speech and interruptions cannot invent knowledge or consent; actor visibility and anomaly cutoffs survive live turns. |
 | **W14 — Implement the reviewed board application adapter** (build-control) | D09 | External application verification/recovery integration, fresh immutable seed/policy and real handoff fixtures. Altered/stale/forged receipts and early exits fail; crash/recovery yields one real merge and accepted CAS handoff; no self-grading. |
 | **W15 — Enable operational worker dispatch only after readiness** (build operations) | W14, W01, W02, W03 | Reviewed semantic oracles and immutable dependency/path scopes; credential/capacity/cancellation policy for any future provider dispatch. Audit/synthesis/architecture gates no longer return GATE_NOT_IMPLEMENTED; zombie/429/lease loss and quotas are tested; explicit paid-run authorization is separately required. |
 | **W16 — Prepare a rights-scoped playable world seed** (content + world bootstrap) | D11, D07, W12, D03 | Validated, provenance-bearing world seed and content ingestion fixtures compatible with the chosen ruleset. No private/licensed context bleed or imported privilege grants; seed identity and rights are verified; no mandatory storyline or automatic anomaly-farming trigger. |
+| **W17 — Review the licensed ruleset contract extension** (mechanics + contracts) | W02, D08, D02 | A separate versioned proposal covers required state/action fields, registry interface, units and v1 history compatibility. Exact licensed rule fixtures must map to defined contracts, and old Tempted Fates histories retain defined replay. |
 
 ### Parallelism and file ownership
 
-Source audit, temporal/storage design, authority/history ADRs, time/session research, verification-fixture design and the build-adapter design can proceed as separate read/design lanes now. W05 and W06 can implement concurrently **after** their common contracts and package scaffolding are reviewed. W12 can proceed independently of graph implementation after its own rules/license and contract prerequisites. Final acceptance of the bus/autonomy/product waits on the graph shown above.
+Source audit, temporal/storage design, authority/history ADRs, time/session research, verification-fixture design and the build-adapter design can proceed as separate read/design lanes now. W05 and W06 can implement concurrently **after** their common contracts and package scaffolding are reviewed. W17/W12 can proceed independently of graph implementation after their own rules/license and identifier prerequisites. The graph/query freeze W03 is not a ruleset freeze; W17 provides the separate contract review required for W12. Final acceptance of the bus/autonomy/product waits on the graph shown above.
 
-The JSON `proposed_paths` are path reservations for planning, not active write locks. New directories such as `packages/kg/`, `packages/bus/`, `packages/npcs/`, `packages/rulesets/`, `services/` and `apps/` do not exist as implemented packages today. The contract owner must settle common exports/manifests/cursors before fan-out. If W03/W04 both touch `packages/contracts/`, or W04/W08 touch `packages/telos-bridge/`, their write tickets serialize. A supervisor must split overlapping broad reservations such as `RESEARCH/findings/` or `scenarios/` into disjoint immutable ticket paths before concurrent claims. Maintenance roles in [OWNERSHIP.json](OWNERSHIP.json) are advisory; actual board claims enforce prefix ownership.
+The JSON `proposed_paths` are path reservations for planning, not active write locks. New directories such as `packages/kg/`, `packages/bus/`, `packages/npcs/`, `packages/rulesets/`, `services/` and `apps/` do not exist as implemented packages today. The contract owner must settle common exports/manifests/cursors before fan-out. If W03/W04/W17 touch `packages/contracts/`, or W04/W08 touch `packages/telos-bridge/`, their write tickets serialize. A supervisor must split overlapping broad reservations such as `RESEARCH/findings/` or `scenarios/` into disjoint immutable ticket paths before concurrent claims. Maintenance roles in [OWNERSHIP.json](OWNERSHIP.json) are advisory; actual board claims enforce prefix ownership.
 
 ## Next work
 
-The next useful output is a reviewed **headless design and evidence packet**, not more persona prose. Prepare these bounded deliverables with separate ownership; none needs paid inference:
+The next useful output is a reviewed **headless design and evidence packet**. Prepare these bounded deliverables with separate ownership; none needs paid inference:
 
 1. **W01 evidence refresh:** recover/verify selected source snapshots and produce exact reuse-versus-new boundary findings. Do not run legacy migrations or infer a live database from ORM declarations.
 2. **D05 + D02 contract preparation:** write a storage comparison, worked temporal examples and identifier compatibility fixtures. Map existing v1 fields before adding `ScopedKGQuery` or replacing head preconditions with a slice hash.
