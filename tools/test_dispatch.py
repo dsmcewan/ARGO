@@ -111,6 +111,18 @@ class DispatcherTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(self.board.claims, 0)
         self.assertFalse(self.board.worktree.exists())
 
+    async def test_board_claim_refusals_are_bounded_dispatcher_errors(self):
+        def invalid_label(*args, **kwargs):
+            raise RuntimeError("unknown registered model label " + "x" * 1000)
+        self.board.claim = invalid_label
+        try:
+            await dispatch.Dispatcher(self.board, self.config()).run()
+        except Exception as error:
+            self.assertIsInstance(error, dispatch.DispatchError)
+            self.assertLessEqual(len(str(error)), 512)
+        else:
+            self.fail("invalid Board scheduling label was accepted")
+
     async def test_submission_contains_only_owned_bytes_and_verified_inputs(self):
         async def fixture(argv, **kwargs):
             inputs = Path(argv[argv.index("/inputs") - 1])
@@ -176,6 +188,29 @@ class DispatcherTests(unittest.IsolatedAsyncioTestCase):
         self.assertFalse(self.board.artifacts)
         self.assertFalse(self.board.submitted)
 
+    async def test_blocked_heartbeat_cannot_keep_worker_alive_beyond_granted_lease(self):
+        calls = 0
+        stopped_before_lease_overrun = []
+        def blocked_heartbeat(*args, **kwargs):
+            nonlocal calls
+            calls += 1
+            if calls == 1:
+                return {**self.board.row, "lease_until": int((time.time() + 0.4) * 1_000_000)}
+            time.sleep(0.7)
+            raise RuntimeError("blocked heartbeat eventually refused")
+        self.board.heartbeat = blocked_heartbeat
+        async def blocked_worker(*args, stop, **kwargs):
+            try:
+                await asyncio.wait_for(stop.wait(), 0.6)
+                stopped_before_lease_overrun.append(True)
+            except asyncio.TimeoutError:
+                stopped_before_lease_overrun.append(False)
+            return dispatch.ProcessResult(0, b"", b"")
+        await dispatch.Dispatcher(self.board, self.config(lease_seconds=3), runner=blocked_worker).run()
+        self.assertEqual(stopped_before_lease_overrun, [True])
+        self.assertFalse(self.board.artifacts)
+        self.assertFalse(self.board.submitted)
+
     async def test_lease_is_rechecked_after_worker_exit_before_any_candidate_is_published(self):
         async def fixture(*args, **kwargs):
             (self.board.worktree / "owned" / "result.txt").write_text("too late\n")
@@ -237,6 +272,10 @@ class DispatcherTests(unittest.IsolatedAsyncioTestCase):
 
 
 class BoundsTests(unittest.IsolatedAsyncioTestCase):
+    def test_offline_execution_requires_an_explicit_scheduling_label(self):
+        with self.assertRaises(dispatch.DispatchError):
+            dispatch.Config(offline=True, command=("/usr/bin/python3", "-c", "pass")).validate()
+
     def test_aggregate_capture_budget_stops_before_reading_later_files(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)

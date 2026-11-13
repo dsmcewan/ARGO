@@ -2,7 +2,7 @@
 """Finite, explicitly offline Board dispatcher (Python 3.11 standard library).
 
 Dry-run is the default and never claims a ticket. Execution requires --offline and
-an operator-supplied JSON argv array. A seat_model is a requested scheduling label,
+an operator-supplied JSON argv array and explicit --seat-model label. A seat_model is a requested scheduling label,
 never evidence that a model ran. No vendor client, credential lookup, gate, review,
 merge, recursive dispatcher, or network transport is implemented here.
 
@@ -52,7 +52,7 @@ class Config:
     offline: bool = False
     command: tuple[str, ...] = ()
     worker_id: str = "offline-worker"
-    seat_model: str = "offline-fixture"
+    seat_model: str | None = None
     max_tickets: int = 1
     timeout: float = 300
     lease_seconds: int = 900
@@ -77,9 +77,14 @@ class Config:
             value = getattr(self, name)
             if not isinstance(value, int) or not 1 <= value <= maximum:
                 raise DispatchError(f"invalid {name}")
-        if not self.worker_id or len(self.worker_id) > 128 or not self.seat_model or len(self.seat_model) > 128:
-            raise DispatchError("bounded worker_id and requested seat_model are required")
+        if not isinstance(self.worker_id, str) or not self.worker_id or len(self.worker_id) > 128:
+            raise DispatchError("bounded worker_id is required")
+        if self.seat_model is not None and (not isinstance(self.seat_model, str)
+                or not self.seat_model or len(self.seat_model) > 128):
+            raise DispatchError("requested seat_model must be a nonempty bounded label")
         if self.offline:
+            if self.seat_model is None:
+                raise DispatchError("offline execution requires an explicit --seat-model scheduling label")
             validate_command(self.command)
 
 
@@ -403,9 +408,47 @@ class Dispatcher:
         identity = (row["id"], config.worker_id, row["lease_token"])
         stop = asyncio.Event()
         heartbeat_errors: list[Exception] = []
+        lease_changed = asyncio.Event()
+        lease_deadline = time.monotonic()
+
+        def accept_lease(record):
+            nonlocal lease_deadline
+            until = record.get("lease_until")
+            if (record.get("id") != identity[0] or record.get("lease_token") != identity[2]
+                    or record.get("worker_id", config.worker_id) != config.worker_id
+                    or type(until) is not int):
+                raise DispatchError("heartbeat returned a different or invalid lease identity")
+            remaining = until / 1_000_000 - time.time()
+            if remaining <= 0:
+                raise DispatchError("worker lease has expired")
+            # Converting the grant to a monotonic deadline prevents a wall-clock rollback
+            # from keeping a worker alive beyond the duration actually granted.
+            lease_deadline = time.monotonic() + remaining
+            lease_changed.set()
 
         async def renew():
-            return await self._board("heartbeat", *identity, lease_seconds=config.lease_seconds)
+            remaining = lease_deadline - time.monotonic()
+            if stop.is_set() or remaining <= 0:
+                raise DispatchError("worker lease expired or heartbeat failed")
+            try:
+                record = await asyncio.wait_for(self._board("heartbeat", *identity,
+                    lease_seconds=config.lease_seconds), min(remaining, 30, config.lease_seconds / 3))
+            except asyncio.TimeoutError as error:
+                raise DispatchError("lease heartbeat deadline exceeded") from error
+            accept_lease(record)
+
+        async def expire():
+            while True:
+                remaining = lease_deadline - time.monotonic()
+                if remaining <= 0:
+                    heartbeat_errors.append(DispatchError("worker lease expired while heartbeat was unavailable"))
+                    stop.set()
+                    return
+                lease_changed.clear()
+                try:
+                    await asyncio.wait_for(lease_changed.wait(), remaining)
+                except asyncio.TimeoutError:
+                    pass
 
         async def monitor():
             try:
@@ -418,8 +461,11 @@ class Dispatcher:
                 heartbeat_errors.append(error)
                 stop.set()
 
-        heartbeat = asyncio.create_task(monitor())
+        heartbeat = expiry = None
         try:
+            accept_lease(row)
+            heartbeat = asyncio.create_task(monitor())
+            expiry = asyncio.create_task(expire())
             await renew()
             if not re.fullmatch(r"[a-f0-9]{40}|[a-f0-9]{64}", row["base_commit"]):
                 raise DispatchError("claim requires a full immutable base commit")
@@ -475,8 +521,10 @@ class Dispatcher:
             return {"id": row["id"], "status": "failed", "error": reason}
         finally:
             stop.set()
-            heartbeat.cancel()
-            await asyncio.gather(heartbeat, return_exceptions=True)
+            watches = [task for task in [heartbeat, expiry] if task is not None]
+            for task in watches:
+                task.cancel()
+            await asyncio.gather(*watches, return_exceptions=True)
 
     async def run(self) -> dict:
         if not self.config.offline:
@@ -484,8 +532,11 @@ class Dispatcher:
                     "board": await self._board("render"), "message": "No lease acquired and no worker executed."}
         results = []
         for _ in range(self.config.max_tickets):
-            row = await self._board("claim", self.config.worker_id, self.config.seat_model,
-                                    lease_seconds=self.config.lease_seconds)
+            try:
+                row = await self._board("claim", self.config.worker_id, self.config.seat_model,
+                                        lease_seconds=self.config.lease_seconds)
+            except Exception as error:
+                raise DispatchError(("Board claim refused: " + str(error))[:512]) from error
             if row is None:
                 break
             results.append(await self._one(row))
@@ -500,7 +551,7 @@ def main(argv=None) -> int:
     parser.add_argument("--offline", action="store_true", help="authorize a confined local fixture command")
     parser.add_argument("--command-json", help='explicit argv, e.g. ["/usr/bin/python3","/workspace/fixture.py"]')
     parser.add_argument("--worker-id", default=f"offline-{os.getpid()}")
-    parser.add_argument("--seat-model", default="offline-fixture", help="requested scheduling label only")
+    parser.add_argument("--seat-model", help="explicit registered scheduling label, required for --offline; no model execution claimed")
     parser.add_argument("--once", action="store_true", help="process at most one ticket (the default)")
     parser.add_argument("--max-tickets", type=int, default=1)
     parser.add_argument("--timeout", type=float, default=300)
