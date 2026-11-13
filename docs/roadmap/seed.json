@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "tickets": [
+    {
+      "id": "DOC-001",
+      "wave": 0,
+      "lane": "system-documentation",
+      "title": "Document current system, target, evidence and next dependencies",
+      "seat_model": "gpt-6-astra",
+      "reviewer_model": null,
+      "owned_paths": [
+        "SYSTEM_ROADMAP.md",
+        "docs/roadmap/system.json",
+        "README.md",
+        "AGENTS.md",
+        "STATUS_AND_ARCHITECTURE.md"
+      ],
+      "gate_cmd": [
+        "python3",
+        "-c",
+        "import json\nfrom pathlib import Path\np=Path('docs/roadmap/system.json')\nd=json.loads(p.read_text())\nassert d['schema_version']==1 and d['baseline_commit']=='eb2d4c57d409458d09bf27d4a70ebb067e8e7a8f'\nassert d['executable'] is False and d['paid_runs_authorized'] is False\nfor key in ('current_components','data_assets','decisions','work_items'):\n assert isinstance(d[key],list) and d[key]\nitems=d['decisions']+d['work_items']\nids=[x['id'] for x in items]\nassert len(ids)==len(set(ids))\nknown=set(ids)\nremaining={}\nfor x in items:\n assert x['status'] in ('ready_for_design','blocked','future')\n assert x['owner'] and x['deliverable'] and x['acceptance']\n assert isinstance(x['depends_on'],list) and set(x['depends_on'])<=known and x['id'] not in x['depends_on']\n remaining[x['id']]=set(x['depends_on'])\nwhile remaining:\n ready={key for key,value in remaining.items() if not value}\n assert ready,'Dependency cycle'\n remaining={key:value-ready for key,value in remaining.items() if key not in ready}\nfor component in d['current_components']:\n assert component['status'] in ('implemented_offline','mock_or_injected','historical_source','not_implemented')\n for path in component['evidence_paths']:assert Path(path).is_file(),path\nfor asset in d['data_assets']:\n assert asset['availability'] in ('tracked','catalog_only','fixture_only','missing_or_unverified')\n for path in asset['evidence_paths']:assert Path(path).is_file(),path\ntext=Path('SYSTEM_ROADMAP.md').read_text()\nfor heading in ('What exists now','What we are building toward','Data and evidence available','Decisions before implementation','Dependency order','Next work','Acceptance gates','Limits'):\n assert '## '+heading in text,heading\nfor id in ids:assert id in text,id\nassert len(text)>12000\nfor path in ('README.md','AGENTS.md','STATUS_AND_ARCHITECTURE.md'):\n assert 'SYSTEM_ROADMAP.md' in Path(path).read_text()\nprint('PASS roadmap structure, dependency DAG, evidence paths and navigation')\n"
+      ],
+      "spec_path": "docs/roadmap/DOC-001.md",
+      "depends_on": [],
+      "max_attempts": 3
+    }
+  ]
+}
