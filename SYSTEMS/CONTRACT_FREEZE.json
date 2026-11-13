@@ -1,0 +1,17 @@
+{
+  "contract_version": "1.0.0",
+  "ruleset_version": "tempted-fates/1.0.0",
+  "audit_commit": "3e3ad3a",
+  "files": {
+    "SYSTEMS/argo-v1.schema.json": "8770f07efd24a47598d15171a3a10658d5f7b676d3fcc03362b1cac622b32a4e",
+    "SYSTEMS/ARCHITECTURE.md": "5f755e339dd068b439f991f793768e999ab9e96c464ebb7ffbc8c08caeab50c6",
+    "MECHANICS/tempted-fates-v1.md": "9dbc7f843704f52e51e3080cefd2dc2434f349af8a3a34366bbf7a74c5086645",
+    "SCENARIOS/Tempted_Fates.md": "95a9159170ec2288dfcb2b2881f3c0026e4a168673e0d29887f1f0be83c22008"
+  },
+  "verification": {
+    "metaschema": "JSON Schema 2020-12 passed",
+    "schema_definitions": 36,
+    "valid_examples": 1,
+    "rejected_contract_mutations": 5
+  }
+}

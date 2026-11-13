@@ -1,0 +1,1507 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://argo.local/contracts/1.0.0/argo.schema.json",
+  "title": "ARGO service contracts 1.0.0",
+  "$defs": {
+    "Scope": {
+      "type": "object",
+      "properties": {
+        "tenant_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "rights_lane": {
+          "enum": [
+            "open_license",
+            "homebrew",
+            "marketplace_entitlement",
+            "private_upload"
+          ]
+        },
+        "workspace_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "workspace_tenant_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "campaign_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "world_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "branch_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        }
+      },
+      "required": [
+        "tenant_id",
+        "rights_lane",
+        "workspace_id",
+        "workspace_tenant_id",
+        "campaign_id",
+        "world_id",
+        "branch_id"
+      ],
+      "additionalProperties": false
+    },
+    "Consent": {
+      "type": "object",
+      "properties": {
+        "consent_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "donor_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "recipient_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "units": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "expires_at": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "terms_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "confirmation_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        }
+      },
+      "required": [
+        "consent_id",
+        "donor_id",
+        "recipient_id",
+        "units",
+        "expires_at",
+        "terms_hash",
+        "confirmation_id"
+      ],
+      "additionalProperties": false
+    },
+    "ProxyGrant": {
+      "type": "object",
+      "properties": {
+        "grant_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "grantor_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "grantee_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "move_item",
+              "observe_claim"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "resource_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "valid_from": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "expires_at": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "max_uses": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "grant_id",
+        "grantor_id",
+        "grantee_id",
+        "actions",
+        "resource_ids",
+        "valid_from",
+        "expires_at",
+        "max_uses"
+      ],
+      "additionalProperties": false
+    },
+    "Observation": {
+      "type": "object",
+      "properties": {
+        "claim_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "channel": {
+          "enum": [
+            "belief",
+            "rumor",
+            "external_account"
+          ]
+        },
+        "source_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "content": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 65536
+        },
+        "observers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "party_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "occurred_at": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "claim_id",
+        "channel",
+        "source_id",
+        "content",
+        "observers",
+        "party_id",
+        "occurred_at"
+      ],
+      "additionalProperties": false
+    },
+    "Action_advance_time": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "advance_time"
+        },
+        "to_time": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "type",
+        "to_time"
+      ],
+      "additionalProperties": false
+    },
+    "Action_move_item": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "move_item"
+        },
+        "item_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "to_actor_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "item_id",
+        "to_actor_id"
+      ],
+      "additionalProperties": false
+    },
+    "Action_record_consent": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "record_consent"
+        },
+        "consent": {
+          "$ref": "#/$defs/Consent"
+        }
+      },
+      "required": [
+        "type",
+        "consent"
+      ],
+      "additionalProperties": false
+    },
+    "Action_revoke_consent": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "revoke_consent"
+        },
+        "consent_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        }
+      },
+      "required": [
+        "type",
+        "consent_id"
+      ],
+      "additionalProperties": false
+    },
+    "Action_transfer_time": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "transfer_time"
+        },
+        "consent_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        }
+      },
+      "required": [
+        "type",
+        "consent_id"
+      ],
+      "additionalProperties": false
+    },
+    "Action_grant_proxy": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "grant_proxy"
+        },
+        "grant": {
+          "$ref": "#/$defs/ProxyGrant"
+        }
+      },
+      "required": [
+        "type",
+        "grant"
+      ],
+      "additionalProperties": false
+    },
+    "Action_revoke_proxy": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "revoke_proxy"
+        },
+        "grant_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        }
+      },
+      "required": [
+        "type",
+        "grant_id"
+      ],
+      "additionalProperties": false
+    },
+    "Action_observe_claim": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "observe_claim"
+        },
+        "observation": {
+          "$ref": "#/$defs/Observation"
+        }
+      },
+      "required": [
+        "type",
+        "observation"
+      ],
+      "additionalProperties": false
+    },
+    "Action_vanish_thread": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "vanish_thread"
+        },
+        "traveler_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        }
+      },
+      "required": [
+        "type",
+        "traveler_id"
+      ],
+      "additionalProperties": false
+    },
+    "Action_name_anomaly": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "name_anomaly"
+        },
+        "traveler_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        }
+      },
+      "required": [
+        "type",
+        "traveler_id"
+      ],
+      "additionalProperties": false
+    },
+    "Action_end_thread": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "end_thread"
+        },
+        "traveler_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        }
+      },
+      "required": [
+        "type",
+        "traveler_id"
+      ],
+      "additionalProperties": false
+    },
+    "Action_draw": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "draw"
+        },
+        "label": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "bound": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483648
+        },
+        "visibility": {
+          "enum": [
+            "authority",
+            "actor",
+            "party"
+          ]
+        },
+        "audience_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "label",
+        "bound",
+        "visibility",
+        "audience_id"
+      ],
+      "additionalProperties": false
+    },
+    "Action": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Action_advance_time"
+        },
+        {
+          "$ref": "#/$defs/Action_move_item"
+        },
+        {
+          "$ref": "#/$defs/Action_record_consent"
+        },
+        {
+          "$ref": "#/$defs/Action_revoke_consent"
+        },
+        {
+          "$ref": "#/$defs/Action_transfer_time"
+        },
+        {
+          "$ref": "#/$defs/Action_grant_proxy"
+        },
+        {
+          "$ref": "#/$defs/Action_revoke_proxy"
+        },
+        {
+          "$ref": "#/$defs/Action_observe_claim"
+        },
+        {
+          "$ref": "#/$defs/Action_vanish_thread"
+        },
+        {
+          "$ref": "#/$defs/Action_name_anomaly"
+        },
+        {
+          "$ref": "#/$defs/Action_end_thread"
+        },
+        {
+          "$ref": "#/$defs/Action_draw"
+        }
+      ]
+    },
+    "IntentProposal": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "1.0.0"
+        },
+        "proposal_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "scope": {
+          "$ref": "#/$defs/Scope"
+        },
+        "ruleset_version": {
+          "const": "tempted-fates/1.0.0"
+        },
+        "actor_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "expected_head": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "expected_sequence": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "world_time": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "causal_parents": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "uniqueItems": true
+        },
+        "proxy_grant_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "action": {
+          "$ref": "#/$defs/Action"
+        }
+      },
+      "required": [
+        "schema_version",
+        "proposal_id",
+        "scope",
+        "ruleset_version",
+        "actor_id",
+        "expected_head",
+        "expected_sequence",
+        "world_time",
+        "causal_parents",
+        "proxy_grant_id",
+        "action"
+      ],
+      "additionalProperties": false
+    },
+    "Principal": {
+      "type": "object",
+      "properties": {
+        "principal_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "actor_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "scope": {
+          "$ref": "#/$defs/Scope"
+        },
+        "role": {
+          "enum": [
+            "player",
+            "npc",
+            "intervention",
+            "system"
+          ]
+        },
+        "confirmed_receipts": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "principal_id",
+        "actor_id",
+        "scope",
+        "role",
+        "confirmed_receipts"
+      ],
+      "additionalProperties": false
+    },
+    "Authority": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "telos"
+        },
+        "principal_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "key_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "signature": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9+/]+={0,2}$"
+        },
+        "principal_actor_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "principal_role": {
+          "enum": [
+            "player",
+            "npc",
+            "intervention",
+            "system"
+          ]
+        },
+        "receipt_hash": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "kind",
+        "principal_id",
+        "key_id",
+        "signature",
+        "principal_actor_id",
+        "principal_role",
+        "receipt_hash"
+      ],
+      "additionalProperties": false
+    },
+    "RngRecord": {
+      "type": "object",
+      "properties": {
+        "algorithm": {
+          "const": "hmac-sha256-u32-rejection-v1"
+        },
+        "index": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "label": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "bound": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483648
+        },
+        "value": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "nonce": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "commitment": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "algorithm",
+        "index",
+        "label",
+        "bound",
+        "value",
+        "nonce",
+        "commitment"
+      ],
+      "additionalProperties": false
+    },
+    "LedgerEvent": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "1.0.0"
+        },
+        "event_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "scope": {
+          "$ref": "#/$defs/Scope"
+        },
+        "ruleset_version": {
+          "const": "tempted-fates/1.0.0"
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "previous_hash": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "kind": {
+          "enum": [
+            "causal",
+            "epistemic"
+          ]
+        },
+        "proposal": {
+          "$ref": "#/$defs/IntentProposal"
+        },
+        "authority": {
+          "$ref": "#/$defs/Authority"
+        },
+        "rng": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RngRecord"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "scope",
+        "ruleset_version",
+        "sequence",
+        "previous_hash",
+        "hash",
+        "kind",
+        "proposal",
+        "authority",
+        "rng"
+      ],
+      "additionalProperties": false
+    },
+    "Actor": {
+      "type": "object",
+      "properties": {
+        "alive": {
+          "type": "boolean"
+        },
+        "time_balance": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "age_ticks": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "fate_role": {
+          "anyOf": [
+            {
+              "enum": [
+                "clotho",
+                "lachesis",
+                "atropos"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "thread": {
+          "enum": [
+            "present",
+            "absent",
+            "ended"
+          ]
+        }
+      },
+      "required": [
+        "alive",
+        "time_balance",
+        "age_ticks",
+        "fate_role",
+        "thread"
+      ],
+      "additionalProperties": false
+    },
+    "Item": {
+      "type": "object",
+      "properties": {
+        "custodian_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "destroyed": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "custodian_id",
+        "destroyed"
+      ],
+      "additionalProperties": false
+    },
+    "Genesis": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "1.0.0"
+        },
+        "scope": {
+          "$ref": "#/$defs/Scope"
+        },
+        "ruleset_version": {
+          "const": "tempted-fates/1.0.0"
+        },
+        "world_time": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "seed": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "actors": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/Actor"
+          }
+        },
+        "items": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/Item"
+          }
+        },
+        "parties": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+          },
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+            },
+            "uniqueItems": true
+          }
+        },
+        "authority_key_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "authority_public_key": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "schema_version",
+        "scope",
+        "ruleset_version",
+        "world_time",
+        "seed",
+        "actors",
+        "items",
+        "parties",
+        "authority_key_id",
+        "authority_public_key"
+      ],
+      "additionalProperties": false
+    },
+    "ClaimRecord": {
+      "type": "object",
+      "properties": {
+        "observation": {
+          "$ref": "#/$defs/Observation"
+        },
+        "acquired_at": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "event_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        }
+      },
+      "required": [
+        "observation",
+        "acquired_at",
+        "sequence",
+        "event_id"
+      ],
+      "additionalProperties": false
+    },
+    "ConsentState": {
+      "type": "object",
+      "properties": {
+        "consent": {
+          "$ref": "#/$defs/Consent"
+        },
+        "revoked": {
+          "type": "boolean"
+        },
+        "used": {
+          "type": "boolean"
+        },
+        "confirmed_by": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        }
+      },
+      "required": [
+        "consent",
+        "revoked",
+        "used",
+        "confirmed_by"
+      ],
+      "additionalProperties": false
+    },
+    "GrantState": {
+      "type": "object",
+      "properties": {
+        "grant": {
+          "$ref": "#/$defs/ProxyGrant"
+        },
+        "revoked": {
+          "type": "boolean"
+        },
+        "uses": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "grant",
+        "revoked",
+        "uses"
+      ],
+      "additionalProperties": false
+    },
+    "Cutoff": {
+      "type": "object",
+      "properties": {
+        "vanished_at_sequence": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "named_at_sequence": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "vanished_at_sequence",
+        "named_at_sequence"
+      ],
+      "additionalProperties": false
+    },
+    "TransferRecord": {
+      "type": "object",
+      "properties": {
+        "consent_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "donor_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "recipient_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "units": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "world_time": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "event_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        }
+      },
+      "required": [
+        "consent_id",
+        "donor_id",
+        "recipient_id",
+        "units",
+        "world_time",
+        "event_id"
+      ],
+      "additionalProperties": false
+    },
+    "Snapshot": {
+      "type": "object",
+      "properties": {
+        "genesis": {
+          "$ref": "#/$defs/Genesis"
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "head": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "world_time": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "actors": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/Actor"
+          }
+        },
+        "items": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/Item"
+          }
+        },
+        "claims": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ClaimRecord"
+          }
+        },
+        "consents": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/ConsentState"
+          }
+        },
+        "grants": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/GrantState"
+          }
+        },
+        "cutoffs": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/Cutoff"
+          }
+        },
+        "transfers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TransferRecord"
+          }
+        },
+        "rng_counter": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "proposals": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+          },
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      },
+      "required": [
+        "genesis",
+        "sequence",
+        "head",
+        "world_time",
+        "actors",
+        "items",
+        "claims",
+        "consents",
+        "grants",
+        "cutoffs",
+        "transfers",
+        "rng_counter",
+        "proposals"
+      ],
+      "additionalProperties": false
+    },
+    "KnowledgeQuery": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "1.0.0"
+        },
+        "scope": {
+          "$ref": "#/$defs/Scope"
+        },
+        "actor_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "audience": {
+          "enum": [
+            "actor",
+            "party"
+          ]
+        },
+        "party_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "as_of_world_time": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "as_of_sequence": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "schema_version",
+        "scope",
+        "actor_id",
+        "audience",
+        "party_id",
+        "as_of_world_time",
+        "as_of_sequence"
+      ],
+      "additionalProperties": false
+    },
+    "KnowledgeView": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "1.0.0"
+        },
+        "scope": {
+          "$ref": "#/$defs/Scope"
+        },
+        "actor_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "audience": {
+          "enum": [
+            "actor",
+            "party"
+          ]
+        },
+        "party_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "as_of_world_time": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "as_of_sequence": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "claims": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ClaimRecord"
+          }
+        },
+        "ontology_blocked": {
+          "type": "boolean"
+        },
+        "engagement_closed": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "schema_version",
+        "scope",
+        "actor_id",
+        "audience",
+        "party_id",
+        "as_of_world_time",
+        "as_of_sequence",
+        "claims",
+        "ontology_blocked",
+        "engagement_closed"
+      ],
+      "additionalProperties": false
+    },
+    "Outcome": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "1.0.0"
+        },
+        "proposal_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "event_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "event_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "world_time": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "kind": {
+          "enum": [
+            "causal",
+            "epistemic"
+          ]
+        },
+        "action_type": {
+          "enum": [
+            "advance_time",
+            "move_item",
+            "record_consent",
+            "revoke_consent",
+            "transfer_time",
+            "grant_proxy",
+            "revoke_proxy",
+            "observe_claim",
+            "vanish_thread",
+            "name_anomaly",
+            "end_thread",
+            "draw"
+          ]
+        },
+        "rng_commitment": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "proposal_id",
+        "event_id",
+        "event_hash",
+        "sequence",
+        "world_time",
+        "kind",
+        "action_type",
+        "rng_commitment"
+      ],
+      "additionalProperties": false
+    },
+    "Error": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "1.0.0"
+        },
+        "code": {
+          "enum": [
+            "INVALID_CONTRACT",
+            "SCOPE_DENIED",
+            "UNAUTHORIZED",
+            "CONFLICT",
+            "INVALID_ACTION",
+            "EXPIRED",
+            "REVOKED",
+            "CORRUPT_LEDGER",
+            "UNAVAILABLE",
+            "CANCELLED",
+            "CAPABILITY_UNSUPPORTED"
+          ]
+        },
+        "retryable": {
+          "type": "boolean"
+        },
+        "message": {
+          "type": "string",
+          "maxLength": 1024
+        }
+      },
+      "required": [
+        "schema_version",
+        "code",
+        "retryable",
+        "message"
+      ],
+      "additionalProperties": false
+    },
+    "EncounterCheckpoint": {
+      "type": "object",
+      "properties": {
+        "checkpoint_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "scope": {
+          "$ref": "#/$defs/Scope"
+        },
+        "head": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "world_time": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "actor_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "policy": {
+          "enum": [
+            "serialize",
+            "reject",
+            "queue",
+            "transparent_fork"
+          ]
+        },
+        "expires_at": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "checkpoint_id",
+        "scope",
+        "head",
+        "sequence",
+        "world_time",
+        "actor_ids",
+        "policy",
+        "expires_at"
+      ],
+      "additionalProperties": false
+    }
+  }
+}
