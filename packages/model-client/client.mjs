@@ -36,11 +36,12 @@ function sdkCounter(client,{cap},signal){
       // The Developer API SDK's CountTokensConfig rejects system/tools/generationConfig.
       // Its REST countTokens endpoint accepts generateContentRequest instead. Inject the full
       // count request through the SDK's documented extraBody hook; omit the alternative contents.
-      const {systemInstruction,tools,abortSignal,httpOptions,automaticContinuation,...generationConfig}=config;
-      const full=systemInstruction!==undefined||tools!==undefined||config.responseSchema||config.responseJsonSchema;
+      const {systemInstruction,tools,toolConfig,safetySettings,abortSignal,httpOptions,automaticContinuation,...generationConfig}=config;
+      const full=systemInstruction!==undefined||tools!==undefined||toolConfig!==undefined||safetySettings!==undefined||config.responseSchema||config.responseJsonSchema;
       const body={model:`models/${model}`,contents,
-        ...(systemInstruction!==undefined?{systemInstruction:typeof systemInstruction==='string'?{parts:[{text:systemInstruction}]}:systemInstruction}:{}),
-        ...(tools!==undefined?{tools}:{}),generationConfig};
+        ...(systemInstruction!==undefined?{systemInstruction:typeof systemInstruction==='string'?{parts:[{text:systemInstruction}],role:'user'}:systemInstruction}:{}),
+        ...(tools!==undefined?{tools}:{}),...(toolConfig!==undefined?{toolConfig}:{}),
+        ...(safetySettings!==undefined?{safetySettings}:{}),generationConfig};
       return (await client.models.countTokens({model,...(full?{}:{contents}),config:{abortSignal:signal,
         ...(full?{httpOptions:{extraBody:{generateContentRequest:body}}}:{})}})).totalTokens;
     };
