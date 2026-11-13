@@ -1,0 +1,29 @@
+{
+  "key": "lexiModelConfig",
+  "repo_root": "/home/colchis/Projects/LEXI",
+  "title": "claude_model_tiers.py: single source of truth for LEXI's Claude model-tier defaults, upgraded to the current top-tier models (currently the stale claude-sonnet-4-6/claude-opus-4-8 literal strings duplicated across main.py, cluster_endpoints.py, investigation_engine.py, and pinned into tests)",
+
+  "slot": "lexi-dashboard-backend-claude-model-tiers",
+  "path": "lexi-dashboard/backend/claude_model_tiers.py",
+
+  "copy": ["lexi-dashboard/backend/tests/test_models_config.py"],
+
+  "tests_file": "lexi-dashboard/backend/tests/test_models_config.py",
+  "acceptance_cmd": "cd lexi-dashboard/backend && python3 -m pytest tests/test_models_config.py -q",
+
+  "question": "LEXI's backend selects a Claude model per query-difficulty tier via `os.environ.get(\"CLAUDE_MODEL\", \"claude-sonnet-4-6\")` (simple/medium tiers) and `os.environ.get(\"CLAUDE_MODEL_COMPLEX\", \"claude-opus-4-8\")` (complex tier) -- both stale Claude 4.x literals, duplicated across at least 4 call sites in main.py plus cluster_endpoints.py and investigation_engine.py, with tests/test_chat_live_fixes.py asserting directly against the literal string. A routine model bump means finding and changing every occurrence by hand, and a missed one silently keeps calling an old model. This is the exact scattered-literal pattern Pantheon's own src/config/models.mjs was built to fix for itself. The user has explicitly asked for the defaults themselves to be upgraded to the best currently available models, not merely centralized as-is -- does a single-source module fix both the duplication AND the staleness in a form LEXI's backend can adopt without a rewrite?",
+  "goal": "Create lexi-dashboard/backend/claude_model_tiers.py. It must export exactly one function: `model_id(tier)`.\n\nBehavior, precisely:\n\n1. A module-level dict (any name, not exported) holds the UPGRADED defaults -- current top-tier Claude 5 models, per explicit user instruction, replacing the stale Claude 4.x literals the codebase uses today:\n   - `\"CLAUDE_MODEL\"`: `\"claude-sonnet-5\"`\n   - `\"CLAUDE_MODEL_COMPLEX\"`: `\"claude-opus-5-5\"`\n2. `model_id(tier)` looks up `tier` (the env-var name, e.g. `\"CLAUDE_MODEL\"`) in that dict to get the default, then returns `os.environ.get(tier, default)` -- an environment variable of that same name, when set, still overrides the default exactly as it does today at every existing call site.\n3. If `tier` is not one of the known keys, raise `KeyError` (do not return `None` or a made-up string).\n\nThis is the WHOLE file: one dict, one function, `import os`, nothing else. No other exports.\n\nDo NOT touch main.py, cluster_endpoints.py, investigation_engine.py, or any other file that currently calls `os.environ.get(\"CLAUDE_MODEL\", ...)` directly -- wiring those call sites to use `model_id()` instead, which is also when the actual runtime behavior change takes effect, is deliberately a separate, later change, not this ticket. This ticket only creates the one new file.\n\nThe acceptance command is `python3 -m pytest tests/test_models_config.py -q`, which is already present (do not edit it) and self-contained -- it does not import main.py or anything that needs FastAPI/SQLModel/SQLCipher, so it runs standalone.",
+
+  "constraints": [
+    "plain module-level code, no classes needed",
+    "one file changes: lexi-dashboard/backend/claude_model_tiers.py",
+    "do NOT name this file models.py -- lexi-dashboard/backend/models.py already exists as the real SQLModel database-schema module (Timeline, TimelineAnnotations, etc.) and a same-named file would silently shadow or collide with it",
+    "the two literal default strings must be exactly claude-sonnet-5 and claude-opus-5-5 -- the upgraded models, not the current stale ones"
+  ],
+  "forbidden": [
+    "do not elect a vendor as judge",
+    "do not edit any test file",
+    "do not edit main.py, cluster_endpoints.py, investigation_engine.py, requirements.txt, or any file other than claude_model_tiers.py",
+    "do not create or edit anything named models.py"
+  ]
+}

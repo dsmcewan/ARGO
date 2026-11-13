@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glass and light, WebGL spike</title>
+<!--
+  DESIGN SPIKE, not product code. The same one-block, one-light scene as 2026-09-28-light-physics-demo.html,
+  rendered with React Three Fiber instead of Canvas 2D, to answer four questions before the renderer plan is
+  written: (1) do React 19.3.0, three, Fiber 9, Drei 10 and the postprocessing pair load from esm.sh through
+  one import map with no bundler and no JSX, sharing a single React and a single three; (2) does Drei's
+  MeshTransmissionMaterial give the faceted antique glass the brief asks for; (3) does Bloom give the light's
+  dissipation and Drei's Trail its wake; (4) does the motion module carry over unchanged. The module is
+  inlined below verbatim (export keywords removed), so the light moves by exactly the proven formulas.
+-->
+<script>
+  // Diagnostics, as a classic script so they exist even if a module import fails to resolve.
+  window.__spike = { frames: 0, errors: [], warns: [] };
+  const log = m => { window.__spike.errors.push(String(m)); const el = document.getElementById("log"); if (el) { el.hidden = false; el.textContent += String(m) + "\n"; } };
+  window.addEventListener("error", e => log("error: " + (e.message || e.type)));
+  window.addEventListener("unhandledrejection", e => log("rejection: " + (e.reason && e.reason.message || e.reason)));
+  const warn = console.warn.bind(console); console.warn = (...a) => { window.__spike.warns.push(a.map(String).join(" ")); warn(...a); };
+</script>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@19.3.0",
+    "react/jsx-runtime": "https://esm.sh/react@19.3.0/jsx-runtime",
+    "react-dom": "https://esm.sh/react-dom@19.3.0?external=react",
+    "react-dom/client": "https://esm.sh/react-dom@19.3.0/client?external=react",
+    "three": "https://esm.sh/three@0.186.1",
+    "three/": "https://esm.sh/three@0.186.1/",
+    "@react-three/fiber": "https://esm.sh/@react-three/fiber@9.8.1?external=react,react-dom,three",
+    "@react-three/drei": "https://esm.sh/@react-three/drei@10.7.9?external=react,react-dom,three,@react-three/fiber",
+    "postprocessing": "https://esm.sh/postprocessing@6.39.5?external=three",
+    "@react-three/postprocessing": "https://esm.sh/@react-three/postprocessing@3.1.3?external=react,react-dom,three,@react-three/fiber,postprocessing"
+  }
+}
+</script>
+<style>
+:root{--dusk:#141A2E;--marble:#A0A4B2;--chalk:#E8E4DA;--lamp:#DDB275}
+body{margin:0;background:var(--dusk);color:var(--chalk);font:400 14px/1.5 Bahnschrift,"Segoe UI",system-ui,"Liberation Sans",sans-serif;display:grid;place-items:center;min-height:100vh}
+.wrap{width:min(960px,96vw);aspect-ratio:960/520;position:relative}
+#root,#root canvas{position:absolute;inset:0;width:100%!important;height:100%!important}
+.hud{position:absolute;left:14px;top:12px;color:var(--marble);font-size:13px;line-height:1.4;pointer-events:none}
+.hud b{color:var(--chalk);font-weight:500}
+.ctl{position:absolute;right:14px;top:12px;display:flex;gap:14px;align-items:center;color:var(--marble);font-size:13px}
+.ctl input[type=number]{width:70px;background:transparent;color:var(--chalk);border:1px solid rgba(232,228,218,.25);padding:3px 6px;font:inherit}
+.ctl input[type=range]{accent-color:var(--lamp)}
+#log{position:absolute;left:14px;bottom:12px;max-width:70%;color:#D2848C;font:12px/1.4 ui-monospace,monospace;white-space:pre-wrap;margin:0}
+:focus-visible{outline:2px solid var(--lamp);outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div id="root" aria-hidden="true"></div>
+  <div class="hud"><b id="phase">loading</b> <span id="clock">0.0 s</span><br><span id="note">React Three Fiber: transmission glass, bloom, trail</span></div>
+  <div class="ctl">
+    <label>seed <input id="seed" type="number" value="7" min="0" step="1"></label>
+    <label>speed <input id="speed" type="range" min="0.25" max="2" step="0.05" value="1"></label>
+  </div>
+  <pre id="log" hidden></pre>
+</div>
+<script type="module">
+import React, { useRef, useMemo, useEffect, createElement as h } from "react";
+import { createRoot } from "react-dom/client";
+import * as THREE from "three";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { MeshTransmissionMaterial, Trail, Environment, Lightformer } from "@react-three/drei";
+import { EffectComposer, Bloom } from "@react-three/postprocessing";
+
+// ---- src/view/ui/light-physics.mjs, verbatim minus the export keywords ----
+// file: src/view/ui/light-physics.mjs
+// The physics of the lights: seeded noise, a curl field, a wavering flight path, a Kepler orbit and two
+// attenuation curves. Pure and memoryless: every function is a value of t and a seed, so replay is exact.
+//
+//   noise        Gustavson, "Simplex noise demystified" (2005); the 2D port in josephg/noisejs (public domain).
+//                Seeding after mikeascendx/aether js/perlin.js (MIT): a Lehmer shuffle of the permutation.
+//   curl         Bridson, Hourihan, Nordenstam, "Curl-noise for procedural fluid flow" (SIGGRAPH 2007):
+//                v = (∂ψ/∂y, −∂ψ/∂x) by central differences, the form used in aether's field.js.
+//   wander       Reynolds, "Steering Behaviors for Autonomous Characters" (1999); Shiffman, The Nature of
+//                Code ch. 5. The wander angle is a function of noise and time here, not a random walk.
+//   orbit        Kepler's equation E − e sin E = M by Newton's method, seeded as in markbrown/keplersballs.
+//   attenuation  Lagarde & de Rousiers, "Moving Frostbite to PBR" (SIGGRAPH 2014), windowed inverse square;
+//                lisyarus, "Point light attenuation" (2022), the smooth no-cusp variant.
+
+const TAU = Math.PI * 2;
+const GRAD = [[1, 1], [-1, 1], [1, -1], [-1, -1], [1, 0], [-1, 0], [1, 0], [-1, 0], [0, 1], [0, -1], [0, 1], [0, -1]];
+const F2 = 0.5 * (Math.sqrt(3) - 1), G2 = (3 - Math.sqrt(3)) / 6;
+
+function makeNoise(seed = 1337) {
+  const p = new Uint8Array(256); for (let i = 0; i < 256; i++) p[i] = i;
+  let s = ((seed >>> 0) % 2147483647) || 1;
+  const rnd = () => (s = (s * 16807) % 2147483647) / 2147483647;
+  for (let i = 255; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); const t = p[i]; p[i] = p[j]; p[j] = t; }
+  const perm = new Uint8Array(512), gradP = new Array(512);
+  for (let i = 0; i < 512; i++) { perm[i] = p[i & 255]; gradP[i] = GRAD[perm[i] % 12]; }
+  const corner = (g, x, y) => { let t = 0.5 - x * x - y * y; if (t < 0) return 0; t *= t; return t * t * (g[0] * x + g[1] * y); };
+  function simplex2(xin, yin) {
+    const s = (xin + yin) * F2, i = Math.floor(xin + s), j = Math.floor(yin + s), t = (i + j) * G2;
+    const x0 = xin - i + t, y0 = yin - j + t;
+    const i1 = x0 > y0 ? 1 : 0, j1 = x0 > y0 ? 0 : 1;
+    const x1 = x0 - i1 + G2, y1 = y0 - j1 + G2, x2 = x0 - 1 + 2 * G2, y2 = y0 - 1 + 2 * G2;
+    const ii = i & 255, jj = j & 255;
+    const n0 = corner(gradP[ii + perm[jj]], x0, y0), n1 = corner(gradP[ii + i1 + perm[jj + j1]], x1, y1), n2 = corner(gradP[ii + 1 + perm[jj + 1]], x2, y2);
+    return 70 * (n0 + n1 + n2);
+  }
+  function fbm2(x, y, octaves = 3) {
+    let amp = 0.5, freq = 1, sum = 0, norm = 0;
+    for (let o = 0; o < octaves; o++) { sum += amp * simplex2(x * freq, y * freq); norm += amp; amp *= 0.5; freq *= 2; }
+    return sum / norm;
+  }
+  return { simplex2, fbm2 };
+}
+
+function curl(psi, x, y, eps = 0.01) {
+  return [(psi(x, y + eps) - psi(x, y - eps)) / (2 * eps), -(psi(x + eps, y) - psi(x - eps, y)) / (2 * eps)];
+}
+
+// Two smooth channels of wander: a walk along a line in noise space that moves with t, far from the origin so
+// two seeds never share a neighbourhood.
+function wander2(noise, t, freq, seed = 0) {
+  const u = t * freq, o = seed * 97.13;
+  return [noise.fbm2(u + o, 0.37 + o * 0.01, 3), noise.fbm2(0.91 - o * 0.01, u + o + 31.7, 3)];
+}
+
+// The quadratic arc from A to B, lifted, plus a wander that vanishes at both ends: off course in the middle,
+// on target at arrival. Normal wander is the visible waver; tangential wander is a small change of pace.
+function flightPoint(A, B, k, t, noise, { lift = 40, amp = 18, freq = 0.7, seed = 0 } = {}) {
+  const mx = (A[0] + B[0]) / 2, my = (A[1] + B[1]) / 2 - lift, u = 1 - k;
+  const x = u * u * A[0] + 2 * u * k * mx + k * k * B[0], y = u * u * A[1] + 2 * u * k * my + k * k * B[1];
+  if (amp === 0) return [x, y];
+  const tx = 2 * u * (mx - A[0]) + 2 * k * (B[0] - mx), ty = 2 * u * (my - A[1]) + 2 * k * (B[1] - my), len = Math.hypot(tx, ty) || 1;
+  const nx = -ty / len, ny = tx / len, [w1, w2] = wander2(noise, t + k * 2, freq, seed), env = Math.sin(Math.PI * k);
+  return [x + env * (amp * w1 * nx + (amp / 3) * w2 * tx / len), y + env * (amp * w1 * ny + (amp / 3) * w2 * ty / len)];
+}
+
+function keplerE(M, e) {
+  M %= TAU; if (M < 0) M += TAU;
+  let E = e < 0.8 ? M : Math.PI;
+  for (let i = 0; i < 32; i++) { const f = E - e * Math.sin(E) - M; if (Math.abs(f) < 1e-10) break; E -= f / (1 - e * Math.cos(E)); }
+  return E;
+}
+
+// A Kepler orbit with the focus at the block's centre, rotated by omega (plus precession·t so no loop
+// retraces), squashed in y to sit in the block's perspective. r is the unsquashed distance to the focus.
+function orbitPoint({ cx, cy, a, e, omega = 0, squash = 1, precession = 0 }, t, period) {
+  const E = keplerE(TAU * t / period, e), b = a * Math.sqrt(1 - e * e);
+  const px = a * (Math.cos(E) - e), py = b * Math.sin(E), w = omega + precession * t, c = Math.cos(w), s = Math.sin(w);
+  return { x: cx + px * c - py * s, y: cy + (px * s + py * c) * squash, r: a * (1 - e * Math.cos(E)), E };
+}
+
+// Frostbite: inverse square, clamped at the light's own size, windowed to reach zero at R with zero slope;
+// normalised so the value at the source is 1.
+function attenuation(d, R, size = R / 32) {
+  if (d >= R) return 0;
+  const f = (d * d) / (R * R), w0 = Math.max(0, Math.min(1, 1 - f * f)), w = w0 * w0;
+  return (size * size) / Math.max(d * d, size * size) * w;
+}
+function attenuationSoft(d, R, F = 2) {
+  const s = d / R; if (s >= 1) return 0; const q = 1 - s * s; return (q * q) / (1 + F * s * s);
+}
+
+// What the glass picks up: for each rim point, the brightest of the recent head positions, each dimmed by its
+// distance (attenuation) and its age (exponential cooling).
+function rimGlow(points, heads, R, tau) {
+  const out = new Float64Array(points.length);
+  for (let i = 0; i < points.length; i++) {
+    let best = 0;
+    for (const h of heads) { const v = attenuation(Math.hypot(points[i][0] - h.x, points[i][1] - h.y), R) * Math.exp(-h.age / tau); if (v > best) best = v; }
+    out[i] = best;
+  }
+  return out;
+}
+
+// ---- the scene, in world units: the block is radius 1, height 0.9, standing on the floor at the origin ----
+const DUSK = "#141A2E", CHALK = "#E8E4DA", LAMP = "#DDB275", AFTERGLOW = "#6E4A5C", HUE = "#8FB5A0", SKY = "#8FAFC9";
+const OUT = 1.2, ORBIT = 8, BACK = 1.2, REST = 0.8, CYCLE = OUT + ORBIT + BACK + REST, PERIOD = 6;
+const PLANNER = { x: 0, y: 3.0, z: -3.4 }, CROWN = { x: 0, y: 1.15, z: 0 };
+const R = 1;
+function orbitOf(s) { const e = 0.28 + (s % 100) / 500; return { cx: 0, cy: 0, a: R * 1.05 / (1 - e), e, omega: (s % 360) * Math.PI / 180, squash: 1, precession: 0.15 }; }
+// Position of the light at scene time t: the 2D formulas drive x and z on the floor plane; height is its own curve.
+function lightAt(t, seed, noise, orb) {
+  const u = t % CYCLE;
+  if (u < OUT) { const k = u / OUT, p = flightPoint([PLANNER.x, PLANNER.z], [CROWN.x, CROWN.z], k, t, noise, { lift: 0, amp: 0.5, seed });
+    return { phase: "flying in", p: [p[0], PLANNER.y + (CROWN.y - PLANNER.y) * k + 0.5 * Math.sin(Math.PI * k), p[1]], size: 1 }; }
+  if (u < OUT + ORBIT) { const o = orbitPoint(orb, u - OUT, PERIOD), near = 1 - (o.r - orb.a * (1 - orb.e)) / (2 * orb.a * orb.e);
+    return { phase: "orbiting", p: [o.x, 0.55 + 0.3 * noise.fbm2((u - OUT) * 0.35 + seed * 3.1, 1.7, 3), o.y], size: 1 + 0.35 * near }; }
+  if (u < OUT + ORBIT + BACK) { const k = (u - OUT - ORBIT) / BACK, p = flightPoint([CROWN.x, CROWN.z], [PLANNER.x, PLANNER.z], k, t, noise, { lift: 0, amp: 0.5, seed });
+    return { phase: "flying back", p: [p[0], CROWN.y + (PLANNER.y - CROWN.y) * k + 0.5 * Math.sin(Math.PI * k), p[1]], size: 0.7 }; }
+  return { phase: "resting", p: null, size: 0 };
+}
+
+// ---- the clock: wall-anchored so a throttled tab does not crawl; speed re-anchors -------------------------
+const clock = { anchorT: 0, anchorNow: performance.now(), speed: 1, t: 0 };
+const now = () => (clock.t = clock.anchorT + (performance.now() - clock.anchorNow) / 1000 * clock.speed);
+const phaseEl = document.getElementById("phase"), clockEl = document.getElementById("clock"), seedEl = document.getElementById("seed"), speedEl = document.getElementById("speed");
+const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const params = { seed: 7, noise: makeNoise(7), orb: orbitOf(7) };
+speedEl.addEventListener("input", () => { clock.anchorT = now(); clock.anchorNow = performance.now(); clock.speed = Number(speedEl.value); });
+seedEl.addEventListener("change", () => { const s = Number(seedEl.value) || 0; params.seed = s; params.noise = makeNoise(s); params.orb = orbitOf(s); });
+
+// ---- components (createElement only; no JSX, no bundler) ----------------------------------------------------
+function Block() {
+  const geo = useMemo(() => new THREE.CylinderGeometry(R, R, 0.9, 6, 1), []);
+  const edges = useMemo(() => new THREE.EdgesGeometry(geo, 15), [geo]);
+  return h("group", { position: [0, 0.45, 0] },
+    h("mesh", { geometry: geo },
+      h(MeshTransmissionMaterial, { backside: true, samples: 6, resolution: 512, backsideResolution: 256, thickness: 0.7, backsideThickness: 0.3,
+        roughness: 0.22, ior: 1.45, chromaticAberration: 0.08, anisotropicBlur: 0.25, distortion: 0.12, distortionScale: 0.4, temporalDistortion: 0.05,
+        color: "#CFE3D8", attenuationColor: HUE, attenuationDistance: 1.6, toneMapped: true })),
+    h("lineSegments", { geometry: edges }, h("lineBasicMaterial", { color: CHALK, transparent: true, opacity: 0.45 })));
+}
+function Light() {
+  const group = useRef(), core = useRef(), lamp = useRef();
+  useFrame(() => {
+    const t = now(); const L = lightAt(t, params.seed, params.noise, params.orb);
+    window.__spike.frames++; if (window.__spike.frames === 60) window.__spikeReady = true;
+    phaseEl.textContent = L.phase; clockEl.textContent = `${t.toFixed(1)} s`;
+    if (!group.current) return;
+    if (!L.p) { group.current.visible = false; return; }
+    group.current.visible = true; group.current.position.set(L.p[0], L.p[1], L.p[2]);
+    const s = 0.07 * L.size; core.current.scale.setScalar(s / 0.07); lamp.current.intensity = 9 * L.size;
+  });
+  const glow = useMemo(() => new THREE.Color(HUE).multiplyScalar(2.4), []);        // over 1: this is what blooms
+  return h(Trail, { width: 0.45, length: 6, color: new THREE.Color(HUE), attenuation: w => w * w, decay: 1.2, local: false, stride: 0, interval: 1 },
+    h("group", { ref: group, position: [PLANNER.x, PLANNER.y, PLANNER.z] },
+      h("mesh", { ref: core }, h("sphereGeometry", { args: [0.07, 24, 24] }), h("meshBasicMaterial", { color: glow, toneMapped: false })),
+      h("pointLight", { ref: lamp, color: HUE, intensity: 9, distance: 6, decay: 2 })));
+}
+function Floor() {
+  return h("mesh", { rotation: [-Math.PI / 2, 0, 0], position: [0, 0, 0] },
+    h("planeGeometry", { args: [60, 60] }), h("meshStandardMaterial", { color: "#1C2034", roughness: 0.95, metalness: 0 }));
+}
+function Aim() { const { camera } = useThree(); useEffect(() => { camera.lookAt(0, 0.55, 0); }, [camera]); return null; }
+function Scene() {
+  return h(React.Fragment, null,
+    h("color", { attach: "background", args: [DUSK] }),
+    h("fog", { attach: "fog", args: [DUSK, 9, 24] }),
+    h(Aim),
+    h("ambientLight", { intensity: 0.25, color: SKY }),
+    h("directionalLight", { position: [-4, 6, 3], intensity: 1.1, color: LAMP }),
+    h("pointLight", { position: [0, 2.5, -9], intensity: 40, color: AFTERGLOW, distance: 30 }),   // the afterglow on the horizon
+    h(Environment, { resolution: 128 },
+      h(Lightformer, { intensity: 1.6, position: [0, 3, -8], scale: [14, 2.5, 1], color: AFTERGLOW }),
+      h(Lightformer, { intensity: 0.9, position: [5, 3, 2], scale: [2, 5, 1], color: LAMP }),
+      h(Lightformer, { intensity: 0.5, position: [-6, 2, 1], scale: [2, 4, 1], color: SKY })),
+    h(Floor), h(Block), h(Light),
+    h(EffectComposer, { multisampling: 4 }, h(Bloom, { mipmapBlur: true, luminanceThreshold: 1, luminanceSmoothing: 0.1, intensity: 1.3, radius: 0.7 })));
+}
+const root = createRoot(document.getElementById("root"));
+root.render(h(Canvas, {
+  dpr: [1, 2], frameloop: reduced ? "demand" : "always",
+  camera: { position: [0, 2.7, 6.4], fov: 32, near: 0.1, far: 80 },
+  gl: { antialias: true, toneMapping: THREE.ACESFilmicToneMapping, powerPreference: "high-performance" },
+  onCreated: ({ gl }) => { window.__spike.renderer = gl.capabilities.isWebGL2 ? "webgl2" : "webgl1"; phaseEl.textContent = "starting"; }
+}, h(Scene)));
+if (reduced) document.getElementById("note").textContent = "reduced motion: one frame";
+</script>
+</body>
+</html>

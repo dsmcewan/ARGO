@@ -1,0 +1,33 @@
+{
+  "_template": "Copy to scripts/tickets/open-item-<n>-<slug>.json and delete every key starting with an underscore. The runner (scripts/open-items-run.mjs --ticket <file>) reads the rest. Write the ORACLE TEST FIRST (templates/oracle.test.mjs.tmpl), baseline it failing, then fill this in. Every field that is prose reaches a seat verbatim; write it for a reader with the source in front of it and nothing else.",
+
+  "key": "<camelCaseKey — names the board dir ~/.pantheon/boards/open-<key>-<ts> and outputs/open-items/<key>>",
+  "repo_root": "<_optional: absolute or pantheon-relative path to a DIFFERENT project this ticket targets. Absent (the default) means pantheon itself, exactly as every ticket before this field existed. When set, copy/outputs/attach/source/tests_file all resolve against it instead — the worktree becomes a copy of THAT repo, and the shipped artifact lands in ITS outputs/open-items/<key>/, not pantheon's. Pantheon's own tooling (role cards, agy-seat.py, PANTHEON_HEAD provenance) stays pointed at pantheon regardless.>",
+  "title": "<one line: the change, as a work-item title; the planner's whole job is to restate it>",
+
+  "slot": "<board slot key for the artifact, e.g. src/role/seating.mjs — must match ^[A-Za-z0-9][A-Za-z0-9._/#-]{0,127}$ (no leading dot). For a dot-path file use a plain slot like agents/controller.md and set path below>",
+  "path": "<worktree path the artifact is written to; defaults to slot — set it when slot cannot spell the path, e.g. .claude/agents/controller.md>",
+  "source": "<current file, read into the implementer's brief as the starting point; usually the same as path>",
+
+  "copy": ["src", "tests", "scripts", "bin", "package.json", "_add .agents and anything else ANY test in the suite reads"],
+  "_copy_rule": "Scope `copy` to the ACCEPTANCE COMMAND, never to your change. Acceptance is the full suite, so a list that covers only what this ticket touches will silently fail somebody else's test: on 2026-09-27 a ticket that omitted `.agents` failed an unrelated oracle three revisions in a row, and the implementer cannot fix a test. Before launching, ask what every test in the suite opens, not what this change opens.",
+  "_oracle_rule": "BEFORE LAUNCHING, run the full suite yourself with the new oracle in place. Every failure must be one the implementer can actually fix by editing `path` alone. A wrong expected value in your own oracle costs all three revisions and cannot be repaired by any seat — this happened twice on 2026-09-27, the second time one run after the lesson was written down. Compute byte counts and other literals, do not eyeball them.",
+  "attach": ["_optional: repo-relative files handed to the implementer READ-ONLY under the artifact token — the sources it must decide from when the change is about facts in other files (open item 7b attached 13). Omit for a pure code change; the executed failure output is a better teacher than more context"],
+
+  "tests_file": "tests/<name>.test.mjs — the human-written oracle, committed BEFORE the run and baselined failing",
+  "acceptance_cmd": "node --test — the FULL suite: the oracle plus every existing test; the controller executes this itself and its exit code is the TESTS gate",
+
+  "question": "<one paragraph for the scouts: the open question as a question, no design. They are cited by the ticket, never read by the chain>",
+  "goal": "<the whole design, precisely enough that a tool-less seat can write the file from this text and the current source alone: file, exact export names and shapes, exact values, what must NOT change, and the sentence 'the acceptance command is the project's FULL suite (`node --test`), which includes the new tests/<name>.test.mjs; every existing test must stay green'. If an EXISTING test pins the state this ticket changes, FIX THAT TEST YOURSELF BEFORE THE RUN — the implementer cannot (see forbidden) and will fail three revisions on it (open item 2, 2026-09-27, three revisions at 519/1)>",
+
+  "constraints": [
+    "ES module syntax; Node built-ins only; no new dependencies",
+    "one file changes: <path>",
+    "every existing export of <path> keeps its name and behaviour"
+  ],
+  "forbidden": [
+    "do not elect a vendor as judge",
+    "do not edit any test file",
+    "_add: do not edit scripts/, .agents/ or docs/ — whatever the change must not touch"
+  ]
+}

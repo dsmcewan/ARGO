@@ -1,0 +1,62 @@
+# Pantheon holds a hash-indexed copy of conversations and seat state. Per docs/specs §6.2, that
+# material stays inside $PANTHEON_HOME, is never committed, and never leaves the machine.
+# This file is the mechanical form of that promise — deny by default, allow deliberately.
+*
+
+!/.gitignore
+!/README.md
+# Codex reads this one. Per the AGENTS.md spec it is purely instructional -- it cannot define an
+# agent -- and Codex concatenates from the repo root downward under a 32 KiB project_doc_max_bytes
+# cap, so keep it short enough that a nested file would still fit beneath it.
+!/AGENTS.md
+!/docs/
+!/docs/**
+!/spike/
+!/spike/**
+!/bin/
+!/bin/**
+!/src/
+!/src/**
+!/tests/
+!/tests/**
+!/package.json
+!/STATE.md
+!/scripts/
+!/scripts/**
+# A declared dependency without a lockfile is an unpinned supply chain. The zero-runtime-dep
+# policy that made a lockfile pointless ended when SDK transport was adopted; pinning the tree
+# is the replacement control, not an exception to the old one.
+!/package-lock.json
+
+# Role cards for the orchestrated roles. The directory is un-ignored, its contents re-ignored, and
+# only agents/ allowed back in -- git cannot re-include a child of an excluded parent, so the three
+# lines have to be in this order. Nothing else under .claude/ is tracked.
+!/.claude/
+/.claude/*
+!/.claude/agents/
+!/.claude/agents/**
+
+# The same shape for the Antigravity CLI's customization root: only its custom agents (the role cards
+# the agy seat loads on both lanes) are tracked; skills, rules, hooks or anything else it may write there
+# stay ignored until admitted deliberately.
+!/.agents/
+/.agents/*
+!/.agents/agents/
+!/.agents/agents/**
+
+# …and never these, even if a rule above would otherwise admit them.
+/.pantheon/
+**/artifacts/
+**/*.jsonl
+
+# ONE deliberate exception to the .jsonl rule above, and it has to come after it because the last
+# matching rule wins. `docs/runs/graph/` is the build-correction graph: hand-authored source that
+# scripts/graph-check.mjs validates and renders, not a receipt, a transcript or a progress stream.
+# Everything the blanket rule is protecting against (run progress, seat transcripts, spend records)
+# lives under outputs/ or $PANTHEON_HOME and stays ignored.
+!/docs/runs/graph/*.jsonl
+**/transcripts/
+**/*.sqlite
+**/*.sqlite-*
+.env
+.env.*

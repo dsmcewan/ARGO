@@ -1,0 +1,35 @@
+{
+  "key": "seatLockContention",
+  "title": "src/seat/lock.mjs: two processes can hold the same advisory seat lock at once under contention -- find the window and close it",
+  "slot": "seatLockContention",
+  "path": "src/seat/lock.mjs",
+  "source": "src/seat/lock.mjs",
+  "copy": [
+    "src",
+    "tests",
+    "scripts",
+    "bin",
+    "package.json",
+    ".agents"
+  ],
+  "tests_file": "tests/seat-lock-contention.test.mjs",
+  "acceptance_cmd": "node --test $(ls tests/*.test.mjs | grep -v 'board-reviewer-reseat-lab\\|board-agy-planner-role')",
+  "question": "src/seat/lock.mjs is an advisory, cross-process file lock that is already on its third design (its own header comments document two earlier races: a naive unlink-race and a naive rename-race, both closed by a claim-file-based steal protocol). tests/seat-lock-claim.test.mjs races 5 processes against one pre-seeded dead lock and asserts no two ever hold it at once; that test almost never fails alone, but a real overlap was observed during a genuinely CPU-loaded full-suite run on 2026-09-28 (outputs/open-items/conformParallel/repro-rev1.txt: two holders' [a,b] windows overlapped by about 40ms). Raising the same race's contender count from 5 to 40 (tests/seat-lock-contention.test.mjs, already written) reproduces it reliably without needing external load: roughly 3 to 4 of every 5 rounds show two processes' critical-section windows overlapping, often starting within 0 to 2 milliseconds of each other and running the FULL critical section concurrently -- not a boundary rounding error, a genuine double hold of the same seat's lock. A manual trace of the documented steal protocol (readLock -> judge dead -> take an exclusive claim -> re-read under the claim -> unlink only if it is still the exact lock judged dead) does not obviously explain how two processes end up believing they hold the lock, which is why this ticket asks for a diagnosis, not a prescribed line change. Where in the acquire/steal/release protocol does a second process gain entry while a first is still inside, and what is the smallest change that closes it without reintroducing either of the two races this module's own comments already document as closed?",
+  "goal": "Using tests/seat-lock-contention.test.mjs as your reproduction (run `node --test tests/seat-lock-contention.test.mjs` directly to see it fail before you start; it usually takes under a minute and needs no credentials or network access), instrument or reason through src/seat/lock.mjs's `acquireFileLock`, `stealIfDead`, and `takeClaim` functions to find the exact sequence of calls across two or more processes that lets a second one enter `withSeatLock`'s critical section while a first is still inside it.\n\nFix ONLY src/seat/lock.mjs, and only what is necessary to close that window. Preserve every documented invariant this file already states in its own comments: never steal from a live owner at any age (age-based stealing applies only when the owner cannot be determined at all); a steal is decided under an exclusive claim and re-verified before acting, never decided on one read and acted on another; releasing a lock must never delete a DIFFERENT holder's lock (the nonce check in `releaseFileLock`); and two async callers inside the SAME process must still queue through `inProcess`, not bypass it. Do not weaken tests/seat-lock-claim.test.mjs's or tests/seat-lock-contention.test.mjs's assertions to make them pass -- the fix belongs in the lock, not in loosening what \"no overlap\" means.\n\nExport whatever additional detail from `_internals` (already an exported object for testing) that your own diagnosis needed to see clearly, if it would help a future maintainer, but this is optional and must not change any existing `_internals` key's behaviour.\n\nChange nothing outside src/seat/lock.mjs: no caller of `withSeatLock` (src/sdk/seat-sdk.mjs and anything above it) needs to change for this fix, and if your diagnosis concludes otherwise, stop and report that finding instead of editing a second file -- this ticket authorizes exactly one file.\n\nThe acceptance command is the project's FULL suite (`node --test`), which includes tests/seat-lock-contention.test.mjs (a stochastic check: 40 racers, 5 rounds, must show zero overlaps across all 5) and the existing tests/seat-lock-claim.test.mjs (5 racers, must also show zero overlaps, and must still leave no `.steal` claim file behind). Every existing test must stay green. Because both oracles are contention-based and therefore not perfectly deterministic, a revision that ships must show clean passes of tests/seat-lock-contention.test.mjs on at least two separate invocations before you call it done, not one lucky run.\n\nACCEPTANCE SCOPE: launched alongside two sibling tickets tonight (board-reviewer-reseat-lab, board-agy-planner-role) whose oracle test files are present in this worktree (the copy list brings in all of tests/) but whose fixes are NOT, since each ticket's worktree is an independent snapshot. The acceptance command therefore runs the full suite minus those two sibling oracle files, whose failures here cannot be repaired by editing this ticket's own path. Every other existing test must stay green. Once all three ship and are applied to the real repository, the human runs the unfiltered `node --test`.",
+  "constraints": [
+    "ES module syntax; Node built-ins only; no new dependencies",
+    "one file changes: src/seat/lock.mjs",
+    "every existing export of lock.mjs (withSeatLock, _internals and its current keys) keeps its name and behaviour",
+    "never steal a lock from a provably live owner, at any age",
+    "a steal decision is made and acted on under the same held claim; it is never decided on one read and executed on a later, different read",
+    "releaseFileLock never deletes a lock it does not still own (the nonce check stays exactly as strict as it is today)",
+    "run the reproduction (tests/seat-lock-contention.test.mjs) at least twice cleanly before considering the fix done, since the property is contention-based"
+  ],
+  "forbidden": [
+    "do not elect a vendor as judge",
+    "do not edit any test file",
+    "do not edit src/sdk/seat-sdk.mjs, scripts/, .agents/, docs/, or any file other than src/seat/lock.mjs",
+    "do not raise DEFAULT_STALE_MS or DEFAULT_TIMEOUT_MS, or otherwise mask the race by making it statistically rarer instead of closing the window",
+    "do not weaken tests/seat-lock-claim.test.mjs's or tests/seat-lock-contention.test.mjs's overlap assertions"
+  ]
+}

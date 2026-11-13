@@ -1,0 +1,29 @@
+{
+  "key": "agySeat",
+  "title": "Seat Antigravity: replace NOT_SEATED.agy with an AGY_SEAT declaration of its two live lanes",
+  "slot": "src/role/seating.mjs",
+  "path": "src/role/seating.mjs",
+  "source": "src/role/seating.mjs",
+  "copy": [
+    "src",
+    "tests",
+    "scripts",
+    "bin",
+    "package.json",
+    ".agents"
+  ],
+  "tests_file": "tests/seating-agy.test.mjs",
+  "acceptance_cmd": "node --test",
+  "question": "A multi-vendor harness keeps a NOT_SEATED table naming vendors it cannot call. One of them (Antigravity, Google's agent runtime) has since gained two working lanes in the same repository: a Python SDK seat script and CLI custom-agent cards. What is the smallest change to the seating module that turns the stale exclusion into a checkable declaration of the seat, without touching the ladders that seat the other vendors?",
+  "goal": "In src/role/seating.mjs: (1) delete the `agy` key from the exported NOT_SEATED object, keeping the `claude-fable-5-1` entry exactly as it is; (2) add a new export `AGY_SEAT` directly after NOT_SEATED with exactly this shape and these values: `{ lab: \"google\", pool: <a one-sentence string that keeps the point of the old note: Antigravity's models spend from ONE subscription pool, so fan-out across them buys context isolation and no throughput>, tools: [\"view_file\", \"list_directory\", \"search_directory\", \"find_file\", \"run_command\"], writes: false, lanes: { sdk: { script: \"scripts/agy-seat.py\", venv: \".venv-antigravity\", credential: \"GEMINI_API_KEY\", why: <one sentence: the google-antigravity SDK Agent with read-only tools plus a shell, one bounded fact-checker subagent, a budget, and hooks that append every tool call and subagent start/finish to the run's progress.jsonl> }, cli: { cmd: \"agy\", dir: \".agents/agents\", agents: [\"pantheon-reviewer\", \"pantheon-scout\", \"pantheon-fact-checker\"], why: <one sentence: the same role text loaded by the Antigravity CLI as custom agents selected with --agent; headless mode auto-denies run_command without a permissions rule, which is why the sdk lane is the default> } } }`; (3) add a short JSDoc comment above AGY_SEAT stating that `agy` is a transport name and that for the lab laws (assertReviewCutsAcross) it is the google lab. Do not change any other export, ladder, table or function. The acceptance command is the project's FULL suite (`node --test`), which includes the new tests/seating-agy.test.mjs; every existing test must stay green — in particular any test that enumerates NOT_SEATED or TRANSPORTS.",
+  "constraints": [
+    "ES module syntax; Node built-ins only; no new dependencies",
+    "one file changes: src/role/seating.mjs",
+    "every existing export of seating.mjs keeps its name and behaviour; NOT_SEATED keeps its claude-fable-5-1 entry byte-for-byte"
+  ],
+  "forbidden": [
+    "do not elect a vendor as judge",
+    "do not edit any test file",
+    "do not edit scripts/, .agents/ or docs/"
+  ]
+}

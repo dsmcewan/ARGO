@@ -1,0 +1,32 @@
+{
+  "key": "agySeatIdentity",
+  "title": "agy-seat.py: attest the interpreter and SDK that actually ran the seat, so an Antigravity turn's runtime stops being UNKNOWN in every run record",
+  "slot": "agySeatIdentity",
+  "path": "scripts/agy-seat.py",
+  "source": "scripts/agy-seat.py",
+  "copy": [
+    "src",
+    "tests",
+    "scripts",
+    "bin",
+    "package.json",
+    ".agents"
+  ],
+  "tests_file": "tests/agy-seat-identity.test.mjs",
+  "acceptance_cmd": "node --test $(ls tests/*.test.mjs | grep -v sdk-lock-crossprocess)",
+  "question": "A multi-vendor harness seats one vendor through a subprocess: a Python script in a separate virtualenv runs that vendor's agent SDK. Every other seat's turn is attributable to a resolved SDK version from the lockfile, but the subprocess seat records only the model name the operator asked for; the interpreter and SDK that executed the turn are written nowhere, so a review of any recorded run has to mark them UNKNOWN (2026-09-28 sdk-model-reviewer boundary report). What is the smallest addition to the seat script that makes the executing runtime an attested field of every result it emits, determined from what is actually loaded rather than from a hardcoded distribution name, and answerable as a preflight even when the SDK is not installed?",
+  "goal": "In scripts/agy-seat.py, add ONE function and ONE flag, and thread the function's value into every line the script already emits.\n\n(1) `runtime_identity()` returns a plain dict, stdlib only (sys, importlib, importlib.metadata, pathlib): `{\"python\": \"X.Y.Z\" from sys.version_info, \"executable\": sys.executable, \"sdk\": {\"module\": \"google.antigravity\", \"status\": \"installed\" | \"absent\", \"distribution\": <str | null>, \"version\": <str | null>, \"path\": <str | null>, \"error\": <str, present ONLY when status is absent>}}`. `path` is the directory of the imported module's `__file__`.\n\n(2) Resolve `distribution` and `version` BY STRUCTURE, NOT BY NAME: take the imported module's `__file__`, iterate `importlib.metadata.distributions()`, and pick the distribution whose `files` (each resolved via `dist.locate_file(f)`, compared as resolved absolute paths) contains that file; report that distribution's metadata Name and `version`. Do NOT look up a hardcoded name such as \"google-antigravity\": a renamed, vendored, or editable install would make a name lookup return the wrong package or nothing while the module imports fine. If no distribution owns the file, `distribution` is null and `version` is `getattr(module, \"__version__\", None)`.\n\n(3) Guard the SDK import. The two module-level lines `from google.antigravity import Agent, LocalAgentConfig, types` and `from google.antigravity.hooks import hooks, policy` become one try/except ImportError block that keeps the same five names at module level (None when the import fails) and records the exception text for `runtime_identity()` to report under `sdk.error`. Nothing else at module level may import the SDK.\n\n(4) New flag `--identity`. It is checked FIRST, before argparse requires anything: when `--identity` appears anywhere in `sys.argv[1:]`, the script prints exactly one line, `json.dumps(runtime_identity())`, to stdout and returns 0 — regardless of whether the SDK is installed, whether GEMINI_API_KEY is set, or which other arguments are present. It must never contact a vendor.\n\n(5) When the SDK is absent and `--identity` was not given, `main()` prints one JSON line `{\"ok\": false, \"error\": <the import error text>, \"runtime\": runtime_identity()}` and returns 3 (the existing vendor/harness-error code) before touching GEMINI_API_KEY, the agent card, or the brief — instead of today's uncaught ImportError traceback and exit 1.\n\n(6) The `result` dict is initialised with `\"runtime\": runtime_identity()` so the field is present in result.json, in the final stdout line, and in every early-return line (the GEMINI_API_KEY-absent line, the timeout line, the exception line). The existing `seat.start` progress event gains a `runtime=` keyword carrying the same dict. Compute the identity once and reuse it.\n\n(7) Change nothing else: every existing argument, exit code (0/2/3/4), progress event name, result key, and the header comment's contract stay as they are, except that the header comment documents `--identity` and the `runtime` field in one sentence each.\n\nDeliberately NOT this ticket: src/board/run-item.mjs copying `res.runtime` onto `run.turns` so run.json carries it. That is a second file and a later ticket; this one makes the value exist and attests it at the source.\n\nThe acceptance command is the project's FULL suite (`node --test`), which includes the new tests/agy-seat-identity.test.mjs; every existing test must stay green. The oracle runs `--identity` on the system interpreter (no SDK) and, when the runner's venv interpreter exists on this machine, on that interpreter too.\n\nACCEPTANCE SCOPE: the acceptance command is the full suite minus tests/sdk-lock-crossprocess.test.mjs, which has an intermittent race of its own (two stealers of a dead lock overlapped in 2 of about 6 full-suite runs on 2026-09-28, 0 of 8 runs alone) that cannot be repaired by editing this ticket's path. tests/conform-parallel.test.mjs is included: the conformParallel artifact is applied. Every other existing test must stay green. After this ticket ships and is applied, the human runs the unfiltered `node --test`.",
+  "constraints": [
+    "Python 3.10+ stdlib only for the identity function; no new imports of third-party packages",
+    "one file changes: scripts/agy-seat.py",
+    "every existing argument, exit code, progress event, and result key keeps its name and behaviour",
+    "the distribution that owns the module is found by file ownership, never by a hardcoded distribution name",
+    "`--identity` performs no network call and needs no credential"
+  ],
+  "forbidden": [
+    "do not elect a vendor as judge",
+    "do not edit any test file",
+    "do not edit src/, .agents/, docs/, or any file other than scripts/agy-seat.py",
+    "do not add a distribution-name allow-list"
+  ]
+}

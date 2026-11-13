@@ -1,0 +1,32 @@
+{
+  "key": "conformParallel",
+  "title": "pantheon conform: probe the four vendor CLIs concurrently and report each probe's elapsed time, so the verb's wall time is one CLI startup, not four in a row",
+  "slot": "conformParallel",
+  "path": "bin/pantheon.mjs",
+  "source": "bin/pantheon.mjs",
+  "copy": [
+    "src",
+    "tests",
+    "scripts",
+    "bin",
+    "package.json",
+    ".agents"
+  ],
+  "tests_file": "tests/conform-parallel.test.mjs",
+  "acceptance_cmd": "node --test $(ls tests/*.test.mjs | grep -v agy-seat-identity)",
+  "question": "A CLI verb checks that four vendor binaries still accept the flags a routing table declares for them, by running each binary's --help and failing closed on any missing flag. It awaits the four probes one after another, so its wall time is the SUM of four process startups. On 2026-09-28 the agySeatIdentity ticket was blocked three revisions in a row by an unrelated acceptance test that runs this verb under a 10-second budget: under load, with Windows npm shims on PATH answering some of those names through WSL interop, the sum crossed the budget while each probe alone would have fit. What is the smallest change to the verb that makes its wall time the slowest single probe rather than the sum, keeps its output byte-for-byte deterministic in the table's order, and makes a slow probe visible in the output so the next such block is diagnosable from the recorded excerpt?",
+  "goal": "In bin/pantheon.mjs, change ONLY the `conform` verb's block.\n\n(1) Start every vendor's probe before awaiting any: build the list of `conformVendor(vendor)` promises for `Object.keys(VENDORS)` in table order, then `Promise.all` them. `conformVendor` itself is unchanged; its per-vendor 30 s timeout still bounds each probe, so the verb now completes in at most one probe's time.\n\n(2) Print the rows AFTER all probes settle, in `Object.keys(VENDORS)` order, never in completion order. The exit code stays `bad ? 1 : 0` where `bad` counts vendors with any mismatch. A vendor that failed must not suppress the rows of vendors that passed, and vice versa: every vendor gets exactly one `OK   <vendor> (...)` or `FAIL <vendor> (...)` line, with mismatch lines indented beneath a FAIL exactly as today.\n\n(3) Measure each probe: record `Date.now()` before calling `conformVendor` for that vendor and after its promise resolves, and append ` · <ms>ms` (an integer millisecond count) to that vendor's OK/FAIL line. Nothing else on the line changes: the `(<checked> checked: <flags>)` segment stays as it is so existing consumers that match `OK   claude (` or the vendor name keep working.\n\n(4) If `conformVendor` rejects (it should not: it catches its own execution failure and reports a mismatch, but an unknown-vendor throw or a future change could), treat that vendor as FAIL with one mismatch line carrying the error message; do not let one rejection abort the whole verb before the other rows print.\n\n(5) Change nothing else: no other verb, no import, no exit code, no `USAGE` text, and no change to src/seat/conformance.mjs.\n\nThe acceptance command is the project's FULL suite (`node --test`), which includes the new tests/conform-parallel.test.mjs. That oracle puts four fake vendor executables on PATH that each sleep two seconds before printing help text carrying every declared flag, and asserts that `conform` exits 0 in under six seconds with all four rows in table order and a millisecond figure on each; a sequential verb takes over eight seconds and fails. It also checks that one slow vendor does not delay the report past six seconds, that a non-conforming vendor yields exit 1 with its FAIL row while the other three rows still print OK, and that a vendor whose binary is absent from PATH is reported as FAIL without the verb throwing. Every existing test must stay green, including tests/acceptance-cli.test.mjs, whose `conform` case runs the real vendor CLIs.\n\nACCEPTANCE SCOPE: the acceptance command is the full suite minus tests/agy-seat-identity.test.mjs, the oracle of the still-pending agySeatIdentity ticket, whose failures cannot be repaired by editing this ticket's path (scripts/tickets/README.md, oracle rule). Every other existing test must stay green. After both tickets ship and are applied, the human runs the unfiltered `node --test`.",
+  "constraints": [
+    "ES module syntax; Node built-ins only; no new dependencies",
+    "one file changes: bin/pantheon.mjs, and within it only the `conform` verb's block",
+    "output rows appear in Object.keys(VENDORS) order regardless of which probe finishes first",
+    "the exit code contract (0 all conform, 1 any mismatch) is unchanged",
+    "src/seat/conformance.mjs is not edited; its helpFn injection point and per-vendor timeout stay as they are"
+  ],
+  "forbidden": [
+    "do not elect a vendor as judge",
+    "do not edit any test file",
+    "do not edit src/, scripts/, .agents/, docs/, or any file other than bin/pantheon.mjs",
+    "do not add a global deadline that cancels probes still running; the per-vendor timeout in conformance.mjs is the only bound"
+  ]
+}

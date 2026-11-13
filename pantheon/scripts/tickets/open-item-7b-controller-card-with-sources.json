@@ -1,0 +1,43 @@
+{
+  "key": "controllerCardB",
+  "title": "Refresh the controller role card's Known holes so every claim is checkable and true at HEAD",
+  "slot": "agents/controller.md",
+  "path": ".claude/agents/controller.md",
+  "source": ".claude/agents/controller.md",
+  "copy": [
+    "src",
+    "tests",
+    "scripts",
+    "docs",
+    "package.json",
+    ".claude/agents"
+  ],
+  "attach": [
+    "src/board/project.mjs",
+    "src/board/refs.mjs",
+    "src/seat/lock.mjs",
+    "src/team/law.mjs",
+    "src/team/modes.mjs",
+    "src/team/roster.mjs",
+    "src/team/continuity.mjs",
+    "src/board/controller.mjs",
+    "src/board/integrate.mjs",
+    "src/board/schema.mjs",
+    "src/swarm/layered.mjs",
+    "src/swarm/discuss.mjs",
+    "scripts/live-ship.mjs"
+  ],
+  "tests_file": "scripts/card-check.mjs",
+  "acceptance_cmd": "node scripts/card-check.mjs .claude/agents/controller.md --head 1d5186f",
+  "question": "A role card for a code controller lists 'known holes' pinned to an old commit. Several were fixed hours later and the card still calls them open. What is the smallest structural change to such a section that makes staleness detectable by a script rather than by re-reading, and what does that change cost the author?",
+  "goal": "Rewrite ONLY the section `## Known holes at HEAD ...` (and add a `## Closed since e34c0f4` section directly after it) in .claude/agents/controller.md so that `node scripts/card-check.mjs .claude/agents/controller.md --head 1d5186f` exits 0. Leave every other section of the card byte-for-byte unchanged. Rules the checker enforces: (1) the heading must read `## Known holes at HEAD \\`1d5186f\\`` (the current HEAD); (2) every numbered item under it is an OPEN hole and must carry a line `probe: \\`<shell command>\\`` that exits 0 ONLY while the hole reproduces -- e.g. a `node --input-type=module -e '...'` one-liner importing from src/ that exits 0 when the bad behaviour is observed and non-zero otherwise; a hole you cannot probe must not be listed as open; (3) every numbered item under `## Closed since e34c0f4` must cite at least one existing `tests/<name>.test.mjs` that passes and pins the closure; (4) every citation written as `path:line (\"quoted text\")` must quote text that is actually on that line of that file at HEAD -- recompute line numbers, do not guess. FACTS you may rely on (all verifiable in the copied tree): hole 1 (merge() as a second door onto the shipping ref) is CLOSED -- merge() refuses SHIP_ONLY for bound-review slots (tests/board-merge.test.mjs) and since 1d5186f refs.swap itself refuses SHIP_ONLY and BOARD_FROM and diffs commits itself (tests/board-fencing.test.mjs); hole 2 (TESTS trusts a seat-asserted exit 0) is CLOSED -- acceptanceStatus requires the repro author to be the controller or a different vendor from the artifact author (tests/board-tests-brief.test.mjs, tests/board-integrate.test.mjs); hole 12 (blobs served before re-hash) is CLOSED -- cas.get re-hashes blob bytes (tests/board-cas.test.mjs); the lease fence is no longer opt-in (LEASE_REQUIRED, tests/board-fencing.test.mjs); publish() returns typed refusals instead of throwing (tests/board-fencing.test.mjs); the sentence \"ship() is the only way work reaches the shipping ref\" is no longer at docs/architecture.md:117 -- find its current line with grep before citing it. For every other hole currently listed, decide from the code in src/ whether it still reproduces: if it does, keep it with a probe; if it does not, move it to Closed with the test that pins it; the current source of every file the historical holes cite is ATTACHED below the card under the artifact heading (read-only; do not output them) -- for each remaining hole DECIDE from that source: still reproduces -> keep it open with a probe that exits 0 only while it reproduces (a `node --input-type=module -e '...'` one-liner importing from src/ that exits 1 when the bad behaviour is observed is WRONG -- exit 0 means the hole is present); does not reproduce -> move it to Closed with an existing passing tests/*.test.mjs that pins the behaviour (only cite test files that exist in the attached tree listing you can infer from the card and facts; if none exists, describe the closure and cite the source line instead of a test, under a `## Closed since e34c0f4 (no pinning test)` heading which the checker does not run). `## Unverified at HEAD` may hold ONLY holes whose cited code is genuinely absent from the attached files, and each such line must name the missing file.",
+  "constraints": [
+    "one file changes: .claude/agents/controller.md",
+    "every section other than Known holes, Closed since e34c0f4 and Unverified at HEAD stays byte-for-byte identical",
+    "probes must be self-contained shell one-liners runnable from the repository root with Node built-ins only"
+  ],
+  "forbidden": [
+    "do not elect a vendor as judge",
+    "do not edit any file under src/, tests/, scripts/ or docs/"
+  ]
+}

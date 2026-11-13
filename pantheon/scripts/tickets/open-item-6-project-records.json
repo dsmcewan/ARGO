@@ -1,0 +1,26 @@
+{
+  "key": "projectRecords",
+  "title": "project() accounts for accumulative-kind records instead of losing them",
+  "slot": "src/board/project.mjs",
+  "source": "src/board/project.mjs",
+  "copy": [
+    "src",
+    "tests",
+    "scripts",
+    "bin",
+    "package.json"
+  ],
+  "tests_file": "tests/board-project-records.test.mjs",
+  "acceptance_cmd": "node --test",
+  "question": "A content-addressed board keeps slotted entries in a per-commit tree and keeps accumulative evidence (repro, search, trace) only in each commit's `records` list, never in the tree. A checkout projection filters what a reader may see by entry kind but iterates only the tree. What concretely goes wrong for a reader, and what is the smallest change that makes the omission visible instead of silent?",
+  "goal": "In src/board/project.mjs, make project(store, commitCid, projection, opts) account for accumulative-kind entries: the kinds whose schema in ./schema.mjs is `slotted: false` (repro, search, trace). Walk the commit chain from commitCid with history() from ./dag.mjs (its default bound), and collect every cid listed in each commit's `records` array, newest commit first, deduplicated by cid, keeping only entries whose kind is slotted:false (KINDS[kind].slotted === false; slotted entries are already handled as slots and must NOT appear in records). For each such entry apply the same admission rules the slot loop applies: if the projection's `kinds` includes entry.kind AND the visibility rules admit it (an `isolated` entry is admitted only when spec.isolated is 'all', or 'own' with opts.reader.seat_id === entry.author.seat_id; a `supervisor` entry only to the supervisor projection), push { cid, kind, payload, author, links, commit } onto a new array slice.records; otherwise push { slot: '(record)', cid, kind, why } onto withheld, where `why` is spec.why_withheld?.[kind] when present and otherwise a sentence naming the kind and the projection. slice.records must be an array (possibly empty) whenever commitCid is not null. Do not change how slotted entries, prior_blocks, commit_msg, acceptance or isolated forks are handled; do not remove or rename any export; keep every existing test green. The acceptance command is the project's FULL suite (`node --test`), which includes the new tests/board-project-records.test.mjs; every existing test must stay green.",
+  "constraints": [
+    "ES module syntax; Node built-ins only; no new dependencies",
+    "one file changes: src/board/project.mjs",
+    "every existing export of project.mjs keeps its name and behaviour"
+  ],
+  "forbidden": [
+    "do not elect a vendor as judge",
+    "do not edit any test file"
+  ]
+}

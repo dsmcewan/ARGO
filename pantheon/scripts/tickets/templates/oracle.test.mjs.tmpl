@@ -1,0 +1,34 @@
+// ORACLE TEMPLATE. Copy to tests/<name>.test.mjs BEFORE writing the ticket, replace every <...>, run it,
+// and record that it FAILS against the current code (the baseline). The controller runs the FULL suite
+// as the TESTS gate, so this file plus every existing test is what the implementer's artifact must pass.
+//
+// Rules that come from the runs, not from taste:
+//   - The human writes this file; no seat may edit a test (the ticket forbids it). So if an EXISTING
+//     test pins the state your ticket changes, change that test here and now -- open item 2 burned three
+//     revisions (519 pass / 1 fail each) on tests/role-seating.test.mjs asserting the old state.
+//   - Assert the property, not a stand-in: import the module and call it; check a file EXISTS only when
+//     existence is the property; never assert on prose the seat wrote.
+//   - Keep it small. The seat sees the executed failure output, so each assertion message is a sentence
+//     the implementer will read: say what is missing, not "assertion failed".
+import test from "node:test";
+import assert from "node:assert/strict";
+import { existsSync } from "node:fs";
+import { join, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+import * as mod from "../src/<path>/<module>.mjs";
+
+const REPO = join(dirname(fileURLToPath(import.meta.url)), "..");
+
+test("<the behaviour the ticket asks for, as one sentence>", () => {
+  // Shape: the export exists and has the declared fields with the declared values.
+  assert.ok(mod.<EXPORT>, "<EXPORT> export missing");
+  assert.equal(mod.<EXPORT>.<field>, "<value>");
+
+  // Files the change points at must exist in the worktree (the ticket's `copy` must bring them).
+  assert.ok(existsSync(join(REPO, mod.<EXPORT>.<pathField>)), "<pathField> must name a file in this repo");
+});
+
+test("<what must NOT change>", () => {
+  // Pin the neighbours the change is allowed to touch nothing of.
+  assert.ok(mod.<OTHER_EXPORT>, "<OTHER_EXPORT> must survive the change");
+});

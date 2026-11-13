@@ -1,0 +1,32 @@
+{
+  "key": "reviewerReseatLab",
+  "title": "run-item.mjs: an operator reseat of the reviewer to agy_google must publish its critique under the real vendor id, not the LAB() lab name",
+  "slot": "reviewerReseatLab",
+  "path": "src/board/run-item.mjs",
+  "source": "src/board/run-item.mjs",
+  "copy": [
+    "src",
+    "tests",
+    "scripts",
+    "bin",
+    "package.json",
+    ".agents"
+  ],
+  "tests_file": "tests/board-reviewer-reseat-lab.test.mjs",
+  "acceptance_cmd": "node --test $(ls tests/*.test.mjs | grep -v 'board-agy-planner-role\\|seat-lock-contention')",
+  "question": "A run-item pipeline lets an operator pin the reviewer chair to a specific vendor with `--seat reviewer=<vendor>/<model>`. When that vendor is `agy_google` (the Antigravity SDK seat, which shares Google's lab with the plain `google` model-routing string but is its own distinct board vendor id), the code that builds the reviewer's seat identity runs the override through a helper that maps `agy_google` to the bare string `\"google\"` before using it as the seat's vendor. `\"google\"` is not a legal board vendor id -- the board's VENDORS set is `{anthropic, openai, agy_google, xai}` -- so the critique this reviewer writes is refused at publish with `author.vendor must be one of anthropic|openai|agy_google|xai|human|controller`, after the reviewer has already spent a real turn reading the artifact and writing a verdict. This was observed for real on 2026-09-28 (outputs/open-items/conformParallel/run.json, error.stage=\"check\", error.message matching exactly that text). What is the smallest change that lets an agy_google reviewer reseat publish under its own vendor id, without breaking the existing per-vendor mismatch and cross-lab checks that a normal (non-reseated) reviewer assignment already relies on?",
+  "goal": "In src/board/run-item.mjs, the OVERRIDES.reviewer branch that builds `pairing` (the ternary starting `const pairing = OVERRIDES.reviewer ? { reviewer: LAB(OVERRIDES.reviewer.vendor), ... }`) currently maps the reseated vendor through `LAB()`. Change it to use `OVERRIDES.reviewer.vendor` directly, unmapped, as `pairing.reviewer`: `{ reviewer: OVERRIDES.reviewer.vendor, why: ... }`. Keep the `why` string's text exactly as it is today.\n\nSeparately, a few lines later, the check `if (LAB(reviewed.seat.vendor) !== seat.vendor) throw new Error(...)` currently compares a LAB-mapped left side against the raw vendor id on the right. Once the pairing fix above lands, `seat.vendor` will always be a real vendor id (never `\"google\"`), so this comparison must also stop calling `LAB()` on its left side: change it to `if (reviewed.seat.vendor !== seat.vendor) throw new Error(...)`, keeping the error message text exactly as it is today.\n\nThe module-level helper `const LAB = v => v === \"agy_google\" ? \"google\" : v;` becomes unused once both call sites above are fixed (there is no other reference to `LAB` anywhere in this file or elsewhere in the codebase). Delete that one line too, so no dead, misleading helper is left behind that a future edit might reach for again.\n\nChange nothing else: every other line, every export, every other vendor's reviewer-pairing behaviour (the non-reseated `reviewPlan({...})` branch, which never called `LAB()` and is already correct) stays exactly as it is. This ticket touches exactly src/board/run-item.mjs, and within it only: the `pairing` ternary's reviewer field, the `reviewed.seat.vendor` comparison, and the deletion of the now-dead `LAB` definition.\n\nThe acceptance command is the project's FULL suite (`node --test`), which includes the new tests/board-reviewer-reseat-lab.test.mjs; every existing test must stay green.\n\nACCEPTANCE SCOPE: launched alongside two sibling tickets tonight (board-agy-planner-role, seat-lock-contention) whose oracle test files are present in this worktree (the copy list brings in all of tests/) but whose fixes are NOT, since each ticket's worktree is an independent snapshot. The acceptance command therefore runs the full suite minus those two sibling oracle files, whose failures here cannot be repaired by editing this ticket's own path. Every other existing test must stay green. Once all three ship and are applied to the real repository, the human runs the unfiltered `node --test`.",
+  "constraints": [
+    "ES module syntax; Node built-ins only; no new dependencies",
+    "one file changes: src/board/run-item.mjs",
+    "every existing export of run-item.mjs keeps its name and behaviour",
+    "a NON-reseated reviewer assignment (the reviewPlan(...) branch) is untouched and keeps working exactly as it does today",
+    "the reviewer-vendor comparison and the reviewer-pairing vendor id must always be a real board vendor id (one of anthropic, openai, agy_google, xai), never a lab name"
+  ],
+  "forbidden": [
+    "do not elect a vendor as judge",
+    "do not edit any test file",
+    "do not edit src/role/seating.mjs, src/board/dag.mjs, src/board/schema.mjs, or any file other than src/board/run-item.mjs",
+    "do not add a new lab-name concept anywhere in the board vendor identity path; a seat's author.vendor is always its real vendor id"
+  ]
+}

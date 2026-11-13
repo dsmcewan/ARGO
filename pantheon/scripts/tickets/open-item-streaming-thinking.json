@@ -1,0 +1,30 @@
+{
+  "key": "streamThinking",
+  "title": "Surface vendor reasoning as a `thinking` event with byte counts so a working seat cannot look silent",
+  "slot": "src/sdk/stream.mjs",
+  "path": "src/sdk/stream.mjs",
+  "source": "src/sdk/stream.mjs",
+  "copy": [
+    "src",
+    "tests",
+    "scripts",
+    "bin",
+    "package.json",
+    ".agents"
+  ],
+  "tests_file": "tests/sdk-stream-thinking.test.mjs",
+  "acceptance_cmd": "node --test",
+  "question": "A harness normalizes four vendors' streaming events into one small vocabulary of start/delta/tool/done/error. A reviewer seat then ran for six to ten minutes while its transport was demonstrably receiving data, and the harness's own watcher reported silence the whole time, because every event the vendor sent during that period was a reasoning event and the normalizer had no case for it. What is the smallest addition to such a vocabulary that makes 'the model is working' observable, and what must it deliberately NOT carry?",
+  "goal": "In src/sdk/stream.mjs, add ONE event type to the normalized vocabulary and total it in streamTurn. (1) The new event is `{ seat, type: \"thinking\", bytes, at }` produced by the existing `ev()` helper: `bytes` is a number, the byte length of the reasoning payload that produced it (use Buffer.byteLength on the string). It MUST NOT carry the reasoning text itself under any key — reasoning is evidence that the seat is alive, not content, and the header comment's promise about the vocabulary must be updated to say so. (2) In the `responses` streamer, recognize reasoning BY STRUCTURE, NOT BY AN ALLOW-LIST OF NAMES: any event whose `type` is a string matching /reasoning|thought|thinking/i and which carries a string in `e.delta` (else `e.text`) yields a thinking event for that string's byte length. Vendors keep adding reasoning event names and a finite list silently skips its own complement; note that `response.output_text.delta` does not match those words, so ordinary text is unaffected. (3) In the `genai` streamer, a candidate part with `part.thought === true` and a string `part.text` yields a thinking event for that text's byte length, and such a part MUST NOT be concatenated into the accumulated `full`/text. (4) In the `messages` streamer, a `content_block_delta` whose `delta.type === \"thinking_delta\"` yields a thinking event for the byte length of the string in `delta.thinking`. (5) In `streamTurn`, accumulate every thinking event's `bytes` into a counter and return it as `thinking_bytes` — a number that is ALWAYS present and is 0 when no reasoning was seen, because a consumer reads it every turn; pass thinking events to `onEvent` exactly like any other event. (6) Change nothing else: the text/tools/response_id/complete/why_incomplete/final logic, every export's name and behaviour, and the existing event types stay exactly as they are. The acceptance command is the project's FULL suite (`node --test`), which includes the new tests/sdk-stream-thinking.test.mjs; every existing test must stay green.",
+  "constraints": [
+    "ES module syntax; Node built-ins only; no new dependencies",
+    "one file changes: src/sdk/stream.mjs",
+    "every existing export of stream.mjs keeps its name and behaviour",
+    "reasoning text is never carried on the event and never enters the reply text"
+  ],
+  "forbidden": [
+    "do not elect a vendor as judge",
+    "do not edit any test file",
+    "do not edit any file other than src/sdk/stream.mjs"
+  ]
+}

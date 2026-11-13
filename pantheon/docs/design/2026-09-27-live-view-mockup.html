@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pantheon live view mockup</title>
+<!--
+  DESIGN MOCKUP, not product code. Three frames of one real run, rendered from the recorded
+  progress.jsonl of outputs/open-items/streamThinking (the 89 s speed run) and the 142 s refused run
+  that preceded it. Open with ?frame=live | ?frame=shipped | ?frame=refused.
+
+  Tokens (the design plan):
+    dusk      #141A2E  page and sky top, a blue-slate dusk, deliberately not black
+    stone     #2A2E3E  building bodies in shadow
+    marble    #A0A4B2  secondary text and stage names
+    chalk     #E8E4DA  primary text: marble dust, not white
+    lamp      #DDB275  the one light: sodium amber, low chroma; the seams light in this colour only
+    afterglow #6E4A5C  the horizon band the silhouettes stand against
+    refuse    #7A3B44 / ink #D2848C  the only second hue, used only for a refused gate
+
+  Type: one family, Bahnschrift (a DIN), condensed via font-stretch for data and inscriptions,
+  normal width for reading. Fallbacks are explicit because the product view is zero-dependency and
+  local: Liberation Sans Narrow / Arial Narrow for the condensed role, Segoe UI / system-ui for reading.
+  Monospace appears only where the string is code: a path, a command, a hash.
+
+  Layout: three columns. Left lists the job, centre is the precinct at dusk with the stage timeline and
+  the overseer's latest sentence as a caption, right lists the state. Text is left aligned; the
+  precinct is centred on a low horizon. No cards, no boxes: rules appear only between rows of a list.
+
+  Principles: the light is the only thing that moves and the only thing that is bright. Idle looks
+  idle. Every word in the panels is a sentence the runner already says, so the screen and the log
+  never disagree. The eight gate names are set in capitals because they are inscriptions on the stoa
+  and because the code names them that way; every other label is sentence case.
+-->
+<style>
+:root{
+  --dusk:#141A2E; --stone:#2A2E3E; --stone-2:#353A50; --marble:#A0A4B2; --chalk:#E8E4DA;
+  --lamp:#DDB275; --lamp-core:#FFF1D6; --afterglow:#6E4A5C; --refuse:#7A3B44; --refuse-ink:#D2848C;
+  --rule:rgba(232,228,218,.09);
+  --read: Bahnschrift, "Segoe UI", system-ui, "Liberation Sans", sans-serif;
+  --cond: Bahnschrift, "Liberation Sans Narrow", "Arial Narrow", "Roboto Condensed", "Segoe UI", sans-serif;
+  --mono: Consolas, "Cascadia Mono", "Liberation Mono", "DejaVu Sans Mono", monospace;
+}
+*{box-sizing:border-box}
+html,body{min-height:100%}
+body{margin:0;background:var(--dusk);color:var(--chalk);font:400 15px/1.5 var(--read);-webkit-font-smoothing:antialiased}
+code{font:400 .93em/1 var(--mono);color:var(--chalk)}
+a{color:inherit}
+.frame{min-height:100vh;display:grid;grid-template-columns:320px minmax(0,1fr) 320px;grid-template-rows:auto 1fr;column-gap:30px;padding:18px 30px 26px}
+header{grid-column:1/-1;display:flex;align-items:baseline;gap:18px;margin-bottom:4px}
+.brand{font-weight:600;font-size:19px}
+.board{font:400 13px/1 var(--mono);color:var(--marble)}
+.status{margin-left:auto;display:flex;align-items:baseline;gap:16px;color:var(--marble)}
+.status .word::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--stone-2);margin-right:8px;vertical-align:middle}
+.status.live .word::before{background:var(--lamp);box-shadow:0 0 8px var(--lamp)}
+.status.refused .word{color:var(--refuse-ink)}
+.status.shipped .word{color:var(--lamp)}
+.elapsed{font:400 24px/1 var(--cond);font-stretch:85%;color:var(--chalk);font-variant-numeric:tabular-nums}
+.mockctl{font-size:12px;color:var(--marble);margin-left:22px}
+.mockctl a{margin-left:8px;text-decoration:none;color:var(--marble)}
+.mockctl a[aria-current]{color:var(--chalk);text-decoration:underline}
+aside{min-width:0}
+aside h2{font-size:13px;font-weight:600;color:var(--marble);margin:22px 0 6px;letter-spacing:.02em}
+.ticket{font-size:19px;line-height:1.3;font-weight:500;margin:0 0 6px;text-wrap:balance}
+.key{margin:0 0 16px;color:var(--marble);font-size:13px}
+dl.facts{margin:0;display:grid;grid-template-columns:max-content 1fr;column-gap:14px;row-gap:4px}
+dl.facts dt{color:var(--marble)}
+dl.facts dd{margin:0;overflow-wrap:anywhere}
+ol{list-style:none;margin:0;padding:0}
+.chairs li{display:grid;grid-template-columns:96px 1fr;column-gap:10px;padding:3px 0;border-top:1px solid var(--rule)}
+.chairs .role{color:var(--marble)}
+.chairs .seat{overflow-wrap:anywhere}
+.chairs li.active .seat{color:var(--lamp)}
+.chairs .mark{color:var(--marble);font-size:12.5px}
+.turns li{display:grid;grid-template-columns:50px 1fr;column-gap:10px;padding:4px 0;font-size:13.5px;line-height:1.4;border-top:1px solid var(--rule)}
+.turns time{font:400 13.5px/1.4 var(--cond);font-stretch:85%;color:var(--marble);font-variant-numeric:tabular-nums;text-align:right}
+.turns li.now span{color:var(--lamp)}
+.stage{display:flex;flex-direction:column;min-width:0}
+svg.precinct{width:100%;height:auto;display:block}
+.timeline{display:flex;align-items:flex-end;gap:3px;height:46px;margin-top:2px}
+.seg{display:flex;flex-direction:column;justify-content:flex-end;min-width:0}
+.seg .bar{height:3px;background:var(--lamp);opacity:.42}
+.seg.now .bar{opacity:.9;box-shadow:0 0 7px var(--lamp)}
+.seg.next .bar{background:var(--stone-2);opacity:1}
+.seg .lbl{font:400 12px/1 var(--cond);font-stretch:85%;color:var(--marble);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:5px}
+.seg.now .lbl{color:var(--chalk)}
+.caption{margin:20px auto 0;max-width:72ch;text-align:center;font-size:16px;line-height:1.4;color:var(--chalk);overflow-wrap:anywhere}
+.state .stage-name{font:600 32px/1.05 var(--read);margin:0}
+.state .stage-why{color:var(--marble);margin:2px 0 18px}
+.gates li{display:grid;grid-template-columns:82px 1fr;column-gap:10px;padding:3px 0;border-top:1px solid var(--rule);font-size:13.5px}
+.gates .gate{font:500 13.5px/1.5 var(--cond);font-stretch:85%;letter-spacing:.07em;color:var(--marble)}
+.gates .st{color:var(--marble);overflow-wrap:anywhere}
+.gates li.pass .gate{color:var(--chalk)}
+.gates li.pass .st{color:var(--lamp)}
+.gates li.refuse .gate,.gates li.refuse .st{color:var(--refuse-ink)}
+/* the glass blocks */
+.precinct .lbl-role{font:400 10.5px var(--cond);font-stretch:85%;letter-spacing:.07em;fill:var(--marble);text-anchor:middle}
+.precinct .lbl-seat{font:500 12px var(--cond);font-stretch:90%;fill:var(--chalk);text-anchor:middle}
+.precinct .facet{fill:#DDB275;fill-opacity:0}
+.precinct .face{fill:url(#glassV)}
+.precinct[data-frame=shipped] .facet{fill-opacity:.32}
+.precinct[data-frame=refused] .facet{fill-opacity:.24}
+.precinct[data-frame=refused] .facet.refused{fill-opacity:0}
+.precinct .bar{display:none}
+.precinct[data-frame=refused] .bar{display:block}
+.precinct-wrap{position:relative}
+.wisps{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+@media (max-width:1100px){
+  .frame{grid-template-columns:1fr;row-gap:22px;padding:16px}
+  .status{margin-left:0}
+  .mockctl{margin-left:auto}
+}
+</style>
+</head>
+<body>
+<div class="frame">
+  <header>
+    <span class="brand">Pantheon</span>
+    <span class="board">open-streamThinking-1790558334583</span>
+    <span class="status"><span class="word"></span><span class="elapsed"></span></span>
+    <nav class="mockctl" aria-label="Mockup frame">mockup frame
+      <a href="?frame=live">live</a><a href="?frame=shipped">shipped</a><a href="?frame=refused">refused</a>
+    </nav>
+  </header>
+
+  <aside class="job" aria-label="The job">
+    <h1 class="ticket">Surface vendor reasoning as a <code>thinking</code> event with byte counts so a working seat cannot look silent</h1>
+    <p class="key">streamThinking</p>
+    <dl class="facts">
+      <dt>Changes</dt><dd><code>src/sdk/stream.mjs</code></dd>
+      <dt>Acceptance</dt><dd><code>node --test</code></dd>
+    </dl>
+    <h2>Chairs</h2>
+    <ol class="chairs"></ol>
+    <h2>Turns</h2>
+    <ol class="turns"></ol>
+  </aside>
+
+  <section class="stage" aria-label="The precinct">
+    <div class="precinct-wrap">
+    <svg class="precinct" viewBox="0 0 960 520" role="img" aria-label="Antique glass blocks on a dusk floor: the planner's block at the back on top, the implementer's block in the middle, the two scouts, the reviewer and the controller spaced around it; the controller's block has eight facets, one per gate">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#141A2E"/><stop offset=".55" stop-color="#1B2040"/><stop offset=".86" stop-color="#3B2F4A"/><stop offset="1" stop-color="#6E4A5C"/></linearGradient>
+        <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2B2439"/><stop offset=".25" stop-color="#1C2034"/><stop offset="1" stop-color="#141A2E"/></linearGradient>
+        <linearGradient id="glassV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E6F2EA" stop-opacity=".30"/><stop offset=".55" stop-color="#CFE3D8" stop-opacity=".12"/><stop offset="1" stop-color="#B9D2C6" stop-opacity=".08"/></linearGradient>
+        <filter id="antique" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".016 .022" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G"/></filter>
+        <filter id="edgeGlow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2"/></filter>
+        <filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5"/></filter>
+      </defs>
+      <rect width="960" height="150" fill="url(#sky)"/>
+      <rect y="150" width="960" height="370" fill="url(#floor)"/>
+      <line x1="0" y1="150.5" x2="960" y2="150.5" stroke="#E8E4DA" stroke-opacity=".12"/>
+      <g class="blocks"></g>
+      <g class="labels"></g>
+    </svg>
+    <svg class="wisps" viewBox="0 0 960 520" aria-hidden="true"><defs><filter id="wispblur" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="2.2"/></filter></defs><g class="w" filter="url(#wispblur)"></g></svg>
+    </div>
+    <div class="timeline" aria-label="Stages"></div>
+    <p class="caption"></p>
+  </section>
+
+  <aside class="state" aria-label="The state">
+    <p class="stage-name"></p>
+    <p class="stage-why"></p>
+    <dl class="facts">
+      <dt>Revision</dt><dd class="rev"></dd>
+      <dt>Acceptance</dt><dd class="acc"></dd>
+      <dt>Verdict</dt><dd class="verdict"></dd>
+    </dl>
+    <h2>Gates</h2>
+    <ol class="gates"></ol>
+  </aside>
+</div>
+
+<script>
+// Every string below is either verbatim from the recorded progress.jsonl / overseer templates, or the
+// plain rendering of a recorded number. Nothing here is invented copy.
+const GATES = ["ACTOR","TARGET","TICKET","GRAFT","LEASE","REVIEW","TESTS","MERGE"];
+const CHAIRS = [
+  ["scout","google/gemini-3.5-flash"],["scout","xai/grok-4.6"],["planner","xai/grok-4.6"],
+  ["implementer","openai/gpt-6-astra"],["reviewer","agy/gemini-3.7-flash","another lab"],["controller","the runner","acceptance and the gates"]
+];
+const pass = () => GATES.map(g => [g,"pass","pass"]);
+const FRAMES = {
+  live: {
+    word:"Live", elapsed:"1:20", stage:"check", why:"another lab acks the bytes",
+    rev:"1 of up to 3", acc:"passed. 525 tests, 0 failed", verdict:"waiting on the reviewer", active:"reviewer",
+    gates: GATES.map(g => [g,"wait","waiting"]),
+    turns:[["0s","stage intake — 2 scouts, independent pools"],["5s","google/gemini-3.5-flash answered in 5s (131 chars)"],
+      ["14s","xai/grok-4.6 answered in 9s (478 chars)"],["14s","stage promote — the human's ticket, citing the scouts"],
+      ["18s","xai/grok-4.6 answered in 4s (76 chars)"],["47s","openai/gpt-6-astra answered in 30s (7962 chars)"],
+      ["47s","rev 1: the implementer wrote src/sdk/stream.mjs (7961 chars)"],["50s","acceptance for rev 1 passed: 525 tests, 0 failed"],
+      ["50s","stage check — another lab acks the bytes"],["50s","agy/gemini-3.7-flash is working on check (critique, 12297 chars of prompt)…"]],
+    caption:"[1m20s] agy/gemini-3.7-flash is working on check (critique, 12297 chars of prompt)…",
+    spans:[["intake",0,14.03],["promote",14.03,14.04],["plan",14.04,17.77],["work",17.78,50.20],["check",50.21,null],["ship",null,null]], now:80, mask:"lightLive"
+  },
+  shipped: {
+    word:"Shipped", elapsed:"1:29", stage:"ship", why:"the controller's transaction through every gate",
+    rev:"1 of up to 3", acc:"passed. 525 tests, 0 failed", verdict:"approve", active:null,
+    gates: pass(),
+    turns:[["0s","stage intake — 2 scouts, independent pools"],["5s","google/gemini-3.5-flash answered in 5s (131 chars)"],
+      ["14s","xai/grok-4.6 answered in 9s (478 chars)"],["14s","stage promote — the human's ticket, citing the scouts"],
+      ["18s","xai/grok-4.6 answered in 4s (76 chars)"],["47s","openai/gpt-6-astra answered in 30s (7962 chars)"],
+      ["47s","rev 1: the implementer wrote src/sdk/stream.mjs (7961 chars)"],["50s","acceptance for rev 1 passed: 525 tests, 0 failed"],
+      ["50s","stage check — another lab acks the bytes"],["1m29s","agy/gemini-3.7-flash answered in 39s (1359 chars, 7 tool call(s), 1 subagent(s))"],
+      ["1m29s","review verdict from google: approve"],["1m29s","stage ship — the controller's transaction through every gate"],
+      ["1m29s","SHIP: shipped artifact:src/sdk/stream.mjs as commit:1bbfe335f394"]],
+    caption:"[1m29s] SHIP: shipped artifact:src/sdk/stream.mjs as commit:1bbfe335f394",
+    spans:[["intake",0,14.03],["promote",14.03,14.04],["plan",14.04,17.77],["work",17.78,50.20],["check",50.21,89.44],["ship",89.45,89.47]], now:null, mask:"lightEnd"
+  },
+  refused: {
+    word:"Refused", elapsed:"2:22", stage:"ship", why:"the controller's transaction through every gate",
+    rev:"3 of up to 3", acc:"failed (exit 1). 523 tests, 2 failed", verdict:"request_changes", active:null,
+    gates:[["ACTOR","pass","pass"],["TARGET","pass","pass"],["TICKET","pass","pass"],["GRAFT","pass","pass"],["LEASE","pass","pass"],
+      ["REVIEW","refuse","refused: artifact:src/sdk/stream.mjs: 1 blocking finding(s) on blob:3834b9d5d05a"],
+      ["TESTS","refuse","refused: artifact:src/sdk/stream.mjs: ran with exit 1"],["MERGE","pass","pass"]],
+    turns:[["0s","stage intake — 2 scouts, independent pools"],["5s","google/gemini-3.5-flash answered in 5s (158 chars)"],
+      ["22s","xai/grok-4.6 answered in 17s (471 chars)"],["23s","xai/grok-4.6 answered in 2s (70 chars)"],
+      ["49s","openai/gpt-6-astra answered in 26s (7894 chars)"],["49s","rev 1: the implementer wrote src/sdk/stream.mjs (7893 chars)"],
+      ["53s","acceptance for rev 1 failed (exit 1): 523 tests, 2 failed"],["53s","the executed failure goes back to the implementer as rev 2"],
+      ["1m21s","openai/gpt-6-astra answered in 28s (8096 chars)"],["1m24s","acceptance for rev 2 failed (exit 1): 523 tests, 2 failed"],
+      ["1m24s","the executed failure goes back to the implementer as rev 3"],["1m52s","openai/gpt-6-astra answered in 28s (8366 chars)"],
+      ["1m55s","acceptance for rev 3 failed (exit 1): 523 tests, 2 failed"],["1m55s","stage check — another lab acks the bytes"],
+      ["2m23s","agy/gemini-3.7-flash answered in 28s (1173 chars, 5 tool call(s), 1 subagent(s))"],["2m23s","review verdict from google: request_changes"],
+      ["2m23s","SHIP: refused: REVIEW: artifact:src/sdk/stream.mjs: 1 blocking finding(s) on blob:3834b9d5d05a | TESTS: artifact:src/sdk/stream.mjs: ran with exit 1"]],
+    caption:"[2m23s] SHIP: refused: REVIEW: artifact:src/sdk/stream.mjs: 1 blocking finding(s) on blob:3834b9d5d05a | TESTS: artifact:src/sdk/stream.mjs: ran with exit 1",
+    spans:[["intake",0,21.95],["promote",21.95,21.96],["plan",21.96,23.47],["work",23.49,114.60],["check",114.61,142.56],["ship",142.57,142.60]], now:null, mask:"lightEnd"
+  }
+};
+const fmt = s => s >= 60 ? `${Math.floor(s/60)}m${String(Math.round(s%60)).padStart(2,"0")}s` : `${Math.round(s)}s`;
+const esc = s => String(s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const name = new URLSearchParams(location.search).get("frame") || "live";
+const F = FRAMES[name] || FRAMES.live;
+
+document.querySelector(".status").className = "status " + name;
+document.querySelector(".status .word").textContent = F.word;
+document.querySelector(".elapsed").textContent = F.elapsed;
+document.querySelectorAll(".mockctl a").forEach(a => { if (a.getAttribute("href") === `?frame=${name}`) a.setAttribute("aria-current","page"); });
+
+document.querySelector(".chairs").innerHTML = CHAIRS.map(([role, seat, mark]) =>
+  `<li${role === F.active ? ' class="active"' : ""}><span class="role">${role}</span><span class="seat">${esc(seat)}${mark ? ` <span class="mark">${esc(mark)}</span>` : ""}</span></li>`).join("");
+document.querySelector(".turns").innerHTML = F.turns.map(([t, s], i) =>
+  `<li${name === "live" && i === F.turns.length - 1 ? ' class="now"' : ""}><time>${t}</time><span>${esc(s)}</span></li>`).join("");
+document.querySelector(".caption").textContent = F.caption;
+document.querySelector(".stage-name").textContent = F.stage;
+document.querySelector(".stage-why").textContent = F.why;
+document.querySelector(".rev").textContent = F.rev;
+document.querySelector(".acc").textContent = F.acc;
+document.querySelector(".verdict").textContent = F.verdict;
+document.querySelector(".gates").innerHTML = F.gates.map(([g, st, txt]) => `<li class="${st}"><span class="gate">${g}</span><span class="st">${esc(txt)}</span></li>`).join("");
+
+// THE GLASS BLOCKS. Solid antique glass, faceted, light bending through them: one block per chair. The
+// planner's block at the back, on top; the implementer's in the middle, largest; the workers spaced
+// around it: the two scouts on the left (before the work), the reviewer and the controller on the right
+// (after it). The controller's block has eight facets, one per gate: a passed gate lights its facet, a
+// refused one stays dark with a bar. Revisions are plates of glass inside the implementer's block.
+// The subagents are not blocks; they are light. Colour is the lab's, size the payload.
+const LAB_HUE = { google: "#8FB5A0", agy: "#8FB5A0", openai: "#8FAFC9", xai: "#B39AC4", anthropic: "#DDB275", controller: "#E8E4DA" };
+const K = 0.42;   // perspective squash of a block's top face
+const BLOCKS = [
+  { id: "planner",     role: "planner",     seat: "xai/grok-4.6",            lab: "xai",        cx: 480, top: 74,  R: 54, H: 46, n: 6 },
+  { id: "scout0",      role: "scout",       seat: "google/gemini-3.5-flash", lab: "google",     cx: 205, top: 205, R: 40, H: 34, n: 6 },
+  { id: "scout1",      role: "scout",       seat: "xai/grok-4.6",            lab: "xai",        cx: 285, top: 340, R: 40, H: 34, n: 6 },
+  { id: "implementer", role: "implementer", seat: "openai/gpt-6-astra",      lab: "openai",     cx: 480, top: 262, R: 74, H: 64, n: 6 },
+  { id: "reviewer",    role: "reviewer",    seat: "agy/gemini-3.7-flash",    lab: "google",     cx: 755, top: 205, R: 46, H: 40, n: 6 },
+  { id: "controller",  role: "controller",  seat: "the runner",              lab: "controller", cx: 680, top: 345, R: 52, H: 46, n: 8 },
+];
+const verts = b => Array.from({ length: b.n }, (_, i) => { const a = -Math.PI / 2 + (i + .5) * 2 * Math.PI / b.n; return [b.cx + b.R * Math.cos(a), b.top + b.R * K * Math.sin(a)]; });
+const P = pts => pts.map(p => p.map(v => v.toFixed(1)).join(",")).join(" ");
+const block = (b, tint, inner = "") => {
+  const V = verts(b), back = [], front = [];
+  for (let i = 0; i < b.n; i++) { const A = V[i], B = V[(i + 1) % b.n]; const my = (A[1] + B[1]) / 2; const t = (my - b.top) / (b.R * K);
+    const gate = b.n === 8 ? ` facet${i === 5 || i === 6 ? " refused" : ""}` : "";
+    const poly = `<polygon class="face${gate}" points="${P([A, B, [B[0], B[1] + b.H], [A[0], A[1] + b.H]])}" ${b.n === 8 ? "" : (t > 0 ? `fill="url(#glassV)" fill-opacity="${(.55 + .45 * t).toFixed(2)}"` : `fill="#CFE3D8" fill-opacity=".06"`)} stroke="#E8E4DA" stroke-opacity="${t > 0 ? .72 : .26}" stroke-width="1"/>`;
+    const bar = b.n === 8 && (i === 5 || i === 6) ? `<line class="bar" x1="${((A[0] + B[0]) / 2 - 7).toFixed(1)}" y1="${(my + b.H / 2).toFixed(1)}" x2="${((A[0] + B[0]) / 2 + 7).toFixed(1)}" y2="${(my + b.H / 2).toFixed(1)}" stroke="#D2848C" stroke-width="3"/>` : "";
+    (t > 0 ? front : back).push(poly + bar); }
+  const bottom = b.top + b.H + b.R * K;
+  return `<g class="block" data-id="${b.id}">
+    <ellipse cx="${b.cx}" cy="${(bottom + 4).toFixed(1)}" rx="${(b.R * 1.15).toFixed(1)}" ry="${(b.R * K * .8).toFixed(1)}" fill="#DDB275" fill-opacity=".07"/>
+    ${back.join("")}
+    <polygon points="${P(V)}" fill="#E6F2EA" fill-opacity=".26" stroke="${tint}" stroke-opacity=".9" stroke-width="1.1"/>
+    ${inner}
+    ${front.join("")}
+    <g filter="url(#antique)" stroke="#FFFFFF" stroke-opacity=".32" fill="none" stroke-width="2"><path d="M${b.cx - b.R * .55},${b.top + b.H * .9 + b.R * K * .5} C ${b.cx - b.R * .2},${b.top + b.H * .35} ${b.cx + b.R * .1},${b.top + b.H * .7} ${b.cx + b.R * .5},${b.top + b.H * .2}"/><path d="M${b.cx - b.R * .3},${b.top + b.H + b.R * K * .3} C ${b.cx + b.R * .05},${b.top + b.H * .8} ${b.cx + b.R * .25},${b.top + b.H} ${b.cx + b.R * .62},${b.top + b.H * .55}"/></g>
+    <polygon points="${P(V)}" fill="none" stroke="${tint}" stroke-opacity=".55" stroke-width="3.5" filter="url(#edgeGlow)"/>
+  </g>`;
+};
+const PLATES = { live: 1, shipped: 1, refused: 3 };
+const imp = BLOCKS.find(b => b.id === "implementer");
+const plates = Array.from({ length: PLATES[name] }, (_, i) => { const y = imp.top + imp.H + imp.R * K * .55 - 10 - i * 9;
+  return `<polygon points="${P([[imp.cx - imp.R * .62, y], [imp.cx + imp.R * .62, y], [imp.cx + imp.R * .62, y + 5], [imp.cx - imp.R * .62, y + 5]])}" fill="#DDB275" fill-opacity="${i === PLATES[name] - 1 ? .26 : .13}" stroke="#DDB275" stroke-opacity=".55" stroke-width=".7"/>`; }).join("");
+document.querySelector(".blocks").innerHTML = BLOCKS.map(b => block(b, LAB_HUE[b.lab], b.id === "implementer" ? plates : "")).join("");
+document.querySelector(".labels").innerHTML = BLOCKS.map(b => { const y = b.top + b.H + b.R * K + 24;
+  return `<text class="lbl-role" x="${b.cx}" y="${y}">${esc(b.role)}</text><text class="lbl-seat" x="${b.cx}" y="${y + 15}">${esc(b.seat)}</text>`; }).join("");
+// THE LIGHTS. A brief leaves the planner's block on an arc to a worker's block; while the worker works,
+// its light explores the edges of that block, running the rim of its top face, brightest at its head;
+// when the answer comes back the light returns up the arc. Size follows the payload, colour the lab.
+const at = id => BLOCKS.find(b => b.id === id);
+const below = b => [b.cx, b.top + b.H + b.R * K];
+const crown = b => [b.cx, b.top - b.R * K];
+const bez = (A, B, t, lift = 40) => { const mx = (A[0] + B[0]) / 2, my = (A[1] + B[1]) / 2 - lift; const u = 1 - t;
+  return [u * u * A[0] + 2 * u * t * mx + t * t * B[0], u * u * A[1] + 2 * u * t * my + t * t * B[1]]; };
+const rim = (b, t) => { const V = verts(b); const u = (((t % 1) + 1) % 1) * b.n; const i = Math.floor(u), k = u - i; const A = V[i], B = V[(i + 1) % b.n]; return [A[0] + (B[0] - A[0]) * k, A[1] + (B[1] - A[1]) * k]; };
+const WISPS = {
+  live: [ { arc: [below(at("planner")), crown(at("reviewer"))], hue: "google", ts: [.2, .45, .7, .92], alpha: [.18, .42], grow: false },
+          { rim: at("reviewer"), hue: "google", head: .78, n: 26, span: .7, size: [2.6, 10] },
+          { rim: at("reviewer"), hue: "google", head: .3, n: 8, span: .22, size: [1.2, 3.6] },
+          { arc: [crown(at("implementer")), below(at("planner"))], hue: "openai", ts: [.5, .72, .9], alpha: [.14, .3], grow: false } ],
+  shipped: [ { arc: [crown(at("reviewer")), below(at("planner"))], hue: "google", ts: [.3, .5, .7, .9], alpha: [.24, .6], grow: true },
+             { drift: at("controller"), hue: "anthropic", n: 12 } ],
+  refused: [ { arc: [crown(at("reviewer")), below(at("planner"))], hue: "google", ts: [.3, .5, .7, .9], alpha: [.2, .6], grow: true },
+             { arc: [crown(at("implementer")), below(at("planner"))], hue: "openai", ts: [.4, .6, .8], alpha: [.07, .16], grow: false },
+             { drift: at("controller"), hue: "anthropic", n: 5 } ],
+};
+const W = document.querySelector(".wisps .w"); let out = "";
+let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+const disc = (x, y, r, hue, al, core) => `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(1)}" fill="${hue}" fill-opacity="${al.toFixed(2)}"/>` +
+  (core ? `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(r * .38).toFixed(1)}" fill="#FFF6E6" fill-opacity="${Math.min(1, al * 1.1).toFixed(2)}"/>` : "");
+for (const wsp of WISPS[name]) {
+  const hue = LAB_HUE[wsp.hue];
+  if (wsp.drift) { const b = wsp.drift; for (let i = 0; i < wsp.n; i++) out += disc(b.cx + (rnd() - .5) * b.R * 2.4, b.top + b.H / 2 + (rnd() - .5) * b.H * 1.6, 1.6 + rnd() * 3, hue, .25 + rnd() * .5, false); continue; }
+  if (wsp.rim) { for (let i = 0; i < wsp.n; i++) { const k = i / (wsp.n - 1); const [x, y] = rim(wsp.rim, wsp.head - wsp.span * (1 - k));
+      out += disc(x, y, wsp.size[0] + k * (wsp.size[1] - wsp.size[0]), hue, .1 + k * .85, k > .88); } continue; }
+  const n = wsp.ts.length;
+  wsp.ts.forEach((t, i) => { const [x, y] = bez(wsp.arc[0], wsp.arc[1], t); const k = wsp.grow ? i / (n - 1) : 1 - i / (n - 1);
+    out += disc(x, y, 2.5 + k * 7, hue, wsp.alpha[0] + (wsp.alpha[1] - wsp.alpha[0]) * k, false); });
+}
+W.innerHTML = out;
+
+const svg = document.querySelector(".precinct");
+svg.dataset.frame = name;
+if (matchMedia("(prefers-reduced-motion: reduce)").matches) svg.pauseAnimations();
+
+// The timeline: past stages at their recorded length, the running stage up to now, the rest as unlit
+// names with no width, because the future has not happened and the view will not pretend it has.
+(function timeline(){
+  const el = document.querySelector(".timeline");
+  const ended = F.spans.filter(s => s[2] != null);
+  const end = F.now ?? Math.max(...ended.map(s => s[2]));
+  const total = F.now ? F.now / 0.72 : end;
+  el.innerHTML = F.spans.map(([n, a, b]) => {
+    if (a == null) return `<div class="seg next" style="flex:1 1 0"><span class="lbl">${n}</span><div class="bar"></div></div>`;
+    const secs = (b ?? F.now) - a;
+    const pct = Math.max(0.6, secs / total * 100);
+    const lbl = secs >= 0.5 ? `${n} ${fmt(secs)}` : n;
+    return `<div class="seg${b == null ? " now" : ""}" style="flex:0 0 ${pct}%"><span class="lbl">${lbl}</span><div class="bar"></div></div>`;
+  }).join("");
+})();
+</script>
+</body>
+</html>

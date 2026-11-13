@@ -1,0 +1,35 @@
+# Pantheon holds a hash-indexed copy of conversations and seat state. Per docs/specs §6.2, that
+# material stays inside $PANTHEON_HOME, is never committed, and never leaves the machine.
+# This file is the mechanical form of that promise — deny by default, allow deliberately.
+*
+
+!/.gitignore
+!/README.md
+!/docs/
+!/docs/**
+!/spike/
+!/spike/**
+!/bin/
+!/bin/**
+!/src/
+!/src/**
+!/tests/
+!/tests/**
+!/package.json
+!/STATE.md
+!/scripts/
+!/scripts/**
+# A declared dependency without a lockfile is an unpinned supply chain. The zero-runtime-dep
+# policy that made a lockfile pointless ended when SDK transport was adopted; pinning the tree
+# is the replacement control, not an exception to the old one.
+!/package-lock.json
+
+# …and never these, even if a rule above would otherwise admit them.
+/.pantheon/
+**/artifacts/
+**/*.jsonl
+**/transcripts/
+**/*.sqlite
+**/*.sqlite-*
+.env
+.env.*

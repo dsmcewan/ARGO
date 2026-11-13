@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pantheon Seats</title>
+<style>
+  :root {
+    --bg:#0f1115; --panel:#171a21; --line:#252a34; --text:#e6e9ef; --dim:#8b93a7;
+    --run:#4fa3ff; --done:#4ec9a5; --err:#ff6b6b; --idle:#5a6274;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font-size:13px; }
+  header { padding:12px 16px; border-bottom:1px solid var(--line); display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  h1 { font-size:14px; margin:0; font-weight:600; letter-spacing:.04em; }
+  .conn { font-size:11px; color:var(--dim); }
+  .dot { display:inline-block; width:7px; height:7px; border-radius:50%; margin-right:5px; }
+  form { display:flex; gap:8px; flex:1; min-width:280px; }
+  input, button { font:inherit; background:var(--panel); color:var(--text); border:1px solid var(--line); border-radius:6px; padding:6px 10px; }
+  input { flex:1; }
+  button { cursor:pointer; }
+  button:disabled { opacity:.5; cursor:default; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:12px; padding:12px 16px; }
+  .branch { font-size:9px; letter-spacing:.06em; text-transform:uppercase; padding:1px 5px; border-radius:3px; border:1px solid currentColor; }
+  .branch.main { color:#7ee787; } .branch.wip { color:#d29922; } .branch.iso { color:#a371f7; }
+  .boardbar { display:flex; gap:10px; align-items:center; padding:5px 16px; font-size:11px; color:var(--dim); border-bottom:1px solid var(--line); font-family:ui-monospace,monospace; }
+  .boardbar b { color:var(--fg); font-weight:600; }
+  .rowlabel { padding:4px 16px 0; font-size:10px; letter-spacing:.08em; color:var(--dim); text-transform:uppercase; }
+  .grid.extra { padding-top:6px; }
+  .seat { background:var(--panel); border:1px solid var(--line); border-radius:8px; display:flex; flex-direction:column; min-height:220px; }
+  .seat h2 { font-size:12px; margin:0; padding:9px 12px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; gap:8px; }
+  .meta { font-size:10px; color:var(--dim); font-weight:400; }
+  .body { padding:10px 12px; white-space:pre-wrap; word-break:break-word; overflow:auto; max-height:300px; flex:1; line-height:1.45; }
+  .tools { padding:6px 12px; border-top:1px solid var(--line); font-size:10px; color:var(--dim); }
+  .tag { display:inline-block; border:1px solid var(--line); border-radius:4px; padding:1px 6px; margin-right:4px; }
+  .cursor { display:inline-block; width:7px; height:14px; background:var(--run); vertical-align:text-bottom; animation:b 1s steps(2) infinite; }
+  @keyframes b { 50% { opacity:0 } }
+  .empty { color:var(--idle); }
+  .err { color:var(--err); }
+  .gap { color:#d8a657; padding:6px 16px; font-size:11px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="module">
+import React, { useState, useEffect, useRef, useCallback } from "https://esm.sh/react@18.3.1";
+import { createRoot } from "https://esm.sh/react-dom@18.3.1/client";
+
+const h = React.createElement;
+const COLORS = { running: "var(--run)", done: "var(--done)", error: "var(--err)", idle: "var(--idle)" };
+
+// Reduce events to per-seat state. Mirrors reduceSeats in bus.mjs deliberately: the server can
+// answer "what is each seat doing" without a browser, and the browser can render without asking.
+function applyEvent(seats, e) {
+  if (!e.seat) return seats;
+  const prev = seats[e.seat] ?? { seat: e.seat, status: "idle", text: "", tools: [], turns: 0, error: null };
+  const s = { ...prev };
+  switch (e.type) {
+    // A new turn CLEARS the pane. Appending would render turn 2 as a continuation of turn 1,
+    // which looks plausible and is wrong.
+    case "start": s.status = "running"; s.text = ""; s.tools = []; s.error = null; s.turns = prev.turns + 1; break;
+    case "delta": s.text = prev.text + (e.text ?? ""); break;
+    case "tool": s.tools = prev.tools.includes(e.name) ? prev.tools : [...prev.tools, e.name]; break;
+    case "done": s.status = "done"; if (typeof e.text === "string" && e.text.length > s.text.length) s.text = e.text; break;
+    case "error": s.status = "error"; s.error = e.text ?? "error"; break;
+    default: return seats;
+  }
+  return { ...seats, [e.seat]: s };
+}
+
+const Seat = React.memo(function Seat({ s, spec, board }) {
+  // spec.model is shown for extra panes, where the model IS the point of the pane existing.
+  const bodyRef = useRef(null);
+  const stick = useRef(true);
+
+  // Reading scrollHeight forces a synchronous layout. Doing that once per pane per token --
+  // six panes times ~120 tokens each -- was the lag: hundreds of forced reflows competing with
+  // the stream. Instead the "is the operator at the bottom" answer is updated when they
+  // actually scroll, and the render only WRITES scrollTop, which does not force layout.
+  const onScroll = useCallback(e => {
+    const el = e.currentTarget;
+    stick.current = el.scrollHeight - el.scrollTop - el.clientHeight < 40;
+  }, []);
+
+  useEffect(() => {
+    const el = bodyRef.current;
+    if (el && stick.current) el.scrollTop = el.scrollHeight;
+  }, [s?.text]);
+
+  const status = s?.status ?? "idle";
+  return h("section", { className: "seat" },
+    h("h2", null,
+      h("span", null,
+        h("span", { className: "dot", style: { background: COLORS[status] } }),
+        spec.vendor),
+      h("span", { className: "meta" },
+        // The branch class sits FIRST, before the model name. Which world a seat is writing into
+        // matters more than which model is writing, and the model name is the thing an operator
+        // already knows.
+        board?.branch ? h("span", { className: `branch ${board.branch}`, key: "b" }, board.branch) : null,
+        " ",
+        `${spec.model ? spec.model + " · " : ""}${spec.continuity}${s?.turns ? ` · turn ${s.turns}` : ""} · ${status}`)),
+    h("div", { className: "body", ref: bodyRef, onScroll },
+      s?.error
+        ? h("span", { className: "err" }, s.error)
+        : s?.text
+          // Only the tail is rendered while streaming. A pane holding a very long reply
+          // re-lays-out the entire text node on every flush; the operator is reading the end.
+          // The full text is never lost -- it stays in state and in the seat's history.
+          ? [s.text.length > 4000 ? "…" + s.text.slice(-4000) : s.text,
+             status === "running" ? h("span", { className: "cursor", key: "c" }) : null]
+          : h("span", { className: "empty" }, spec.default_model)),
+    s?.tools?.length
+      ? h("div", { className: "tools" }, s.tools.map(t => h("span", { className: "tag", key: t }, t)))
+      : null);
+});
+
+/** Match a view label (a vendor, or a vendor-ish pane label) to an occupancy row on the board. */
+function boardSeatFor(board, label) {
+  if (!board?.seats) return null;
+  const exact = board.seats[label];
+  if (exact) return exact;
+  const hit = Object.entries(board.seats).find(([id]) => id === label || id.startsWith(label + "-"));
+  return hit ? hit[1] : null;
+}
+
+function App() {
+  const [specs, setSpecs] = useState([]);
+  const [seats, setSeats] = useState({});
+  const [connected, setConnected] = useState(false);
+  const [gap, setGap] = useState(null);
+  const [prompt, setPrompt] = useState("In one sentence, what are you?");
+  const [busy, setBusy] = useState(false);
+  const [board, setBoard] = useState(null);
+  const lastSeq = useRef(0);
+
+  useEffect(() => {
+    fetch("/seats").then(r => r.json()).then(d => { setSpecs(d.seats); setSeats(d.state ?? {}); });
+    // Polled rather than pushed: a ref moves on the order of a turn, not of a token, and putting it
+    // on the SSE bus would interleave slow filesystem reads with the delta stream this page exists
+    // to render promptly.
+    const readBoard = () => fetch("/board").then(r => r.json()).then(d => setBoard(d.board)).catch(() => {});
+    readBoard();
+    const iv = setInterval(readBoard, 3000);
+    return () => clearInterval(iv);
+  }, []);
+
+  useEffect(() => {
+    // EventSource reconnects on its own and resends Last-Event-ID, so the server replays only
+    // what was missed. Dropping already-seen seq numbers makes a reconnect idempotent rather
+    // than double-rendering the tail.
+    // Coalesce onto animation frames. One setState per token means one React render per token,
+    // and four concurrent seats emitting ~120 tokens each is several hundred renders of the
+    // whole grid for output a human reads at maybe 10 words a second. Buffering and flushing at
+    // frame rate keeps every event -- nothing is dropped, they are applied in order in one pass
+    // -- while capping renders at ~60/s regardless of how fast the vendors stream.
+    const es = new EventSource("/events");
+    es.onopen = () => setConnected(true);
+    es.onerror = () => setConnected(false);
+
+    let pending = [];
+    let frame = 0;
+    const flush = () => {
+      frame = 0;
+      if (!pending.length) return;
+      const batch = pending;
+      pending = [];
+      setSeats(prev => batch.reduce(applyEvent, prev));
+    };
+
+    es.onmessage = m => {
+      const e = JSON.parse(m.data);
+      if (e.type === "gap") { setGap(e.text); return; }
+      if (e.seq && e.seq <= lastSeq.current) return;
+      if (e.seq) lastSeq.current = e.seq;
+      pending.push(e);
+      if (!frame) frame = requestAnimationFrame(flush);
+    };
+    return () => { es.close(); if (frame) cancelAnimationFrame(frame); };
+  }, []);
+
+  // Labels present in the event stream that the base row does not render.
+  const base = new Set(specs.map(s => s.vendor));
+  const extras = Object.keys(seats).filter(k => !base.has(k)).sort();
+
+  const send = useCallback(async ev => {
+    ev.preventDefault();
+    if (!prompt.trim()) return;
+    setBusy(true);
+    try {
+      await fetch("/turn", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ seats: specs.map(s => s.vendor), prompt }),
+      });
+    } finally { setBusy(false); }
+  }, [prompt, specs]);
+
+  return h(React.Fragment, null,
+    h("header", null,
+      h("h1", null, "PANTHEON"),
+      h("span", { className: "conn" },
+        h("span", { className: "dot", style: { background: connected ? "var(--done)" : "var(--err)" } }),
+        connected ? "live" : "disconnected"),
+      h("form", { onSubmit: send },
+        h("input", {
+          value: prompt, onChange: e => setPrompt(e.target.value),
+          placeholder: "prompt every seat…", "aria-label": "prompt",
+        }),
+        h("button", { type: "submit", disabled: busy || !specs.length }, busy ? "running…" : "run all"))),
+    gap ? h("div", { className: "gap" }, gap) : null,
+    // The one line worth having above the grid: which world the board is in, and where its head is.
+    board ? h("div", { className: "boardbar" },
+      board.error
+        ? h("span", { className: "err" }, `board: ${board.error}`)
+        : [h("span", { key: "r" }, (board.ref ?? "").replace("refs/", "")),
+           h("b", { key: "h" }, board.head ?? "(unset)"),
+           h("span", { className: `branch main`, key: "s" }, board.status ?? "?"),
+           h("span", { key: "w", style: { opacity: .7 } }, board.why ?? ""),
+           h("span", { key: "f", style: { marginLeft: "auto" } },
+             (board.refs ?? []).filter(r => r.cls !== "main").length + " branch(es)")]) : null,
+    h("div", { className: "grid" },
+      specs.map(spec => h(Seat, { key: spec.vendor, spec, s: seats[spec.vendor],
+        board: board?.seats?.[`${spec.vendor}-${seats[spec.vendor]?.mode ?? ""}`] ?? boardSeatFor(board, spec.vendor) }))),
+    // Any seat that reported events under a label the base row does not cover gets its own pane
+    // BELOW the row. Built from observed labels rather than a second hardcoded list, so a turn
+    // run under a new label appears without the view needing to know about it in advance — and
+    // so a second model can never quietly overwrite a base vendor's pane.
+    extras.length
+      ? h(React.Fragment, null,
+          h("div", { className: "rowlabel" }, `additional seats (${extras.length})`),
+          h("div", { className: "grid extra" },
+            extras.map(key => h(Seat, { board: boardSeatFor(board, key),
+              key, s: seats[key],
+              spec: {
+                vendor: key.split(/\s*·\s*/)[0],
+                model: key.split(/\s*·\s*/)[1] ?? null,
+                continuity: seats[key]?.continuity ?? "seat",
+              },
+            }))))
+      : null);
+}
+
+createRoot(document.getElementById("root")).render(h(App));
+</script>
+</body>
+</html>

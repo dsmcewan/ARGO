@@ -1,0 +1,32 @@
+{
+  "key": "agyPlannerRoleRefusal",
+  "title": "run-item.mjs: refuse an operator reseat of the planner to agy_google before spending a scout turn, instead of failing two minutes later on an argparse error",
+  "slot": "agyPlannerRoleRefusal",
+  "path": "src/board/run-item.mjs",
+  "source": "src/board/run-item.mjs",
+  "copy": [
+    "src",
+    "tests",
+    "scripts",
+    "bin",
+    "package.json",
+    ".agents"
+  ],
+  "tests_file": "tests/board-agy-planner-role.test.mjs",
+  "acceptance_cmd": "node --test $(ls tests/*.test.mjs | grep -v 'board-reviewer-reseat-lab\\|seat-lock-contention')",
+  "question": "The Antigravity seat's turn helper maps a run's purpose to one of the Antigravity CLI agent's role names: \"critique\" to \"reviewer\", \"scout\" to \"scout\", and \"plan\" to \"planner\". But scripts/agy-seat.py's own argument parser only accepts --role in {reviewer, scout, fact-checker} -- there is no \"planner\" role, and never has been (no .agents/agents/pantheon-planner/ agent card exists either). An operator who reseats the planner chair to agy_google therefore always pays for a full intake (two independent scout turns, roughly two minutes of real vendor time) before the plan stage's agy_google turn fails with an argparse usage error (exit 2), because nothing checks the combination is even possible until the moment it is attempted. This was observed for real on 2026-09-28. What is the smallest change that reports this refusal immediately, before any turn is spent, without inventing a planner capability for the Antigravity seat that does not exist?",
+  "goal": "In src/board/run-item.mjs, immediately after the line `const OVERRIDES = seatOverrides;`, add a check that throws synchronously -- before any scout turn, before any board or worktree setup happens for that matter is fine either way, but it must run before the intake stage's first turn -- when the operator has reseated the planner role to a vendor the Antigravity seat script cannot fill:\n\n```js\nconst OVERRIDES = seatOverrides;\nif (OVERRIDES.planner?.vendor === \"agy_google\") {\n  throw new Error(\n    'seatOverrides.planner: \"agy_google\" has no planner role in scripts/agy-seat.py ' +\n    '(it accepts --role reviewer, scout, or fact-checker); reseat the planner to a different vendor'\n  );\n}\n```\n\nUse that exact error text (the single quotes and concatenation may be written however is idiomatic, but the words and the three role names must appear verbatim so a caller reading the message knows exactly what is and is not possible). This must be a plain synchronous throw, matching how this module already refuses other invalid tickets before doing any work (see the existing `ticketContainmentRefusal` check a few lines below spec validation, and the existing test `runOpenItem refuses a ticket.key that would escape its own output directory`, which asserts a rejection with `assert.rejects`) -- NOT a `progress()` event, NOT a caught-and-returned `{ok:false}` result. This ticket's own new test asserts the promise itself rejects.\n\nChange nothing else. This ticket touches exactly src/board/run-item.mjs, and within it only the four lines described above, inserted immediately after `const OVERRIDES = seatOverrides;`. No other role, no other vendor, no other reseat combination is affected: `OVERRIDES.reviewer` and `OVERRIDES.implementer` reseated to agy_google are unaffected by this ticket (the reviewer role already works via scripts/agy-seat.py's `reviewer` role, and this ticket does not touch that path).\n\nThe acceptance command is the project's FULL suite (`node --test`), which includes the new tests/board-agy-planner-role.test.mjs; every existing test must stay green.\n\nACCEPTANCE SCOPE: launched alongside two sibling tickets tonight (board-reviewer-reseat-lab, seat-lock-contention) whose oracle test files are present in this worktree (the copy list brings in all of tests/) but whose fixes are NOT, since each ticket's worktree is an independent snapshot. The acceptance command therefore runs the full suite minus those two sibling oracle files, whose failures here cannot be repaired by editing this ticket's own path. Every other existing test must stay green. Once all three ship and are applied to the real repository, the human runs the unfiltered `node --test`.",
+  "constraints": [
+    "ES module syntax; Node built-ins only; no new dependencies",
+    "one file changes: src/board/run-item.mjs",
+    "every existing export of run-item.mjs keeps its name and behaviour",
+    "the refusal must happen before any turn is spent: no scout, plan, or other vendor call may occur when seatOverrides.planner.vendor is \"agy_google\"",
+    "OVERRIDES.reviewer and OVERRIDES.implementer reseated to agy_google are unaffected"
+  ],
+  "forbidden": [
+    "do not elect a vendor as judge",
+    "do not edit any test file",
+    "do not edit scripts/agy-seat.py, .agents/, docs/, or any file other than src/board/run-item.mjs",
+    "do not add a \"planner\" role to the Antigravity seat; that is a distinct, larger change this ticket does not authorize"
+  ]
+}

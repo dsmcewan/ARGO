@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Light physics demo</title>
+<!--
+  DESIGN DEMO, not product code. One glass block and one light, moving by the formulas in
+  docs/plans/2026-09-28-live-view-section-3a-light-physics.md, whose module is inlined below verbatim:
+  the light flies in on a wavering path, orbits the block on a Kepler ellipse (fast and close, slow and far,
+  precessing), and flies back; its glow is the Frostbite windowed inverse square; the trail persists and
+  cools; the glass rim picks up the glow where the light passes. Change the seed to get a different waver
+  and orbit; the speed slider scales time. Everything is a function of t, so the motion is replayable.
+-->
+<style>
+:root{--dusk:#141A2E;--marble:#A0A4B2;--chalk:#E8E4DA;--lamp:#DDB275}
+body{margin:0;background:var(--dusk);color:var(--chalk);font:400 14px/1.5 Bahnschrift,"Segoe UI",system-ui,"Liberation Sans",sans-serif;display:grid;place-items:center;min-height:100vh}
+.wrap{width:min(960px,96vw);aspect-ratio:960/520;position:relative}
+canvas{position:absolute;inset:0;width:100%;height:100%}
+.hud{position:absolute;left:14px;top:12px;color:var(--marble);font-size:13px;line-height:1.4;pointer-events:none}
+.hud b{color:var(--chalk);font-weight:500}
+.ctl{position:absolute;right:14px;top:12px;display:flex;gap:14px;align-items:center;color:var(--marble);font-size:13px}
+.ctl input[type=number]{width:70px;background:transparent;color:var(--chalk);border:1px solid rgba(232,228,218,.25);padding:3px 6px;font:inherit}
+.ctl input[type=range]{accent-color:var(--lamp)}
+:focus-visible{outline:2px solid var(--lamp);outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <canvas id="glass" aria-hidden="true"></canvas>
+  <canvas id="light" aria-hidden="true"></canvas>
+  <div class="hud"><b id="phase">out</b> <span id="clock">0.0 s</span><br><span id="note">wavering flight in, Kepler orbit, flight back</span></div>
+  <div class="ctl">
+    <label>seed <input id="seed" type="number" value="7" min="0" step="1"></label>
+    <label>speed <input id="speed" type="range" min="0.25" max="2" step="0.05" value="1"></label>
+  </div>
+</div>
+<script type="module">
+// ---- the module, verbatim from the plan ------------------------------------------------------------
+const TAU = Math.PI * 2;
+const GRAD = [[1, 1], [-1, 1], [1, -1], [-1, -1], [1, 0], [-1, 0], [1, 0], [-1, 0], [0, 1], [0, -1], [0, 1], [0, -1]];
+const F2 = 0.5 * (Math.sqrt(3) - 1), G2 = (3 - Math.sqrt(3)) / 6;
+function makeNoise(seed = 1337) {
+  const p = new Uint8Array(256); for (let i = 0; i < 256; i++) p[i] = i;
+  let s = ((seed >>> 0) % 2147483647) || 1;
+  const rnd = () => (s = (s * 16807) % 2147483647) / 2147483647;
+  for (let i = 255; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); const t = p[i]; p[i] = p[j]; p[j] = t; }
+  const perm = new Uint8Array(512), gradP = new Array(512);
+  for (let i = 0; i < 512; i++) { perm[i] = p[i & 255]; gradP[i] = GRAD[perm[i] % 12]; }
+  const corner = (g, x, y) => { let t = 0.5 - x * x - y * y; if (t < 0) return 0; t *= t; return t * t * (g[0] * x + g[1] * y); };
+  function simplex2(xin, yin) {
+    const s = (xin + yin) * F2, i = Math.floor(xin + s), j = Math.floor(yin + s), t = (i + j) * G2;
+    const x0 = xin - i + t, y0 = yin - j + t;
+    const i1 = x0 > y0 ? 1 : 0, j1 = x0 > y0 ? 0 : 1;
+    const x1 = x0 - i1 + G2, y1 = y0 - j1 + G2, x2 = x0 - 1 + 2 * G2, y2 = y0 - 1 + 2 * G2;
+    const ii = i & 255, jj = j & 255;
+    const n0 = corner(gradP[ii + perm[jj]], x0, y0), n1 = corner(gradP[ii + i1 + perm[jj + j1]], x1, y1), n2 = corner(gradP[ii + 1 + perm[jj + 1]], x2, y2);
+    return 70 * (n0 + n1 + n2);
+  }
+  function fbm2(x, y, octaves = 3) {
+    let amp = 0.5, freq = 1, sum = 0, norm = 0;
+    for (let o = 0; o < octaves; o++) { sum += amp * simplex2(x * freq, y * freq); norm += amp; amp *= 0.5; freq *= 2; }
+    return sum / norm;
+  }
+  return { simplex2, fbm2 };
+}
+function wander2(noise, t, freq, seed = 0) {
+  const u = t * freq, o = seed * 97.13;
+  return [noise.fbm2(u + o, 0.37 + o * 0.01, 3), noise.fbm2(0.91 - o * 0.01, u + o + 31.7, 3)];
+}
+function flightPoint(A, B, k, t, noise, { lift = 40, amp = 18, freq = 0.7, seed = 0 } = {}) {
+  const mx = (A[0] + B[0]) / 2, my = (A[1] + B[1]) / 2 - lift, u = 1 - k;
+  const x = u * u * A[0] + 2 * u * k * mx + k * k * B[0], y = u * u * A[1] + 2 * u * k * my + k * k * B[1];
+  if (amp === 0) return [x, y];
+  const tx = 2 * u * (mx - A[0]) + 2 * k * (B[0] - mx), ty = 2 * u * (my - A[1]) + 2 * k * (B[1] - my), len = Math.hypot(tx, ty) || 1;
+  const nx = -ty / len, ny = tx / len, [w1, w2] = wander2(noise, t + k * 2, freq, seed), env = Math.sin(Math.PI * k);
+  return [x + env * (amp * w1 * nx + (amp / 3) * w2 * tx / len), y + env * (amp * w1 * ny + (amp / 3) * w2 * ty / len)];
+}
+function keplerE(M, e) {
+  M %= TAU; if (M < 0) M += TAU;
+  let E = e < 0.8 ? M : Math.PI;
+  for (let i = 0; i < 32; i++) { const f = E - e * Math.sin(E) - M; if (Math.abs(f) < 1e-10) break; E -= f / (1 - e * Math.cos(E)); }
+  return E;
+}
+function orbitPoint({ cx, cy, a, e, omega = 0, squash = 1, precession = 0 }, t, period) {
+  const E = keplerE(TAU * t / period, e), b = a * Math.sqrt(1 - e * e);
+  const px = a * (Math.cos(E) - e), py = b * Math.sin(E), w = omega + precession * t, c = Math.cos(w), s = Math.sin(w);
+  return { x: cx + px * c - py * s, y: cy + (px * s + py * c) * squash, r: a * (1 - e * Math.cos(E)), E };
+}
+function attenuation(d, R, size = R / 32) {
+  if (d >= R) return 0;
+  const f = (d * d) / (R * R), w0 = Math.max(0, Math.min(1, 1 - f * f)), w = w0 * w0;
+  return (size * size) / Math.max(d * d, size * size) * w;
+}
+function attenuationSoft(d, R, F = 2) { const s = d / R; if (s >= 1) return 0; const q = 1 - s * s; return (q * q) / (1 + F * s * s); }
+function rimGlow(points, heads, R, tau) {
+  const out = new Float64Array(points.length);
+  for (let i = 0; i < points.length; i++) { let best = 0;
+    for (const h of heads) { const v = attenuation(Math.hypot(points[i][0] - h.x, points[i][1] - h.y), R) * Math.exp(-h.age / tau); if (v > best) best = v; }
+    out[i] = best; }
+  return out;
+}
+// ---- the block (the mockup's geometry) ------------------------------------------------------------
+const W = 960, H = 520, SQUASH = 0.42, B = { cx: 480, top: 262, R: 74, H: 64, sides: 6 };
+const topPolygon = b => Array.from({ length: b.sides }, (_, i) => { const a = -Math.PI / 2 + (i + .5) * TAU / b.sides; return [b.cx + b.R * Math.cos(a), b.top + b.R * SQUASH * Math.sin(a)]; });
+const rgba = (hex, a) => `rgba(${parseInt(hex.slice(1, 3), 16)},${parseInt(hex.slice(3, 5), 16)},${parseInt(hex.slice(5, 7), 16)},${a})`;
+const GLASS = "#CFE3D8", GLASS_HI = "#E6F2EA", CHALK = "#E8E4DA", LAMP = "#DDB275", HUE = "#8FB5A0", CORE = "#FFF6E6";
+const glassCvs = document.getElementById("glass"), lightCvs = document.getElementById("light");
+const gctx = glassCvs.getContext("2d"), lctx = lightCvs.getContext("2d");
+let dpr = 1;
+function fit() {
+  dpr = Math.min(window.devicePixelRatio || 1, 2);
+  for (const c of [glassCvs, lightCvs]) { const w = Math.round(c.clientWidth * dpr), h = Math.round(c.clientHeight * dpr); if (c.width !== w || c.height !== h) { c.width = w; c.height = h; } }
+  const sx = glassCvs.width / W, sy = glassCvs.height / H;
+  gctx.setTransform(sx, 0, 0, sy, 0, 0); lctx.setTransform(sx, 0, 0, sy, 0, 0);
+}
+function poly(ctx, pts) { ctx.beginPath(); pts.forEach((p, i) => i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1])); ctx.closePath(); }
+function drawGlass() {
+  const ctx = gctx; ctx.clearRect(0, 0, W, H);
+  const sky = ctx.createLinearGradient(0, 0, 0, 150); sky.addColorStop(0, "#141A2E"); sky.addColorStop(.55, "#1B2040"); sky.addColorStop(.86, "#3B2F4A"); sky.addColorStop(1, "#6E4A5C");
+  ctx.fillStyle = sky; ctx.fillRect(0, 0, W, 150);
+  const floor = ctx.createLinearGradient(0, 150, 0, H); floor.addColorStop(0, "#2B2439"); floor.addColorStop(.25, "#1C2034"); floor.addColorStop(1, "#141A2E");
+  ctx.fillStyle = floor; ctx.fillRect(0, 150, W, H - 150);
+  ctx.strokeStyle = rgba(CHALK, .12); ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(0, 150.5); ctx.lineTo(W, 150.5); ctx.stroke();
+  const V = topPolygon(B), faces = [];
+  for (let i = 0; i < B.sides; i++) { const A = V[i], C = V[(i + 1) % B.sides], my = (A[1] + C[1]) / 2; faces.push({ facing: (my - B.top) / (B.R * SQUASH), pts: [A, C, [C[0], C[1] + B.H], [A[0], A[1] + B.H]] }); }
+  faces.sort((p, q) => p.facing - q.facing);
+  ctx.fillStyle = rgba(LAMP, .07); ctx.beginPath(); ctx.ellipse(B.cx, B.top + B.H + B.R * SQUASH + 4, B.R * 1.15, B.R * SQUASH * .8, 0, 0, TAU); ctx.fill();
+  for (const f of faces) { const front = f.facing > 0; poly(ctx, f.pts);
+    if (front) { const gr = ctx.createLinearGradient(0, f.pts[0][1], 0, f.pts[2][1]); gr.addColorStop(0, rgba(GLASS_HI, .30 * (.55 + .45 * f.facing))); gr.addColorStop(.55, rgba(GLASS, .12 * (.55 + .45 * f.facing))); gr.addColorStop(1, rgba("#B9D2C6", .08)); ctx.fillStyle = gr; }
+    else ctx.fillStyle = rgba(GLASS, .06);
+    ctx.fill(); ctx.strokeStyle = rgba(CHALK, front ? .72 : .26); ctx.lineWidth = 1; ctx.stroke(); }
+  poly(ctx, V); ctx.fillStyle = rgba(GLASS_HI, .26); ctx.fill(); ctx.strokeStyle = rgba(HUE, .9); ctx.lineWidth = 1.1; ctx.stroke();
+}
+// ---- the light ---------------------------------------------------------------------------------------
+const OUT = 1.2, ORBIT = 8, BACK = 1.2, REST = 0.8, CYCLE = OUT + ORBIT + BACK + REST, PERIOD = 6, TRAIL_S = 10, STEPS = 24;
+const PLANNER = [480, 46], CROWN = [B.cx, B.top - B.R * SQUASH];
+let seed = 7, noise = makeNoise(seed), orb = orbitOf(seed);
+function orbitOf(s) { const e = 0.28 + (s % 100) / 500; return { cx: B.cx, cy: B.top + B.H / 2, a: B.R * 1.05 / (1 - e), e, omega: (s % 360) * Math.PI / 180, squash: 0.62, precession: 0.15 }; }
+function lightAt(t) {
+  const u = t % CYCLE, c = Math.floor(t / CYCLE);
+  if (u < OUT) return { phase: "flying in", p: flightPoint(PLANNER, CROWN, u / OUT, t, noise, { seed }), size: 9 };
+  if (u < OUT + ORBIT) { const o = orbitPoint(orb, u - OUT, PERIOD); return { phase: "orbiting", p: [o.x, o.y], size: 9 + 3 * (1 - (o.r - orb.a * (1 - orb.e)) / (2 * orb.a * orb.e)) }; }
+  if (u < OUT + ORBIT + BACK) return { phase: "flying back", p: flightPoint(CROWN, PLANNER, (u - OUT - ORBIT) / BACK, t, noise, { seed }), size: 6 };
+  return { phase: "resting", p: null, size: 0, cycle: c };
+}
+const RIM = (() => { const V = topPolygon(B), pts = []; for (let i = 0; i < B.sides; i++) { const A = V[i], C = V[(i + 1) % B.sides]; for (let k = 0; k < 10; k++) pts.push([A[0] + (C[0] - A[0]) * k / 10, A[1] + (C[1] - A[1]) * k / 10]); } return pts; })();
+function drawLight(t) {
+  const ctx = lctx;
+  ctx.globalCompositeOperation = "destination-out"; ctx.fillStyle = "rgba(0,0,0,0.085)"; ctx.fillRect(0, 0, W, H);   // persistence: the trail fades, the glass beneath stays
+  ctx.globalCompositeOperation = "lighter";
+  const L = lightAt(t);
+  const heads = [];
+  for (let i = 0; i <= STEPS; i++) { const age = i * (TRAIL_S / STEPS), q = lightAt(t - age); if (!q.p || Math.floor((t - age) / CYCLE) !== Math.floor(t / CYCLE)) break; heads.push({ x: q.p[0], y: q.p[1], age }); }
+  const glow = rimGlow(RIM, heads, 44, TRAIL_S / 3);
+  for (let i = 0; i < RIM.length; i++) { const a = glow[i]; if (a < 0.02) continue; const j = (i + 1) % RIM.length;
+    ctx.strokeStyle = rgba(HUE, .9 * a); ctx.lineWidth = 2.2; ctx.beginPath(); ctx.moveTo(RIM[i][0], RIM[i][1]); ctx.lineTo(RIM[j][0], RIM[j][1]); ctx.stroke(); }
+  if (!L.p) return L;
+  ctx.lineCap = "round"; ctx.lineJoin = "round";
+  for (let i = 1; i < heads.length; i++) { const a = heads[i - 1], b = heads[i], k = Math.exp(-3 * b.age / TRAIL_S);
+    ctx.strokeStyle = rgba(HUE, .55 * k); ctx.lineWidth = L.size * (0.25 + 0.75 * k); ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); }
+  for (const h of heads.slice(1, 6)) { const k = Math.exp(-3 * h.age / TRAIL_S); ctx.fillStyle = rgba(HUE, .45 * k); ctx.beginPath(); ctx.arc(h.x, h.y, L.size * .5 * k, 0, TAU); ctx.fill(); }
+  const R = L.size * 3.2, [x, y] = L.p;
+  const gr = ctx.createRadialGradient(x, y, 0, x, y, R);
+  for (const s of [0, .25, .5, .75, 1]) gr.addColorStop(s, rgba(HUE, .95 * attenuation(s * R, R)));
+  ctx.fillStyle = gr; ctx.beginPath(); ctx.arc(x, y, R, 0, TAU); ctx.fill();
+  ctx.fillStyle = rgba(CORE, .95); ctx.beginPath(); ctx.arc(x, y, L.size * .4, 0, TAU); ctx.fill();
+  return L;
+}
+// ---- the loop -----------------------------------------------------------------------------------------
+const phaseEl = document.getElementById("phase"), clockEl = document.getElementById("clock"), speedEl = document.getElementById("speed"), seedEl = document.getElementById("seed");
+let t = 0, speed = 1, anchorT = 0, anchorNow = performance.now();
+speedEl.addEventListener("input", () => { anchorT = t; anchorNow = performance.now(); speed = Number(speedEl.value); });
+seedEl.addEventListener("change", () => { seed = Number(seedEl.value) || 0; noise = makeNoise(seed); orb = orbitOf(seed); lctx.clearRect(0, 0, W, H); });
+const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+function frame(now) {
+  t = anchorT + (now - anchorNow) / 1000 * speed;
+  const L = drawLight(t); phaseEl.textContent = L.phase; clockEl.textContent = `${t.toFixed(1)} s`;
+  if (!reduced) requestAnimationFrame(frame);
+}
+new ResizeObserver(() => { fit(); drawGlass(); }).observe(glassCvs);
+fit(); drawGlass(); requestAnimationFrame(frame);
+if (reduced) document.getElementById("note").textContent = "reduced motion: one frame";
+</script>
+</body>
+</html>
