@@ -81,5 +81,15 @@
     "Queue and transparent_fork policies are reserved and refused in v1.",
     "Provider credentials, quota and billing entitlement have not been exercised."
   ],
-  "final_merge_policy": "The exact final committed candidate must pass the externally pinned controller before advancing main."
+  "final_merge_policy": "The exact final committed candidate must pass the externally pinned controller before advancing main.",
+  "ci_followup": {
+    "observed_failure_commit": "9ba82dc705a99d8335870318ecca1dbe175b41d3",
+    "run": "https://github.com/dsmcewan/ARGO/actions/runs/43438731795",
+    "failed_test": "an unreadable lock file is reclaimed only after staleMs",
+    "cause": "The old fixture assumed fractional filesystem mtime was already behind integer Date.now at zero timeout.",
+    "repair": "Pin mtime and clock, then test refusal at 0 and 59999ms and reclamation at 60000ms.",
+    "production_lock_code_changed": false,
+    "independent_review": "confirmed",
+    "local_harness_tests_passed": 735
+  }
 }

@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { mkdtempSync, rmSync, writeFileSync, existsSync, readdirSync, readFileSync } from "node:fs";
+import { mkdtempSync, rmSync, writeFileSync, existsSync, readdirSync, readFileSync, utimesSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -131,12 +131,20 @@ test("a LIVE owner's lock is never stolen, however old it looks", async () => {
 });
 
 // An unreadable lock is the one case where age may decide, or a truncated file wedges the seat.
-test("an unreadable lock file is reclaimed only after staleMs", async () => {
+test("an unreadable lock file is reclaimed only after staleMs", async t => {
   await withDir(async dir => {
     const path = _internals.lockPath(dir, "s");
     writeFileSync(path, "{ truncated");
+    // Filesystem mtime can be fractional while Date.now() is integral. Pin both clocks:
+    // a fresh file with staleMs=0 is not guaranteed to have a nonnegative measured age.
+    let now = Date.UTC(2026, 0, 1);
+    utimesSync(path, new Date(now), new Date(now));
+    t.mock.method(Date, "now", () => now);
     assert.equal(_internals.stealIfDead(path, 60_000), false, "a fresh unreadable lock is not yet stale");
-    assert.equal(_internals.stealIfDead(path, 0), true, "past staleMs it must be reclaimable");
+    now += 59_999;
+    assert.equal(_internals.stealIfDead(path, 60_000), false, "before staleMs it must remain held");
+    now += 1;
+    assert.equal(_internals.stealIfDead(path, 60_000), true, "at staleMs it must be reclaimable");
   });
 });
 
