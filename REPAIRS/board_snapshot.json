@@ -1,0 +1,100 @@
+{
+  "exported_at": "2026-11-13T16:36:37.570070+00:00",
+  "audit_valid": true,
+  "audit_head": {
+    "seq": 37,
+    "sha256": "f637cbb223b067b6690a819e65a6feee3f286f0fd1076c4a025a11f1caa0bb61"
+  },
+  "tickets": [
+    {
+      "id": "T-R100",
+      "status": "CLAIMED",
+      "worker_id": "research_r3",
+      "base_commit": "5bb94fffe89d1abcf3a11e97c10739c032044795",
+      "candidate_commit": null,
+      "worktree": "/workspace/ARGO/.board/worktrees/T-R100-1-1c7f8775ed"
+    },
+    {
+      "id": "T-R200",
+      "status": "CLAIMED",
+      "worker_id": "foundation_review",
+      "base_commit": "5bb94fffe89d1abcf3a11e97c10739c032044795",
+      "candidate_commit": null,
+      "worktree": "/workspace/ARGO/.board/worktrees/T-R200-1-fb92256f7f"
+    },
+    {
+      "id": "T-R300",
+      "status": "CLAIMED",
+      "worker_id": "research_r5",
+      "base_commit": "5bb94fffe89d1abcf3a11e97c10739c032044795",
+      "candidate_commit": null,
+      "worktree": "/workspace/ARGO/.board/worktrees/T-R300-1-69ef266ec7"
+    },
+    {
+      "id": "T-R400",
+      "status": "CLAIMED",
+      "worker_id": "harness_review",
+      "base_commit": "5bb94fffe89d1abcf3a11e97c10739c032044795",
+      "candidate_commit": null,
+      "worktree": "/workspace/ARGO/.board/worktrees/T-R400-1-2ad1ad8bab"
+    },
+    {
+      "id": "T-R500",
+      "status": "VERIFYING",
+      "worker_id": "root",
+      "base_commit": "5bb94fffe89d1abcf3a11e97c10739c032044795",
+      "candidate_commit": "edb54c2e006e3163674cc637d0d9915dd925a1b1",
+      "worktree": "/workspace/ARGO/.board/worktrees/T-R500-1-5f05ebb591"
+    },
+    {
+      "id": "T-R800",
+      "status": "BLOCKED",
+      "worker_id": null,
+      "base_commit": null,
+      "candidate_commit": null,
+      "worktree": null
+    },
+    {
+      "id": "T-R900",
+      "status": "READY",
+      "worker_id": null,
+      "base_commit": null,
+      "candidate_commit": null,
+      "worktree": null
+    },
+    {
+      "id": "T-R906",
+      "status": "BLOCKED",
+      "worker_id": null,
+      "base_commit": null,
+      "candidate_commit": null,
+      "worktree": null
+    },
+    {
+      "id": "T-R910",
+      "status": "BLOCKED",
+      "worker_id": null,
+      "base_commit": null,
+      "candidate_commit": null,
+      "worktree": null
+    },
+    {
+      "id": "T-R912",
+      "status": "BLOCKED",
+      "worker_id": null,
+      "base_commit": null,
+      "candidate_commit": null,
+      "worktree": null
+    },
+    {
+      "id": "T-R913",
+      "status": "BLOCKED",
+      "worker_id": null,
+      "base_commit": null,
+      "candidate_commit": null,
+      "worktree": null
+    }
+  ],
+  "paid_vendor_runs": false,
+  "acceptance": "Blocked in this immutable board; separately reviewed controller acceptance required."
+}
