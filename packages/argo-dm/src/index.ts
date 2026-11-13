@@ -1,10 +1,11 @@
+import {ONLOOKER_VOICE} from './characters.ts';
 import {assertContract,assertScope,fail,requireScope,assertKnowledgeDisclosure,freezeDto} from '@argo/contracts';
 import type {EncounterCheckpoint,IntentProposal,Action,KnowledgeView,Outcome,Scope} from '@argo/contracts';
 import {routeCall,sendModelTurn} from '@argo/model-client';import type {Candidate} from '@argo/model-client';
 import {serviceCall} from '@argo/contracts';
 export type Persona='The Chronicler'|'The Fates'|'Plain Guide';
 const personas:readonly Persona[]=['The Chronicler','The Fates','Plain Guide'];
-const HEADER='ARGO narration contract 1.0.0. You render validated outcomes and actor-authorized claims. A belief, rumor or external account is never canonical truth. You cannot mutate world state, confer authority, solicit gifts, force a quest or explain a vanished thread. Return prose only.';
+const HEADER='ARGO narration contract 1.0.0. You render validated outcomes and actor-authorized claims. A belief, rumor or external account is never canonical truth. You cannot mutate world state, confer authority, solicit gifts, force a quest or explain a vanished thread. Return prose only. '+ONLOOKER_VOICE;
 export function proposalFromAction(checkpoint:EncounterCheckpoint,actorId:string,action:Action,proposalId:string):IntentProposal{
  assertContract('EncounterCheckpoint',checkpoint);assertScope(checkpoint.scope);assertContract('Action',action);
  if(checkpoint.policy!=='serialize'&&checkpoint.policy!=='reject')fail('CAPABILITY_UNSUPPORTED','Unsupported checkpoint policy');
@@ -42,3 +43,5 @@ export function createNarrator(options:{scope:Scope;sessionId:string;candidates:
   return renderNarration({...input,view:await current(),candidateText:routed.value});
  }});
 }
+
+export * from './characters.ts';
