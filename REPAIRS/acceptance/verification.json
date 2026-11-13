@@ -1,0 +1,104 @@
+{
+  "verified_code_commit": "ff2263296706147d096b7b39d6356c9a7ce39f07",
+  "gate": {
+    "controller": "deterministic-v1",
+    "commit": "ff2263296706147d096b7b39d6356c9a7ce39f07",
+    "workspace_sha256": "9a75266143e36dfe9a04b1582cc6960e628aefffd68fb9e53bb9e696c6822c78",
+    "merge_ready": true,
+    "checks": [
+      {
+        "name": "generated-types",
+        "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "schema",
+        "output_sha256": "67f16524049736f5c7ae4797b3c9a1905b4a092f4b4819e31854fc4e493866db"
+      },
+      {
+        "name": "boundaries",
+        "output_sha256": "b7edeebfa2373d2151ecb149c4d36bef75b0aa0634b9c26b24e79c8874a157ea"
+      },
+      {
+        "name": "types",
+        "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "board-and-dispatch",
+        "output_sha256": "04bd1d257aee42fbbd3cadd767dc1060fd1df3a0b04d2a3f7cf00d2627539ed8"
+      },
+      {
+        "name": "research-python",
+        "output_sha256": "caae3d0dcba8690597eae6ef9d47b21d0078a8a3cbf3d632b0572b96b7a1dc38"
+      },
+      {
+        "name": "research-tests",
+        "output_sha256": "a5c2dfe85dd27c14043262b22ad979183f2e7b978385dbe35855369374847dbd"
+      },
+      {
+        "name": "research-package",
+        "output_sha256": "21cddbfa4ca6eac9315c754f50759b35411a03f74f5d79a7c5318c6833b4e1b1"
+      },
+      {
+        "name": "foundation",
+        "output_sha256": "7e5f6bbed6f918219d53ed24fec9a419845232b3aef004e15843a098c1e796ac"
+      },
+      {
+        "name": "model-and-process",
+        "output_sha256": "9473a44305d473ad7e1431d963a6399549f9dab21121829e6d2c00e86333b63e"
+      }
+    ]
+  },
+  "log_sha256": "7b05124977d3681d3f1044f388ddc5fc8ea91383c5bf3469e6ee735ad1f76449",
+  "negative_controller_probes": {
+    "trusted_policy": "ff2263296706147d096b7b39d6356c9a7ce39f07",
+    "controller_source": "/workspace/ARGO/.worktrees/repair-trusted",
+    "target": "/tmp/argo-repaired-controller-quqxp6h4/target",
+    "cases": [
+      {
+        "case": "broken-board",
+        "candidate": "eac6ab22c2dee19cbe4de90a7ba773315c09048c",
+        "exit_code": 1,
+        "head_unchanged": true,
+        "log": "/tmp/argo-repaired-controller-quqxp6h4/broken-board.log"
+      },
+      {
+        "case": "early-exit-board",
+        "candidate": "eae2f26eed2055a137a86e573f114931bf4b4b10",
+        "exit_code": 1,
+        "head_unchanged": true,
+        "log": "/tmp/argo-repaired-controller-quqxp6h4/early-exit-board.log"
+      },
+      {
+        "case": "research-bytecode-injection",
+        "candidate": "06d8facf62463309e3eda56d0c6cbe197a6b7e5b",
+        "exit_code": 1,
+        "head_unchanged": true,
+        "log": "/tmp/argo-repaired-controller-quqxp6h4/research-bytecode-injection.log"
+      }
+    ]
+  },
+  "independent_reviews": "review-record.json",
+  "fixed_findings": [
+    "R01",
+    "R02",
+    "R03",
+    "R04",
+    "R05",
+    "R07",
+    "R08",
+    "R09",
+    "R11",
+    "R14",
+    "R15",
+    "R16"
+  ],
+  "deferred_findings": [
+    "R06",
+    "R10",
+    "R12",
+    "R13"
+  ],
+  "frozen_contracts_changed": false,
+  "paid_vendor_calls": false,
+  "scope": "Complete offline gate, independent source/regression reviews and disposable real-controller refusals. No deployment or live provider availability claim."
+}

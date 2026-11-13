@@ -1,0 +1,27 @@
+{
+  "retired_at": "2026-11-13T17:01:56.756706+00:00",
+  "operational_retirement": true,
+  "engine_disabled_by_code": false,
+  "reason": "Board v1 data-only immutable policy cannot accept these application/control-plane changes. Exact code integrated in repair branch and verified by separate controller gate.",
+  "released_claims": [
+    {
+      "ticket": "T-R100",
+      "status": "READY"
+    },
+    {
+      "ticket": "T-R200",
+      "status": "READY"
+    },
+    {
+      "ticket": "T-R400",
+      "status": "READY"
+    }
+  ],
+  "submitted_tickets_left_verifying": [
+    "T-R300",
+    "T-R500"
+  ],
+  "integration_ticket_executed": false,
+  "direct_sql_status_edits": false,
+  "successor": "Initialize a separately reviewed policy/batch for future work. Do not dispatch or heartbeat this retired batch. Do not relabel its unfinished lifecycle MERGED."
+}

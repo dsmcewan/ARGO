@@ -9,3 +9,5 @@ Authorized: make contained repairs without interfering with unfinished/specifica
 - Record exact accepted commits and the board adapter's limits; save to the private ARGO repository without overwriting intervening work.
 
 No implementation in this pass for R06/R10/R12/R13. Their versioned contract or storage-policy requirements are documented as blocked work.
+
+Verified closure: twelve contained repairs passed independent review and all ten combined offline gate groups at `ff22632`. Four findings remain deferred. The coordination batch is operationally retired with true statuses preserved; external evidence is in `REPAIRS/acceptance/`. No paid runs or frozen-contract edits.

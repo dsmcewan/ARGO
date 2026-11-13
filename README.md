@@ -2,7 +2,7 @@
 
 ARGO is a foundation for a living-world roleplaying system: signed deterministic action authority, actor-scoped knowledge, and stateless narration.
 
-All four foundation phases are complete: source audit, frozen contracts, repaired Pantheon model boundary, and the sequential ledger/bridge/Tempted Fates spine. The earlier foundation repairs passed their deterministic gates. The subsequent structural review identified additional repairs now tracked in [the repair batch](REPAIRS/RESOLUTIONS.md). Verification is recorded in [BUILD_PROGRESS.md](BUILD_PROGRESS.md), [AUDIT_STATUS.json](repo-audit/AUDIT_STATUS.json), and [the verification record](repo-audit/evidence/foundation-verification.json).
+All four foundation phases are complete: source audit, frozen contracts, repaired Pantheon model boundary, and the sequential ledger/bridge/Tempted Fates spine. The earlier foundation repairs passed their deterministic gates. Twelve subsequent structural-review findings are repaired and independently verified; four contract/storage decisions remain blocked in [the repair record](REPAIRS/RESOLUTIONS.md). Verification is recorded in [BUILD_PROGRESS.md](BUILD_PROGRESS.md), [AUDIT_STATUS.json](repo-audit/AUDIT_STATUS.json), and [the verification record](repo-audit/evidence/foundation-verification.json).
 
 ```sh
 npm ci --ignore-scripts
