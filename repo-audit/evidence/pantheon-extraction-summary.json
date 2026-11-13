@@ -1,0 +1,36 @@
+{
+  "source_commit": "6f75c29c8e66df2c76996c33b763390807d62bda",
+  "source_repository": "https://github.com/dsmcewan/ARGO",
+  "files": 273,
+  "verified_blobs": 273,
+  "modules": 107,
+  "per_folder": {
+    "pantheon": {
+      "files": 221,
+      "modules": 78
+    },
+    "pantheon-seat-core": {
+      "files": 52,
+      "modules": 29
+    }
+  },
+  "relative_import_candidates_missing": [
+    {
+      "path": "pantheon-seat-core/scripts/delegate-run.mjs",
+      "line": 49,
+      "target": "./lock.mjs",
+      "resolved": "pantheon-seat-core/scripts/lock.mjs",
+      "present": false
+    },
+    {
+      "path": "pantheon/scripts/delegate-run.mjs",
+      "line": 51,
+      "target": "./lock.mjs",
+      "resolved": "pantheon/scripts/lock.mjs",
+      "present": false
+    }
+  ],
+  "syntax_errors": [],
+  "live_services_started": false,
+  "vendor_inference_calls": 0
+}

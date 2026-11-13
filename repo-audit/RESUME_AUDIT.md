@@ -1,5 +1,7 @@
 # Resume ARGO's strict dependency spine
 
+**Update:** Phase 1 static source audit passed after Pantheon was supplied at ARGO commit `6f75c29c8e66df2c76996c33b763390807d62bda`. Read `PANTHEON_AUDIT.md` and `AUDIT_STATUS.json`. The missing-source section and scout prompt below are historical. Next: freeze SYSTEMS/MECHANICS, then patch the active `pantheon/` API path, then build the foundation. Optional local CLI installations are not required for the injected offline API path.
+
 The user authorized four phases in order: read-only extraction → SYSTEMS/MECHANICS schema freeze → actual harness model/router patch → sequential ledger/bridges/Tempted Fates foundation. Parallel implementation lanes may start only after the spine passes. This authorization persists; do not ask for another generic permission to continue.
 
 ## Current result

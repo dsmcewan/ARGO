@@ -1,6 +1,6 @@
 # November 2026 model API audit
 
-Read-only documentation and request-builder review, checked 2026-11-13. No inference request, pool rotation, billing test, or production configuration change occurred. Model existence/documented behavior is not evidence that the user's credentials can call it. The actual Pantheon harness is unavailable, so this is Phase 1 input to a later Phase 3 patch.
+Read-only documentation and request-builder review, checked 2026-11-13. No inference request, pool rotation, billing test, or production configuration change occurred. Model existence/documented behavior is not evidence that the user's credentials can call it. Pantheon has since been supplied; see PANTHEON_AUDIT.md for exact Phase 3 patch locations. This document retains the provider research from Phase 1.
 
 ## Confirmed rules and material corrections
 
@@ -26,7 +26,7 @@ All references below are relative to the verified audit snapshots in `sources/`.
 - `server.mjs:548–578`: xAI path uses Chat Completions and 4.5-specific effort handling. Responses state retention is a distinct implementation obligation.
 - `claude-config/skills/multi-model-seats/scripts/swarm-seat-adapters.mjs:208–227`: CLI adapter chooses names differently from HTTP APIs; Gemini uses Antigravity. Do not pass API IDs to a CLI without checking its actual roster.
 - `LEXI/lexi-dashboard/backend/model_fallback.py`: propagates 400 and auth failures; switches only for rate limiting. Preserve that distinction when generalizing. Shared cooldown read-modify-write concurrency remains an audit target.
-- Actual request builders and routing in `pantheon/src/sdk/adapter.mjs` and `pantheon/src/route/` are unavailable. The above is not a patch to Pantheon.
+- Actual Pantheon builders and routing are now audited in PANTHEON_AUDIT.md. The above historical sites remain source findings; no patch has been applied during the audit.
 
 ## Acceptance cases to pin before changing builders
 

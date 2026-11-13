@@ -1,0 +1,537 @@
+[
+  {
+    "path": "pantheon-seat-core/bin/pantheon-view.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon-seat-core/bin/pantheon.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon-seat-core/scripts/delegate-run.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon-seat-core/scripts/demo.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon-seat-core/scripts/discuss-run.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon-seat-core/scripts/live-check.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon-seat-core/scripts/stream-check.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon-seat-core/scripts/swarm-run.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon-seat-core/scripts/view-check.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon-seat-core/spike/conversation-chain.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon-seat-core/src/context/chain.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon-seat-core/src/context/locate.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon-seat-core/src/context/project.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon-seat-core/src/route/router.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/adapter.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/history.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/seat-sdk.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/stream.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/argv.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/conformance.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/identity.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/lock.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/store.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/turn.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon-seat-core/src/swarm/discuss.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon-seat-core/src/swarm/layered.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon-seat-core/src/swarm/orchestrate.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon-seat-core/src/view/bus.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon-seat-core/src/view/server.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/bin/pantheon-agents-mcp.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/bin/pantheon-build.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/bin/pantheon-view.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/bin/pantheon.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/scripts/agy-seat.py",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/scripts/apply-artifact.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/scripts/board-run.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/scripts/card-check.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/scripts/codex-seat.py",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/scripts/delegate-run.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/scripts/demo.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/scripts/discuss-run.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/scripts/graph-check.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/scripts/lib/repo-root.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/scripts/live-check.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/scripts/live-ship.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/scripts/open-items-run.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/scripts/overseer.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/scripts/probe-agent-card-consumer.py",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/scripts/probe-codex-seat-contract.py",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/scripts/run-transcript.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/scripts/stream-check.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/scripts/swarm-run.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/scripts/view-check.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/spike/conversation-chain.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/agents/render.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/agents/store.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/board/acceptance.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/board/agy-cli.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/board/artifact-files.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/board/artifacts.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/board/canon.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/board/cas.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/board/controller.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/board/dag.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/board/index.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/board/integrate.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/board/merge.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/board/policy.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/board/project.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/board/refs.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/board/run-item.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/board/runtime.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/board/schema.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/board/spawn.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/board/ticket-safety.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/config/models.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/context/chain.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/context/locate.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/context/project.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/mcp/agents-server.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/role/roles.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/route/cooldown.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/route/router.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/sdk/adapter.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/sdk/history.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/sdk/seat-sdk.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/sdk/stream.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/seat/argv.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/seat/conformance.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/seat/identity.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/seat/lock.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/seat/store.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/seat/turn.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/swarm/discuss.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/swarm/layered.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/swarm/orchestrate.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/team/continuity.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/team/law.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/team/measure.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/team/modes.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/team/roster.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/team/subagent.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/view/build-server.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/view/bus.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/view/http-safety.mjs",
+    "ok": true,
+    "error": null
+  },
+  {
+    "path": "pantheon/src/view/server.mjs",
+    "ok": true,
+    "error": null
+  }
+]

@@ -1,0 +1,1913 @@
+[
+  {
+    "path": "pantheon-seat-core/.gitignore",
+    "mode": "100644",
+    "blob_sha": "a1be019b613ef8a82b0a320da566377ae44ce568",
+    "sha256": "cc38d650095bb2559d3b854cbc2664a8ad420562a7f8a66f5227924752b8e755",
+    "bytes": 881
+  },
+  {
+    "path": "pantheon-seat-core/STATE.md",
+    "mode": "100644",
+    "blob_sha": "7a11de0fe43f3960d9994425e2c46a96b385e6b2",
+    "sha256": "ef3b5d7ea45e84df71d62f5ad90ca6206300237febbe20cf34bb4935dbc79445",
+    "bytes": 8386
+  },
+  {
+    "path": "pantheon-seat-core/bin/pantheon-view.mjs",
+    "mode": "100644",
+    "blob_sha": "557e378bcf02663d8c0ba9ae103220b972ea2d7b",
+    "sha256": "b778494f98cecdeddd799ad8221923e7d09122e7120c6e0c5f6c08a2d4a3d29a",
+    "bytes": 1227
+  },
+  {
+    "path": "pantheon-seat-core/bin/pantheon.mjs",
+    "mode": "100755",
+    "blob_sha": "5f8100344dca79780f06fdef56d780ab5d607c87",
+    "sha256": "24a4e5ca0aa134d871d3db5cbcb7d9fd6ec1f5837d4eb4f228594d20be1b0214",
+    "bytes": 11626
+  },
+  {
+    "path": "pantheon-seat-core/docs/plans/2026-09-27-pantheon-seat-core.md",
+    "mode": "100644",
+    "blob_sha": "83d158b86315261bc2ac47bbcff5d25cda9e1ad5",
+    "sha256": "bd45fd86f622b62b220d01e54b0e826442c71104bc31d84711cf85ca41dfa877",
+    "bytes": 59667
+  },
+  {
+    "path": "pantheon-seat-core/docs/specs/2026-09-27-evidence-base.md",
+    "mode": "100644",
+    "blob_sha": "d5a5e66cd5beafc9a76d704c8978bcab0ec33d46",
+    "sha256": "84149875f1b29f52e28f9631cafd26c34ddfb1642f2c2668e60d39a1c15a2e44",
+    "bytes": 59184
+  },
+  {
+    "path": "pantheon-seat-core/docs/specs/2026-09-27-pantheon-design.md",
+    "mode": "100644",
+    "blob_sha": "fb45a4595cd27d740f2b3d6904ea5a284c49f64c",
+    "sha256": "7c1e26182eced048c6c501c78a21805e49862a8130d1801c5f54295bc2233341",
+    "bytes": 29987
+  },
+  {
+    "path": "pantheon-seat-core/package-lock.json",
+    "mode": "100644",
+    "blob_sha": "122d4350c067e263f64252e9250746f2663125ad",
+    "sha256": "4e2e725f194d1368dd72d26c4904df06d56087dbf4d1e28dad86b06f4f6ef63f",
+    "bytes": 21623
+  },
+  {
+    "path": "pantheon-seat-core/package.json",
+    "mode": "100644",
+    "blob_sha": "f2e7a9558f629dafa89ce70d4875be5b453da382",
+    "sha256": "fa2201c52cce57345954e8adefdd2deece48fb36303bac88b97eaf63ea59bfba",
+    "bytes": 342
+  },
+  {
+    "path": "pantheon-seat-core/scripts/delegate-run.mjs",
+    "mode": "100644",
+    "blob_sha": "1eceb1b2b92fdc82393c72151a9ad5fd23fc1da5",
+    "sha256": "22a4d1858aabff34651b505315fbaa1678561bbd6eaef68a1592b11623965182",
+    "bytes": 7192
+  },
+  {
+    "path": "pantheon-seat-core/scripts/demo.mjs",
+    "mode": "100644",
+    "blob_sha": "c3b46d7e80e0ac262aa3c11ef5c6369f9b7f9b36",
+    "sha256": "b826a1134a22719b4ea852eab35405d15370d4792d7e8d4ffd79e1d66aa1abf2",
+    "bytes": 10324
+  },
+  {
+    "path": "pantheon-seat-core/scripts/discuss-run.mjs",
+    "mode": "100644",
+    "blob_sha": "9bc7ceae018b425861c3adc7f64ca61c59f9af34",
+    "sha256": "4d9900eeefed2c490bf7d685f3b4333fe7b913506f813aa2c200494fd7017b23",
+    "bytes": 4702
+  },
+  {
+    "path": "pantheon-seat-core/scripts/live-check.mjs",
+    "mode": "100644",
+    "blob_sha": "082007b2746b04ed9663f27427258c88d0d8ad62",
+    "sha256": "fee84eefc2cdfd22dd2f38215858e8937dc49a93f25f797b4c01027627e3910a",
+    "bytes": 6299
+  },
+  {
+    "path": "pantheon-seat-core/scripts/stream-check.mjs",
+    "mode": "100644",
+    "blob_sha": "a1d2bbd334fb6826d30911b20d783ac2d9176bb8",
+    "sha256": "2dd3efc67a3387d5350f670d0acce423dbb4c3ae531b90ae7ccd15624912fcd4",
+    "bytes": 2763
+  },
+  {
+    "path": "pantheon-seat-core/scripts/swarm-run.mjs",
+    "mode": "100644",
+    "blob_sha": "049a3b09b18e6aef1cc5dde553f5eb261af381aa",
+    "sha256": "32c8dc3beca3beca307c6ff8fe62490dfcb7f99b741446b0484cb9fe6566455a",
+    "bytes": 4646
+  },
+  {
+    "path": "pantheon-seat-core/scripts/view-check.mjs",
+    "mode": "100644",
+    "blob_sha": "aeea79ab9c411ac7aeed69b6c716c782b76767aa",
+    "sha256": "3ef0c3c88d41e8443142e132f34d5aa3874e080ecb3a8f6e12c74838bf507394",
+    "bytes": 6386
+  },
+  {
+    "path": "pantheon-seat-core/spike/conversation-chain.mjs",
+    "mode": "100644",
+    "blob_sha": "b2e1889c53fe17577fa29ed76029c2ba8807e972",
+    "sha256": "4aa81e9d90c34062962bea97f3424f3f5d5f3f157e112995aba16ac7bfaa30d3",
+    "bytes": 4872
+  },
+  {
+    "path": "pantheon-seat-core/src/context/chain.mjs",
+    "mode": "100644",
+    "blob_sha": "36c137aa81d616015ddb7689ab61bc7fbe15e806",
+    "sha256": "aa599886bb1b4feeb79402fd5905cdad6f7ef85c356347efa4ecd3f3d9b5e2f2",
+    "bytes": 2054
+  },
+  {
+    "path": "pantheon-seat-core/src/context/locate.mjs",
+    "mode": "100644",
+    "blob_sha": "5b4bee92fd261ccb5ba33de554d8e78a84aa044a",
+    "sha256": "88c4423d778f115f5a68c3e71bb9d769e1c4ce82e4b38dda02981e61bc5f7f5e",
+    "bytes": 9259
+  },
+  {
+    "path": "pantheon-seat-core/src/context/project.mjs",
+    "mode": "100644",
+    "blob_sha": "b0e90453f2078eb6634a1e53a98313b015ef0693",
+    "sha256": "6dba600c4a5f1753c0a9c36bef4295154ff041217dc5483527acd5d9819ca4cf",
+    "bytes": 10180
+  },
+  {
+    "path": "pantheon-seat-core/src/route/router.mjs",
+    "mode": "100644",
+    "blob_sha": "ac6647d43088d5a41b59230b15e87bd33fc7163f",
+    "sha256": "7f8b50b35b2703a75a7ba51d8b682ca59acb91ec6542b73d4b0ba565c2ce1504",
+    "bytes": 10891
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/adapter.mjs",
+    "mode": "100644",
+    "blob_sha": "eac4f1b296fae4706622876c4df572fea223d3cc",
+    "sha256": "ebc85498accf88d22c397b49138cd5ef58665b42ec46f0d343d037efc962a9ab",
+    "bytes": 20323
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/history.mjs",
+    "mode": "100644",
+    "blob_sha": "a7900538c1b55ece5d7dd9fc4ade073b98abf027",
+    "sha256": "aa9f9d246cf6bd0930655136e4ab36390eb0fba0fb684dd29dacf22d9a355d3b",
+    "bytes": 3050
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/seat-sdk.mjs",
+    "mode": "100644",
+    "blob_sha": "943d07e79cba6d8d18c9bb255344c6915f10e935",
+    "sha256": "5491f963a2543a3df57fa8ae7a32686664766999bc5e3a81cedd975e334a2e9e",
+    "bytes": 7103
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/stream.mjs",
+    "mode": "100644",
+    "blob_sha": "5fe3cd891376d135178fa1a9c01a1cb7005833ec",
+    "sha256": "6b9e4d4be1aba40e61991eb529c931a93e8ccfa85b59a196a3815e0ff9cc3640",
+    "bytes": 6047
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/argv.mjs",
+    "mode": "100644",
+    "blob_sha": "5a57647b5e46b34c9f012e6a30f1fce7c47eb7af",
+    "sha256": "a028358fa059c6b74e71ee89e27200e2758130c9165fcac6cbe01186588deca9",
+    "bytes": 6578
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/conformance.mjs",
+    "mode": "100644",
+    "blob_sha": "c13e564d504eb4f5ab2f474cef2fa62e4f171597",
+    "sha256": "0f868cf0cbf974034c5576b62b2d3673e8909bcd790bb304753709c911cca4b8",
+    "bytes": 2421
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/identity.mjs",
+    "mode": "100644",
+    "blob_sha": "8506ffafbe80d152f4f60d680505d0c8e4362376",
+    "sha256": "2698607d0bef48ae25fbaf8e2626f24189eda16f98e03159ab78e53391f6aae0",
+    "bytes": 1670
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/lock.mjs",
+    "mode": "100644",
+    "blob_sha": "e0e2135aa323547bb63a63c3dc9ae2c3d75ddc7f",
+    "sha256": "1e1db600e55bbde173b962637b53053466fec2101544faeb23ad08866197923a",
+    "bytes": 7024
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/store.mjs",
+    "mode": "100644",
+    "blob_sha": "c57b8d81c7efdc8216e609bb80dcd0ee69dde9e7",
+    "sha256": "d77445ff39cb12035c3b65026466222725ee4af86a2719075ced0c007b418e76",
+    "bytes": 4265
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/turn.mjs",
+    "mode": "100644",
+    "blob_sha": "32b2fa063c09aca7aaaeb72500b000936f988a76",
+    "sha256": "e3255ae9d46053edb53f61cbf7db582d38551d4625ff63cd5858197d017bb85f",
+    "bytes": 7401
+  },
+  {
+    "path": "pantheon-seat-core/src/swarm/discuss.mjs",
+    "mode": "100644",
+    "blob_sha": "bc4599e76587c1d52ef95b2a89894f65cc30f60e",
+    "sha256": "f669a21e89dc677ac72d9e9c7e7292e8cf3bd2a696e0dea4454e6d3b9cb2634a",
+    "bytes": 14871
+  },
+  {
+    "path": "pantheon-seat-core/src/swarm/layered.mjs",
+    "mode": "100644",
+    "blob_sha": "64d8c2c65be8af43627bcd29a5307e8c05ce1c68",
+    "sha256": "e1d51f0b8fc01ee82fca4e7f56116a350768a2ac00660cbb9a54fafe8ec54ce1",
+    "bytes": 8219
+  },
+  {
+    "path": "pantheon-seat-core/src/swarm/orchestrate.mjs",
+    "mode": "100644",
+    "blob_sha": "9bfa4f218f99463ecfc849aa35cb3b8816cf4cc6",
+    "sha256": "46783e0f150280381cd616f029b9132a0c1b9cb1db4d26890c09c099dd3a9b6f",
+    "bytes": 7847
+  },
+  {
+    "path": "pantheon-seat-core/src/view/app.html",
+    "mode": "100644",
+    "blob_sha": "f98deb364ec8a5544fddf1bf923f8032398ef1cf",
+    "sha256": "bb7d66c93df159406e1530b4e25a5918fe181a712fdf29a26f65e4d58aeee45d",
+    "bytes": 10191
+  },
+  {
+    "path": "pantheon-seat-core/src/view/bus.mjs",
+    "mode": "100644",
+    "blob_sha": "416e8810157e4680f1680ac357f110c766134197",
+    "sha256": "0eaf89fff5454aa838cee809bde0bf6d90c061688197d0605c8409b58197b36a",
+    "bytes": 3589
+  },
+  {
+    "path": "pantheon-seat-core/src/view/server.mjs",
+    "mode": "100644",
+    "blob_sha": "2a9ba1af8222a9141dadfda4792456ecc36a8838",
+    "sha256": "432bcdf81df4f19abe03bf3874ea2b35b0f6b63fd1bf70fa533d496bd781914f",
+    "bytes": 6155
+  },
+  {
+    "path": "pantheon-seat-core/tests/acceptance-cli.test.mjs",
+    "mode": "100644",
+    "blob_sha": "bc222dba30b02aae0235dbb74812adbf71d38b9d",
+    "sha256": "9c43a80973c34ae97e28130fc9de1da8f1a04b340a48b60ff4a0b2d82dea7d31",
+    "bytes": 30177
+  },
+  {
+    "path": "pantheon-seat-core/tests/context-chain.test.mjs",
+    "mode": "100644",
+    "blob_sha": "448f379bbc81548945a1893c9632c13ebd1cae60",
+    "sha256": "5023dfed22a67d4e5d6351cdb858a295fabe48388a15b6e646bec193a6fe6890",
+    "bytes": 4839
+  },
+  {
+    "path": "pantheon-seat-core/tests/context-locate.test.mjs",
+    "mode": "100644",
+    "blob_sha": "e1b2c9ca7a480f1abc1bdda49cea0f4ce3db8945",
+    "sha256": "8604a5f755b6cb9d362547e1c8ae956f835bb11644c2f08b2490d721a873610d",
+    "bytes": 9667
+  },
+  {
+    "path": "pantheon-seat-core/tests/context-project.test.mjs",
+    "mode": "100644",
+    "blob_sha": "0bec659a82d580d41b8d1f06f9e64bd0d6c577b6",
+    "sha256": "bb34851c3dc6eeac17824e3c2fd7e39891bdb0c33601a7c3c7c4eb559782c308",
+    "bytes": 8351
+  },
+  {
+    "path": "pantheon-seat-core/tests/route-router.test.mjs",
+    "mode": "100644",
+    "blob_sha": "a9c7d98021f14130ee7331c5867d0d4aadccc763",
+    "sha256": "1600d7229e45d272d7f1e23d5222c7cf3b8f38ddf44ac03fe1ea4bc1f8dc3586",
+    "bytes": 6533
+  },
+  {
+    "path": "pantheon-seat-core/tests/sdk-transport.test.mjs",
+    "mode": "100644",
+    "blob_sha": "47734eba99f407d4ec6b0118abee365d29b4796c",
+    "sha256": "0c9852c25fe0d673a2e2b21906d260fbcdec45dfbde06fdaec45e215f676082a",
+    "bytes": 17521
+  },
+  {
+    "path": "pantheon-seat-core/tests/seat-argv.test.mjs",
+    "mode": "100644",
+    "blob_sha": "75336a5bf94a9cd16805e7b335a0cb5eddd38b79",
+    "sha256": "51505c7f2e7e2a85a72b4f557b7a304ff5ab568ae66f1846d32c5a4a4c2a2b98",
+    "bytes": 6788
+  },
+  {
+    "path": "pantheon-seat-core/tests/seat-conformance.test.mjs",
+    "mode": "100644",
+    "blob_sha": "90602a79257b971f5c75ef66d65032450db76cbe",
+    "sha256": "93bb874bc56b4df57668c096d65e0bb187984b34434e245827adfc53ef4845ae",
+    "bytes": 5633
+  },
+  {
+    "path": "pantheon-seat-core/tests/seat-identity.test.mjs",
+    "mode": "100644",
+    "blob_sha": "10d3b9951bdc8b49118418ecec9f840f15dba968",
+    "sha256": "12979d79b0903896fa522ff11454bd22a31c32777115beb89564ec23ab1873fe",
+    "bytes": 2466
+  },
+  {
+    "path": "pantheon-seat-core/tests/seat-lock.test.mjs",
+    "mode": "100644",
+    "blob_sha": "1dc526058bc45ca11cd585fc17a11528fc959c12",
+    "sha256": "4ae11a23104dcf7fffb8cf835a04a31fb1901a2e00dc3c1e41440d5cee7b0962",
+    "bytes": 8164
+  },
+  {
+    "path": "pantheon-seat-core/tests/seat-store.test.mjs",
+    "mode": "100644",
+    "blob_sha": "3f7ebca42ea183e81d50f449952b0f1dcd3ed9ce",
+    "sha256": "e172cc8903eb99b9f4a4d111bf1a19893f1c873de21783d8fdf26d994f0dfffe",
+    "bytes": 5699
+  },
+  {
+    "path": "pantheon-seat-core/tests/seat-turn.test.mjs",
+    "mode": "100644",
+    "blob_sha": "fa09e1a7315622466bd55985a01e10b10556b4f7",
+    "sha256": "82dfa98d56c494384dd114270120d21cac97aca0fd48d2ff2304084faf6645c3",
+    "bytes": 16764
+  },
+  {
+    "path": "pantheon-seat-core/tests/swarm-discuss.test.mjs",
+    "mode": "100644",
+    "blob_sha": "7907a1f2cd425f99f80b6c6556e89b76383057f9",
+    "sha256": "d9f3bcaffbd9a59b54eae394175ecc12f758db7b0cb7c268237cf1be3c92ebd1",
+    "bytes": 10215
+  },
+  {
+    "path": "pantheon-seat-core/tests/swarm-layered.test.mjs",
+    "mode": "100644",
+    "blob_sha": "226d7d4deb3fac9f3bb131ed7550cf58048adcd8",
+    "sha256": "bf9edc531c0d3099c2133c8d9056b8ebbf67f478da3689d5ea5bb8d7d0545e07",
+    "bytes": 5704
+  },
+  {
+    "path": "pantheon-seat-core/tests/view-bus.test.mjs",
+    "mode": "100644",
+    "blob_sha": "39d67a8d4ed62bfcb7c3c50bff66775124b61938",
+    "sha256": "39f643f229409ef8c4ae71d6930dfbeed60de4b129ff0aea9f83cfc2f397b2e0",
+    "bytes": 5120
+  },
+  {
+    "path": "pantheon/.agents/agents/pantheon-fact-checker/agent.md",
+    "mode": "100644",
+    "blob_sha": "9a510891dcd627db920b22e65682203400db3d4c",
+    "sha256": "b3eb80f0e66ef73bbc250b71cb3ce14dd5435fdefe7134de6ca80d8b08f4d494",
+    "bytes": 1510
+  },
+  {
+    "path": "pantheon/.agents/agents/pantheon-implementer/agent.md",
+    "mode": "100644",
+    "blob_sha": "b84bfc01171c4299e094652e781b2942eef465cb",
+    "sha256": "94f8d6b9d8a3d389719e43d24a27f3c2cb9ec30e2809d89aa57b2518812cbb4f",
+    "bytes": 1824
+  },
+  {
+    "path": "pantheon/.agents/agents/pantheon-planner/agent.md",
+    "mode": "100644",
+    "blob_sha": "d4d1119e3880b0dcffa3b091d81e24d5ad4e92da",
+    "sha256": "58572e388d73f56bf92db0e5461810dbe3569b9a71c3ec242a57927c0017fbdd",
+    "bytes": 1428
+  },
+  {
+    "path": "pantheon/.agents/agents/pantheon-reviewer/agent.md",
+    "mode": "100644",
+    "blob_sha": "bc7f90578587099c19f5fdabdbd738a612754cb2",
+    "sha256": "2c6856e5eecd4a75142a58d7c9ab7db24520d09eb6b216d970e5aa3923fed05c",
+    "bytes": 2884
+  },
+  {
+    "path": "pantheon/.agents/agents/pantheon-scout/agent.md",
+    "mode": "100644",
+    "blob_sha": "b28948333c6fbb7846473c1b8f996f7fd3441e59",
+    "sha256": "38ee04e66b032e6ce206fd7bf023f5d8c6c334c6fd6d7fc5da5f0fd86b285f07",
+    "bytes": 2060
+  },
+  {
+    "path": "pantheon/.claude/agents/README.md",
+    "mode": "100644",
+    "blob_sha": "b85591e179cd8738ddf44d1de1b04f70ce2f9484",
+    "sha256": "73b89aa60d79f0b66ca337b4d34fb6f4978c93b5222c5bb528ad90022977f37f",
+    "bytes": 14487
+  },
+  {
+    "path": "pantheon/.claude/agents/advocate.md",
+    "mode": "100644",
+    "blob_sha": "ff1ab13742e4b3f4a31a8060e52dd5aa6df82007",
+    "sha256": "9e72fd79993366e6c8cf5368d0fed5acb8c8d8b7733b7a8e02a53e23065e73b3",
+    "bytes": 7909
+  },
+  {
+    "path": "pantheon/.claude/agents/agentic-engineer.md",
+    "mode": "100644",
+    "blob_sha": "0eb424cfc50e1232301ee8f53fdbf7e400a082f3",
+    "sha256": "ee251f3ac1cbb83ce31eb617a0af2c7ceef24d407af678c09dec3fa0c9aa6bb2",
+    "bytes": 10483
+  },
+  {
+    "path": "pantheon/.claude/agents/blade_runner.md",
+    "mode": "100644",
+    "blob_sha": "cb8c615c14e7ebde2d28083c33813821a11710ee",
+    "sha256": "0fe7760c2d0a614dadc4b30d1ee4ed12a5316ef1ed98aa8b313008d8700fa191",
+    "bytes": 7671
+  },
+  {
+    "path": "pantheon/.claude/agents/cinematic-ui-specialist.md",
+    "mode": "100644",
+    "blob_sha": "e187dcbe557c10cf465259a530d4cd1c5eb4c6d2",
+    "sha256": "83bc48862e33d50989a36804bb89ce8e81fc476b0dd00c70830a5b6dcadcee26",
+    "bytes": 15688
+  },
+  {
+    "path": "pantheon/.claude/agents/controller.md",
+    "mode": "100644",
+    "blob_sha": "e4d2657348ad654cbca9e7e52270b8c7211e898f",
+    "sha256": "1e6336f32a639c229c9c0335e8642750da0af6cd5ae2d7721c9f56c0a5958056",
+    "bytes": 17878
+  },
+  {
+    "path": "pantheon/.claude/agents/explorer.md",
+    "mode": "100644",
+    "blob_sha": "348cbc07d9e44aad86dde3157e1c643c15fc64a6",
+    "sha256": "2fe6462c39fb556c195eaf094eef12ec36dcc07f3881541601ca77899b9d47d0",
+    "bytes": 8600
+  },
+  {
+    "path": "pantheon/.claude/agents/implementer.md",
+    "mode": "100644",
+    "blob_sha": "fa9a1771f26e339ab5a9118d7239502ffea62fc9",
+    "sha256": "903cfbe9c23aba278849d3255f298b0435172d8a286510864220818bf670aa5f",
+    "bytes": 11275
+  },
+  {
+    "path": "pantheon/.claude/agents/judge.md",
+    "mode": "100644",
+    "blob_sha": "405f88734882f02740d047fbcbd0239c214be443",
+    "sha256": "852689e6c86f724c58da7e7968a4ad7f2e3a13d4dc03994369ca2ab7b5541e2c",
+    "bytes": 10305
+  },
+  {
+    "path": "pantheon/.claude/agents/mime.md",
+    "mode": "100644",
+    "blob_sha": "6630e191cc60a88a393236a335251ffaa013109e",
+    "sha256": "29358dc82f46275205e1e5858a39d1d2644c47437f2f96ef0e824d82f63f9af3",
+    "bytes": 3416
+  },
+  {
+    "path": "pantheon/.claude/agents/overbearing-babysitter.md",
+    "mode": "100644",
+    "blob_sha": "d70493bb41d441c7f5fce99bc86f44f7c4b15ef4",
+    "sha256": "496462e220abaa340a47f2eba30e460e0b156e8c84e264ec34ece6463447b5e4",
+    "bytes": 7725
+  },
+  {
+    "path": "pantheon/.claude/agents/pantheon-guardian.md",
+    "mode": "100644",
+    "blob_sha": "0bbd5a1d0cf85886e713b283329939872a275cd0",
+    "sha256": "93cffa4ae1e6ab4dd8f9423086e2a33ae2c3f4bbf61b1b97188a73a0fbc4837d",
+    "bytes": 5523
+  },
+  {
+    "path": "pantheon/.claude/agents/planner.md",
+    "mode": "100644",
+    "blob_sha": "0aab836091d901c25ef0891a386e0b3295d5bef4",
+    "sha256": "d2ae5c20364697476f9a663e777a08ec74fb0c7445f2c7cdbb19b2eb047e93f7",
+    "bytes": 9164
+  },
+  {
+    "path": "pantheon/.claude/agents/precision-coder.md",
+    "mode": "100644",
+    "blob_sha": "cd2311d2566626507c4204c4d2c3289e87025328",
+    "sha256": "1fe187489c185d7b61eb425f4f29a48c7e4fef8d79ca0afa3f3568fc22668a29",
+    "bytes": 10528
+  },
+  {
+    "path": "pantheon/.claude/agents/reviewer.md",
+    "mode": "100644",
+    "blob_sha": "74dad864abd50a737326acf12d25567a666fd513",
+    "sha256": "98a8e222c4509f59f98cd7c37a22a93fc7a1a1ab674f7cdcab8cc0b69db89cda",
+    "bytes": 13504
+  },
+  {
+    "path": "pantheon/.claude/agents/scout.md",
+    "mode": "100644",
+    "blob_sha": "40f9d127f87e628d6739db04737b4de397d2ad26",
+    "sha256": "1157213cb89c6299f96dbf0545ae969b21983cac8d2898205de47bfc1ad41920",
+    "bytes": 8789
+  },
+  {
+    "path": "pantheon/.claude/agents/sdk-model-reviewer.md",
+    "mode": "100644",
+    "blob_sha": "da5a43dee0fd85ce938c4247f21b30aeb9a834e0",
+    "sha256": "13fd52aadd2870982304f3a57c49a528f45a2bee3a4ab07752bb33af099b0596",
+    "bytes": 10507
+  },
+  {
+    "path": "pantheon/.gitignore",
+    "mode": "100644",
+    "blob_sha": "6b284dd6a28d9a230f237d43de28b890a71efb93",
+    "sha256": "13703421918dc9e050bd42aab6a55e9ae5c89be0e013c78064e7d03355fab794",
+    "bytes": 2296
+  },
+  {
+    "path": "pantheon/AGENTS.md",
+    "mode": "100644",
+    "blob_sha": "26207f7b062bb392980852d7e70099ece766140f",
+    "sha256": "43cf92adf85ea332e3cadc931a82ae772bed217d574b0cf71b82bb29596aac48",
+    "bytes": 7581
+  },
+  {
+    "path": "pantheon/README.md",
+    "mode": "100644",
+    "blob_sha": "e2c41e2448a24946aa22352fb03473556eb50eeb",
+    "sha256": "422ea82fab98114374ec77988c416cfcf06db8d912d2b7597a30d3947a43cfb4",
+    "bytes": 13030
+  },
+  {
+    "path": "pantheon/STATE.md",
+    "mode": "100644",
+    "blob_sha": "f46eff548a8a64aeafc6acccd6b4f26e67795884",
+    "sha256": "3d7e82988dac087f15bd51021659a893beb6f03c4e6fb8827bb9f62b947fd218",
+    "bytes": 34931
+  },
+  {
+    "path": "pantheon/bin/pantheon-agents-mcp.mjs",
+    "mode": "100644",
+    "blob_sha": "abc2a162511f71e7631946752517f6da5e7a0c18",
+    "sha256": "fc1109eebb18e5ed0e57cecd780d84b8508c89edd358f0ad588189b7375b9f33",
+    "bytes": 2391
+  },
+  {
+    "path": "pantheon/bin/pantheon-build.mjs",
+    "mode": "100644",
+    "blob_sha": "13aa15f3daff8245473802b39b49f1d1ba6c46e7",
+    "sha256": "fc1e134707f3e9abeccd6ba6c88079ec810e176ed16ab8125536b6250f2329d3",
+    "bytes": 2767
+  },
+  {
+    "path": "pantheon/bin/pantheon-view.mjs",
+    "mode": "100644",
+    "blob_sha": "557e378bcf02663d8c0ba9ae103220b972ea2d7b",
+    "sha256": "b778494f98cecdeddd799ad8221923e7d09122e7120c6e0c5f6c08a2d4a3d29a",
+    "bytes": 1227
+  },
+  {
+    "path": "pantheon/bin/pantheon.mjs",
+    "mode": "100755",
+    "blob_sha": "4e38b15558e1609ba1a66c04f34f63a7f25acdf6",
+    "sha256": "3c305e2fcc1943d912bfcaa5ec78796f57251ed69445f57d576ba6c922288600",
+    "bytes": 12056
+  },
+  {
+    "path": "pantheon/docs/architecture.md",
+    "mode": "100644",
+    "blob_sha": "4dc5f0d8eb50c960363f410a1f60fd662ffb9fd1",
+    "sha256": "0c3d7a1cfecc84754943009e6b169fdcfeac44330491088787aa07a44c219b8e",
+    "bytes": 23701
+  },
+  {
+    "path": "pantheon/docs/design/2026-09-27-live-view-mockup.html",
+    "mode": "100644",
+    "blob_sha": "cf463a7ba074b9b54936cc4a6f7373752b3c42fc",
+    "sha256": "94e28d55071743bf5ce96b2430c6ad07f3baf3de80e279e93fd440156d0324cb",
+    "bytes": 26677
+  },
+  {
+    "path": "pantheon/docs/design/2026-09-28-canvas2d-vs-webgl-render-research.md",
+    "mode": "100644",
+    "blob_sha": "23d9c5d92954ab8cfc378194c6f682f9cd51625b",
+    "sha256": "4db72a36854f98a6f8664db385e6a58372fab329105865e1a363e95de8927bdd",
+    "bytes": 10040
+  },
+  {
+    "path": "pantheon/docs/design/2026-09-28-light-physics-demo.html",
+    "mode": "100644",
+    "blob_sha": "3f5ce43a9ea83f0fe0848ec5fc7da5aee1ff4030",
+    "sha256": "2bd2746f38efadc1cb4d15d1786e4b5eac311e150ffe1bf6687477cec35caaa1",
+    "bytes": 13625
+  },
+  {
+    "path": "pantheon/docs/design/2026-09-28-r3f-glass-demo.html",
+    "mode": "100644",
+    "blob_sha": "b048fec706a971f1145443524c51fef24631e5f0",
+    "sha256": "de2c66b970e7c7c8a47f0ca1f02f01cd0db91daa04326645a20abb28dacd0319",
+    "bytes": 17216
+  },
+  {
+    "path": "pantheon/docs/plans/2026-09-27-live-view-section-2-stream-replay-camera.md",
+    "mode": "100644",
+    "blob_sha": "d53986c5c73e1c082765f811b3ef79f6f069cfb4",
+    "sha256": "a6e0cda75757a53bdbb8e67b450b6422aaec14b8117dc5cf9b898f5b3a8652d1",
+    "bytes": 64693
+  },
+  {
+    "path": "pantheon/docs/plans/2026-09-27-pantheon-seat-core.md",
+    "mode": "100644",
+    "blob_sha": "83d158b86315261bc2ac47bbcff5d25cda9e1ad5",
+    "sha256": "bd45fd86f622b62b220d01e54b0e826442c71104bc31d84711cf85ca41dfa877",
+    "bytes": 59667
+  },
+  {
+    "path": "pantheon/docs/plans/2026-09-28-live-view-section-3a-light-physics.md",
+    "mode": "100644",
+    "blob_sha": "ce8f1aa5bd60f40d63fbeddda770499b07245d9c",
+    "sha256": "cc86a877271ca8fc27c15e7fd6f9ac16d37bada1afc32822585c1dde9be742b1",
+    "bytes": 26636
+  },
+  {
+    "path": "pantheon/docs/reviews/2026-09-27-external-review.md",
+    "mode": "100644",
+    "blob_sha": "29f85bcb3cdf18576e43b19a2b1d95254ab99146",
+    "sha256": "9c67d2d7d252789777b5f8f886ff0bc237ddc65041230ec6f5bd369faf8c3525",
+    "bytes": 54130
+  },
+  {
+    "path": "pantheon/docs/reviews/2026-09-27-orchestration-rereview-addendum.md",
+    "mode": "100644",
+    "blob_sha": "ba7481401fa0260fb1d686431345f219c9daf2e8",
+    "sha256": "f14a5dedfb3730ca263b0d6039f1508a1242ffe1431ea3296d457fe79c394296",
+    "bytes": 7250
+  },
+  {
+    "path": "pantheon/docs/reviews/2026-09-27-orchestration-review.md",
+    "mode": "100644",
+    "blob_sha": "f126eba8617c6823d6ce43d7adcd390ca227c8af",
+    "sha256": "2381fead77fbd9992720d0c881f61346780f737287d4bd5e74330e3d4d3d26fb",
+    "bytes": 13464
+  },
+  {
+    "path": "pantheon/docs/runs/2026-09-27-build-transcript.md",
+    "mode": "100644",
+    "blob_sha": "217e02bb2608a0384b0a9c9d2135dc1ad3df34e3",
+    "sha256": "bf0a6bd7202e9b1354389da36ac9f004061d67cb859533adf067cf7d752dc23f",
+    "bytes": 18830
+  },
+  {
+    "path": "pantheon/docs/runs/2026-09-27-seat-behaviour-revisions.md",
+    "mode": "100644",
+    "blob_sha": "3b46a3f7897ca82396291b4452de52d1d88f3bc9",
+    "sha256": "c0ef2d45d92142409a1fd19e5db39a9ac47ab0cb92c8144bb179f79849c5cd5d",
+    "bytes": 21596
+  },
+  {
+    "path": "pantheon/docs/runs/graph/2026-09-27-build.jsonl",
+    "mode": "100644",
+    "blob_sha": "8e227c59593879c990fcb038ac86307ecb33590f",
+    "sha256": "0eedc9d9dcf9f2fb76e1e0b5457541d6e54f5b351478348f9527ccfa66ea5368",
+    "bytes": 35809
+  },
+  {
+    "path": "pantheon/docs/runs/graph/2026-09-27-build.md",
+    "mode": "100644",
+    "blob_sha": "5c81356ddceb6287692bca128671897372b9eb20",
+    "sha256": "662ef43b92f4b4ef5e5360f90117bbd952e67c278ab6a805f4523165b8ac6f29",
+    "bytes": 36312
+  },
+  {
+    "path": "pantheon/docs/specs/2026-09-27-evidence-base.md",
+    "mode": "100644",
+    "blob_sha": "d5a5e66cd5beafc9a76d704c8978bcab0ec33d46",
+    "sha256": "84149875f1b29f52e28f9631cafd26c34ddfb1642f2c2668e60d39a1c15a2e44",
+    "bytes": 59184
+  },
+  {
+    "path": "pantheon/docs/specs/2026-09-27-live-view-design.md",
+    "mode": "100644",
+    "blob_sha": "9964439beabd2ccae9d7ef43013c1fe447b895ce",
+    "sha256": "8254f7c4658ff005de8800bbd35ca1cf4b70acc0bf4078f9fec087220473a165",
+    "bytes": 26470
+  },
+  {
+    "path": "pantheon/docs/specs/2026-09-27-pantheon-design.md",
+    "mode": "100644",
+    "blob_sha": "fb45a4595cd27d740f2b3d6904ea5a284c49f64c",
+    "sha256": "7c1e26182eced048c6c501c78a21805e49862a8130d1801c5f54295bc2233341",
+    "bytes": 29987
+  },
+  {
+    "path": "pantheon/docs/specs/2026-09-27-vendor-model-facts.md",
+    "mode": "100644",
+    "blob_sha": "00e96e4d0e6c7e54ae0e3e3898d4bca63e5763cc",
+    "sha256": "6d56f451fafdc0c831e32d36d5c59b1c51e3bdcb29424a7e9161d1653ef5c220",
+    "bytes": 10759
+  },
+  {
+    "path": "pantheon/docs/superpowers/plans/2026-09-27-dead-reckoning-ui.md",
+    "mode": "100644",
+    "blob_sha": "6938725bd7ec8b2a6e0f8869e0f3964a95285f41",
+    "sha256": "b44795d0792beee2cdc9cbf648a65f7e4a21ad1e19fe12248976230795a560c5",
+    "bytes": 33057
+  },
+  {
+    "path": "pantheon/docs/superpowers/plans/2026-09-28-dead-reckoning-ui-section-two.md",
+    "mode": "100644",
+    "blob_sha": "f0e6242a34cdddd731b3c399a52a4fadeb02ed0b",
+    "sha256": "3bc1b37aa4cf19c56e4c8abf2edc854140d5194f8a6557b4f59888d5d6ae003f",
+    "bytes": 29288
+  },
+  {
+    "path": "pantheon/docs/superpowers/plans/2026-09-28-lexi-no-terminal-build.md",
+    "mode": "100644",
+    "blob_sha": "fad3285d6aae284df738caa75c3211103706215f",
+    "sha256": "dd21bb7f56404dfd21252aa05930ff6e30ec48a6a45b71aa252c0fa8de81a003",
+    "bytes": 43908
+  },
+  {
+    "path": "pantheon/docs/superpowers/specs/2026-09-27-dead-reckoning-ui-design.md",
+    "mode": "100644",
+    "blob_sha": "153897c4ebb8a46dfe1668009a58f574a90b04fc",
+    "sha256": "d5b5b16e6b918355db744b1d4b327533e93e9772a3933345cd6ea7ca5cdadf2d",
+    "bytes": 11910
+  },
+  {
+    "path": "pantheon/docs/superpowers/specs/2026-09-28-lexi-no-terminal-build.md",
+    "mode": "100644",
+    "blob_sha": "51cde15356a2c94531abce7c3f6248544566e866",
+    "sha256": "2af9dbbc3c6c1cefc57748073058b2e383ed276a6d5117a59a6c77cc071c6782",
+    "bytes": 10188
+  },
+  {
+    "path": "pantheon/package-lock.json",
+    "mode": "100644",
+    "blob_sha": "122d4350c067e263f64252e9250746f2663125ad",
+    "sha256": "4e2e725f194d1368dd72d26c4904df06d56087dbf4d1e28dad86b06f4f6ef63f",
+    "bytes": 21623
+  },
+  {
+    "path": "pantheon/package.json",
+    "mode": "100644",
+    "blob_sha": "f2e7a9558f629dafa89ce70d4875be5b453da382",
+    "sha256": "fa2201c52cce57345954e8adefdd2deece48fb36303bac88b97eaf63ea59bfba",
+    "bytes": 342
+  },
+  {
+    "path": "pantheon/scripts/__pycache__/agy-seat.cpython-313.pyc",
+    "mode": "100644",
+    "blob_sha": "c68d9d844d538d57c596c52dc7d95621b5704e3a",
+    "sha256": "72d0f0156d9d0b014c8fd5634461c9841a0922b649abff8beb32fbf039542058",
+    "bytes": 23398
+  },
+  {
+    "path": "pantheon/scripts/agy-seat.py",
+    "mode": "100644",
+    "blob_sha": "7e6137b9db842c13b47a596e75f9eb0cac9b72fc",
+    "sha256": "68f4cd69b6be3753f41f544f2746f024041f24a82058daa78e16462b845eb6ed",
+    "bytes": 14785
+  },
+  {
+    "path": "pantheon/scripts/apply-artifact.mjs",
+    "mode": "100644",
+    "blob_sha": "97b3a01614c8a467e896653d626e421ae9c8197b",
+    "sha256": "0b18d35a873d0cefda98c2a6918446f55ffaa5496d859c8b22acf9a47c2d2fab",
+    "bytes": 3666
+  },
+  {
+    "path": "pantheon/scripts/board-run.mjs",
+    "mode": "100644",
+    "blob_sha": "9f275cf9545ee0a3f6cbe5bd3654a926244691e4",
+    "sha256": "c12a1938c533a82b526e3c3784db601981296fe9c86ccf09dc376e52080e859b",
+    "bytes": 14637
+  },
+  {
+    "path": "pantheon/scripts/card-check.mjs",
+    "mode": "100644",
+    "blob_sha": "5e77833225848e986f83665651dc5874fee285ea",
+    "sha256": "7ed18df9343da59f442c804893235b328fe2e085d24b7b906f4f71ba221f9421",
+    "bytes": 5947
+  },
+  {
+    "path": "pantheon/scripts/codex-seat.py",
+    "mode": "100644",
+    "blob_sha": "ccc395dd79dd2036611cf0d5f93fedfebb09b171",
+    "sha256": "16607c4a7780cb111f5dada41c1f0d80bfba3ff294fc051070d1cfb246610b35",
+    "bytes": 6189
+  },
+  {
+    "path": "pantheon/scripts/delegate-run.mjs",
+    "mode": "100644",
+    "blob_sha": "082bfb33f2b45df1e6956fb2dc1f379464a38afe",
+    "sha256": "f5449da3700d6a8eb604436da454206432679525233a7be0ae5a5850cc5a17f2",
+    "bytes": 7643
+  },
+  {
+    "path": "pantheon/scripts/demo.mjs",
+    "mode": "100644",
+    "blob_sha": "198240af343fd4570586730766ec1922b15271cc",
+    "sha256": "c002a61d1bfccb3f1068ef42a1d871078ef4f231d41d4df77622699f85a2bd6f",
+    "bytes": 10651
+  },
+  {
+    "path": "pantheon/scripts/discuss-run.mjs",
+    "mode": "100644",
+    "blob_sha": "fd1b1d64874ec63de4c5d176b766c605086c68e3",
+    "sha256": "d8ab0ccba32c3684c5daba22f0a916aa62ca7e2579385886de9f9aca8dacec9e",
+    "bytes": 4705
+  },
+  {
+    "path": "pantheon/scripts/graph-check.mjs",
+    "mode": "100644",
+    "blob_sha": "aa7d40b8aa22a1e7de78cad1e563ac2670be1641",
+    "sha256": "fed7333ef6342861d56a3bfc054dc50a91ad76d190d7d82042dbffeb03d05a85",
+    "bytes": 10379
+  },
+  {
+    "path": "pantheon/scripts/lib/repo-root.mjs",
+    "mode": "100644",
+    "blob_sha": "ea6b3959fd22aa71df65357b28b3061964f3e5e1",
+    "sha256": "c452ecb2c77ddbcab02648348ed409b7d4c8b891f48ec1e42cbb288d6034ae22",
+    "bytes": 548
+  },
+  {
+    "path": "pantheon/scripts/live-check.mjs",
+    "mode": "100644",
+    "blob_sha": "082007b2746b04ed9663f27427258c88d0d8ad62",
+    "sha256": "fee84eefc2cdfd22dd2f38215858e8937dc49a93f25f797b4c01027627e3910a",
+    "bytes": 6299
+  },
+  {
+    "path": "pantheon/scripts/live-ship.mjs",
+    "mode": "100644",
+    "blob_sha": "b9c705573789f7610649b9d744c8e705687b50fa",
+    "sha256": "5e8782b25667683f53dce78cd329ba14ac788768b0e52e6381ef259d4a28ded8",
+    "bytes": 23365
+  },
+  {
+    "path": "pantheon/scripts/open-items-run.mjs",
+    "mode": "100644",
+    "blob_sha": "312b2081c75a4d2c5a394a8c2503931d87d08c1b",
+    "sha256": "ec95759f7119f594ffbea3d0092c54f70fa15237229dc7c6e26a185ad94691b0",
+    "bytes": 6135
+  },
+  {
+    "path": "pantheon/scripts/overseer.mjs",
+    "mode": "100644",
+    "blob_sha": "6b6ca85981d945bf07d4d182f3a6c69731ea8b73",
+    "sha256": "c48b2eba9006c1001f61e8d610c6d11998ce5ae8fc1350eccf0ad01e4efff719",
+    "bytes": 5842
+  },
+  {
+    "path": "pantheon/scripts/probe-agent-card-consumer.py",
+    "mode": "100755",
+    "blob_sha": "8cc2efecf4c95b34e955a95fa854cce40d24ee16",
+    "sha256": "c614bfedd90be9a6601751f26ba0bd37c28ff48332b1fdfc02a9b0437ad5f5ba",
+    "bytes": 3900
+  },
+  {
+    "path": "pantheon/scripts/probe-codex-seat-contract.py",
+    "mode": "100644",
+    "blob_sha": "2867ca09ef9dcf391e5e9672abad263fb67c5813",
+    "sha256": "a620abf78361b619ec30004c6e173b3ad5ab000ccca7da0cc96c1e645bed944a",
+    "bytes": 5313
+  },
+  {
+    "path": "pantheon/scripts/run-transcript.mjs",
+    "mode": "100644",
+    "blob_sha": "fb94bd07d3bd85eaee4be3cddc2c1a26f394394e",
+    "sha256": "884af8313d133583e84d37b411bbba2016a43c714ca78aa66b6c792f4bcad8fc",
+    "bytes": 5589
+  },
+  {
+    "path": "pantheon/scripts/stream-check.mjs",
+    "mode": "100644",
+    "blob_sha": "a1d2bbd334fb6826d30911b20d783ac2d9176bb8",
+    "sha256": "2dd3efc67a3387d5350f670d0acce423dbb4c3ae531b90ae7ccd15624912fcd4",
+    "bytes": 2763
+  },
+  {
+    "path": "pantheon/scripts/swarm-run.mjs",
+    "mode": "100644",
+    "blob_sha": "ff7f16e0750bc46f9fd4db4bbb7c82cee8a16d37",
+    "sha256": "83462215898e0735ae3467d7c697f7edca6cc81682d7023667d2faebd697c9a2",
+    "bytes": 5032
+  },
+  {
+    "path": "pantheon/scripts/tickets/README.md",
+    "mode": "100644",
+    "blob_sha": "43e1ee49c98a47a794df13443cb850f21ea3c8e0",
+    "sha256": "e7dda3e6c58192c8dc8174a22f82480f41bee8ce3b6284f64bed13899a9fb168",
+    "bytes": 8004
+  },
+  {
+    "path": "pantheon/scripts/tickets/lexi-model-config.json",
+    "mode": "100644",
+    "blob_sha": "75b63e64a760a43212e897bd68047798dfcb2dd1",
+    "sha256": "cba88650d1bfb6d8f67f260696203ecf3306d8f7d410876b6e322d833f6505e5",
+    "bytes": 4113
+  },
+  {
+    "path": "pantheon/scripts/tickets/open-item-2-agy-seat.json",
+    "mode": "100644",
+    "blob_sha": "fcb63dd9d213057ef7bfc8a24e80a6ad06d290d3",
+    "sha256": "d88b79de4a67d718fd3cef74516793e78c6d246fdcc8ee7d5d4b0970443ac6a3",
+    "bytes": 2966
+  },
+  {
+    "path": "pantheon/scripts/tickets/open-item-6-project-records.json",
+    "mode": "100644",
+    "blob_sha": "eafb15d09617da9c96513cb9cee1c624c32af035",
+    "sha256": "b6bb5aeb77367db0d1aa887a30d5d186811a09d65bfc9bba1717eddcd46b9f4b",
+    "bytes": 2666
+  },
+  {
+    "path": "pantheon/scripts/tickets/open-item-7-controller-card.json",
+    "mode": "100644",
+    "blob_sha": "481e62ec2e5767e89183282aae09fffc79103015",
+    "sha256": "c31ed65972fce6f98da0818b3e6494dac7c3087a42469efd25e67359c18d8a9a",
+    "bytes": 3757
+  },
+  {
+    "path": "pantheon/scripts/tickets/open-item-7b-controller-card-with-sources.json",
+    "mode": "100644",
+    "blob_sha": "15283887f783c393c988dbe89fc3eecfb8977267",
+    "sha256": "ea285a0d9c96ecc0015d5d4812df9e771ec816e56913cb4afd3a23606de785ec",
+    "bytes": 4926
+  },
+  {
+    "path": "pantheon/scripts/tickets/open-item-agy-planner-role.json",
+    "mode": "100644",
+    "blob_sha": "d2f07601ce766f9bb16d22af9459e97f43630aa6",
+    "sha256": "49a0d729ab7a3780516970373edbf8a6862d76bff1fab377bc01eb9f61690538",
+    "bytes": 5083
+  },
+  {
+    "path": "pantheon/scripts/tickets/open-item-agy-seat-identity.json",
+    "mode": "100644",
+    "blob_sha": "70597378f0572feedd1a9ebd5cdd3f1ae81e41cd",
+    "sha256": "5cdb0271f3a198100e258d19c59ba4dd8accb49b336e88881ea9d2e5372129a4",
+    "bytes": 6125
+  },
+  {
+    "path": "pantheon/scripts/tickets/open-item-apply-artifact-guard.json",
+    "mode": "100644",
+    "blob_sha": "dad3814496e37c120cad7056cd2df7ec23d63f1e",
+    "sha256": "23a745189dc34cc3f1308b29d696b6f737798bebcfff27bb4643e4e4c9f1094e",
+    "bytes": 7260
+  },
+  {
+    "path": "pantheon/scripts/tickets/open-item-conform-parallel.json",
+    "mode": "100644",
+    "blob_sha": "79565188a3b70da8dfd97e1fd726ec3463f13ef6",
+    "sha256": "eff4b7abb9bd8545b95658e750fcc56b794ee3e4c87699fab6936ce75d6567a5",
+    "bytes": 5094
+  },
+  {
+    "path": "pantheon/scripts/tickets/open-item-reviewer-reseat-lab.json",
+    "mode": "100644",
+    "blob_sha": "42cb555be72291d07c6af41074e23e1436bf7b9a",
+    "sha256": "a42ab91406bf47f56906ac3694f706cdad3e6ceba8480d237022e2d2cb3030cd",
+    "bytes": 5166
+  },
+  {
+    "path": "pantheon/scripts/tickets/open-item-seat-lock-contention.json",
+    "mode": "100644",
+    "blob_sha": "5f1eb969acc00be17282ddc109a15cb3594a6f44",
+    "sha256": "5c951314aa39c9df556f7ffee423b7cc28b4864841a26f05c5c60c25a5fc055c",
+    "bytes": 6531
+  },
+  {
+    "path": "pantheon/scripts/tickets/open-item-streaming-thinking.json",
+    "mode": "100644",
+    "blob_sha": "e060f45d61216b6b8007a11d820a58e568235cce",
+    "sha256": "6e3b0ce95bccabd1915ac5c8bfbe29ff5b37b95dad3bfd449676eb74914d2eba",
+    "bytes": 3466
+  },
+  {
+    "path": "pantheon/scripts/tickets/templates/oracle.test.mjs.tmpl",
+    "mode": "100644",
+    "blob_sha": "b54485b67d3e61de3eab4c9f2b7866b16c4ce355",
+    "sha256": "ce11d30ba53534b99c6e049f271d0df6cb01fab7bdc0da8a1c939197a1121f0d",
+    "bytes": 2002
+  },
+  {
+    "path": "pantheon/scripts/tickets/templates/ticket.template.json",
+    "mode": "100644",
+    "blob_sha": "e4515d65748d307f210f2d03fbd1ba8b0cc1b05e",
+    "sha256": "32ab910e51c398045ae2b543ef2aac7d5d13b6b8790c26c4a8e6143b5530d7b6",
+    "bytes": 4369
+  },
+  {
+    "path": "pantheon/scripts/view-check.mjs",
+    "mode": "100644",
+    "blob_sha": "aeea79ab9c411ac7aeed69b6c716c782b76767aa",
+    "sha256": "3ef0c3c88d41e8443142e132f34d5aa3874e080ecb3a8f6e12c74838bf507394",
+    "bytes": 6386
+  },
+  {
+    "path": "pantheon/spike/conversation-chain.mjs",
+    "mode": "100644",
+    "blob_sha": "b2e1889c53fe17577fa29ed76029c2ba8807e972",
+    "sha256": "4aa81e9d90c34062962bea97f3424f3f5d5f3f157e112995aba16ac7bfaa30d3",
+    "bytes": 4872
+  },
+  {
+    "path": "pantheon/src/agents/render.mjs",
+    "mode": "100644",
+    "blob_sha": "f02942b524a5d7cf90c80292a8a46fd2c810c1e3",
+    "sha256": "0b4e837060d54ce9f566b914accdb29c2d72b90ac7bd5dc1cf522b0b6aa0203a",
+    "bytes": 18195
+  },
+  {
+    "path": "pantheon/src/agents/store.mjs",
+    "mode": "100644",
+    "blob_sha": "c280f44a443fe4cb26240754c941dc525548fa09",
+    "sha256": "0b260e619009e19757e64af75931b5d87bd66960768d664da58c02a7dbb9c527",
+    "bytes": 7341
+  },
+  {
+    "path": "pantheon/src/board/acceptance.mjs",
+    "mode": "100644",
+    "blob_sha": "b4daed2582acee29cdd3f621ea2370bf6dad66f8",
+    "sha256": "17ec4b8528a0d1f5537254db4ed320725acc78fa75096876381c06bb6d5c678c",
+    "bytes": 1822
+  },
+  {
+    "path": "pantheon/src/board/agy-cli.mjs",
+    "mode": "100644",
+    "blob_sha": "e879ebce44b61029f530c8397acac9e3983f0c2e",
+    "sha256": "3cae49a2e469782fc4b4c2c1d39c42a1399475a129535162e9f63d89e2f9dd68",
+    "bytes": 4208
+  },
+  {
+    "path": "pantheon/src/board/artifact-files.mjs",
+    "mode": "100644",
+    "blob_sha": "10c044bebfd5969bb7db49247adae0c7fbf45944",
+    "sha256": "d6ba16f7a593cc665f1e7cee194b8492892a89bf1208be51b56c1055c9a4d150",
+    "bytes": 1874
+  },
+  {
+    "path": "pantheon/src/board/artifacts.mjs",
+    "mode": "100644",
+    "blob_sha": "d26cffc87dd16ed1b2bc6a01083d3bbe2c971d93",
+    "sha256": "16c34220b9db059fe10441f76cef195a08684441d76850c9d64c098fdb33fc10",
+    "bytes": 4240
+  },
+  {
+    "path": "pantheon/src/board/canon.mjs",
+    "mode": "100644",
+    "blob_sha": "d3beb22cb199d8b763195b4b0d50c165fe3d2c88",
+    "sha256": "af4dee0f5727aa22f0185d88a9adf46024934a68fd6b3ffd00f4ea545306e276",
+    "bytes": 3362
+  },
+  {
+    "path": "pantheon/src/board/cas.mjs",
+    "mode": "100644",
+    "blob_sha": "eb6480a44124b39aef98197ec8505009de1e8426",
+    "sha256": "332c83cfd67a38b18fdf6211aea581548b2187d2434b8738282c2b0777b13288",
+    "bytes": 4999
+  },
+  {
+    "path": "pantheon/src/board/controller.mjs",
+    "mode": "100644",
+    "blob_sha": "7b428bc9b0f26e2191b8e79f74b45e2a3505fcd3",
+    "sha256": "da9c608e2eeab21fd3b385894517bcfffb115c2d2d49e7bac5b2efbd2d587821",
+    "bytes": 23407
+  },
+  {
+    "path": "pantheon/src/board/dag.mjs",
+    "mode": "100644",
+    "blob_sha": "a03a8eae7dd7789eef3e88e293c62b32dfadf7b1",
+    "sha256": "4393390db0112becaf8d2c8b62ceb3f617102dfcc219d70f4b71af5d4ca2cee2",
+    "bytes": 11621
+  },
+  {
+    "path": "pantheon/src/board/index.mjs",
+    "mode": "100644",
+    "blob_sha": "d78b22d19006264d785659e70b8d0b16cc593e6d",
+    "sha256": "eee1c54e233525acbb28715e448fe0f2c507ac5072b7745f9c14fddeef1267fb",
+    "bytes": 769
+  },
+  {
+    "path": "pantheon/src/board/integrate.mjs",
+    "mode": "100644",
+    "blob_sha": "5a15753d07d1afda44e64c239423b2e92f186264",
+    "sha256": "0536c9d1f1b0ddd3f6dc2639dece8e1f0289ba8c5d6b0f0a37abf26d9347f18d",
+    "bytes": 14681
+  },
+  {
+    "path": "pantheon/src/board/merge.mjs",
+    "mode": "100644",
+    "blob_sha": "3ecea6fdb9b5aae885a17cc1fb159dfbdbad1a89",
+    "sha256": "63cc52309fc04d794c275a6829ffd3d3d292934f1fc0806148531dd81041d7d6",
+    "bytes": 11541
+  },
+  {
+    "path": "pantheon/src/board/policy.mjs",
+    "mode": "100644",
+    "blob_sha": "0b0cc7cf5328e2a3d9da9915d8a84f4b792a0889",
+    "sha256": "6e3ecab9fc9ce3f8d44c394a68c69471873505f0d9f4560a683b143344ed0076",
+    "bytes": 1743
+  },
+  {
+    "path": "pantheon/src/board/project.mjs",
+    "mode": "100644",
+    "blob_sha": "6942d0db68a56e53e65350760804e0213bfc2f22",
+    "sha256": "e10b5a064210de03db28072633ef6ddf4a167cdad389f6d8299c2b6dfb3842d6",
+    "bytes": 16223
+  },
+  {
+    "path": "pantheon/src/board/refs.mjs",
+    "mode": "100644",
+    "blob_sha": "19daf0e4a0c6adde540bdc960fffbc342b8f20d5",
+    "sha256": "fd01d1714fd1ebac07b3050143802e47d991e169e69027ff93ebb1363ca262f4",
+    "bytes": 16325
+  },
+  {
+    "path": "pantheon/src/board/run-item.mjs",
+    "mode": "100644",
+    "blob_sha": "775a9629b3b35ca028f4cd368265c7567a083f79",
+    "sha256": "84525a37b1c3606dd5f5e38b9ac1e47ef0369331ab929e04a75164c8eeddd45f",
+    "bytes": 59684
+  },
+  {
+    "path": "pantheon/src/board/runtime.mjs",
+    "mode": "100644",
+    "blob_sha": "d63ee450c58a84ad7eea6649072c0c02c2d2dcf6",
+    "sha256": "5a867bd653a0a62d1c96087a4ed36799b020b76bf0e78ac935aa948c625c634b",
+    "bytes": 10005
+  },
+  {
+    "path": "pantheon/src/board/schema.mjs",
+    "mode": "100644",
+    "blob_sha": "f41f47980ee5cf6d4a61dc20e65646f5d75b2693",
+    "sha256": "effc53aec8f49be2248b37fd2382a3127967caccc3b441505e43eb8b88c4868b",
+    "bytes": 18388
+  },
+  {
+    "path": "pantheon/src/board/spawn.mjs",
+    "mode": "100644",
+    "blob_sha": "e1b8b6f73293bd0f4113147a0ee5f3a96659b7e8",
+    "sha256": "77c0f3419f9b311b6c349fd28dbf3102fd8f1f5e5f38707e747c7f3133fce551",
+    "bytes": 3850
+  },
+  {
+    "path": "pantheon/src/board/ticket-safety.mjs",
+    "mode": "100644",
+    "blob_sha": "f0c8e6250764ff94a989702d3684b84e0a842f8e",
+    "sha256": "4864eddbff94c272629fbd5f1e319138b42ceff4690ac7f728bcb1fec52786d4",
+    "bytes": 8984
+  },
+  {
+    "path": "pantheon/src/config/models.json",
+    "mode": "100644",
+    "blob_sha": "02a8e1c3d7508b2b0506929db23a6c9bce75ea78",
+    "sha256": "ea1c4f74cb442d0b1da3ffa27ce649e901c4e11a73a521001474200d4c273f40",
+    "bytes": 659
+  },
+  {
+    "path": "pantheon/src/config/models.mjs",
+    "mode": "100644",
+    "blob_sha": "dc4c6835ba3aa277828e13ff96e5058516dd7603",
+    "sha256": "3bf0b79fb7732a35851fa45d306e7e5060275c2337fa31495484d1287bf9ae06",
+    "bytes": 2105
+  },
+  {
+    "path": "pantheon/src/context/chain.mjs",
+    "mode": "100644",
+    "blob_sha": "36c137aa81d616015ddb7689ab61bc7fbe15e806",
+    "sha256": "aa599886bb1b4feeb79402fd5905cdad6f7ef85c356347efa4ecd3f3d9b5e2f2",
+    "bytes": 2054
+  },
+  {
+    "path": "pantheon/src/context/locate.mjs",
+    "mode": "100644",
+    "blob_sha": "46169ba579f24c6addb1271b8e44c444c5ed87be",
+    "sha256": "414fcf2fcf9a592f4c04732cecfef52c39adbefdcf62dfff989437cfb296bcf9",
+    "bytes": 10042
+  },
+  {
+    "path": "pantheon/src/context/project.mjs",
+    "mode": "100644",
+    "blob_sha": "fd22c5bec01423135299fdec883e4e7c566d4a5b",
+    "sha256": "fa7449556264be64d368753481980af3e91db76b4f0b30086620bdc4794cc79b",
+    "bytes": 11008
+  },
+  {
+    "path": "pantheon/src/mcp/agents-server.mjs",
+    "mode": "100644",
+    "blob_sha": "f8a35f60cabdbe6e92220ee4ee5cbcde942fc605",
+    "sha256": "b50bcc3c1bfac81977abbec3ebe4136c12824ca878e0c36644215d7dab732f0d",
+    "bytes": 9005
+  },
+  {
+    "path": "pantheon/src/role/roles.mjs",
+    "mode": "100644",
+    "blob_sha": "539f71acabe1fd38a56d209e1bb2b7943ff097b8",
+    "sha256": "94bba134a0e7057c1a45a1ce01fbbee74133ee7e4d0c2d788cb0c33b2e53d011",
+    "bytes": 12967
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "mode": "100644",
+    "blob_sha": "8862b35080a7ce69febb290ae74359ac105673c3",
+    "sha256": "d1ede0607886b197aa0fe1d22e9307afd4867763a42ecb38ffc3778d53af497a",
+    "bytes": 53183
+  },
+  {
+    "path": "pantheon/src/route/cooldown.mjs",
+    "mode": "100644",
+    "blob_sha": "10e3dcf6e05f141e407571b5add888f3b0b470bf",
+    "sha256": "1dc1940e6cd6f2850e50a16541c392463b4cbd70ac05125423269cb7e6e29d4b",
+    "bytes": 6302
+  },
+  {
+    "path": "pantheon/src/route/router.mjs",
+    "mode": "100644",
+    "blob_sha": "5b1cbac5ae728ace6ef6e17ea366628597c879f2",
+    "sha256": "64d5de662cf663fd1b8c34a66aa7afc46fb068b563ad261e896ea6ca9bbd033c",
+    "bytes": 20157
+  },
+  {
+    "path": "pantheon/src/sdk/adapter.mjs",
+    "mode": "100644",
+    "blob_sha": "241cbfe8f32b1577734e8c9ae1eaf1f54be6389c",
+    "sha256": "18ec97a594cf9a05188be1e39b7a51454cd76002f43dfdbe8dca168e15c32e26",
+    "bytes": 24029
+  },
+  {
+    "path": "pantheon/src/sdk/history.mjs",
+    "mode": "100644",
+    "blob_sha": "26821327e7970f280c2d303e1b55bed7a3779ccd",
+    "sha256": "3a93d9074c2debd2187791b10eb9a1e0e78d69645aab75e163289a68357b366c",
+    "bytes": 10036
+  },
+  {
+    "path": "pantheon/src/sdk/seat-sdk.mjs",
+    "mode": "100644",
+    "blob_sha": "d351a9ec087cb7b70d62ed38c5a2b80f58ff8eb5",
+    "sha256": "9ce37dbbeeb51766ffadee3a1e0fa93c9b82f96a6c4daf10d52795b2c8e9b764",
+    "bytes": 11178
+  },
+  {
+    "path": "pantheon/src/sdk/stream.mjs",
+    "mode": "100644",
+    "blob_sha": "b925c5085a7db217dc7dca95d925dea60255d6aa",
+    "sha256": "42b0ee9699bb47f5844ca01d037607cce3dc8f7d7b77e852acb87d4490f8322d",
+    "bytes": 7962
+  },
+  {
+    "path": "pantheon/src/seat/argv.mjs",
+    "mode": "100644",
+    "blob_sha": "5a57647b5e46b34c9f012e6a30f1fce7c47eb7af",
+    "sha256": "a028358fa059c6b74e71ee89e27200e2758130c9165fcac6cbe01186588deca9",
+    "bytes": 6578
+  },
+  {
+    "path": "pantheon/src/seat/conformance.mjs",
+    "mode": "100644",
+    "blob_sha": "c13e564d504eb4f5ab2f474cef2fa62e4f171597",
+    "sha256": "0f868cf0cbf974034c5576b62b2d3673e8909bcd790bb304753709c911cca4b8",
+    "bytes": 2421
+  },
+  {
+    "path": "pantheon/src/seat/identity.mjs",
+    "mode": "100644",
+    "blob_sha": "94c25b86ee11ca8b4436ced61b984a78821524a7",
+    "sha256": "5531e7afe9a5bd2208ab2cd5f71070466b5625c5a20e7e322c11f7c700f94cd0",
+    "bytes": 2594
+  },
+  {
+    "path": "pantheon/src/seat/lock.mjs",
+    "mode": "100644",
+    "blob_sha": "d7b7b8bc6d040639ddfcb8ac7ed95020547a8241",
+    "sha256": "71a68dbab0653b442e1ab0e9847e7e796caba8c5c02bd0feaa335fa437cab8a8",
+    "bytes": 13811
+  },
+  {
+    "path": "pantheon/src/seat/store.mjs",
+    "mode": "100644",
+    "blob_sha": "7d02f92b9dbbef3fb99b38841a30a9ec24640ae9",
+    "sha256": "fc97d501efaacd4c24c864ea8950371d0273039d1803e1146d04abbd2f02d12a",
+    "bytes": 5956
+  },
+  {
+    "path": "pantheon/src/seat/turn.mjs",
+    "mode": "100644",
+    "blob_sha": "32b2fa063c09aca7aaaeb72500b000936f988a76",
+    "sha256": "e3255ae9d46053edb53f61cbf7db582d38551d4625ff63cd5858197d017bb85f",
+    "bytes": 7401
+  },
+  {
+    "path": "pantheon/src/swarm/discuss.mjs",
+    "mode": "100644",
+    "blob_sha": "489499ffd29aa6285eafd32ec446890d8ff54abb",
+    "sha256": "429e2e50ab10226f49470dfcfcaa7234945c52e2a35f9ecda77d18ddea029537",
+    "bytes": 17191
+  },
+  {
+    "path": "pantheon/src/swarm/layered.mjs",
+    "mode": "100644",
+    "blob_sha": "c22a517084e01842b7ad04121591a18689fec49e",
+    "sha256": "46d21a92f444bcaaa564d63c2667c8e6666a50808891e332cf1185667039d4a6",
+    "bytes": 17121
+  },
+  {
+    "path": "pantheon/src/swarm/orchestrate.mjs",
+    "mode": "100644",
+    "blob_sha": "0b2ec8c401b9a80420c00318aab99a5f1b319266",
+    "sha256": "117ab080b0521a44201ea8d364f255cac6d9f9cd7b99f7be41aa4454e3cddca4",
+    "bytes": 11378
+  },
+  {
+    "path": "pantheon/src/team/continuity.mjs",
+    "mode": "100644",
+    "blob_sha": "aaaf1164184f581b68a6aebfed5119838a35a104",
+    "sha256": "d1f5d5d620b35edac496d188eb56be3c9e1d8a95730b821ecd5e1189bae748c0",
+    "bytes": 10004
+  },
+  {
+    "path": "pantheon/src/team/law.mjs",
+    "mode": "100644",
+    "blob_sha": "0e0b31c626bda8e52db10aab49555118b96dc6c0",
+    "sha256": "816cdf561f35d85521648ffdd7b45aa3d19f2a2dd79f48fb225fa959e975077b",
+    "bytes": 10602
+  },
+  {
+    "path": "pantheon/src/team/measure.mjs",
+    "mode": "100644",
+    "blob_sha": "c3d5e08e1632fbd4d339819fdf67656cec46ac51",
+    "sha256": "da00d5209f3ee0ad94d5c3559545e1e80fffd0777886248a51393d73d8cd8f10",
+    "bytes": 1684
+  },
+  {
+    "path": "pantheon/src/team/modes.mjs",
+    "mode": "100644",
+    "blob_sha": "c24a3fb3663ea9ec0ecd9f4fbf6089c511ad58d9",
+    "sha256": "20204be2d2dd600ec39202288e41eb37d27b827d4cc2f601a2e215b8655c1777",
+    "bytes": 5490
+  },
+  {
+    "path": "pantheon/src/team/roster.mjs",
+    "mode": "100644",
+    "blob_sha": "5b60caf4f06e91371eae4103b03333aabe647f78",
+    "sha256": "abb665d3a355a180c31855a8de8decb7dda63af05942724be292f6d693917859",
+    "bytes": 9740
+  },
+  {
+    "path": "pantheon/src/team/subagent.mjs",
+    "mode": "100644",
+    "blob_sha": "63a7c5ac426366a2cb800f0474cac1ab12bf6a96",
+    "sha256": "6058995805e47caa7ec2585d18aa391c3f1b5e2589d2abb752ba75a01ceb7665",
+    "bytes": 6533
+  },
+  {
+    "path": "pantheon/src/view/app.html",
+    "mode": "100644",
+    "blob_sha": "d11b879c8fc71b600c5f2390468ba1304c56ca8c",
+    "sha256": "0706d77d86834de89d8d89f6b06b79a7c6f64ee340ea0ae1b5f7906286897338",
+    "bytes": 12707
+  },
+  {
+    "path": "pantheon/src/view/build-server.mjs",
+    "mode": "100644",
+    "blob_sha": "6b0e7901a589fe8a2e69bd13cfd1f3ed1d101660",
+    "sha256": "ed147355269afd485712169047f2695477475ef9e5fdf01699bff480eff0cbde",
+    "bytes": 12089
+  },
+  {
+    "path": "pantheon/src/view/bus.mjs",
+    "mode": "100644",
+    "blob_sha": "552efef13b1cd1d8870859c6e3d10f91b9934f2b",
+    "sha256": "7c4508721e8b93e07aafa5e371b2505f2766449d5a68af10e39cdbd09fea8515",
+    "bytes": 3869
+  },
+  {
+    "path": "pantheon/src/view/http-safety.mjs",
+    "mode": "100644",
+    "blob_sha": "abdf3744af10e86768d9fd468e2ad092c2738b7a",
+    "sha256": "5a652700a092544888f363d823029d660e7038ff672303bbb06ee72799f164c6",
+    "bytes": 3901
+  },
+  {
+    "path": "pantheon/src/view/server.mjs",
+    "mode": "100644",
+    "blob_sha": "7585aaf9568d121af58198e3d055c27f494d443e",
+    "sha256": "663a099551ef86c024717fe16a99a0e7ae9a2df3260a00bf6ce1685e508e10f6",
+    "bytes": 11516
+  },
+  {
+    "path": "pantheon/tests/acceptance-cli.test.mjs",
+    "mode": "100644",
+    "blob_sha": "471ecea1954be5d6d5250c00b10e902d2db7bd75",
+    "sha256": "1fac844da1cf81590f7b6bd651d1cefbd386273497247413cf408614f4d026d3",
+    "bytes": 32512
+  },
+  {
+    "path": "pantheon/tests/acceptance-sandbox.test.mjs",
+    "mode": "100644",
+    "blob_sha": "c401bb311991699d20104493df25b849221c5b65",
+    "sha256": "75178d372bc4aa1d4960c6f91deb7d5bcc336d747b649cb6ba5bac3f65deb31b",
+    "bytes": 5111
+  },
+  {
+    "path": "pantheon/tests/adapter-cheap-default.test.mjs",
+    "mode": "100644",
+    "blob_sha": "2c2de6be39bc06baf65992394b239d65a786dd7d",
+    "sha256": "f3f694995151eee79bda8eaf344068da331f4da598fb1000e6c6fadbc6693870",
+    "bytes": 2484
+  },
+  {
+    "path": "pantheon/tests/agents-render.test.mjs",
+    "mode": "100644",
+    "blob_sha": "889c91d3fe643df365e1558318a337b1504b512f",
+    "sha256": "d57e132a7f3f7620b339b354ae3a6e785a84948a3d13b934e778ee5218300b1b",
+    "bytes": 10263
+  },
+  {
+    "path": "pantheon/tests/agents-store.test.mjs",
+    "mode": "100644",
+    "blob_sha": "ec52b6153e79bc1f55c0da07cc9d48d2a031e9ba",
+    "sha256": "a357ccdd11a35a83be53a98aa3ff5d694e9055dead2e88760afe590c2381ad94",
+    "bytes": 7487
+  },
+  {
+    "path": "pantheon/tests/agy-seat-identity.test.mjs",
+    "mode": "100644",
+    "blob_sha": "6702551a74394df62b5c09074c763b563d048d61",
+    "sha256": "43ebafc8bb2103001f8e638f75960940bd26f47f1afa2b29d7dfd782c7f9ef4c",
+    "bytes": 6226
+  },
+  {
+    "path": "pantheon/tests/apply-artifact-guard.test.mjs",
+    "mode": "100644",
+    "blob_sha": "b2ded8db836b990749bae03956889fa7bf09e43a",
+    "sha256": "a2b5779df8376922369f727f397be6e96dfb8b7cdd5d31e6e7fc60e23f00e259",
+    "bytes": 10074
+  },
+  {
+    "path": "pantheon/tests/board-agy-oauth.test.mjs",
+    "mode": "100644",
+    "blob_sha": "5143488eb876a715e9d250ba6abac87222aa0e4b",
+    "sha256": "3e38b28096b39a98e9f8600caa6ac8425d5420b740328085540c104f15f33dc9",
+    "bytes": 3558
+  },
+  {
+    "path": "pantheon/tests/board-agy-planner-role.test.mjs",
+    "mode": "100644",
+    "blob_sha": "8e5ad099abd4dd20b57afbc95e3cb1d5f990608c",
+    "sha256": "dd7738fb6a954e06a0c5f49cec4957344b557c2135703ad6bf3d575d1ecd6648",
+    "bytes": 8396
+  },
+  {
+    "path": "pantheon/tests/board-cas.test.mjs",
+    "mode": "100644",
+    "blob_sha": "b1022f8e09271f1d5133b3164e372f2c0087deee",
+    "sha256": "a100c2618e32de8ad89b0e3cc496b6d634dfd3fc53cb9a2b769fedeea5c873e5",
+    "bytes": 4138
+  },
+  {
+    "path": "pantheon/tests/board-controller.test.mjs",
+    "mode": "100644",
+    "blob_sha": "4f451e22870361c7451c77aaf9ff54c2bc141ec1",
+    "sha256": "5e5264026fa84ecf3a6b25087b0367001d57e931d96a47d6d978ea890d3f0806",
+    "bytes": 19247
+  },
+  {
+    "path": "pantheon/tests/board-fencing.test.mjs",
+    "mode": "100644",
+    "blob_sha": "4cfecf9604928762f59e177cf9148ea1267dd469",
+    "sha256": "3756c18f93298c4c96f504bb58c7c5ddc7d2ab9c7bad5b154696d6c6f302cc23",
+    "bytes": 10199
+  },
+  {
+    "path": "pantheon/tests/board-helper.mjs",
+    "mode": "100644",
+    "blob_sha": "af7ec8b3f8a3430ba47721360d2e8d2dabce057f",
+    "sha256": "fe67a1b08243fd4f81e927cc1d9dc78770ace828d9c3b53d83b37e6e812f2c22",
+    "bytes": 2881
+  },
+  {
+    "path": "pantheon/tests/board-integrate.test.mjs",
+    "mode": "100644",
+    "blob_sha": "73b41898d675c59b134d3e5bd1722007c4fc8012",
+    "sha256": "be823dd8ca437d94f5d09e9dff75873b8316d7e9e324a4d6bf6d09cc0a20b048",
+    "bytes": 24273
+  },
+  {
+    "path": "pantheon/tests/board-lifecycle.test.mjs",
+    "mode": "100644",
+    "blob_sha": "4269018649710a475e715745cbe99d93a35b6bf8",
+    "sha256": "22ce3eadf8e8920cf2f36eaf27478c47b8e4d579f8163ff7f536b51cc7af5fdd",
+    "bytes": 10371
+  },
+  {
+    "path": "pantheon/tests/board-lock-domain.test.mjs",
+    "mode": "100644",
+    "blob_sha": "43de8c65b0f807653d7f64401ed943655db68315",
+    "sha256": "c9a744c8525cfcc31b37ecdfb1a5b23c8e814f8df264eef1e7e4f0014251c05b",
+    "bytes": 3179
+  },
+  {
+    "path": "pantheon/tests/board-merge.test.mjs",
+    "mode": "100644",
+    "blob_sha": "574c27c161b87bb913e0b74d5a006479c34bf52b",
+    "sha256": "d435f31071a509344c0109844934c05bc789eb7ab70a91f132e0506017b520ea",
+    "bytes": 13706
+  },
+  {
+    "path": "pantheon/tests/board-multi-slot.test.mjs",
+    "mode": "100644",
+    "blob_sha": "91d20f213f723ef315e53008da36f59dcdd6094d",
+    "sha256": "4efb2ce4d22bb35d27d0f79ec2691b472ba6757c9617d7c94ad33b6bc4ce50a6",
+    "bytes": 9676
+  },
+  {
+    "path": "pantheon/tests/board-project-records.test.mjs",
+    "mode": "100644",
+    "blob_sha": "f3b494e936241de9771b5b56684da12058911750",
+    "sha256": "be745943b511a3bc301fdef2f653ffcfb79830f74a9e38433ecbec2e6db30907",
+    "bytes": 3715
+  },
+  {
+    "path": "pantheon/tests/board-project.test.mjs",
+    "mode": "100644",
+    "blob_sha": "2a58e85667599b88fdec2f8a79d17d531862fc34",
+    "sha256": "0841880148b63868cff8c7de48f3ffa5a469e35eb1299a2738d4dcac4c6294f6",
+    "bytes": 13083
+  },
+  {
+    "path": "pantheon/tests/board-refs.test.mjs",
+    "mode": "100644",
+    "blob_sha": "faf10460aedc38444d8875cf5bdba0ea2a161843",
+    "sha256": "798ebaa906f11787d4e0fdfda50802c2c293acc75a494382d0897b243521f671",
+    "bytes": 14277
+  },
+  {
+    "path": "pantheon/tests/board-reviewer-reseat-lab.test.mjs",
+    "mode": "100644",
+    "blob_sha": "9b991ecd646b4641d4dabbf52a7d90f80907901c",
+    "sha256": "ed1aa2a146cf26abfb1def8c13cff88a8549cd86fbc2bdb4e3145153a75dc727",
+    "bytes": 7470
+  },
+  {
+    "path": "pantheon/tests/board-run-item.test.mjs",
+    "mode": "100644",
+    "blob_sha": "8d5d3a86e222223d1dba5118c148decd035d522c",
+    "sha256": "fe2e7a3e359e9131fb040d34e960bb0de8d3426d745b5bca1c89030419096a84",
+    "bytes": 12928
+  },
+  {
+    "path": "pantheon/tests/board-schema.test.mjs",
+    "mode": "100644",
+    "blob_sha": "9a27d770e868b07a9d2f07a5f9d6abe8798ea97f",
+    "sha256": "d5c9793e687ae49bbe1128ae32a302bd679ea639a85eb0e4df5e10d0b5147bdb",
+    "bytes": 8525
+  },
+  {
+    "path": "pantheon/tests/board-tests-brief.test.mjs",
+    "mode": "100644",
+    "blob_sha": "f4ea32fc7b7b7940c1354b5d5f917cc3079fa36b",
+    "sha256": "7ba8dda0d2655c7834277c5c0a8b0df2d77b0ff39e238850b387c5e2479fdf4f",
+    "bytes": 6680
+  },
+  {
+    "path": "pantheon/tests/board-ticket-slots.test.mjs",
+    "mode": "100644",
+    "blob_sha": "ae3d1e6bf035499a0f1e13258aeb212886d242ec",
+    "sha256": "ccce5c8f981cf67b7ad2b7130a24567dd4c888560ed10676fe2bbe7c03151d49",
+    "bytes": 3412
+  },
+  {
+    "path": "pantheon/tests/build-server-ticket-fields.test.mjs",
+    "mode": "100644",
+    "blob_sha": "62e05bec01bd108a3bca4691bc53540c020cc322",
+    "sha256": "f3e1920fc151105dd7348d15cde3e971fa518cc19004e015105eba765ab540a3",
+    "bytes": 3746
+  },
+  {
+    "path": "pantheon/tests/config-models.test.mjs",
+    "mode": "100644",
+    "blob_sha": "f57a8e4b1faa571ac108e93b9d2d1680fa6bef6e",
+    "sha256": "a8258da5e5a3e778263b8409771c558b449c8dedfb82883c2a76ee0582508e7f",
+    "bytes": 2248
+  },
+  {
+    "path": "pantheon/tests/conform-parallel.test.mjs",
+    "mode": "100644",
+    "blob_sha": "9ba1c1f5cf7ee364cb1a249bc694e08856058ca8",
+    "sha256": "2823532e4d974d85b22a3a8070280597695cd8d2fe46e9f51a837edd6360b526",
+    "bytes": 6320
+  },
+  {
+    "path": "pantheon/tests/context-chain.test.mjs",
+    "mode": "100644",
+    "blob_sha": "448f379bbc81548945a1893c9632c13ebd1cae60",
+    "sha256": "5023dfed22a67d4e5d6351cdb858a295fabe48388a15b6e646bec193a6fe6890",
+    "bytes": 4839
+  },
+  {
+    "path": "pantheon/tests/context-locate.test.mjs",
+    "mode": "100644",
+    "blob_sha": "e1b2c9ca7a480f1abc1bdda49cea0f4ce3db8945",
+    "sha256": "8604a5f755b6cb9d362547e1c8ae956f835bb11644c2f08b2490d721a873610d",
+    "bytes": 9667
+  },
+  {
+    "path": "pantheon/tests/context-project.test.mjs",
+    "mode": "100644",
+    "blob_sha": "0bec659a82d580d41b8d1f06f9e64bd0d6c577b6",
+    "sha256": "bb34851c3dc6eeac17824e3c2fd7e39891bdb0c33601a7c3c7c4eb559782c308",
+    "bytes": 8351
+  },
+  {
+    "path": "pantheon/tests/context-sqlite-lazy.test.mjs",
+    "mode": "100644",
+    "blob_sha": "96ab7585dbf3bcabdb727cc81ad28775610e3ae7",
+    "sha256": "7c975e23a288b00948a014e1fd4997c827fc414d1d342cad852141eb4dc3cd83",
+    "bytes": 1897
+  },
+  {
+    "path": "pantheon/tests/fixtures/pipeline.mjs",
+    "mode": "100644",
+    "blob_sha": "4330e6772d35a18fe3bda0c8da0f77f130ae0286",
+    "sha256": "f09e134115accad30ea2037f537549e1065393fb95091beb4b50690672052664",
+    "bytes": 2591
+  },
+  {
+    "path": "pantheon/tests/mcp-agents-server.test.mjs",
+    "mode": "100644",
+    "blob_sha": "029e9ccff2bebfbc3a63cda859f175ab26f43743",
+    "sha256": "ba9712611d89ad416915257616488b4aac5981e31a1521bf53a19321580aed7a",
+    "bytes": 9274
+  },
+  {
+    "path": "pantheon/tests/repo-root.test.mjs",
+    "mode": "100644",
+    "blob_sha": "c4d6c2d1978302841aa6f82a4e3c5d7415fc4cf3",
+    "sha256": "7ce7c76c0476a47f21471859c7ed7351620303a6c82c667a6181bf5228350ef5",
+    "bytes": 1376
+  },
+  {
+    "path": "pantheon/tests/role-context-smuggle.test.mjs",
+    "mode": "100644",
+    "blob_sha": "ea89fb774e34936b1b9953e3c48928b274e08431",
+    "sha256": "f7c77a173ccd901987fa15ae271db3b6af64462add17c1357153700fc701bb99",
+    "bytes": 3969
+  },
+  {
+    "path": "pantheon/tests/role-roles.test.mjs",
+    "mode": "100644",
+    "blob_sha": "8596e7abd8627fa6133381c53a4975f8e6467626",
+    "sha256": "419b80cbb22ea718905af6b93b9da8cf2e763fe91226ac2eff3c5205d6757bf0",
+    "bytes": 5668
+  },
+  {
+    "path": "pantheon/tests/role-seating.test.mjs",
+    "mode": "100644",
+    "blob_sha": "e79899ba2c71db509fa717d71f7a8f61d57e7940",
+    "sha256": "e446456a75d66199c7ebfc33bafe86aac8d05fac8da4b0aa9c32b65b0572b4a6",
+    "bytes": 55072
+  },
+  {
+    "path": "pantheon/tests/route-cooldown.test.mjs",
+    "mode": "100644",
+    "blob_sha": "a3e40f17926709f5c1b650c717e980f6a0adfeb4",
+    "sha256": "76562ec059572189c79995b2661844b5d2ea675ba8a55c7d78642e859f459ee8",
+    "bytes": 5696
+  },
+  {
+    "path": "pantheon/tests/route-router.test.mjs",
+    "mode": "100644",
+    "blob_sha": "c7c29d413204b5b89d9e1935eb93bea0d500772a",
+    "sha256": "e676a29a7cb285c8f72e1dc526c29ad2efad5b584778790cc93821dded83f9a5",
+    "bytes": 7373
+  },
+  {
+    "path": "pantheon/tests/sdk-history.test.mjs",
+    "mode": "100644",
+    "blob_sha": "8af7e470072f31da13d528ec609a3ca76e24a90f",
+    "sha256": "96ec78c7b80835b7070f6dc3dad30f0b5a3cdc287c02708a148f612be60a6b9a",
+    "bytes": 13682
+  },
+  {
+    "path": "pantheon/tests/sdk-intent.test.mjs",
+    "mode": "100644",
+    "blob_sha": "4d93dab31fe0c86727ebe11b35a5082f9792a63b",
+    "sha256": "3f2088e5fac15e30d1cc17107c3375cb734c17b3facb6483d5c286f9de73237f",
+    "bytes": 4284
+  },
+  {
+    "path": "pantheon/tests/sdk-lock-crossprocess.test.mjs",
+    "mode": "100644",
+    "blob_sha": "0cac70904611676a637983afde92d2bf3aa5475e",
+    "sha256": "f56cd3f84f6da0efe7ff23bea74a482ae32341c800b3cb74a596ea974bf36adb",
+    "bytes": 7564
+  },
+  {
+    "path": "pantheon/tests/sdk-stream-replay.test.mjs",
+    "mode": "100644",
+    "blob_sha": "32bdf245938941c16d73b4d5cd621e9fc983f7df",
+    "sha256": "218e8aa9c7efd76a4ecce5907115b955c48f791ceeaef29ac39101d11faf1509",
+    "bytes": 4241
+  },
+  {
+    "path": "pantheon/tests/sdk-stream-thinking.test.mjs",
+    "mode": "100644",
+    "blob_sha": "9df8a0a2171525f4d70b15909488ec11f8cbbb5c",
+    "sha256": "a2be241b93ceedf4b5d77e8cc03c77d2f4cadc3c84de930f0959317254593ce4",
+    "bytes": 5760
+  },
+  {
+    "path": "pantheon/tests/sdk-transport.test.mjs",
+    "mode": "100644",
+    "blob_sha": "c42558244d8ed0154417014b3fc4ebb09b232910",
+    "sha256": "a1e5af075db921bc9f11609beab2f0636546bfdca0a3d6e6121498db06702fd3",
+    "bytes": 19088
+  },
+  {
+    "path": "pantheon/tests/seat-argv.test.mjs",
+    "mode": "100644",
+    "blob_sha": "75336a5bf94a9cd16805e7b335a0cb5eddd38b79",
+    "sha256": "51505c7f2e7e2a85a72b4f557b7a304ff5ab568ae66f1846d32c5a4a4c2a2b98",
+    "bytes": 6788
+  },
+  {
+    "path": "pantheon/tests/seat-conformance.test.mjs",
+    "mode": "100644",
+    "blob_sha": "c0bdd79d2df4d1359f4b88e02687880ca44ab2bd",
+    "sha256": "9654a4215ef5f93e3dd3ae4fd34e0bd0a8df4c1f04257ba915bc5516feb8b3f8",
+    "bytes": 6557
+  },
+  {
+    "path": "pantheon/tests/seat-identity.test.mjs",
+    "mode": "100644",
+    "blob_sha": "e1e2a6deca01f1743fb8583983c5b6472496c2a7",
+    "sha256": "9e01d46605cf87c7f24ea5f9c2938c075fb5492c75aa0c86a76a60eda3d4541b",
+    "bytes": 3391
+  },
+  {
+    "path": "pantheon/tests/seat-lock-claim.test.mjs",
+    "mode": "100644",
+    "blob_sha": "ec6907d410173140d544aa7cd469d31855637d2d",
+    "sha256": "f6f6c1a4fc463ebdb7c7dda617bdd1dfb94f0fed4d666d41ecfe8e6efdf16c80",
+    "bytes": 6957
+  },
+  {
+    "path": "pantheon/tests/seat-lock-contention.test.mjs",
+    "mode": "100644",
+    "blob_sha": "6a12810304e7b8a302f648f5a6062e8e5f9f68b1",
+    "sha256": "0c430e4aa8a06b7b294de7ea71afdb3f0ccf7327e91de183fd6f799d232b1238",
+    "bytes": 4775
+  },
+  {
+    "path": "pantheon/tests/seat-lock.test.mjs",
+    "mode": "100644",
+    "blob_sha": "1dc526058bc45ca11cd585fc17a11528fc959c12",
+    "sha256": "4ae11a23104dcf7fffb8cf835a04a31fb1901a2e00dc3c1e41440d5cee7b0962",
+    "bytes": 8164
+  },
+  {
+    "path": "pantheon/tests/seat-store-chain-allowlist.test.mjs",
+    "mode": "100644",
+    "blob_sha": "5658a2cd8201e9aaac81d4f84fb7bb1984aca846",
+    "sha256": "0c8764321f20b0e4b9656b9602d077a188714289544a483c013d2769ee879145",
+    "bytes": 1529
+  },
+  {
+    "path": "pantheon/tests/seat-store.test.mjs",
+    "mode": "100644",
+    "blob_sha": "be035ef18374a32a3003aa556adac6680fe454e1",
+    "sha256": "cca65721c77472bffb1e89717dd353eafdf5ae0def0d9c439ccbc1c5cc55c2e0",
+    "bytes": 6646
+  },
+  {
+    "path": "pantheon/tests/seat-turn.test.mjs",
+    "mode": "100644",
+    "blob_sha": "fa09e1a7315622466bd55985a01e10b10556b4f7",
+    "sha256": "82dfa98d56c494384dd114270120d21cac97aca0fd48d2ff2304084faf6645c3",
+    "bytes": 16764
+  },
+  {
+    "path": "pantheon/tests/seating-agy.test.mjs",
+    "mode": "100644",
+    "blob_sha": "996188d17abbdf48fd1c2611c30d7c9b337a5807",
+    "sha256": "69d32ef029fd2d148414dae458bcc44f69e335f773d8db91b414ff507569c6d4",
+    "bytes": 2614
+  },
+  {
+    "path": "pantheon/tests/swarm-discuss.test.mjs",
+    "mode": "100644",
+    "blob_sha": "3663fbac8f424524f8493fb30860792fb6c26b8b",
+    "sha256": "72800de101155f07f73948fe7809fd42d15fbc44b0b3d8f67c4f2cc9a4fe9bf7",
+    "bytes": 14151
+  },
+  {
+    "path": "pantheon/tests/swarm-layered.test.mjs",
+    "mode": "100644",
+    "blob_sha": "ad9999ec372184f7169f2177044041af09c1134b",
+    "sha256": "2e10302fef820e317f1928f8f9bcaf78c15a2bb86c062b1e184e0ad93130a784",
+    "bytes": 11458
+  },
+  {
+    "path": "pantheon/tests/swarm-orchestrate.test.mjs",
+    "mode": "100644",
+    "blob_sha": "c05a024be748911d9ec6065043ef93ae9282563a",
+    "sha256": "516095d9eb4a6b9435beafbc03f6863508197b1c063a05251e157b73bcecdaa2",
+    "bytes": 6896
+  },
+  {
+    "path": "pantheon/tests/swarm-overlap.test.mjs",
+    "mode": "100644",
+    "blob_sha": "704fc7f061939ee1292764ffd706d13f83291367",
+    "sha256": "f7cff4452d6d2c54cd7022cf6d5ea42860708e575b89f7642951e2b483616e3a",
+    "bytes": 4203
+  },
+  {
+    "path": "pantheon/tests/team-continuity.test.mjs",
+    "mode": "100644",
+    "blob_sha": "e425a307dab675bcdb8ab607c0220c91957db4e0",
+    "sha256": "db5b60c78bf495dd79a02c6aa0299bdf641a83d1409880f4914ea020eb96e64a",
+    "bytes": 6990
+  },
+  {
+    "path": "pantheon/tests/team-law.test.mjs",
+    "mode": "100644",
+    "blob_sha": "b041f030717e547bae1776e2ccf0a8811e6d45ed",
+    "sha256": "4310576c3362834b17b6dd16cd9e5b715fbc187652aa6386f63d86691f96f260",
+    "bytes": 6966
+  },
+  {
+    "path": "pantheon/tests/team-modes-wiring.test.mjs",
+    "mode": "100644",
+    "blob_sha": "ecaecbc63f0ba728dbae5eeff2ee4a83e1769513",
+    "sha256": "ec3f86689bdb6178c53ec7eb9311256a5a9d3e31d32c063536c7731e3effd2bc",
+    "bytes": 1762
+  },
+  {
+    "path": "pantheon/tests/team-modes.test.mjs",
+    "mode": "100644",
+    "blob_sha": "a84ff56dfe702b5b1fee119135fd39049aa4e830",
+    "sha256": "761f4054569c0a2d3bcba06b7339106a6345cc6b0e16fa72d28038fa1c833949",
+    "bytes": 2847
+  },
+  {
+    "path": "pantheon/tests/team-roster.test.mjs",
+    "mode": "100644",
+    "blob_sha": "3d0885f05bf804492ec608416c06491cf14705b2",
+    "sha256": "eb39b62e3d4bca814fb7e92a285649862e34896fb7e176162574afe847bf42cd",
+    "bytes": 5084
+  },
+  {
+    "path": "pantheon/tests/team-subagent.test.mjs",
+    "mode": "100644",
+    "blob_sha": "281ebf757deb9412742c5a32d37cf423362056a4",
+    "sha256": "78db2d41e88aaa893bc3dc53c1739e021cfb482f044692b051b0ad7e30435cfb",
+    "bytes": 3900
+  },
+  {
+    "path": "pantheon/tests/view-board.test.mjs",
+    "mode": "100644",
+    "blob_sha": "f921af09fccc2cde31d462b980579acb1ff60362",
+    "sha256": "58a23b525737a27e69bd09f6a5747e1b259b36308fc69fe130e8f3b79e79ac27",
+    "bytes": 2760
+  },
+  {
+    "path": "pantheon/tests/view-build-server.test.mjs",
+    "mode": "100644",
+    "blob_sha": "970b3d9c5084222c05e631a14f4d75a40c51ea4e",
+    "sha256": "9181743b0524e9dcba86ab4fd9debecba18cc602a2c70060ce9e4ae380cf6fb6",
+    "bytes": 13074
+  },
+  {
+    "path": "pantheon/tests/view-bus.test.mjs",
+    "mode": "100644",
+    "blob_sha": "39d67a8d4ed62bfcb7c3c50bff66775124b61938",
+    "sha256": "39f643f229409ef8c4ae71d6930dfbeed60de4b129ff0aea9f83cfc2f397b2e0",
+    "bytes": 5120
+  },
+  {
+    "path": "pantheon/tests/view-events.test.mjs",
+    "mode": "100644",
+    "blob_sha": "6d201b822165604251b9251a63683bef59486abe",
+    "sha256": "d641717d778c117ce7667cc59d9c47eac078aa7b4da600757ef62b026f437461",
+    "bytes": 2455
+  },
+  {
+    "path": "pantheon/tests/view-http-safety.test.mjs",
+    "mode": "100644",
+    "blob_sha": "0247f051e6a238014809408d19cbd4d04ddcb0d2",
+    "sha256": "12af4faadff1c6379399e19e6412bdc17f5b64b8cb054204d366cd9d7503a826",
+    "bytes": 825
+  },
+  {
+    "path": "pantheon/tests/view-security.test.mjs",
+    "mode": "100644",
+    "blob_sha": "45f3004441508933670ab210f3dd30c79a09d489",
+    "sha256": "5cd1d4c59a8f32595b72aebeea472c482b65cb8e1d97909fc3318ddd9e5f55c0",
+    "bytes": 6844
+  }
+]

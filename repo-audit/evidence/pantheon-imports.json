@@ -1,0 +1,2823 @@
+[
+  {
+    "path": "pantheon-seat-core/bin/pantheon-view.mjs",
+    "line": 4,
+    "target": "openai",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/bin/pantheon-view.mjs",
+    "line": 5,
+    "target": "@google/genai",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/bin/pantheon-view.mjs",
+    "line": 6,
+    "target": "@anthropic-ai/sdk",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/bin/pantheon-view.mjs",
+    "line": 7,
+    "target": "../src/view/server.mjs",
+    "resolved": "pantheon-seat-core/src/view/server.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/bin/pantheon-view.mjs",
+    "line": 8,
+    "target": "../src/sdk/adapter.mjs",
+    "resolved": "pantheon-seat-core/src/sdk/adapter.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/bin/pantheon.mjs",
+    "line": 3,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/bin/pantheon.mjs",
+    "line": 4,
+    "target": "node:crypto",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/bin/pantheon.mjs",
+    "line": 5,
+    "target": "../src/seat/argv.mjs",
+    "resolved": "pantheon-seat-core/src/seat/argv.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/bin/pantheon.mjs",
+    "line": 6,
+    "target": "../src/seat/conformance.mjs",
+    "resolved": "pantheon-seat-core/src/seat/conformance.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/bin/pantheon.mjs",
+    "line": 7,
+    "target": "../src/context/locate.mjs",
+    "resolved": "pantheon-seat-core/src/context/locate.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/bin/pantheon.mjs",
+    "line": 8,
+    "target": "../src/context/project.mjs",
+    "resolved": "pantheon-seat-core/src/context/project.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/bin/pantheon.mjs",
+    "line": 9,
+    "target": "../src/context/chain.mjs",
+    "resolved": "pantheon-seat-core/src/context/chain.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/bin/pantheon.mjs",
+    "line": 10,
+    "target": "../src/seat/turn.mjs",
+    "resolved": "pantheon-seat-core/src/seat/turn.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/bin/pantheon.mjs",
+    "line": 11,
+    "target": "../src/seat/store.mjs",
+    "resolved": "pantheon-seat-core/src/seat/store.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/bin/pantheon.mjs",
+    "line": 35,
+    "target": "I could\n// not read your file",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/scripts/delegate-run.mjs",
+    "line": 13,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/scripts/delegate-run.mjs",
+    "line": 14,
+    "target": "node:os",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/scripts/delegate-run.mjs",
+    "line": 15,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/scripts/delegate-run.mjs",
+    "line": 16,
+    "target": "../src/swarm/orchestrate.mjs",
+    "resolved": "pantheon-seat-core/src/swarm/orchestrate.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/scripts/delegate-run.mjs",
+    "line": 46,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/scripts/delegate-run.mjs",
+    "line": 47,
+    "target": "node:os",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/scripts/delegate-run.mjs",
+    "line": 48,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/scripts/delegate-run.mjs",
+    "line": 49,
+    "target": "./lock.mjs",
+    "resolved": "pantheon-seat-core/scripts/lock.mjs",
+    "present": false
+  },
+  {
+    "path": "pantheon-seat-core/scripts/delegate-run.mjs",
+    "line": 65,
+    "target": "node:child_process",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/scripts/discuss-run.mjs",
+    "line": 3,
+    "target": "../src/swarm/discuss.mjs",
+    "resolved": "pantheon-seat-core/src/swarm/discuss.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/scripts/live-check.mjs",
+    "line": 10,
+    "target": "openai",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/scripts/live-check.mjs",
+    "line": 11,
+    "target": "@google/genai",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/scripts/live-check.mjs",
+    "line": 12,
+    "target": "@anthropic-ai/sdk",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/scripts/live-check.mjs",
+    "line": 13,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/scripts/live-check.mjs",
+    "line": 14,
+    "target": "node:os",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/scripts/live-check.mjs",
+    "line": 15,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/scripts/live-check.mjs",
+    "line": 16,
+    "target": "../src/sdk/adapter.mjs",
+    "resolved": "pantheon-seat-core/src/sdk/adapter.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/scripts/live-check.mjs",
+    "line": 17,
+    "target": "../src/sdk/seat-sdk.mjs",
+    "resolved": "pantheon-seat-core/src/sdk/seat-sdk.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/scripts/live-check.mjs",
+    "line": 18,
+    "target": "../src/seat/store.mjs",
+    "resolved": "pantheon-seat-core/src/seat/store.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/scripts/live-check.mjs",
+    "line": 93,
+    "target": "../src/sdk/history.mjs",
+    "resolved": "pantheon-seat-core/src/sdk/history.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/scripts/stream-check.mjs",
+    "line": 6,
+    "target": "openai",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/scripts/stream-check.mjs",
+    "line": 7,
+    "target": "@google/genai",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/scripts/stream-check.mjs",
+    "line": 8,
+    "target": "@anthropic-ai/sdk",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/scripts/stream-check.mjs",
+    "line": 9,
+    "target": "../src/sdk/adapter.mjs",
+    "resolved": "pantheon-seat-core/src/sdk/adapter.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/scripts/swarm-run.mjs",
+    "line": 8,
+    "target": "../src/swarm/layered.mjs",
+    "resolved": "pantheon-seat-core/src/swarm/layered.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/scripts/view-check.mjs",
+    "line": 7,
+    "target": "openai",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/scripts/view-check.mjs",
+    "line": 8,
+    "target": "@google/genai",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/scripts/view-check.mjs",
+    "line": 9,
+    "target": "@anthropic-ai/sdk",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/scripts/view-check.mjs",
+    "line": 10,
+    "target": "../src/view/server.mjs",
+    "resolved": "pantheon-seat-core/src/view/server.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/scripts/view-check.mjs",
+    "line": 11,
+    "target": "../src/sdk/adapter.mjs",
+    "resolved": "pantheon-seat-core/src/sdk/adapter.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/scripts/view-check.mjs",
+    "line": 12,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/scripts/view-check.mjs",
+    "line": 13,
+    "target": "node:os",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/scripts/view-check.mjs",
+    "line": 14,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/spike/conversation-chain.mjs",
+    "line": 10,
+    "target": "node:crypto",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/spike/conversation-chain.mjs",
+    "line": 11,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/src/context/chain.mjs",
+    "line": 4,
+    "target": "node:crypto",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/src/context/locate.mjs",
+    "line": 16,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/src/context/locate.mjs",
+    "line": 17,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/src/context/locate.mjs",
+    "line": 18,
+    "target": "node:os",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/src/context/locate.mjs",
+    "line": 19,
+    "target": "node:sqlite",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/src/context/project.mjs",
+    "line": 9,
+    "target": "node:crypto",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/src/context/project.mjs",
+    "line": 10,
+    "target": "node:sqlite",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/adapter.mjs",
+    "line": 1,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/adapter.mjs",
+    "line": 2,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/adapter.mjs",
+    "line": 3,
+    "target": "node:os",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/adapter.mjs",
+    "line": 4,
+    "target": "./stream.mjs",
+    "resolved": "pantheon-seat-core/src/sdk/stream.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/history.mjs",
+    "line": 20,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/history.mjs",
+    "line": 21,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/history.mjs",
+    "line": 22,
+    "target": "../seat/identity.mjs",
+    "resolved": "pantheon-seat-core/src/seat/identity.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/history.mjs",
+    "line": 23,
+    "target": "../seat/store.mjs",
+    "resolved": "pantheon-seat-core/src/seat/store.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/seat-sdk.mjs",
+    "line": 20,
+    "target": "../context/chain.mjs",
+    "resolved": "pantheon-seat-core/src/context/chain.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/seat-sdk.mjs",
+    "line": 21,
+    "target": "../seat/store.mjs",
+    "resolved": "pantheon-seat-core/src/seat/store.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/seat-sdk.mjs",
+    "line": 22,
+    "target": "../seat/identity.mjs",
+    "resolved": "pantheon-seat-core/src/seat/identity.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/seat-sdk.mjs",
+    "line": 23,
+    "target": "../seat/lock.mjs",
+    "resolved": "pantheon-seat-core/src/seat/lock.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/seat-sdk.mjs",
+    "line": 24,
+    "target": "../seat/store.mjs",
+    "resolved": "pantheon-seat-core/src/seat/store.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/seat-sdk.mjs",
+    "line": 25,
+    "target": "./adapter.mjs",
+    "resolved": "pantheon-seat-core/src/sdk/adapter.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/seat-sdk.mjs",
+    "line": 26,
+    "target": "./history.mjs",
+    "resolved": "pantheon-seat-core/src/sdk/history.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/seat-sdk.mjs",
+    "line": 27,
+    "target": "node:crypto",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/seat-sdk.mjs",
+    "line": 28,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/conformance.mjs",
+    "line": 6,
+    "target": "node:child_process",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/conformance.mjs",
+    "line": 7,
+    "target": "./argv.mjs",
+    "resolved": "pantheon-seat-core/src/seat/argv.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/identity.mjs",
+    "line": 3,
+    "target": "node:crypto",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/identity.mjs",
+    "line": 4,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/lock.mjs",
+    "line": 24,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/lock.mjs",
+    "line": 25,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/lock.mjs",
+    "line": 26,
+    "target": "node:crypto",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/store.mjs",
+    "line": 3,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/store.mjs",
+    "line": 4,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/store.mjs",
+    "line": 5,
+    "target": "node:os",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/store.mjs",
+    "line": 6,
+    "target": "./identity.mjs",
+    "resolved": "pantheon-seat-core/src/seat/identity.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/turn.mjs",
+    "line": 3,
+    "target": "node:child_process",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/turn.mjs",
+    "line": 4,
+    "target": "node:crypto",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/turn.mjs",
+    "line": 5,
+    "target": "./argv.mjs",
+    "resolved": "pantheon-seat-core/src/seat/argv.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/src/swarm/discuss.mjs",
+    "line": 124,
+    "target": "we phrased one\n    // position four ways",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/src/view/server.mjs",
+    "line": 7,
+    "target": "node:http",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/src/view/server.mjs",
+    "line": 8,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/src/view/server.mjs",
+    "line": 9,
+    "target": "node:url",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon-seat-core/src/view/server.mjs",
+    "line": 10,
+    "target": "./bus.mjs",
+    "resolved": "pantheon-seat-core/src/view/bus.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/src/view/server.mjs",
+    "line": 11,
+    "target": "../sdk/seat-sdk.mjs",
+    "resolved": "pantheon-seat-core/src/sdk/seat-sdk.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/src/view/server.mjs",
+    "line": 12,
+    "target": "../sdk/adapter.mjs",
+    "resolved": "pantheon-seat-core/src/sdk/adapter.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon-seat-core/src/view/server.mjs",
+    "line": 82,
+    "target": ") ?? 0) || 0;\n      const send = e => {\n        res.write(`id: ${e.seq ?? 0}\\ndata: ${JSON.stringify(e)}\\n\\n`);\n      };\n      const unsubscribe = bus.subscribe(send, { from });\n      const keepAlive = setInterval(() => res.write(",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/bin/pantheon-agents-mcp.mjs",
+    "line": 16,
+    "target": "node:readline",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/bin/pantheon-agents-mcp.mjs",
+    "line": 17,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/bin/pantheon-agents-mcp.mjs",
+    "line": 18,
+    "target": "node:url",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/bin/pantheon-agents-mcp.mjs",
+    "line": 19,
+    "target": "../src/mcp/agents-server.mjs",
+    "resolved": "pantheon/src/mcp/agents-server.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/bin/pantheon-build.mjs",
+    "line": 14,
+    "target": "openai",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/bin/pantheon-build.mjs",
+    "line": 15,
+    "target": "@google/genai",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/bin/pantheon-build.mjs",
+    "line": 16,
+    "target": "@anthropic-ai/sdk",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/bin/pantheon-build.mjs",
+    "line": 17,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/bin/pantheon-build.mjs",
+    "line": 18,
+    "target": "node:os",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/bin/pantheon-build.mjs",
+    "line": 19,
+    "target": "../src/view/build-server.mjs",
+    "resolved": "pantheon/src/view/build-server.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/bin/pantheon-build.mjs",
+    "line": 20,
+    "target": "../src/sdk/adapter.mjs",
+    "resolved": "pantheon/src/sdk/adapter.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/bin/pantheon-view.mjs",
+    "line": 4,
+    "target": "openai",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/bin/pantheon-view.mjs",
+    "line": 5,
+    "target": "@google/genai",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/bin/pantheon-view.mjs",
+    "line": 6,
+    "target": "@anthropic-ai/sdk",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/bin/pantheon-view.mjs",
+    "line": 7,
+    "target": "../src/view/server.mjs",
+    "resolved": "pantheon/src/view/server.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/bin/pantheon-view.mjs",
+    "line": 8,
+    "target": "../src/sdk/adapter.mjs",
+    "resolved": "pantheon/src/sdk/adapter.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/bin/pantheon.mjs",
+    "line": 3,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/bin/pantheon.mjs",
+    "line": 4,
+    "target": "node:crypto",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/bin/pantheon.mjs",
+    "line": 5,
+    "target": "../src/seat/argv.mjs",
+    "resolved": "pantheon/src/seat/argv.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/bin/pantheon.mjs",
+    "line": 6,
+    "target": "../src/seat/conformance.mjs",
+    "resolved": "pantheon/src/seat/conformance.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/bin/pantheon.mjs",
+    "line": 7,
+    "target": "../src/context/locate.mjs",
+    "resolved": "pantheon/src/context/locate.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/bin/pantheon.mjs",
+    "line": 8,
+    "target": "../src/context/project.mjs",
+    "resolved": "pantheon/src/context/project.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/bin/pantheon.mjs",
+    "line": 9,
+    "target": "../src/context/chain.mjs",
+    "resolved": "pantheon/src/context/chain.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/bin/pantheon.mjs",
+    "line": 10,
+    "target": "../src/seat/turn.mjs",
+    "resolved": "pantheon/src/seat/turn.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/bin/pantheon.mjs",
+    "line": 11,
+    "target": "../src/seat/store.mjs",
+    "resolved": "pantheon/src/seat/store.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/bin/pantheon.mjs",
+    "line": 35,
+    "target": "I could\n// not read your file",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/apply-artifact.mjs",
+    "line": 2,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/apply-artifact.mjs",
+    "line": 3,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/apply-artifact.mjs",
+    "line": 4,
+    "target": "node:url",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/apply-artifact.mjs",
+    "line": 5,
+    "target": "../src/board/canon.mjs",
+    "resolved": "pantheon/src/board/canon.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/apply-artifact.mjs",
+    "line": 6,
+    "target": "../src/board/artifacts.mjs",
+    "resolved": "pantheon/src/board/artifacts.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/apply-artifact.mjs",
+    "line": 7,
+    "target": "../src/board/artifact-files.mjs",
+    "resolved": "pantheon/src/board/artifact-files.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/board-run.mjs",
+    "line": 10,
+    "target": "../src/board/integrate.mjs",
+    "resolved": "pantheon/src/board/integrate.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/board-run.mjs",
+    "line": 11,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/board-run.mjs",
+    "line": 12,
+    "target": "node:os",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/board-run.mjs",
+    "line": 13,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/board-run.mjs",
+    "line": 14,
+    "target": "../src/board/index.mjs",
+    "resolved": "pantheon/src/board/index.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/board-run.mjs",
+    "line": 15,
+    "target": "../src/board/dag.mjs",
+    "resolved": "pantheon/src/board/dag.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/board-run.mjs",
+    "line": 16,
+    "target": "../src/board/merge.mjs",
+    "resolved": "pantheon/src/board/merge.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/board-run.mjs",
+    "line": 17,
+    "target": "../src/board/controller.mjs",
+    "resolved": "pantheon/src/board/controller.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/board-run.mjs",
+    "line": 22,
+    "target": "../src/board/project.mjs",
+    "resolved": "pantheon/src/board/project.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/board-run.mjs",
+    "line": 23,
+    "target": "../src/board/canon.mjs",
+    "resolved": "pantheon/src/board/canon.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/board-run.mjs",
+    "line": 25,
+    "target": "../src/role/seating.mjs",
+    "resolved": "pantheon/src/role/seating.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/board-run.mjs",
+    "line": 26,
+    "target": "../src/role/roles.mjs",
+    "resolved": "pantheon/src/role/roles.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/card-check.mjs",
+    "line": 22,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/card-check.mjs",
+    "line": 23,
+    "target": "node:child_process",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/delegate-run.mjs",
+    "line": 13,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/delegate-run.mjs",
+    "line": 14,
+    "target": "node:os",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/delegate-run.mjs",
+    "line": 15,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/delegate-run.mjs",
+    "line": 16,
+    "target": "node:url",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/delegate-run.mjs",
+    "line": 17,
+    "target": "../src/board/acceptance.mjs",
+    "resolved": "pantheon/src/board/acceptance.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/delegate-run.mjs",
+    "line": 18,
+    "target": "../src/swarm/orchestrate.mjs",
+    "resolved": "pantheon/src/swarm/orchestrate.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/delegate-run.mjs",
+    "line": 48,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/delegate-run.mjs",
+    "line": 49,
+    "target": "node:os",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/delegate-run.mjs",
+    "line": 50,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/delegate-run.mjs",
+    "line": 51,
+    "target": "./lock.mjs",
+    "resolved": "pantheon/scripts/lock.mjs",
+    "present": false
+  },
+  {
+    "path": "pantheon/scripts/discuss-run.mjs",
+    "line": 3,
+    "target": "../src/swarm/discuss.mjs",
+    "resolved": "pantheon/src/swarm/discuss.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/graph-check.mjs",
+    "line": 17,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/graph-check.mjs",
+    "line": 18,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/graph-check.mjs",
+    "line": 19,
+    "target": "node:child_process",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/graph-check.mjs",
+    "line": 54,
+    "target": ", ",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/lib/repo-root.mjs",
+    "line": 1,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/live-check.mjs",
+    "line": 10,
+    "target": "openai",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/live-check.mjs",
+    "line": 11,
+    "target": "@google/genai",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/live-check.mjs",
+    "line": 12,
+    "target": "@anthropic-ai/sdk",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/live-check.mjs",
+    "line": 13,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/live-check.mjs",
+    "line": 14,
+    "target": "node:os",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/live-check.mjs",
+    "line": 15,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/live-check.mjs",
+    "line": 16,
+    "target": "../src/sdk/adapter.mjs",
+    "resolved": "pantheon/src/sdk/adapter.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/live-check.mjs",
+    "line": 17,
+    "target": "../src/sdk/seat-sdk.mjs",
+    "resolved": "pantheon/src/sdk/seat-sdk.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/live-check.mjs",
+    "line": 18,
+    "target": "../src/seat/store.mjs",
+    "resolved": "pantheon/src/seat/store.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/live-check.mjs",
+    "line": 93,
+    "target": "../src/sdk/history.mjs",
+    "resolved": "pantheon/src/sdk/history.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/live-ship.mjs",
+    "line": 23,
+    "target": "openai",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/live-ship.mjs",
+    "line": 24,
+    "target": "@google/genai",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/live-ship.mjs",
+    "line": 25,
+    "target": "@anthropic-ai/sdk",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/live-ship.mjs",
+    "line": 26,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/live-ship.mjs",
+    "line": 27,
+    "target": "../src/board/acceptance.mjs",
+    "resolved": "pantheon/src/board/acceptance.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/live-ship.mjs",
+    "line": 28,
+    "target": "../src/board/artifact-files.mjs",
+    "resolved": "pantheon/src/board/artifact-files.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/live-ship.mjs",
+    "line": 29,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/live-ship.mjs",
+    "line": 30,
+    "target": "node:os",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/live-ship.mjs",
+    "line": 31,
+    "target": "../src/sdk/adapter.mjs",
+    "resolved": "pantheon/src/sdk/adapter.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/live-ship.mjs",
+    "line": 32,
+    "target": "../src/sdk/seat-sdk.mjs",
+    "resolved": "pantheon/src/sdk/seat-sdk.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/live-ship.mjs",
+    "line": 33,
+    "target": "../src/board/index.mjs",
+    "resolved": "pantheon/src/board/index.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/live-ship.mjs",
+    "line": 34,
+    "target": "../src/board/dag.mjs",
+    "resolved": "pantheon/src/board/dag.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/live-ship.mjs",
+    "line": 35,
+    "target": "../src/board/merge.mjs",
+    "resolved": "pantheon/src/board/merge.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/live-ship.mjs",
+    "line": 36,
+    "target": "../src/board/integrate.mjs",
+    "resolved": "pantheon/src/board/integrate.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/live-ship.mjs",
+    "line": 37,
+    "target": "../src/board/controller.mjs",
+    "resolved": "pantheon/src/board/controller.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/live-ship.mjs",
+    "line": 38,
+    "target": "../src/board/project.mjs",
+    "resolved": "pantheon/src/board/project.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/live-ship.mjs",
+    "line": 40,
+    "target": "../src/role/seating.mjs",
+    "resolved": "pantheon/src/role/seating.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/live-ship.mjs",
+    "line": 41,
+    "target": "../src/role/roles.mjs",
+    "resolved": "pantheon/src/role/roles.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/live-ship.mjs",
+    "line": 42,
+    "target": "../src/board/canon.mjs",
+    "resolved": "pantheon/src/board/canon.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/live-ship.mjs",
+    "line": 43,
+    "target": "../src/config/models.mjs",
+    "resolved": "pantheon/src/config/models.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/open-items-run.mjs",
+    "line": 17,
+    "target": "openai",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/open-items-run.mjs",
+    "line": 18,
+    "target": "@google/genai",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/open-items-run.mjs",
+    "line": 19,
+    "target": "@anthropic-ai/sdk",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/open-items-run.mjs",
+    "line": 20,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/open-items-run.mjs",
+    "line": 21,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/open-items-run.mjs",
+    "line": 22,
+    "target": "../src/sdk/adapter.mjs",
+    "resolved": "pantheon/src/sdk/adapter.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/open-items-run.mjs",
+    "line": 23,
+    "target": "../src/board/run-item.mjs",
+    "resolved": "pantheon/src/board/run-item.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/overseer.mjs",
+    "line": 12,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/overseer.mjs",
+    "line": 13,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/run-transcript.mjs",
+    "line": 15,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/run-transcript.mjs",
+    "line": 16,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/stream-check.mjs",
+    "line": 6,
+    "target": "openai",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/stream-check.mjs",
+    "line": 7,
+    "target": "@google/genai",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/stream-check.mjs",
+    "line": 8,
+    "target": "@anthropic-ai/sdk",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/stream-check.mjs",
+    "line": 9,
+    "target": "../src/sdk/adapter.mjs",
+    "resolved": "pantheon/src/sdk/adapter.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/swarm-run.mjs",
+    "line": 8,
+    "target": "../src/swarm/layered.mjs",
+    "resolved": "pantheon/src/swarm/layered.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/view-check.mjs",
+    "line": 7,
+    "target": "openai",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/view-check.mjs",
+    "line": 8,
+    "target": "@google/genai",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/view-check.mjs",
+    "line": 9,
+    "target": "@anthropic-ai/sdk",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/view-check.mjs",
+    "line": 10,
+    "target": "../src/view/server.mjs",
+    "resolved": "pantheon/src/view/server.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/view-check.mjs",
+    "line": 11,
+    "target": "../src/sdk/adapter.mjs",
+    "resolved": "pantheon/src/sdk/adapter.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/scripts/view-check.mjs",
+    "line": 12,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/view-check.mjs",
+    "line": 13,
+    "target": "node:os",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/scripts/view-check.mjs",
+    "line": 14,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/spike/conversation-chain.mjs",
+    "line": 10,
+    "target": "node:crypto",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/spike/conversation-chain.mjs",
+    "line": 11,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/agents/render.mjs",
+    "line": 29,
+    "target": "./store.mjs",
+    "resolved": "pantheon/src/agents/store.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/agents/store.mjs",
+    "line": 22,
+    "target": "../role/roles.mjs",
+    "resolved": "pantheon/src/role/roles.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/agents/store.mjs",
+    "line": 23,
+    "target": "../role/seating.mjs",
+    "resolved": "pantheon/src/role/seating.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/acceptance.mjs",
+    "line": 4,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/board/acceptance.mjs",
+    "line": 5,
+    "target": "./spawn.mjs",
+    "resolved": "pantheon/src/board/spawn.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/agy-cli.mjs",
+    "line": 3,
+    "target": "./spawn.mjs",
+    "resolved": "pantheon/src/board/spawn.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/agy-cli.mjs",
+    "line": 4,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/board/agy-cli.mjs",
+    "line": 5,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/board/artifact-files.mjs",
+    "line": 4,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/board/artifact-files.mjs",
+    "line": 5,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/board/artifact-files.mjs",
+    "line": 6,
+    "target": "node:crypto",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/board/artifacts.mjs",
+    "line": 2,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/board/artifacts.mjs",
+    "line": 3,
+    "target": "./cas.mjs",
+    "resolved": "pantheon/src/board/cas.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/artifacts.mjs",
+    "line": 4,
+    "target": "./dag.mjs",
+    "resolved": "pantheon/src/board/dag.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/artifacts.mjs",
+    "line": 5,
+    "target": "./controller.mjs",
+    "resolved": "pantheon/src/board/controller.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/artifacts.mjs",
+    "line": 6,
+    "target": "./integrate.mjs",
+    "resolved": "pantheon/src/board/integrate.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/artifacts.mjs",
+    "line": 7,
+    "target": "./refs.mjs",
+    "resolved": "pantheon/src/board/refs.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/artifacts.mjs",
+    "line": 8,
+    "target": "./canon.mjs",
+    "resolved": "pantheon/src/board/canon.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/artifacts.mjs",
+    "line": 9,
+    "target": "./artifact-files.mjs",
+    "resolved": "pantheon/src/board/artifact-files.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/artifacts.mjs",
+    "line": 10,
+    "target": "./acceptance.mjs",
+    "resolved": "pantheon/src/board/acceptance.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/canon.mjs",
+    "line": 16,
+    "target": "node:crypto",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/board/cas.mjs",
+    "line": 9,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/board/cas.mjs",
+    "line": 10,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/board/cas.mjs",
+    "line": 11,
+    "target": "./canon.mjs",
+    "resolved": "pantheon/src/board/canon.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/controller.mjs",
+    "line": 16,
+    "target": "./dag.mjs",
+    "resolved": "pantheon/src/board/dag.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/controller.mjs",
+    "line": 17,
+    "target": "./merge.mjs",
+    "resolved": "pantheon/src/board/merge.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/controller.mjs",
+    "line": 18,
+    "target": "./canon.mjs",
+    "resolved": "pantheon/src/board/canon.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/controller.mjs",
+    "line": 19,
+    "target": "./schema.mjs",
+    "resolved": "pantheon/src/board/schema.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/dag.mjs",
+    "line": 13,
+    "target": "./schema.mjs",
+    "resolved": "pantheon/src/board/schema.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/dag.mjs",
+    "line": 14,
+    "target": "./canon.mjs",
+    "resolved": "pantheon/src/board/canon.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/index.mjs",
+    "line": 3,
+    "target": "./cas.mjs",
+    "resolved": "pantheon/src/board/cas.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/index.mjs",
+    "line": 4,
+    "target": "./refs.mjs",
+    "resolved": "pantheon/src/board/refs.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/index.mjs",
+    "line": 5,
+    "target": "./runtime.mjs",
+    "resolved": "pantheon/src/board/runtime.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/index.mjs",
+    "line": 14,
+    "target": "./canon.mjs",
+    "resolved": "pantheon/src/board/canon.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/index.mjs",
+    "line": 15,
+    "target": "./schema.mjs",
+    "resolved": "pantheon/src/board/schema.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/index.mjs",
+    "line": 16,
+    "target": "./dag.mjs",
+    "resolved": "pantheon/src/board/dag.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/index.mjs",
+    "line": 17,
+    "target": "./merge.mjs",
+    "resolved": "pantheon/src/board/merge.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/index.mjs",
+    "line": 18,
+    "target": "./project.mjs",
+    "resolved": "pantheon/src/board/project.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/index.mjs",
+    "line": 19,
+    "target": "./controller.mjs",
+    "resolved": "pantheon/src/board/controller.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/index.mjs",
+    "line": 20,
+    "target": "./refs.mjs",
+    "resolved": "pantheon/src/board/refs.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/integrate.mjs",
+    "line": 19,
+    "target": "./dag.mjs",
+    "resolved": "pantheon/src/board/dag.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/integrate.mjs",
+    "line": 20,
+    "target": "./merge.mjs",
+    "resolved": "pantheon/src/board/merge.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/integrate.mjs",
+    "line": 21,
+    "target": "./controller.mjs",
+    "resolved": "pantheon/src/board/controller.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/integrate.mjs",
+    "line": 22,
+    "target": "./refs.mjs",
+    "resolved": "pantheon/src/board/refs.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/integrate.mjs",
+    "line": 23,
+    "target": "./schema.mjs",
+    "resolved": "pantheon/src/board/schema.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/integrate.mjs",
+    "line": 24,
+    "target": "./canon.mjs",
+    "resolved": "pantheon/src/board/canon.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/merge.mjs",
+    "line": 14,
+    "target": "./refs.mjs",
+    "resolved": "pantheon/src/board/refs.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/merge.mjs",
+    "line": 15,
+    "target": "./dag.mjs",
+    "resolved": "pantheon/src/board/dag.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/merge.mjs",
+    "line": 16,
+    "target": "./canon.mjs",
+    "resolved": "pantheon/src/board/canon.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/merge.mjs",
+    "line": 18,
+    "target": "./policy.mjs",
+    "resolved": "pantheon/src/board/policy.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/project.mjs",
+    "line": 16,
+    "target": "./canon.mjs",
+    "resolved": "pantheon/src/board/canon.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/project.mjs",
+    "line": 17,
+    "target": "./dag.mjs",
+    "resolved": "pantheon/src/board/dag.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/project.mjs",
+    "line": 18,
+    "target": "./schema.mjs",
+    "resolved": "pantheon/src/board/schema.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/refs.mjs",
+    "line": 14,
+    "target": "./policy.mjs",
+    "resolved": "pantheon/src/board/policy.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/refs.mjs",
+    "line": 15,
+    "target": "./dag.mjs",
+    "resolved": "pantheon/src/board/dag.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/refs.mjs",
+    "line": 16,
+    "target": "./schema.mjs",
+    "resolved": "pantheon/src/board/schema.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/refs.mjs",
+    "line": 17,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/board/refs.mjs",
+    "line": 18,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/board/refs.mjs",
+    "line": 19,
+    "target": "./canon.mjs",
+    "resolved": "pantheon/src/board/canon.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/refs.mjs",
+    "line": 20,
+    "target": "../seat/lock.mjs",
+    "resolved": "pantheon/src/seat/lock.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/run-item.mjs",
+    "line": 14,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/board/run-item.mjs",
+    "line": 15,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/board/run-item.mjs",
+    "line": 16,
+    "target": "node:os",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/board/run-item.mjs",
+    "line": 17,
+    "target": "node:url",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/board/run-item.mjs",
+    "line": 18,
+    "target": "../sdk/seat-sdk.mjs",
+    "resolved": "pantheon/src/sdk/seat-sdk.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/run-item.mjs",
+    "line": 19,
+    "target": "./index.mjs",
+    "resolved": "pantheon/src/board/index.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/run-item.mjs",
+    "line": 20,
+    "target": "./dag.mjs",
+    "resolved": "pantheon/src/board/dag.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/run-item.mjs",
+    "line": 21,
+    "target": "./merge.mjs",
+    "resolved": "pantheon/src/board/merge.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/run-item.mjs",
+    "line": 22,
+    "target": "./integrate.mjs",
+    "resolved": "pantheon/src/board/integrate.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/run-item.mjs",
+    "line": 23,
+    "target": "./controller.mjs",
+    "resolved": "pantheon/src/board/controller.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/run-item.mjs",
+    "line": 24,
+    "target": "./project.mjs",
+    "resolved": "pantheon/src/board/project.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/run-item.mjs",
+    "line": 26,
+    "target": "../role/seating.mjs",
+    "resolved": "pantheon/src/role/seating.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/run-item.mjs",
+    "line": 27,
+    "target": "../route/cooldown.mjs",
+    "resolved": "pantheon/src/route/cooldown.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/run-item.mjs",
+    "line": 28,
+    "target": "../role/roles.mjs",
+    "resolved": "pantheon/src/role/roles.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/run-item.mjs",
+    "line": 29,
+    "target": "./canon.mjs",
+    "resolved": "pantheon/src/board/canon.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/run-item.mjs",
+    "line": 30,
+    "target": "./acceptance.mjs",
+    "resolved": "pantheon/src/board/acceptance.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/run-item.mjs",
+    "line": 31,
+    "target": "./artifact-files.mjs",
+    "resolved": "pantheon/src/board/artifact-files.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/run-item.mjs",
+    "line": 32,
+    "target": "./artifacts.mjs",
+    "resolved": "pantheon/src/board/artifacts.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/run-item.mjs",
+    "line": 33,
+    "target": "../../scripts/lib/repo-root.mjs",
+    "resolved": "pantheon/scripts/lib/repo-root.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/run-item.mjs",
+    "line": 34,
+    "target": "../config/models.mjs",
+    "resolved": "pantheon/src/config/models.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/run-item.mjs",
+    "line": 35,
+    "target": "../agents/store.mjs",
+    "resolved": "pantheon/src/agents/store.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/run-item.mjs",
+    "line": 36,
+    "target": "./ticket-safety.mjs",
+    "resolved": "pantheon/src/board/ticket-safety.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/run-item.mjs",
+    "line": 37,
+    "target": "./spawn.mjs",
+    "resolved": "pantheon/src/board/spawn.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/run-item.mjs",
+    "line": 38,
+    "target": "./agy-cli.mjs",
+    "resolved": "pantheon/src/board/agy-cli.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/run-item.mjs",
+    "line": 119,
+    "target": "refuse\n  // the bad combination early",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/board/runtime.mjs",
+    "line": 15,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/board/runtime.mjs",
+    "line": 16,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/board/runtime.mjs",
+    "line": 17,
+    "target": "../seat/lock.mjs",
+    "resolved": "pantheon/src/seat/lock.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/schema.mjs",
+    "line": 38,
+    "target": "./canon.mjs",
+    "resolved": "pantheon/src/board/canon.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/board/spawn.mjs",
+    "line": 15,
+    "target": "node:child_process",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/board/ticket-safety.mjs",
+    "line": 23,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/board/ticket-safety.mjs",
+    "line": 24,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/config/models.mjs",
+    "line": 1,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/config/models.mjs",
+    "line": 2,
+    "target": "node:url",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/config/models.mjs",
+    "line": 3,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/context/chain.mjs",
+    "line": 4,
+    "target": "node:crypto",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/context/locate.mjs",
+    "line": 16,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/context/locate.mjs",
+    "line": 17,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/context/locate.mjs",
+    "line": 18,
+    "target": "node:os",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/context/locate.mjs",
+    "line": 19,
+    "target": "node:module",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/context/project.mjs",
+    "line": 9,
+    "target": "node:crypto",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/context/project.mjs",
+    "line": 10,
+    "target": "node:module",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/mcp/agents-server.mjs",
+    "line": 17,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/mcp/agents-server.mjs",
+    "line": 18,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/mcp/agents-server.mjs",
+    "line": 19,
+    "target": "../agents/store.mjs",
+    "resolved": "pantheon/src/agents/store.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/mcp/agents-server.mjs",
+    "line": 20,
+    "target": "../agents/render.mjs",
+    "resolved": "pantheon/src/agents/render.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/mcp/agents-server.mjs",
+    "line": 21,
+    "target": "../board/ticket-safety.mjs",
+    "resolved": "pantheon/src/board/ticket-safety.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "line": 19,
+    "target": "./roles.mjs",
+    "resolved": "pantheon/src/role/roles.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "line": 20,
+    "target": "../board/project.mjs",
+    "resolved": "pantheon/src/board/project.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "line": 21,
+    "target": "../route/router.mjs",
+    "resolved": "pantheon/src/route/router.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "line": 22,
+    "target": "../config/models.mjs",
+    "resolved": "pantheon/src/config/models.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "line": 137,
+    "target": ",\n  SURFACE:    ",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/route/cooldown.mjs",
+    "line": 33,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/route/cooldown.mjs",
+    "line": 34,
+    "target": "node:os",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/route/cooldown.mjs",
+    "line": 35,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/route/router.mjs",
+    "line": 26,
+    "target": "../config/models.mjs",
+    "resolved": "pantheon/src/config/models.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/sdk/adapter.mjs",
+    "line": 1,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/sdk/adapter.mjs",
+    "line": 2,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/sdk/adapter.mjs",
+    "line": 3,
+    "target": "node:os",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/sdk/adapter.mjs",
+    "line": 4,
+    "target": "./stream.mjs",
+    "resolved": "pantheon/src/sdk/stream.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/sdk/adapter.mjs",
+    "line": 5,
+    "target": "../config/models.mjs",
+    "resolved": "pantheon/src/config/models.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/sdk/history.mjs",
+    "line": 20,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/sdk/history.mjs",
+    "line": 21,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/sdk/history.mjs",
+    "line": 22,
+    "target": "../seat/identity.mjs",
+    "resolved": "pantheon/src/seat/identity.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/sdk/history.mjs",
+    "line": 23,
+    "target": "../seat/store.mjs",
+    "resolved": "pantheon/src/seat/store.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/sdk/seat-sdk.mjs",
+    "line": 20,
+    "target": "../context/chain.mjs",
+    "resolved": "pantheon/src/context/chain.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/sdk/seat-sdk.mjs",
+    "line": 21,
+    "target": "../seat/store.mjs",
+    "resolved": "pantheon/src/seat/store.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/sdk/seat-sdk.mjs",
+    "line": 22,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/sdk/seat-sdk.mjs",
+    "line": 23,
+    "target": "../seat/identity.mjs",
+    "resolved": "pantheon/src/seat/identity.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/sdk/seat-sdk.mjs",
+    "line": 24,
+    "target": "../seat/lock.mjs",
+    "resolved": "pantheon/src/seat/lock.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/sdk/seat-sdk.mjs",
+    "line": 25,
+    "target": "../seat/store.mjs",
+    "resolved": "pantheon/src/seat/store.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/sdk/seat-sdk.mjs",
+    "line": 26,
+    "target": "./adapter.mjs",
+    "resolved": "pantheon/src/sdk/adapter.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/sdk/seat-sdk.mjs",
+    "line": 27,
+    "target": "./history.mjs",
+    "resolved": "pantheon/src/sdk/history.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/sdk/seat-sdk.mjs",
+    "line": 28,
+    "target": "node:crypto",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/sdk/seat-sdk.mjs",
+    "line": 29,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/seat/conformance.mjs",
+    "line": 6,
+    "target": "node:child_process",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/seat/conformance.mjs",
+    "line": 7,
+    "target": "./argv.mjs",
+    "resolved": "pantheon/src/seat/argv.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/seat/identity.mjs",
+    "line": 3,
+    "target": "node:crypto",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/seat/identity.mjs",
+    "line": 4,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/seat/lock.mjs",
+    "line": 24,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/seat/lock.mjs",
+    "line": 25,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/seat/lock.mjs",
+    "line": 26,
+    "target": "node:crypto",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/seat/store.mjs",
+    "line": 3,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/seat/store.mjs",
+    "line": 4,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/seat/store.mjs",
+    "line": 5,
+    "target": "node:os",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/seat/store.mjs",
+    "line": 6,
+    "target": "./identity.mjs",
+    "resolved": "pantheon/src/seat/identity.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/seat/turn.mjs",
+    "line": 3,
+    "target": "node:child_process",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/seat/turn.mjs",
+    "line": 4,
+    "target": "node:crypto",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/seat/turn.mjs",
+    "line": 5,
+    "target": "./argv.mjs",
+    "resolved": "pantheon/src/seat/argv.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/swarm/discuss.mjs",
+    "line": 25,
+    "target": "../role/roles.mjs",
+    "resolved": "pantheon/src/role/roles.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/swarm/discuss.mjs",
+    "line": 152,
+    "target": "we phrased one\n    // position four ways",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/swarm/layered.mjs",
+    "line": 91,
+    "target": "../role/roles.mjs",
+    "resolved": "pantheon/src/role/roles.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/swarm/orchestrate.mjs",
+    "line": 19,
+    "target": "../role/roles.mjs",
+    "resolved": "pantheon/src/role/roles.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/team/continuity.mjs",
+    "line": 18,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/team/continuity.mjs",
+    "line": 19,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/team/continuity.mjs",
+    "line": 20,
+    "target": "./roster.mjs",
+    "resolved": "pantheon/src/team/roster.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/team/continuity.mjs",
+    "line": 21,
+    "target": "../seat/lock.mjs",
+    "resolved": "pantheon/src/seat/lock.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/team/continuity.mjs",
+    "line": 22,
+    "target": "./measure.mjs",
+    "resolved": "pantheon/src/team/measure.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/team/law.mjs",
+    "line": 9,
+    "target": "./roster.mjs",
+    "resolved": "pantheon/src/team/roster.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/team/law.mjs",
+    "line": 10,
+    "target": "./measure.mjs",
+    "resolved": "pantheon/src/team/measure.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/team/law.mjs",
+    "line": 11,
+    "target": "../role/roles.mjs",
+    "resolved": "pantheon/src/role/roles.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/team/modes.mjs",
+    "line": 11,
+    "target": "./roster.mjs",
+    "resolved": "pantheon/src/team/roster.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/team/roster.mjs",
+    "line": 18,
+    "target": "node:crypto",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/team/roster.mjs",
+    "line": 19,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/team/roster.mjs",
+    "line": 20,
+    "target": "../role/roles.mjs",
+    "resolved": "pantheon/src/role/roles.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/team/roster.mjs",
+    "line": 21,
+    "target": "../board/project.mjs",
+    "resolved": "pantheon/src/board/project.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/team/subagent.mjs",
+    "line": 18,
+    "target": "./roster.mjs",
+    "resolved": "pantheon/src/team/roster.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/team/subagent.mjs",
+    "line": 19,
+    "target": "../role/seating.mjs",
+    "resolved": "pantheon/src/role/seating.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/view/build-server.mjs",
+    "line": 11,
+    "target": "node:http",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/view/build-server.mjs",
+    "line": 12,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/view/build-server.mjs",
+    "line": 13,
+    "target": "node:os",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/view/build-server.mjs",
+    "line": 14,
+    "target": "./bus.mjs",
+    "resolved": "pantheon/src/view/bus.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/view/build-server.mjs",
+    "line": 15,
+    "target": "./http-safety.mjs",
+    "resolved": "pantheon/src/view/http-safety.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/view/build-server.mjs",
+    "line": 16,
+    "target": "../board/run-item.mjs",
+    "resolved": "pantheon/src/board/run-item.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/view/build-server.mjs",
+    "line": 17,
+    "target": "../board/ticket-safety.mjs",
+    "resolved": "pantheon/src/board/ticket-safety.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/view/build-server.mjs",
+    "line": 18,
+    "target": "../board/schema.mjs",
+    "resolved": "pantheon/src/board/schema.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/view/build-server.mjs",
+    "line": 122,
+    "target": ") ?? 0) || 0;\n      const send = e => res.write(`id: ${e.seq ?? 0}\\ndata: ${JSON.stringify(e)}\\n\\n`);\n      const unsubscribe = bus.subscribe(send, { from });\n      const keepAlive = setInterval(() => res.write(",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/view/server.mjs",
+    "line": 7,
+    "target": "node:http",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/view/server.mjs",
+    "line": 8,
+    "target": "node:fs",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/view/server.mjs",
+    "line": 9,
+    "target": "node:path",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/view/server.mjs",
+    "line": 10,
+    "target": "node:url",
+    "resolved": null,
+    "present": null
+  },
+  {
+    "path": "pantheon/src/view/server.mjs",
+    "line": 11,
+    "target": "./bus.mjs",
+    "resolved": "pantheon/src/view/bus.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/view/server.mjs",
+    "line": 12,
+    "target": "./http-safety.mjs",
+    "resolved": "pantheon/src/view/http-safety.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/view/server.mjs",
+    "line": 13,
+    "target": "../sdk/seat-sdk.mjs",
+    "resolved": "pantheon/src/sdk/seat-sdk.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/view/server.mjs",
+    "line": 14,
+    "target": "../sdk/adapter.mjs",
+    "resolved": "pantheon/src/sdk/adapter.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/view/server.mjs",
+    "line": 76,
+    "target": "../board/index.mjs",
+    "resolved": "pantheon/src/board/index.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/view/server.mjs",
+    "line": 77,
+    "target": "../board/canon.mjs",
+    "resolved": "pantheon/src/board/canon.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/view/server.mjs",
+    "line": 89,
+    "target": "../board/controller.mjs",
+    "resolved": "pantheon/src/board/controller.mjs",
+    "present": true
+  },
+  {
+    "path": "pantheon/src/view/server.mjs",
+    "line": 161,
+    "target": ") ?? 0) || 0;\n      const send = e => {\n        res.write(`id: ${e.seq ?? 0}\\ndata: ${JSON.stringify(e)}\\n\\n`);\n      };\n      const unsubscribe = bus.subscribe(send, { from });\n      const keepAlive = setInterval(() => res.write(",
+    "resolved": null,
+    "present": null
+  }
+]

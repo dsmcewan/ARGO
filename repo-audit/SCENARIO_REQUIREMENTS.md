@@ -2,7 +2,7 @@
 
 Source supplied by the user: [Tempted_Fates.md](../SCENARIOS/Tempted_Fates.md). The retained copy is byte-identical to the attachment; provenance and SHA-256 are in [tempted-fates-source.json](evidence/tempted-fates-source.json).
 
-This is Phase 1 requirements extraction for later architecture and Integration Test Zero. It does not freeze schemas, implement a ruleset, or advance the phase gate. Pantheon source remains unavailable.
+This is Phase 1 requirements extraction for later architecture and Integration Test Zero. It does not freeze schemas, implement a ruleset, or advance the phase gate. Pantheon source was subsequently supplied and audited; see PANTHEON_AUDIT.md.
 
 ## Canon boundary
 
@@ -56,4 +56,4 @@ The source does not define a machine event ordering between disappearance and na
 - No consent revocation/time-of-commit rule is defined here; integrate the original task's authority requirements during the contract phase.
 - The example's family/love, regret, dialogue order and resulting absences are possible history, not events to force on every player.
 
-The missing-scenario-source blocker is resolved. The strict dependency spine remains at Phase 1 until the actual Pantheon harness can be audited.
+The missing-scenario-source blocker is resolved. Phase 1 static source extraction has now passed, including Pantheon. These requirements carry forward to the contract freeze.

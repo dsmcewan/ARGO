@@ -6,7 +6,7 @@ This repository preserves the initial audit, requirements, scenario canon, and c
 
 ## Current state
 
-**Phase 1: audit in progress.** LEXI and TELOS source extraction is retained. Access to the actual Pantheon harness remains unresolved. The supplied Tempted Fates scenario is preserved byte-for-byte.
+**Phase 1: static source audit complete.** LEXI, TELOS and uploaded Pantheon extraction are retained. The [Pantheon audit](repo-audit/PANTHEON_AUDIT.md) records the actual harness contracts and Phase 3 repair targets. The supplied Tempted Fates scenario is preserved byte-for-byte.
 
 The required order is:
 
@@ -30,7 +30,7 @@ Parallel feature implementation follows completion of that spine. Saving this re
 
 ## Evidence and reproduction
 
-The retained audit catalogs classify 418 source modules, extract 170 LEXI route declarations and 114 model classes, and record 567 verified Git blobs. They describe pinned source snapshots, not verified live services. See the inventory's coverage and limitations.
+The retained audit catalogs classify 525 source modules, extract 170 LEXI route declarations and 114 model classes, and record 840 verified Git blobs, including the uploaded Pantheon folders. They describe pinned source snapshots, not verified live services. See the inventory's coverage and limitations.
 
 LEXI, TELOS and claude-config source copies are excluded from this repository. The source manifest and complete tree indexes preserve their identities. To regenerate the catalogs, restore the pinned files beneath `repo-audit/sources/<repo>/`, preserving symlinks, then run:
 

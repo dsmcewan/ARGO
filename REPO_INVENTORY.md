@@ -1,6 +1,6 @@
 # ARGO repository inventory
 
-As of 2026-11-13. **Phase 1 is incomplete: Pantheon source is unavailable.** This is the canonical record of the read-only extraction completed so far. It is not a schema freeze, an implementation authorization record for TELOS, or proof of a deployed service's behavior. Phases 2–4 and parallel implementation lanes have not started.
+As of 2026-11-13. **Phase 1 source audit is complete.** Pantheon was supplied in ARGO commit `6f75c29c8e66df2c76996c33b763390807d62bda`; the [Pantheon audit](repo-audit/PANTHEON_AUDIT.md) supersedes the earlier missing-source findings below. This is the canonical record of the read-only extraction completed so far. It is not a schema freeze, an implementation authorization record for TELOS, or proof of a deployed service's behavior. Phases 2–4 and parallel implementation lanes have not started.
 
 ## Source identity and coverage
 
@@ -9,7 +9,8 @@ As of 2026-11-13. **Phase 1 is incomplete: Pantheon source is unavailable.** Thi
 | [LEXI](https://github.com/dsmcewan/LEXI) | `c190e245965447b369a33d928c4f09da33a68d67` | 288 | 239 |
 | [TELOS](https://github.com/dsmcewan/TELOS) | `52787e7ff73d109cf844f4bc2eb5d5cabd2a82f5` | 137 | 117 |
 | [claude-config](https://github.com/dsmcewan/claude-config) | `d418728bc58e6bbcb1d4457ee3c780d857f07a91` | 142 | 62 |
-| Pantheon | Not accessible | 0 | Unknown |
+| Pantheon (active) | ARGO `6f75c29c8e66df2c76996c33b763390807d62bda` | 221 | 78 |
+| Pantheon seat-core (historical) | Same ARGO commit | 52 | 29 |
 
 567 retained source files match their Git blob hashes, including five symlinks restored from their actual Git blobs. Complete, non-truncated tree listings are retained. The original local source directories were audit snapshots, not Git worktrees or running deployments. This repository retains their derived evidence and pinned identities; copied LEXI, TELOS and claude-config source snapshots are excluded from this archive. No source repository was modified, no build was dispatched, and no vendor inference calls were made.
 
@@ -101,7 +102,9 @@ New action authority must bind proposals to authenticated principals and the cur
 
 TELOS's governance records distinguish its implementation role “Argo” and build graph roles from autonomous services. The requested standalone ARGO game is a new domain and must not silently rewrite those registered meanings in TELOS.
 
-## Harness: confirmed wiring and unavailable source
+## Harness: original findings and completed source audit
+
+The following section records the first extraction. Missing-source statements are historical and superseded by [PANTHEON_AUDIT.md](repo-audit/PANTHEON_AUDIT.md). Its additional [107-module inventory](repo-audit/evidence/pantheon-modules.csv) brings total coverage to 525 modules and 840 verified source blobs.
 
 The first candidate was `claude-config`; source inspection identifies **Pantheon** as LEXI's connected build harness:
 
@@ -141,12 +144,10 @@ These are findings and acceptance targets, not applied patches. [MODEL_API_AUDIT
 
 | Phase | Status | Gate to advance |
 | --- | --- | --- |
-| 1. Audit/extraction | Partial; blocked on Pantheon | Inspect complete harness, consumer contracts and runtime/source closure; reconcile all unresolved inventory claims. |
+| 1. Audit/extraction | Complete (static source audit) | Passed: uploaded harness, consumer contracts, runtime import closure and module catalog inspected. Live account/deployment validation remains outside this gate. |
 | 2. SYSTEMS / MECHANICS freeze | Not started | Phase 1 complete. Freeze versioned schemas and ownership; no team-local inventions. |
 | 3. Harness patch | Not started | Phase 2 frozen, actual harness available, offline request/400/429/process tests pass. |
 | 4. Ledger foundation | Not started | Phase 3 passes. Sequential ledger/replay then bridge mocks and canonical scenario. |
 | Parallel feature lanes | Not started | All four phases pass with deterministic controller evidence. |
 
-Required next input: an accessible Pantheon repository URL or checkout. The user has now supplied `ARGO_Tempted_Fates.md`; a byte-identical copy is retained as [SCENARIOS/Tempted_Fates.md](SCENARIOS/Tempted_Fates.md), with [source identity](repo-audit/evidence/tempted-fates-source.json) and [requirement traceability](repo-audit/SCENARIO_REQUIREMENTS.md). The scenario-source blocker is resolved. Its interpretive boundary distinguishes core canon from optional connective dialogue; Integration Test Zero must preserve that distinction and the Fates' jurisdictional disengagement after the anomaly is named. No schemas or implementation phases have started.
-
-No new approval is being requested. The hold follows the user's strict phase dependency order and missing source evidence, not a skill-imposed permission gate. [RESUME_AUDIT.md](repo-audit/RESUME_AUDIT.md) contains the bounded continuation instructions.
+Pantheon source is now available in `pantheon/` and `pantheon-seat-core/`. The scenario is retained byte-for-byte in [SCENARIOS/Tempted_Fates.md](SCENARIOS/Tempted_Fates.md), with [source identity](repo-audit/evidence/tempted-fates-source.json) and [requirement traceability](repo-audit/SCENARIO_REQUIREMENTS.md). Both former input blockers are resolved. Continue with the schema freeze, then the harness patch, then the sequential foundation. No live vendor calls or parallel feature workers have been started.

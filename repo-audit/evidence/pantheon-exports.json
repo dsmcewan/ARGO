@@ -1,0 +1,1737 @@
+[
+  {
+    "path": "pantheon-seat-core/src/context/chain.mjs",
+    "line": 10,
+    "name": "chainOf"
+  },
+  {
+    "path": "pantheon-seat-core/src/context/chain.mjs",
+    "line": 17,
+    "name": "record"
+  },
+  {
+    "path": "pantheon-seat-core/src/context/chain.mjs",
+    "line": 24,
+    "name": "verifyExtends"
+  },
+  {
+    "path": "pantheon-seat-core/src/context/locate.mjs",
+    "line": 174,
+    "name": "locateStore"
+  },
+  {
+    "path": "pantheon-seat-core/src/context/project.mjs",
+    "line": 77,
+    "name": "PROJECTORS"
+  },
+  {
+    "path": "pantheon-seat-core/src/context/project.mjs",
+    "line": 170,
+    "name": "projectTranscript"
+  },
+  {
+    "path": "pantheon-seat-core/src/context/project.mjs",
+    "line": 195,
+    "name": "projectAgyDb"
+  },
+  {
+    "path": "pantheon-seat-core/src/route/router.mjs",
+    "line": 28,
+    "name": "SEAT_FACTS"
+  },
+  {
+    "path": "pantheon-seat-core/src/route/router.mjs",
+    "line": 59,
+    "name": "KNOWN_NEEDS"
+  },
+  {
+    "path": "pantheon-seat-core/src/route/router.mjs",
+    "line": 73,
+    "name": "MODEL_FAMILY"
+  },
+  {
+    "path": "pantheon-seat-core/src/route/router.mjs",
+    "line": 84,
+    "name": "familyChange"
+  },
+  {
+    "path": "pantheon-seat-core/src/route/router.mjs",
+    "line": 97,
+    "name": "UNMEASURED"
+  },
+  {
+    "path": "pantheon-seat-core/src/route/router.mjs",
+    "line": 121,
+    "name": "route"
+  },
+  {
+    "path": "pantheon-seat-core/src/route/router.mjs",
+    "line": 201,
+    "name": "modelFor"
+  },
+  {
+    "path": "pantheon-seat-core/src/route/router.mjs",
+    "line": 213,
+    "name": "routeReview"
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/adapter.mjs",
+    "line": 20,
+    "name": "ADAPTERS"
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/adapter.mjs",
+    "line": 115,
+    "name": "continuityMode"
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/adapter.mjs",
+    "line": 127,
+    "name": "isReplay"
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/adapter.mjs",
+    "line": 132,
+    "name": "makeClient"
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/adapter.mjs",
+    "line": 180,
+    "name": "sendTurn"
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/adapter.mjs",
+    "line": 361,
+    "name": "normalize"
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/history.mjs",
+    "line": 27,
+    "name": "loadHistory"
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/history.mjs",
+    "line": 40,
+    "name": "saveHistory"
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/seat-sdk.mjs",
+    "line": 35,
+    "name": "exchangeTurns"
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/seat-sdk.mjs",
+    "line": 48,
+    "name": "sdkTurn"
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/seat-sdk.mjs",
+    "line": 130,
+    "name": "recordExtendsLocally"
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/stream.mjs",
+    "line": 74,
+    "name": "canStream"
+  },
+  {
+    "path": "pantheon-seat-core/src/sdk/stream.mjs",
+    "line": 82,
+    "name": "streamTurn"
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/argv.mjs",
+    "line": 12,
+    "name": "VENDORS"
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/argv.mjs",
+    "line": 81,
+    "name": "bypassFragment"
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/argv.mjs",
+    "line": 87,
+    "name": "buildArgv"
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/conformance.mjs",
+    "line": 25,
+    "name": "listsFlag"
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/conformance.mjs",
+    "line": 30,
+    "name": "conformVendor"
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/identity.mjs",
+    "line": 8,
+    "name": "seatKey"
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/identity.mjs",
+    "line": 22,
+    "name": "RANK"
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/identity.mjs",
+    "line": 24,
+    "name": "rankOf"
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/identity.mjs",
+    "line": 30,
+    "name": "mergeIdentity"
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/lock.mjs",
+    "line": 122,
+    "name": "withSeatLock"
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/lock.mjs",
+    "line": 150,
+    "name": "_internals"
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/store.mjs",
+    "line": 8,
+    "name": "pantheonHome"
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/store.mjs",
+    "line": 14,
+    "name": "loadSeat"
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/store.mjs",
+    "line": 53,
+    "name": "saveSeat"
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/turn.mjs",
+    "line": 19,
+    "name": "redactPrompt"
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/turn.mjs",
+    "line": 32,
+    "name": "classify"
+  },
+  {
+    "path": "pantheon-seat-core/src/seat/turn.mjs",
+    "line": 39,
+    "name": "runTurn"
+  },
+  {
+    "path": "pantheon-seat-core/src/swarm/discuss.mjs",
+    "line": 36,
+    "name": "selfInterestedStances"
+  },
+  {
+    "path": "pantheon-seat-core/src/swarm/discuss.mjs",
+    "line": 54,
+    "name": "openingPrompt"
+  },
+  {
+    "path": "pantheon-seat-core/src/swarm/discuss.mjs",
+    "line": 71,
+    "name": "roundPrompt"
+  },
+  {
+    "path": "pantheon-seat-core/src/swarm/discuss.mjs",
+    "line": 106,
+    "name": "parseTurn"
+  },
+  {
+    "path": "pantheon-seat-core/src/swarm/discuss.mjs",
+    "line": 142,
+    "name": "similarity"
+  },
+  {
+    "path": "pantheon-seat-core/src/swarm/discuss.mjs",
+    "line": 150,
+    "name": "convergence"
+  },
+  {
+    "path": "pantheon-seat-core/src/swarm/discuss.mjs",
+    "line": 165,
+    "name": "runDiscussion"
+  },
+  {
+    "path": "pantheon-seat-core/src/swarm/layered.mjs",
+    "line": 22,
+    "name": "LAYERS"
+  },
+  {
+    "path": "pantheon-seat-core/src/swarm/layered.mjs",
+    "line": 26,
+    "name": "refutePairs"
+  },
+  {
+    "path": "pantheon-seat-core/src/swarm/layered.mjs",
+    "line": 31,
+    "name": "assertNoSelfReview"
+  },
+  {
+    "path": "pantheon-seat-core/src/swarm/layered.mjs",
+    "line": 49,
+    "name": "overlapFactor"
+  },
+  {
+    "path": "pantheon-seat-core/src/swarm/layered.mjs",
+    "line": 63,
+    "name": "explorePrompt"
+  },
+  {
+    "path": "pantheon-seat-core/src/swarm/layered.mjs",
+    "line": 68,
+    "name": "refutePrompt"
+  },
+  {
+    "path": "pantheon-seat-core/src/swarm/layered.mjs",
+    "line": 79,
+    "name": "synthesizePrompt"
+  },
+  {
+    "path": "pantheon-seat-core/src/swarm/layered.mjs",
+    "line": 93,
+    "name": "runSwarm"
+  },
+  {
+    "path": "pantheon-seat-core/src/swarm/orchestrate.mjs",
+    "line": 24,
+    "name": "parsePlan"
+  },
+  {
+    "path": "pantheon-seat-core/src/swarm/orchestrate.mjs",
+    "line": 47,
+    "name": "validateAssignments"
+  },
+  {
+    "path": "pantheon-seat-core/src/swarm/orchestrate.mjs",
+    "line": 55,
+    "name": "planPrompt"
+  },
+  {
+    "path": "pantheon-seat-core/src/swarm/orchestrate.mjs",
+    "line": 67,
+    "name": "workerPrompt"
+  },
+  {
+    "path": "pantheon-seat-core/src/swarm/orchestrate.mjs",
+    "line": 75,
+    "name": "extractCode"
+  },
+  {
+    "path": "pantheon-seat-core/src/swarm/orchestrate.mjs",
+    "line": 83,
+    "name": "integratePrompt"
+  },
+  {
+    "path": "pantheon-seat-core/src/swarm/orchestrate.mjs",
+    "line": 97,
+    "name": "runOrchestration"
+  },
+  {
+    "path": "pantheon-seat-core/src/view/bus.mjs",
+    "line": 15,
+    "name": "createBus"
+  },
+  {
+    "path": "pantheon-seat-core/src/view/bus.mjs",
+    "line": 61,
+    "name": "reduceSeats"
+  },
+  {
+    "path": "pantheon-seat-core/src/view/server.mjs",
+    "line": 16,
+    "name": "createViewServer"
+  },
+  {
+    "path": "pantheon/scripts/apply-artifact.mjs",
+    "line": 15,
+    "name": "checkApply"
+  },
+  {
+    "path": "pantheon/scripts/apply-artifact.mjs",
+    "line": 37,
+    "name": "applyArtifacts"
+  },
+  {
+    "path": "pantheon/scripts/delegate-run.mjs",
+    "line": 43,
+    "name": "verify"
+  },
+  {
+    "path": "pantheon/scripts/lib/repo-root.mjs",
+    "line": 7,
+    "name": "resolveRepoRoot"
+  },
+  {
+    "path": "pantheon/src/agents/render.mjs",
+    "line": 31,
+    "name": "FORMATS"
+  },
+  {
+    "path": "pantheon/src/agents/render.mjs",
+    "line": 68,
+    "name": "safeName"
+  },
+  {
+    "path": "pantheon/src/agents/render.mjs",
+    "line": 322,
+    "name": "render"
+  },
+  {
+    "path": "pantheon/src/agents/render.mjs",
+    "line": 337,
+    "name": "renderAll"
+  },
+  {
+    "path": "pantheon/src/agents/store.mjs",
+    "line": 37,
+    "name": "VENDOR_TUNING"
+  },
+  {
+    "path": "pantheon/src/agents/store.mjs",
+    "line": 54,
+    "name": "ROLE_TUNING"
+  },
+  {
+    "path": "pantheon/src/agents/store.mjs",
+    "line": 72,
+    "name": "UNCAPPED"
+  },
+  {
+    "path": "pantheon/src/agents/store.mjs",
+    "line": 76,
+    "name": "tokenCapFor"
+  },
+  {
+    "path": "pantheon/src/agents/store.mjs",
+    "line": 82,
+    "name": "agentId"
+  },
+  {
+    "path": "pantheon/src/agents/store.mjs",
+    "line": 93,
+    "name": "listAgents"
+  },
+  {
+    "path": "pantheon/src/agents/store.mjs",
+    "line": 120,
+    "name": "getAgent"
+  },
+  {
+    "path": "pantheon/src/board/acceptance.mjs",
+    "line": 7,
+    "name": "ACCEPTANCE_ISOLATION"
+  },
+  {
+    "path": "pantheon/src/board/acceptance.mjs",
+    "line": 8,
+    "name": "runAcceptance"
+  },
+  {
+    "path": "pantheon/src/board/agy-cli.mjs",
+    "line": 7,
+    "name": "runAgyCliTurn"
+  },
+  {
+    "path": "pantheon/src/board/artifact-files.mjs",
+    "line": 8,
+    "name": "artifactPath"
+  },
+  {
+    "path": "pantheon/src/board/artifact-files.mjs",
+    "line": 21,
+    "name": "readArtifact"
+  },
+  {
+    "path": "pantheon/src/board/artifact-files.mjs",
+    "line": 26,
+    "name": "writeArtifact"
+  },
+  {
+    "path": "pantheon/src/board/artifacts.mjs",
+    "line": 14,
+    "name": "certifiedArtifacts"
+  },
+  {
+    "path": "pantheon/src/board/canon.mjs",
+    "line": 18,
+    "name": "CODECS"
+  },
+  {
+    "path": "pantheon/src/board/canon.mjs",
+    "line": 20,
+    "name": "canonicalize"
+  },
+  {
+    "path": "pantheon/src/board/canon.mjs",
+    "line": 45,
+    "name": "nodeBytes"
+  },
+  {
+    "path": "pantheon/src/board/canon.mjs",
+    "line": 54,
+    "name": "cidOf"
+  },
+  {
+    "path": "pantheon/src/board/canon.mjs",
+    "line": 60,
+    "name": "codecOf"
+  },
+  {
+    "path": "pantheon/src/board/canon.mjs",
+    "line": 61,
+    "name": "isCid"
+  },
+  {
+    "path": "pantheon/src/board/canon.mjs",
+    "line": 63,
+    "name": "shortCid"
+  },
+  {
+    "path": "pantheon/src/board/cas.mjs",
+    "line": 19,
+    "name": "linksOf"
+  },
+  {
+    "path": "pantheon/src/board/cas.mjs",
+    "line": 31,
+    "name": "openStore"
+  },
+  {
+    "path": "pantheon/src/board/controller.mjs",
+    "line": 22,
+    "name": "boardState"
+  },
+  {
+    "path": "pantheon/src/board/controller.mjs",
+    "line": 73,
+    "name": "acceptanceStatus"
+  },
+  {
+    "path": "pantheon/src/board/controller.mjs",
+    "line": 150,
+    "name": "testsBrief"
+  },
+  {
+    "path": "pantheon/src/board/controller.mjs",
+    "line": 180,
+    "name": "boardStatus"
+  },
+  {
+    "path": "pantheon/src/board/controller.mjs",
+    "line": 205,
+    "name": "dependenciesMet"
+  },
+  {
+    "path": "pantheon/src/board/controller.mjs",
+    "line": 217,
+    "name": "TRIGGERS"
+  },
+  {
+    "path": "pantheon/src/board/controller.mjs",
+    "line": 323,
+    "name": "schedule"
+  },
+  {
+    "path": "pantheon/src/board/controller.mjs",
+    "line": 389,
+    "name": "validateTriggers"
+  },
+  {
+    "path": "pantheon/src/board/dag.mjs",
+    "line": 17,
+    "name": "putBlob"
+  },
+  {
+    "path": "pantheon/src/board/dag.mjs",
+    "line": 20,
+    "name": "putEntry"
+  },
+  {
+    "path": "pantheon/src/board/dag.mjs",
+    "line": 26,
+    "name": "putTree"
+  },
+  {
+    "path": "pantheon/src/board/dag.mjs",
+    "line": 33,
+    "name": "putCommit"
+  },
+  {
+    "path": "pantheon/src/board/dag.mjs",
+    "line": 49,
+    "name": "checkout"
+  },
+  {
+    "path": "pantheon/src/board/dag.mjs",
+    "line": 58,
+    "name": "treeSlots"
+  },
+  {
+    "path": "pantheon/src/board/dag.mjs",
+    "line": 62,
+    "name": "changedSlots"
+  },
+  {
+    "path": "pantheon/src/board/dag.mjs",
+    "line": 69,
+    "name": "history"
+  },
+  {
+    "path": "pantheon/src/board/dag.mjs",
+    "line": 85,
+    "name": "slotHistory"
+  },
+  {
+    "path": "pantheon/src/board/dag.mjs",
+    "line": 98,
+    "name": "entriesOfKind"
+  },
+  {
+    "path": "pantheon/src/board/dag.mjs",
+    "line": 124,
+    "name": "publish"
+  },
+  {
+    "path": "pantheon/src/board/index.mjs",
+    "line": 7,
+    "name": "openBoard"
+  },
+  {
+    "path": "pantheon/src/board/integrate.mjs",
+    "line": 27,
+    "name": "GATES"
+  },
+  {
+    "path": "pantheon/src/board/integrate.mjs",
+    "line": 40,
+    "name": "SHIP_POLICY"
+  },
+  {
+    "path": "pantheon/src/board/integrate.mjs",
+    "line": 50,
+    "name": "reviewAck"
+  },
+  {
+    "path": "pantheon/src/board/integrate.mjs",
+    "line": 92,
+    "name": "ship"
+  },
+  {
+    "path": "pantheon/src/board/integrate.mjs",
+    "line": 215,
+    "name": "mayShip"
+  },
+  {
+    "path": "pantheon/src/board/integrate.mjs",
+    "line": 234,
+    "name": "shipClaim"
+  },
+  {
+    "path": "pantheon/src/board/merge.mjs",
+    "line": 21,
+    "name": "ancestors"
+  },
+  {
+    "path": "pantheon/src/board/merge.mjs",
+    "line": 45,
+    "name": "mergeBases"
+  },
+  {
+    "path": "pantheon/src/board/merge.mjs",
+    "line": 58,
+    "name": "mergeBase"
+  },
+  {
+    "path": "pantheon/src/board/merge.mjs",
+    "line": 70,
+    "name": "approvalFor"
+  },
+  {
+    "path": "pantheon/src/board/merge.mjs",
+    "line": 106,
+    "name": "planMerge"
+  },
+  {
+    "path": "pantheon/src/board/merge.mjs",
+    "line": 164,
+    "name": "merge"
+  },
+  {
+    "path": "pantheon/src/board/policy.mjs",
+    "line": 3,
+    "name": "POLICIES"
+  },
+  {
+    "path": "pantheon/src/board/policy.mjs",
+    "line": 6,
+    "name": "DEFAULT_POLICY"
+  },
+  {
+    "path": "pantheon/src/board/policy.mjs",
+    "line": 20,
+    "name": "policyFor"
+  },
+  {
+    "path": "pantheon/src/board/policy.mjs",
+    "line": 34,
+    "name": "shipOnlySlots"
+  },
+  {
+    "path": "pantheon/src/board/project.mjs",
+    "line": 20,
+    "name": "PROJECTIONS"
+  },
+  {
+    "path": "pantheon/src/board/project.mjs",
+    "line": 136,
+    "name": "PRE_BOARD_ROLES"
+  },
+  {
+    "path": "pantheon/src/board/project.mjs",
+    "line": 152,
+    "name": "packOf"
+  },
+  {
+    "path": "pantheon/src/board/project.mjs",
+    "line": 179,
+    "name": "ACK_KINDS"
+  },
+  {
+    "path": "pantheon/src/board/project.mjs",
+    "line": 182,
+    "name": "admits"
+  },
+  {
+    "path": "pantheon/src/board/project.mjs",
+    "line": 188,
+    "name": "PROJECTION_FOR_ROLE"
+  },
+  {
+    "path": "pantheon/src/board/project.mjs",
+    "line": 201,
+    "name": "project"
+  },
+  {
+    "path": "pantheon/src/board/refs.mjs",
+    "line": 28,
+    "name": "REF_CLASSES"
+  },
+  {
+    "path": "pantheon/src/board/refs.mjs",
+    "line": 52,
+    "name": "parseRef"
+  },
+  {
+    "path": "pantheon/src/board/refs.mjs",
+    "line": 64,
+    "name": "maySwap"
+  },
+  {
+    "path": "pantheon/src/board/refs.mjs",
+    "line": 82,
+    "name": "slotsAllowed"
+  },
+  {
+    "path": "pantheon/src/board/refs.mjs",
+    "line": 92,
+    "name": "openRefs"
+  },
+  {
+    "path": "pantheon/src/board/run-item.mjs",
+    "line": 84,
+    "name": "runOpenItem"
+  },
+  {
+    "path": "pantheon/src/board/runtime.mjs",
+    "line": 31,
+    "name": "openRuntime"
+  },
+  {
+    "path": "pantheon/src/board/schema.mjs",
+    "line": 40,
+    "name": "LEVELS"
+  },
+  {
+    "path": "pantheon/src/board/schema.mjs",
+    "line": 42,
+    "name": "BoardViolation"
+  },
+  {
+    "path": "pantheon/src/board/schema.mjs",
+    "line": 55,
+    "name": "MODES"
+  },
+  {
+    "path": "pantheon/src/board/schema.mjs",
+    "line": 56,
+    "name": "VENDORS"
+  },
+  {
+    "path": "pantheon/src/board/schema.mjs",
+    "line": 57,
+    "name": "AUTHOR_KINDS"
+  },
+  {
+    "path": "pantheon/src/board/schema.mjs",
+    "line": 58,
+    "name": "VISIBILITY"
+  },
+  {
+    "path": "pantheon/src/board/schema.mjs",
+    "line": 59,
+    "name": "WORK_STATES"
+  },
+  {
+    "path": "pantheon/src/board/schema.mjs",
+    "line": 60,
+    "name": "EVIDENCE_KINDS"
+  },
+  {
+    "path": "pantheon/src/board/schema.mjs",
+    "line": 64,
+    "name": "ISOLATED_MODES"
+  },
+  {
+    "path": "pantheon/src/board/schema.mjs",
+    "line": 74,
+    "name": "MODE_WRITES"
+  },
+  {
+    "path": "pantheon/src/board/schema.mjs",
+    "line": 89,
+    "name": "KINDS"
+  },
+  {
+    "path": "pantheon/src/board/schema.mjs",
+    "line": 140,
+    "name": "PAYLOAD_VALIDATORS"
+  },
+  {
+    "path": "pantheon/src/board/schema.mjs",
+    "line": 220,
+    "name": "slotOf"
+  },
+  {
+    "path": "pantheon/src/board/schema.mjs",
+    "line": 227,
+    "name": "authorClassOf"
+  },
+  {
+    "path": "pantheon/src/board/schema.mjs",
+    "line": 264,
+    "name": "validateEntry"
+  },
+  {
+    "path": "pantheon/src/board/spawn.mjs",
+    "line": 29,
+    "name": "spawnPromise"
+  },
+  {
+    "path": "pantheon/src/board/ticket-safety.mjs",
+    "line": 39,
+    "name": "isUnder"
+  },
+  {
+    "path": "pantheon/src/board/ticket-safety.mjs",
+    "line": 66,
+    "name": "normalizeSlots"
+  },
+  {
+    "path": "pantheon/src/board/ticket-safety.mjs",
+    "line": 105,
+    "name": "outDirFor"
+  },
+  {
+    "path": "pantheon/src/board/ticket-safety.mjs",
+    "line": 118,
+    "name": "ticketContainmentRefusal"
+  },
+  {
+    "path": "pantheon/src/config/models.mjs",
+    "line": 28,
+    "name": "MODELS"
+  },
+  {
+    "path": "pantheon/src/config/models.mjs",
+    "line": 30,
+    "name": "modelId"
+  },
+  {
+    "path": "pantheon/src/context/chain.mjs",
+    "line": 10,
+    "name": "chainOf"
+  },
+  {
+    "path": "pantheon/src/context/chain.mjs",
+    "line": 17,
+    "name": "record"
+  },
+  {
+    "path": "pantheon/src/context/chain.mjs",
+    "line": 24,
+    "name": "verifyExtends"
+  },
+  {
+    "path": "pantheon/src/context/locate.mjs",
+    "line": 186,
+    "name": "locateStore"
+  },
+  {
+    "path": "pantheon/src/context/project.mjs",
+    "line": 89,
+    "name": "PROJECTORS"
+  },
+  {
+    "path": "pantheon/src/context/project.mjs",
+    "line": 182,
+    "name": "projectTranscript"
+  },
+  {
+    "path": "pantheon/src/context/project.mjs",
+    "line": 207,
+    "name": "projectAgyDb"
+  },
+  {
+    "path": "pantheon/src/mcp/agents-server.mjs",
+    "line": 86,
+    "name": "createAgentsServer"
+  },
+  {
+    "path": "pantheon/src/role/roles.mjs",
+    "line": 25,
+    "name": "BOARD_KINDS"
+  },
+  {
+    "path": "pantheon/src/role/roles.mjs",
+    "line": 39,
+    "name": "SESSION_KINDS"
+  },
+  {
+    "path": "pantheon/src/role/roles.mjs",
+    "line": 45,
+    "name": "CONTEXT_KINDS"
+  },
+  {
+    "path": "pantheon/src/role/roles.mjs",
+    "line": 46,
+    "name": "boardTokens"
+  },
+  {
+    "path": "pantheon/src/role/roles.mjs",
+    "line": 47,
+    "name": "sessionTokens"
+  },
+  {
+    "path": "pantheon/src/role/roles.mjs",
+    "line": 49,
+    "name": "ROLES"
+  },
+  {
+    "path": "pantheon/src/role/roles.mjs",
+    "line": 131,
+    "name": "ContextViolation"
+  },
+  {
+    "path": "pantheon/src/role/roles.mjs",
+    "line": 137,
+    "name": "contextFor"
+  },
+  {
+    "path": "pantheon/src/role/roles.mjs",
+    "line": 175,
+    "name": "smuggledKinds"
+  },
+  {
+    "path": "pantheon/src/role/roles.mjs",
+    "line": 208,
+    "name": "bindSeat"
+  },
+  {
+    "path": "pantheon/src/role/roles.mjs",
+    "line": 221,
+    "name": "assertJudgeEligible"
+  },
+  {
+    "path": "pantheon/src/role/roles.mjs",
+    "line": 237,
+    "name": "promptFor"
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "line": 40,
+    "name": "modelOf"
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "line": 56,
+    "name": "DIFFICULTY"
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "line": 97,
+    "name": "EFFORT_STATE"
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "line": 100,
+    "name": "effortFor"
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "line": 113,
+    "name": "effortLadder"
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "line": 124,
+    "name": "raiseEffort"
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "line": 133,
+    "name": "BASIS"
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "line": 152,
+    "name": "SEATING"
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "line": 353,
+    "name": "INTAKE"
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "line": 383,
+    "name": "FanOutViolation"
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "line": 390,
+    "name": "assertFanOutIsOutside"
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "line": 423,
+    "name": "TRANSPORTS"
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "line": 445,
+    "name": "NOT_SEATED"
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "line": 448,
+    "name": "AGY_SEAT"
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "line": 476,
+    "name": "cooldownPoolFor"
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "line": 489,
+    "name": "subtreeCost"
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "line": 500,
+    "name": "DEPTH_LIMIT"
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "line": 512,
+    "name": "assertSubagentProduce"
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "line": 556,
+    "name": "shouldFallThrough"
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "line": 598,
+    "name": "candidatesFor"
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "line": 614,
+    "name": "seatingReport"
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "line": 637,
+    "name": "selectFor"
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "line": 661,
+    "name": "escalate"
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "line": 686,
+    "name": "seatingPlan"
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "line": 800,
+    "name": "SeatingViolation"
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "line": 809,
+    "name": "assertReviewCutsAcross"
+  },
+  {
+    "path": "pantheon/src/role/seating.mjs",
+    "line": 824,
+    "name": "reviewPlan"
+  },
+  {
+    "path": "pantheon/src/route/cooldown.mjs",
+    "line": 38,
+    "name": "COOLDOWN_BASE_S"
+  },
+  {
+    "path": "pantheon/src/route/cooldown.mjs",
+    "line": 41,
+    "name": "COOLDOWN_CAP_S"
+  },
+  {
+    "path": "pantheon/src/route/cooldown.mjs",
+    "line": 44,
+    "name": "COOLDOWN_MAX_AGE_S"
+  },
+  {
+    "path": "pantheon/src/route/cooldown.mjs",
+    "line": 46,
+    "name": "COOLDOWN_FILE"
+  },
+  {
+    "path": "pantheon/src/route/cooldown.mjs",
+    "line": 49,
+    "name": "defaultDir"
+  },
+  {
+    "path": "pantheon/src/route/cooldown.mjs",
+    "line": 62,
+    "name": "coolOffS"
+  },
+  {
+    "path": "pantheon/src/route/cooldown.mjs",
+    "line": 102,
+    "name": "shutPools"
+  },
+  {
+    "path": "pantheon/src/route/cooldown.mjs",
+    "line": 118,
+    "name": "recordRefusal"
+  },
+  {
+    "path": "pantheon/src/route/cooldown.mjs",
+    "line": 133,
+    "name": "recordSuccess"
+  },
+  {
+    "path": "pantheon/src/route/router.mjs",
+    "line": 30,
+    "name": "SEAT_FACTS"
+  },
+  {
+    "path": "pantheon/src/route/router.mjs",
+    "line": 171,
+    "name": "KNOWN_NEEDS"
+  },
+  {
+    "path": "pantheon/src/route/router.mjs",
+    "line": 185,
+    "name": "MODEL_FAMILY"
+  },
+  {
+    "path": "pantheon/src/route/router.mjs",
+    "line": 196,
+    "name": "familyChange"
+  },
+  {
+    "path": "pantheon/src/route/router.mjs",
+    "line": 209,
+    "name": "UNMEASURED"
+  },
+  {
+    "path": "pantheon/src/route/router.mjs",
+    "line": 233,
+    "name": "route"
+  },
+  {
+    "path": "pantheon/src/route/router.mjs",
+    "line": 313,
+    "name": "modelFor"
+  },
+  {
+    "path": "pantheon/src/route/router.mjs",
+    "line": 325,
+    "name": "routeReview"
+  },
+  {
+    "path": "pantheon/src/sdk/adapter.mjs",
+    "line": 21,
+    "name": "ADAPTERS"
+  },
+  {
+    "path": "pantheon/src/sdk/adapter.mjs",
+    "line": 129,
+    "name": "continuityMode"
+  },
+  {
+    "path": "pantheon/src/sdk/adapter.mjs",
+    "line": 141,
+    "name": "isReplay"
+  },
+  {
+    "path": "pantheon/src/sdk/adapter.mjs",
+    "line": 146,
+    "name": "makeClient"
+  },
+  {
+    "path": "pantheon/src/sdk/adapter.mjs",
+    "line": 212,
+    "name": "sendTurn"
+  },
+  {
+    "path": "pantheon/src/sdk/adapter.mjs",
+    "line": 401,
+    "name": "normalize"
+  },
+  {
+    "path": "pantheon/src/sdk/history.mjs",
+    "line": 75,
+    "name": "loadHistoryState"
+  },
+  {
+    "path": "pantheon/src/sdk/history.mjs",
+    "line": 115,
+    "name": "loadHistory"
+  },
+  {
+    "path": "pantheon/src/sdk/history.mjs",
+    "line": 119,
+    "name": "saveHistory"
+  },
+  {
+    "path": "pantheon/src/sdk/history.mjs",
+    "line": 155,
+    "name": "commitHistory"
+  },
+  {
+    "path": "pantheon/src/sdk/seat-sdk.mjs",
+    "line": 36,
+    "name": "exchangeTurns"
+  },
+  {
+    "path": "pantheon/src/sdk/seat-sdk.mjs",
+    "line": 63,
+    "name": "sdkTurn"
+  },
+  {
+    "path": "pantheon/src/sdk/seat-sdk.mjs",
+    "line": 184,
+    "name": "recordExtendsLocally"
+  },
+  {
+    "path": "pantheon/src/sdk/stream.mjs",
+    "line": 94,
+    "name": "canStream"
+  },
+  {
+    "path": "pantheon/src/sdk/stream.mjs",
+    "line": 102,
+    "name": "streamTurn"
+  },
+  {
+    "path": "pantheon/src/seat/argv.mjs",
+    "line": 12,
+    "name": "VENDORS"
+  },
+  {
+    "path": "pantheon/src/seat/argv.mjs",
+    "line": 81,
+    "name": "bypassFragment"
+  },
+  {
+    "path": "pantheon/src/seat/argv.mjs",
+    "line": 87,
+    "name": "buildArgv"
+  },
+  {
+    "path": "pantheon/src/seat/conformance.mjs",
+    "line": 25,
+    "name": "listsFlag"
+  },
+  {
+    "path": "pantheon/src/seat/conformance.mjs",
+    "line": 30,
+    "name": "conformVendor"
+  },
+  {
+    "path": "pantheon/src/seat/identity.mjs",
+    "line": 8,
+    "name": "seatKey"
+  },
+  {
+    "path": "pantheon/src/seat/identity.mjs",
+    "line": 24,
+    "name": "VENDOR_ALIASES"
+  },
+  {
+    "path": "pantheon/src/seat/identity.mjs",
+    "line": 29,
+    "name": "seatKeyAliases"
+  },
+  {
+    "path": "pantheon/src/seat/identity.mjs",
+    "line": 39,
+    "name": "RANK"
+  },
+  {
+    "path": "pantheon/src/seat/identity.mjs",
+    "line": 41,
+    "name": "rankOf"
+  },
+  {
+    "path": "pantheon/src/seat/identity.mjs",
+    "line": 47,
+    "name": "mergeIdentity"
+  },
+  {
+    "path": "pantheon/src/seat/lock.mjs",
+    "line": 262,
+    "name": "withSeatLock"
+  },
+  {
+    "path": "pantheon/src/seat/lock.mjs",
+    "line": 290,
+    "name": "_internals"
+  },
+  {
+    "path": "pantheon/src/seat/store.mjs",
+    "line": 8,
+    "name": "pantheonHome"
+  },
+  {
+    "path": "pantheon/src/seat/store.mjs",
+    "line": 26,
+    "name": "loadSeat"
+  },
+  {
+    "path": "pantheon/src/seat/store.mjs",
+    "line": 74,
+    "name": "saveSeat"
+  },
+  {
+    "path": "pantheon/src/seat/turn.mjs",
+    "line": 19,
+    "name": "redactPrompt"
+  },
+  {
+    "path": "pantheon/src/seat/turn.mjs",
+    "line": 32,
+    "name": "classify"
+  },
+  {
+    "path": "pantheon/src/seat/turn.mjs",
+    "line": 39,
+    "name": "runTurn"
+  },
+  {
+    "path": "pantheon/src/swarm/discuss.mjs",
+    "line": 38,
+    "name": "selfInterestedStances"
+  },
+  {
+    "path": "pantheon/src/swarm/discuss.mjs",
+    "line": 75,
+    "name": "DISCUSS_ROLES"
+  },
+  {
+    "path": "pantheon/src/swarm/discuss.mjs",
+    "line": 77,
+    "name": "roleForTurn"
+  },
+  {
+    "path": "pantheon/src/swarm/discuss.mjs",
+    "line": 80,
+    "name": "openingPrompt"
+  },
+  {
+    "path": "pantheon/src/swarm/discuss.mjs",
+    "line": 98,
+    "name": "roundPrompt"
+  },
+  {
+    "path": "pantheon/src/swarm/discuss.mjs",
+    "line": 134,
+    "name": "parseTurn"
+  },
+  {
+    "path": "pantheon/src/swarm/discuss.mjs",
+    "line": 170,
+    "name": "similarity"
+  },
+  {
+    "path": "pantheon/src/swarm/discuss.mjs",
+    "line": 178,
+    "name": "convergence"
+  },
+  {
+    "path": "pantheon/src/swarm/discuss.mjs",
+    "line": 193,
+    "name": "runDiscussion"
+  },
+  {
+    "path": "pantheon/src/swarm/layered.mjs",
+    "line": 22,
+    "name": "LAYERS"
+  },
+  {
+    "path": "pantheon/src/swarm/layered.mjs",
+    "line": 26,
+    "name": "refutePairs"
+  },
+  {
+    "path": "pantheon/src/swarm/layered.mjs",
+    "line": 31,
+    "name": "assertNoSelfReview"
+  },
+  {
+    "path": "pantheon/src/swarm/layered.mjs",
+    "line": 49,
+    "name": "overlapFactor"
+  },
+  {
+    "path": "pantheon/src/swarm/layered.mjs",
+    "line": 116,
+    "name": "SWARM_ROLES"
+  },
+  {
+    "path": "pantheon/src/swarm/layered.mjs",
+    "line": 118,
+    "name": "explorePrompt"
+  },
+  {
+    "path": "pantheon/src/swarm/layered.mjs",
+    "line": 127,
+    "name": "refutePrompt"
+  },
+  {
+    "path": "pantheon/src/swarm/layered.mjs",
+    "line": 138,
+    "name": "synthesizePrompt"
+  },
+  {
+    "path": "pantheon/src/swarm/layered.mjs",
+    "line": 160,
+    "name": "runSwarm"
+  },
+  {
+    "path": "pantheon/src/swarm/orchestrate.mjs",
+    "line": 26,
+    "name": "parsePlan"
+  },
+  {
+    "path": "pantheon/src/swarm/orchestrate.mjs",
+    "line": 49,
+    "name": "validateAssignments"
+  },
+  {
+    "path": "pantheon/src/swarm/orchestrate.mjs",
+    "line": 80,
+    "name": "ORCHESTRATE_ROLES"
+  },
+  {
+    "path": "pantheon/src/swarm/orchestrate.mjs",
+    "line": 82,
+    "name": "planPrompt"
+  },
+  {
+    "path": "pantheon/src/swarm/orchestrate.mjs",
+    "line": 94,
+    "name": "workerPrompt"
+  },
+  {
+    "path": "pantheon/src/swarm/orchestrate.mjs",
+    "line": 102,
+    "name": "extractCode"
+  },
+  {
+    "path": "pantheon/src/swarm/orchestrate.mjs",
+    "line": 110,
+    "name": "integrateBuilt"
+  },
+  {
+    "path": "pantheon/src/swarm/orchestrate.mjs",
+    "line": 124,
+    "name": "integratePrompt"
+  },
+  {
+    "path": "pantheon/src/swarm/orchestrate.mjs",
+    "line": 126,
+    "name": "runOrchestration"
+  },
+  {
+    "path": "pantheon/src/team/continuity.mjs",
+    "line": 25,
+    "name": "BRIEF_CAP_BYTES"
+  },
+  {
+    "path": "pantheon/src/team/continuity.mjs",
+    "line": 28,
+    "name": "ContinuityViolation"
+  },
+  {
+    "path": "pantheon/src/team/continuity.mjs",
+    "line": 48,
+    "name": "loadChair"
+  },
+  {
+    "path": "pantheon/src/team/continuity.mjs",
+    "line": 110,
+    "name": "decided"
+  },
+  {
+    "path": "pantheon/src/team/continuity.mjs",
+    "line": 121,
+    "name": "abandoned"
+  },
+  {
+    "path": "pantheon/src/team/continuity.mjs",
+    "line": 137,
+    "name": "claimFiles"
+  },
+  {
+    "path": "pantheon/src/team/continuity.mjs",
+    "line": 152,
+    "name": "recordOccupancy"
+  },
+  {
+    "path": "pantheon/src/team/continuity.mjs",
+    "line": 168,
+    "name": "restoreBrief"
+  },
+  {
+    "path": "pantheon/src/team/law.mjs",
+    "line": 13,
+    "name": "LawViolation"
+  },
+  {
+    "path": "pantheon/src/team/law.mjs",
+    "line": 21,
+    "name": "ACTIONS"
+  },
+  {
+    "path": "pantheon/src/team/law.mjs",
+    "line": 24,
+    "name": "CONTROLLER"
+  },
+  {
+    "path": "pantheon/src/team/law.mjs",
+    "line": 26,
+    "name": "LAWS"
+  },
+  {
+    "path": "pantheon/src/team/law.mjs",
+    "line": 180,
+    "name": "enforce"
+  },
+  {
+    "path": "pantheon/src/team/law.mjs",
+    "line": 204,
+    "name": "assertLawful"
+  },
+  {
+    "path": "pantheon/src/team/measure.mjs",
+    "line": 6,
+    "name": "measureBytes"
+  },
+  {
+    "path": "pantheon/src/team/modes.mjs",
+    "line": 13,
+    "name": "PATTERNS"
+  },
+  {
+    "path": "pantheon/src/team/modes.mjs",
+    "line": 27,
+    "name": "RENTED"
+  },
+  {
+    "path": "pantheon/src/team/modes.mjs",
+    "line": 61,
+    "name": "ModeViolation"
+  },
+  {
+    "path": "pantheon/src/team/modes.mjs",
+    "line": 66,
+    "name": "patternFor"
+  },
+  {
+    "path": "pantheon/src/team/modes.mjs",
+    "line": 88,
+    "name": "assertOpened"
+  },
+  {
+    "path": "pantheon/src/team/modes.mjs",
+    "line": 105,
+    "name": "occupiedChairs"
+  },
+  {
+    "path": "pantheon/src/team/roster.mjs",
+    "line": 42,
+    "name": "PODS"
+  },
+  {
+    "path": "pantheon/src/team/roster.mjs",
+    "line": 56,
+    "name": "ROSTER"
+  },
+  {
+    "path": "pantheon/src/team/roster.mjs",
+    "line": 86,
+    "name": "SHIPPING_CHAIRS"
+  },
+  {
+    "path": "pantheon/src/team/roster.mjs",
+    "line": 88,
+    "name": "RosterViolation"
+  },
+  {
+    "path": "pantheon/src/team/roster.mjs",
+    "line": 91,
+    "name": "parseChair"
+  },
+  {
+    "path": "pantheon/src/team/roster.mjs",
+    "line": 100,
+    "name": "chairKey"
+  },
+  {
+    "path": "pantheon/src/team/roster.mjs",
+    "line": 110,
+    "name": "occupy"
+  },
+  {
+    "path": "pantheon/src/team/roster.mjs",
+    "line": 151,
+    "name": "projectionFor"
+  },
+  {
+    "path": "pantheon/src/team/roster.mjs",
+    "line": 162,
+    "name": "nextOccupant"
+  },
+  {
+    "path": "pantheon/src/team/roster.mjs",
+    "line": 180,
+    "name": "podOf"
+  },
+  {
+    "path": "pantheon/src/team/roster.mjs",
+    "line": 181,
+    "name": "sharesPod"
+  },
+  {
+    "path": "pantheon/src/team/subagent.mjs",
+    "line": 21,
+    "name": "SHARED"
+  },
+  {
+    "path": "pantheon/src/team/subagent.mjs",
+    "line": 29,
+    "name": "NOT_SHARED"
+  },
+  {
+    "path": "pantheon/src/team/subagent.mjs",
+    "line": 36,
+    "name": "SubagentViolation"
+  },
+  {
+    "path": "pantheon/src/team/subagent.mjs",
+    "line": 47,
+    "name": "subagentBrief"
+  },
+  {
+    "path": "pantheon/src/team/subagent.mjs",
+    "line": 112,
+    "name": "assertNotTheChecker"
+  },
+  {
+    "path": "pantheon/src/view/build-server.mjs",
+    "line": 23,
+    "name": "MAX_CONCURRENT_BUILDS"
+  },
+  {
+    "path": "pantheon/src/view/build-server.mjs",
+    "line": 43,
+    "name": "REQUIRED_TICKET_FIELDS"
+  },
+  {
+    "path": "pantheon/src/view/build-server.mjs",
+    "line": 54,
+    "name": "requiredTicketFieldRefusal"
+  },
+  {
+    "path": "pantheon/src/view/build-server.mjs",
+    "line": 64,
+    "name": "MAX_SUBSCRIBERS"
+  },
+  {
+    "path": "pantheon/src/view/build-server.mjs",
+    "line": 80,
+    "name": "createBuildServer"
+  },
+  {
+    "path": "pantheon/src/view/bus.mjs",
+    "line": 15,
+    "name": "createBus"
+  },
+  {
+    "path": "pantheon/src/view/bus.mjs",
+    "line": 61,
+    "name": "reduceSeats"
+  },
+  {
+    "path": "pantheon/src/view/http-safety.mjs",
+    "line": 38,
+    "name": "originPolicy"
+  },
+  {
+    "path": "pantheon/src/view/http-safety.mjs",
+    "line": 52,
+    "name": "json"
+  },
+  {
+    "path": "pantheon/src/view/http-safety.mjs",
+    "line": 66,
+    "name": "badId"
+  },
+  {
+    "path": "pantheon/src/view/server.mjs",
+    "line": 29,
+    "name": "MAX_SUBSCRIBERS"
+  },
+  {
+    "path": "pantheon/src/view/server.mjs",
+    "line": 31,
+    "name": "createViewServer"
+  }
+]
