@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "ticket": "PC-001",
+  "profile": "projection/2.0.0",
+  "baseline_commit": "d32da3b16b9f463a9a094445ab92da9748ebc568",
+  "paid_model_calls": 0,
+  "files": {
+    "SYSTEMS/proposals/headless-v2/projection-v2.schema.json": "a9322a33f03f62b2c2fc656f3bb6cef0b771901bc09cb9f262c96f8cbbf2badb",
+    "SYSTEMS/proposals/headless-v2/CONTRACT.md": "6d443a5d3a8c8d7999e94cec2c145f5998fd64c7a38b9981d0763efe5c58fa5d",
+    "SYSTEMS/proposals/headless-v2/FREEZE.json": "3f45b293ab32829c6872cfc6221b77d8e66e81d3efa8faf1120f25d691504a28",
+    "packages/contracts/src/projection-v2.ts": "7177ab860e89f8e058fbebd30aa7b69bc8888711890c21ace08d4980f372f228",
+    "packages/contracts/src/projection-generated.ts": "1ca42c7d7c33156700371aa2cacb6c11a1101fb030ca903b2c38f8ee69f33663",
+    "TESTS/projection-contracts.test.ts": "5f052b36d3526190d53ddb9b6ec7d59110b7345006c6e8d6594404e5324ef531",
+    "TESTS/projection-fixtures.ts": "032d93f252349db226ba589a3df08b5b199980dd0fcb9924abff2566c56dab0e",
+    "scripts/generate-projection-types.py": "c6411f3a2267b8ab83dbb3bc59b41ddfce7be6eef857109ee2566b0b6375faa7"
+  },
+  "checks": {
+    "focused": {
+      "command": "node --test TESTS/projection-contracts.test.ts",
+      "status": "passed",
+      "passed": 28,
+      "failed": 0,
+      "skipped": 0,
+      "log_sha256": "6873561c54ca059b6abf739d91fa2021c5f240d2bd84e6b063561e2fbb87a873"
+    },
+    "typecheck": {
+      "command": "npm run typecheck",
+      "status": "passed"
+    },
+    "projection_generation": {
+      "command": "python3 scripts/generate-projection-types.py --check",
+      "status": "passed"
+    },
+    "v1_contracts": {
+      "command": "npm run contracts",
+      "status": "passed",
+      "definitions": 36
+    },
+    "red_before_implementation": {
+      "status": "expected_failure",
+      "reason": "ERR_MODULE_NOT_FOUND projection-v2.ts",
+      "log_sha256": "a598ef2b3eb9c37f5057489c753a79263da6cce765d58181e18acd0f44214eca"
+    }
+  },
+  "board": {
+    "status": "CLAIMED",
+    "scope": "staging_data_packet",
+    "target_branch": "argo/projection-contracts"
+  },
+  "application_acceptance": {
+    "status": "pending",
+    "requirement": "Separately trusted controller; all ten acceptance groups on the exact committed candidate before main integration."
+  },
+  "limits": [
+    "Pure contracts/selectors only; no persistent graph or bus",
+    "Trusted host principal/policy/checkpoint/source inputs; no live authentication or source-signature proof",
+    "No 10000-event storage/replay workload",
+    "No v1 migration or closure of R06/R10/R12/R13",
+    "Native peers are not a paid cross-vendor pipeline"
+  ]
+}

@@ -62,3 +62,8 @@ export function assertKnowledgeDisclosure(value:unknown):asserts value is Contra
  if(value.audience==='actor'&&value.party_id!==null||value.audience==='party'&&value.party_id===null)fail('INVALID_CONTRACT','Invalid knowledge audience');
  for(const claim of value.claims)if(claim.acquired_at>value.as_of_world_time||claim.sequence>value.as_of_sequence||!claim.observation.observers.includes(value.actor_id)||(value.audience==='party'&&claim.observation.party_id!==value.party_id))fail('INVALID_CONTRACT','Knowledge disclosure exceeds actor, party or time boundary');
 }
+
+// Additive, opt-in local projection profile; gameplay v1 remains unchanged.
+export {projectionSchema,assertProjectionContract,validateActorQuery,validateCanonicalQuery,buildActorView,selectCanonicalRelations,adaptV1KnowledgeQuery,encodeIdEntries} from './projection-v2.ts';
+export type {ProjectionReadContext} from './projection-v2.ts';
+export type * from './projection-generated.ts';

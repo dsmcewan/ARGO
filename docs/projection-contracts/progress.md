@@ -6,4 +6,14 @@ Plan: docs/superpowers/plans/2026-11-13-projection-contracts.md. Baseline d32da3
 - Interface review replaced Iterable with bounded readonly tuple arrays and made genesis_world_time explicit.
 - Ruling: v2 public cutoff withholds claims instead of relying only on downstream narration flags; stored knowledge and v1 unchanged.
 - Ruling: JSON Schema is shape validation; standalone and contextual semantic guards remain executable code with explicit host-trust prerequisites.
-- Independent test author is preparing the oracle; product contributions have not been integrated.
+- Independent oracle was staged before product integration; native RED confirmed the absent module.
+
+- Task1 RED: native Node24 test import failed because projection-v2.ts did not exist, before schema/runtime integration. Log retained outside repo at /tmp/argo-pc-red.log.
+- Task2 initial integration: TypeScript passes; native focused run25/28. Two oracle fixtures were internally inconsistent (schema may enforce structural conditions; tail-reference hash must match fixture head). Freeze manifest is intentionally pending independent review. Existing negative refusal expectations remain unchanged.
+- Added explicit known-tail hash/acquisition-clock checks and shared-sequence reference consistency; historical event authenticity remains a host obligation.
+- Ruling: existing sandbox suppresses native child test events; use native test execution plus final network-isolated controller, retaining fail-closed checks.
+
+- Corrected independent fixtures preserve every runtime rejection assertion. Focused native run now27/28; only the deliberately absent freeze manifest fails. V1 contracts/generation checks pass.
+
+- Independent schema/runtime review accepted exact schema and normative bytes; manifest SHA-2563f45b293ab32829c6872cfc6221b77d8e66e81d3efa8faf1120f25d691504a28 copied unchanged and independently pinned in the new test.
+- GREEN: all28 focused tests pass, zero failures/skips/cancellations. Typecheck, v1 contracts and projection generator --check pass. No old v1 frozen or ledger/bridge files changed. Full controller acceptance still pending.

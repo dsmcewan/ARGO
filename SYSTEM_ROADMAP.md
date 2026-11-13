@@ -1,6 +1,6 @@
 # ARGO system roadmap: present, target and the path between
 
-Baseline **`eb2d4c57d409458d09bf27d4a70ebb067e8e7a8f`**, checked 2026-11-13. [Main CI passed](https://github.com/dsmcewan/ARGO/actions/runs/43469765446) for that exact commit. The [repair evidence](REPAIRS/acceptance/verification.json) records the integrated code at `ff22632`; later documentation does not change its runtime. Twelve review findings are repaired; four remain explicit design decisions.
+Baseline **`d32da3b16b9f463a9a094445ab92da9748ebc568`**, checked 2026-11-13. [Main CI passed](https://github.com/dsmcewan/ARGO/actions/runs/43479525034) for that exact commit. The additive PC-001 contract candidate and its separate acceptance evidence are tracked in [projection contracts](docs/projection-contracts/README.md). The [repair evidence](REPAIRS/acceptance/verification.json) records the integrated code at `ff22632`; later documentation does not change its runtime. Twelve review findings are repaired; four remain explicit design decisions.
 
 **We have enough evidence to define the system and sequence the work. We do not yet have every decision, data asset or implemented service needed to deliver the target.** The current product is a verified offline foundation: signed authority, scoped knowledge mocks, deterministic rules and build tooling. The target is a persistent, multi-actor world with separate fact and belief projections, bounded off-screen activity, and reliable solo/party interaction.
 
@@ -24,7 +24,7 @@ The original audit → contract freeze → harness repair → sequential foundat
 | **controller** — [controller/README.md](controller/README.md) | Ten-group acceptance, trusted policy, read-only candidate staging and exact safe fast-forward | Entire Python tools control plane must be trusted before its in-process tests execute. |
 | **pantheon** — [pantheon/src/board/index.mjs](pantheon/src/board/index.mjs) | Active JavaScript build harness and its own content-addressed board | Separate from Python board and gameplay state; historical seat-core mirror is not the active client. |
 | **legacy-platforms** — [REPO_INVENTORY.md](REPO_INVENTORY.md) | Pinned LEXI forensic and TELOS build-platform catalogs | Source catalogs are retained; source copies and private live databases are not included. |
-| **two-plane-graphs-and-bus** — [RESEARCH/HEADLESS_FOUNDATION.md](RESEARCH/HEADLESS_FOUNDATION.md) | Canonical/epistemic stores, common projection checkpoints and bounded component bus are target capabilities | Storage engine, temporal contracts, delivery semantics and migration remain design work. |
+| **two-plane-graphs-and-bus** — [RESEARCH/HEADLESS_FOUNDATION.md](RESEARCH/HEADLESS_FOUNDATION.md) | Canonical/epistemic stores, common projection checkpoints and bounded component bus are target capabilities | The local projection/query profile now has concrete schemas and selectors; durable storage, delivery and migration remain unimplemented. |
 
 The public local authority surface is `openLedger(...).submit/snapshot/events`, with `replay`, `draw`, `initialSnapshot` and `makeCheckpoint`. Raw snapshots, complete events, seeds and hidden rolls are authority-only surfaces. LEXI exposes `createLexiBridge`/`projectKnowledge`/`createLexiMock`; TELOS exposes `createTelosBridge`/`createTelosMock`. These are TypeScript/in-process interfaces, not discovered HTTP gameplay routes. `proposalFromAction` is a typed action builder, not a finished natural-language parser.
 
@@ -137,7 +137,7 @@ What still has to be supplied or decided: verified source bundles for deeper reu
 
 ## Decisions before implementation
 
-`ready_for_design` means there is enough context to draft and review a decision. It does **not** mean that the decision is resolved, implementation is authorized, or missing inputs may be guessed. All decisions below are open. R06/R10/R12/R13 remain the four deferred repair findings.
+`ready_for_design` means there is enough context to draft and review a decision. It does **not** mean that the decision is resolved, implementation is authorized, or missing inputs may be guessed. D02 and D05 now have a bounded local contract implementation in PC-001; their wider migration/storage decisions remain open. R06/R10/R12/R13 remain the four deferred repair findings.
 
 ### D01 — Bind outcomes to authenticated scope and full proposals (R06)
 
@@ -304,21 +304,15 @@ The JSON `proposed_paths` are path reservations for planning, not active write l
 
 ## Next work
 
-The [headless evidence and decision packet](docs/design/headless-2026-11-13/README.md) now makes the next source, temporal/storage, authority/history, mechanics and build-gate proposals reviewable. Its cases are declarative; it does not change the open decision statuses or implement the dependent runtime.
+The [headless evidence packet](docs/design/headless-2026-11-13/README.md) is retained, and [PC-001](docs/projection-contracts/README.md) now turns its projection/query proposal into an additive local contract implementation. Consult its verification record for actual review, staging-board and application-gate status; a schema-valid packet alone is not application acceptance.
 
-The next useful output is a reviewed **headless design and evidence packet**. Prepare these bounded deliverables with separate ownership; none needs paid inference:
+The bounded contract establishes full scope binding, explicit actor/party acquisition filters, common-prefix checks, bitemporal relation revision selection, current-cutoff withholding and safe identifier entry arrays. It preserves v1 bytes and query meanings. This resolves the local encoding/query portion of D02/D05; it does not repair v1 map handling, authenticate imported history or choose a persistent store.
 
-1. **W01 evidence refresh:** recover/verify selected source snapshots and produce exact reuse-versus-new boundary findings. Do not run legacy migrations or infer a live database from ORM declarations.
-2. **D05 + D02 contract preparation:** write a storage comparison, worked temporal examples and identifier compatibility fixtures. Map existing v1 fields before adding `ScopedKGQuery` or replacing head preconditions with a slice hash.
-3. **D01/D03/D04 authority packet:** specify outcome identity, genesis authentication and the chosen rollback trust model. Keep these distinct from already implemented consent verification and supplied/file genesis checks.
-4. **D06/D10 + W02 interaction fixtures:** pin clock-driving, rumor transmission/delivery, checkpoint collisions and bounded tick hypotheses. Design the 10,000-event generator/trace format now; execute its acceptance only after real projectors exist.
-5. **D09 build-adapter packet:** decide who owns Git integration and how an external verifier result is authenticated, bound to exact bytes and recovered. Existing board data validators cannot simply import candidate application code or trust a worker-written result file.
+After PC-001 passes the full application controller, the next build is **shared projector storage and cursor scaffolding**, followed by W05/W06 under disjoint path leases. First settle the local storage choice, two physical planes, transactional row/cursor publication, source-event verification and retained read transactions. Then implement canonical and epistemic projections over verified existing histories. W07 follows with common-checkpoint recovery and the seeded 10,000-event rebuild/incremental proof. The existing Tempted Fates kernel is sufficient for these tests.
 
-After those decisions and evidence gates, W03 can freeze a reviewed versioned projection/query proposal, W04 can implement its approved authority/history migrations, and the projector lanes can be scoped precisely. W11–W13/W16 require later operational and product inputs; they are not silently authorized by documentation.
+The independent authority/history work remains D01/D03/D04 and the v1 migration portion of D02. D06/D07 still own delivery ordering and authenticated current policy. A shape-valid context is not proof of identity, entitlement, freshness or rollback resistance. W11–W13/W16 retain their later operational/content prerequisites.
 
-The old [11-ticket research seed](RESEARCH/argo_night1_seed.json) remains a planning artifact: three source audits, five research lanes, two syntheses and an architecture proposal. Several semantic oracles deliberately return `GATE_NOT_IMPLEMENTED`; READY in a board only means dependency eligibility. Do not equate schema-valid reports with substantive research completion. Review new policies into a fresh immutable batch rather than modifying an in-flight seed.
-
-The [repair batch](REPAIRS/BOARD.md) is operationally retired with truthful states. This documentation has its own fresh DOC-001 batch and a data-only structure/DAG gate. Documentation validation is within that gate's supported scope; it does not solve W14 or mark future roadmap nodes complete.
+PC-001 uses an actual fresh blackboard lease and path ownership. Its data-only gate integrates the staging branch; the independently trusted controller owns main acceptance. This is a bounded operating procedure, not D09/W14's general application adapter. The old [research seed](RESEARCH/argo_night1_seed.json) and [retired repair board](REPAIRS/BOARD.md) retain truthful historical states. No paid workers are enabled.
 
 ## Acceptance gates
 
@@ -346,4 +340,4 @@ The last command requires a clean committed checkout. Local gate success is not 
 
 This roadmap establishes the path, not a finish date, cost estimate, storage choice or production readiness claim. The evidence supports current behavior and concrete design work. It does not supply live API credentials/access, private case data, production entitlements, a populated general world, a full selected rules kernel, a deployed service mesh or measured load/latency budgets.
 
-Research/ADR drafting can proceed with these limits stated. Runtime implementation needs the corresponding accepted contracts and test fixtures. Protected controller/board changes need an independently reviewed trust-root update; frozen gameplay changes need a versioned migration. Namespace isolation, hidden rolls, informed gifts, separate Fate jurisdictions, optional interventions and post-anomaly disengagement remain mandatory throughout. No paid runs, database imports, deployments or runtime feature changes are performed by this documentation pass.
+Research/ADR drafting can proceed with these limits stated. Runtime implementation needs the corresponding accepted contracts and test fixtures. Protected controller/board changes need an independently reviewed trust-root update; frozen gameplay changes need a versioned migration. Namespace isolation, hidden rolls, informed gifts, separate Fate jurisdictions, optional interventions and post-anomaly disengagement remain mandatory throughout. PC-001 adds pure contract guards/selectors and tests only. No paid runs, database imports, deployment, durable graph, bus or history migration is included.

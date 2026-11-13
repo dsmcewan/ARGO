@@ -1,6 +1,6 @@
 # Projection Contracts Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Deliver an additive reviewed projection/query contract profile with executable adversarial coverage and unchanged gameplay v1.
 
@@ -31,25 +31,25 @@
 
 Files: TESTS/projection-contracts.test.ts, TESTS/projection-fixtures.ts (new only).
 Consumes: exact interface above. Produces: named tests for real schema/runtime API plus frozen v1/manifest/generator checks.
-- [ ] Write independent positive and negative fixtures/tests before product integration.
-- [ ] Run node --test TESTS/projection-contracts.test.ts; expect failure because the new module is absent. Preserve RED evidence.
+- [x] Write independent positive and negative fixtures/tests before product integration.
+- [x] Run node --test TESTS/projection-contracts.test.ts; expect failure because the new module is absent. Preserve RED evidence.
 
 ## Task 2: schemas, generated types and guards
 
 Files: SYSTEMS/proposals/headless-v2/projection-v2.schema.json, packages/contracts/src/projection-generated.ts, projection-v2.ts, additive index.ts exports, scripts/generate-projection-types.py.
 Consumes: oracle and exact DTO/function definitions. Produces: closed versioned schemas, generated types, context-bound runtime guards and pure reference selectors.
-- [ ] Integrate schema/generator/runtime after RED, generate types, and run focused tests plus typecheck.
-- [ ] Fix actual defects; retain adversarial oracles. Run generator --check.
-- [ ] Record GREEN counts and limits; no graph or source-verification claim.
+- [x] Integrate schema/generator/runtime after RED, generate types, and run focused tests plus typecheck.
+- [x] Fix actual defects; retain adversarial oracles. Run generator --check.
+- [x] Record GREEN counts and limits; no graph or source-verification claim.
 
 ## Task 3: independent review and bounded freeze
 
 Files: SYSTEMS/proposals/headless-v2/CONTRACT.md, FREEZE.json; docs/projection-contracts/profile.json, README.md, progress.md; roadmap updates.
 Consumes: green contract candidate. Produces: independently reviewed local profile and explicit compatibility/reliance conditions.
-- [ ] Review exact code/schema/oracle and current-policy/temporal boundaries independently.
-- [ ] Address material findings with failing regression cases before fixes.
-- [ ] Pin schema/protocol hashes in FREEZE.json and the manifest digest in the independently reviewed test policy; rerun focused checks.
-- [ ] Update roadmap only for the verified local scope; keep deferred authority/storage guarantees explicit.
+- [x] Review exact code/schema/oracle and current-policy/temporal boundaries independently.
+- [x] Address material findings with failing regression cases before fixes.
+- [x] Pin schema/protocol hashes in FREEZE.json and the manifest digest in the independently reviewed test policy; rerun focused checks.
+- [x] Update roadmap only for the verified local scope; keep deferred authority/storage guarantees explicit.
 
 ## Task 4: actual acceptance and save
 

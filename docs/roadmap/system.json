@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "baseline_commit": "eb2d4c57d409458d09bf27d4a70ebb067e8e7a8f",
+  "baseline_commit": "d32da3b16b9f463a9a094445ab92da9748ebc568",
   "executable": false,
   "paid_runs_authorized": false,
   "current_components": [
@@ -14,6 +14,17 @@
         "packages/contracts/src/index.ts"
       ],
       "limit": "A schema checks shape and required scope, not authenticated identity or entitlement."
+    },
+    {
+      "id": "projection-contracts",
+      "status": "pending_final_acceptance",
+      "capability": "15 additive projection definitions, generated TypeScript, context-bound guards and pure actor/bitemporal selectors",
+      "evidence_paths": [
+        "SYSTEMS/proposals/headless-v2/CONTRACT.md",
+        "packages/contracts/src/projection-v2.ts",
+        "docs/projection-contracts/verification.json"
+      ],
+      "limit": "Requires authenticated current host policy and verified checkpoints/source rows; does not authenticate providers or implement durable graph storage."
     },
     {
       "id": "authority-ledger",
@@ -132,7 +143,7 @@
       "evidence_paths": [
         "RESEARCH/HEADLESS_FOUNDATION.md"
       ],
-      "limit": "Storage engine, temporal contracts, delivery semantics and migration remain design work."
+      "limit": "Local projection/query profile has executable guards and selectors; persistent storage, transactional projectors, delivery and migration remain unimplemented."
     }
   ],
   "data_assets": [
@@ -256,7 +267,9 @@
       "depends_on": [],
       "deliverable": "Identifier-domain or map-encoding ADR, inventory of affected IDs and migration fixtures.",
       "acceptance": "Every permitted ID round-trips and replays; unsafe IDs fail before mutation; no silent renaming of signed history.",
-      "needed_inputs": "Compatibility requirements for persisted v1 records and all proposed graph identifiers."
+      "needed_inputs": "Compatibility requirements for persisted v1 records and all proposed graph identifiers.",
+      "local_profile_progress": "PC-001 defines sorted identifier entry arrays and temporal/query semantics for opt-in projection/2.0.0. Final acceptance is recorded separately.",
+      "remaining": "Persisted v1 identifier migration and R10 remain open."
     },
     {
       "id": "D03",
@@ -286,7 +299,9 @@
       "depends_on": [],
       "deliverable": "Storage ADR and v1-to-proposed temporal mapping: valid time, recorded sequence, acquisition and shared projection checkpoints.",
       "acceptance": "Worked delayed/equal-tick/correction timelines have unambiguous answers; unscoped, foreign, future-acquired and mixed-prefix reads fail.",
-      "needed_inputs": "Target workload, store separation, transaction/cursor strategy, rebuild/recovery needs and pinned source delta evidence. SQLite is a candidate, not an established gameplay store."
+      "needed_inputs": "Target workload, store separation, transaction/cursor strategy, rebuild/recovery needs and pinned source delta evidence. SQLite is a candidate, not an established gameplay store.",
+      "local_profile_progress": "PC-001 defines sorted identifier entry arrays and temporal/query semantics for opt-in projection/2.0.0. Final acceptance is recorded separately.",
+      "remaining": "Storage engine, row/cursor transactions, retained reads, common-checkpoint publication and recovery remain to be selected and implemented."
     },
     {
       "id": "D06",
@@ -362,7 +377,9 @@
         "AUDIT/lexi/",
         "AUDIT/telos/",
         "AUDIT/pantheon/"
-      ]
+      ],
+      "progress_record": "docs/design/headless-2026-11-13/source-evidence.json",
+      "bounded_progress": "Pinned commit/tree resolution and nine selected source-file hashes verified; broader source restoration and live API/database evidence remain unavailable."
     },
     {
       "id": "W02",
@@ -380,7 +397,7 @@
     {
       "id": "W03",
       "title": "Freeze reviewed projection/query contracts",
-      "status": "blocked",
+      "status": "pending_final_acceptance",
       "owner": "contracts",
       "depends_on": [
         "W01",
@@ -392,8 +409,10 @@
       "proposed_paths": [
         "SYSTEMS/proposals/headless-v2/",
         "packages/contracts/",
-        "TESTS/proposals/headless-v2/"
-      ]
+        "TESTS/projection-contracts.test.ts",
+        "TESTS/projection-fixtures.ts"
+      ],
+      "progress_record": "docs/projection-contracts/verification.json"
     },
     {
       "id": "W04",
@@ -426,7 +445,8 @@
       "acceptance": "Rebuild and incremental results match at every sampled prefix; direct agent writes are impossible through public APIs; crash/restart cannot advance cursor past durable state.",
       "proposed_paths": [
         "packages/kg/canonical/"
-      ]
+      ],
+      "next_step": "After PC-001 application acceptance, settle shared storage/cursor scaffolding under one owner, then create disjoint projector implementation tickets. No durable implementation exists yet."
     },
     {
       "id": "W06",
@@ -441,7 +461,8 @@
       "proposed_paths": [
         "packages/kg/epistemic/",
         "packages/lexi-bridge/"
-      ]
+      ],
+      "next_step": "After PC-001 application acceptance, settle shared storage/cursor scaffolding under one owner, then create disjoint projector implementation tickets. No durable implementation exists yet."
     },
     {
       "id": "W07",
@@ -637,6 +658,14 @@
     "Decision and work-item statuses describe future work; ready_for_design is not ready_for_implementation.",
     "Contract and shared-package ownership must be serialized even where design lanes are independent.",
     "Existing Tempted Fates actions suffice for projection tests; a new licensed ruleset is not their prerequisite.",
-    "R06/R12/R13 block their specific remote receipt, authenticated import and rollback assurances, not all local projection exploration."
-  ]
+    "R06/R12/R13 block their specific remote receipt, authenticated import and rollback assurances, not all local projection exploration.",
+    "PC-001 is an opt-in local contract milestone; its acceptance does not close R06/R10/R12/R13, choose production storage/authentication, or implement W07/W14."
+  ],
+  "projection_profile": {
+    "ticket": "PC-001",
+    "profile": "projection/2.0.0",
+    "status": "pending_final_acceptance",
+    "record": "docs/projection-contracts/verification.json",
+    "scope": "Local pure contracts/selectors only; no durable projectors, service, migration or paid runs."
+  }
 }

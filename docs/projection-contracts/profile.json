@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "profile": "projection/2.0.0",
+  "status": "frozen_local_contract",
+  "baseline_commit": "d32da3b16b9f463a9a094445ab92da9748ebc568",
+  "paid_runs": false,
+  "persistent_graph_implemented": false,
+  "live_authentication_implemented": false,
+  "runtime_scope": "Pure contract guards and in-memory reference selectors; no state writer, journal change, service or storage projector.",
+  "definitions": 15,
+  "artifacts": [
+    "SYSTEMS/proposals/headless-v2/projection-v2.schema.json",
+    "SYSTEMS/proposals/headless-v2/CONTRACT.md",
+    "packages/contracts/src/projection-v2.ts",
+    "packages/contracts/src/projection-generated.ts",
+    "TESTS/projection-contracts.test.ts",
+    "TESTS/projection-fixtures.ts",
+    "scripts/generate-projection-types.py",
+    "SYSTEMS/proposals/headless-v2/FREEZE.json"
+  ],
+  "v1_compatibility": "Frozen bytes and old APIs unchanged; explicit opt-in v2 mapping preserves acquisition meanings, adds coverage lower bound and withholds public claims under current cutoff.",
+  "trust_inputs": [
+    "Authenticated host principal",
+    "Current host policy with release ordering",
+    "Verified checkpoint ancestry and genesis binding",
+    "Trusted projector verification of source-event linkage"
+  ],
+  "deferred": [
+    "Persistent two-plane storage and transactional cursors",
+    "10000-event replay/property workload",
+    "Actual authorization/provider/delivery implementation",
+    "Versioned authority receipt/genesis/rollback migrations",
+    "General board external-application adapter"
+  ]
+}
