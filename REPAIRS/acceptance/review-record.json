@@ -1,0 +1,68 @@
+{
+  "baseline": "a9745e72e93d82c72e87f5159edd5c59f4c426c0",
+  "record_kind": "Supervisor evidence; not an executed T-R800 ticket or board MERGED verdict",
+  "paid_vendor_calls": false,
+  "reviews": [
+    {
+      "ticket": "T-R500",
+      "findings": [
+        "R14",
+        "R15",
+        "R16"
+      ],
+      "source_commit": "edb54c2e006e3163674cc637d0d9915dd925a1b1",
+      "integration_commit": "e11f7b5",
+      "reviewer": "research_r2",
+      "result": "approved",
+      "evidence": "All23 original evidence files and frozen v1 bytes unchanged; additive114/104/25 count clarification verified."
+    },
+    {
+      "ticket": "T-R100",
+      "findings": [
+        "R02",
+        "R03",
+        "R11"
+      ],
+      "source_commit": "bc7ef4f031f3b7e640aa15d5cc7a651c4afb0bba",
+      "integration_commit": "0e5b987",
+      "reviewer": "research_r1",
+      "result": "approved",
+      "evidence": "62 author suite tests and17 independent targeted tests pass; real Git/SQLite/Bubblewrap, old-DB and interrupted migration probes."
+    },
+    {
+      "ticket": "T-R300",
+      "findings": [
+        "R04",
+        "R05"
+      ],
+      "source_commit": "cdc1b42a4950c3dfc7ea18d60ef914b3e988f609",
+      "integration_commit": "89274af",
+      "reviewer": "research_r3",
+      "result": "approved",
+      "evidence": "43 author foundation tests;12 independent boundary tests; generated types/frozen schema checks pass. No arbitrary-host-code isolation claim."
+    },
+    {
+      "ticket": "T-R400",
+      "findings": [
+        "R07",
+        "R08",
+        "R09"
+      ],
+      "source_commit": "af4409680384be74db05e51578289f9f101f7390",
+      "integration_commit": "544399f",
+      "reviewer": "research_r2",
+      "result": "approved",
+      "evidence": "Initial full24 model-client/718 Pantheon/31 foundation pass. Follow-up9 Google serializer cases and28 focused author assertions pass;15 independent parent-verified assertions pass. Remaining SDK alias ambiguity fails before HTTP."
+    }
+  ],
+  "pending": [
+    "T-R200"
+  ],
+  "deferred": [
+    "R06",
+    "R10",
+    "R12",
+    "R13"
+  ],
+  "trust_policy_update": "Pending independent controller review and exact-candidate gate; no policy overlay or model self-approval."
+}
