@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "tickets": [
+    {
+      "id": "DN-001",
+      "wave": 0,
+      "lane": "design-intent",
+      "title": "Archive all-campaign character and narrator intent",
+      "seat_model": "gpt-6-astra",
+      "reviewer_model": null,
+      "owned_paths": [
+        "docs/design-intent/characters-and-narrator/"
+      ],
+      "gate_cmd": [
+        "python3",
+        "-c",
+        "import json,hashlib\nfrom pathlib import Path\np=Path('docs/design-intent/characters-and-narrator')\nassert hashlib.sha256((p/'owner-excerpt.md').read_bytes()).hexdigest()=='13ac181d66188c6f49a8d19360bfd852a7261832168724127111416a057ef752'\nr=json.loads((p/'record.json').read_text())\nassert r['status']=='intent_not_implemented' and r['campaign_scope']=='all_argo_campaigns'\nassert r['scope_decision']['answer']=='All ARGO campaigns'\nassert r['complete_v3_received'] is False and r['paid_model_calls']==0\nfor f,h in r['files'].items():assert hashlib.sha256((p/f).read_bytes()).hexdigest()==h,f\nv=json.loads(Path('SYSTEMS/CONTRACT_FREEZE.json').read_text())\nfor f,h in v['files'].items():assert hashlib.sha256(Path(f).read_bytes()).hexdigest()==h,f\nprint('PASS supplied intent archive and unchanged v1; no implementation approval')\n"
+      ],
+      "spec_path": "docs/design-intent/characters-and-narrator/DN-001.md",
+      "depends_on": [],
+      "max_attempts": 3
+    }
+  ]
+}
