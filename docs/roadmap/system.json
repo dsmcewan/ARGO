@@ -155,9 +155,10 @@
       "evidence_paths": [
         "repo-audit/evidence/LEXI-tree.json",
         "repo-audit/evidence/TELOS-tree.json",
-        "repo-audit/evidence/claude-config-tree.json"
+        "repo-audit/evidence/claude-config-tree.json",
+        "docs/design/headless-2026-11-13/source-evidence.json"
       ],
-      "limit": "Restore and verify the exact source bundle for refreshed extraction. Recorded tree IDs must not be relabeled as proven commit IDs."
+      "limit": "Additive source refresh independently resolves retained commit/root-tree identities, verifies unchanged complete tree entries and rechecks nine selected source files. Full copied source bundles and live services remain unverified here."
     },
     {
       "id": "lexi-interfaces",
@@ -206,12 +207,13 @@
     },
     {
       "id": "rules-license-pack",
-      "availability": "missing_or_unverified",
-      "description": "Exact selected rule bytes, license attribution bundle and executable rule fixtures remain needed",
+      "availability": "tracked",
+      "description": "Knave1e corroborated mirrored PDF, official CC BY 4.0 license, attribution, author grant evidence and three declarative unexecuted examples are retained.",
       "evidence_paths": [
-        "RESEARCH/findings/04_open_rulesets.md"
+        "RESEARCH/findings/04_open_rulesets.md",
+        "docs/design/headless-2026-11-13/evidence/knave-1e/manifest.json"
       ],
-      "limit": "Knave1e is provisional; edition/material boundaries and Year Zero applicability remain unresolved."
+      "limit": "No author-published checksum or kernel adoption is claimed. D08 material sufficiency/product attribution and W17 contract/executable fixture review remain open; no Knave2e or unrelated asset grant is implied."
     },
     {
       "id": "live-services-and-world-data",
