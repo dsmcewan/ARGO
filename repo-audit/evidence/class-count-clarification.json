@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "supersedes_label_only": "extraction-summary.json:model_classes",
+  "catalog": "lexi-models.json",
+  "catalog_sha256": "411a20d63faff063c11addb4da03cfb9c7e2f16e0488738d87a3b73b976c3a72",
+  "class_declarations": 114,
+  "direct_BaseModel_or_SQLModel_subclasses": 104,
+  "other_class_declarations": 10,
+  "sqlmodel_table_declarations": 25,
+  "method": "Exact direct base-expression membership in BaseModel or SQLModel; no inference about indirect inheritance or live database tables. Original catalog and extraction summary preserved.",
+  "other_classes": [
+    {
+      "path": "lexi-dashboard/backend/anthropic_credentials.py",
+      "line": 62,
+      "name": "MissingCredential",
+      "bases": [
+        "RuntimeError"
+      ]
+    },
+    {
+      "path": "lexi-dashboard/backend/anthropic_credentials.py",
+      "line": 67,
+      "name": "Credential",
+      "bases": []
+    },
+    {
+      "path": "lexi-dashboard/backend/model_fallback.py",
+      "line": 50,
+      "name": "ModelCallFailed",
+      "bases": [
+        "RuntimeError"
+      ]
+    },
+    {
+      "path": "lexi-dashboard/backend/model_fallback.py",
+      "line": 54,
+      "name": "RateLimited",
+      "bases": [
+        "ModelCallFailed"
+      ]
+    },
+    {
+      "path": "lexi-dashboard/backend/model_fallback.py",
+      "line": 58,
+      "name": "AllLegsRateLimited",
+      "bases": [
+        "ModelCallFailed"
+      ]
+    },
+    {
+      "path": "lexi-dashboard/backend/model_fallback.py",
+      "line": 79,
+      "name": "TextBlock",
+      "bases": []
+    },
+    {
+      "path": "lexi-dashboard/backend/model_fallback.py",
+      "line": 86,
+      "name": "Reply",
+      "bases": []
+    },
+    {
+      "path": "lexi-dashboard/backend/model_fallback.py",
+      "line": 183,
+      "name": "Leg",
+      "bases": []
+    },
+    {
+      "path": "lexi-dashboard/backend/model_fallback.py",
+      "line": 202,
+      "name": "FallbackClient",
+      "bases": []
+    },
+    {
+      "path": "lexi-dashboard/backend/model_fallback.py",
+      "line": 315,
+      "name": "OpenAIResponsesClient",
+      "bases": []
+    }
+  ]
+}

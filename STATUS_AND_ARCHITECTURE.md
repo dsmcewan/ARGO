@@ -4,6 +4,12 @@ Checked **2026-11-13** against Git history, GitHub Actions job logs and the impl
 
 **Current state:** the four-phase foundation and the offline build board are implemented and verified. Five starter research reports and an 11-ticket headless planning seed are saved. Paid vendor runs and live gameplay service deployment have not been performed or verified in this work. The proposed two-plane graph stores and general component bus remain unimplemented in this repository.
 
+## Subsequent review and active repairs
+
+The review of `a9745e72e93d82c72e87f5159edd5c59f4c426c0` found two P1, eight P2 and six P3 issues that the earlier passing suites did not cover. [The original review](REPAIRS/REVIEW_2026-11-13.md) and [repair resolutions](REPAIRS/RESOLUTIONS.md) supersede any implication that the historical verification below establishes unattended-build readiness. Five disjoint repair lanes are registered and claimed on the local blackboard. Four versioned-contract/storage decisions are held back; no paid vendor runs are authorized.
+
+The private main CI at `a9745e7` [passed](https://github.com/dsmcewan/ARGO/actions/runs/43456584810). This closes the old pending-save instructions; it does not close the subsequent review findings. Board v1 currently coordinates this repair batch's leases and paths but cannot accept application/control-policy changes through its data-only gate. External controller verification remains necessary, and board acceptance remains explicitly blocked rather than self-certified.
+
 ## CI failures, repairs and timestamps
 
 All runs below belong to the same private repository, **`dsmcewan/ARGO`**. `argo/foundation-spine` and `argo/rpg-research` are branches. Times are GitHub's run **last-updated** timestamps on November 13, converted to EST (UTC−05:00); they are not notification delivery or deployment timestamps.

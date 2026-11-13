@@ -21,7 +21,7 @@ Evidence:
 - [Module inventory, JSON](repo-audit/evidence/module-inventory.json): path, classification, rationale, blob identity, coverage.
 - [Source manifest](repo-audit/evidence/source-manifest.json): all retained source bytes and hash verification.
 - [LEXI route declarations](repo-audit/evidence/lexi-routes.json): 170 static declarations, exact parameters/decorators, return annotations, and source lines.
-- [LEXI model declarations](repo-audit/evidence/lexi-models.json): 114 classes, including 25 SQLModel table declarations, with field types/default expressions.
+- [LEXI class declarations](repo-audit/evidence/lexi-models.json): 114 classes: 104 direct `BaseModel`/`SQLModel` subclasses and 10 other classes, including 25 SQLModel table declarations. The [count clarification](repo-audit/evidence/class-count-clarification.json) corrects the historical summary label; original evidence is unchanged.
 - [JavaScript exports](repo-audit/evidence/javascript-exports.json): 891 export declaration locations across retained source, including tests/support code; not all are public service APIs.
 - [Missing-import candidates](repo-audit/evidence/missing-relative-imports.json): lexical scan; includes strings in tests and must not be treated as 46 confirmed missing production dependencies.
 - [Extraction summary](repo-audit/evidence/extraction-summary.json) and [reproducible extractor](repo-audit/extract_inventory.py).

@@ -2,7 +2,7 @@
 
 ARGO is a foundation for a living-world roleplaying system: signed deterministic action authority, actor-scoped knowledge, and stateless narration.
 
-All four foundation phases are complete: source audit, frozen contracts, repaired Pantheon model boundary, and the sequential ledger/bridge/Tempted Fates spine. Independent review repairs and deterministic gates pass. Verification is recorded in [BUILD_PROGRESS.md](BUILD_PROGRESS.md), [AUDIT_STATUS.json](repo-audit/AUDIT_STATUS.json), and [the verification record](repo-audit/evidence/foundation-verification.json).
+All four foundation phases are complete: source audit, frozen contracts, repaired Pantheon model boundary, and the sequential ledger/bridge/Tempted Fates spine. The earlier foundation repairs passed their deterministic gates. The subsequent structural review identified additional repairs now tracked in [the repair batch](REPAIRS/RESOLUTIONS.md). Verification is recorded in [BUILD_PROGRESS.md](BUILD_PROGRESS.md), [AUDIT_STATUS.json](repo-audit/AUDIT_STATUS.json), and [the verification record](repo-audit/evidence/foundation-verification.json).
 
 ```sh
 npm ci --ignore-scripts
@@ -34,7 +34,7 @@ LEXI/TELOS transports are injected and default to unavailable. Their determinist
 
 ## Evidence and reproduction
 
-The retained audit catalogs classify 525 source modules, extract 170 LEXI route declarations and 114 model classes, and record 840 verified Git blobs, including the uploaded Pantheon folders. They describe pinned source snapshots, not verified live services. See the inventory's coverage and limitations.
+The retained audit catalogs classify 525 source modules, extract 170 LEXI route declarations and 114 class declarations (104 direct `BaseModel`/`SQLModel` subclasses and 10 other classes), and record 840 verified Git blobs, including the uploaded Pantheon folders. The [count clarification](repo-audit/evidence/class-count-clarification.json) supersedes the historical `model_classes` label without changing the pinned evidence. They describe pinned source snapshots, not verified live services. See the inventory's coverage and limitations.
 
 LEXI, TELOS and claude-config source copies are excluded from this repository. The source manifest and complete tree indexes preserve their identities. To regenerate the catalogs, restore the pinned files beneath `repo-audit/sources/<repo>/`, preserving symlinks, then run:
 
