@@ -41,6 +41,7 @@ import selectors
 import shutil
 import signal
 import sqlite3
+import stat
 import subprocess
 import tempfile
 import time
@@ -147,7 +148,7 @@ class Board:
                     worker_id TEXT, lease_token TEXT, lease_until INTEGER, base_commit TEXT,
                     commit_sha TEXT, worktree TEXT, gate_run TEXT, gate_result TEXT,
                     reviewer_id TEXT, review_model TEXT, review_approved INTEGER,
-                    error TEXT, merged_commit TEXT
+                    error TEXT, merged_commit TEXT, merge_intent TEXT
                 );
                 CREATE TABLE IF NOT EXISTS dependencies (
                     ticket_id TEXT REFERENCES tickets(id), dependency_id TEXT REFERENCES tickets(id),
@@ -163,6 +164,20 @@ class Board:
                     ticket_id TEXT, payload TEXT NOT NULL, previous_hash TEXT, hash TEXT NOT NULL
                 );
             """)
+        # Serialize the additive migration with every other board writer. Older
+        # supervisors must be stopped before upgrading their executable policy.
+        with self._tx() as db:
+            columns = {row["name"] for row in db.execute("PRAGMA table_info(tickets)")}
+            if "merge_intent" not in columns:
+                db.execute("ALTER TABLE tickets ADD COLUMN merge_intent TEXT")
+                for row in db.execute("SELECT * FROM tickets WHERE status IN ('MERGING','VERIFYING','REVIEW') AND commit_sha IS NOT NULL").fetchall():
+                    # Old recovery changed MERGING to VERIFYING/REVIEW. Its
+                    # append-only history still identifies the current attempt's
+                    # integration intent; a subsequent claim starts a new attempt.
+                    latest = db.execute("SELECT event FROM audit WHERE ticket_id=? AND event IN ('CLAIMED','MERGE_STARTED') ORDER BY seq DESC LIMIT 1", (row["id"],)).fetchone()
+                    if row["status"] == "MERGING" or (latest and latest["event"] == "MERGE_STARTED"):
+                        self._change(db, row, "MERGE_INTENT_RECOVERED", merge_intent=row["commit_sha"])
+                self._record(db, "STORAGE_MIGRATED", None, {"added_column": "tickets.merge_intent"})
         self.database.chmod(0o600)
 
     def _connect(self):
@@ -379,19 +394,23 @@ class Board:
             if not isinstance(item["depends_on"], list) or any(not isinstance(d, str) for d in item["depends_on"]) or len(set(item["depends_on"])) != len(item["depends_on"]):
                 raise BoardError("Invalid dependency list")
             definitions[item["id"]] = item
-        visiting, visited = set(), set()
-        def walk(id):
-            if id not in definitions or id in visiting:
-                raise BoardError("Missing dependency or dependency cycle")
-            if id in visited:
-                return
-            visiting.add(id)
-            for dependency in definitions[id]["depends_on"]:
-                walk(dependency)
-            visiting.remove(id)
-            visited.add(id)
-        for id in definitions:
-            walk(id)
+        remaining = {id: len(item["depends_on"]) for id, item in definitions.items()}
+        dependents = {id: [] for id in definitions}
+        for id, item in definitions.items():
+            for dependency in item["depends_on"]:
+                if dependency not in definitions:
+                    raise BoardError("Missing dependency or dependency cycle")
+                dependents[dependency].append(id)
+        ready = [id for id, count in remaining.items() if count == 0]
+        visited = 0
+        while ready:
+            visited += 1
+            for dependent in dependents[ready.pop()]:
+                remaining[dependent] -= 1
+                if remaining[dependent] == 0:
+                    ready.append(dependent)
+        if visited != len(definitions):
+            raise BoardError("Missing dependency or dependency cycle")
         seed_json = canonical(seed)
         with self._tx() as db:
             previous = db.execute("SELECT value FROM meta WHERE key='seed'").fetchone()
@@ -429,6 +448,8 @@ class Board:
                 db.executemany("INSERT INTO dependencies VALUES (?,?)", [(id, dep) for dep in item["depends_on"]])
 
     def _retry(self, db, row, event, error):
+        if row["merge_intent"]:
+            raise BoardError("Unresolved integration requires recovery; its path lock cannot be released")
         definition = json.loads(row["definition"])
         status = "FAILED" if row["attempt"] >= definition["max_attempts"] else "READY"
         return self._change(db, row, event, status=status, worker_id=None, lease_token=None, lease_until=None,
@@ -658,6 +679,12 @@ class Board:
             self._record(db, "GATE_RESULT", ticket_id, result)
             if result["passed"]:
                 current = self._change(db, current, "GATE_PASSED", status="REVIEW", gate_run=None, gate_result=canonical(result))
+            elif current["merge_intent"]:
+                # Git may already contain this attempt. Never make its paths
+                # claimable or discard the candidate merely because recovery's
+                # oracle refused or became temporarily unavailable.
+                current = self._change(db, current, "RECOVERY_GATE_FAILED", status="MERGING", gate_run=None,
+                                       gate_result=canonical(result), error="Integrated candidate failed recovery verification; operator investigation required")
             else:
                 current = self._retry(db, current, "GATE_FAILED", result.get("error", result.get("output_tail", "Gate failed")))
             return self._view(db, current)
@@ -696,8 +723,56 @@ class Board:
                 continue
             raise BoardError("Target worktree must be clean")
 
+    def _checkout_collisions(self, candidate):
+        """Refuse untracked/ignored data that Git's read-tree would overwrite.
+
+        Inspect the current index, not HEAD: after a ref update interrupted before
+        checkout, HEAD names the candidate while the index still names the base.
+        lstat also detects dangling symlinks without following local ancestors.
+        """
+        tracked = {raw.decode("utf8") for raw in self._git("ls-files", "--cached", "-z", binary=True).split(b"\0") if raw}
+        tracked_directories = {parent.as_posix() for name in tracked for parent in PurePosixPath(name).parents
+                               if parent != PurePosixPath(".")}
+
+        def replacing_directory(relative):
+            pending = [relative]
+            while pending:
+                directory = pending.pop()
+                if directory not in tracked_directories:
+                    raise BoardError("Target checkout collides with local untracked directory: " + directory)
+                with os.scandir(self.repo / directory) as entries:
+                    for entry in entries:
+                        child = directory + "/" + entry.name
+                        mode = entry.stat(follow_symlinks=False).st_mode
+                        if stat.S_ISDIR(mode):
+                            pending.append(child)
+                        elif child not in tracked or not (stat.S_ISREG(mode) or stat.S_ISLNK(mode)):
+                            raise BoardError("Target checkout collides with local untracked data: " + child)
+
+        incoming = self._tree(candidate)
+        for name in incoming:
+            parts = PurePosixPath(name).parts
+            for index in range(1, len(parts) + 1):
+                relative = "/".join(parts[:index])
+                try:
+                    mode = (self.repo / relative).lstat().st_mode
+                except FileNotFoundError:
+                    break
+                if index == len(parts):
+                    if stat.S_ISDIR(mode):
+                        replacing_directory(relative)
+                    elif relative not in tracked:
+                        raise BoardError("Target checkout collides with local untracked data: " + relative)
+                elif not stat.S_ISDIR(mode):
+                    if relative in tracked and relative not in incoming:
+                        # A tracked file/symlink is intentionally becoming a
+                        # directory; read-tree checks that tracked entry's edits.
+                        break
+                    raise BoardError("Target checkout collides with local ancestor: " + relative)
+
     def _accept(self, db, row):
-        row = self._change(db, row, "MERGED", status="MERGED", merged_commit=row["commit_sha"], gate_run=None)
+        row = self._change(db, row, "MERGED", status="MERGED", merged_commit=row["commit_sha"], gate_run=None,
+                           merge_intent=None, error=None)
         db.execute("UPDATE artifacts SET accepted=1 WHERE ticket_id=? AND epoch=?", (row["id"], row["epoch"]))
         for blocked in db.execute("SELECT * FROM tickets WHERE status='BLOCKED'").fetchall():
             waiting = db.execute("SELECT 1 FROM dependencies d JOIN tickets t ON t.id=d.dependency_id WHERE d.ticket_id=? AND t.status!='MERGED'", (blocked["id"],)).fetchone()
@@ -721,6 +796,8 @@ class Board:
             with self._tx() as db:
                 row = self._row(db, ticket_id)
                 definition = json.loads(row["definition"])
+                if row["merge_intent"]:
+                    raise BoardError("Pending integration requires recover before another merge")
                 if row["status"] != "REVIEW" or not row["gate_result"] or not json.loads(row["gate_result"]).get("passed"):
                     raise BoardError("Merge requires a passed gate")
                 if definition["reviewer_model"] is not None and row["review_approved"] != 1:
@@ -729,7 +806,8 @@ class Board:
                 if self._git("rev-parse", "HEAD").strip() != row["base_commit"]:
                     return self._view(db, self._retry(db, row, "TARGET_STALE", "Target moved; claim a fresh base, rebase and retest"))
                 self._candidate(row, row["commit_sha"])
-                row = dict(self._change(db, row, "MERGE_STARTED", status="MERGING"))
+                self._checkout_collisions(row["commit_sha"])
+                row = dict(self._change(db, row, "MERGE_STARTED", status="MERGING", merge_intent=row["commit_sha"]))
             # A durable intent precedes the real Git operation. Do not claim a merge
             # from return-code alone; independently re-read HEAD and clean state.
             if self._git("rev-parse", "HEAD").strip() != row["base_commit"]:
@@ -744,9 +822,11 @@ class Board:
                 self._git("merge", "--ff-only", "--no-edit", row["commit_sha"], cwd=integration)
                 if self._git("rev-parse", "HEAD", cwd=integration).strip() != row["commit_sha"]:
                     raise BoardError("Private fast-forward differs from candidate")
+                self._checkout_collisions(row["commit_sha"])
                 self._git("update-ref", "-m", "ARGO verified fast-forward", "HEAD", row["commit_sha"], row["base_commit"])
                 # Two-tree read-tree preserves/refuses concurrent local edits
                 # instead of destroying them. A failure leaves MERGING for recovery.
+                self._checkout_collisions(row["commit_sha"])
                 self._git("read-tree", "-u", "-m", row["base_commit"], row["commit_sha"])
             finally:
                 self._git("worktree", "remove", "--force", str(integration))
@@ -765,23 +845,30 @@ class Board:
                 row = self._row(db, ticket_id)
                 if row["status"] not in ("VERIFYING", "REVIEW", "MERGING"):
                     raise BoardError("Only supervisor states require recovery")
-                already_integrated = row["status"] == "MERGING" and self._git("rev-parse", "HEAD").strip() == row["commit_sha"]
+                intent = row["merge_intent"]
+                head = self._git("rev-parse", "HEAD").strip()
+                if intent and (intent != row["commit_sha"] or head not in (row["base_commit"], intent)):
+                    raise BoardError("Target differs from durable merge intent; operator investigation required")
+                already_integrated = bool(intent and head == intent)
                 self._change(db, row, "RECOVERY_REQUESTED", status="VERIFYING", gate_run=None, gate_result=None,
-                             review_approved=None, reviewer_id=None, review_model=None)
+                             review_approved=None, reviewer_id=None, review_model=None,
+                             merge_intent=intent if already_integrated else None)
             result = self.verify(ticket_id)
             if already_integrated:
                 if result["status"] != "REVIEW":
-                    # Git cannot be silently rolled back after a recovery refusal.
-                    with self._tx() as db:
-                        row = self._row(db, ticket_id)
-                        self._change(db, row, "RECOVERY_REFUSED", status="FAILED", error="Integrated candidate failed recovery verification; operator investigation required")
                     raise BoardError("Integrated candidate failed recovery gate")
+                if self._git("rev-parse", "HEAD").strip() != result["commit_sha"]:
+                    raise BoardError("Target changed during recovery")
+                self._checkout_collisions(result["commit_sha"])
                 self._git("read-tree", "-u", "-m", result["base_commit"], result["commit_sha"])
                 self._clean_target()
                 if self._git("rev-parse", "HEAD").strip() != result["commit_sha"]:
                     raise BoardError("Target changed during recovery")
                 with self._tx() as db:
-                    return self._view(db, self._accept(db, self._row(db, ticket_id)))
+                    current = self._row(db, ticket_id)
+                    if current["status"] != "REVIEW" or current["merge_intent"] != result["commit_sha"] or current["commit_sha"] != result["commit_sha"]:
+                        raise BoardError("Recovery finalization was fenced")
+                    return self._view(db, self._accept(db, current))
             return result
 
     def verify_audit(self):
