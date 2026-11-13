@@ -682,5 +682,14 @@
     "record": "docs/projection-contracts/verification.json",
     "scope": "Local pure contracts/selectors only; no durable projectors, service, migration or paid runs.",
     "application_accepted_commit": "140b644c0bb86f45141f23b7f00788aeae04e389"
+  },
+  "mesh_profile": {
+    "ticket": "MB-001",
+    "protocol": "argo.mesh/1",
+    "status": "accepted_offline_implementation",
+    "application_accepted_commit": "a4ecd1899d551d5ccf1fb4127347c68a7f813d53",
+    "trusted_policy_commit": "eedd941fbdfe4207403ebf971c516d72ea40d483",
+    "record": "docs/mesh-builds/verification.json",
+    "scope": "Bounded parallel local commands and read-only peer rounds; no paid provider execution or autonomous application merge."
   }
 }

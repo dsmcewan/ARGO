@@ -10,3 +10,5 @@
 - Main integration remains pending separately trusted policy adoption and the complete deterministic controller.
 - MB-001 passed its pinned data gate and actually merged into argo/mesh-builds at eedd941fbdfe4207403ebf971c516d72ea40d483; 15 accepted CAS artifacts and audit validated.
 - Supervisor adopted the six independently reviewed policy additions at that immutable commit; existing protected bytes unchanged. Full application controller remains required before main.
+- All ten trusted controller checks passed on a4ecd1899d551d5ccf1fb4127347c68a7f813d53 and local main fast-forwarded to that exact candidate.
+- GitHub reports ARGO public; integration refused visibility change (HTTP403). User explicitly authorized pushing the update publicly. Final evidence commit still receives the same controller before push; paid runs stay off.

@@ -51,7 +51,63 @@
     "product": "independent-review.json"
   },
   "application_acceptance": {
-    "status": "pending_external_controller"
+    "status": "passed",
+    "candidate_commit": "a4ecd1899d551d5ccf1fb4127347c68a7f813d53",
+    "trusted_commit": "eedd941fbdfe4207403ebf971c516d72ea40d483",
+    "main_before": "8f6e5fafaf50755dc7a1dd1dba5c3107916e4008",
+    "main_after": "a4ecd1899d551d5ccf1fb4127347c68a7f813d53",
+    "command": "ARGO_CONTROLLER_TRUSTED_SHA=eedd941fbdfe4207403ebf971c516d72ea40d483 ARGO_NPM_CACHE=/home/agent/.npm node /workspace/ARGO/.worktrees/mesh-trusted/controller/merge.mjs --repo /workspace/ARGO --candidate a4ecd1899d551d5ccf1fb4127347c68a7f813d53 --trusted eedd941fbdfe4207403ebf971c516d72ea40d483",
+    "log": "application-gate.log",
+    "log_sha256": "121487e24a31fb517154af590093ab95b37141b6713841f71a643903f3a0b088",
+    "gate": {
+      "controller": "deterministic-v1",
+      "commit": "8e22672d4809c624b39d492f60976bc588bdb07d",
+      "workspace_sha256": "08e95dfcaaea2623e55ea384e027c25afc88a690d797cd762779454aca9163a6",
+      "merge_ready": true,
+      "checks": [
+        {
+          "name": "generated-types",
+          "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "schema",
+          "output_sha256": "67f16524049736f5c7ae4797b3c9a1905b4a092f4b4819e31854fc4e493866db"
+        },
+        {
+          "name": "boundaries",
+          "output_sha256": "e1a82058bdf104f5dae57084cf0f571064eca0ca2e692c6ff85d4602d3e58191"
+        },
+        {
+          "name": "types",
+          "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "board-and-dispatch",
+          "output_sha256": "0ddbff0aed3c3ffaf0fc4cdcdb358c57b1b9a7075c8030af0ea2ccee25945fe7"
+        },
+        {
+          "name": "research-python",
+          "output_sha256": "430520d08060bee9b9267e4903bebecbb2d9f89018a8e57c049d5abcd1e8d0b2"
+        },
+        {
+          "name": "research-tests",
+          "output_sha256": "a5c2dfe85dd27c14043262b22ad979183f2e7b978385dbe35855369374847dbd"
+        },
+        {
+          "name": "research-package",
+          "output_sha256": "21cddbfa4ca6eac9315c754f50759b35411a03f74f5d79a7c5318c6833b4e1b1"
+        },
+        {
+          "name": "foundation",
+          "output_sha256": "b97c7cc256de55cfbb0742e3d0a12aa4822369b7a6c93fe801fc27915c3c622a"
+        },
+        {
+          "name": "model-and-process",
+          "output_sha256": "3fcc927904ee70393804d3acbe9023246d433ccd82067e9dfe716e5e493f0087"
+        }
+      ]
+    },
+    "scope": "All ten checks passed and actual main fast-forward completed for this candidate. Gate commit is isolated staging identity. Later evidence-only commits require the same controller before integration; remote CI identifies the delivered commit."
   },
   "board": {
     "scope": "staging_data_packet",
@@ -168,5 +224,12 @@
     "record": "trust-release.json",
     "trusted_commit": "eedd941fbdfe4207403ebf971c516d72ea40d483",
     "existing_policy_unchanged": true
+  },
+  "delivery": {
+    "authorization": "User explicitly authorized pushing this update to public ARGO after being informed of current visibility and the integration HTTP403 on privacy change.",
+    "repository": "https://github.com/dsmcewan/ARGO",
+    "requested_visibility": "public",
+    "paid_runs": false,
+    "status_at_this_record": "authorized; final evidence commit and remote verification follow"
   }
 }
