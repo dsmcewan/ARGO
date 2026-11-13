@@ -1,0 +1,81 @@
+{
+  "date": "2026-11-13",
+  "implementation_commit": "f26c764fc56a023f9b66527385aa7c7cde46c4a0",
+  "baseline_commit": "05a292c403442a24b8f420e8b851f41f0f581ce5",
+  "scope": "Starter RPG research, headless planning specifications, offline blackboard and confined fixture dispatcher",
+  "local_checks": {
+    "board": 29,
+    "dispatcher": 19,
+    "real_board_dispatch_integration": 2,
+    "research_javascript": 6,
+    "research_python": 5,
+    "failed": 0,
+    "foundation_gate": {
+      "controller": "deterministic-v1",
+      "commit": "f26c764fc56a023f9b66527385aa7c7cde46c4a0",
+      "workspace_sha256": "8566ac4aba81be666ef240b0152671f2acf5d739da87b002b21a5286280516bd",
+      "merge_ready": true,
+      "checks": [
+        {
+          "name": "generated-types",
+          "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "schema",
+          "output_sha256": "67f16524049736f5c7ae4797b3c9a1905b4a092f4b4819e31854fc4e493866db"
+        },
+        {
+          "name": "boundaries",
+          "output_sha256": "6c62a971c2ccb9c3e2c0b66526c4b985a14750aff85df26cdcb1f4bb5c68f484"
+        },
+        {
+          "name": "types",
+          "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "foundation",
+          "output_sha256": "17809d3675dc1daf670e192ce4a0176b57d8238500fed5b5557fb23794ea180a"
+        },
+        {
+          "name": "model-and-process",
+          "output_sha256": "bf44e859e07ed8c2ec1fa0799f35853396f634e8fc4d432a800f4a7def2c322d"
+        }
+      ]
+    }
+  },
+  "seed_load": {
+    "tickets": 11,
+    "ready": 8,
+    "blocked": 3,
+    "valid_audit": true,
+    "dry_run": true,
+    "workers_executed": 0
+  },
+  "actual_research_gate_wrapper_probe": "Starter completion refused under Bubblewrap and Python -I -S",
+  "independent_native_reviews": {
+    "board": {
+      "source_commit": "9f54713227168286093f91014d000595c196520f",
+      "status": "repairs_confirmed",
+      "focused_tests": 8
+    },
+    "dispatcher": {
+      "source_commit": "856fa17c3721063a62cfacbd80b2bb49bc1e66f0",
+      "status": "repairs_confirmed",
+      "tests": 19
+    },
+    "combined_integration_tests": "reviewed_no_confirmed_defects",
+    "research_provenance_and_dates": "repairs_confirmed"
+  },
+  "paid_vendor_calls": 0,
+  "named_vendor_pipeline_executed": false,
+  "gameplay_runtime_and_frozen_contracts_changed": false,
+  "limitations": [
+    "Immutable batch DAG; new proposed child specs require operator review into a subsequent batch.",
+    "Board gates are pinned Python stdlib data validators; general application adapters are unsupported.",
+    "Audit/synthesis/architecture ticket semantic gates deliberately fail closed.",
+    "Reports are starters; structure validation does not establish source truth, licensing clearance or implemented mechanics.",
+    "No cgroup CPU/RAM/PID/disk quotas or external audit rollback anchor.",
+    "Split gameplay graphs, component bus and 10000-event gameplay fuzzing remain future work."
+  ],
+  "save_policy": "Final candidate must pass new CI checks and the externally pinned existing foundation controller before main advances."
+}

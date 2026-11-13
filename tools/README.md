@@ -17,6 +17,8 @@ python3 tools/dispatch.py
 
 `init` is insert-only and idempotent for the same seed. It pins the seed, source specifications, installed Python executable, gate wrapper and trusted policy files. It does not claim a ticket or launch a worker. `dispatch.py` defaults to a status-only dry run. The supplied seed is a **planning seed**: all reports are starters, and audit, synthesis and graph-contract gates deliberately refuse until their semantic oracles have been implemented and independently reviewed. See [the research track](../RESEARCH/README.md).
 
+This version uses an immutable batch DAG. A planner may submit proposed child specifications as owned artifacts; the operator reviews them into the next batch. Workers cannot mutate the live seed, create leases for themselves or spawn child workers.
+
 Local state, excluded from Git:
 
 ```text
@@ -28,7 +30,7 @@ Local state, excluded from Git:
 .board/worktrees/<attempt>     isolated Git working copies
 ```
 
-Render after operations to refresh the status snapshot, or watch `python3 tools/board.py render`. The engine does not run a background scheduler. Expired `CLAIMED` leases are reclaimed on the next claim sweep. Verification, review and unresolved integration retain their path locks until a supervisor resolves them.
+Run `render` after operations to refresh the status snapshot, then read `.board/BOARD.md`. The engine does not run a background scheduler. Expired `CLAIMED` leases are reclaimed on the next claim sweep. Verification, review and unresolved integration retain their path locks until a supervisor resolves them.
 
 ## Execute a local fixture
 

@@ -23,10 +23,10 @@
 
 ## Tasks
 
-- [ ] Produce five cited starter findings and machine-readable reports with validated evidence/proposal/benchmark distinctions.
-- [ ] Write flat R1–R5 dispatcher, repo-audit refresh, synthesis and architect instructions; map actual Bible invariants rather than inventing a prior numbered law list.
-- [ ] Write headless storage/graph/wire follow-up specification and ready-to-load Wave 1/2 seed; missing implementation gates fail closed.
-- [ ] Implement/test `tools/board.py` in the board-engine worktree: WAL/DAG, fenced leases, CAS, immutable specs, audit verification, supervised gate/review and real merge.
-- [ ] Implement/test `tools/dispatch.py` in its own worktree: finite offline loop, read-only handoffs, writable ownership mounts, bounded child processes and cancellation on lease loss.
-- [ ] Integrate peer commits; run end-to-end offline fixtures, schema checks and existing deterministic gates. Obtain independent review of final boundaries.
+- [x] Produce five cited starter findings and machine-readable reports with validated evidence/proposal/benchmark distinctions.
+- [x] Write flat R1–R5 dispatcher, repo-audit refresh, synthesis and architect instructions; map actual Bible invariants rather than inventing a prior numbered law list.
+- [x] Write headless storage/graph/wire follow-up specification and ready-to-load Wave 1/2 seed; missing implementation gates fail closed.
+- [x] Implement/test `tools/board.py` in the board-engine worktree: WAL/DAG, fenced leases, CAS, immutable specs, audit verification, supervised gate/review and real merge.
+- [x] Implement/test `tools/dispatch.py` in its own worktree: finite offline loop, read-only handoffs, writable ownership mounts, bounded child processes and cancellation on lease loss.
+- [x] Integrate peer commits; run end-to-end offline fixtures, schema checks and existing deterministic gates. Obtain independent review of final boundaries.
 - [ ] Commit and save to private ARGO, preserving intervening user commits. Record exact verification and remaining integration limits.
