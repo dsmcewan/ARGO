@@ -1,0 +1,17 @@
+{
+ "version":1,
+ "phase_order":["audit","contract_freeze","harness_patch","ledger","bridges_and_test_zero","parallel_features"],
+ "shared_state_writer":"packages/ledger",
+ "contract_changes":"Versioned migration and renewed dependent deterministic gates required",
+ "owners":[
+  {"lane":"contracts","paths":["SYSTEMS/","MECHANICS/","packages/contracts/"],"writes_world_state":false},
+  {"lane":"authority","paths":["packages/ledger/","packages/telos-bridge/"],"writes_world_state":true},
+  {"lane":"knowledge","paths":["packages/lexi-bridge/"],"writes_world_state":false},
+  {"lane":"narration","paths":["packages/argo-dm/"],"writes_world_state":false},
+  {"lane":"autonomy","paths":["packages/interventions/"],"writes_world_state":false},
+  {"lane":"scenario","paths":["scenarios/tempted-fates/"],"writes_world_state":false},
+  {"lane":"harness","paths":["packages/model-client/","pantheon/"],"writes_world_state":false},
+  {"lane":"controller","paths":["controller/","scripts/","TESTS/",".github/"],"writes_world_state":false}
+ ],
+ "rules":["Each worker uses an isolated Git worktree and branch", "No simultaneous ownership of a path", "Workers receive bridge interfaces, never ledger keys or writer handles", "Controller serializes merges of the exact tested candidate", "Schema changes cannot be resolved by inventing a lane-local state model"]
+}
