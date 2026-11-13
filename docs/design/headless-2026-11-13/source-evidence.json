@@ -1,0 +1,1863 @@
+{
+  "schema_version": 1,
+  "purpose": "HD-001/W01 read-only source identity refresh and headless gap evidence; non-executable design input",
+  "generated_at": "2026-11-13T17:53:43.548714+00:00",
+  "argo_baseline_commit": "41f2cb8568b53fac984e1114d7342eef540bb6d5",
+  "argo_root_tree": "a524527e5a0e0f0a11434a1fccc75558f7437af9",
+  "local_verified_sources": [
+    {
+      "repository": "dsmcewan/ARGO",
+      "commit": "41f2cb8568b53fac984e1114d7342eef540bb6d5",
+      "path": "packages/contracts/src/index.ts",
+      "mode": "100644",
+      "blob_sha": "538a5f914bc9728402c95c19422048ed927a1bb4",
+      "sha256": "bf34654af5090d1957c15e6081f060608d325aa67c4ca0be64797bc7ca8e3c68",
+      "bytes": 4552,
+      "symbols": [
+        {
+          "name": "ArgoError",
+          "line": 7,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "fail",
+          "line": 12,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "canonical",
+          "line": 13,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "hash",
+          "line": 42,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "assertContract",
+          "line": 45,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "assertScope",
+          "line": 49,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "sameScope",
+          "line": 53,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "requireScope",
+          "line": 54,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "safeAdd",
+          "line": 55,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "schemaDefinition",
+          "line": 56,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "own",
+          "line": 59,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "assertKnowledgeDisclosure",
+          "line": 60,
+          "kind": "export_declaration"
+        }
+      ],
+      "symlink_target": null,
+      "source_url": "https://github.com/dsmcewan/ARGO/blob/41f2cb8568b53fac984e1114d7342eef540bb6d5/packages/contracts/src/index.ts"
+    },
+    {
+      "repository": "dsmcewan/ARGO",
+      "commit": "41f2cb8568b53fac984e1114d7342eef540bb6d5",
+      "path": "packages/contracts/src/generated.ts",
+      "mode": "100644",
+      "blob_sha": "d19ec6ac7821a7ef7d7445425152ceb6f085d50d",
+      "sha256": "fac420ed01eaa3eb64abb38450550ea2521bd6c31d70728e13487c42740497f4",
+      "bytes": 7778,
+      "symbols": [],
+      "symlink_target": null,
+      "source_url": "https://github.com/dsmcewan/ARGO/blob/41f2cb8568b53fac984e1114d7342eef540bb6d5/packages/contracts/src/generated.ts"
+    },
+    {
+      "repository": "dsmcewan/ARGO",
+      "commit": "41f2cb8568b53fac984e1114d7342eef540bb6d5",
+      "path": "packages/ledger/src/index.ts",
+      "mode": "100644",
+      "blob_sha": "34a1384cc3e248b83ca8cdbba189e1326116d289",
+      "sha256": "f00908e3fce16613a7090b0ad8a7256fcd0a4250597741f8158596dcce33447d",
+      "bytes": 9731,
+      "symbols": [
+        {
+          "name": "openLedger",
+          "line": 36,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "makeCheckpoint",
+          "line": 119,
+          "kind": "export_declaration"
+        }
+      ],
+      "symlink_target": null,
+      "source_url": "https://github.com/dsmcewan/ARGO/blob/41f2cb8568b53fac984e1114d7342eef540bb6d5/packages/ledger/src/index.ts"
+    },
+    {
+      "repository": "dsmcewan/ARGO",
+      "commit": "41f2cb8568b53fac984e1114d7342eef540bb6d5",
+      "path": "packages/ledger/src/mechanics.ts",
+      "mode": "100644",
+      "blob_sha": "0767978dda0f929a1dbfcab710863b8a394b7aa6",
+      "sha256": "b609add08bf42b34cf88cef436cf6c47295aac874b5e3e35291d2b8fe79b6a3c",
+      "bytes": 13220,
+      "symbols": [
+        {
+          "name": "initialSnapshot",
+          "line": 5,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "validate",
+          "line": 18,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "draw",
+          "line": 78,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "unsigned",
+          "line": 86,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "eventHash",
+          "line": 87,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "apply",
+          "line": 88,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "verifyEvent",
+          "line": 112,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "replay",
+          "line": 125,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "outcome",
+          "line": 130,
+          "kind": "export_declaration"
+        }
+      ],
+      "symlink_target": null,
+      "source_url": "https://github.com/dsmcewan/ARGO/blob/41f2cb8568b53fac984e1114d7342eef540bb6d5/packages/ledger/src/mechanics.ts"
+    },
+    {
+      "repository": "dsmcewan/ARGO",
+      "commit": "41f2cb8568b53fac984e1114d7342eef540bb6d5",
+      "path": "packages/lexi-bridge/src/index.ts",
+      "mode": "100644",
+      "blob_sha": "0389622f439fdf4c7aeac2f22b2d90df0f3e9b01",
+      "sha256": "07c35de91c56304fb272ab32558cabc04454bf1f04ee832c757e571ebb23070b",
+      "bytes": 4339,
+      "symbols": [
+        {
+          "name": "createLexiBridge",
+          "line": 10,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "projectKnowledge",
+          "line": 28,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "createLexiMock",
+          "line": 41,
+          "kind": "export_declaration"
+        }
+      ],
+      "symlink_target": null,
+      "source_url": "https://github.com/dsmcewan/ARGO/blob/41f2cb8568b53fac984e1114d7342eef540bb6d5/packages/lexi-bridge/src/index.ts"
+    },
+    {
+      "repository": "dsmcewan/ARGO",
+      "commit": "41f2cb8568b53fac984e1114d7342eef540bb6d5",
+      "path": "packages/telos-bridge/src/index.ts",
+      "mode": "100644",
+      "blob_sha": "d5d504eec5190c26f4a2a4a2a3a0254684bfb233",
+      "sha256": "62288b4a97cdb6d123179dbd66376648ce326fb85681393cf00f5a8b32c8ad3c",
+      "bytes": 1845,
+      "symbols": [
+        {
+          "name": "createTelosBridge",
+          "line": 5,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "createTelosMock",
+          "line": 18,
+          "kind": "export_declaration"
+        }
+      ],
+      "symlink_target": null,
+      "source_url": "https://github.com/dsmcewan/ARGO/blob/41f2cb8568b53fac984e1114d7342eef540bb6d5/packages/telos-bridge/src/index.ts"
+    },
+    {
+      "repository": "dsmcewan/ARGO",
+      "commit": "41f2cb8568b53fac984e1114d7342eef540bb6d5",
+      "path": "packages/argo-dm/src/index.ts",
+      "mode": "100644",
+      "blob_sha": "7cc5ad6b203e294f64315f2b54cc605574769e4e",
+      "sha256": "94539829a000d4342a223162dbcebe16c89b224d3f4e7894d638ed216bee59e8",
+      "bytes": 4909,
+      "symbols": [
+        {
+          "name": "proposalFromAction",
+          "line": 8,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "renderNarration",
+          "line": 16,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "createNarrator",
+          "line": 24,
+          "kind": "export_declaration"
+        }
+      ],
+      "symlink_target": null,
+      "source_url": "https://github.com/dsmcewan/ARGO/blob/41f2cb8568b53fac984e1114d7342eef540bb6d5/packages/argo-dm/src/index.ts"
+    },
+    {
+      "repository": "dsmcewan/ARGO",
+      "commit": "41f2cb8568b53fac984e1114d7342eef540bb6d5",
+      "path": "packages/interventions/src/index.ts",
+      "mode": "100644",
+      "blob_sha": "de54001ae40f84a3f1b0d2b8af36dfad2354f312",
+      "sha256": "203b30298f7994b38cb09e892b53d1a2b5009bc2346392cf8a65b494e3ba0568",
+      "bytes": 3869,
+      "symbols": [
+        {
+          "name": "createProposalSubscriber",
+          "line": 4,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "runSubscriber",
+          "line": 23,
+          "kind": "export_declaration"
+        }
+      ],
+      "symlink_target": null,
+      "source_url": "https://github.com/dsmcewan/ARGO/blob/41f2cb8568b53fac984e1114d7342eef540bb6d5/packages/interventions/src/index.ts"
+    },
+    {
+      "repository": "dsmcewan/ARGO",
+      "commit": "41f2cb8568b53fac984e1114d7342eef540bb6d5",
+      "path": "scenarios/tempted-fates/index.ts",
+      "mode": "100644",
+      "blob_sha": "24c13dcba92ae1bbd33093e085de71ca57739c34",
+      "sha256": "98a914b06f340301793ee4143c7a41287e35715a689a897e0c539bb83a14e88e",
+      "bytes": 1378,
+      "symbols": [
+        {
+          "name": "createFates",
+          "line": 5,
+          "kind": "export_declaration"
+        }
+      ],
+      "symlink_target": null,
+      "source_url": "https://github.com/dsmcewan/ARGO/blob/41f2cb8568b53fac984e1114d7342eef540bb6d5/scenarios/tempted-fates/index.ts"
+    },
+    {
+      "repository": "dsmcewan/ARGO",
+      "commit": "41f2cb8568b53fac984e1114d7342eef540bb6d5",
+      "path": "packages/model-client/index.mjs",
+      "mode": "100644",
+      "blob_sha": "0f0df9aa1b03b8a0c015fc66b9653e91fdf17e68",
+      "sha256": "e4f1a4e1f03f9076f2b19731456bb4b7aef2514056628fd3173b865014489d42",
+      "bytes": 183,
+      "symbols": [],
+      "symlink_target": null,
+      "source_url": "https://github.com/dsmcewan/ARGO/blob/41f2cb8568b53fac984e1114d7342eef540bb6d5/packages/model-client/index.mjs"
+    },
+    {
+      "repository": "dsmcewan/ARGO",
+      "commit": "41f2cb8568b53fac984e1114d7342eef540bb6d5",
+      "path": "packages/model-client/client.mjs",
+      "mode": "100644",
+      "blob_sha": "2b979c8f5e5492275ec8ff8e3288939d93adc095",
+      "sha256": "d22a98b9af96a68e0254ef810ac8cf9ae6cb8a77ae394c7531096c42c93da6c7",
+      "bytes": 3115,
+      "symbols": [
+        {
+          "name": "sendModelTurn",
+          "line": 7,
+          "kind": "export_declaration"
+        }
+      ],
+      "symlink_target": null,
+      "source_url": "https://github.com/dsmcewan/ARGO/blob/41f2cb8568b53fac984e1114d7342eef540bb6d5/packages/model-client/client.mjs"
+    },
+    {
+      "repository": "dsmcewan/ARGO",
+      "commit": "41f2cb8568b53fac984e1114d7342eef540bb6d5",
+      "path": "packages/model-client/router.mjs",
+      "mode": "100644",
+      "blob_sha": "c90e96601c7c18f6fd9469abe377b8407a1364a2",
+      "sha256": "bf1fee0ba6da30ed7ebfdd5cd11fa7caa971753103f0942ccdd90af85f161d0e",
+      "bytes": 3794,
+      "symbols": [
+        {
+          "name": "classifyFailure",
+          "line": 3,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "boundedCall",
+          "line": 19,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "routeCall",
+          "line": 34,
+          "kind": "export_declaration"
+        }
+      ],
+      "symlink_target": null,
+      "source_url": "https://github.com/dsmcewan/ARGO/blob/41f2cb8568b53fac984e1114d7342eef540bb6d5/packages/model-client/router.mjs"
+    },
+    {
+      "repository": "dsmcewan/ARGO",
+      "commit": "41f2cb8568b53fac984e1114d7342eef540bb6d5",
+      "path": "packages/model-client/cooldown.mjs",
+      "mode": "100644",
+      "blob_sha": "5bf048f08b65f03065f6f3f8d904bb302d7668b9",
+      "sha256": "c08ef99188645f9df4060ccee271b454bce077c9c49987f3aae4aaa63054bb16",
+      "bytes": 2335,
+      "symbols": [
+        {
+          "name": "openCooldownStore",
+          "line": 8,
+          "kind": "export_declaration"
+        }
+      ],
+      "symlink_target": null,
+      "source_url": "https://github.com/dsmcewan/ARGO/blob/41f2cb8568b53fac984e1114d7342eef540bb6d5/packages/model-client/cooldown.mjs"
+    },
+    {
+      "repository": "dsmcewan/ARGO",
+      "commit": "41f2cb8568b53fac984e1114d7342eef540bb6d5",
+      "path": "tools/board.py",
+      "mode": "100644",
+      "blob_sha": "bae1a4e91947b5e86ca4188bbc6e30dc81ba71b6",
+      "sha256": "26d992c798fcd661f347ce542c7b6a1b9b740b5122fad69e95216d3da1bf35fa",
+      "bytes": 54694,
+      "symbols": [
+        {
+          "name": "BoardError",
+          "line": 51,
+          "kind": "class",
+          "methods": []
+        },
+        {
+          "name": "now_us",
+          "line": 55,
+          "kind": "function"
+        },
+        {
+          "name": "canonical",
+          "line": 59,
+          "kind": "function"
+        },
+        {
+          "name": "digest",
+          "line": 63,
+          "kind": "function"
+        },
+        {
+          "name": "relative_path",
+          "line": 67,
+          "kind": "function"
+        },
+        {
+          "name": "overlaps",
+          "line": 78,
+          "kind": "function"
+        },
+        {
+          "name": "vendor",
+          "line": 83,
+          "kind": "function"
+        },
+        {
+          "name": "bounded_process",
+          "line": 91,
+          "kind": "function"
+        },
+        {
+          "name": "Board",
+          "line": 125,
+          "kind": "class",
+          "methods": [
+            {
+              "name": "get",
+              "line": 250
+            },
+            {
+              "name": "read_artifact",
+              "line": 283
+            },
+            {
+              "name": "init",
+              "line": 361
+            },
+            {
+              "name": "claim",
+              "line": 471
+            },
+            {
+              "name": "heartbeat",
+              "line": 496
+            },
+            {
+              "name": "prepare_worktree",
+              "line": 502
+            },
+            {
+              "name": "put_artifact",
+              "line": 515
+            },
+            {
+              "name": "submit",
+              "line": 581
+            },
+            {
+              "name": "fail_claim",
+              "line": 588
+            },
+            {
+              "name": "verify",
+              "line": 662
+            },
+            {
+              "name": "review",
+              "line": 692
+            },
+            {
+              "name": "merge",
+              "line": 794
+            },
+            {
+              "name": "recover",
+              "line": 842
+            },
+            {
+              "name": "verify_audit",
+              "line": 874
+            },
+            {
+              "name": "render",
+              "line": 888
+            }
+          ]
+        },
+        {
+          "name": "main",
+          "line": 901,
+          "kind": "function"
+        }
+      ],
+      "symlink_target": null,
+      "source_url": "https://github.com/dsmcewan/ARGO/blob/41f2cb8568b53fac984e1114d7342eef540bb6d5/tools/board.py"
+    },
+    {
+      "repository": "dsmcewan/ARGO",
+      "commit": "41f2cb8568b53fac984e1114d7342eef540bb6d5",
+      "path": "tools/dispatch.py",
+      "mode": "100644",
+      "blob_sha": "7d72b1afebf3d4ffbca1036516f537a81db86c26",
+      "sha256": "ea24a18bc53ead3d7519a0cb18192c9635af2bf7bb7a9388bcb6caf454e1c96d",
+      "bytes": 29156,
+      "symbols": [
+        {
+          "name": "DispatchError",
+          "line": 33,
+          "kind": "class",
+          "methods": []
+        },
+        {
+          "name": "ProcessResult",
+          "line": 38,
+          "kind": "class",
+          "methods": []
+        },
+        {
+          "name": "ProcessFailure",
+          "line": 44,
+          "kind": "class",
+          "methods": []
+        },
+        {
+          "name": "Config",
+          "line": 51,
+          "kind": "class",
+          "methods": [
+            {
+              "name": "validate",
+              "line": 65
+            }
+          ]
+        },
+        {
+          "name": "validate_command",
+          "line": 91,
+          "kind": "function"
+        },
+        {
+          "name": "OwnedPath",
+          "line": 101,
+          "kind": "class",
+          "methods": []
+        },
+        {
+          "name": "normalize_owned_paths",
+          "line": 107,
+          "kind": "function"
+        },
+        {
+          "name": "prepare_owned_paths",
+          "line": 126,
+          "kind": "function"
+        },
+        {
+          "name": "clean_env",
+          "line": 153,
+          "kind": "function"
+        },
+        {
+          "name": "run_bounded",
+          "line": 158,
+          "kind": "function"
+        },
+        {
+          "name": "sandbox_argv",
+          "line": 221,
+          "kind": "function"
+        },
+        {
+          "name": "stage_inputs",
+          "line": 249,
+          "kind": "function"
+        },
+        {
+          "name": "parse_tree",
+          "line": 288,
+          "kind": "function"
+        },
+        {
+          "name": "Change",
+          "line": 302,
+          "kind": "class",
+          "methods": []
+        },
+        {
+          "name": "collect_changes",
+          "line": 308,
+          "kind": "function"
+        },
+        {
+          "name": "Dispatcher",
+          "line": 368,
+          "kind": "class",
+          "methods": [
+            {
+              "name": "run",
+              "line": 529
+            }
+          ]
+        },
+        {
+          "name": "main",
+          "line": 547,
+          "kind": "function"
+        }
+      ],
+      "symlink_target": null,
+      "source_url": "https://github.com/dsmcewan/ARGO/blob/41f2cb8568b53fac984e1114d7342eef540bb6d5/tools/dispatch.py"
+    },
+    {
+      "repository": "dsmcewan/ARGO",
+      "commit": "41f2cb8568b53fac984e1114d7342eef540bb6d5",
+      "path": "controller/merge.mjs",
+      "mode": "100644",
+      "blob_sha": "e7ae38494c5ee5df6f7541ada48f46d791a9d7c7",
+      "sha256": "67bf46b74d0d055e4dda4c73fa81c56ff74f0442a9d24a1029a6ac32efbb978b",
+      "bytes": 4423,
+      "symbols": [],
+      "symlink_target": null,
+      "source_url": "https://github.com/dsmcewan/ARGO/blob/41f2cb8568b53fac984e1114d7342eef540bb6d5/controller/merge.mjs"
+    },
+    {
+      "repository": "dsmcewan/ARGO",
+      "commit": "41f2cb8568b53fac984e1114d7342eef540bb6d5",
+      "path": "controller/acceptance-policy.mjs",
+      "mode": "100644",
+      "blob_sha": "a2fd29073a481f1ec06370fab3bcb7093ba6125d",
+      "sha256": "d52d7021dac0019c3876d083e2fcd29ef2005b1ca6fb445dc5b4cc2e8cc6e531",
+      "bytes": 2460,
+      "symbols": [
+        {
+          "name": "protectedPaths",
+          "line": 20,
+          "kind": "export_declaration"
+        }
+      ],
+      "symlink_target": null,
+      "source_url": "https://github.com/dsmcewan/ARGO/blob/41f2cb8568b53fac984e1114d7342eef540bb6d5/controller/acceptance-policy.mjs"
+    },
+    {
+      "repository": "dsmcewan/ARGO",
+      "commit": "41f2cb8568b53fac984e1114d7342eef540bb6d5",
+      "path": "scripts/gate.mjs",
+      "mode": "100644",
+      "blob_sha": "bdd2d866307d6dc1c5760b80f038671aa8c9f594",
+      "sha256": "f81dcb0b3f7d4d15e3d8c7218cdb1ebcc4719c1a487187eae692ef7871334bc0",
+      "bytes": 3368,
+      "symbols": [],
+      "symlink_target": null,
+      "source_url": "https://github.com/dsmcewan/ARGO/blob/41f2cb8568b53fac984e1114d7342eef540bb6d5/scripts/gate.mjs"
+    },
+    {
+      "repository": "dsmcewan/ARGO",
+      "commit": "41f2cb8568b53fac984e1114d7342eef540bb6d5",
+      "path": "pantheon/src/board/index.mjs",
+      "mode": "100644",
+      "blob_sha": "d78b22d19006264d785659e70b8d0b16cc593e6d",
+      "sha256": "eee1c54e233525acbb28715e448fe0f2c507ac5072b7745f9c14fddeef1267fb",
+      "bytes": 769,
+      "symbols": [
+        {
+          "name": "openBoard",
+          "line": 7,
+          "kind": "export_declaration"
+        }
+      ],
+      "symlink_target": null,
+      "source_url": "https://github.com/dsmcewan/ARGO/blob/41f2cb8568b53fac984e1114d7342eef540bb6d5/pantheon/src/board/index.mjs"
+    },
+    {
+      "repository": "dsmcewan/ARGO",
+      "commit": "41f2cb8568b53fac984e1114d7342eef540bb6d5",
+      "path": "pantheon/src/board/cas.mjs",
+      "mode": "100644",
+      "blob_sha": "eb6480a44124b39aef98197ec8505009de1e8426",
+      "sha256": "332c83cfd67a38b18fdf6211aea581548b2187d2434b8738282c2b0777b13288",
+      "bytes": 4999,
+      "symbols": [
+        {
+          "name": "linksOf",
+          "line": 19,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "openStore",
+          "line": 31,
+          "kind": "export_declaration"
+        }
+      ],
+      "symlink_target": null,
+      "source_url": "https://github.com/dsmcewan/ARGO/blob/41f2cb8568b53fac984e1114d7342eef540bb6d5/pantheon/src/board/cas.mjs"
+    },
+    {
+      "repository": "dsmcewan/ARGO",
+      "commit": "41f2cb8568b53fac984e1114d7342eef540bb6d5",
+      "path": "pantheon/src/board/runtime.mjs",
+      "mode": "100644",
+      "blob_sha": "d63ee450c58a84ad7eea6649072c0c02c2d2dcf6",
+      "sha256": "5a867bd653a0a62d1c96087a4ed36799b020b76bf0e78ac935aa948c625c634b",
+      "bytes": 10005,
+      "symbols": [
+        {
+          "name": "openRuntime",
+          "line": 31,
+          "kind": "export_declaration"
+        }
+      ],
+      "symlink_target": null,
+      "source_url": "https://github.com/dsmcewan/ARGO/blob/41f2cb8568b53fac984e1114d7342eef540bb6d5/pantheon/src/board/runtime.mjs"
+    },
+    {
+      "repository": "dsmcewan/ARGO",
+      "commit": "41f2cb8568b53fac984e1114d7342eef540bb6d5",
+      "path": "pantheon/src/board/spawn.mjs",
+      "mode": "100644",
+      "blob_sha": "2716c9e5daf3974fc503a23ace1f634aed79c904",
+      "sha256": "27dd5ce7945917ec07b13ee5e21f7cfb2311bf9d544beb428340fda935f6edb1",
+      "bytes": 3190,
+      "symbols": [
+        {
+          "name": "spawnPromise",
+          "line": 5,
+          "kind": "export_declaration"
+        }
+      ],
+      "symlink_target": null,
+      "source_url": "https://github.com/dsmcewan/ARGO/blob/41f2cb8568b53fac984e1114d7342eef540bb6d5/pantheon/src/board/spawn.mjs"
+    },
+    {
+      "repository": "dsmcewan/ARGO",
+      "commit": "41f2cb8568b53fac984e1114d7342eef540bb6d5",
+      "path": "pantheon/src/sdk/seat-sdk.mjs",
+      "mode": "100644",
+      "blob_sha": "be0124fcfe50bf9a346ba067c998fd7c87387cee",
+      "sha256": "96a4bb95d058166f9a2fe2d71e5526414b5f09d794ba255bb1ffc8940c95d327",
+      "bytes": 12326,
+      "symbols": [
+        {
+          "name": "exchangeTurns",
+          "line": 37,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "sdkTurn",
+          "line": 64,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "recordExtendsLocally",
+          "line": 196,
+          "kind": "export_declaration"
+        }
+      ],
+      "symlink_target": null,
+      "source_url": "https://github.com/dsmcewan/ARGO/blob/41f2cb8568b53fac984e1114d7342eef540bb6d5/pantheon/src/sdk/seat-sdk.mjs"
+    },
+    {
+      "repository": "dsmcewan/ARGO",
+      "commit": "41f2cb8568b53fac984e1114d7342eef540bb6d5",
+      "path": "pantheon/src/sdk/adapter.mjs",
+      "mode": "100644",
+      "blob_sha": "610bffe0d80d50245a9a4bc98488b8549c62283d",
+      "sha256": "00dc2ce2e0b5fe992a0e790a8ffc08e0b27214d5b94512212279d982bf7c8f7a",
+      "bytes": 25381,
+      "symbols": [
+        {
+          "name": "ADAPTERS",
+          "line": 22,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "continuityMode",
+          "line": 130,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "isReplay",
+          "line": 142,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "makeClient",
+          "line": 147,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "sendTurn",
+          "line": 223,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "normalize",
+          "line": 419,
+          "kind": "export_declaration"
+        }
+      ],
+      "symlink_target": null,
+      "source_url": "https://github.com/dsmcewan/ARGO/blob/41f2cb8568b53fac984e1114d7342eef540bb6d5/pantheon/src/sdk/adapter.mjs"
+    },
+    {
+      "repository": "dsmcewan/ARGO",
+      "commit": "41f2cb8568b53fac984e1114d7342eef540bb6d5",
+      "path": "pantheon/src/route/frontier.mjs",
+      "mode": "100644",
+      "blob_sha": "5ea6394a63a0b02b4694441612a4f79d38ca471e",
+      "sha256": "2110850b938aaab35458a5a7884f94b37dd71221ebca7071ba8ecfa7f5e4e9f2",
+      "bytes": 2627,
+      "symbols": [
+        {
+          "name": "readPools",
+          "line": 12,
+          "kind": "export_declaration"
+        },
+        {
+          "name": "frontierCandidates",
+          "line": 29,
+          "kind": "export_declaration"
+        }
+      ],
+      "symlink_target": null,
+      "source_url": "https://github.com/dsmcewan/ARGO/blob/41f2cb8568b53fac984e1114d7342eef540bb6d5/pantheon/src/route/frontier.mjs"
+    },
+    {
+      "repository": "dsmcewan/ARGO",
+      "commit": "41f2cb8568b53fac984e1114d7342eef540bb6d5",
+      "path": "pantheon/src/config/models.json",
+      "mode": "120000",
+      "blob_sha": "088fd16a15b9fc5b9720aa895e2e9551fd67dcae",
+      "sha256": "ee786669a25f41dbd0be98cd174eeecc53cb5cb217b180ddcdafbdd5ccf34481",
+      "bytes": 42,
+      "symbols": [],
+      "symlink_target": "../../../packages/model-client/models.json",
+      "source_url": "https://github.com/dsmcewan/ARGO/blob/41f2cb8568b53fac984e1114d7342eef540bb6d5/pantheon/src/config/models.json"
+    }
+  ],
+  "active_pantheon_delta": {
+    "historical_source_commit": "6f75c29c8e66df2c76996c33b763390807d62bda",
+    "baseline_manifest": "repo-audit/evidence/pantheon-source-manifest.json",
+    "current_argo_commit": "41f2cb8568b53fac984e1114d7342eef540bb6d5",
+    "historical_active_subtree": "ba4c06954c0276928754f75017a9ad2bd15d5799",
+    "current_active_subtree": "18db382f71afda29c10a5b9f673dbe6a7ab5462b",
+    "baseline_file_count": 221,
+    "current_file_count": 229,
+    "added": [
+      "pantheon/src/route/frontier.mjs",
+      "pantheon/tests/compaction-history.test.mjs",
+      "pantheon/tests/frontier-adapter.test.mjs",
+      "pantheon/tests/frontier-board.test.mjs",
+      "pantheon/tests/frontier-routing.test.mjs",
+      "pantheon/tests/google-long-decode.test.mjs",
+      "pantheon/tests/scoped-history.test.mjs",
+      "pantheon/tests/spawn-bounds.test.mjs"
+    ],
+    "removed": [],
+    "changed": [
+      "pantheon/bin/pantheon-build.mjs",
+      "pantheon/package-lock.json",
+      "pantheon/package.json",
+      "pantheon/scripts/delegate-run.mjs",
+      "pantheon/scripts/open-items-run.mjs",
+      "pantheon/src/board/acceptance.mjs",
+      "pantheon/src/board/run-item.mjs",
+      "pantheon/src/board/spawn.mjs",
+      "pantheon/src/board/ticket-safety.mjs",
+      "pantheon/src/config/models.json",
+      "pantheon/src/role/roles.mjs",
+      "pantheon/src/route/router.mjs",
+      "pantheon/src/sdk/adapter.mjs",
+      "pantheon/src/sdk/history.mjs",
+      "pantheon/src/sdk/seat-sdk.mjs",
+      "pantheon/src/seat/store.mjs",
+      "pantheon/src/view/build-server.mjs",
+      "pantheon/tests/acceptance-cli.test.mjs",
+      "pantheon/tests/acceptance-sandbox.test.mjs",
+      "pantheon/tests/board-agy-planner-role.test.mjs",
+      "pantheon/tests/board-lifecycle.test.mjs",
+      "pantheon/tests/board-multi-slot.test.mjs",
+      "pantheon/tests/board-reviewer-reseat-lab.test.mjs",
+      "pantheon/tests/board-run-item.test.mjs",
+      "pantheon/tests/build-server-ticket-fields.test.mjs",
+      "pantheon/tests/config-models.test.mjs",
+      "pantheon/tests/fixtures/pipeline.mjs",
+      "pantheon/tests/role-seating.test.mjs",
+      "pantheon/tests/seat-lock.test.mjs"
+    ],
+    "mirror_note": "pantheon-seat-core is a separate historical supplied source mirror, not the active shared-model-client runtime; no external Pantheon repository refresh claimed."
+  },
+  "gap_matrix": [
+    {
+      "id": "G01",
+      "component": "LEXI legacy storage",
+      "sources": [
+        "LEXI:lexi-dashboard/backend/db_config.py:get_db_connection",
+        "LEXI:lexi-dashboard/backend/db_session.py:get_session",
+        "LEXI:lexi-dashboard/backend/models.py"
+      ],
+      "implemented": "Forensic SQLite/optional SQLCipher sessions and25 declared tables.",
+      "missing_for_headless_target": "New scoped gameplay fact/belief projections, independent materializer cursor, entitlement-aware queries/caches, and migration/storage decision. Existing forensic campaigns are not gameplay campaigns.",
+      "reuse_disposition": "Wrap selected utilities; no direct reuse of live database",
+      "blocking_decisions": []
+    },
+    {
+      "id": "G02",
+      "component": "TELOS legacy build primitives",
+      "sources": [
+        "TELOS:build-gate/sign.mjs:signPacket",
+        "TELOS:build-gate/test-runner.mjs:runNodeTest",
+        "TELOS:merkle-dag/vendor.mjs:resolveUnder"
+      ],
+      "implemented": "HMAC build-packet helpers, physical path confinement helper and advisory process test runner.",
+      "missing_for_headless_target": "Gameplay proposal/receipt protocol, authority identity and complete scope/proposal response binding; cannot substitute build HMAC packets for signed ARGO events.",
+      "reuse_disposition": "Reuse bounded primitives behind explicit adapter",
+      "blocking_decisions": [
+        "R06"
+      ]
+    },
+    {
+      "id": "G03",
+      "component": "claude-config research graph and lanes",
+      "sources": [
+        "claude-config:workflows/layered-swarm.d/research-graph.mjs:analyze",
+        "claude-config:workflows/layered-swarm.d/graph-watch.mjs:createWatcher",
+        "claude-config:workflows/layered-swarm.d/write-lanes.mjs:declaredOverlaps"
+      ],
+      "implemented": "Research evidence/conflict projection, observer notifications and same-target lane serialization.",
+      "missing_for_headless_target": "Actor acquisition time, rights scopes, authoritative causal vs epistemic commits, durable bus delivery semantics and independent filesystem proof.",
+      "reuse_disposition": "Adapt research/scheduling patterns; no canonical-world authority",
+      "blocking_decisions": []
+    },
+    {
+      "id": "G04",
+      "component": "ARGO authority and state",
+      "sources": [
+        "packages/ledger/src/index.ts:openLedger",
+        "packages/ledger/src/mechanics.ts:replay",
+        "packages/contracts/src/generated.ts:Snapshot"
+      ],
+      "implemented": "Signed deterministic file journal; causal/epistemic actions, consent/proxy state, exact head/sequence and replay.",
+      "missing_for_headless_target": "Versioned authenticated genesis/import and rollback assurance; identifier/map-domain compatibility; general ruleset progression and persistent projection read models.",
+      "reuse_disposition": "Preserve authoritative writer and extend through reviewed versions",
+      "blocking_decisions": [
+        "R10",
+        "R12",
+        "R13"
+      ]
+    },
+    {
+      "id": "G05",
+      "component": "ARGO knowledge",
+      "sources": [
+        "packages/lexi-bridge/src/index.ts:createLexiBridge",
+        "packages/lexi-bridge/src/index.ts:projectKnowledge",
+        "packages/lexi-bridge/src/index.ts:createLexiMock"
+      ],
+      "implemented": "Injected asynchronous transport; mock reconstructs actor/party/time-filtered view from authority Snapshot per query.",
+      "missing_for_headless_target": "Persistent gameplay graphs, a durable projection cursor, common-checkpoint multi-query contract, scoped retrieval/cache implementation and finer encounter cutoffs.",
+      "reuse_disposition": "Keep bridge; add reviewed projection service",
+      "blocking_decisions": []
+    },
+    {
+      "id": "G06",
+      "component": "ARGO submission",
+      "sources": [
+        "packages/telos-bridge/src/index.ts:createTelosBridge",
+        "packages/telos-bridge/src/index.ts:createTelosMock"
+      ],
+      "implemented": "Injected bounded submit transport and in-process authority delegation; absent transport returns UNAVAILABLE.",
+      "missing_for_headless_target": "Deployment/authenticated gateway and versioned full-proposal/scope receipt binding. Shape checks alone do not authenticate the returned event.",
+      "reuse_disposition": "Keep adapter; change wire only through version migration",
+      "blocking_decisions": [
+        "R06"
+      ]
+    },
+    {
+      "id": "G07",
+      "component": "ARGO narration and autonomy",
+      "sources": [
+        "packages/argo-dm/src/index.ts:createNarrator",
+        "packages/argo-dm/src/index.ts:proposalFromAction",
+        "packages/interventions/src/index.ts:runSubscriber",
+        "scenarios/tempted-fates/index.ts:createFates"
+      ],
+      "implemented": "Stateless narration, typed Action proposals, current cutoff refresh, bounded async-iterator proposal callbacks and independent optional Fates.",
+      "missing_for_headless_target": "Persistent component bus, idempotent duplicate/reorder handling, cancellation/restart recovery, off-screen scheduling and separate solo/raid session contracts. No general natural-language intent parser, production UI or voice.",
+      "reuse_disposition": "Reuse proposal-only and disclosure boundaries",
+      "blocking_decisions": []
+    },
+    {
+      "id": "G08",
+      "component": "ARGO build control",
+      "sources": [
+        "tools/board.py:Board",
+        "tools/dispatch.py:Dispatcher",
+        "controller/merge.mjs",
+        "controller/acceptance-policy.mjs"
+      ],
+      "implemented": "SQLite DAG/path leases/CAS, offline confined workers, pinned data validators and separately trusted full application merge controller.",
+      "missing_for_headless_target": "External application-oracle/board reconciliation adapter; semantic audit/synthesis/projection gates; capacity isolation and explicitly authorized future provider dispatch. Build control is not the gameplay ledger or message bus.",
+      "reuse_disposition": "Use as trusted local build tooling, not gameplay storage",
+      "blocking_decisions": []
+    },
+    {
+      "id": "G09",
+      "component": "Active Pantheon/model client",
+      "sources": [
+        "pantheon/src/sdk/adapter.mjs:sendTurn",
+        "pantheon/src/route/frontier.mjs:frontierCandidates",
+        "packages/model-client/client.mjs:sendModelTurn",
+        "pantheon/src/board/index.mjs:openBoard"
+      ],
+      "implemented": "Active adapters call shared model-client policy; separate content-addressed build DAG/ref/runtime stores and bounded process runner.",
+      "missing_for_headless_target": "Gameplay projection contracts and bus cannot be inferred from build DAG or model history. Live vendor access, account capabilities and paid dispatch remain unverified/unauthorized.",
+      "reuse_disposition": "Reuse existing client/process boundaries; preserve separate stores",
+      "blocking_decisions": []
+    }
+  ],
+  "storage_inventory": [
+    {
+      "component": "gameplay ledger",
+      "sources": [
+        "packages/ledger/src/index.ts",
+        "packages/contracts/src/generated.ts"
+      ],
+      "root": "caller-supplied directory",
+      "files": [
+        "genesis.json",
+        "events.jsonl",
+        "snapshot.json",
+        "writer.lock"
+      ],
+      "authority": "Signed events plus pinned supplied genesis; snapshot.json is derived cache; reads replay journal.",
+      "snapshot_fields": [
+        "genesis",
+        "sequence",
+        "head",
+        "world_time",
+        "actors",
+        "items",
+        "claims",
+        "consents",
+        "grants",
+        "cutoffs",
+        "transfers",
+        "rng_counter",
+        "proposals"
+      ],
+      "private_boundary": "Raw snapshot/events and RNG seed remain authority-only; signing private key is injected, not written by this implementation."
+    },
+    {
+      "component": "Python build board",
+      "sources": [
+        "tools/board.py"
+      ],
+      "root": "board_dir, default <repo>/.board",
+      "files": [
+        "board.db",
+        "BOARD.md",
+        "cas/<first2>/<full-sha256>",
+        "tickets/<id>.json",
+        "tickets/<id>.spec",
+        "worktrees/",
+        "gates/",
+        "merge.lock"
+      ],
+      "tables": [
+        "meta",
+        "tickets",
+        "dependencies",
+        "artifacts",
+        "audit"
+      ],
+      "authority": "Build coordination only; WAL FULL transactions, revision CAS and epoch/token leases, accepted-only artifact handoff; local audit chain is not independent rollback proof."
+    },
+    {
+      "component": "retained active Pantheon build board",
+      "sources": [
+        "pantheon/src/board/index.mjs",
+        "pantheon/src/board/cas.mjs",
+        "pantheon/src/board/runtime.mjs"
+      ],
+      "files": [
+        "objects/<codec>/<first2>/<remaininghex>",
+        "refs/",
+        "runtime/leases.json",
+        "runtime/occupancy.json",
+        "runtime/budget.json",
+        "runtime/spend.jsonl",
+        "runtime/refs.log"
+      ],
+      "authority": "Separate build DAG/ref/runtime representation, not gameplay fact/belief projections."
+    },
+    {
+      "component": "shared model pool cooldowns",
+      "sources": [
+        "packages/model-client/cooldown.mjs"
+      ],
+      "files": [
+        "<sha256(pool)>.json",
+        "<sha256(pool)>.json.lock"
+      ],
+      "authority": "Provider-pool scheduling state, not gameplay state; active Retry-After is retained across older successful requests."
+    }
+  ],
+  "fixture_ideas": [
+    {
+      "id": "HD-W01-ID-001",
+      "status": "proposed_not_executed",
+      "given": "Retained tree-response sha equals a commit-ish; commit endpoint returns a distinct root tree.",
+      "when": "Refresh source identity.",
+      "then": "Keep original header, record independently resolved commit and canonical tree, compare path/mode/type/blob identities; do not report a code delta merely because the header differs from root tree."
+    },
+    {
+      "id": "HD-W01-KNOW-001",
+      "status": "proposed_not_executed",
+      "given": "Actor A privately observes claim c at sequence9/world_time20 with occurred_at5; B shares a party but is not an observer.",
+      "when": "A queries time10; B queries actor/party views at time20.",
+      "then": "Neither query reveals c; occurrence backdating does not backdate acquisition and party membership alone does not disclose private claims."
+    },
+    {
+      "id": "HD-W01-CURSOR-001",
+      "status": "proposed_not_executed",
+      "given": "Fact and belief projections are at different committed prefixes, and delivery includes duplicates/reordering.",
+      "when": "Build one derived context for an agent.",
+      "then": "Require a common authenticated cursor or refuse; no mixed-prefix snapshot, duplicate effect or fabricated advancement.",
+      "requires": "Versioned projection/cursor contract"
+    },
+    {
+      "id": "HD-W01-RECEIPT-001",
+      "status": "proposed_not_executed",
+      "given": "A real foreign-scope outcome shares proposal ID, action kind, sequence and time with a local request.",
+      "when": "Bridge receives it.",
+      "then": "Reject using full scope/proposal identity and authority verification.",
+      "blocked_on": [
+        "R06"
+      ]
+    },
+    {
+      "id": "HD-W01-GENESIS-001",
+      "status": "proposed_not_executed",
+      "given": "Signed history and expected head unchanged; an untouched genesis balance differs.",
+      "when": "Import/replay from supplied genesis.",
+      "then": "Reject under a reviewed genesis identity or authenticated import manifest.",
+      "blocked_on": [
+        "R12"
+      ]
+    },
+    {
+      "id": "HD-W01-ROLLBACK-001",
+      "status": "proposed_not_executed",
+      "given": "Storage restores a valid prefix before proxy revocation.",
+      "when": "A new delegated action is submitted.",
+      "then": "Apply the explicitly chosen rollback/restore assurance; an independent monotonic checkpoint is required if rejection is promised.",
+      "blocked_on": [
+        "R13"
+      ]
+    },
+    {
+      "id": "HD-W01-CANON-001",
+      "status": "proposed_not_executed",
+      "given": "Legacy HMAC build packet, ARGO Ed25519 event and values involving floats, -0, array order and reserved map keys.",
+      "when": "Adapters attempt cross-protocol canonicalization/signing.",
+      "then": "Require an explicit codec/protocol version; no equivalence inferred merely from both using sorted JSON.",
+      "blocked_on": [
+        "R10"
+      ]
+    },
+    {
+      "id": "HD-W01-PLANE-001",
+      "status": "proposed_not_executed",
+      "given": "Research graph consensus and a build-board MERGED record mention a gameplay claim.",
+      "when": "A gameplay query or authority proposal consumes these artifacts.",
+      "then": "Treat them as external evidence/proposals; neither research agreement nor build status creates world truth."
+    }
+  ],
+  "verification_scope": {
+    "remote_repository_access": "all three repositories accessible; no unavailable source was invented",
+    "remote_tree_deltas": "all recursive entries unchanged; top-level catalog identity labeling corrected by fresh object resolution",
+    "remote_selected_files": 9,
+    "remote_selected_bytes": 54227,
+    "remote_selected_hashes_verified": true,
+    "local_source_hashes": "bytes read from immutable Git commit using git show; SHA1 Git blob and SHA256 recorded",
+    "runtime_or_live_service_tests_run": false,
+    "paid_vendor_calls": false,
+    "repo_files_modified_by_this_contributor": false,
+    "credentials_or_raw_databases_read": false
+  },
+  "limitations": [
+    "This is source/provenance verification, not a rerun of legacy applications, live endpoints or production data schemas.",
+    "The retained catalog header alone was insufficient to establish object kind; new Git commit metadata and reconstructed root-tree hashes establish the identities here.",
+    "Historical baseline_commit remains null because the old artifact did not independently resolve kind; baseline_resolved_commit records the new verification without rewriting history.",
+    "Only nine selected external source files were fetched (no full source repositories, case databases, keys or .env files).",
+    "Historical Pantheon mirror remains provenance evidence; active Pantheon is the tracked ARGO subtree, not an independently refreshed upstream repository.",
+    "Known deferred decisions R06/R10/R12/R13 remain unresolved; fixture ideas are proposed and were not executed.",
+    "Current control-plane Python is trusted policy; same-process unittest receipts are not adversarial authentication.",
+    "No new storage backend, service schema, licensed rules asset, runtime implementation or paid dispatch is authorized by this evidence packet."
+  ],
+  "evidence_paths": [
+    "docs/design/headless-2026-11-13/evidence/source-refresh/LEXI-current-ref.json",
+    "docs/design/headless-2026-11-13/evidence/source-refresh/LEXI-current-commit.json",
+    "docs/design/headless-2026-11-13/evidence/source-refresh/LEXI-retained-reference-resolved.json",
+    "docs/design/headless-2026-11-13/evidence/source-refresh/LEXI-tree-delta.json",
+    "docs/design/headless-2026-11-13/evidence/source-refresh/TELOS-current-ref.json",
+    "docs/design/headless-2026-11-13/evidence/source-refresh/TELOS-current-commit.json",
+    "docs/design/headless-2026-11-13/evidence/source-refresh/TELOS-retained-reference-resolved.json",
+    "docs/design/headless-2026-11-13/evidence/source-refresh/TELOS-tree-delta.json",
+    "docs/design/headless-2026-11-13/evidence/source-refresh/claude-config-current-ref.json",
+    "docs/design/headless-2026-11-13/evidence/source-refresh/claude-config-current-commit.json",
+    "docs/design/headless-2026-11-13/evidence/source-refresh/claude-config-retained-reference-resolved.json",
+    "docs/design/headless-2026-11-13/evidence/source-refresh/claude-config-tree-delta.json",
+    "repo-audit/evidence/source-manifest.json",
+    "repo-audit/evidence/LEXI-tree.json",
+    "repo-audit/evidence/TELOS-tree.json",
+    "repo-audit/evidence/claude-config-tree.json"
+  ],
+  "verification_record": "REPAIRS/acceptance/verification.json (existing recorded code acceptance; not rerun here)",
+  "raw_source_coverage": {
+    "retained_manifest_files": 567,
+    "selected_external_source_files_fetched": 9,
+    "retained_sources_directory_present": false,
+    "remaining_raw_sources": "Not restored or fetched; deliberately outside this bounded refresh. Metadata identity compared for complete trees; no fresh semantic claim for uninspected bodies."
+  },
+  "private_databases_accessed": false,
+  "sources": [
+    {
+      "repository": "dsmcewan/LEXI",
+      "baseline_identity": "c190e245965447b369a33d928c4f09da33a68d67",
+      "identity_kind": "retained_git_tree_response_reference",
+      "baseline_commit": null,
+      "baseline_tree_path": "repo-audit/evidence/LEXI-tree.json",
+      "baseline_tree_truncated": false,
+      "current_commit": "c190e245965447b369a33d928c4f09da33a68d67",
+      "current_tree": "d19adc1935194fe5ba97efb1cdc2a01ba8e78abf",
+      "default_branch": "main",
+      "access_method": "GitHub connector repository metadata + gh read-only Git REST API",
+      "checked_at": "2026-11-13T17:46:39.644041+00:00",
+      "current_tree_truncated": false,
+      "refresh_status": "verified_same_tree",
+      "tree_counts": {
+        "baseline": 533,
+        "current": 533,
+        "added": 0,
+        "removed": 0,
+        "changed": 0
+      },
+      "baseline_catalog_label": "top-level sha from retained recursive Git Trees API response; historically described as a tree identity",
+      "baseline_resolved_object_kind": "git_commit",
+      "baseline_resolved_commit": "c190e245965447b369a33d928c4f09da33a68d67",
+      "baseline_canonical_tree": "d19adc1935194fe5ba97efb1cdc2a01ba8e78abf",
+      "baseline_header_is_canonical_tree": false,
+      "identity_note": "The Git commit endpoint independently identifies the retained header value as a commit; Git Trees API accepts that commit-ish and echoes it in sha. Canonical root-tree identity comes from commit.tree.sha and is independently reconstructed from the recursive catalog.",
+      "catalog_hash_validation": {
+        "baseline_trees_verified": 74,
+        "current_trees_verified": 74,
+        "all_child_tree_hashes_verified": true
+      },
+      "selected_sources": [
+        {
+          "repository": "dsmcewan/LEXI",
+          "path": "lexi-dashboard/backend/db_config.py",
+          "blob_sha": "32644785e1ebb49653296e02f51d304de315d55e",
+          "size": 1438,
+          "actual_blob_sha": "32644785e1ebb49653296e02f51d304de315d55e",
+          "sha256": "3c102efc477b61a5e768ab1d39c06cfafd4f30a4bd6fc9ca2482d7a27e06b1fa",
+          "bytes": 1438,
+          "blob_verified": true,
+          "symbols": [
+            {
+              "name": "get_db_connection",
+              "line": 27,
+              "kind": "function"
+            },
+            {
+              "name": "get_db_path",
+              "line": 49,
+              "kind": "function"
+            }
+          ],
+          "baseline_blob_sha": "32644785e1ebb49653296e02f51d304de315d55e",
+          "baseline_sha256": "3c102efc477b61a5e768ab1d39c06cfafd4f30a4bd6fc9ca2482d7a27e06b1fa",
+          "matches_retained_byte_hash": true,
+          "delta": "unchanged",
+          "source_url": "https://github.com/dsmcewan/LEXI/blob/c190e245965447b369a33d928c4f09da33a68d67/lexi-dashboard/backend/db_config.py",
+          "reuse_disposition": "Wrap via adapter",
+          "boundary_observation": "get_db_connection selects SQLCipher when DB_ENCRYPTION_KEY is nonempty, plain sqlite3 otherwise; DB_PATH defaults to data/LEXI.db with LEXI_DB_PATH override. Source inspected only; neither env nor database opened.",
+          "temporary_capture_path": "/tmp/argo-hd-source-evidence/selected-source/LEXI/lexi-dashboard/backend/db_config.py"
+        },
+        {
+          "repository": "dsmcewan/LEXI",
+          "path": "lexi-dashboard/backend/db_session.py",
+          "blob_sha": "f557fb0634c8b4c5f4122b977d99f73cb03fb0dd",
+          "size": 1999,
+          "actual_blob_sha": "f557fb0634c8b4c5f4122b977d99f73cb03fb0dd",
+          "sha256": "07cf9ef33f665d678b0a5b11f0e1a6eebe63d779cffb24072a61564af72dddf9",
+          "bytes": 1999,
+          "blob_verified": true,
+          "symbols": [
+            {
+              "name": "get_session",
+              "line": 36,
+              "kind": "function"
+            },
+            {
+              "name": "execute_dynamic_sql",
+              "line": 42,
+              "kind": "function"
+            }
+          ],
+          "baseline_blob_sha": "f557fb0634c8b4c5f4122b977d99f73cb03fb0dd",
+          "baseline_sha256": "07cf9ef33f665d678b0a5b11f0e1a6eebe63d779cffb24072a61564af72dddf9",
+          "matches_retained_byte_hash": true,
+          "delta": "unchanged",
+          "source_url": "https://github.com/dsmcewan/LEXI/blob/c190e245965447b369a33d928c4f09da33a68d67/lexi-dashboard/backend/db_session.py",
+          "reuse_disposition": "Wrap via adapter",
+          "boundary_observation": "get_session yields a SQLModel session; execute_dynamic_sql rewrites positional parameters. Database connection is module-level source behavior, not a performed operation.",
+          "temporary_capture_path": "/tmp/argo-hd-source-evidence/selected-source/LEXI/lexi-dashboard/backend/db_session.py"
+        },
+        {
+          "repository": "dsmcewan/LEXI",
+          "path": "lexi-dashboard/backend/models.py",
+          "blob_sha": "84dc2079f9f834255b6ee4a2544bb308bd85aa21",
+          "size": 14478,
+          "actual_blob_sha": "84dc2079f9f834255b6ee4a2544bb308bd85aa21",
+          "sha256": "4e8e385aff0c6cc95fc1e572d21cbc28a0e0ab6a022197cba499bcbffbda6906",
+          "bytes": 14478,
+          "blob_verified": true,
+          "symbols": [
+            {
+              "name": "Timeline",
+              "line": 4,
+              "kind": "class",
+              "methods": [],
+              "declared_table": "Timeline"
+            },
+            {
+              "name": "TimelineAnnotations",
+              "line": 15,
+              "kind": "class",
+              "methods": [],
+              "declared_table": "timeline_annotations"
+            },
+            {
+              "name": "CaseDocuments",
+              "line": 26,
+              "kind": "class",
+              "methods": [],
+              "declared_table": "case_documents"
+            },
+            {
+              "name": "DocumentMessageLinks",
+              "line": 49,
+              "kind": "class",
+              "methods": [],
+              "declared_table": "document_message_links"
+            },
+            {
+              "name": "ManipulationCampaigns",
+              "line": 61,
+              "kind": "class",
+              "methods": [],
+              "declared_table": "manipulation_campaigns"
+            },
+            {
+              "name": "EscalationSequences",
+              "line": 75,
+              "kind": "class",
+              "methods": [],
+              "declared_table": "escalation_sequences"
+            },
+            {
+              "name": "DetectedCampaigns",
+              "line": 85,
+              "kind": "class",
+              "methods": [],
+              "declared_table": "detected_campaigns"
+            },
+            {
+              "name": "DetectedIncidents",
+              "line": 104,
+              "kind": "class",
+              "methods": [],
+              "declared_table": "detected_incidents"
+            },
+            {
+              "name": "IncidentMessages",
+              "line": 118,
+              "kind": "class",
+              "methods": [],
+              "declared_table": "incident_messages"
+            },
+            {
+              "name": "CampaignIncidents",
+              "line": 125,
+              "kind": "class",
+              "methods": [],
+              "declared_table": "campaign_incidents"
+            },
+            {
+              "name": "DepositionSessions",
+              "line": 132,
+              "kind": "class",
+              "methods": [],
+              "declared_table": "deposition_sessions"
+            },
+            {
+              "name": "DepositionTraps",
+              "line": 142,
+              "kind": "class",
+              "methods": [],
+              "declared_table": "deposition_traps"
+            },
+            {
+              "name": "DepositionQuestions",
+              "line": 153,
+              "kind": "class",
+              "methods": [],
+              "declared_table": "deposition_questions"
+            },
+            {
+              "name": "QuestionEvidence",
+              "line": 170,
+              "kind": "class",
+              "methods": [],
+              "declared_table": "question_evidence"
+            },
+            {
+              "name": "DepositionEvidence",
+              "line": 181,
+              "kind": "class",
+              "methods": [],
+              "declared_table": "deposition_evidence"
+            },
+            {
+              "name": "NarrativeClusters",
+              "line": 190,
+              "kind": "class",
+              "methods": [],
+              "declared_table": "narrative_clusters"
+            },
+            {
+              "name": "ClusterElements",
+              "line": 207,
+              "kind": "class",
+              "methods": [],
+              "declared_table": "cluster_elements"
+            },
+            {
+              "name": "ClusterSummaryHistory",
+              "line": 219,
+              "kind": "class",
+              "methods": [],
+              "declared_table": "cluster_summary_history"
+            },
+            {
+              "name": "ThirdPartyAuthority",
+              "line": 229,
+              "kind": "class",
+              "methods": [],
+              "declared_table": "third_party_authority"
+            },
+            {
+              "name": "OfwBehavioralPatterns",
+              "line": 239,
+              "kind": "class",
+              "methods": [],
+              "declared_table": "behavioral_patterns"
+            },
+            {
+              "name": "HcpTemporalTracking",
+              "line": 251,
+              "kind": "class",
+              "methods": [],
+              "declared_table": "hcp_temporal_tracking"
+            },
+            {
+              "name": "HcpProfiles",
+              "line": 265,
+              "kind": "class",
+              "methods": [],
+              "declared_table": "hcp_profiles"
+            },
+            {
+              "name": "OfwMessages",
+              "line": 284,
+              "kind": "class",
+              "methods": [],
+              "declared_table": "communications"
+            },
+            {
+              "name": "OfwViolationAnalysis",
+              "line": 363,
+              "kind": "class",
+              "methods": [],
+              "declared_table": "violation_analysis"
+            },
+            {
+              "name": "LexiTactics",
+              "line": 374,
+              "kind": "class",
+              "methods": [],
+              "declared_table": "lexi_tactics"
+            }
+          ],
+          "baseline_blob_sha": "84dc2079f9f834255b6ee4a2544bb308bd85aa21",
+          "baseline_sha256": "4e8e385aff0c6cc95fc1e572d21cbc28a0e0ab6a022197cba499bcbffbda6906",
+          "matches_retained_byte_hash": true,
+          "delta": "unchanged",
+          "source_url": "https://github.com/dsmcewan/LEXI/blob/c190e245965447b369a33d928c4f09da33a68d67/lexi-dashboard/backend/models.py",
+          "reuse_disposition": "Wrap domain concepts; new gameplay schema required",
+          "boundary_observation": "25 SQLModel table declarations for the forensic domain. This is not a live physical-schema census or evidence of gameplay per-actor fact/belief graphs.",
+          "temporary_capture_path": "/tmp/argo-hd-source-evidence/selected-source/LEXI/lexi-dashboard/backend/models.py"
+        }
+      ],
+      "api_evidence": {
+        "ref": "docs/design/headless-2026-11-13/evidence/source-refresh/LEXI-current-ref.json",
+        "commit": "docs/design/headless-2026-11-13/evidence/source-refresh/LEXI-current-commit.json",
+        "retained_reference_resolution": "docs/design/headless-2026-11-13/evidence/source-refresh/LEXI-retained-reference-resolved.json",
+        "delta": "docs/design/headless-2026-11-13/evidence/source-refresh/LEXI-tree-delta.json"
+      },
+      "limitations": [
+        "Default-branch identity sampled at checked_at; no later branch movement claim.",
+        "Complete metadata tree comparison, but semantic source review limited to selected modules.",
+        "No legacy applications imported/executed, dependencies installed, database content read, endpoint availability checked, or credentials inspected."
+      ],
+      "refresh_detail": "refreshed_no_source_delta_identity_resolved",
+      "temporary_capture_dir": "/tmp/argo-hd-source-evidence",
+      "current_tree_response_sha256": "65f0b9229f0b5177c3551dc4ee5a4937a0e6f3b39397eba5a08eb5c78b045907",
+      "current_tree_api_url": "https://api.github.com/repos/dsmcewan/LEXI/git/trees/d19adc1935194fe5ba97efb1cdc2a01ba8e78abf?recursive=1"
+    },
+    {
+      "repository": "dsmcewan/TELOS",
+      "baseline_identity": "52787e7ff73d109cf844f4bc2eb5d5cabd2a82f5",
+      "identity_kind": "retained_git_tree_response_reference",
+      "baseline_commit": null,
+      "baseline_tree_path": "repo-audit/evidence/TELOS-tree.json",
+      "baseline_tree_truncated": false,
+      "current_commit": "52787e7ff73d109cf844f4bc2eb5d5cabd2a82f5",
+      "current_tree": "8125e339eeeb0910d7c06db71afcbe9331b48b92",
+      "default_branch": "main",
+      "access_method": "GitHub connector repository metadata + gh read-only Git REST API",
+      "checked_at": "2026-11-13T17:46:39.706631+00:00",
+      "current_tree_truncated": false,
+      "refresh_status": "verified_same_tree",
+      "tree_counts": {
+        "baseline": 1878,
+        "current": 1878,
+        "added": 0,
+        "removed": 0,
+        "changed": 0
+      },
+      "baseline_catalog_label": "top-level sha from retained recursive Git Trees API response; historically described as a tree identity",
+      "baseline_resolved_object_kind": "git_commit",
+      "baseline_resolved_commit": "52787e7ff73d109cf844f4bc2eb5d5cabd2a82f5",
+      "baseline_canonical_tree": "8125e339eeeb0910d7c06db71afcbe9331b48b92",
+      "baseline_header_is_canonical_tree": false,
+      "identity_note": "The Git commit endpoint independently identifies the retained header value as a commit; Git Trees API accepts that commit-ish and echoes it in sha. Canonical root-tree identity comes from commit.tree.sha and is independently reconstructed from the recursive catalog.",
+      "catalog_hash_validation": {
+        "baseline_trees_verified": 384,
+        "current_trees_verified": 384,
+        "all_child_tree_hashes_verified": true
+      },
+      "selected_sources": [
+        {
+          "repository": "dsmcewan/TELOS",
+          "path": "build-gate/sign.mjs",
+          "blob_sha": "d80fa823603050914aea5e9ecec63e54a8671ab0",
+          "size": 3269,
+          "actual_blob_sha": "d80fa823603050914aea5e9ecec63e54a8671ab0",
+          "sha256": "ca3b01d37ea733d24e6d607e812918b6cd197fa5d3bd4a69f8deac4044d73ad7",
+          "bytes": 3269,
+          "blob_verified": true,
+          "symbols": [
+            {
+              "name": "canonicalize",
+              "line": 26,
+              "kind": "export_declaration"
+            },
+            {
+              "name": "signPacket",
+              "line": 30,
+              "kind": "export_declaration"
+            },
+            {
+              "name": "verifyPacket",
+              "line": 35,
+              "kind": "export_declaration"
+            },
+            {
+              "name": "secretFor",
+              "line": 48,
+              "kind": "export_declaration"
+            },
+            {
+              "name": "signMarketPacket",
+              "line": 59,
+              "kind": "export_declaration"
+            }
+          ],
+          "baseline_blob_sha": "d80fa823603050914aea5e9ecec63e54a8671ab0",
+          "baseline_sha256": "ca3b01d37ea733d24e6d607e812918b6cd197fa5d3bd4a69f8deac4044d73ad7",
+          "matches_retained_byte_hash": true,
+          "delta": "unchanged",
+          "source_url": "https://github.com/dsmcewan/TELOS/blob/52787e7ff73d109cf844f4bc2eb5d5cabd2a82f5/build-gate/sign.mjs",
+          "reuse_disposition": "Reuse primitive through explicit protocol adapter",
+          "boundary_observation": "canonicalize/signPacket/verifyPacket implement HMAC-SHA256 build-packet signing. This is not ARGO Ed25519 event signing or an authenticated gameplay Outcome receipt.",
+          "temporary_capture_path": "/tmp/argo-hd-source-evidence/selected-source/TELOS/build-gate/sign.mjs"
+        },
+        {
+          "repository": "dsmcewan/TELOS",
+          "path": "build-gate/test-runner.mjs",
+          "blob_sha": "60e7fbbdd32014d59f1dc29978471a91a970ae85",
+          "size": 3052,
+          "actual_blob_sha": "60e7fbbdd32014d59f1dc29978471a91a970ae85",
+          "sha256": "f22b63600aa49785374e770079ddbe675f9cc6c1e587d2983e77382eb0799b2e",
+          "bytes": 3052,
+          "blob_verified": true,
+          "symbols": [
+            {
+              "name": "runNodeTest",
+              "line": 28,
+              "kind": "export_declaration"
+            }
+          ],
+          "baseline_blob_sha": "60e7fbbdd32014d59f1dc29978471a91a970ae85",
+          "baseline_sha256": "f22b63600aa49785374e770079ddbe675f9cc6c1e587d2983e77382eb0799b2e",
+          "matches_retained_byte_hash": true,
+          "delta": "unchanged",
+          "source_url": "https://github.com/dsmcewan/TELOS/blob/52787e7ff73d109cf844f4bc2eb5d5cabd2a82f5/build-gate/test-runner.mjs",
+          "reuse_disposition": "Advisory build helper; do not reuse as hostile-code acceptance oracle",
+          "boundary_observation": "runNodeTest checks command/cwd and has a deadline, returns bounded output tails. It buffers full output and tests exit code; source states advisory pre-flight, not controller certification. No filesystem/network isolation is established by this helper.",
+          "temporary_capture_path": "/tmp/argo-hd-source-evidence/selected-source/TELOS/build-gate/test-runner.mjs"
+        },
+        {
+          "repository": "dsmcewan/TELOS",
+          "path": "merkle-dag/vendor.mjs",
+          "blob_sha": "a0750c0e5ca1b098412d7dade16c4f7e0aff0d43",
+          "size": 5527,
+          "actual_blob_sha": "a0750c0e5ca1b098412d7dade16c4f7e0aff0d43",
+          "sha256": "082dc2b3f40e11637729e7a3503e19fc7fe0cc43310cb889c4e856eebb15e7ab",
+          "bytes": 5527,
+          "blob_verified": true,
+          "symbols": [
+            {
+              "name": "canonicalize",
+              "line": 24,
+              "kind": "export_declaration"
+            },
+            {
+              "name": "sha256hex",
+              "line": 29,
+              "kind": "export_declaration"
+            },
+            {
+              "name": "maxConcurrency",
+              "line": 41,
+              "kind": "export_declaration"
+            },
+            {
+              "name": "resolveUnder",
+              "line": 58,
+              "kind": "export_declaration"
+            },
+            {
+              "name": "spawnCommand",
+              "line": 124,
+              "kind": "export_declaration"
+            }
+          ],
+          "baseline_blob_sha": "a0750c0e5ca1b098412d7dade16c4f7e0aff0d43",
+          "baseline_sha256": "082dc2b3f40e11637729e7a3503e19fc7fe0cc43310cb889c4e856eebb15e7ab",
+          "matches_retained_byte_hash": true,
+          "delta": "unchanged",
+          "source_url": "https://github.com/dsmcewan/TELOS/blob/52787e7ff73d109cf844f4bc2eb5d5cabd2a82f5/merkle-dag/vendor.mjs",
+          "reuse_disposition": "Reuse utilities under reviewed callers",
+          "boundary_observation": "canonicalize, sha256hex, maxConcurrency, resolveUnder and spawnCommand. Path guard checks existing components physically; these utilities do not supply gameplay scope or authorization.",
+          "temporary_capture_path": "/tmp/argo-hd-source-evidence/selected-source/TELOS/merkle-dag/vendor.mjs"
+        }
+      ],
+      "api_evidence": {
+        "ref": "docs/design/headless-2026-11-13/evidence/source-refresh/TELOS-current-ref.json",
+        "commit": "docs/design/headless-2026-11-13/evidence/source-refresh/TELOS-current-commit.json",
+        "retained_reference_resolution": "docs/design/headless-2026-11-13/evidence/source-refresh/TELOS-retained-reference-resolved.json",
+        "delta": "docs/design/headless-2026-11-13/evidence/source-refresh/TELOS-tree-delta.json"
+      },
+      "limitations": [
+        "Default-branch identity sampled at checked_at; no later branch movement claim.",
+        "Complete metadata tree comparison, but semantic source review limited to selected modules.",
+        "No legacy applications imported/executed, dependencies installed, database content read, endpoint availability checked, or credentials inspected."
+      ],
+      "refresh_detail": "refreshed_no_source_delta_identity_resolved",
+      "temporary_capture_dir": "/tmp/argo-hd-source-evidence",
+      "current_tree_response_sha256": "7aa16581f405171b77e8aea8887b6a118e35559525bdce7dfdbac04320d3298c",
+      "current_tree_api_url": "https://api.github.com/repos/dsmcewan/TELOS/git/trees/8125e339eeeb0910d7c06db71afcbe9331b48b92?recursive=1"
+    },
+    {
+      "repository": "dsmcewan/claude-config",
+      "baseline_identity": "d418728bc58e6bbcb1d4457ee3c780d857f07a91",
+      "identity_kind": "retained_git_tree_response_reference",
+      "baseline_commit": null,
+      "baseline_tree_path": "repo-audit/evidence/claude-config-tree.json",
+      "baseline_tree_truncated": false,
+      "current_commit": "d418728bc58e6bbcb1d4457ee3c780d857f07a91",
+      "current_tree": "2d0babadfee8d899e09fc8f755b310bfda360b92",
+      "default_branch": "main",
+      "access_method": "GitHub connector repository metadata + gh read-only Git REST API",
+      "checked_at": "2026-11-13T17:46:39.742462+00:00",
+      "current_tree_truncated": false,
+      "refresh_status": "verified_same_tree",
+      "tree_counts": {
+        "baseline": 190,
+        "current": 190,
+        "added": 0,
+        "removed": 0,
+        "changed": 0
+      },
+      "baseline_catalog_label": "top-level sha from retained recursive Git Trees API response; historically described as a tree identity",
+      "baseline_resolved_object_kind": "git_commit",
+      "baseline_resolved_commit": "d418728bc58e6bbcb1d4457ee3c780d857f07a91",
+      "baseline_canonical_tree": "2d0babadfee8d899e09fc8f755b310bfda360b92",
+      "baseline_header_is_canonical_tree": false,
+      "identity_note": "The Git commit endpoint independently identifies the retained header value as a commit; Git Trees API accepts that commit-ish and echoes it in sha. Canonical root-tree identity comes from commit.tree.sha and is independently reconstructed from the recursive catalog.",
+      "catalog_hash_validation": {
+        "baseline_trees_verified": 33,
+        "current_trees_verified": 33,
+        "all_child_tree_hashes_verified": true
+      },
+      "selected_sources": [
+        {
+          "repository": "dsmcewan/claude-config",
+          "path": "workflows/layered-swarm.d/graph-watch.mjs",
+          "blob_sha": "8347d7d01b3565d8323889e74a4256e5300a3b2a",
+          "size": 6476,
+          "actual_blob_sha": "8347d7d01b3565d8323889e74a4256e5300a3b2a",
+          "sha256": "bab2809fe379a40ab4bc14eb14f6b4a5c8dbacdd94017567800b9ff7cfa58f07",
+          "bytes": 6476,
+          "blob_verified": true,
+          "symbols": [
+            {
+              "name": "createWatcher",
+              "line": 37,
+              "kind": "export_declaration"
+            }
+          ],
+          "baseline_blob_sha": "8347d7d01b3565d8323889e74a4256e5300a3b2a",
+          "baseline_sha256": "bab2809fe379a40ab4bc14eb14f6b4a5c8dbacdd94017567800b9ff7cfa58f07",
+          "matches_retained_byte_hash": true,
+          "delta": "unchanged",
+          "source_url": "https://github.com/dsmcewan/claude-config/blob/d418728bc58e6bbcb1d4457ee3c780d857f07a91/workflows/layered-swarm.d/graph-watch.mjs",
+          "reuse_disposition": "Adapt observer pattern only",
+          "boundary_observation": "createWatcher polls derived research context, emits contradiction/corroboration/revision/frontier/stale-pin observations and tracks pins; it is explicitly an observer, not gameplay authority or persistent event bus.",
+          "temporary_capture_path": "/tmp/argo-hd-source-evidence/selected-source/claude-config/workflows/layered-swarm.d/graph-watch.mjs"
+        },
+        {
+          "repository": "dsmcewan/claude-config",
+          "path": "workflows/layered-swarm.d/research-graph.mjs",
+          "blob_sha": "b3b2b305eadc1f0490c52f228854848c83657b0f",
+          "size": 11039,
+          "actual_blob_sha": "b3b2b305eadc1f0490c52f228854848c83657b0f",
+          "sha256": "30a815cc7524f8aa936355e497a04f6af1d21297ad05d88026b9c9b9815890d9",
+          "bytes": 11039,
+          "blob_verified": true,
+          "symbols": [
+            {
+              "name": "canonicalDomain",
+              "line": 54,
+              "kind": "export_declaration"
+            },
+            {
+              "name": "assertionsFor",
+              "line": 65,
+              "kind": "export_declaration"
+            },
+            {
+              "name": "ingestLenses",
+              "line": 96,
+              "kind": "export_declaration"
+            },
+            {
+              "name": "analyze",
+              "line": 112,
+              "kind": "export_declaration"
+            }
+          ],
+          "baseline_blob_sha": "b3b2b305eadc1f0490c52f228854848c83657b0f",
+          "baseline_sha256": "30a815cc7524f8aa936355e497a04f6af1d21297ad05d88026b9c9b9815890d9",
+          "matches_retained_byte_hash": true,
+          "delta": "unchanged",
+          "source_url": "https://github.com/dsmcewan/claude-config/blob/d418728bc58e6bbcb1d4457ee3c780d857f07a91/workflows/layered-swarm.d/research-graph.mjs",
+          "reuse_disposition": "Adapt provenance/conflict representation; new gameplay semantics required",
+          "boundary_observation": "canonicalDomain/assertionsFor/ingestLenses/analyze aggregate research assertions, source citations and conflicts. Agreement/confidence is not authority to promote an NPC belief to canonical world truth.",
+          "temporary_capture_path": "/tmp/argo-hd-source-evidence/selected-source/claude-config/workflows/layered-swarm.d/research-graph.mjs"
+        },
+        {
+          "repository": "dsmcewan/claude-config",
+          "path": "workflows/layered-swarm.d/write-lanes.mjs",
+          "blob_sha": "b685bc92b67987b7db0d5d19860971ae0c4b4a00",
+          "size": 6949,
+          "actual_blob_sha": "b685bc92b67987b7db0d5d19860971ae0c4b4a00",
+          "sha256": "099b5589b6d483c7eadddebd2461388d68d65d361c2ca00d6e30ca021c0681f7",
+          "bytes": 6949,
+          "blob_verified": true,
+          "symbols": [
+            {
+              "name": "normPath",
+              "line": 21,
+              "kind": "named_export_definition"
+            },
+            {
+              "name": "groupByTarget",
+              "line": 36,
+              "kind": "named_export_definition"
+            },
+            {
+              "name": "serialLane",
+              "line": 49,
+              "kind": "named_export_definition"
+            },
+            {
+              "name": "declaredOverlaps",
+              "line": 64,
+              "kind": "named_export_definition"
+            },
+            {
+              "name": "taintedFindings",
+              "line": 95,
+              "kind": "named_export_definition"
+            },
+            {
+              "name": "runDirConflicts",
+              "line": 106,
+              "kind": "named_export_definition"
+            }
+          ],
+          "baseline_blob_sha": "b685bc92b67987b7db0d5d19860971ae0c4b4a00",
+          "baseline_sha256": "099b5589b6d483c7eadddebd2461388d68d65d361c2ca00d6e30ca021c0681f7",
+          "matches_retained_byte_hash": true,
+          "delta": "unchanged",
+          "source_url": "https://github.com/dsmcewan/claude-config/blob/d418728bc58e6bbcb1d4457ee3c780d857f07a91/workflows/layered-swarm.d/write-lanes.mjs",
+          "reuse_disposition": "Adapt scheduling helpers; retain independent confinement",
+          "boundary_observation": "groupByTarget/serialLane serialize same-target work; declaredOverlaps/taintedFindings reconcile reported writes and runDirConflicts detects collision. Reported paths are not proof of actual filesystem confinement.",
+          "temporary_capture_path": "/tmp/argo-hd-source-evidence/selected-source/claude-config/workflows/layered-swarm.d/write-lanes.mjs"
+        }
+      ],
+      "api_evidence": {
+        "ref": "docs/design/headless-2026-11-13/evidence/source-refresh/claude-config-current-ref.json",
+        "commit": "docs/design/headless-2026-11-13/evidence/source-refresh/claude-config-current-commit.json",
+        "retained_reference_resolution": "docs/design/headless-2026-11-13/evidence/source-refresh/claude-config-retained-reference-resolved.json",
+        "delta": "docs/design/headless-2026-11-13/evidence/source-refresh/claude-config-tree-delta.json"
+      },
+      "limitations": [
+        "Default-branch identity sampled at checked_at; no later branch movement claim.",
+        "Complete metadata tree comparison, but semantic source review limited to selected modules.",
+        "No legacy applications imported/executed, dependencies installed, database content read, endpoint availability checked, or credentials inspected."
+      ],
+      "refresh_detail": "refreshed_no_source_delta_identity_resolved",
+      "temporary_capture_dir": "/tmp/argo-hd-source-evidence",
+      "current_tree_response_sha256": "8177ffd9cea694cc40e9d0b267bcf33c327d932a5c3ad80933f5ea7683d7cb88",
+      "current_tree_api_url": "https://api.github.com/repos/dsmcewan/claude-config/git/trees/2d0babadfee8d899e09fc8f755b310bfda360b92?recursive=1"
+    }
+  ],
+  "integration_note": "Additive source evidence. Temporary capture paths are provenance only, not portable inputs. Raw source copies excluded. Canonical tree entries are unchanged from retained original catalogs; minimal commit/ref/resolution/delta records retained here.",
+  "contribution_sha256": "ae2f6549388dbd3f4b31c01b2d87a2f5d1ca509a97f513a704b954ef8ccd19a8"
+}

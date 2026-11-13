@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "prepared_at": "2026-11-13T17:50:35.602860+00:00",
+  "baseline_commit": "41f2cb8568b53fac984e1114d7342eef540bb6d5",
+  "title": "Knave first-edition research evidence bundle",
+  "edition_identity": "Knave1.0 / first edition; corroborated public mirror, not author-authenticated download",
+  "author": "Ben Milton / Questing Beast",
+  "license_id": "CC-BY-4.0",
+  "artifacts": [
+    {
+      "path": "knave-1e.pdf",
+      "kind": "unmodified_public_mirror_rule_artifact",
+      "bytes": 301140,
+      "sha256": "fc2ff96175f6b60ddbbf02b6139a5da569752155948371613e201d21cf92bc78",
+      "retrieval": {
+        "requested_url": "https://illusorysensorium.com/content/files/2024/06/Knave.pdf",
+        "retrieved_at": "2026-11-13T17:46:49.579995+00:00",
+        "final_url": "https://illusorysensorium.com/content/files/2024/06/Knave.pdf",
+        "http_status": 200,
+        "content_type": "application/pdf",
+        "bytes": 301140,
+        "sha256": "fc2ff96175f6b60ddbbf02b6139a5da569752155948371613e201d21cf92bc78"
+      }
+    },
+    {
+      "path": "CC-BY-4.0.txt",
+      "kind": "unmodified_official_license_text",
+      "bytes": 18657,
+      "sha256": "9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411",
+      "retrieval": {
+        "requested_url": "https://creativecommons.org/licenses/by/4.0/legalcode.txt",
+        "retrieved_at": "2026-11-13T17:47:01.087558+00:00",
+        "final_url": "https://creativecommons.org/licenses/by/4.0/legalcode.txt",
+        "http_status": 200,
+        "content_type": "text/plain; charset=utf-8",
+        "bytes": 18657,
+        "sha256": "9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411"
+      }
+    },
+    {
+      "path": "SOURCE-GRANTS.md",
+      "kind": "derived_short_evidence_excerpts",
+      "bytes": 1658,
+      "sha256": "c12f2b2b48ef3cf8d24086989e4f6c137f30ce886251ab7a935b097f150bd069"
+    },
+    {
+      "path": "ATTRIBUTION.md",
+      "kind": "new_attribution_and_scope_note",
+      "bytes": 1535,
+      "sha256": "162f9c5990bc30008e79aa46e8073c7af86c7a7a9bcfefc5f1592fc8ff77d6df"
+    },
+    {
+      "path": "rules-sample-cases.json",
+      "kind": "new_declarative_unexecuted_fixtures",
+      "bytes": 1536,
+      "sha256": "627ce523d37fe3631519959f423f5e6d4df0ec8f070a1622d53edfde725547a9"
+    }
+  ],
+  "corroborating_pdf_retrieval": {
+    "requested_url": "https://ia803203.us.archive.org/15/items/knave-1.0-en/Knave_1.0_EN.pdf",
+    "retrieved_at": "2026-11-13T17:46:53.670043+00:00",
+    "final_url": "https://ia803203.us.archive.org/15/items/knave-1.0-en/Knave_1.0_EN.pdf",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "bytes": 301140,
+    "sha256": "fc2ff96175f6b60ddbbf02b6139a5da569752155948371613e201d21cf92bc78"
+  },
+  "author_grant_page_response_identities": [
+    {
+      "requested_url": "https://questingbeast.itch.io/knave",
+      "retrieved_at": "2026-11-13T17:46:57.117344+00:00",
+      "final_url": "https://questingbeast.itch.io/knave",
+      "http_status": 200,
+      "content_type": "text/html",
+      "bytes": 89163,
+      "sha256": "567b440a6a81a48d2009f517d817a78d792eb8ba7086383441a258e2629556bb"
+    },
+    {
+      "requested_url": "https://questingblog.com/knave-1-0/",
+      "retrieved_at": "2026-11-13T17:46:57.827371+00:00",
+      "final_url": "https://questingblog.com/knave-1-0/",
+      "http_status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 69209,
+      "sha256": "94201011d13f13fc77262c1cdcc31ef8fd3457ce0fbe9b2da8fd2e3f67dd2804"
+    }
+  ],
+  "full_author_html_retained_in_bundle": false,
+  "no_author_checksum_claim": true,
+  "kernel_selected": false,
+  "w17_contract_review_complete": false,
+  "paid_calls_or_purchases": false
+}

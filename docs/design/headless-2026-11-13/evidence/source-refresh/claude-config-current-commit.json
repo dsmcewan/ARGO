@@ -1,0 +1,19 @@
+{
+  "parents": [
+    {
+      "html_url": "https://github.com/dsmcewan/claude-config/commit/07b97ae1d081454bf53a26baf82980e18bc8ea33",
+      "sha": "07b97ae1d081454bf53a26baf82980e18bc8ea33",
+      "url": "https://api.github.com/repos/dsmcewan/claude-config/git/commits/07b97ae1d081454bf53a26baf82980e18bc8ea33"
+    },
+    {
+      "html_url": "https://github.com/dsmcewan/claude-config/commit/ba1e72d1c78b76d8c6b19a561e621bffd3ae5cac",
+      "sha": "ba1e72d1c78b76d8c6b19a561e621bffd3ae5cac",
+      "url": "https://api.github.com/repos/dsmcewan/claude-config/git/commits/ba1e72d1c78b76d8c6b19a561e621bffd3ae5cac"
+    }
+  ],
+  "sha": "d418728bc58e6bbcb1d4457ee3c780d857f07a91",
+  "tree": {
+    "sha": "2d0babadfee8d899e09fc8f755b310bfda360b92",
+    "url": "https://api.github.com/repos/dsmcewan/claude-config/git/trees/2d0babadfee8d899e09fc8f755b310bfda360b92"
+  }
+}
