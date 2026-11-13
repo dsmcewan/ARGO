@@ -1,0 +1,34 @@
+import {assertContract,requireScope,fail} from '@argo/contracts';import type {KnowledgeView,EncounterCheckpoint,IntentProposal} from '@argo/contracts';
+import {serviceCall,freezeDto} from '@argo/contracts';import type {ServiceOptions} from '@argo/contracts';
+export interface DerivedContext {view:KnowledgeView;checkpoint:EncounterCheckpoint}
+export function createProposalSubscriber(options:{actorId:string;plan:(context:DerivedContext,options:{signal:AbortSignal})=>Promise<readonly IntentProposal[]>;timeoutMs?:number}){
+ return Object.freeze({onView:async(input:DerivedContext,call:ServiceOptions={}):Promise<readonly IntentProposal[]>=>{
+  assertContract('KnowledgeView',input.view);assertContract('EncounterCheckpoint',input.checkpoint);requireScope(input.view.scope,input.checkpoint.scope);
+  if(input.view.actor_id!==options.actorId||!input.checkpoint.actor_ids.includes(options.actorId))fail('UNAUTHORIZED','Subscriber actor is outside derived view');
+  if(input.view.as_of_sequence!==input.checkpoint.sequence||input.view.as_of_world_time!==input.checkpoint.world_time)fail('CONFLICT','Derived view and checkpoint differ');
+  const context=freezeDto(structuredClone(input));
+  const result=await serviceCall(signal=>options.plan(context,{signal}),options.timeoutMs??5000,call);
+  if(!Array.isArray(result)||result.length>8)fail('INVALID_CONTRACT','Subscriber must return at most eight optional proposals');
+  for(const p of result){assertContract('IntentProposal',p);requireScope(p.scope,context.view.scope);
+   if(p.actor_id!==options.actorId||p.expected_sequence!==context.checkpoint.sequence||p.expected_head!==context.checkpoint.head)fail('UNAUTHORIZED','Subscriber proposal exceeds its actor/checkpoint');}
+  return freezeDto(structuredClone(result));
+ }});
+}
+
+import type {Principal,Outcome} from '@argo/contracts';
+export async function runSubscriber(options:{updates:AsyncIterable<DerivedContext>;subscriber:ReturnType<typeof createProposalSubscriber>;principal:Principal;telos:{submit:(p:IntentProposal,principal:Principal,options:ServiceOptions)=>Promise<Outcome>};maxUpdates?:number;signal?:AbortSignal}):Promise<Outcome[]>{
+ assertContract('Principal',options.principal);const principal=freezeDto(structuredClone(options.principal));
+ const limit=options.maxUpdates??1;if(!Number.isSafeInteger(limit)||limit<1||limit>1000)fail('INVALID_CONTRACT','Invalid subscriber update bound');
+ const call=options.signal?{signal:options.signal}:{},iterator=options.updates[Symbol.asyncIterator](),outcomes:Outcome[]=[];
+ try{
+  for(let i=0;i<limit;i++){
+   const next=await serviceCall(()=>iterator.next(),5000,call);if(next.done)break;
+   requireScope(principal.scope,next.value.view.scope);if(next.value.view.actor_id!==principal.actor_id)fail('UNAUTHORIZED','Update actor differs from subscriber principal');
+   const proposals=await options.subscriber.onView(next.value,call);
+   // The bridge reauthorizes every proposal. A second proposal at an obsolete head is rejected,
+   // never silently rebased; the agent must observe a new checkpoint before trying again.
+   for(const p of proposals)outcomes.push(await serviceCall(signal=>options.telos.submit(p,principal,{signal}),5000,call));
+  }
+ }finally{if(iterator.return)await serviceCall(()=>iterator.return!(),5000).catch(()=>{});}
+ return outcomes;
+}

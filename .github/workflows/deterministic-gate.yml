@@ -1,0 +1,29 @@
+name: ARGO deterministic gate
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  foundation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Install isolation tool on the disposable runner
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y bubblewrap
+          sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+        working-directory: pantheon
+      - name: Exact candidate schema, types, processes and deterministic replay
+        run: node scripts/gate.mjs --merge-ready
+      - name: Full offline Pantheon and vendor-policy regressions
+        run: node --test tests/*.test.mjs ../packages/model-client/tests/*.test.mjs
+        working-directory: pantheon

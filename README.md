@@ -1,21 +1,23 @@
 # ARGO
 
-ARGO is a planned living-world roleplaying system with deterministic action authority, actor-scoped knowledge, and narration that cannot directly change world truth.
+ARGO is a foundation for a living-world roleplaying system: signed deterministic action authority, actor-scoped knowledge, and stateless narration.
 
-This repository preserves the initial audit, requirements, scenario canon, and continuation record. It contains no ARGO runtime implementation yet.
+The source audit, schema freeze, and Pantheon model-boundary repair are complete. The sequential ledger, async bridges, bounded Fate/intervention adapters, and Tempted Fates Test Zero are implemented. Final gate/review status is recorded in [BUILD_PROGRESS.md](BUILD_PROGRESS.md) and [AUDIT_STATUS.json](repo-audit/AUDIT_STATUS.json).
 
-## Current state
+```sh
+npm ci --ignore-scripts
+npm --prefix pantheon ci --ignore-scripts
+npm run contracts
+npm run typecheck
+npm test
+npm run gate
+```
 
-**Phase 1: static source audit complete.** LEXI, TELOS and uploaded Pantheon extraction are retained. The [Pantheon audit](repo-audit/PANTHEON_AUDIT.md) records the actual harness contracts and Phase 3 repair targets. The supplied Tempted Fates scenario is preserved byte-for-byte.
+Use Node 24.22.1 and Linux Bubblewrap for process/isolation checks. The gate fails closed when namespaces are unavailable. All vendor tests use injected offline responses; no paid model run has been launched.
 
-The required order is:
+The monorepo's public package entry points are in each package manifest. [SYSTEMS/ARCHITECTURE.md](SYSTEMS/ARCHITECTURE.md), [ARGO_SYSTEM_BIBLE.md](ARGO_SYSTEM_BIBLE.md), and [OWNERSHIP.json](OWNERSHIP.json) define shared constraints. [The merge controller](controller/README.md) gates exact candidates with externally pinned test policy. Models do not certify merges.
 
-1. Complete read-only repository and harness extraction.
-2. Freeze service schemas in `SYSTEMS/` and ruleset interfaces in `MECHANICS/`.
-3. Patch and verify the harness's model capabilities, request builders and routing.
-4. Build the ledger, replay, bridge mocks and canonical scenario foundation sequentially.
-
-Parallel feature implementation follows completion of that spine. Saving this repository does not advance a phase gate.
+LEXI/TELOS transports are injected and default to unavailable. Their deterministic mocks do not claim deployed gameplay endpoints. Production authentication, entitlement and informed-consent capture remain integration responsibilities. Queue/fork scheduling is reserved by the schema and explicitly unsupported in v1. Current anomaly cutoffs apply across one world/branch encounter; see [the seed notes](scenarios/tempted-fates/README.md).
 
 ## Start here
 

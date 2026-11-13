@@ -23,7 +23,7 @@ try{
  for(const [sha,dest] of [[candidate,source],[trusted,policy]]){
   const archive=join(temporary,`${sha}.tar`);await writeFile(archive,await run('git',['archive','--format=tar',sha],repository,true));await run('tar',['-xf',archive,'-C',dest]);
  }
- const protectedPaths=['scripts/gate.mjs','scripts/check-contracts.mjs','scripts/generate-contract-types.py','TESTS','pantheon/tests','packages/model-client/tests','SYSTEMS/CONTRACT_FREEZE.json','tsconfig.json','package.json','package-lock.json','pantheon/package.json','pantheon/package-lock.json'];
+ const protectedPaths=['scripts/gate.mjs','scripts/check-contracts.mjs','scripts/check-boundaries.mjs','scripts/generate-contract-types.py','TESTS','pantheon/tests','packages/model-client/tests','SYSTEMS/CONTRACT_FREEZE.json','tsconfig.json','package.json','package-lock.json','pantheon/package.json','pantheon/package-lock.json'];
  for(const path of protectedPaths){await rm(join(source,path),{recursive:true,force:true});await cp(join(policy,path),join(source,path),{recursive:true,dereference:false});}
  await run('npm',['ci','--ignore-scripts','--no-audit','--no-fund'],source);
  await run('npm',['ci','--ignore-scripts','--no-audit','--no-fund'],join(source,'pantheon'));

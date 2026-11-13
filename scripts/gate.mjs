@@ -15,6 +15,7 @@ const checks=[];
 for(const [name,cmd,args,opts] of [
  ['generated-types','python3',['scripts/generate-contract-types.py','--check']],
  ['schema',process.execPath,['scripts/check-contracts.mjs']],
+ ['boundaries',process.execPath,['scripts/check-boundaries.mjs']],
  ['types',process.execPath,['node_modules/typescript/bin/tsc','--noEmit']],
  ['foundation',process.execPath,['--test',...(await readdir(resolve(root,'TESTS'))).filter(f=>f.endsWith('.test.ts')).sort().map(f=>'TESTS/'+f)]],
  ['model-and-process',process.execPath,['--test',...(await readdir(resolve(root,'packages/model-client/tests'))).filter(f=>f.endsWith('.test.mjs')).sort().map(f=>'packages/model-client/tests/'+f),'pantheon/tests/spawn-bounds.test.mjs','pantheon/tests/acceptance-sandbox.test.mjs','pantheon/tests/google-long-decode.test.mjs','pantheon/tests/compaction-history.test.mjs','pantheon/tests/frontier-board.test.mjs']],

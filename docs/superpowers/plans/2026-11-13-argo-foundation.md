@@ -54,10 +54,10 @@ Files: root workspace config, `packages/contracts/`, `packages/ledger/`, `ARGO_S
 
 Interfaces: contract validation/canonical encoding; `openLedger({directory,genesis,privateKey,verifyReceipt})`; async `submit(proposal,principal)`; pure `replay(genesis,events,expectedHead?)`; scoped current snapshot and private event read for authority only.
 
-- [ ] Write failing replay-prefix, signature/tamper, corrupted-tail, idempotency, concurrent-process CAS, scope/parent, RNG and consent/proxy lifecycle tests.
-- [ ] Implement canonical validation, pure ruleset, signatures, deterministic seeded draws and async locked append with durable recovery. Snapshot and seed remain private. Fail closed on unknown/corrupt state.
-- [ ] Pin workspace dependencies and ownership. CI runs full JSON Schema validation, typechecks, process checks and deterministic replay hashes over the exact candidate; models never self-certify.
-- [ ] Run tests/typechecks and commit the foundation ledger before adapters.
+- [x] Write failing replay-prefix, signature/tamper, corrupted-tail, idempotency, concurrent-process CAS, scope/parent, RNG and consent/proxy lifecycle tests.
+- [x] Implement canonical validation, pure ruleset, signatures, deterministic seeded draws and async locked append with durable recovery. Snapshot and seed remain private. Fail closed on unknown/corrupt state.
+- [x] Pin workspace dependencies and ownership. CI runs full JSON Schema validation, typechecks, process checks and deterministic replay hashes over the exact candidate; models never self-certify.
+- [x] Run tests/typechecks and commit the foundation ledger before adapters.
 
 ### Task 4: bridges and canonical Test Zero
 
@@ -65,10 +65,10 @@ Files: `packages/lexi-bridge/`, `packages/telos-bridge/`, `packages/argo-dm/`, `
 
 Interfaces: Task 1's async calls, deterministic mocks, NPC/Fate/intervention subscriber interfaces returning optional proposals, pure stateless narration from validated projections/outcomes.
 
-- [ ] Write failing tests for callback deadlines/abort, response contracts, scope mismatch, actor/party/time knowledge filtering, jurisdiction and the full TF-01..TF-12 scenario matrix.
-- [ ] Implement bridges with injected transports and deterministic mocks; filter epistemic projections at both actor and acquisition cutoffs; never retry a mutation with a new ID.
-- [ ] Implement minimal independent Fate proposal adapters and hard cutoff rendering; no quest engine or automatic anomaly trigger. Add all required package boundaries and manifests.
-- [ ] Run the entire deterministic gate and save hashes/status. Only now permit independent review/parallel feature lanes.
+- [x] Write failing tests for callback deadlines/abort, response contracts, scope mismatch, actor/party/time knowledge filtering, jurisdiction and the full TF-01..TF-12 scenario matrix.
+- [x] Implement bridges with injected transports and deterministic mocks; filter epistemic projections at both actor and acquisition cutoffs; never retry a mutation with a new ID.
+- [x] Implement minimal independent Fate proposal adapters and hard cutoff rendering; no quest engine or automatic anomaly trigger. Add all required package boundaries and manifests.
+- [x] Run the entire deterministic gate and save hashes/status. Only now permit independent review/parallel feature lanes.
 
 ### Final review and save
 

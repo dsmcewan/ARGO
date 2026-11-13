@@ -1,6 +1,6 @@
 # ARGO working instructions
 
-Read `README.md`, `ARGO_BRIEF.md`, `REPO_INVENTORY.md`, and `repo-audit/AUDIT_STATUS.json` before continuing. Use `repo-audit/RESUME_AUDIT.md` for the unfinished audit.
+Read `README.md`, `ARGO_BRIEF.md`, `REPO_INVENTORY.md`, and `repo-audit/AUDIT_STATUS.json` before continuing. Use `BUILD_PROGRESS.md` for current gates; `repo-audit/RESUME_AUDIT.md` preserves historical extraction instructions.
 
 - Preserve the user's phase order: audit → contract freeze → harness patch → sequential foundation → parallel feature lanes.
 - Repository creation and archival are authorized. Their completion does not imply that any implementation phase passed.

@@ -6,8 +6,8 @@
     "harness_patch",
     "foundation"
   ],
-  "current_phase": "foundation",
-  "status": "ledger_step_passed",
+  "current_phase": "independent_review",
+  "status": "foundation_spine_passed_review_pending",
   "phase_gate_passed": true,
   "phase_2_started": true,
   "phase_3_started": true,
@@ -51,5 +51,7 @@
     "live_inference_calls": 0,
     "log": "/tmp/argo-pantheon-phase3b.log"
   },
-  "ledger_step_passed": true
+  "ledger_step_passed": true,
+  "phase_4_passed": true,
+  "sequential_spine_passed": true
 }

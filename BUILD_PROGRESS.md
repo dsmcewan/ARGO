@@ -12,7 +12,10 @@ Plan: `docs/superpowers/plans/2026-11-13-argo-foundation.md`.
 
 - Phase 3 complete: reusable model policy, active API routing, explicit credential pools, concurrent v2 cooldowns, terminal-error handling, completed-response checks, signed compaction generation recovery, async subprocess bounds and sandbox Node portability. Full offline suite: 728 tests passed (0 failures); the later OAuth-beta/compaction regression and affected SDK suites also passed. Google long decode exercised the pinned SDK HTTP serializer, not only an adapter mock. No live vendor calls.
 - Offline CLI acceptance now uses explicit help fixtures; this does not certify installed CLI binaries. Bubblewrap and subprocess tests were run with the execution permissions needed for Linux namespaces and pipe observation; no isolation gate was removed.
-- Phase 4 is next. The signed ledger, bridges and Test Zero have not been implemented yet.
+- Phase 4 began after the Phase 3 gate; its completed sequential results are recorded below.
 
 - Phase 4 ledger step implemented sequentially: pinned workspace, generated TypeScript contracts, full Ajv validation, Ed25519 event signatures, private seeded RNG, durable append/fsync and cross-process lock/CAS. Consent and proxy lifecycle tests pass; independent processes accept one competing checkpoint. Durable incremental snapshots match signed replay. Schema freeze and typecheck pass. Deterministic ledger gate passed before bridge implementation (`/tmp/argo-ledger-gate.log`).
-- Controller bootstrap added: trusted oracles and dependency manifests are selected by an external immutable commit binding; candidates cannot nominate their own policy. Bridge/scenario work is still pending.
+- Controller bootstrap added: trusted oracles and dependency manifests are selected by an external immutable commit binding; candidates cannot nominate their own policy. Bridge/scenario work followed the ledger commit.
+
+- Phase 4 sequential spine passed: asynchronous scoped bridges/mocks, proposal-only Fate/NPC/intervention adapters and Test Zero TF-01..TF-12. Post-disappearance exposition is suppressed for every persona/observer and historical query; narration refreshes policy after asynchronous generation. Full foundation gate passed with schema, workspace boundaries, types, authority/replay, transport, process and isolation checks (`/tmp/argo-foundation-gate.log`).
+- Independent review and a real trusted-controller exercise follow the completed spine. No feature worker lanes or paid model runs have been launched.

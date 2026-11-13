@@ -49,3 +49,5 @@ export function sameScope(a:Scope,b:Scope):boolean{assertScope(a);assertScope(b)
 export function requireScope(a:Scope,b:Scope):void{if(!sameScope(a,b))fail('SCOPE_DENIED','Scope does not match authorized workspace');}
 export function safeAdd(a:number,b:number):number{const value=a+b;if(!Number.isSafeInteger(value)||value<0)fail('INVALID_ACTION','Integer overflow or underflow');return value;}
 export const schemaDefinition=schema;
+export {serviceCall,freezeDto} from './transport.ts';
+export type {ServiceOptions} from './transport.ts';
