@@ -1,0 +1,370 @@
+[
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/eval.mjs",
+    "line": 47,
+    "specifier": "./dataset.mjs",
+    "resolved": "ai-forge/patterns/dataset.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/eval.mjs",
+    "line": 70,
+    "specifier": "./dataset.mjs",
+    "resolved": "ai-forge/patterns/dataset.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/eval.mjs",
+    "line": 71,
+    "specifier": "./target.mjs",
+    "resolved": "ai-forge/patterns/target.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/eval.mjs",
+    "line": 88,
+    "specifier": "./run-target.mjs",
+    "resolved": "ai-forge/patterns/run-target.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/eval.mjs",
+    "line": 125,
+    "specifier": "./run-target.mjs",
+    "resolved": "ai-forge/patterns/run-target.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/eval.mjs",
+    "line": 126,
+    "specifier": "./metrics.mjs",
+    "resolved": "ai-forge/patterns/metrics.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/multiagent.mjs",
+    "line": 67,
+    "specifier": "./roles.mjs",
+    "resolved": "ai-forge/patterns/roles.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/multiagent.mjs",
+    "line": 84,
+    "specifier": "./protocol.mjs",
+    "resolved": "ai-forge/patterns/protocol.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/multiagent.mjs",
+    "line": 114,
+    "specifier": "./roles.mjs",
+    "resolved": "ai-forge/patterns/roles.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/multiagent.mjs",
+    "line": 115,
+    "specifier": "./router.mjs",
+    "resolved": "ai-forge/patterns/router.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/multiagent.mjs",
+    "line": 116,
+    "specifier": "./blackboard.mjs",
+    "resolved": "ai-forge/patterns/blackboard.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/multiagent.mjs",
+    "line": 140,
+    "specifier": "./orchestrator.mjs",
+    "resolved": "ai-forge/patterns/orchestrator.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/multiagent.mjs",
+    "line": 161,
+    "specifier": "./orchestrator.mjs",
+    "resolved": "ai-forge/patterns/orchestrator.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/rag.mjs",
+    "line": 240,
+    "specifier": "./retrieve.mjs",
+    "resolved": "ai-forge/patterns/retrieve.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/rag.mjs",
+    "line": 273,
+    "specifier": "../retrieve.mjs",
+    "resolved": "ai-forge/retrieve.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/serving.mjs",
+    "line": 47,
+    "specifier": "./schema.mjs",
+    "resolved": "ai-forge/patterns/schema.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/serving.mjs",
+    "line": 86,
+    "specifier": "./handler.mjs",
+    "resolved": "ai-forge/patterns/handler.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/serving.mjs",
+    "line": 151,
+    "specifier": "./handler.mjs",
+    "resolved": "ai-forge/patterns/handler.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/serving.mjs",
+    "line": 152,
+    "specifier": "./authz.mjs",
+    "resolved": "ai-forge/patterns/authz.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/util.mjs",
+    "line": 101,
+    "specifier": "./m.mjs",
+    "resolved": "clotho/weavers/m.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/util.mjs",
+    "line": 520,
+    "specifier": "./x.mjs",
+    "resolved": "clotho/weavers/x.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/util.mjs",
+    "line": 520,
+    "specifier": "./x.mjs",
+    "resolved": "clotho/weavers/x.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/util.mjs",
+    "line": 532,
+    "specifier": "./x.mjs",
+    "resolved": "clotho/weavers/x.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/util.mjs",
+    "line": 533,
+    "specifier": "./x.mjs",
+    "resolved": "clotho/weavers/x.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/util.mjs",
+    "line": 571,
+    "specifier": "./x.mjs",
+    "resolved": "clotho/weavers/x.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/util.mjs",
+    "line": 572,
+    "specifier": "./x.mjs",
+    "resolved": "clotho/weavers/x.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/util.mjs",
+    "line": 1014,
+    "specifier": "./dep.mjs",
+    "resolved": "clotho/weavers/dep.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/PostToolUse.d/lib/lint-cwd-paths.mjs",
+    "line": 23,
+    "specifier": "./x",
+    "resolved": "hooks/PostToolUse.d/lib/x",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/PostToolUse.d/lib/tests/lint-cwd-paths.test.mjs",
+    "line": 164,
+    "specifier": "./config.js",
+    "resolved": "hooks/PostToolUse.d/lib/tests/config.js",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/stop-integrity-gate.mjs",
+    "line": 84,
+    "specifier": "../workflows/layered-swarm.d/registry-chain.mjs",
+    "resolved": "workflows/layered-swarm.d/registry-chain.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/stop-integrity-gate.mjs",
+    "line": 130,
+    "specifier": "./open-obligations.mjs",
+    "resolved": "hooks/open-obligations.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/tests/session-lifecycle.test.mjs",
+    "line": 68,
+    "specifier": "../fixture.mjs",
+    "resolved": "hooks/fixture.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/tests/stop-integrity-gate.test.mjs",
+    "line": 141,
+    "specifier": "../../workflows/layered-swarm.d/registry-chain.mjs",
+    "resolved": "workflows/layered-swarm.d/registry-chain.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-loadout-metrics.mjs",
+    "line": 21,
+    "specifier": "./swarm-dag-hash.mjs",
+    "resolved": "skills/multi-model-seats/scripts/swarm-dag-hash.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-loadouts.mjs",
+    "line": 20,
+    "specifier": "./swarm-dag-hash.mjs",
+    "resolved": "skills/multi-model-seats/scripts/swarm-dag-hash.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-seat-adapters.mjs",
+    "line": 51,
+    "specifier": "./swarm-dag-hash.mjs",
+    "resolved": "skills/multi-model-seats/scripts/swarm-dag-hash.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/tests/test-mutation-check.mjs",
+    "line": 40,
+    "specifier": "../scripts/a.mjs",
+    "resolved": "skills/multi-model-seats/scripts/a.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/tests/test-mutation-check.mjs",
+    "line": 85,
+    "specifier": "../scripts/a.mjs",
+    "resolved": "skills/multi-model-seats/scripts/a.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/swarm-manage.mjs",
+    "line": 12,
+    "specifier": "./registry-chain.mjs",
+    "resolved": "workflows/layered-swarm.d/registry-chain.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/swarm-prep.mjs",
+    "line": 10,
+    "specifier": "./registry-chain.mjs",
+    "resolved": "workflows/layered-swarm.d/registry-chain.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/tests/contract-sets.test.mjs",
+    "line": 103,
+    "specifier": "./auth.mjs",
+    "resolved": "workflows/layered-swarm.d/tests/auth.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/tests/contract-sets.test.mjs",
+    "line": 106,
+    "specifier": "./auth.mjs",
+    "resolved": "workflows/layered-swarm.d/tests/auth.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/tests/contract-sets.test.mjs",
+    "line": 116,
+    "specifier": "./does-not-exist.mjs",
+    "resolved": "workflows/layered-swarm.d/tests/does-not-exist.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/tests/contract-sets.test.mjs",
+    "line": 147,
+    "specifier": "./auth.mjs",
+    "resolved": "workflows/layered-swarm.d/tests/auth.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/tests/contract-sets.test.mjs",
+    "line": 169,
+    "specifier": "./auth.mjs",
+    "resolved": "workflows/layered-swarm.d/tests/auth.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/tests/swarm-prep.test.mjs",
+    "line": 8,
+    "specifier": "../registry-chain.mjs",
+    "resolved": "workflows/layered-swarm.d/registry-chain.mjs",
+    "status": "not in tracked tree; may be external/generated; static scan requires review"
+  }
+]

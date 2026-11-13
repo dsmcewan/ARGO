@@ -1,0 +1,21 @@
+# Local audit checkouts are retained in their own repositories.
+/repo-audit/sources/
+
+# Credentials and local state
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.db
+*.sqlite
+*.sqlite3
+.codex/
+.claude/
+
+# Generated/runtime artifacts
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+.DS_Store

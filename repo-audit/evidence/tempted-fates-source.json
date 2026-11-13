@@ -1,0 +1,9 @@
+{
+  "source_type": "user_attachment",
+  "original_path": "/workspace/.codex-attachments/d0fb9d0c-c57e-4bce-a59a-7ffa50f6251f/5cfbd5fa-3cad-4688-930b-983e1dcf78fa/ARGO_Tempted_Fates.md",
+  "retained_path": "../SCENARIOS/Tempted_Fates.md",
+  "sha256": "95a9159170ec2288dfcb2b2881f3c0026e4a168673e0d29887f1f0be83c22008",
+  "bytes": 17573,
+  "interpretive_boundary_line": 383,
+  "status": "source_received; requirements extraction only; not a schema freeze"
+}

@@ -1,0 +1,53 @@
+{
+  "checked_at": "2026-11-13 11:41:42 UTC",
+  "github": {
+    "visible_repositories": [
+      "dsmcewan/TELOS",
+      "dsmcewan/Convergence",
+      "dsmcewan/LEXI",
+      "dsmcewan/CrossroadThreads",
+      "dsmcewan/dsmcewan",
+      "dsmcewan/TST12",
+      "dsmcewan/claude-config",
+      "dsmcewan/notes"
+    ],
+    "streaming_search": {
+      "query": "pantheon",
+      "pages_checked": 2,
+      "results": 0,
+      "final_next_token": null
+    },
+    "installation_search_v2": {
+      "query": "pantheon",
+      "results": 0
+    },
+    "scoped_repository_search": {
+      "query": "pantheon user:dsmcewan",
+      "results": 0
+    },
+    "direct_lookup": {
+      "repository": "dsmcewan/pantheon",
+      "status": 404,
+      "interpretation": "Not found through current connection; does not distinguish nonexistent from inaccessible private repository."
+    },
+    "code_search": "Found producer references in LEXI, not Pantheon implementation source."
+  },
+  "workspace": {
+    "checked_paths": [
+      "/home/colchis/Projects/pantheon",
+      "/workspace/pantheon",
+      "/workspace/Pantheon"
+    ],
+    "result": "All absent; hidden workspace filename scan found only the retained LEXI probe reference."
+  },
+  "desktop_commander": {
+    "result": "No devices connected",
+    "latest_direct_path_check": {
+      "path": "/home/colchis/Projects/pantheon",
+      "result": "No Desktop Commander devices are connected yet",
+      "account_role": "authenticated",
+      "device_count": 0
+    }
+  },
+  "outcome": "PANTHEON_SOURCE remains unresolved; strict phase barrier unchanged."
+}

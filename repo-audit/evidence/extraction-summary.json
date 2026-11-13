@@ -1,0 +1,26 @@
+{
+  "source_files": 567,
+  "verified_blob_hashes": 567,
+  "modules": 418,
+  "modules_without_source": 0,
+  "route_declarations": 170,
+  "model_classes": 114,
+  "sqlmodel_tables": 25,
+  "javascript_export_declarations": 891,
+  "missing_relative_imports": 46,
+  "parse_errors": [],
+  "per_repo": {
+    "LEXI": {
+      "source_files": 288,
+      "modules": 239
+    },
+    "TELOS": {
+      "source_files": 137,
+      "modules": 117
+    },
+    "claude-config": {
+      "source_files": 142,
+      "modules": 62
+    }
+  }
+}

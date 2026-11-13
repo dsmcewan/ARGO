@@ -1,0 +1,6098 @@
+[
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/anthropic_credentials.py",
+    "line": 62,
+    "name": "MissingCredential",
+    "bases": [
+      "RuntimeError"
+    ],
+    "table": null,
+    "fields": []
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/anthropic_credentials.py",
+    "line": 67,
+    "name": "Credential",
+    "bases": [],
+    "table": null,
+    "fields": [
+      {
+        "name": "kind",
+        "annotation": "str",
+        "default": null,
+        "line": 83
+      },
+      {
+        "name": "value",
+        "annotation": "str",
+        "default": null,
+        "line": 84
+      },
+      {
+        "name": "source",
+        "annotation": "str",
+        "default": null,
+        "line": 85
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/auto_clustering_endpoints.py",
+    "line": 28,
+    "name": "BehaviorTaxonomy",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "behavior_id",
+        "annotation": "int",
+        "default": null,
+        "line": 29
+      },
+      {
+        "name": "behavior_code",
+        "annotation": "str",
+        "default": null,
+        "line": 30
+      },
+      {
+        "name": "behavior_name",
+        "annotation": "str",
+        "default": null,
+        "line": 31
+      },
+      {
+        "name": "description",
+        "annotation": "str | None",
+        "default": null,
+        "line": 32
+      },
+      {
+        "name": "related_clauses",
+        "annotation": "list[str] | None",
+        "default": null,
+        "line": 33
+      },
+      {
+        "name": "keywords",
+        "annotation": "list[str] | None",
+        "default": null,
+        "line": 34
+      },
+      {
+        "name": "severity_weight",
+        "annotation": "float",
+        "default": null,
+        "line": 35
+      },
+      {
+        "name": "category",
+        "annotation": "str",
+        "default": null,
+        "line": 36
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/auto_clustering_endpoints.py",
+    "line": 39,
+    "name": "DetectedIncident",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "incident_id",
+        "annotation": "int",
+        "default": null,
+        "line": 40
+      },
+      {
+        "name": "incident_name",
+        "annotation": "str",
+        "default": null,
+        "line": 41
+      },
+      {
+        "name": "start_date",
+        "annotation": "str",
+        "default": null,
+        "line": 42
+      },
+      {
+        "name": "end_date",
+        "annotation": "str",
+        "default": null,
+        "line": 43
+      },
+      {
+        "name": "trigger_type",
+        "annotation": "str",
+        "default": null,
+        "line": 44
+      },
+      {
+        "name": "trigger_details",
+        "annotation": "dict | None",
+        "default": null,
+        "line": 45
+      },
+      {
+        "name": "message_count",
+        "annotation": "int",
+        "default": null,
+        "line": 46
+      },
+      {
+        "name": "peak_coercion_score",
+        "annotation": "float | None",
+        "default": null,
+        "line": 47
+      },
+      {
+        "name": "peak_threat_score",
+        "annotation": "float | None",
+        "default": null,
+        "line": 48
+      },
+      {
+        "name": "dominant_behaviors",
+        "annotation": "list[str] | None",
+        "default": null,
+        "line": 49
+      },
+      {
+        "name": "status",
+        "annotation": "str",
+        "default": null,
+        "line": 50
+      },
+      {
+        "name": "cluster_id",
+        "annotation": "int | None",
+        "default": null,
+        "line": 51
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/auto_clustering_endpoints.py",
+    "line": 54,
+    "name": "IncidentUpdateRequest",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "incident_name",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 55
+      },
+      {
+        "name": "status",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 56
+      },
+      {
+        "name": "start_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 57
+      },
+      {
+        "name": "end_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 58
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/auto_clustering_endpoints.py",
+    "line": 61,
+    "name": "ConvertToClusterRequest",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "cluster_name",
+        "annotation": "str",
+        "default": null,
+        "line": 62
+      },
+      {
+        "name": "description",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 63
+      },
+      {
+        "name": "court_relevance",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 64
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/campaign_endpoints.py",
+    "line": 29,
+    "name": "CampaignUpdateRequest",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "campaign_name",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 30
+      },
+      {
+        "name": "status",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 31
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/campaign_endpoints.py",
+    "line": 34,
+    "name": "ConvertToClusterRequest",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "cluster_name",
+        "annotation": "str",
+        "default": null,
+        "line": 35
+      },
+      {
+        "name": "description",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 36
+      },
+      {
+        "name": "court_relevance",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 37
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/case_command_center_endpoints.py",
+    "line": 24,
+    "name": "Alert",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "id",
+        "annotation": "str",
+        "default": null,
+        "line": 27
+      },
+      {
+        "name": "severity",
+        "annotation": "str",
+        "default": null,
+        "line": 28
+      },
+      {
+        "name": "title",
+        "annotation": "str",
+        "default": null,
+        "line": 29
+      },
+      {
+        "name": "description",
+        "annotation": "str",
+        "default": null,
+        "line": 30
+      },
+      {
+        "name": "created_date",
+        "annotation": "str",
+        "default": null,
+        "line": 31
+      },
+      {
+        "name": "action_required",
+        "annotation": "str",
+        "default": null,
+        "line": 32
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/case_command_center_endpoints.py",
+    "line": 35,
+    "name": "RecommendedAction",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "id",
+        "annotation": "str",
+        "default": null,
+        "line": 38
+      },
+      {
+        "name": "title",
+        "annotation": "str",
+        "default": null,
+        "line": 39
+      },
+      {
+        "name": "description",
+        "annotation": "str",
+        "default": null,
+        "line": 40
+      },
+      {
+        "name": "priority",
+        "annotation": "str",
+        "default": null,
+        "line": 41
+      },
+      {
+        "name": "estimated_time",
+        "annotation": "str",
+        "default": null,
+        "line": 42
+      },
+      {
+        "name": "completed",
+        "annotation": "bool",
+        "default": null,
+        "line": 43
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/case_command_center_endpoints.py",
+    "line": 46,
+    "name": "QuickStat",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "label",
+        "annotation": "str",
+        "default": null,
+        "line": 49
+      },
+      {
+        "name": "value",
+        "annotation": "str",
+        "default": null,
+        "line": 50
+      },
+      {
+        "name": "trend",
+        "annotation": "str | None",
+        "default": null,
+        "line": 51
+      },
+      {
+        "name": "context",
+        "annotation": "str",
+        "default": null,
+        "line": 52
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/case_command_center_endpoints.py",
+    "line": 55,
+    "name": "CaseStrength",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "overall_score",
+        "annotation": "int",
+        "default": null,
+        "line": 58
+      },
+      {
+        "name": "contempt_readiness",
+        "annotation": "str",
+        "default": null,
+        "line": 59
+      },
+      {
+        "name": "contempt_score",
+        "annotation": "int",
+        "default": null,
+        "line": 60
+      },
+      {
+        "name": "modification_readiness",
+        "annotation": "str",
+        "default": null,
+        "line": 61
+      },
+      {
+        "name": "modification_score",
+        "annotation": "int",
+        "default": null,
+        "line": 62
+      },
+      {
+        "name": "tier1_violations",
+        "annotation": "int",
+        "default": null,
+        "line": 63
+      },
+      {
+        "name": "tier2_violations",
+        "annotation": "int",
+        "default": null,
+        "line": 64
+      },
+      {
+        "name": "tier3_violations",
+        "annotation": "int",
+        "default": null,
+        "line": 65
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/case_command_center_endpoints.py",
+    "line": 68,
+    "name": "PatternType",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "classification",
+        "annotation": "str",
+        "default": null,
+        "line": 71
+      },
+      {
+        "name": "confidence",
+        "annotation": "int",
+        "default": null,
+        "line": 72
+      },
+      {
+        "name": "evidence_summary",
+        "annotation": "str",
+        "default": null,
+        "line": 73
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/case_command_center_endpoints.py",
+    "line": 76,
+    "name": "CaseCommandCenterData",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "case_strength",
+        "annotation": "CaseStrength",
+        "default": null,
+        "line": 79
+      },
+      {
+        "name": "pattern_type",
+        "annotation": "PatternType",
+        "default": null,
+        "line": 80
+      },
+      {
+        "name": "alerts",
+        "annotation": "list[Alert]",
+        "default": null,
+        "line": 81
+      },
+      {
+        "name": "recommended_actions",
+        "annotation": "list[RecommendedAction]",
+        "default": null,
+        "line": 82
+      },
+      {
+        "name": "quick_stats",
+        "annotation": "list[QuickStat]",
+        "default": null,
+        "line": 83
+      },
+      {
+        "name": "last_updated",
+        "annotation": "str",
+        "default": null,
+        "line": 84
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/case_documents_endpoints.py",
+    "line": 35,
+    "name": "CreateDocumentRequest",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "doc_type",
+        "annotation": "str",
+        "default": null,
+        "line": 36
+      },
+      {
+        "name": "title",
+        "annotation": "str",
+        "default": null,
+        "line": 37
+      },
+      {
+        "name": "description",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 38
+      },
+      {
+        "name": "file_path",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 39
+      },
+      {
+        "name": "file_name",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 40
+      },
+      {
+        "name": "document_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 41
+      },
+      {
+        "name": "filed_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 42
+      },
+      {
+        "name": "received_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 43
+      },
+      {
+        "name": "source",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 44
+      },
+      {
+        "name": "case_number",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 45
+      },
+      {
+        "name": "key_points",
+        "annotation": "list[str] | None",
+        "default": "None",
+        "line": 46
+      },
+      {
+        "name": "relevant_clauses",
+        "annotation": "list[str] | None",
+        "default": "None",
+        "line": 47
+      },
+      {
+        "name": "related_message_ids",
+        "annotation": "list[int] | None",
+        "default": "None",
+        "line": 48
+      },
+      {
+        "name": "related_investigation_ids",
+        "annotation": "list[int] | None",
+        "default": "None",
+        "line": 49
+      },
+      {
+        "name": "notes",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 50
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/case_documents_endpoints.py",
+    "line": 53,
+    "name": "UpdateDocumentRequest",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "doc_type",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 54
+      },
+      {
+        "name": "title",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 55
+      },
+      {
+        "name": "description",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 56
+      },
+      {
+        "name": "file_path",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 57
+      },
+      {
+        "name": "file_name",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 58
+      },
+      {
+        "name": "document_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 59
+      },
+      {
+        "name": "filed_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 60
+      },
+      {
+        "name": "received_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 61
+      },
+      {
+        "name": "source",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 62
+      },
+      {
+        "name": "case_number",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 63
+      },
+      {
+        "name": "key_points",
+        "annotation": "list[str] | None",
+        "default": "None",
+        "line": 64
+      },
+      {
+        "name": "relevant_clauses",
+        "annotation": "list[str] | None",
+        "default": "None",
+        "line": 65
+      },
+      {
+        "name": "related_message_ids",
+        "annotation": "list[int] | None",
+        "default": "None",
+        "line": 66
+      },
+      {
+        "name": "related_investigation_ids",
+        "annotation": "list[int] | None",
+        "default": "None",
+        "line": 67
+      },
+      {
+        "name": "notes",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 68
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/case_documents_endpoints.py",
+    "line": 71,
+    "name": "LinkMessagesRequest",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "message_ids",
+        "annotation": "list[int]",
+        "default": null,
+        "line": 72
+      },
+      {
+        "name": "append",
+        "annotation": "bool",
+        "default": "True",
+        "line": 73
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/case_documents_endpoints.py",
+    "line": 76,
+    "name": "LinkInvestigationsRequest",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "investigation_ids",
+        "annotation": "list[int]",
+        "default": null,
+        "line": 77
+      },
+      {
+        "name": "append",
+        "annotation": "bool",
+        "default": "True",
+        "line": 78
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/case_documents_endpoints.py",
+    "line": 512,
+    "name": "DocumentMessageLinkRequest",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "message_id",
+        "annotation": "int",
+        "default": null,
+        "line": 513
+      },
+      {
+        "name": "document_excerpt",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 514
+      },
+      {
+        "name": "message_claim",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 515
+      },
+      {
+        "name": "relationship",
+        "annotation": "str",
+        "default": "'context'",
+        "line": 516
+      },
+      {
+        "name": "page_number",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 517
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/cluster_endpoints.py",
+    "line": 39,
+    "name": "CreateClusterRequest",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "cluster_name",
+        "annotation": "str",
+        "default": null,
+        "line": 40
+      },
+      {
+        "name": "description",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 41
+      },
+      {
+        "name": "start_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 42
+      },
+      {
+        "name": "end_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 43
+      },
+      {
+        "name": "cluster_color",
+        "annotation": "str | None",
+        "default": "'#7c3aed'",
+        "line": 44
+      },
+      {
+        "name": "court_relevance",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 45
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/cluster_endpoints.py",
+    "line": 48,
+    "name": "UpdateClusterRequest",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "cluster_name",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 49
+      },
+      {
+        "name": "description",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 50
+      },
+      {
+        "name": "start_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 51
+      },
+      {
+        "name": "end_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 52
+      },
+      {
+        "name": "cluster_color",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 53
+      },
+      {
+        "name": "court_relevance",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 54
+      },
+      {
+        "name": "narrative_summary",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 55
+      },
+      {
+        "name": "status",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 56
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/cluster_endpoints.py",
+    "line": 59,
+    "name": "AddElementRequest",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "element_type",
+        "annotation": "str",
+        "default": null,
+        "line": 60
+      },
+      {
+        "name": "element_id",
+        "annotation": "int",
+        "default": null,
+        "line": 61
+      },
+      {
+        "name": "role_in_narrative",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 62
+      },
+      {
+        "name": "sequence_order",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 63
+      },
+      {
+        "name": "annotation",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 64
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/cluster_endpoints.py",
+    "line": 67,
+    "name": "UpdateElementRequest",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "role_in_narrative",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 68
+      },
+      {
+        "name": "sequence_order",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 69
+      },
+      {
+        "name": "annotation",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 70
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/cluster_endpoints.py",
+    "line": 73,
+    "name": "GenerateSummaryRequest",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "regenerate",
+        "annotation": "bool",
+        "default": "False",
+        "line": 74
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/contempt_scorecard_endpoints.py",
+    "line": 25,
+    "name": "ClauseRequirement",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "clause",
+        "annotation": "str",
+        "default": null,
+        "line": 28
+      },
+      {
+        "name": "requirement",
+        "annotation": "str",
+        "default": null,
+        "line": 29
+      },
+      {
+        "name": "timeframe",
+        "annotation": "str | None",
+        "default": null,
+        "line": 30
+      },
+      {
+        "name": "measurability",
+        "annotation": "str",
+        "default": null,
+        "line": 31
+      },
+      {
+        "name": "contempt_viability",
+        "annotation": "str",
+        "default": null,
+        "line": 32
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/contempt_scorecard_endpoints.py",
+    "line": 35,
+    "name": "EvidenceItem",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "type",
+        "annotation": "str",
+        "default": null,
+        "line": 38
+      },
+      {
+        "name": "description",
+        "annotation": "str",
+        "default": null,
+        "line": 39
+      },
+      {
+        "name": "strength",
+        "annotation": "str",
+        "default": null,
+        "line": 40
+      },
+      {
+        "name": "source",
+        "annotation": "str",
+        "default": null,
+        "line": 41
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/contempt_scorecard_endpoints.py",
+    "line": 44,
+    "name": "ContemptAnalysis",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "message_id",
+        "annotation": "int",
+        "default": null,
+        "line": 47
+      },
+      {
+        "name": "date_time",
+        "annotation": "str",
+        "default": null,
+        "line": 48
+      },
+      {
+        "name": "sent_by",
+        "annotation": "str",
+        "default": null,
+        "line": 49
+      },
+      {
+        "name": "subject",
+        "annotation": "str",
+        "default": null,
+        "line": 50
+      },
+      {
+        "name": "message_text",
+        "annotation": "str",
+        "default": null,
+        "line": 51
+      },
+      {
+        "name": "clauses_violated",
+        "annotation": "list[str]",
+        "default": null,
+        "line": 54
+      },
+      {
+        "name": "clause_requirements",
+        "annotation": "list[ClauseRequirement]",
+        "default": null,
+        "line": 55
+      },
+      {
+        "name": "contempt_score",
+        "annotation": "int",
+        "default": null,
+        "line": 58
+      },
+      {
+        "name": "evidence_strength",
+        "annotation": "str",
+        "default": null,
+        "line": 59
+      },
+      {
+        "name": "measurability_score",
+        "annotation": "int",
+        "default": null,
+        "line": 60
+      },
+      {
+        "name": "beyond_reasonable_doubt",
+        "annotation": "bool",
+        "default": null,
+        "line": 61
+      },
+      {
+        "name": "evidence_items",
+        "annotation": "list[EvidenceItem]",
+        "default": null,
+        "line": 64
+      },
+      {
+        "name": "corroborating_messages",
+        "annotation": "list[int]",
+        "default": null,
+        "line": 65
+      },
+      {
+        "name": "third_party_evidence",
+        "annotation": "list[str]",
+        "default": null,
+        "line": 66
+      },
+      {
+        "name": "recommended_motion_type",
+        "annotation": "str",
+        "default": null,
+        "line": 69
+      },
+      {
+        "name": "motion_language_preview",
+        "annotation": "str",
+        "default": null,
+        "line": 70
+      },
+      {
+        "name": "florida_statute_references",
+        "annotation": "list[str]",
+        "default": null,
+        "line": 71
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/contempt_scorecard_endpoints.py",
+    "line": 74,
+    "name": "ContemptScorecardResponse",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "analysis",
+        "annotation": "ContemptAnalysis",
+        "default": null,
+        "line": 77
+      },
+      {
+        "name": "similar_violations",
+        "annotation": "list[dict[str, Any]]",
+        "default": null,
+        "line": 78
+      },
+      {
+        "name": "pattern_evidence",
+        "annotation": "str | None",
+        "default": null,
+        "line": 79
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/court_timeline_endpoints.py",
+    "line": 29,
+    "name": "Annotation",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "id",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 30
+      },
+      {
+        "name": "entry_type",
+        "annotation": "str",
+        "default": null,
+        "line": 31
+      },
+      {
+        "name": "entry_id",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 32
+      },
+      {
+        "name": "note_text",
+        "annotation": "str",
+        "default": null,
+        "line": 33
+      },
+      {
+        "name": "annotation_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 34
+      },
+      {
+        "name": "created_at",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 35
+      },
+      {
+        "name": "updated_at",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 36
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/court_timeline_endpoints.py",
+    "line": 39,
+    "name": "AnnotationCreate",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "entry_type",
+        "annotation": "str",
+        "default": null,
+        "line": 40
+      },
+      {
+        "name": "entry_id",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 41
+      },
+      {
+        "name": "note_text",
+        "annotation": "str",
+        "default": null,
+        "line": 42
+      },
+      {
+        "name": "annotation_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 43
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/court_timeline_endpoints.py",
+    "line": 46,
+    "name": "AnnotationUpdate",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "note_text",
+        "annotation": "str",
+        "default": null,
+        "line": 47
+      },
+      {
+        "name": "annotation_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 48
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/court_timeline_endpoints.py",
+    "line": 51,
+    "name": "TimelineMessage",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "id",
+        "annotation": "int",
+        "default": null,
+        "line": 52
+      },
+      {
+        "name": "date_time",
+        "annotation": "str",
+        "default": null,
+        "line": 53
+      },
+      {
+        "name": "sent_by",
+        "annotation": "str",
+        "default": null,
+        "line": 54
+      },
+      {
+        "name": "subject",
+        "annotation": "str",
+        "default": null,
+        "line": 55
+      },
+      {
+        "name": "message_text",
+        "annotation": "str",
+        "default": null,
+        "line": 56
+      },
+      {
+        "name": "message_text_full",
+        "annotation": "str",
+        "default": null,
+        "line": 57
+      },
+      {
+        "name": "coercion_score",
+        "annotation": "float | None",
+        "default": null,
+        "line": 58
+      },
+      {
+        "name": "threat_score",
+        "annotation": "int | None",
+        "default": null,
+        "line": 59
+      },
+      {
+        "name": "identity_score",
+        "annotation": "float | None",
+        "default": null,
+        "line": 60
+      },
+      {
+        "name": "clauses_violated",
+        "annotation": "list[str]",
+        "default": null,
+        "line": 61
+      },
+      {
+        "name": "annotation",
+        "annotation": "Annotation | None",
+        "default": "None",
+        "line": 62
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/court_timeline_endpoints.py",
+    "line": 65,
+    "name": "TimelineViolation",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "id",
+        "annotation": "int",
+        "default": null,
+        "line": 66
+      },
+      {
+        "name": "message_id",
+        "annotation": "int",
+        "default": null,
+        "line": 67
+      },
+      {
+        "name": "clause",
+        "annotation": "str",
+        "default": null,
+        "line": 68
+      },
+      {
+        "name": "confidence_level",
+        "annotation": "float",
+        "default": null,
+        "line": 69
+      },
+      {
+        "name": "violation_type",
+        "annotation": "str | None",
+        "default": null,
+        "line": 70
+      },
+      {
+        "name": "explanation",
+        "annotation": "str | None",
+        "default": null,
+        "line": 71
+      },
+      {
+        "name": "message",
+        "annotation": "TimelineMessage",
+        "default": null,
+        "line": 72
+      },
+      {
+        "name": "third_party_evidence",
+        "annotation": "list[dict[str, Any]]",
+        "default": null,
+        "line": 73
+      },
+      {
+        "name": "annotation",
+        "annotation": "Annotation | None",
+        "default": "None",
+        "line": 74
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/court_timeline_endpoints.py",
+    "line": 77,
+    "name": "TimelinePattern",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "pattern_id",
+        "annotation": "str",
+        "default": null,
+        "line": 78
+      },
+      {
+        "name": "pattern_group",
+        "annotation": "str",
+        "default": null,
+        "line": 79
+      },
+      {
+        "name": "start_date",
+        "annotation": "str",
+        "default": null,
+        "line": 80
+      },
+      {
+        "name": "end_date",
+        "annotation": "str",
+        "default": null,
+        "line": 81
+      },
+      {
+        "name": "message_count",
+        "annotation": "int",
+        "default": null,
+        "line": 82
+      },
+      {
+        "name": "clauses_violated",
+        "annotation": "list[str]",
+        "default": null,
+        "line": 83
+      },
+      {
+        "name": "tactics_used",
+        "annotation": "list[str]",
+        "default": null,
+        "line": 84
+      },
+      {
+        "name": "violations",
+        "annotation": "list[TimelineViolation]",
+        "default": null,
+        "line": 85
+      },
+      {
+        "name": "annotation",
+        "annotation": "Annotation | None",
+        "default": "None",
+        "line": 86
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/court_timeline_endpoints.py",
+    "line": 89,
+    "name": "TimelineCampaign",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "campaign_id",
+        "annotation": "int",
+        "default": null,
+        "line": 90
+      },
+      {
+        "name": "campaign_name",
+        "annotation": "str",
+        "default": null,
+        "line": 91
+      },
+      {
+        "name": "start_date",
+        "annotation": "str",
+        "default": null,
+        "line": 92
+      },
+      {
+        "name": "end_date",
+        "annotation": "str",
+        "default": null,
+        "line": 93
+      },
+      {
+        "name": "campaign_type",
+        "annotation": "str",
+        "default": null,
+        "line": 94
+      },
+      {
+        "name": "target_domain",
+        "annotation": "str",
+        "default": null,
+        "line": 95
+      },
+      {
+        "name": "peak_coercion_score",
+        "annotation": "float",
+        "default": null,
+        "line": 96
+      },
+      {
+        "name": "message_count",
+        "annotation": "int",
+        "default": null,
+        "line": 97
+      },
+      {
+        "name": "description",
+        "annotation": "str",
+        "default": null,
+        "line": 98
+      },
+      {
+        "name": "evidence_strength",
+        "annotation": "str",
+        "default": null,
+        "line": 99
+      },
+      {
+        "name": "patterns",
+        "annotation": "list[TimelinePattern]",
+        "default": null,
+        "line": 100
+      },
+      {
+        "name": "standalone_violations",
+        "annotation": "list[TimelineViolation]",
+        "default": null,
+        "line": 101
+      },
+      {
+        "name": "annotation",
+        "annotation": "Annotation | None",
+        "default": "None",
+        "line": 102
+      },
+      {
+        "name": "activity_weeks",
+        "annotation": "list[dict[str, Any]]",
+        "default": "[]",
+        "line": 103
+      },
+      {
+        "name": "lane",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 104
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/court_timeline_endpoints.py",
+    "line": 107,
+    "name": "TimelineMilestone",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "id",
+        "annotation": "int",
+        "default": null,
+        "line": 108
+      },
+      {
+        "name": "date",
+        "annotation": "str",
+        "default": null,
+        "line": 109
+      },
+      {
+        "name": "note_text",
+        "annotation": "str",
+        "default": null,
+        "line": 110
+      },
+      {
+        "name": "created_at",
+        "annotation": "str",
+        "default": null,
+        "line": 111
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/court_timeline_endpoints.py",
+    "line": 114,
+    "name": "CalendarDay",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "date",
+        "annotation": "str",
+        "default": null,
+        "line": 115
+      },
+      {
+        "name": "parent_day",
+        "annotation": "str",
+        "default": null,
+        "line": 116
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/court_timeline_endpoints.py",
+    "line": 119,
+    "name": "CourtTimeline",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "campaigns",
+        "annotation": "list[TimelineCampaign]",
+        "default": null,
+        "line": 120
+      },
+      {
+        "name": "uncategorized_violations",
+        "annotation": "list[TimelineViolation]",
+        "default": null,
+        "line": 121
+      },
+      {
+        "name": "milestones",
+        "annotation": "list[TimelineMilestone]",
+        "default": null,
+        "line": 122
+      },
+      {
+        "name": "calendar_days",
+        "annotation": "list[CalendarDay]",
+        "default": null,
+        "line": 123
+      },
+      {
+        "name": "stats",
+        "annotation": "dict[str, Any]",
+        "default": null,
+        "line": 124
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/deposition_endpoints.py",
+    "line": 25,
+    "name": "TrapCreate",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "trap_name",
+        "annotation": "str",
+        "default": null,
+        "line": 26
+      },
+      {
+        "name": "trap_value",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 27
+      },
+      {
+        "name": "display_order",
+        "annotation": "int",
+        "default": null,
+        "line": 28
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/deposition_endpoints.py",
+    "line": 31,
+    "name": "TrapUpdate",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "trap_name",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 32
+      },
+      {
+        "name": "trap_value",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 33
+      },
+      {
+        "name": "display_order",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 34
+      },
+      {
+        "name": "status",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 35
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/deposition_endpoints.py",
+    "line": 38,
+    "name": "QuestionCreate",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "trap_id",
+        "annotation": "int",
+        "default": null,
+        "line": 39
+      },
+      {
+        "name": "parent_question_id",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 40
+      },
+      {
+        "name": "branch_condition",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 41
+      },
+      {
+        "name": "question_text",
+        "annotation": "str",
+        "default": null,
+        "line": 42
+      },
+      {
+        "name": "question_order",
+        "annotation": "int",
+        "default": null,
+        "line": 43
+      },
+      {
+        "name": "is_kill_shot",
+        "annotation": "bool",
+        "default": "False",
+        "line": 44
+      },
+      {
+        "name": "notes",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 45
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/deposition_endpoints.py",
+    "line": 48,
+    "name": "QuestionUpdate",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "question_text",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 49
+      },
+      {
+        "name": "branch_condition",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 50
+      },
+      {
+        "name": "question_order",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 51
+      },
+      {
+        "name": "is_kill_shot",
+        "annotation": "bool | None",
+        "default": "None",
+        "line": 52
+      },
+      {
+        "name": "notes",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 53
+      },
+      {
+        "name": "asked",
+        "annotation": "bool | None",
+        "default": "None",
+        "line": 54
+      },
+      {
+        "name": "actual_answer",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 55
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/deposition_endpoints.py",
+    "line": 58,
+    "name": "EvidenceCreate",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "question_id",
+        "annotation": "int",
+        "default": null,
+        "line": 59
+      },
+      {
+        "name": "evidence_type",
+        "annotation": "str",
+        "default": null,
+        "line": 60
+      },
+      {
+        "name": "evidence_ref",
+        "annotation": "str",
+        "default": null,
+        "line": 61
+      },
+      {
+        "name": "evidence_quote",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 62
+      },
+      {
+        "name": "exhibit_label",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 63
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/deposition_endpoints.py",
+    "line": 66,
+    "name": "ImportRequest",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "raw_text",
+        "annotation": "str",
+        "default": null,
+        "line": 67
+      },
+      {
+        "name": "clear_existing",
+        "annotation": "bool",
+        "default": "False",
+        "line": 68
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/event_timeline_endpoints.py",
+    "line": 27,
+    "name": "EventMessage",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "message_id",
+        "annotation": "int",
+        "default": null,
+        "line": 30
+      },
+      {
+        "name": "date_time",
+        "annotation": "str",
+        "default": null,
+        "line": 31
+      },
+      {
+        "name": "sent_by",
+        "annotation": "str",
+        "default": null,
+        "line": 32
+      },
+      {
+        "name": "subject",
+        "annotation": "str",
+        "default": null,
+        "line": 33
+      },
+      {
+        "name": "message_text",
+        "annotation": "str",
+        "default": null,
+        "line": 34
+      },
+      {
+        "name": "coercion_score",
+        "annotation": "float | None",
+        "default": null,
+        "line": 35
+      },
+      {
+        "name": "clauses_violated",
+        "annotation": "list[str]",
+        "default": null,
+        "line": 36
+      },
+      {
+        "name": "violation_count",
+        "annotation": "int",
+        "default": null,
+        "line": 37
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/event_timeline_endpoints.py",
+    "line": 40,
+    "name": "Event",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "event_id",
+        "annotation": "str",
+        "default": null,
+        "line": 43
+      },
+      {
+        "name": "event_type",
+        "annotation": "str",
+        "default": null,
+        "line": 44
+      },
+      {
+        "name": "title",
+        "annotation": "str",
+        "default": null,
+        "line": 45
+      },
+      {
+        "name": "start_date",
+        "annotation": "str",
+        "default": null,
+        "line": 46
+      },
+      {
+        "name": "end_date",
+        "annotation": "str | None",
+        "default": null,
+        "line": 47
+      },
+      {
+        "name": "message_count",
+        "annotation": "int",
+        "default": null,
+        "line": 48
+      },
+      {
+        "name": "clauses_violated",
+        "annotation": "list[str]",
+        "default": null,
+        "line": 51
+      },
+      {
+        "name": "total_violations",
+        "annotation": "int",
+        "default": null,
+        "line": 52
+      },
+      {
+        "name": "avg_coercion_score",
+        "annotation": "float",
+        "default": null,
+        "line": 53
+      },
+      {
+        "name": "pattern_group",
+        "annotation": "str | None",
+        "default": null,
+        "line": 56
+      },
+      {
+        "name": "tactics_used",
+        "annotation": "list[str] | None",
+        "default": null,
+        "line": 57
+      },
+      {
+        "name": "messages",
+        "annotation": "list[EventMessage]",
+        "default": null,
+        "line": 60
+      },
+      {
+        "name": "third_party_evidence",
+        "annotation": "list[str]",
+        "default": null,
+        "line": 63
+      },
+      {
+        "name": "escalation_indicator",
+        "annotation": "str",
+        "default": null,
+        "line": 64
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/event_timeline_endpoints.py",
+    "line": 67,
+    "name": "TimelineStats",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "total_events",
+        "annotation": "int",
+        "default": null,
+        "line": 70
+      },
+      {
+        "name": "thread_events",
+        "annotation": "int",
+        "default": null,
+        "line": 71
+      },
+      {
+        "name": "pattern_events",
+        "annotation": "int",
+        "default": null,
+        "line": 72
+      },
+      {
+        "name": "avg_messages_per_event",
+        "annotation": "float",
+        "default": null,
+        "line": 73
+      },
+      {
+        "name": "highest_violation_event",
+        "annotation": "dict[str, Any]",
+        "default": null,
+        "line": 74
+      },
+      {
+        "name": "date_range",
+        "annotation": "dict[str, str]",
+        "default": null,
+        "line": 75
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/investigation_endpoints.py",
+    "line": 33,
+    "name": "CreateInvestigationRequest",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "title",
+        "annotation": "str",
+        "default": null,
+        "line": 34
+      },
+      {
+        "name": "description",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 35
+      },
+      {
+        "name": "priority",
+        "annotation": "int | None",
+        "default": "3",
+        "line": 36
+      },
+      {
+        "name": "keywords",
+        "annotation": "list[str] | None",
+        "default": "None",
+        "line": 37
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/investigation_endpoints.py",
+    "line": 40,
+    "name": "UpdateInvestigationRequest",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "title",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 41
+      },
+      {
+        "name": "description",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 42
+      },
+      {
+        "name": "priority",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 43
+      },
+      {
+        "name": "status",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 44
+      },
+      {
+        "name": "keywords",
+        "annotation": "list[str] | None",
+        "default": "None",
+        "line": 45
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/investigation_endpoints.py",
+    "line": 48,
+    "name": "AddFindingRequest",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "content",
+        "annotation": "str",
+        "default": null,
+        "line": 49
+      },
+      {
+        "name": "finding_type",
+        "annotation": "str | None",
+        "default": "'observation'",
+        "line": 50
+      },
+      {
+        "name": "confidence_score",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 51
+      },
+      {
+        "name": "evidence_message_ids",
+        "annotation": "list[int] | None",
+        "default": "None",
+        "line": 52
+      },
+      {
+        "name": "counter_arguments",
+        "annotation": "list[str] | None",
+        "default": "None",
+        "line": 53
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/investigation_endpoints.py",
+    "line": 56,
+    "name": "DeepDiveRequest",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "focus_area",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 57
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/main.py",
+    "line": 247,
+    "name": "Message",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "ID",
+        "annotation": "int",
+        "default": null,
+        "line": 248
+      },
+      {
+        "name": "date_time",
+        "annotation": "str",
+        "default": null,
+        "line": 249
+      },
+      {
+        "name": "sent_by",
+        "annotation": "str",
+        "default": null,
+        "line": 250
+      },
+      {
+        "name": "subject",
+        "annotation": "str",
+        "default": null,
+        "line": 251
+      },
+      {
+        "name": "communication_text",
+        "annotation": "str",
+        "default": null,
+        "line": 252
+      },
+      {
+        "name": "policy_violated",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 253
+      },
+      {
+        "name": "PSYOP_used",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 254
+      },
+      {
+        "name": "analyzed_json",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 255
+      },
+      {
+        "name": "emotional_coercion_score",
+        "annotation": "float | None",
+        "default": "None",
+        "line": 256
+      },
+      {
+        "name": "threat_intensity_score",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 257
+      },
+      {
+        "name": "pattern_id",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 258
+      },
+      {
+        "name": "behavior_cluster",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 259
+      },
+      {
+        "name": "loop_type",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 260
+      },
+      {
+        "name": "COACH_TACTIC",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 261
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/main.py",
+    "line": 264,
+    "name": "DashboardStats",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "total_messages",
+        "annotation": "int",
+        "default": null,
+        "line": 265
+      },
+      {
+        "name": "mother_messages",
+        "annotation": "int",
+        "default": null,
+        "line": 266
+      },
+      {
+        "name": "father_messages",
+        "annotation": "int",
+        "default": null,
+        "line": 267
+      },
+      {
+        "name": "avg_coercion_score",
+        "annotation": "float",
+        "default": null,
+        "line": 268
+      },
+      {
+        "name": "avg_threat_score",
+        "annotation": "float",
+        "default": null,
+        "line": 269
+      },
+      {
+        "name": "total_violations",
+        "annotation": "int",
+        "default": null,
+        "line": 270
+      },
+      {
+        "name": "high_risk_messages",
+        "annotation": "int",
+        "default": null,
+        "line": 271
+      },
+      {
+        "name": "active_patterns",
+        "annotation": "int",
+        "default": null,
+        "line": 272
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/main.py",
+    "line": 275,
+    "name": "ViolationSummary",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "clause",
+        "annotation": "str",
+        "default": null,
+        "line": 276
+      },
+      {
+        "name": "count",
+        "annotation": "int",
+        "default": null,
+        "line": 277
+      },
+      {
+        "name": "avg_coercion",
+        "annotation": "float",
+        "default": null,
+        "line": 278
+      },
+      {
+        "name": "messages",
+        "annotation": "list[int]",
+        "default": null,
+        "line": 279
+      },
+      {
+        "name": "mother_count",
+        "annotation": "int",
+        "default": "0",
+        "line": 280
+      },
+      {
+        "name": "father_count",
+        "annotation": "int",
+        "default": "0",
+        "line": 281
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/main.py",
+    "line": 284,
+    "name": "PatternData",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "pattern_id",
+        "annotation": "str",
+        "default": null,
+        "line": 285
+      },
+      {
+        "name": "count",
+        "annotation": "int",
+        "default": null,
+        "line": 286
+      },
+      {
+        "name": "avg_risk",
+        "annotation": "float",
+        "default": null,
+        "line": 287
+      },
+      {
+        "name": "recent_activity",
+        "annotation": "str",
+        "default": null,
+        "line": 288
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/main.py",
+    "line": 291,
+    "name": "RiskMetrics",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "composite_risk",
+        "annotation": "float",
+        "default": null,
+        "line": 292
+      },
+      {
+        "name": "legal_exposure",
+        "annotation": "float",
+        "default": null,
+        "line": 293
+      },
+      {
+        "name": "coparenting_stability",
+        "annotation": "float",
+        "default": null,
+        "line": 294
+      },
+      {
+        "name": "child_impact",
+        "annotation": "float",
+        "default": null,
+        "line": 295
+      },
+      {
+        "name": "methodology_version",
+        "annotation": "str",
+        "default": null,
+        "line": 296
+      },
+      {
+        "name": "disclaimer",
+        "annotation": "str",
+        "default": null,
+        "line": 297
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/main.py",
+    "line": 300,
+    "name": "HCPProfile",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "person_name",
+        "annotation": "str",
+        "default": null,
+        "line": 301
+      },
+      {
+        "name": "hcp_type_primary",
+        "annotation": "str",
+        "default": null,
+        "line": 302
+      },
+      {
+        "name": "hcp_type_secondary",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 303
+      },
+      {
+        "name": "hcp_confidence_score",
+        "annotation": "float",
+        "default": null,
+        "line": 304
+      },
+      {
+        "name": "total_messages_analyzed",
+        "annotation": "int",
+        "default": null,
+        "line": 306
+      },
+      {
+        "name": "avg_coercion_score",
+        "annotation": "float",
+        "default": null,
+        "line": 307
+      },
+      {
+        "name": "avg_threat_score",
+        "annotation": "float",
+        "default": null,
+        "line": 308
+      },
+      {
+        "name": "max_coercion_score",
+        "annotation": "float",
+        "default": null,
+        "line": 309
+      },
+      {
+        "name": "max_threat_score",
+        "annotation": "float",
+        "default": null,
+        "line": 310
+      },
+      {
+        "name": "high_coercion_count",
+        "annotation": "int",
+        "default": null,
+        "line": 311
+      },
+      {
+        "name": "high_threat_count",
+        "annotation": "int",
+        "default": null,
+        "line": 312
+      },
+      {
+        "name": "profile_type",
+        "annotation": "str",
+        "default": null,
+        "line": 313
+      },
+      {
+        "name": "notes",
+        "annotation": "str",
+        "default": null,
+        "line": 314
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/main.py",
+    "line": 317,
+    "name": "HCPBaseUsage",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "base_code",
+        "annotation": "str",
+        "default": null,
+        "line": 318
+      },
+      {
+        "name": "base_name",
+        "annotation": "str",
+        "default": null,
+        "line": 319
+      },
+      {
+        "name": "usage_count",
+        "annotation": "int",
+        "default": null,
+        "line": 320
+      },
+      {
+        "name": "percentage",
+        "annotation": "float",
+        "default": null,
+        "line": 321
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/main.py",
+    "line": 324,
+    "name": "HCPKeyRatio",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "ratio_name",
+        "annotation": "str",
+        "default": null,
+        "line": 325
+      },
+      {
+        "name": "ratio_value",
+        "annotation": "float",
+        "default": null,
+        "line": 326
+      },
+      {
+        "name": "mother_count",
+        "annotation": "int",
+        "default": null,
+        "line": 327
+      },
+      {
+        "name": "father_count",
+        "annotation": "int",
+        "default": null,
+        "line": 328
+      },
+      {
+        "name": "category",
+        "annotation": "str",
+        "default": null,
+        "line": 329
+      },
+      {
+        "name": "description",
+        "annotation": "str",
+        "default": null,
+        "line": 330
+      },
+      {
+        "name": "court_relevance",
+        "annotation": "str",
+        "default": null,
+        "line": 331
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/main.py",
+    "line": 351,
+    "name": "LoginRequest",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "password",
+        "annotation": "str",
+        "default": null,
+        "line": 352
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/main.py",
+    "line": 355,
+    "name": "LoginResponse",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "access_token",
+        "annotation": "str",
+        "default": null,
+        "line": 356
+      },
+      {
+        "name": "token_type",
+        "annotation": "str",
+        "default": "'bearer'",
+        "line": 357
+      },
+      {
+        "name": "expires_in",
+        "annotation": "int",
+        "default": null,
+        "line": 358
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/main.py",
+    "line": 1702,
+    "name": "ChatMessage",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "role",
+        "annotation": "str",
+        "default": null,
+        "line": 1703
+      },
+      {
+        "name": "content",
+        "annotation": "str",
+        "default": null,
+        "line": 1704
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/main.py",
+    "line": 1707,
+    "name": "ChatRequest",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "question",
+        "annotation": "str",
+        "default": null,
+        "line": 1708
+      },
+      {
+        "name": "context_depth",
+        "annotation": "str | None",
+        "default": "'standard'",
+        "line": 1709
+      },
+      {
+        "name": "conversation_history",
+        "annotation": "list[ChatMessage] | None",
+        "default": "[]",
+        "line": 1710
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/main.py",
+    "line": 1713,
+    "name": "ChatResponse",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "response",
+        "annotation": "str",
+        "default": null,
+        "line": 1714
+      },
+      {
+        "name": "context_used",
+        "annotation": "dict[str, Any]",
+        "default": null,
+        "line": 1715
+      },
+      {
+        "name": "timestamp",
+        "annotation": "str",
+        "default": null,
+        "line": 1716
+      },
+      {
+        "name": "highlighted_message_ids",
+        "annotation": "list[int]",
+        "default": "[]",
+        "line": 1717
+      },
+      {
+        "name": "model_tier",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 1719
+      },
+      {
+        "name": "model_used",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 1720
+      },
+      {
+        "name": "max_tokens_used",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 1721
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/main.py",
+    "line": 2702,
+    "name": "TemperatureRequest",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "message_text",
+        "annotation": "str",
+        "default": null,
+        "line": 2703
+      },
+      {
+        "name": "sender",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 2704
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/main.py",
+    "line": 2707,
+    "name": "TemperatureResponse",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "intensity",
+        "annotation": "float",
+        "default": null,
+        "line": 2708
+      },
+      {
+        "name": "behavior",
+        "annotation": "str",
+        "default": null,
+        "line": 2709
+      },
+      {
+        "name": "style",
+        "annotation": "str",
+        "default": "Field(default='mixed')",
+        "line": 2710
+      },
+      {
+        "name": "anomaly_score",
+        "annotation": "float",
+        "default": "0.0",
+        "line": 2711
+      },
+      {
+        "name": "hypotheses",
+        "annotation": "list[str]",
+        "default": "[]",
+        "line": 2712
+      },
+      {
+        "name": "confidence",
+        "annotation": "float",
+        "default": "0.0",
+        "line": 2713
+      },
+      {
+        "name": "quick_read",
+        "annotation": "str",
+        "default": null,
+        "line": 2714
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/main.py",
+    "line": 3188,
+    "name": "CompanionBuildRequest",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "md_content",
+        "annotation": "str",
+        "default": null,
+        "line": 3189
+      },
+      {
+        "name": "conversation_history",
+        "annotation": "list[ChatMessage] | None",
+        "default": "[]",
+        "line": 3190
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/model_fallback.py",
+    "line": 50,
+    "name": "ModelCallFailed",
+    "bases": [
+      "RuntimeError"
+    ],
+    "table": null,
+    "fields": []
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/model_fallback.py",
+    "line": 54,
+    "name": "RateLimited",
+    "bases": [
+      "ModelCallFailed"
+    ],
+    "table": null,
+    "fields": []
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/model_fallback.py",
+    "line": 58,
+    "name": "AllLegsRateLimited",
+    "bases": [
+      "ModelCallFailed"
+    ],
+    "table": null,
+    "fields": []
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/model_fallback.py",
+    "line": 79,
+    "name": "TextBlock",
+    "bases": [],
+    "table": null,
+    "fields": [
+      {
+        "name": "text",
+        "annotation": "str",
+        "default": null,
+        "line": 82
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/model_fallback.py",
+    "line": 86,
+    "name": "Reply",
+    "bases": [],
+    "table": null,
+    "fields": [
+      {
+        "name": "content",
+        "annotation": "list",
+        "default": null,
+        "line": 89
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/model_fallback.py",
+    "line": 183,
+    "name": "Leg",
+    "bases": [],
+    "table": null,
+    "fields": [
+      {
+        "name": "client",
+        "annotation": "Any",
+        "default": null,
+        "line": 196
+      },
+      {
+        "name": "model",
+        "annotation": "str",
+        "default": null,
+        "line": 197
+      },
+      {
+        "name": "label",
+        "annotation": "str",
+        "default": null,
+        "line": 198
+      },
+      {
+        "name": "pool",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 199
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/model_fallback.py",
+    "line": 202,
+    "name": "FallbackClient",
+    "bases": [],
+    "table": null,
+    "fields": []
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/model_fallback.py",
+    "line": 315,
+    "name": "OpenAIResponsesClient",
+    "bases": [],
+    "table": null,
+    "fields": []
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/models.py",
+    "line": 4,
+    "name": "Timeline",
+    "bases": [
+      "SQLModel"
+    ],
+    "table": "Timeline",
+    "fields": [
+      {
+        "name": "Date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 6
+      },
+      {
+        "name": "Event",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 7
+      },
+      {
+        "name": "Violation",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 8
+      },
+      {
+        "name": "column_name",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 9
+      },
+      {
+        "name": "Willfull",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 10
+      },
+      {
+        "name": "ID",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 11
+      },
+      {
+        "name": "Notes",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 12
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/models.py",
+    "line": 15,
+    "name": "TimelineAnnotations",
+    "bases": [
+      "SQLModel"
+    ],
+    "table": "timeline_annotations",
+    "fields": [
+      {
+        "name": "id",
+        "annotation": "int | None",
+        "default": "Field(default=None, primary_key=True)",
+        "line": 17
+      },
+      {
+        "name": "entry_type",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 18
+      },
+      {
+        "name": "entry_id",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 19
+      },
+      {
+        "name": "note_text",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 20
+      },
+      {
+        "name": "annotation_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 21
+      },
+      {
+        "name": "created_at",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 22
+      },
+      {
+        "name": "updated_at",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 23
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/models.py",
+    "line": 26,
+    "name": "CaseDocuments",
+    "bases": [
+      "SQLModel"
+    ],
+    "table": "case_documents",
+    "fields": [
+      {
+        "name": "id",
+        "annotation": "int | None",
+        "default": "Field(default=None, primary_key=True)",
+        "line": 28
+      },
+      {
+        "name": "doc_type",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 29
+      },
+      {
+        "name": "title",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 30
+      },
+      {
+        "name": "description",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 31
+      },
+      {
+        "name": "file_path",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 32
+      },
+      {
+        "name": "file_name",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 33
+      },
+      {
+        "name": "document_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 34
+      },
+      {
+        "name": "filed_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 35
+      },
+      {
+        "name": "received_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 36
+      },
+      {
+        "name": "source",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 37
+      },
+      {
+        "name": "case_number",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 38
+      },
+      {
+        "name": "key_points",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 39
+      },
+      {
+        "name": "relevant_clauses",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 40
+      },
+      {
+        "name": "related_message_ids",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 41
+      },
+      {
+        "name": "related_investigation_ids",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 42
+      },
+      {
+        "name": "created_at",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 43
+      },
+      {
+        "name": "updated_at",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 44
+      },
+      {
+        "name": "notes",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 45
+      },
+      {
+        "name": "content_blob",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 46
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/models.py",
+    "line": 49,
+    "name": "DocumentMessageLinks",
+    "bases": [
+      "SQLModel"
+    ],
+    "table": "document_message_links",
+    "fields": [
+      {
+        "name": "id",
+        "annotation": "int | None",
+        "default": "Field(default=None, primary_key=True)",
+        "line": 51
+      },
+      {
+        "name": "document_id",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 52
+      },
+      {
+        "name": "message_id",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 53
+      },
+      {
+        "name": "document_excerpt",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 54
+      },
+      {
+        "name": "message_claim",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 55
+      },
+      {
+        "name": "relationship",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 56
+      },
+      {
+        "name": "page_number",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 57
+      },
+      {
+        "name": "created_at",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 58
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/models.py",
+    "line": 61,
+    "name": "ManipulationCampaigns",
+    "bases": [
+      "SQLModel"
+    ],
+    "table": "manipulation_campaigns",
+    "fields": [
+      {
+        "name": "campaign_id",
+        "annotation": "int | None",
+        "default": "Field(default=None, primary_key=True)",
+        "line": 63
+      },
+      {
+        "name": "campaign_name",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 64
+      },
+      {
+        "name": "start_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 65
+      },
+      {
+        "name": "end_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 66
+      },
+      {
+        "name": "campaign_type",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 67
+      },
+      {
+        "name": "target_domain",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 68
+      },
+      {
+        "name": "peak_coercion_score",
+        "annotation": "float | None",
+        "default": "None",
+        "line": 69
+      },
+      {
+        "name": "message_count",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 70
+      },
+      {
+        "name": "description",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 71
+      },
+      {
+        "name": "evidence_strength",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 72
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/models.py",
+    "line": 75,
+    "name": "EscalationSequences",
+    "bases": [
+      "SQLModel"
+    ],
+    "table": "escalation_sequences",
+    "fields": [
+      {
+        "name": "sequence_id",
+        "annotation": "int | None",
+        "default": "Field(default=None, primary_key=True)",
+        "line": 77
+      },
+      {
+        "name": "campaign_id",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 78
+      },
+      {
+        "name": "message_id",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 79
+      },
+      {
+        "name": "sequence_position",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 80
+      },
+      {
+        "name": "tactic_deployed",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 81
+      },
+      {
+        "name": "coercion_delta",
+        "annotation": "float | None",
+        "default": "None",
+        "line": 82
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/models.py",
+    "line": 85,
+    "name": "DetectedCampaigns",
+    "bases": [
+      "SQLModel"
+    ],
+    "table": "detected_campaigns",
+    "fields": [
+      {
+        "name": "campaign_id",
+        "annotation": "int | None",
+        "default": "Field(default=None, primary_key=True)",
+        "line": 87
+      },
+      {
+        "name": "campaign_name",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 88
+      },
+      {
+        "name": "campaign_type",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 89
+      },
+      {
+        "name": "start_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 90
+      },
+      {
+        "name": "end_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 91
+      },
+      {
+        "name": "incident_count",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 92
+      },
+      {
+        "name": "message_count",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 93
+      },
+      {
+        "name": "peak_coercion_score",
+        "annotation": "float | None",
+        "default": "None",
+        "line": 94
+      },
+      {
+        "name": "peak_threat_score",
+        "annotation": "float | None",
+        "default": "None",
+        "line": 95
+      },
+      {
+        "name": "dominant_behaviors",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 96
+      },
+      {
+        "name": "court_relevance_score",
+        "annotation": "float | None",
+        "default": "None",
+        "line": 97
+      },
+      {
+        "name": "narrative_summary",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 98
+      },
+      {
+        "name": "status",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 99
+      },
+      {
+        "name": "created_at",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 100
+      },
+      {
+        "name": "trigger_type",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 101
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/models.py",
+    "line": 104,
+    "name": "DetectedIncidents",
+    "bases": [
+      "SQLModel"
+    ],
+    "table": "detected_incidents",
+    "fields": [
+      {
+        "name": "incident_id",
+        "annotation": "int | None",
+        "default": "Field(default=None, primary_key=True)",
+        "line": 106
+      },
+      {
+        "name": "incident_name",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 107
+      },
+      {
+        "name": "start_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 108
+      },
+      {
+        "name": "end_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 109
+      },
+      {
+        "name": "trigger_type",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 110
+      },
+      {
+        "name": "message_count",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 111
+      },
+      {
+        "name": "peak_coercion_score",
+        "annotation": "float | None",
+        "default": "None",
+        "line": 112
+      },
+      {
+        "name": "peak_threat_score",
+        "annotation": "float | None",
+        "default": "None",
+        "line": 113
+      },
+      {
+        "name": "dominant_behaviors",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 114
+      },
+      {
+        "name": "status",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 115
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/models.py",
+    "line": 118,
+    "name": "IncidentMessages",
+    "bases": [
+      "SQLModel"
+    ],
+    "table": "incident_messages",
+    "fields": [
+      {
+        "name": "id",
+        "annotation": "int | None",
+        "default": "Field(default=None, primary_key=True)",
+        "line": 120
+      },
+      {
+        "name": "incident_id",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 121
+      },
+      {
+        "name": "message_id",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 122
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/models.py",
+    "line": 125,
+    "name": "CampaignIncidents",
+    "bases": [
+      "SQLModel"
+    ],
+    "table": "campaign_incidents",
+    "fields": [
+      {
+        "name": "id",
+        "annotation": "int | None",
+        "default": "Field(default=None, primary_key=True)",
+        "line": 127
+      },
+      {
+        "name": "campaign_id",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 128
+      },
+      {
+        "name": "incident_id",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 129
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/models.py",
+    "line": 132,
+    "name": "DepositionSessions",
+    "bases": [
+      "SQLModel"
+    ],
+    "table": "deposition_sessions",
+    "fields": [
+      {
+        "name": "session_id",
+        "annotation": "int | None",
+        "default": "Field(default=None, primary_key=True)",
+        "line": 134
+      },
+      {
+        "name": "deponent_name",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 135
+      },
+      {
+        "name": "session_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 136
+      },
+      {
+        "name": "notes",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 137
+      },
+      {
+        "name": "created_at",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 138
+      },
+      {
+        "name": "updated_at",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 139
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/models.py",
+    "line": 142,
+    "name": "DepositionTraps",
+    "bases": [
+      "SQLModel"
+    ],
+    "table": "deposition_traps",
+    "fields": [
+      {
+        "name": "trap_id",
+        "annotation": "int | None",
+        "default": "Field(default=None, primary_key=True)",
+        "line": 144
+      },
+      {
+        "name": "trap_name",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 145
+      },
+      {
+        "name": "trap_value",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 146
+      },
+      {
+        "name": "display_order",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 147
+      },
+      {
+        "name": "status",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 148
+      },
+      {
+        "name": "created_at",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 149
+      },
+      {
+        "name": "updated_at",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 150
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/models.py",
+    "line": 153,
+    "name": "DepositionQuestions",
+    "bases": [
+      "SQLModel"
+    ],
+    "table": "deposition_questions",
+    "fields": [
+      {
+        "name": "question_id",
+        "annotation": "int | None",
+        "default": "Field(default=None, primary_key=True)",
+        "line": 155
+      },
+      {
+        "name": "trap_id",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 156
+      },
+      {
+        "name": "parent_question_id",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 157
+      },
+      {
+        "name": "branch_condition",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 158
+      },
+      {
+        "name": "question_text",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 159
+      },
+      {
+        "name": "question_order",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 160
+      },
+      {
+        "name": "is_kill_shot",
+        "annotation": "bool | None",
+        "default": "None",
+        "line": 161
+      },
+      {
+        "name": "notes",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 162
+      },
+      {
+        "name": "asked",
+        "annotation": "bool | None",
+        "default": "None",
+        "line": 163
+      },
+      {
+        "name": "asked_at",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 164
+      },
+      {
+        "name": "actual_answer",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 165
+      },
+      {
+        "name": "created_at",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 166
+      },
+      {
+        "name": "updated_at",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 167
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/models.py",
+    "line": 170,
+    "name": "QuestionEvidence",
+    "bases": [
+      "SQLModel"
+    ],
+    "table": "question_evidence",
+    "fields": [
+      {
+        "name": "evidence_id",
+        "annotation": "int | None",
+        "default": "Field(default=None, primary_key=True)",
+        "line": 172
+      },
+      {
+        "name": "question_id",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 173
+      },
+      {
+        "name": "evidence_type",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 174
+      },
+      {
+        "name": "evidence_ref",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 175
+      },
+      {
+        "name": "evidence_quote",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 176
+      },
+      {
+        "name": "exhibit_label",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 177
+      },
+      {
+        "name": "created_at",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 178
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/models.py",
+    "line": 181,
+    "name": "DepositionEvidence",
+    "bases": [
+      "SQLModel"
+    ],
+    "table": "deposition_evidence",
+    "fields": [
+      {
+        "name": "evidence_id",
+        "annotation": "int | None",
+        "default": "Field(default=None, primary_key=True)",
+        "line": 183
+      },
+      {
+        "name": "question_id",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 184
+      },
+      {
+        "name": "evidence_type",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 185
+      },
+      {
+        "name": "evidence_ref",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 186
+      },
+      {
+        "name": "evidence_quote",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 187
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/models.py",
+    "line": 190,
+    "name": "NarrativeClusters",
+    "bases": [
+      "SQLModel"
+    ],
+    "table": "narrative_clusters",
+    "fields": [
+      {
+        "name": "cluster_id",
+        "annotation": "int | None",
+        "default": "Field(default=None, primary_key=True)",
+        "line": 192
+      },
+      {
+        "name": "cluster_name",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 193
+      },
+      {
+        "name": "description",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 194
+      },
+      {
+        "name": "start_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 195
+      },
+      {
+        "name": "end_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 196
+      },
+      {
+        "name": "cluster_color",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 197
+      },
+      {
+        "name": "narrative_summary",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 198
+      },
+      {
+        "name": "court_relevance",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 199
+      },
+      {
+        "name": "status",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 200
+      },
+      {
+        "name": "created_at",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 201
+      },
+      {
+        "name": "updated_at",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 202
+      },
+      {
+        "name": "summary_version",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 203
+      },
+      {
+        "name": "summary_generated_at",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 204
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/models.py",
+    "line": 207,
+    "name": "ClusterElements",
+    "bases": [
+      "SQLModel"
+    ],
+    "table": "cluster_elements",
+    "fields": [
+      {
+        "name": "id",
+        "annotation": "int | None",
+        "default": "Field(default=None, primary_key=True)",
+        "line": 209
+      },
+      {
+        "name": "cluster_id",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 210
+      },
+      {
+        "name": "element_type",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 211
+      },
+      {
+        "name": "element_id",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 212
+      },
+      {
+        "name": "role_in_narrative",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 213
+      },
+      {
+        "name": "sequence_order",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 214
+      },
+      {
+        "name": "annotation",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 215
+      },
+      {
+        "name": "created_at",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 216
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/models.py",
+    "line": 219,
+    "name": "ClusterSummaryHistory",
+    "bases": [
+      "SQLModel"
+    ],
+    "table": "cluster_summary_history",
+    "fields": [
+      {
+        "name": "id",
+        "annotation": "int | None",
+        "default": "Field(default=None, primary_key=True)",
+        "line": 221
+      },
+      {
+        "name": "cluster_id",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 222
+      },
+      {
+        "name": "version",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 223
+      },
+      {
+        "name": "narrative_summary",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 224
+      },
+      {
+        "name": "generated_at",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 225
+      },
+      {
+        "name": "prompt_used",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 226
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/models.py",
+    "line": 229,
+    "name": "ThirdPartyAuthority",
+    "bases": [
+      "SQLModel"
+    ],
+    "table": "third_party_authority",
+    "fields": [
+      {
+        "name": "id",
+        "annotation": "int | None",
+        "default": "Field(default=None, primary_key=True)",
+        "line": 231
+      },
+      {
+        "name": "message_id",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 232
+      },
+      {
+        "name": "third_party_name",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 233
+      },
+      {
+        "name": "authority_type",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 234
+      },
+      {
+        "name": "violation_type",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 235
+      },
+      {
+        "name": "context",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 236
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/models.py",
+    "line": 239,
+    "name": "OfwBehavioralPatterns",
+    "bases": [
+      "SQLModel"
+    ],
+    "table": "behavioral_patterns",
+    "fields": [
+      {
+        "name": "pattern_id",
+        "annotation": "str | None",
+        "default": "Field(default=None, primary_key=True)",
+        "line": 241
+      },
+      {
+        "name": "pattern_group",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 242
+      },
+      {
+        "name": "start_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 243
+      },
+      {
+        "name": "end_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 244
+      },
+      {
+        "name": "message_count",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 245
+      },
+      {
+        "name": "clauses_violated",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 246
+      },
+      {
+        "name": "tactics_used",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 247
+      },
+      {
+        "name": "sample_quotes",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 248
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/models.py",
+    "line": 251,
+    "name": "HcpTemporalTracking",
+    "bases": [
+      "SQLModel"
+    ],
+    "table": "hcp_temporal_tracking",
+    "fields": [
+      {
+        "name": "id",
+        "annotation": "int | None",
+        "default": "Field(default=None, primary_key=True)",
+        "line": 253
+      },
+      {
+        "name": "person_name",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 254
+      },
+      {
+        "name": "analysis_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 255
+      },
+      {
+        "name": "time_period_start",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 256
+      },
+      {
+        "name": "time_period_end",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 257
+      },
+      {
+        "name": "message_count",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 258
+      },
+      {
+        "name": "avg_coercion",
+        "annotation": "float | None",
+        "default": "None",
+        "line": 259
+      },
+      {
+        "name": "avg_threat",
+        "annotation": "float | None",
+        "default": "None",
+        "line": 260
+      },
+      {
+        "name": "dominant_base",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 261
+      },
+      {
+        "name": "phase_classification",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 262
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/models.py",
+    "line": 265,
+    "name": "HcpProfiles",
+    "bases": [
+      "SQLModel"
+    ],
+    "table": "hcp_profiles",
+    "fields": [
+      {
+        "name": "person_name",
+        "annotation": "str | None",
+        "default": "Field(default=None, primary_key=True)",
+        "line": 267
+      },
+      {
+        "name": "hcp_type_primary",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 268
+      },
+      {
+        "name": "hcp_type_secondary",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 269
+      },
+      {
+        "name": "hcp_confidence_score",
+        "annotation": "float | None",
+        "default": "None",
+        "line": 270
+      },
+      {
+        "name": "total_messages_analyzed",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 272
+      },
+      {
+        "name": "avg_coercion_score",
+        "annotation": "float | None",
+        "default": "None",
+        "line": 273
+      },
+      {
+        "name": "avg_threat_score",
+        "annotation": "float | None",
+        "default": "None",
+        "line": 274
+      },
+      {
+        "name": "max_coercion_score",
+        "annotation": "float | None",
+        "default": "None",
+        "line": 275
+      },
+      {
+        "name": "max_threat_score",
+        "annotation": "float | None",
+        "default": "None",
+        "line": 276
+      },
+      {
+        "name": "high_coercion_count",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 277
+      },
+      {
+        "name": "high_threat_count",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 278
+      },
+      {
+        "name": "profile_generated_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 279
+      },
+      {
+        "name": "profile_type",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 280
+      },
+      {
+        "name": "notes",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 281
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/models.py",
+    "line": 284,
+    "name": "OfwMessages",
+    "bases": [
+      "SQLModel"
+    ],
+    "table": "communications",
+    "fields": [
+      {
+        "name": "ID",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 286
+      },
+      {
+        "name": "file",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 287
+      },
+      {
+        "name": "date_time",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 288
+      },
+      {
+        "name": "original_timestamp",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 289
+      },
+      {
+        "name": "sent_by",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 290
+      },
+      {
+        "name": "subject",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 291
+      },
+      {
+        "name": "communication_text",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 292
+      },
+      {
+        "name": "PSYOP_used",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 293
+      },
+      {
+        "name": "analyzed_json",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 294
+      },
+      {
+        "name": "pattern_id",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 295
+      },
+      {
+        "name": "pattern_intensity_score",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 296
+      },
+      {
+        "name": "behavior_cluster",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 297
+      },
+      {
+        "name": "cross_reference_ids",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 298
+      },
+      {
+        "name": "policy_violated",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 299
+      },
+      {
+        "name": "emotional_coercion_score",
+        "annotation": "float | None",
+        "default": "None",
+        "line": 300
+      },
+      {
+        "name": "threat_intensity_score",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 301
+      },
+      {
+        "name": "identity_compression_score",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 302
+      },
+      {
+        "name": "semantic_threat_flag",
+        "annotation": "float | None",
+        "default": "None",
+        "line": 303
+      },
+      {
+        "name": "loop_type",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 304
+      },
+      {
+        "name": "COACH_TACTIC",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 305
+      },
+      {
+        "name": "Summary",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 306
+      },
+      {
+        "name": "manipulation_analysis",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 307
+      },
+      {
+        "name": "ambiguity_score",
+        "annotation": "float | None",
+        "default": "None",
+        "line": 308
+      },
+      {
+        "name": "violation_committed_by",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 309
+      },
+      {
+        "name": "violation_reported_by",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 310
+      },
+      {
+        "name": "pattern_weaponized_ambiguity",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 311
+      },
+      {
+        "name": "pattern_weaponized_accusation",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 312
+      },
+      {
+        "name": "pattern_false_agreement",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 313
+      },
+      {
+        "name": "pattern_enforcement",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 314
+      },
+      {
+        "name": "analysis_timestamp",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 315
+      },
+      {
+        "name": "coercion_phase",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 316
+      },
+      {
+        "name": "question_bombardment_score",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 317
+      },
+      {
+        "name": "deadline_imposition_flag",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 318
+      },
+      {
+        "name": "financial_pressure_flag",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 319
+      },
+      {
+        "name": "verbosity_ratio",
+        "annotation": "float | None",
+        "default": "None",
+        "line": 320
+      },
+      {
+        "name": "topic_shift_count",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 321
+      },
+      {
+        "name": "repeat_demand_id",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 322
+      },
+      {
+        "name": "self_focus_ratio",
+        "annotation": "float | None",
+        "default": "None",
+        "line": 323
+      },
+      {
+        "name": "other_blame_ratio",
+        "annotation": "float | None",
+        "default": "None",
+        "line": 324
+      },
+      {
+        "name": "collaborative_ratio",
+        "annotation": "float | None",
+        "default": "None",
+        "line": 325
+      },
+      {
+        "name": "absolutist_count",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 326
+      },
+      {
+        "name": "blame_attribution_count",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 327
+      },
+      {
+        "name": "obligation_imposition_count",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 328
+      },
+      {
+        "name": "hedging_count",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 329
+      },
+      {
+        "name": "emotional_word_count",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 330
+      },
+      {
+        "name": "negation_density",
+        "annotation": "float | None",
+        "default": "None",
+        "line": 331
+      },
+      {
+        "name": "linguistic_aggression_score",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 332
+      },
+      {
+        "name": "dimension_profile",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 333
+      },
+      {
+        "name": "tactic_profile",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 334
+      },
+      {
+        "name": "primary_domain",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 335
+      },
+      {
+        "name": "max_risk_level",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 336
+      },
+      {
+        "name": "critical_fragment_count",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 337
+      },
+      {
+        "name": "total_child_proxy_score",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 338
+      },
+      {
+        "name": "total_authority_score",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 339
+      },
+      {
+        "name": "total_command_score",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 340
+      },
+      {
+        "name": "fragment_count",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 341
+      },
+      {
+        "name": "insertion_attempt",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 342
+      },
+      {
+        "name": "response_context",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 343
+      },
+      {
+        "name": "fait_accompli",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 344
+      },
+      {
+        "name": "voice_signature",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 345
+      },
+      {
+        "name": "campaign_id",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 346
+      },
+      {
+        "name": "escalation_sequence",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 347
+      },
+      {
+        "name": "crisis_manufactured",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 348
+      },
+      {
+        "name": "third_party_elevated",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 349
+      },
+      {
+        "name": "provocation_chain_id",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 350
+      },
+      {
+        "name": "provoked_by_id",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 351
+      },
+      {
+        "name": "is_provocation",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 352
+      },
+      {
+        "name": "cumulative_impact_score",
+        "annotation": "float | None",
+        "default": "None",
+        "line": 353
+      },
+      {
+        "name": "time_window_coercion",
+        "annotation": "float | None",
+        "default": "None",
+        "line": 354
+      },
+      {
+        "name": "custody_period",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 355
+      },
+      {
+        "name": "crisis_during_other_custody",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 356
+      },
+      {
+        "name": "aggression_type",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 357
+      },
+      {
+        "name": "we_statement_detected",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 358
+      },
+      {
+        "name": "non_party_decision",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 359
+      },
+      {
+        "name": "context_adjusted_score",
+        "annotation": "float | None",
+        "default": "None",
+        "line": 360
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/models.py",
+    "line": 363,
+    "name": "OfwViolationAnalysis",
+    "bases": [
+      "SQLModel"
+    ],
+    "table": "violation_analysis",
+    "fields": [
+      {
+        "name": "analysis_id",
+        "annotation": "int | None",
+        "default": "Field(default=None, primary_key=True)",
+        "line": 365
+      },
+      {
+        "name": "message_id",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 366
+      },
+      {
+        "name": "violation_type",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 367
+      },
+      {
+        "name": "clause_violated",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 368
+      },
+      {
+        "name": "confidence_level",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 369
+      },
+      {
+        "name": "evidence_strength",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 370
+      },
+      {
+        "name": "created_timestamp",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 371
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/models.py",
+    "line": 374,
+    "name": "LexiTactics",
+    "bases": [
+      "SQLModel"
+    ],
+    "table": "lexi_tactics",
+    "fields": [
+      {
+        "name": "message_id",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 376
+      },
+      {
+        "name": "date_time",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 377
+      },
+      {
+        "name": "sent_by",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 378
+      },
+      {
+        "name": "quote",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 379
+      },
+      {
+        "name": "explanation",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 380
+      },
+      {
+        "name": "tactic_used",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 381
+      },
+      {
+        "name": "tactic_category",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 382
+      },
+      {
+        "name": "policy_violated",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 383
+      },
+      {
+        "name": "violation_type",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 384
+      },
+      {
+        "name": "severity_score",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 385
+      },
+      {
+        "name": "escalation_flag",
+        "annotation": "bool | None",
+        "default": "None",
+        "line": 386
+      },
+      {
+        "name": "pattern_group",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 387
+      },
+      {
+        "name": "review_notes",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 388
+      },
+      {
+        "name": "cross_reference_ids",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 389
+      },
+      {
+        "name": "pattern_intensity_score",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 390
+      },
+      {
+        "name": "psych_function",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 391
+      },
+      {
+        "name": "enforcement_relevance",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 392
+      },
+      {
+        "name": "legal_remedy",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 393
+      },
+      {
+        "name": "message_tone",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 394
+      },
+      {
+        "name": "tone_score",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 395
+      },
+      {
+        "name": "clause_enforceability_score",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 396
+      },
+      {
+        "name": "enforcement_path",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 397
+      },
+      {
+        "name": "manipulation_type",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 398
+      },
+      {
+        "name": "emotional_target",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 399
+      },
+      {
+        "name": "post_violation_tactic",
+        "annotation": "bool | None",
+        "default": "None",
+        "line": 400
+      },
+      {
+        "name": "documentation_setup",
+        "annotation": "bool | None",
+        "default": "None",
+        "line": 401
+      },
+      {
+        "name": "tactic_repeat_count",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 402
+      },
+      {
+        "name": "first_occurrence_id",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 403
+      },
+      {
+        "name": "last_30_day_frequency",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 404
+      },
+      {
+        "name": "response_dilemma",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 405
+      },
+      {
+        "name": "enforcement_flag",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 406
+      },
+      {
+        "name": "violation_score",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 407
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/timeline_endpoints.py",
+    "line": 29,
+    "name": "Annotation",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "id",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 30
+      },
+      {
+        "name": "entry_type",
+        "annotation": "str",
+        "default": null,
+        "line": 31
+      },
+      {
+        "name": "entry_id",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 32
+      },
+      {
+        "name": "note_text",
+        "annotation": "str",
+        "default": null,
+        "line": 33
+      },
+      {
+        "name": "annotation_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 34
+      },
+      {
+        "name": "created_at",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 35
+      },
+      {
+        "name": "updated_at",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 36
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/timeline_endpoints.py",
+    "line": 39,
+    "name": "AnnotationCreate",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "entry_type",
+        "annotation": "str",
+        "default": null,
+        "line": 40
+      },
+      {
+        "name": "entry_id",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 41
+      },
+      {
+        "name": "note_text",
+        "annotation": "str",
+        "default": null,
+        "line": 42
+      },
+      {
+        "name": "annotation_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 43
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/timeline_endpoints.py",
+    "line": 46,
+    "name": "AnnotationUpdate",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "note_text",
+        "annotation": "str",
+        "default": null,
+        "line": 47
+      },
+      {
+        "name": "annotation_date",
+        "annotation": "str | None",
+        "default": "None",
+        "line": 48
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/timeline_endpoints.py",
+    "line": 51,
+    "name": "TimelineMessage",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "id",
+        "annotation": "int",
+        "default": null,
+        "line": 52
+      },
+      {
+        "name": "date_time",
+        "annotation": "str",
+        "default": null,
+        "line": 53
+      },
+      {
+        "name": "sent_by",
+        "annotation": "str",
+        "default": null,
+        "line": 54
+      },
+      {
+        "name": "subject",
+        "annotation": "str",
+        "default": null,
+        "line": 55
+      },
+      {
+        "name": "message_text",
+        "annotation": "str",
+        "default": null,
+        "line": 56
+      },
+      {
+        "name": "message_text_full",
+        "annotation": "str",
+        "default": null,
+        "line": 57
+      },
+      {
+        "name": "coercion_score",
+        "annotation": "float | None",
+        "default": null,
+        "line": 58
+      },
+      {
+        "name": "threat_score",
+        "annotation": "int | None",
+        "default": null,
+        "line": 59
+      },
+      {
+        "name": "identity_score",
+        "annotation": "float | None",
+        "default": null,
+        "line": 60
+      },
+      {
+        "name": "clauses_violated",
+        "annotation": "list[str]",
+        "default": null,
+        "line": 61
+      },
+      {
+        "name": "annotation",
+        "annotation": "Annotation | None",
+        "default": "None",
+        "line": 62
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/timeline_endpoints.py",
+    "line": 65,
+    "name": "TimelineViolation",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "id",
+        "annotation": "int",
+        "default": null,
+        "line": 66
+      },
+      {
+        "name": "message_id",
+        "annotation": "int",
+        "default": null,
+        "line": 67
+      },
+      {
+        "name": "clause",
+        "annotation": "str",
+        "default": null,
+        "line": 68
+      },
+      {
+        "name": "confidence_level",
+        "annotation": "float",
+        "default": null,
+        "line": 69
+      },
+      {
+        "name": "violation_type",
+        "annotation": "str | None",
+        "default": null,
+        "line": 70
+      },
+      {
+        "name": "explanation",
+        "annotation": "str | None",
+        "default": null,
+        "line": 71
+      },
+      {
+        "name": "message",
+        "annotation": "TimelineMessage",
+        "default": null,
+        "line": 72
+      },
+      {
+        "name": "third_party_evidence",
+        "annotation": "list[dict[str, Any]]",
+        "default": null,
+        "line": 73
+      },
+      {
+        "name": "annotation",
+        "annotation": "Annotation | None",
+        "default": "None",
+        "line": 74
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/timeline_endpoints.py",
+    "line": 77,
+    "name": "TimelinePattern",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "pattern_id",
+        "annotation": "str",
+        "default": null,
+        "line": 78
+      },
+      {
+        "name": "pattern_group",
+        "annotation": "str",
+        "default": null,
+        "line": 79
+      },
+      {
+        "name": "start_date",
+        "annotation": "str",
+        "default": null,
+        "line": 80
+      },
+      {
+        "name": "end_date",
+        "annotation": "str",
+        "default": null,
+        "line": 81
+      },
+      {
+        "name": "message_count",
+        "annotation": "int",
+        "default": null,
+        "line": 82
+      },
+      {
+        "name": "clauses_violated",
+        "annotation": "list[str]",
+        "default": null,
+        "line": 83
+      },
+      {
+        "name": "tactics_used",
+        "annotation": "list[str]",
+        "default": null,
+        "line": 84
+      },
+      {
+        "name": "violations",
+        "annotation": "list[TimelineViolation]",
+        "default": null,
+        "line": 85
+      },
+      {
+        "name": "annotation",
+        "annotation": "Annotation | None",
+        "default": "None",
+        "line": 86
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/timeline_endpoints.py",
+    "line": 89,
+    "name": "TimelineCampaign",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "campaign_id",
+        "annotation": "int",
+        "default": null,
+        "line": 90
+      },
+      {
+        "name": "campaign_name",
+        "annotation": "str",
+        "default": null,
+        "line": 91
+      },
+      {
+        "name": "start_date",
+        "annotation": "str",
+        "default": null,
+        "line": 92
+      },
+      {
+        "name": "end_date",
+        "annotation": "str",
+        "default": null,
+        "line": 93
+      },
+      {
+        "name": "campaign_type",
+        "annotation": "str",
+        "default": null,
+        "line": 94
+      },
+      {
+        "name": "target_domain",
+        "annotation": "str",
+        "default": null,
+        "line": 95
+      },
+      {
+        "name": "peak_coercion_score",
+        "annotation": "float",
+        "default": null,
+        "line": 96
+      },
+      {
+        "name": "message_count",
+        "annotation": "int",
+        "default": null,
+        "line": 97
+      },
+      {
+        "name": "description",
+        "annotation": "str",
+        "default": null,
+        "line": 98
+      },
+      {
+        "name": "evidence_strength",
+        "annotation": "str",
+        "default": null,
+        "line": 99
+      },
+      {
+        "name": "patterns",
+        "annotation": "list[TimelinePattern]",
+        "default": null,
+        "line": 100
+      },
+      {
+        "name": "standalone_violations",
+        "annotation": "list[TimelineViolation]",
+        "default": null,
+        "line": 101
+      },
+      {
+        "name": "annotation",
+        "annotation": "Annotation | None",
+        "default": "None",
+        "line": 102
+      },
+      {
+        "name": "activity_weeks",
+        "annotation": "list[dict[str, Any]]",
+        "default": "[]",
+        "line": 103
+      },
+      {
+        "name": "lane",
+        "annotation": "int | None",
+        "default": "None",
+        "line": 104
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/timeline_endpoints.py",
+    "line": 107,
+    "name": "TimelineMilestone",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "id",
+        "annotation": "int",
+        "default": null,
+        "line": 108
+      },
+      {
+        "name": "date",
+        "annotation": "str",
+        "default": null,
+        "line": 109
+      },
+      {
+        "name": "note_text",
+        "annotation": "str",
+        "default": null,
+        "line": 110
+      },
+      {
+        "name": "created_at",
+        "annotation": "str",
+        "default": null,
+        "line": 111
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/timeline_endpoints.py",
+    "line": 114,
+    "name": "CalendarDay",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "date",
+        "annotation": "str",
+        "default": null,
+        "line": 115
+      },
+      {
+        "name": "parent_day",
+        "annotation": "str",
+        "default": null,
+        "line": 116
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/timeline_endpoints.py",
+    "line": 119,
+    "name": "CourtTimeline",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "campaigns",
+        "annotation": "list[TimelineCampaign]",
+        "default": null,
+        "line": 120
+      },
+      {
+        "name": "uncategorized_violations",
+        "annotation": "list[TimelineViolation]",
+        "default": null,
+        "line": 121
+      },
+      {
+        "name": "milestones",
+        "annotation": "list[TimelineMilestone]",
+        "default": null,
+        "line": 122
+      },
+      {
+        "name": "calendar_days",
+        "annotation": "list[CalendarDay]",
+        "default": null,
+        "line": 123
+      },
+      {
+        "name": "stats",
+        "annotation": "dict[str, Any]",
+        "default": null,
+        "line": 124
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/violation_explorer_endpoints.py",
+    "line": 27,
+    "name": "ViolationAnalysis",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "violation_type",
+        "annotation": "str",
+        "default": null,
+        "line": 30
+      },
+      {
+        "name": "confidence_score",
+        "annotation": "float",
+        "default": null,
+        "line": 31
+      },
+      {
+        "name": "evidence_strength",
+        "annotation": "str",
+        "default": null,
+        "line": 32
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/violation_explorer_endpoints.py",
+    "line": 35,
+    "name": "ViolationRecord",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "id",
+        "annotation": "int",
+        "default": null,
+        "line": 38
+      },
+      {
+        "name": "date_time",
+        "annotation": "str",
+        "default": null,
+        "line": 39
+      },
+      {
+        "name": "sent_by",
+        "annotation": "str",
+        "default": null,
+        "line": 40
+      },
+      {
+        "name": "subject",
+        "annotation": "str",
+        "default": null,
+        "line": 41
+      },
+      {
+        "name": "message_text",
+        "annotation": "str",
+        "default": null,
+        "line": 42
+      },
+      {
+        "name": "emotional_coercion_score",
+        "annotation": "float | None",
+        "default": null,
+        "line": 43
+      },
+      {
+        "name": "ambiguity_score",
+        "annotation": "float | None",
+        "default": null,
+        "line": 44
+      },
+      {
+        "name": "threat_intensity_score",
+        "annotation": "int | None",
+        "default": null,
+        "line": 45
+      },
+      {
+        "name": "legal_clauses_violated",
+        "annotation": "list[str]",
+        "default": null,
+        "line": 46
+      },
+      {
+        "name": "weaponized_ambiguity",
+        "annotation": "bool",
+        "default": null,
+        "line": 47
+      },
+      {
+        "name": "pattern_weaponized_accusation",
+        "annotation": "bool",
+        "default": null,
+        "line": 48
+      },
+      {
+        "name": "violation_analyses",
+        "annotation": "list[ViolationAnalysis]",
+        "default": null,
+        "line": 49
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/violation_explorer_endpoints.py",
+    "line": 52,
+    "name": "ViolationSearchResponse",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "total_count",
+        "annotation": "int",
+        "default": null,
+        "line": 55
+      },
+      {
+        "name": "page",
+        "annotation": "int",
+        "default": null,
+        "line": 56
+      },
+      {
+        "name": "page_size",
+        "annotation": "int",
+        "default": null,
+        "line": 57
+      },
+      {
+        "name": "total_pages",
+        "annotation": "int",
+        "default": null,
+        "line": 58
+      },
+      {
+        "name": "results",
+        "annotation": "list[ViolationRecord]",
+        "default": null,
+        "line": 59
+      }
+    ]
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/backend/violation_explorer_endpoints.py",
+    "line": 62,
+    "name": "SearchStats",
+    "bases": [
+      "BaseModel"
+    ],
+    "table": null,
+    "fields": [
+      {
+        "name": "total_messages",
+        "annotation": "int",
+        "default": null,
+        "line": 65
+      },
+      {
+        "name": "avg_coercion",
+        "annotation": "float",
+        "default": null,
+        "line": 66
+      },
+      {
+        "name": "avg_ambiguity",
+        "annotation": "float",
+        "default": null,
+        "line": 67
+      },
+      {
+        "name": "clause_breakdown",
+        "annotation": "dict",
+        "default": null,
+        "line": 68
+      },
+      {
+        "name": "sender_breakdown",
+        "annotation": "dict",
+        "default": null,
+        "line": 69
+      }
+    ]
+  }
+]

@@ -1,0 +1,5348 @@
+[
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/api/client.ts",
+    "line": 18,
+    "declaration": "export const api = axios.create({"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/api/client.ts",
+    "line": 38,
+    "declaration": "export const getAccessToken = (): string | null => accessToken;"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/api/client.ts",
+    "line": 40,
+    "declaration": "export const setAccessToken = (token: string | null): void => {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/api/client.ts",
+    "line": 49,
+    "declaration": "export const setUnauthorizedHandler = (handler: () => void): void => {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/api/client.ts",
+    "line": 53,
+    "declaration": "export const login = async (password: string): Promise<void> => {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/api/client.ts",
+    "line": 58,
+    "declaration": "export const attachAuthHeader = ("
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/api/client.ts",
+    "line": 67,
+    "declaration": "export const handleAuthError = (error: AxiosError): Promise<never> => {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/api/client.ts",
+    "line": 83,
+    "declaration": "export const getDashboardStats = async (): Promise<DashboardStats> => {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/api/client.ts",
+    "line": 97,
+    "declaration": "export const getMessages = async (params?: GetMessagesParams): Promise<Message[]> => {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/api/client.ts",
+    "line": 102,
+    "declaration": "export const getMessage = async (id: number): Promise<Message> => {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/api/client.ts",
+    "line": 108,
+    "declaration": "export const getViolations = async (): Promise<ViolationSummary[]> => {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/api/client.ts",
+    "line": 114,
+    "declaration": "export const getPatterns = async (): Promise<PatternData[]> => {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/api/client.ts",
+    "line": 120,
+    "declaration": "export const getRiskMetrics = async (): Promise<RiskMetrics> => {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/api/client.ts",
+    "line": 126,
+    "declaration": "export const getTactics = async (): Promise<Tactic[]> => {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/api/client.ts",
+    "line": 132,
+    "declaration": "export const getTimeline = async (days: number = 30): Promise<TimelineEntry[]> => {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/api/client.ts",
+    "line": 140,
+    "declaration": "export const chat = async ("
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/api/client.ts",
+    "line": 173,
+    "declaration": "export const getCompanionBuildStatus = async ("
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/api/client.ts",
+    "line": 183,
+    "declaration": "export const startCompanionBuild = async ("
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/api/client.ts",
+    "line": 195,
+    "declaration": "export const getTemperature = async ("
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/api/client.ts",
+    "line": 212,
+    "declaration": "export const ELEVENLABS_VOICE_ID = 'kdnRe2koJdOK4Ovxn2DI';"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/api/client.ts",
+    "line": 214,
+    "declaration": "export const streamVoice = async ("
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/atoms/audioState.ts",
+    "line": 4,
+    "declaration": "export const voiceInputEnabledAtom = atom(false)"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/atoms/audioState.ts",
+    "line": 7,
+    "declaration": "export const voiceOutputEnabledAtom = atom(true)"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/atoms/audioState.ts",
+    "line": 11,
+    "declaration": "export const micPermissionAtom = atom<MicPermission>('prompt')"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/atoms/audioState.ts",
+    "line": 14,
+    "declaration": "export const interimTranscriptAtom = atom('')"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/atoms/audioState.ts",
+    "line": 17,
+    "declaration": "export const audioLevelAtom = atom(0)"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/atoms/audioState.ts",
+    "line": 20,
+    "declaration": "export const voiceIdAtom = atom('kdnRe2koJdOK4Ovxn2DI')"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/atoms/audioState.ts",
+    "line": 23,
+    "declaration": "export const toggleVoiceInputAtom = atom("
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/atoms/audioState.ts",
+    "line": 31,
+    "declaration": "export const toggleVoiceOutputAtom = atom("
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/atoms/conversationState.ts",
+    "line": 9,
+    "declaration": "export const conversationHistoryAtom = atom<ConversationMessage[]>([])"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/atoms/conversationState.ts",
+    "line": 12,
+    "declaration": "export const currentInputAtom = atom('')"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/atoms/conversationState.ts",
+    "line": 15,
+    "declaration": "export const isLoadingAtom = atom(false)"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/atoms/conversationState.ts",
+    "line": 18,
+    "declaration": "export const addMessageAtom = atom("
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/atoms/conversationState.ts",
+    "line": 27,
+    "declaration": "export const clearConversationAtom = atom("
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/atoms/conversationState.ts",
+    "line": 36,
+    "declaration": "export const conversationErrorAtom = atom<string | null>(null)"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/atoms/lexiState.ts",
+    "line": 5,
+    "declaration": "export const isSpeakingAtom = atom(false)"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/atoms/lexiState.ts",
+    "line": 8,
+    "declaration": "export const isListeningAtom = atom(false)"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/atoms/lexiState.ts",
+    "line": 11,
+    "declaration": "export const temperatureAtom = atom<TemperatureResponse | null>(null)"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/atoms/lexiState.ts",
+    "line": 17,
+    "declaration": "export const orbEpochAtom = atom(0)"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/atoms/toastState.ts",
+    "line": 11,
+    "declaration": "export const toastsAtom = atom<Toast[]>([])"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/atoms/toastState.ts",
+    "line": 13,
+    "declaration": "export const addToastAtom = atom("
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/atoms/toastState.ts",
+    "line": 24,
+    "declaration": "export const dismissToastAtom = atom("
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/companion/CompanionApp.tsx",
+    "line": 16,
+    "declaration": "export function CompanionApp() {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/companion/CompanionBuild.tsx",
+    "line": 12,
+    "declaration": "export function CompanionBuild() {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/companion/CompanionInput.tsx",
+    "line": 6,
+    "declaration": "export function CompanionInput() {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/companion/CompanionStatus.tsx",
+    "line": 4,
+    "declaration": "export function CompanionStatus() {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/companion/CompanionTools.tsx",
+    "line": 9,
+    "declaration": "export function CompanionTools({ onNavigate }: CompanionToolsProps) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/companion/CompanionTranscript.tsx",
+    "line": 6,
+    "declaration": "export function CompanionTranscript() {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/companion/companionMode.ts",
+    "line": 1,
+    "declaration": "export const COMPANION_MODE_PARAM = 'mode';"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/companion/companionMode.ts",
+    "line": 2,
+    "declaration": "export const COMPANION_MODE_VALUE = 'companion';"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/companion/companionMode.ts",
+    "line": 4,
+    "declaration": "export function isCompanionMode(search: string): boolean {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/companion/companionMode.ts",
+    "line": 8,
+    "declaration": "export function withoutCompanionMode(url: URL): string {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/components/LexiOrb.tsx",
+    "line": 26,
+    "declaration": "export const LexiOrb = forwardRef<OrbState, LexiOrbProps>("
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/components/LoginGate.tsx",
+    "line": 10,
+    "declaration": "export const LoginGate: React.FC<LoginGateProps> = ({ onSuccess }) => {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/components/shell/AnalyticsView.tsx",
+    "line": 33,
+    "declaration": "export function AnalyticsView({"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/components/shell/AppShell.tsx",
+    "line": 27,
+    "declaration": "export function AppShell({ left, middle, right, compactBar, date, theme, onToggleTheme }: AppShellProps) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/components/shell/ChatView.tsx",
+    "line": 34,
+    "declaration": "export function ChatView({ onClose }: { onClose: () => void }) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/components/shell/CompactChatBar.tsx",
+    "line": 37,
+    "declaration": "export function CompactChatBar({ theme, orbRef, showChat }: CompactChatBarProps) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/components/shell/LexiPanel.tsx",
+    "line": 29,
+    "declaration": "export function LexiPanel({ theme, orbRef, showChat }: LexiPanelProps) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/components/shell/MessageDetailView.tsx",
+    "line": 18,
+    "declaration": "export function MessageDetailView({ id, onClose }: MessageDetailViewProps) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/components/shell/MessagesPanel.tsx",
+    "line": 13,
+    "declaration": "export function MessagesPanel({ messages, loading, selectedId, onSelect }: MessagesPanelProps) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/components/shell/analytics/PatternsCard.tsx",
+    "line": 19,
+    "declaration": "export function PatternsCard({ patterns, tactics, activePatterns }: PatternsCardProps) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/components/shell/analytics/RiskMetricsGrid.tsx",
+    "line": 26,
+    "declaration": "export function RiskMetricsGrid({ risk }: RiskMetricsGridProps) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/components/shell/analytics/RiskTimeline.tsx",
+    "line": 87,
+    "declaration": "export function RiskTimeline({ timeline, chartWidth, chartHeight }: RiskTimelineProps) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/components/shell/analytics/ViolationsByClause.tsx",
+    "line": 54,
+    "declaration": "export function ViolationsByClause({"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/components/ui/Badge.tsx",
+    "line": 28,
+    "declaration": "export function Badge({ className, tone, ...props }: BadgeProps) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/components/ui/Button.tsx",
+    "line": 39,
+    "declaration": "export function Button({ className, variant, size, ...props }: ButtonProps) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/components/ui/Card.tsx",
+    "line": 3,
+    "declaration": "export function Card({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/components/ui/EmptyState.tsx",
+    "line": 17,
+    "declaration": "export function EmptyState({"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/components/ui/ErrorBoundary.tsx",
+    "line": 21,
+    "declaration": "export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/components/ui/Input.tsx",
+    "line": 3,
+    "declaration": "export function Input({ className, ...props }: React.InputHTMLAttributes<HTMLInputElement>) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/components/ui/Markdown.tsx",
+    "line": 24,
+    "declaration": "export function Markdown({ children, wrapperClassName }: MarkdownProps) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/components/ui/MessageRow.tsx",
+    "line": 34,
+    "declaration": "export function MessageRow({ message, selected, onSelect }: MessageRowProps) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/components/ui/SearchInput.tsx",
+    "line": 12,
+    "declaration": "export function SearchInput({ value, onChange, placeholder = 'Search…', className }: SearchInputProps) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/components/ui/Select.tsx",
+    "line": 16,
+    "declaration": "export function Select<T extends string>({ value, onChange, options, label, className }: SelectProps<T>) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/components/ui/Skeleton.tsx",
+    "line": 3,
+    "declaration": "export function Skeleton({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/components/ui/Stat.tsx",
+    "line": 10,
+    "declaration": "export function Stat({ label, value, sub, className }: StatProps) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/components/ui/Toast.tsx",
+    "line": 59,
+    "declaration": "export function ToastRegion() {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/components/ui/Tooltip.tsx",
+    "line": 22,
+    "declaration": "export function Tooltip({ content, children, className }: TooltipProps) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/components/ui/severityTone.ts",
+    "line": 12,
+    "declaration": "export function severityTone(score: number): 'neutral' | 'alert' | 'risk' {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/components/voice/VoiceController.tsx",
+    "line": 17,
+    "declaration": "export function VoiceController() {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/hooks/useCompanionBuild.ts",
+    "line": 24,
+    "declaration": "export function useCompanionBuild({ pollMs = 4000, maxPolls = 450 }: Options = {}) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/hooks/useDashboardView.ts",
+    "line": 5,
+    "declaration": "export function useDashboardView() {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/hooks/useLexiConversation.ts",
+    "line": 27,
+    "declaration": "export function useLexiConversation() {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/hooks/useMediaQuery.ts",
+    "line": 13,
+    "declaration": "export function useMediaQuery(query: string): boolean {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/hooks/useToast.ts",
+    "line": 12,
+    "declaration": "export function useToast() {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/hooks/useVoiceOutput.ts",
+    "line": 43,
+    "declaration": "export const __voicePipelineForTest = {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/hooks/useVoiceOutput.ts",
+    "line": 55,
+    "declaration": "export function useVoiceOutput() {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/hooks/useVoiceRecognition.ts",
+    "line": 56,
+    "declaration": "export function useVoiceRecognition() {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/lib/cn.ts",
+    "line": 45,
+    "declaration": "export function cn(...inputs: ClassValue[]): string {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/motion/CountUp.tsx",
+    "line": 4,
+    "declaration": "export function CountUp({ value, decimals = 0 }: { value: number; decimals?: number }) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/motion/MotionProvider.tsx",
+    "line": 4,
+    "declaration": "export function MotionProvider({ children }: { children: React.ReactNode }) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/motion/ThemeSweep.tsx",
+    "line": 6,
+    "declaration": "export function ThemeSweep({ theme }: { theme: Theme }) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/motion/variants.ts",
+    "line": 3,
+    "declaration": "export const panelStagger: Variants = {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/motion/variants.ts",
+    "line": 8,
+    "declaration": "export const panelItem: Variants = {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/motion/variants.ts",
+    "line": 13,
+    "declaration": "export const viewSwitch: Variants = {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/lab/OrbLab.tsx",
+    "line": 67,
+    "declaration": "export function OrbLab() {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/lab/childGuard.mjs",
+    "line": 31,
+    "declaration": "export function isOurProcess(pid, { cwd, match }) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/lab/childGuard.mjs",
+    "line": 48,
+    "declaration": "export function killGroup(pid, signal = 'SIGTERM') {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/lab/childGuard.mjs",
+    "line": 55,
+    "declaration": "export function writePidFile(pidFile, record) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/lab/childGuard.mjs",
+    "line": 59,
+    "declaration": "export function removePidFile(pidFile) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/lab/childGuard.mjs",
+    "line": 67,
+    "declaration": "export function sweepStale(pidFile, { cwd, match }) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/lab/childGuard.mjs",
+    "line": 90,
+    "declaration": "export function guard(pid, pidFile) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/lab/sceneClock.ts",
+    "line": 37,
+    "declaration": "export class SceneClock {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/lab/silhouette.mjs",
+    "line": 29,
+    "declaration": "export function decodePng(buf) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/lab/silhouette.mjs",
+    "line": 76,
+    "declaration": "export function radialProfile(png, { floor = 6, channel = 'luma', rays = 360 } = {}) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/lab/silhouette.mjs",
+    "line": 111,
+    "declaration": "export function sequenceStats(profiles, { dipThreshold = 1.5 } = {}) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/orbState.ts",
+    "line": 41,
+    "declaration": "export function createOrbState(): OrbState {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/pointerInput.ts",
+    "line": 42,
+    "declaration": "export function toOrbNdc("
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/pointerInput.ts",
+    "line": 62,
+    "declaration": "export const ORB_POINTER_INFLUENCE = {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/r3f/Backglow.tsx",
+    "line": 18,
+    "declaration": "export function Backglow({ state }: { state: OrbState }) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/r3f/BallMesh.tsx",
+    "line": 13,
+    "declaration": "export function BallMesh({ state }: { state: OrbState }) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/r3f/Membrane.tsx",
+    "line": 20,
+    "declaration": "export function Membrane({ state }: { state: OrbState }) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/r3f/OrbCanvas.tsx",
+    "line": 114,
+    "declaration": "export const OrbCanvas = forwardRef<OrbState, {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/r3f/PlasmaPlane.tsx",
+    "line": 24,
+    "declaration": "export function PlasmaPlane({ state }: { state: OrbState }) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/r3f/useOrbFrame.ts",
+    "line": 5,
+    "declaration": "export function useOrbFrame(state: OrbState) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/shaders.ts",
+    "line": 8,
+    "declaration": "export const ballVertexShader = `"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/shaders.ts",
+    "line": 652,
+    "declaration": "export const ballFragmentShader = `"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/shaders.ts",
+    "line": 1145,
+    "declaration": "export function createBallUniforms(params) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/shaders.ts",
+    "line": 1166,
+    "declaration": "export const membraneVertexShader = `"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/shaders.ts",
+    "line": 1179,
+    "declaration": "export const membraneFragmentShader = `"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/shaders.ts",
+    "line": 1287,
+    "declaration": "export function createMembraneUniforms(ballUniforms) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/shaders.ts",
+    "line": 1299,
+    "declaration": "export const plasmaVertexShader = `"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/shaders.ts",
+    "line": 1307,
+    "declaration": "export const plasmaFragmentShader = `"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/shaders.ts",
+    "line": 1483,
+    "declaration": "export function createPlasmaUniforms(ballUniforms) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/shaders.ts",
+    "line": 1495,
+    "declaration": "export const glowVertexShader = `"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/shaders.ts",
+    "line": 1503,
+    "declaration": "export const glowFragmentShader = `"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/shaders.ts",
+    "line": 1650,
+    "declaration": "export function createGlowUniforms(ballUniforms) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/orb/useOrbBehavior.ts",
+    "line": 14,
+    "declaration": "export function useOrbBehavior(orbRef: React.RefObject<OrbState | null>) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/theme.ts",
+    "line": 13,
+    "declaration": "export const THEME_STORAGE_KEY = 'lexi-theme';"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/theme.ts",
+    "line": 16,
+    "declaration": "export function getStoredTheme(): Theme {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/theme.ts",
+    "line": 27,
+    "declaration": "export function applyTheme(theme: Theme): void {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "lexi-dashboard/frontend/src/theme.ts",
+    "line": 39,
+    "declaration": "export function useTheme(): { theme: Theme; toggleTheme: () => void } {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "scripts/program/github-trace.mjs",
+    "line": 20,
+    "declaration": "export const SCHEMA_VERSION = 1;"
+  },
+  {
+    "repo": "LEXI",
+    "path": "scripts/program/github-trace.mjs",
+    "line": 21,
+    "declaration": "export const RECORD_KIND = 'github-ci-trace';"
+  },
+  {
+    "repo": "LEXI",
+    "path": "scripts/program/github-trace.mjs",
+    "line": 22,
+    "declaration": "export const DEFAULT_OUT_DIR = 'records/github-trace';"
+  },
+  {
+    "repo": "LEXI",
+    "path": "scripts/program/github-trace.mjs",
+    "line": 23,
+    "declaration": "export const INTERPRETATION = 'A GitHub CI trace records what the hosting service reported for one commit; it is observational evidence and does not itself authorize or advance any gate.';"
+  },
+  {
+    "repo": "LEXI",
+    "path": "scripts/program/github-trace.mjs",
+    "line": 52,
+    "declaration": "export const RECORD_KEYS = Object.freeze(["
+  },
+  {
+    "repo": "LEXI",
+    "path": "scripts/program/github-trace.mjs",
+    "line": 77,
+    "declaration": "export function createGitHubClient({"
+  },
+  {
+    "repo": "LEXI",
+    "path": "scripts/program/github-trace.mjs",
+    "line": 224,
+    "declaration": "export function buildEvents({ workflow_runs: runs, check_runs: checks }) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "scripts/program/github-trace.mjs",
+    "line": 268,
+    "declaration": "export function computeVerdict({ workflow_runs: runs, check_runs: checks, commit_statuses: statuses }) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "scripts/program/github-trace.mjs",
+    "line": 281,
+    "declaration": "export function buildSummary(record) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "scripts/program/github-trace.mjs",
+    "line": 328,
+    "declaration": "export function computeDigests(record) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "scripts/program/github-trace.mjs",
+    "line": 338,
+    "declaration": "export function parseRepository(value) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "scripts/program/github-trace.mjs",
+    "line": 344,
+    "declaration": "export async function collectTrace({ client, repository, sha, pr }) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "scripts/program/github-trace.mjs",
+    "line": 411,
+    "declaration": "export function assertTrace(record) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "scripts/program/github-trace.mjs",
+    "line": 462,
+    "declaration": "export function renderMarkdown(record) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "scripts/program/github-trace.mjs",
+    "line": 532,
+    "declaration": "export function parseArgs(argv) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "scripts/program/github-trace.mjs",
+    "line": 564,
+    "declaration": "export function outputPaths(outDir, sha) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "scripts/program/lib/canonical-json.mjs",
+    "line": 15,
+    "declaration": "export function canonicalJson(value) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "scripts/program/lib/canonical-json.mjs",
+    "line": 19,
+    "declaration": "export function sha256Bytes(value) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "scripts/program/lib/canonical-json.mjs",
+    "line": 23,
+    "declaration": "export async function sha256File(path) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "scripts/program/lib/canonical-json.mjs",
+    "line": 27,
+    "declaration": "export async function writeCanonicalJson(path, value) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "scripts/program/reference-gate.mjs",
+    "line": 14,
+    "declaration": "export const BASELINE_COMMANDS = Object.freeze(["
+  },
+  {
+    "repo": "LEXI",
+    "path": "scripts/program/reference-gate.mjs",
+    "line": 128,
+    "declaration": "export function assertReference(record, expected = EXPECTED) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "scripts/program/reference-gate.mjs",
+    "line": 141,
+    "declaration": "export function assertBaselineCommands(record) {"
+  },
+  {
+    "repo": "LEXI",
+    "path": "scripts/program/reference-gate.mjs",
+    "line": 202,
+    "declaration": "export async function collectReference({ sourceRoot, backupClone, backupZip }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": ".github/scripts/check-portable-paths.mjs",
+    "line": 9,
+    "declaration": "export function windowsPathViolation(repositoryPath) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": ".github/scripts/check-portable-paths.mjs",
+    "line": 23,
+    "declaration": "export function windowsCaseCollisionViolations(repositoryPaths) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/breakouts.mjs",
+    "line": 30,
+    "declaration": "export async function runPatternBreakouts({ pattern, ctx, baseDir, maxRounds = 3, makeFns }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/forge.mjs",
+    "line": 82,
+    "declaration": "export function syntheticApprovals(dossierMeta) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/forge.mjs",
+    "line": 114,
+    "declaration": "export async function forge({"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/generators.mjs",
+    "line": 17,
+    "declaration": "export function makePatternGenerators(pattern, ctx) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/live.mjs",
+    "line": 62,
+    "declaration": "export function councilApprovals({ callTool, models = {} }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/live.mjs",
+    "line": 121,
+    "declaration": "export function liveGenerators({ embed, vectorStore, callTool }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/live.mjs",
+    "line": 147,
+    "declaration": "export function makeCouncilFactFns({"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/live.mjs",
+    "line": 179,
+    "declaration": "export function liveBoundaries({ embed, vectorStore, callTool }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/live.mjs",
+    "line": 213,
+    "declaration": "export async function runForgeLive({"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/pattern.mjs",
+    "line": 8,
+    "declaration": "export function validatePattern(pattern) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/pattern.mjs",
+    "line": 32,
+    "declaration": "export function workstreamById(pattern, id) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/pattern.mjs",
+    "line": 36,
+    "declaration": "export function nodeTestFor(ws, ctx) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/pattern.mjs",
+    "line": 41,
+    "declaration": "export function signerForTask(pattern) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/pattern.mjs",
+    "line": 45,
+    "declaration": "export function patternTaskDefs(pattern, ctx) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/eval.mjs",
+    "line": 23,
+    "declaration": "export function evalContext(params = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/eval.mjs",
+    "line": 31,
+    "declaration": "export const DATASET = ["
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/eval.mjs",
+    "line": 53,
+    "declaration": "export function predict(input) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/eval.mjs",
+    "line": 75,
+    "declaration": "export function runTarget() {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/eval.mjs",
+    "line": 92,
+    "declaration": "export function computeMetrics(predicted, expected) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/eval.mjs",
+    "line": 130,
+    "declaration": "export function writeScorecard(dir) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/eval.mjs",
+    "line": 137,
+    "declaration": "export function verifyScorecard(dir) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/eval.mjs",
+    "line": 164,
+    "declaration": "export function gate(metrics, thresholds) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/eval.mjs",
+    "line": 181,
+    "declaration": "export function detectRegression(baseline, current, tolerance = 0.0) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/eval.mjs",
+    "line": 203,
+    "declaration": "export const evalBuildWorkstreams = ["
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/eval.mjs",
+    "line": 208,
+    "declaration": "export const evalPattern = {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/multiagent.mjs",
+    "line": 22,
+    "declaration": "export function multiagentContext(params = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/multiagent.mjs",
+    "line": 29,
+    "declaration": "export const ROLES = ["
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/multiagent.mjs",
+    "line": 34,
+    "declaration": "export function getRole(id) { return ROLES.find((r) => r.id === id) || null; }"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/multiagent.mjs",
+    "line": 50,
+    "declaration": "export function validate(msg) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/multiagent.mjs",
+    "line": 71,
+    "declaration": "export function route(task, roles = ROLES) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/multiagent.mjs",
+    "line": 88,
+    "declaration": "export function createBlackboard() {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/multiagent.mjs",
+    "line": 121,
+    "declaration": "export function runRound(task, callAgent, roles = ROLES) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/multiagent.mjs",
+    "line": 144,
+    "declaration": "export function aggregate(outputs) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/multiagent.mjs",
+    "line": 165,
+    "declaration": "export function shouldStop(state, maxRounds) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/multiagent.mjs",
+    "line": 186,
+    "declaration": "export const multiagentBuildWorkstreams = ["
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/multiagent.mjs",
+    "line": 191,
+    "declaration": "export const multiagentPattern = {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/rag.mjs",
+    "line": 85,
+    "declaration": "export function ragContext(params = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/rag.mjs",
+    "line": 192,
+    "declaration": "export function retrieve(query, topK) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/rag.mjs",
+    "line": 244,
+    "declaration": "export function buildPrompt(question, topK) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/rag.mjs",
+    "line": 315,
+    "declaration": "export const INJECTION_PATTERNS = ["
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/rag.mjs",
+    "line": 321,
+    "declaration": "export function detectInjection(input) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/rag.mjs",
+    "line": 331,
+    "declaration": "export function redactPII(text) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/rag.mjs",
+    "line": 339,
+    "declaration": "export function groundingGate(answer, contextChunks) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/rag.mjs",
+    "line": 352,
+    "declaration": "export function enforce(input, answer, contextChunks) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/rag.mjs",
+    "line": 498,
+    "declaration": "export const ragPattern = {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/serving.mjs",
+    "line": 23,
+    "declaration": "export function servingContext(params = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/serving.mjs",
+    "line": 31,
+    "declaration": "export function validate(req) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/serving.mjs",
+    "line": 51,
+    "declaration": "export function handle(req) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/serving.mjs",
+    "line": 71,
+    "declaration": "export function checkInput(req) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/serving.mjs",
+    "line": 91,
+    "declaration": "export function redactOutput(res) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/serving.mjs",
+    "line": 111,
+    "declaration": "export function createLimiter(capacity, windowMs) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/serving.mjs",
+    "line": 135,
+    "declaration": "export function authorize(token, action) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/serving.mjs",
+    "line": 156,
+    "declaration": "export function appendAudit(dir, entry) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/serving.mjs",
+    "line": 182,
+    "declaration": "export const servingBuildWorkstreams = ["
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/serving.mjs",
+    "line": 187,
+    "declaration": "export const servingPattern = {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/telos.mjs",
+    "line": 8,
+    "declaration": "export function telosContext(params = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/telos.mjs",
+    "line": 40,
+    "declaration": "export const signWorkstream = componentWorkstream({"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/telos.mjs",
+    "line": 65,
+    "declaration": "export const planWorkstream = componentWorkstream({"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/telos.mjs",
+    "line": 81,
+    "declaration": "export const provenanceWorkstream = componentWorkstream({"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/telos.mjs",
+    "line": 105,
+    "declaration": "export const gateWorkstream = componentWorkstream({"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/telos.mjs",
+    "line": 128,
+    "declaration": "export const councilWorkstream = componentWorkstream({"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/telos.mjs",
+    "line": 161,
+    "declaration": "export const ledgerWorkstream = componentWorkstream({"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/telos.mjs",
+    "line": 185,
+    "declaration": "export const breakoutWorkstream = componentWorkstream({"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/patterns/telos.mjs",
+    "line": 195,
+    "declaration": "export const telosPattern = {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-forge/workstreams/design.mjs",
+    "line": 11,
+    "declaration": "export function makeDesignWorkstream(buildWorkstreams) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-native-memory/scripts/audit.mjs",
+    "line": 210,
+    "declaration": "export function findMemoryDirs(root, findings = []) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-native-memory/scripts/audit.mjs",
+    "line": 571,
+    "declaration": "export function auditAuthorityRoot(root, out) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-native-memory/scripts/audit.mjs",
+    "line": 592,
+    "declaration": "export function auditMemoryDir(dir, root = dir) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-native-memory/scripts/audit.mjs",
+    "line": 602,
+    "declaration": "export function auditRoot(root) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-native-memory/scripts/lib/record.mjs",
+    "line": 19,
+    "declaration": "export const RECORD_KINDS = new Set(["
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-native-memory/scripts/lib/record.mjs",
+    "line": 30,
+    "declaration": "export const RECORD_STATUSES = new Set(["
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-native-memory/scripts/lib/record.mjs",
+    "line": 42,
+    "declaration": "export const RECORD_LIFECYCLES = new Set(["
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-native-memory/scripts/lib/record.mjs",
+    "line": 47,
+    "declaration": "export const DECISION_PROVENANCE = new Set(["
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-native-memory/scripts/lib/record.mjs",
+    "line": 53,
+    "declaration": "export function canonicalize(v) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-native-memory/scripts/lib/record.mjs",
+    "line": 61,
+    "declaration": "export function sha256hex(input) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-native-memory/scripts/lib/record.mjs",
+    "line": 66,
+    "declaration": "export function contentAddress(record) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-native-memory/scripts/lib/record.mjs",
+    "line": 71,
+    "declaration": "export function hasValidContentAddress(record) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-native-memory/scripts/lib/record.mjs",
+    "line": 77,
+    "declaration": "export function renderRecordList(title, records) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-native-memory/scripts/lib/record.mjs",
+    "line": 84,
+    "declaration": "export function resolveWithin(root, relativePath) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-native-memory/scripts/lib/record.mjs",
+    "line": 97,
+    "declaration": "export function isPortableExecutablePath(value) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-native-memory/scripts/lib/record.mjs",
+    "line": 142,
+    "declaration": "export function importSpecifiers(source) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-native-memory/scripts/lib/record.mjs",
+    "line": 209,
+    "declaration": "export function packageBoundaryProblems(root) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-native-memory/scripts/lib/record.mjs",
+    "line": 326,
+    "declaration": "export function readJson(p) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-native-memory/scripts/lib/record.mjs",
+    "line": 332,
+    "declaration": "export function finding(level, check, path, detail) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "ai-native-memory/scripts/lib/record.mjs",
+    "line": 337,
+    "declaration": "export function printFindings(findings, label) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "atropos/verify.mjs",
+    "line": 63,
+    "declaration": "export function loadAuthority(authorityPath) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "atropos/verify.mjs",
+    "line": 74,
+    "declaration": "export function verify(authority, rootDir) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "breakout/breakout.mjs",
+    "line": 28,
+    "declaration": "export async function runBreakout(input, fns) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "breakout/breakout.mjs",
+    "line": 122,
+    "declaration": "export function makeCouncilBreakout({ callTool, team, reviewer, challengerTool = \"grok_ask\", challengerSystem, challengerModel, memory, efforts = {} }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "breakout/breakout.mjs",
+    "line": 259,
+    "declaration": "export function makeGeminiReferee({ callTool, tool = \"gemini_ask\", model, effort }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "breakout/fight_memory.mjs",
+    "line": 16,
+    "declaration": "export function defaultFightMemoryDir() {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "breakout/fight_memory.mjs",
+    "line": 25,
+    "declaration": "export function createFightMemory({ dir = defaultFightMemoryDir() } = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "breakout/live.mjs",
+    "line": 21,
+    "declaration": "export async function runLiveBreakout({ workstream, checks, baseDir, evidence, maxRounds = 3, team, reviewer, env, discover } = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "breakout/mcp_client.mjs",
+    "line": 10,
+    "declaration": "export function frameMessage(obj) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "breakout/mcp_client.mjs",
+    "line": 15,
+    "declaration": "export function createFrameDecoder() {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "breakout/mcp_client.mjs",
+    "line": 49,
+    "declaration": "export function createNdjsonDecoder() {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "breakout/mcp_client.mjs",
+    "line": 71,
+    "declaration": "export function createMcpClient({ send, onData, framing = \"content-length\" }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "breakout/mcp_client.mjs",
+    "line": 129,
+    "declaration": "export function spawnMcpClient({"
+  },
+  {
+    "repo": "TELOS",
+    "path": "breakout/seat_router.mjs",
+    "line": 24,
+    "declaration": "export function createSeatRouter(registry, { spawn = spawnMcpClient } = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "breakout/verifier.mjs",
+    "line": 16,
+    "declaration": "export async function verifyChecks(checks) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "breakout/verifier.mjs",
+    "line": 41,
+    "declaration": "export async function runVerifiedBreakout(input, checks) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "breakout/verifier.mjs",
+    "line": 86,
+    "declaration": "export function resolveUnder(baseDir, p) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "breakout/verifier.mjs",
+    "line": 144,
+    "declaration": "export function safeCheckFromSpec(spec, baseDir) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "breakout/verifier.mjs",
+    "line": 160,
+    "declaration": "export function buildCheck(spec, baseDir) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "breakout/verifier.mjs",
+    "line": 189,
+    "declaration": "export function reverifyRecord(record, baseDir) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "breakout/verifier.mjs",
+    "line": 238,
+    "declaration": "export function fileExistsCheck(id, path) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "breakout/verifier.mjs",
+    "line": 250,
+    "declaration": "export function fileContainsCheck(id, path, needle) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "breakout/verifier.mjs",
+    "line": 270,
+    "declaration": "export function commandCheck(id, description, command, args, { cwd, expectExit = 0 } = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/build-orchestrator.mjs",
+    "line": 117,
+    "declaration": "export function makeTeamDispatch({ routeFor, callTeam, baseDir, dossier, maxAttempts = 2, verifyTeamFor, callVerify, requireVerify = false }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/build-orchestrator.mjs",
+    "line": 201,
+    "declaration": "export function makeTeamKeyring(teams) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/build-orchestrator.mjs",
+    "line": 237,
+    "declaration": "export async function buildProject({ dossier, telos, tasks, callSeat, callTeam, callWorkshopSeat, callParallelSeat, callVerify, requireVerify = false, keyring, signerFor, baseDir, telosDir, marketPackets = [], source, maxRepairRounds = 8, adaptAttempts = 2, concurrency, nowMs = 0, maxRevisions }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/check-registry.mjs",
+    "line": 23,
+    "declaration": "export const FORBIDDEN_PARAM_KEYS = new Set(["
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/check-registry.mjs",
+    "line": 92,
+    "declaration": "export function checkKinds() { return Object.keys(KINDS); }"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/check-registry.mjs",
+    "line": 93,
+    "declaration": "export function isRegistered(kind) { return Object.prototype.hasOwnProperty.call(KINDS, kind); }"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/check-registry.mjs",
+    "line": 97,
+    "declaration": "export function checkContractRef(checkContract) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/check-registry.mjs",
+    "line": 109,
+    "declaration": "export function resolve(kind, params_json) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/check-registry.mjs",
+    "line": 127,
+    "declaration": "export function isVettedResolvedTest(kind, test) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/concerns.mjs",
+    "line": 9,
+    "declaration": "export const JUDGMENT_CLASSES = [\"consideration\", \"hold-request\", \"evidence-claim\"];"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/concerns.mjs",
+    "line": 10,
+    "declaration": "export const SEVERITIES = [\"low\", \"medium\", \"high\", \"critical\"];"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/concerns.mjs",
+    "line": 11,
+    "declaration": "export const DISPOSITIONS = [\"verified\", \"dismissed\", \"waived\", \"superseded\", \"verification-required\", \"expired-unresolved\", \"unresolved\"];"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/concerns.mjs",
+    "line": 16,
+    "declaration": "export const TERMINAL_DISPOSITIONS = new Set([\"dismissed\", \"waived\", \"superseded\", \"verification-required\"]);"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/concerns.mjs",
+    "line": 20,
+    "declaration": "export const DISPOSITION_DERIVATIONS = {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/concerns.mjs",
+    "line": 41,
+    "declaration": "export function requiredVerificationRef(rv) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/concerns.mjs",
+    "line": 47,
+    "declaration": "export function concernRef({ plan_hash, scope, claim, judgment_class, seat, required_verification_ref }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/concerns.mjs",
+    "line": 53,
+    "declaration": "export function nodeVersionRef(node_lineage_ref, effective_hash) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/concerns.mjs",
+    "line": 57,
+    "declaration": "export function makeConcern({ planHash, scope, claim, severity, judgmentClass, requiredVerification, reasoningArtifactRef = null, raisedBy, normalizedFromLegacy = false, raisedAt = null, nodeLineageRef = null }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/concerns.mjs",
+    "line": 86,
+    "declaration": "export function normalizeLegacyHardStops(packet, { writeArtifact } = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/concerns.mjs",
+    "line": 101,
+    "declaration": "export function makeHold({ concern, riskClass, holdPolicy, createdAtMs, standing = null }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/concerns.mjs",
+    "line": 116,
+    "declaration": "export function makeDisposition({ concernRef: cref, planHash, disposition, derivedFrom, decidedAtMs = null }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/concerns.mjs",
+    "line": 126,
+    "declaration": "export function assertDispositionAllowed({ concern, recommendedBy, creationLineageKeys = new Set() }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/concerns.mjs",
+    "line": 133,
+    "declaration": "export function latestDispositions(dispositions) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/concerns.mjs",
+    "line": 145,
+    "declaration": "export function activeConcerns(concerns, dispositions, proposalId) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/concerns.mjs",
+    "line": 156,
+    "declaration": "export function openConcerns(concerns, dispositions) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/concerns.mjs",
+    "line": 163,
+    "declaration": "export function expireHolds({ holds, dispositions, nowMs }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/concerns.mjs",
+    "line": 195,
+    "declaration": "export function processReviewPackets({ results = [], planHash, recorder, riskClassFor, holdPolicyFor, standingFor = () => null, nowMs = 0 }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/concerns.mjs",
+    "line": 252,
+    "declaration": "export function reconstructProposalState(events) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/concerns.mjs",
+    "line": 270,
+    "declaration": "export function sweepExpiredHolds({ recorder, events, nowMs, recordedAt = null }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/concerns.mjs",
+    "line": 282,
+    "declaration": "export function evaluateConcernGate({ concerns, holds, dispositions, proposalId = null, nowMs }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/concerns.mjs",
+    "line": 316,
+    "declaration": "export function deriveRevisionDispositions({ priorActiveConcerns, actualNewPlan, attachedObligations = [], verifierResults = [], supersessionProofs = [], nowMs = null }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/council.mjs",
+    "line": 31,
+    "declaration": "export function maxConcurrency(requested) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/council.mjs",
+    "line": 42,
+    "declaration": "export function planSeats(dossier) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/council.mjs",
+    "line": 92,
+    "declaration": "export async function runCouncil({ seats, callSeat, dossier, maxConcurrency: requested, context = null } = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/council.mjs",
+    "line": 128,
+    "declaration": "export function liveSeatCaller({ client, promptFor, parsePacket }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/council.mjs",
+    "line": 190,
+    "declaration": "export function agyCheckpointArgs(dossier, scope) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/council.mjs",
+    "line": 214,
+    "declaration": "export function agyLifecycleCheckpointArgs(plan, dossier, scope) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/council.mjs",
+    "line": 236,
+    "declaration": "export function agyApprovalPacket(checkpoint, meta = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/daedalus.mjs",
+    "line": 15,
+    "declaration": "export const DAEDALUS_MAX_ROUNDS = 6;"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/daedalus.mjs",
+    "line": 16,
+    "declaration": "export const DAEDALUS_SEATS = SEATS.workshop_seats;"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/daedalus.mjs",
+    "line": 20,
+    "declaration": "export function computeObjectionHash(objection) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/daedalus.mjs",
+    "line": 31,
+    "declaration": "export function objectionLedgerFrom(rounds) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/daedalus.mjs",
+    "line": 58,
+    "declaration": "export function deriveWorkshopState({ rounds, maxRounds = DAEDALUS_MAX_ROUNDS, initialCandidateRef }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/daedalus.mjs",
+    "line": 94,
+    "declaration": "export function validateDispositions({ dispositions, openMenu, actorSeat, provenanceKey }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/daedalus.mjs",
+    "line": 119,
+    "declaration": "export async function runDaedalusWorkshop({ draft, callSeat, writeArtifact, appendEvent, maxRounds = DAEDALUS_MAX_ROUNDS }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/daedalus.mjs",
+    "line": 199,
+    "declaration": "export const PARALLEL_ROLES = SEATS.parallel_authorship;"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/daedalus.mjs",
+    "line": 200,
+    "declaration": "export const OBLIGATION_FIELDS = [\"invariant\", \"mechanism\", \"task\", \"negative_test\", \"exit_criterion\"];"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/daedalus.mjs",
+    "line": 203,
+    "declaration": "export function validateObligationMatrix(matrix) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/daedalus.mjs",
+    "line": 219,
+    "declaration": "export function validateObligationCoverage(matrix, declaredObligations) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/daedalus.mjs",
+    "line": 254,
+    "declaration": "export function deriveParallelState({ sources, integration, verifications } = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/daedalus.mjs",
+    "line": 311,
+    "declaration": "export async function runParallelDaedalus({ frame, callSeat, writeArtifact, appendEvent } = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/decompose.mjs",
+    "line": 43,
+    "declaration": "export async function decompose({ dossier, telos, callSeat, teams, conventions }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/evidence.mjs",
+    "line": 23,
+    "declaration": "export function deriveClaimId(claim) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/evidence.mjs",
+    "line": 29,
+    "declaration": "export function scrubbedEnv(base = process.env) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/evidence.mjs",
+    "line": 50,
+    "declaration": "export function defaultIsolationRunner({ baseDir, cmd, args, timeoutMs }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/evidence.mjs",
+    "line": 96,
+    "declaration": "export function testProvenance(node, { baselineTestRefs = new Set(), authorizedTestRefs = new Set() } = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/evidence.mjs",
+    "line": 106,
+    "declaration": "export const EVIDENCE_KINDS = Object.freeze({"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/evidence.mjs",
+    "line": 123,
+    "declaration": "export async function verifyEvidence(claim, ctx = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/gate.mjs",
+    "line": 23,
+    "declaration": "export const DEFAULT_PROTECTED_PATHS = ["
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/gate.mjs",
+    "line": 93,
+    "declaration": "export async function validateGate(dossierPath, packetDir, options = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/gate.mjs",
+    "line": 107,
+    "declaration": "export function validateRecords(dossier, packets, source = {}, capabilityPackets = [], marketPackets = [], proposal = null) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/model-profiles.mjs",
+    "line": 20,
+    "declaration": "export const MODEL_PROFILES = Object.fromEntries("
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/model-profiles.mjs",
+    "line": 31,
+    "declaration": "export function isPreferredRole(model, role) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/model-profiles.mjs",
+    "line": 44,
+    "declaration": "export const EFFORT_TIERS = SEATS.effort_tiers;"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/model-profiles.mjs",
+    "line": 46,
+    "declaration": "export function effortForRole(role) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/proposal-gate.mjs",
+    "line": 27,
+    "declaration": "export function verifyWrittenPlan(telosDir) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/proposal-gate.mjs",
+    "line": 44,
+    "declaration": "export function checkProposalRefBinding(packets, planHash, requiredModels) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/proposal-gate.mjs",
+    "line": 68,
+    "declaration": "export function collectCreationLineage(events) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/proposal-gate.mjs",
+    "line": 71,
+    "declaration": "export function collectReviewLineage(events, packets) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/proposal-gate.mjs",
+    "line": 79,
+    "declaration": "export function checkColdReview({ telosDir, events, packets, planHash, signed, baseDir, forceSignedDisjointness = false }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/proposal-gate.mjs",
+    "line": 133,
+    "declaration": "export function validateProposalLifecycle({ telosDir, packets = [], requiredModels = [], signed = false, baseDir, nowMs = 0, forceSignedDisjointness = false }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/proposal-orchestrator.mjs",
+    "line": 46,
+    "declaration": "export function serializeTasks(tasks) { return canonicalize(tasks); }"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/proposal-orchestrator.mjs",
+    "line": 47,
+    "declaration": "export function parseTasks(body) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/proposal-orchestrator.mjs",
+    "line": 76,
+    "declaration": "export function mintVerificationNodes(verificationRequests, tasks) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/proposal-orchestrator.mjs",
+    "line": 102,
+    "declaration": "export function makeExecutionLifecycleVerifier(baseDir) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/proposal-orchestrator.mjs",
+    "line": 145,
+    "declaration": "export async function runProposalLifecycle({"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/proposal-recorder.mjs",
+    "line": 23,
+    "declaration": "export function makeProposalRecorder({ telosDir, signerFor, proposalId = null } = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/proposal-recorder.mjs",
+    "line": 96,
+    "declaration": "export function buildReviewManifest({ telosDir, planHash, seat, role, workstream = null, reviewContract, evidenceFiles = [], baseDir, materialized = {} }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/proposal-recorder.mjs",
+    "line": 129,
+    "declaration": "export function buildRevisionBrief({ telosDir, sourceReviewEventRefs = [], sourceConcernRefs = [], requiredEditRefs = [], requiredVerificationRefs = [], prose = \"\" }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/risk-policy.mjs",
+    "line": 8,
+    "declaration": "export const DEFAULT_RISK_POLICY = Object.freeze({"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/risk-policy.mjs",
+    "line": 45,
+    "declaration": "export function loadRiskPolicy(dossier) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/risk-policy.mjs",
+    "line": 67,
+    "declaration": "export function normalizeRelPath(p) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/risk-policy.mjs",
+    "line": 81,
+    "declaration": "export function globToRegExp(glob) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/risk-policy.mjs",
+    "line": 95,
+    "declaration": "export function riskRank(policy, cls) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/risk-policy.mjs",
+    "line": 99,
+    "declaration": "export function highestClass(policy) { return policy.classes[policy.classes.length - 1]; }"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/risk-policy.mjs",
+    "line": 102,
+    "declaration": "export function classifyPath(relPath, policy) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/risk-policy.mjs",
+    "line": 119,
+    "declaration": "export function evaluateRiskClass(inputs, policy) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/risk-policy.mjs",
+    "line": 149,
+    "declaration": "export function holdPolicyFor(riskClass, policy) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/risk-policy.mjs",
+    "line": 156,
+    "declaration": "export function adjudicationPayload(adj) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/risk-policy.mjs",
+    "line": 159,
+    "declaration": "export function signAdjudication(adj, privatePem) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/risk-policy.mjs",
+    "line": 163,
+    "declaration": "export function verifyAdjudication(adj, policy) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/risk-policy.mjs",
+    "line": 177,
+    "declaration": "export function applyAdjudication(derivedClass, proposedClass, adjudication, policy, { plan_hash } = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/schemas.mjs",
+    "line": 19,
+    "declaration": "export const APPROVAL_PACKET_SCHEMA = {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/schemas.mjs",
+    "line": 35,
+    "declaration": "export const DECOMPOSE_TASKS_SCHEMA = {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/schemas.mjs",
+    "line": 69,
+    "declaration": "export const BUILD_FILESET_SCHEMA = {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/schemas.mjs",
+    "line": 91,
+    "declaration": "export const DAEDALUS_RESPONSE_SCHEMA = {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/schemas.mjs",
+    "line": 127,
+    "declaration": "export const PROPOSAL_REVIEW_PACKET_SCHEMA = {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/schemas.mjs",
+    "line": 176,
+    "declaration": "export const EVIDENCE_CLAIM_SCHEMA = {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/schemas.mjs",
+    "line": 194,
+    "declaration": "export const VERDICT_SCHEMA = {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/schemas.mjs",
+    "line": 221,
+    "declaration": "export const SCHEMAS = {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/schemas.mjs",
+    "line": 234,
+    "declaration": "export function validateAgainstSchema(schema, value, at = \"$\") {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/seat-registry.mjs",
+    "line": 28,
+    "declaration": "export function pluginsDir() {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/seat-registry.mjs",
+    "line": 34,
+    "declaration": "export function mapAskArgs(args = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/seat-registry.mjs",
+    "line": 53,
+    "declaration": "export function withLoadout(registry, servers = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/seat-registry.mjs",
+    "line": 71,
+    "declaration": "export function defaultSeatRegistry({ dir = pluginsDir() } = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/sign.mjs",
+    "line": 26,
+    "declaration": "export function canonicalize(packet) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/sign.mjs",
+    "line": 30,
+    "declaration": "export function signPacket(packet, secret) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/sign.mjs",
+    "line": 35,
+    "declaration": "export function verifyPacket(packet, secret) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/sign.mjs",
+    "line": 48,
+    "declaration": "export function secretFor(model) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/sign.mjs",
+    "line": 59,
+    "declaration": "export function signMarketPacket(packet, record, signer) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/situation.mjs",
+    "line": 24,
+    "declaration": "export function collectWriteTargets({ dossier, tasks }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/situation.mjs",
+    "line": 35,
+    "declaration": "export function detectConventions({ baseDir }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/situation.mjs",
+    "line": 52,
+    "declaration": "export function detectProtectedOnDisk({ baseDir, dossier }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/situation.mjs",
+    "line": 72,
+    "declaration": "export function senseProject({ baseDir, dossier, tasks }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/standing.mjs",
+    "line": 7,
+    "declaration": "export const STANDING_CONFIG = {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/standing.mjs",
+    "line": 14,
+    "declaration": "export const DEFAULT_BACKOFF = ["
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/standing.mjs",
+    "line": 21,
+    "declaration": "export function segmentKey(segment, dims) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/standing.mjs",
+    "line": 27,
+    "declaration": "export function conservativeStanding() {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/standing.mjs",
+    "line": 38,
+    "declaration": "export function standingRecordsFromEvents(events, dispositions = null) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/standing.mjs",
+    "line": 95,
+    "declaration": "export function deriveStanding({ events, dispositions = null, records = null, segment, config = STANDING_CONFIG, backoff = DEFAULT_BACKOFF }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/teamPrompts.mjs",
+    "line": 34,
+    "declaration": "export function profileFor(model) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/teamPrompts.mjs",
+    "line": 42,
+    "declaration": "export function extractJson(text, open = \"{\", close = \"}\") {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/teamPrompts.mjs",
+    "line": 54,
+    "declaration": "export function buildableSeat(team) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/teamPrompts.mjs",
+    "line": 61,
+    "declaration": "export function promptForTeam(team) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/teamPrompts.mjs",
+    "line": 69,
+    "declaration": "export function nodeBuildPrompt(node, priorFailure = null) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/teamPrompts.mjs",
+    "line": 83,
+    "declaration": "export function parseTeamFiles(text, node) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/teamPrompts.mjs",
+    "line": 105,
+    "declaration": "export function makeLiveCallTeam({ client }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/teamPrompts.mjs",
+    "line": 128,
+    "declaration": "export function promptForVerify(team) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/teamPrompts.mjs",
+    "line": 141,
+    "declaration": "export function verifyPrompt(node, artifactFiles) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/teamPrompts.mjs",
+    "line": 158,
+    "declaration": "export function parseVerdict(text) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/teamPrompts.mjs",
+    "line": 173,
+    "declaration": "export function makeLiveCallVerify({ client }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/teamPrompts.mjs",
+    "line": 194,
+    "declaration": "export function approvalPromptFor(dossier, { models = {} } = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/teamPrompts.mjs",
+    "line": 227,
+    "declaration": "export function parseReviewPacket(text, model, dossier, meta = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/teamPrompts.mjs",
+    "line": 258,
+    "declaration": "export function reviewPromptFor(dossier, { models = {}, plan = null } = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/teamPrompts.mjs",
+    "line": 280,
+    "declaration": "export function daedalusPromptFor({ seat, candidateBody, openMenu = [], model }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/teamPrompts.mjs",
+    "line": 297,
+    "declaration": "export function parseDaedalusResponse(text, { provenance = null } = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/teamPrompts.mjs",
+    "line": 307,
+    "declaration": "export function parseApprovalPacket(text, model, dossier, meta = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/teamPrompts.mjs",
+    "line": 331,
+    "declaration": "export function decomposePrompt(dossier, telos, conventions = null) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/teamPrompts.mjs",
+    "line": 344,
+    "declaration": "export function parseDecomposeTasks(text) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/teamPrompts.mjs",
+    "line": 363,
+    "declaration": "export function makeLiveCallSeat({ client, liveSeatCaller, dossier, meta = {}, models = {}, planningModel = \"claude\" }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/teams.mjs",
+    "line": 27,
+    "declaration": "export const TEAMS = ["
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/teams.mjs",
+    "line": 63,
+    "declaration": "export function planTeams(dossier) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/teams.mjs",
+    "line": 81,
+    "declaration": "export function teamForNode(node, teams) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/teams.mjs",
+    "line": 99,
+    "declaration": "export function verifyTeamForNode(node, teams) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/teams.mjs",
+    "line": 121,
+    "declaration": "export function authorizedSignersFor(teams, keyring) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "build-gate/test-runner.mjs",
+    "line": 28,
+    "declaration": "export function runNodeTest(node, baseDir, { timeoutMs = DEFAULT_TIMEOUT_MS } = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/inventory.mjs",
+    "line": 21,
+    "declaration": "export const PACKAGE_ROOTS = Object.freeze(["
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/inventory.mjs",
+    "line": 36,
+    "declaration": "export const PACKAGE_ROOTS_EXCLUDE = Object.freeze(["
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/inventory.mjs",
+    "line": 48,
+    "declaration": "export const DOC_ROOTS = Object.freeze([\"contracts\", \"docs\"]);"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/inventory.mjs",
+    "line": 55,
+    "declaration": "export const DOC_WEAVER_EXCLUDE = Object.freeze([\"docs/runs\"]);"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/inventory.mjs",
+    "line": 56,
+    "declaration": "export const GLOBAL_EXCLUDE = Object.freeze([\"docs/runs/clotho-self-weave\"]);"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/inventory.mjs",
+    "line": 59,
+    "declaration": "export const CONTRACT_FILES = Object.freeze(["
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/inventory.mjs",
+    "line": 78,
+    "declaration": "export const LEDGER_SOURCES = Object.freeze(["
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/inventory.mjs",
+    "line": 86,
+    "declaration": "export const RUN_SOURCES = Object.freeze(["
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/inventory.mjs",
+    "line": 96,
+    "declaration": "export const WEAVERS = Object.freeze(["
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/inventory.mjs",
+    "line": 107,
+    "declaration": "export const REQUIRED_INVENTORY_IDS = deepFreeze({"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/inventory.mjs",
+    "line": 118,
+    "declaration": "export const LOADER_CAPABLE_BUILTIN_SAFE_EXPORTS = deepFreeze({"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/inventory.mjs",
+    "line": 128,
+    "declaration": "export const WEAVER_IMPL_FILES = deepFreeze({"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/inventory.mjs",
+    "line": 157,
+    "declaration": "export const WEAVER_ENTRY_MODULE = Object.freeze({"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/inventory.mjs",
+    "line": 169,
+    "declaration": "export const PERMITTED_EXTERNAL_CLOSURE_FILES = Object.freeze(["
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/inventory.mjs",
+    "line": 183,
+    "declaration": "export const ORCHESTRATOR_ENTRY_MODULES = Object.freeze(["
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/inventory.mjs",
+    "line": 188,
+    "declaration": "export const ORCHESTRATOR_FILES = Object.freeze(["
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/inventory.mjs",
+    "line": 207,
+    "declaration": "export const FATAL_WARNING_CODES = Object.freeze(["
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/query.mjs",
+    "line": 58,
+    "declaration": "export const CONSULTED_PRODUCERS = Object.freeze({ threadsOf: THREADS_CONSULTED, blastRadius: BLAST_CONSULTED });"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/query.mjs",
+    "line": 246,
+    "declaration": "export function assertCoverageSchema(result, consultedProducers) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/query.mjs",
+    "line": 295,
+    "declaration": "export function threadsOf(records, nodeId, options = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/query.mjs",
+    "line": 323,
+    "declaration": "export function blastRadius(records, nodeId, depth, options = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/query.mjs",
+    "line": 443,
+    "declaration": "export function why(records, nodeId, options = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/query.mjs",
+    "line": 457,
+    "declaration": "export function reportGaps(records, nodeId, expectedKinds, options = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/registry.mjs",
+    "line": 37,
+    "declaration": "export const NODE_KINDS = readonlySet(["
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/registry.mjs",
+    "line": 42,
+    "declaration": "export const EDGE_KINDS = readonlySet(["
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/registry.mjs",
+    "line": 47,
+    "declaration": "export const ASSERTION_STATUS = readonlySet(["
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/registry.mjs",
+    "line": 65,
+    "declaration": "export function canonicalJson(value) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/registry.mjs",
+    "line": 210,
+    "declaration": "export function validateLocator(kind, locator, { repositoryRef } = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/registry.mjs",
+    "line": 268,
+    "declaration": "export function deriveNodeId(descriptor) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/registry.mjs",
+    "line": 279,
+    "declaration": "export function validateSourceRef(sourceRef) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/registry.mjs",
+    "line": 313,
+    "declaration": "export function validateAssertionStatus(assertedBy, assertionStatus) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/registry.mjs",
+    "line": 352,
+    "declaration": "export function validateEdgeInput(edgeInput, { repositoryRef } = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/registry.mjs",
+    "line": 395,
+    "declaration": "export function docAddressKey(descriptor) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/registry.mjs",
+    "line": 431,
+    "declaration": "export function deriveRepositoryRef(git) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/thread-ledger.mjs",
+    "line": 188,
+    "declaration": "export function createLedger(ledgerPath, { signKey, wovenAt, repoHead, repositoryRef, git = defaultGit, openFile = defaultOpenFile } = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/thread-ledger.mjs",
+    "line": 285,
+    "declaration": "export async function verifyLedger(ledgerPath, { openReadStream } = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weave.mjs",
+    "line": 56,
+    "declaration": "export const DRIVER_ERROR_CODES = Object.freeze(["
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weave.mjs",
+    "line": 81,
+    "declaration": "export const PUBLICATION_STATES = Object.freeze(["
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weave.mjs",
+    "line": 145,
+    "declaration": "export function validateSkip(skipList, weaverIds) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weave.mjs",
+    "line": 155,
+    "declaration": "export function validateOut(outRel) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weave.mjs",
+    "line": 396,
+    "declaration": "export async function runWeave(options = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weave.mjs",
+    "line": 708,
+    "declaration": "export function exitCodeForResult(result) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weave.mjs",
+    "line": 716,
+    "declaration": "export function parseArgs(argv) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/code.mjs",
+    "line": 20,
+    "declaration": "export function weave(ctx) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/doc.mjs",
+    "line": 26,
+    "declaration": "export function weave(ctx) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/git.mjs",
+    "line": 51,
+    "declaration": "export function weave(ctx) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/ledger.mjs",
+    "line": 105,
+    "declaration": "export function weave(ctx) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/test.mjs",
+    "line": 23,
+    "declaration": "export function weave(ctx) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/util.mjs",
+    "line": 28,
+    "declaration": "export const PROFILE_DIAGNOSTIC = \"unsupported-module-lexical-profile\";"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/util.mjs",
+    "line": 29,
+    "declaration": "export class ProfileError extends Error {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/util.mjs",
+    "line": 35,
+    "declaration": "export function escapeRegExp(s) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/util.mjs",
+    "line": 43,
+    "declaration": "export function isCanonicalRepoRelPosix(p) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/util.mjs",
+    "line": 162,
+    "declaration": "export function lex(source) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/util.mjs",
+    "line": 507,
+    "declaration": "export function classifyModuleLoads(source) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/util.mjs",
+    "line": 752,
+    "declaration": "export function resolveRelativeSpecifier(fromFileAbs, specifier, { repoRoot, extensions = [\".mjs\"] } = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/util.mjs",
+    "line": 805,
+    "declaration": "export function deriveAcceptedClosure(entryFileAbs, { repoRoot, allowExternal = new Set() } = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/util.mjs",
+    "line": 886,
+    "declaration": "export function scanExports(source) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/util.mjs",
+    "line": 953,
+    "declaration": "export function scanImports(source) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/util.mjs",
+    "line": 1023,
+    "declaration": "export function identifierUsedOutside(source, name, excludeSpans) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/util.mjs",
+    "line": 1038,
+    "declaration": "export function walkFiles(repoRoot, roots) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/util.mjs",
+    "line": 1091,
+    "declaration": "export function seedSourceDescriptors(repoRoot, packageRoots, git) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/util.mjs",
+    "line": 1150,
+    "declaration": "export function makeCountedSource(inventoryId, list) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/util.mjs",
+    "line": 1178,
+    "declaration": "export function physicalContainment(repoRoot, candidate) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/util.mjs",
+    "line": 1235,
+    "declaration": "export function validateGitArgs(args) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/util.mjs",
+    "line": 1292,
+    "declaration": "export function gitSpawnOptions(repoRoot, _options = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/util.mjs",
+    "line": 1301,
+    "declaration": "export function makeGitRunner(repoRoot) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/util.mjs",
+    "line": 1308,
+    "declaration": "export function isFullSha(s) { return typeof s === \"string\" && HEX40.test(s); }"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/util.mjs",
+    "line": 1325,
+    "declaration": "export function splitMarkdownSections(input) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "clotho/weavers/util.mjs",
+    "line": 1456,
+    "declaration": "export function validateWeaveManifest(manifest, { weaverEdgeIds = new Set() } = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "connectors/ai-peer-mcp/lib.mjs",
+    "line": 21,
+    "declaration": "export const AGY_ENGINE_VERSION = \"agy-checkpoint/1\";"
+  },
+  {
+    "repo": "TELOS",
+    "path": "connectors/ai-peer-mcp/lib.mjs",
+    "line": 23,
+    "declaration": "export function extractAnthropicText(json) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "connectors/ai-peer-mcp/lib.mjs",
+    "line": 33,
+    "declaration": "export function extractAnthropicResult(json) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "connectors/ai-peer-mcp/lib.mjs",
+    "line": 47,
+    "declaration": "export function extractAnthropicStructuredResult(json) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "connectors/ai-peer-mcp/lib.mjs",
+    "line": 60,
+    "declaration": "export function extractChatCompletionResult(json) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "connectors/ai-peer-mcp/lib.mjs",
+    "line": 68,
+    "declaration": "export function extractGrokResult(json) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "connectors/ai-peer-mcp/lib.mjs",
+    "line": 74,
+    "declaration": "export function extractOpenAIResult(json) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "connectors/ai-peer-mcp/lib.mjs",
+    "line": 82,
+    "declaration": "export function extractGeminiResult(json) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "connectors/ai-peer-mcp/lib.mjs",
+    "line": 98,
+    "declaration": "export function stableStringify(value) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "connectors/ai-peer-mcp/lib.mjs",
+    "line": 112,
+    "declaration": "export function agyAttestation(checkpoint) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "connectors/ai-peer-mcp/lib.mjs",
+    "line": 128,
+    "declaration": "export function agyCheckpoint(args) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "connectors/ai-peer-mcp/lib.mjs",
+    "line": 172,
+    "declaration": "export function chooseOwner(blockedReasons) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "connectors/ai-peer-mcp/server.mjs",
+    "line": 50,
+    "declaration": "export function mapModelName(model) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "connectors/ai-peer-mcp/server.mjs",
+    "line": 454,
+    "declaration": "export async function askClaude(args) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "connectors/ai-peer-mcp/server.mjs",
+    "line": 539,
+    "declaration": "export async function askGrok(args) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "connectors/ai-peer-mcp/server.mjs",
+    "line": 587,
+    "declaration": "export async function askCodex(args) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "connectors/ai-peer-mcp/server.mjs",
+    "line": 653,
+    "declaration": "export async function askGemini(args) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "demo/verify.js",
+    "line": 8,
+    "declaration": "export function canonical(v) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "demo/verify.js",
+    "line": 16,
+    "declaration": "export function entryBytes(entry) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "demo/verify.js",
+    "line": 21,
+    "declaration": "export function base64ToBytes(b64) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "demo/verify.js",
+    "line": 28,
+    "declaration": "export async function sha256Hex(bytes, subtle = globalThis.crypto?.subtle) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "demo/verify.js",
+    "line": 33,
+    "declaration": "export async function verifyDecision(record, publicJwk, subtle = globalThis.crypto?.subtle) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "demo/verify.js",
+    "line": 49,
+    "declaration": "export async function verifyDigest(record, digest, subtle = globalThis.crypto?.subtle) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "forge/breakouts.mjs",
+    "line": 3,
+    "declaration": "export function factBreakout({ checks, baseDir, repair }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "forge/claims.mjs",
+    "line": 21,
+    "declaration": "export const GRADES = [\"executable\", \"inspectable\", \"cited\", \"hypothesis\"];"
+  },
+  {
+    "repo": "TELOS",
+    "path": "forge/claims.mjs",
+    "line": 47,
+    "declaration": "export function renderClaimRules(claims) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "forge/driver.mjs",
+    "line": 24,
+    "declaration": "export async function driveUntil({"
+  },
+  {
+    "repo": "TELOS",
+    "path": "forge/generators.mjs",
+    "line": 12,
+    "declaration": "export function generatorDispatch({ baseDir, generateFiles, signerForTask }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "forge/manifest.mjs",
+    "line": 31,
+    "declaration": "export const WORKSTREAM_ID = /^[A-Za-z0-9][A-Za-z0-9_.-]*$/;"
+  },
+  {
+    "repo": "TELOS",
+    "path": "forge/manifest.mjs",
+    "line": 32,
+    "declaration": "export const WORKSTREAM_ID_MAX = 100;"
+  },
+  {
+    "repo": "TELOS",
+    "path": "forge/manifest.mjs",
+    "line": 41,
+    "declaration": "export function validateManifest(m) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "forge/manifest.mjs",
+    "line": 101,
+    "declaration": "export function workstreamsFromManifest(m) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "forge/manifest.mjs",
+    "line": 112,
+    "declaration": "export function defsFromManifest(m, { checkNodePath }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "forge/manifest.mjs",
+    "line": 126,
+    "declaration": "export function dossierFromManifest(m) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "forge/operator.mjs",
+    "line": 53,
+    "declaration": "export const QUOTA_ERROR = /credit balance|insufficient_quota|quota exceeded|rate limit|429|billing/i;"
+  },
+  {
+    "repo": "TELOS",
+    "path": "forge/operator.mjs",
+    "line": 55,
+    "declaration": "export const entryHash = (record) => \"sha256:\" + createHash(\"sha256\").update(Buffer.from(canonical(record))).digest(\"hex\");"
+  },
+  {
+    "repo": "TELOS",
+    "path": "forge/operator.mjs",
+    "line": 92,
+    "declaration": "export function readOpsLedgerStrict(ledgerPath) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "forge/operator.mjs",
+    "line": 122,
+    "declaration": "export function createOperator({ workdir, rulebook, bounds = {}, actions, signerName = \"operator\" }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "forge/operator.mjs",
+    "line": 347,
+    "declaration": "export function renderInbox(workdir) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "forge/ratchet.mjs",
+    "line": 42,
+    "declaration": "export const loadJson = (p, fallback) => {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "forge/ratchet.mjs",
+    "line": 47,
+    "declaration": "export const loadJsonState = (p) => {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "forge/ratchet.mjs",
+    "line": 57,
+    "declaration": "export const saveJson = (p, v) => {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "forge/ratchet.mjs",
+    "line": 74,
+    "declaration": "export function loadKeys(workdir, signers = [\"claude\", \"codex\"], log = () => {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "forge/ratchet.mjs",
+    "line": 89,
+    "declaration": "export async function pinResearch(workdir, name, produce, log = () => {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "forge/ratchet.mjs",
+    "line": 110,
+    "declaration": "export function openState(workdir) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "forge/ratchet.mjs",
+    "line": 132,
+    "declaration": "export function foldDefs(rawDefs, state, log = () => {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "forge/ratchet.mjs",
+    "line": 159,
+    "declaration": "export function styxGenerateFiles({ state, generate, binary = (rel) => /\\.(png|jpe?g|gif|webp|ico)$/i.test(rel), log = () => {} }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "forge/ratchet.mjs",
+    "line": 193,
+    "declaration": "export const INFRA_ERROR = /credit balance|insufficient_quota|quota exceeded|rate limit|429|ENOTFOUND|ETIMEDOUT|ECONNRESET|fetch failed|getaddrinfo|socket hang up|MCP error -3260[0-9]|MCP error -32000/i;"
+  },
+  {
+    "repo": "TELOS",
+    "path": "forge/ratchet.mjs",
+    "line": 211,
+    "declaration": "export function withTransientRetry(callTool, { retries = 3, backoffMs = 4000, log = () => {} } = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "forge/ratchet.mjs",
+    "line": 237,
+    "declaration": "export function bankVerifyFailures(halts, state, log = () => {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "forge/ratchet.mjs",
+    "line": 262,
+    "declaration": "export function fightLogPath(telosDir, wsId) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "forge/ratchet.mjs",
+    "line": 273,
+    "declaration": "export function contractClosure(state, wsId) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "forge/ratchet.mjs",
+    "line": 289,
+    "declaration": "export async function runBouts({ workstreams, state, makeFns, defById, hashById, telosDir, maxRounds, log = () => {} }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "forge/ratchet.mjs",
+    "line": 359,
+    "declaration": "export function approvalEvidenceDigest(records, workdir) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "lachesis/ingest.mjs",
+    "line": 32,
+    "declaration": "export const NODE_KINDS = Object.freeze([\"contract-clause\", \"code-symbol\", \"repository-file\", \"test\", \"commit\", \"concern\", \"obligation\", \"check-contract\", \"run-evidence\", \"doc-section\", \"decision\"]);"
+  },
+  {
+    "repo": "TELOS",
+    "path": "lachesis/ingest.mjs",
+    "line": 33,
+    "declaration": "export const EDGE_KINDS = Object.freeze([\"depends-on\", \"introduced-by\", \"motivated-by\", \"verified-by\", \"documented-in\", \"evidenced-by\", \"discharges\", \"supersedes\"]);"
+  },
+  {
+    "repo": "TELOS",
+    "path": "lachesis/ingest.mjs",
+    "line": 64,
+    "declaration": "export function loadWeave(manifest, rootDir) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "lachesis/measure.mjs",
+    "line": 21,
+    "declaration": "export const RISK_BLAST_DEPTH = Infinity; // full transitive reverse closure — depth-deterministic"
+  },
+  {
+    "repo": "TELOS",
+    "path": "lachesis/measure.mjs",
+    "line": 81,
+    "declaration": "export function dependencies(weave, nodeId) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "lachesis/measure.mjs",
+    "line": 86,
+    "declaration": "export function blastRadius(weave, nodeId, depth = RISK_BLAST_DEPTH) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "lachesis/measure.mjs",
+    "line": 110,
+    "declaration": "export function relevance(weave, nodeId) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "lachesis/measure.mjs",
+    "line": 119,
+    "declaration": "export function riskClass(weave, nodeId, coverage = \"unverified\") {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "lachesis/measure.mjs",
+    "line": 129,
+    "declaration": "export function assess(weave, nodeId, coverage = \"unverified\") {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/artifact.mjs",
+    "line": 6,
+    "declaration": "export function computeDiskTreeHash(files, baseDir) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/artifact.mjs",
+    "line": 19,
+    "declaration": "export function hasEscape(result) { return result.files.some((f) => f.status === \"escape\"); }"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/crypto.mjs",
+    "line": 7,
+    "declaration": "export function generateKeypair() {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/crypto.mjs",
+    "line": 21,
+    "declaration": "export function signTransaction(tx, privatePem) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/crypto.mjs",
+    "line": 25,
+    "declaration": "export function verifyTransaction(record, publicJwk) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/crypto.mjs",
+    "line": 32,
+    "declaration": "export function makeRecord(tx, model, privatePem, signed_at = null) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/crypto.mjs",
+    "line": 39,
+    "declaration": "export function appendLedger(ledgerPath, record) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/crypto.mjs",
+    "line": 53,
+    "declaration": "export function readLedger(ledgerPath) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/crypto.mjs",
+    "line": 64,
+    "declaration": "export function writePublicKey(keysDir, model, publicJwk) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/crypto.mjs",
+    "line": 68,
+    "declaration": "export function loadPublicKey(keysDir, model) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/ledger-gate.mjs",
+    "line": 13,
+    "declaration": "export function verify(telosDir, { baseDir } = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/merkle.mjs",
+    "line": 57,
+    "declaration": "export function specHash(node) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/merkle.mjs",
+    "line": 62,
+    "declaration": "export function effectiveHash(node, effByID) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/merkle.mjs",
+    "line": 68,
+    "declaration": "export function topoSort(nodes) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/merkle.mjs",
+    "line": 100,
+    "declaration": "export function computePlan(taskDefs, opts = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/merkle.mjs",
+    "line": 154,
+    "declaration": "export function recompute(plan) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/merkle.mjs",
+    "line": 161,
+    "declaration": "export function mutateNode(plan, nodeId, newSpec, reasonRef = null) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/merkle.mjs",
+    "line": 176,
+    "declaration": "export function writePlan(telosDir, plan) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/merkle.mjs",
+    "line": 182,
+    "declaration": "export function readPlan(telosDir) { return JSON.parse(readFileSync(path.join(telosDir, \"plan.json\"), \"utf8\")); }"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/merkle.mjs",
+    "line": 183,
+    "declaration": "export function appendPlanHistory(telosDir, event) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/obligation.mjs",
+    "line": 15,
+    "declaration": "export function deriveObligationRef({ obligation_id, concern_ref, required_result, check_contract_ref }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/obligation.mjs",
+    "line": 24,
+    "declaration": "export function deriveTestRef(test) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/obligation.mjs",
+    "line": 38,
+    "declaration": "export function deriveExecutableRef(test) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/obligation.mjs",
+    "line": 49,
+    "declaration": "export function deriveVerifyNodeId(concernRef) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/obligation.mjs",
+    "line": 52,
+    "declaration": "export function deriveObligationId(concernRef) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/obligation.mjs",
+    "line": 58,
+    "declaration": "export function normalizeVerifies(verifies) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/obligation.mjs",
+    "line": 72,
+    "declaration": "export function attachObligations(taskDefs, obligationDefs) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/obligation.mjs",
+    "line": 128,
+    "declaration": "export function checkObligationAnchors(plan, { recomputedPlanHash } = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/obligation.mjs",
+    "line": 155,
+    "declaration": "export function undischargedObligations(plan, nodeReportById) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/orchestrate.mjs",
+    "line": 19,
+    "declaration": "export function checkLifecycleAuthorization(telosDir, plan, { lifecycleVerify, nowMs = 0 } = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/orchestrate.mjs",
+    "line": 68,
+    "declaration": "export function readySet(plan, ledger) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/orchestrate.mjs",
+    "line": 121,
+    "declaration": "export async function defaultVerifyNode(node, baseDir) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/orchestrate.mjs",
+    "line": 190,
+    "declaration": "export async function runBuild({ telosDir, baseDir, dispatch, verifyNode = defaultVerifyNode, signerFor, maxRounds = 1000, concurrency, authorizedPlanHash, requireAuthorizedDecision, lifecycleVerify, nowMs = 0 }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/planner.mjs",
+    "line": 21,
+    "declaration": "export function assignNodeLineages(defs, { proposalId, predecessorPlan = null } = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/planner.mjs",
+    "line": 42,
+    "declaration": "export function compileAndHashPlan({ tasks, authorizedSigners, repoRoot, strict, obligations, lifecycle }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/proposal-ledger.mjs",
+    "line": 15,
+    "declaration": "export const PROPOSAL_KEY_ID = \"proposal-controller\";"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/proposal-ledger.mjs",
+    "line": 16,
+    "declaration": "export const PROPOSAL_CONTRACT_VERSION = \"proposal-lifecycle/1\";"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/proposal-ledger.mjs",
+    "line": 17,
+    "declaration": "export const PROPOSAL_STAGES = new Set([\"draft\", \"negotiation\", \"candidate\", \"review\", \"hold\", \"disposition\", \"decision\"]);"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/proposal-ledger.mjs",
+    "line": 29,
+    "declaration": "export function makeProposalEvent(fields, privatePem) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/proposal-ledger.mjs",
+    "line": 37,
+    "declaration": "export function verifyProposalEvent(event, publicJwk) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/proposal-ledger.mjs",
+    "line": 45,
+    "declaration": "export function proposalEventHash(event) { return H(event); }"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/proposal-ledger.mjs",
+    "line": 51,
+    "declaration": "export function readProposalEvents(telosDir) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/proposal-ledger.mjs",
+    "line": 68,
+    "declaration": "export function verifyProposalChain(events, publicJwk, { proposalId } = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/proposal-ledger.mjs",
+    "line": 127,
+    "declaration": "export function atomicAppendProposalEvent(telosDir, buildEvent, { publicJwk }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/proposal-ledger.mjs",
+    "line": 155,
+    "declaration": "export function latestDecisionForPlan(events, planHash) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/proposal-ledger.mjs",
+    "line": 162,
+    "declaration": "export function deriveProposalId(draftArtifactRefs) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/proposal-ledger.mjs",
+    "line": 170,
+    "declaration": "export function normalizeProvenance(prov) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/proposal-ledger.mjs",
+    "line": 180,
+    "declaration": "export function lineageKey(provider, responseId) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/proposal-ledger.mjs",
+    "line": 189,
+    "declaration": "export function artifactRef(value) { return H(value); }"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/proposal-ledger.mjs",
+    "line": 191,
+    "declaration": "export function writeProposalArtifact(telosDir, value) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/proposal-ledger.mjs",
+    "line": 207,
+    "declaration": "export function readProposalArtifact(telosDir, ref) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/proposal-ledger.mjs",
+    "line": 219,
+    "declaration": "export function computeReviewInputHash(manifest) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/proposal-ledger.mjs",
+    "line": 229,
+    "declaration": "export const POLICY_CHECK_KEYS = ["
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/proposal-ledger.mjs",
+    "line": 234,
+    "declaration": "export const FINDING_CLASSES = [\"protocol\", \"unrecoverable\", \"verified\", \"edit\", \"verification\", \"hold\"];"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/proposal-ledger.mjs",
+    "line": 241,
+    "declaration": "export const NA_ALLOWED = new Set([\"packet_signatures\"]);"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/proposal-ledger.mjs",
+    "line": 242,
+    "declaration": "export function checkSatisfied(checks, k) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/proposal-ledger.mjs",
+    "line": 245,
+    "declaration": "export const POLICY_CONTRACT_V1 = H({ version: 1, checks: [...POLICY_CHECK_KEYS].sort(), finding_classes: [...FINDING_CLASSES].sort() });"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/proposal-ledger.mjs",
+    "line": 248,
+    "declaration": "export function deriveOutcome(checks, blockers = [], findings = [], revision = { index: 1, maximum: 1 }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/proposal-ledger.mjs",
+    "line": 260,
+    "declaration": "export function verifyPolicyResult(artifact, { planHash } = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/proposal-ledger.mjs",
+    "line": 289,
+    "declaration": "export function verifyAuthorizationResult(artifact, { planHash } = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/vendor.mjs",
+    "line": 24,
+    "declaration": "export function canonicalize(obj) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/vendor.mjs",
+    "line": 29,
+    "declaration": "export function sha256hex(input) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/vendor.mjs",
+    "line": 41,
+    "declaration": "export function maxConcurrency(hint) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/vendor.mjs",
+    "line": 58,
+    "declaration": "export function resolveUnder(baseDir, p) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "merkle-dag/vendor.mjs",
+    "line": 124,
+    "declaration": "export function spawnCommand(cmd, args = []) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/scripts/build-live-graph.mjs",
+    "line": 15,
+    "declaration": "export const LIVE_GRAPH_PATH = path.join(HERE, \"..\", \"src\", \"live-graph.json\");"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/scripts/build-live-graph.mjs",
+    "line": 17,
+    "declaration": "export function generateLiveGraph() {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/scripts/build-live-graph.mjs",
+    "line": 94,
+    "declaration": "export function syncLiveGraph({ check = false, outputPath = LIVE_GRAPH_PATH } = {}) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/src/commands.ts",
+    "line": 4,
+    "declaration": "export const COMMANDS = ["
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/src/components/DomLayer.tsx",
+    "line": 17,
+    "declaration": "export function DomLayer() {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/src/components/LiveGraph.tsx",
+    "line": 200,
+    "declaration": "export function LiveGraphCanvas({ selectedNodeId, reducedMotion, theme }: {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/src/components/Loom.tsx",
+    "line": 90,
+    "declaration": "export function Loom({ stationIndex, threadPulled, reducedMotion, theme }: {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/src/e2e-mode.ts",
+    "line": 3,
+    "declaration": "export function isE2E(): boolean {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/src/e2e-mode.ts",
+    "line": 10,
+    "declaration": "export function resetSeed(s = 0x9e3779b9): void {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/src/e2e-mode.ts",
+    "line": 13,
+    "declaration": "export function seededRandom(): number {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/src/e2e-mode.ts",
+    "line": 20,
+    "declaration": "export function rand(): number {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/src/e2e-mode.ts",
+    "line": 25,
+    "declaration": "export const FIXED_DT = 1 / 60;"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/src/export.ts",
+    "line": 9,
+    "declaration": "export function buildExportPayload(context: FlagshipContext) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/src/export.ts",
+    "line": 27,
+    "declaration": "export function downloadEvidence(context: FlagshipContext): void {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/src/ferrofluid.ts",
+    "line": 4,
+    "declaration": "export const ferroVert = /* glsl */`"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/src/ferrofluid.ts",
+    "line": 12,
+    "declaration": "export const ferroFrag = /* glsl */`"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/src/frame-driver.tsx",
+    "line": 9,
+    "declaration": "export function FrameDriver({ fps }: { fps: number }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/src/livegraph.ts",
+    "line": 13,
+    "declaration": "export const NODES = (data.measured_by_lachesis.top_by_blast_radius as LiveNode[]);"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/src/livegraph.ts",
+    "line": 14,
+    "declaration": "export const EDGES = (data.subgraph_edges as LiveEdge[]);"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/src/livegraph.ts",
+    "line": 15,
+    "declaration": "export const CLOTHO = (data.clotho as { total_nodes: number; total_edges: number; depends_on_edges: number });"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/src/livegraph.ts",
+    "line": 16,
+    "declaration": "export const ATROPOS = (data.verified_by_atropos as {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/src/livegraph.ts",
+    "line": 19,
+    "declaration": "export const SNAPSHOT = (data.generated_from_snapshot as string);"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/src/livegraph.ts",
+    "line": 20,
+    "declaration": "export const MAX_BLAST = Math.max(...NODES.map((n) => n.blast_radius));"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/src/livegraph.ts",
+    "line": 21,
+    "declaration": "export const NODES_BY_BLAST = [...NODES].sort((a, b) => b.blast_radius - a.blast_radius);"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/src/livegraph.ts",
+    "line": 23,
+    "declaration": "export function nodeById(id: string): LiveNode | undefined {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/src/livegraph.ts",
+    "line": 26,
+    "declaration": "export function riskColor(risk: string): string {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/src/livegraph.ts",
+    "line": 32,
+    "declaration": "export const LABELED_IDS = NODES_BY_BLAST.slice(0, 5).map((n) => n.id);"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/src/livegraph.ts",
+    "line": 36,
+    "declaration": "export const LAYOUT: Record<string, [number, number, number]> = (() => {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/src/machine.ts",
+    "line": 21,
+    "declaration": "export const initialContext: FlagshipContext = {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/src/machine.ts",
+    "line": 39,
+    "declaration": "export function bootContext(): FlagshipContext {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/src/machine.ts",
+    "line": 68,
+    "declaration": "export const flagshipMachine = createMachine({"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/src/stations.ts",
+    "line": 7,
+    "declaration": "export const EVIDENCE = (ledger.entries as Evidence[]);"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/src/stations.ts",
+    "line": 8,
+    "declaration": "export function evidenceById(id: string): Evidence | undefined {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/src/stations.ts",
+    "line": 21,
+    "declaration": "export const STATIONS: Station[] = ["
+  },
+  {
+    "repo": "TELOS",
+    "path": "narcissus/flagship/src/stations.ts",
+    "line": 60,
+    "declaration": "export const STATION_COUNT = STATIONS.length;"
+  },
+  {
+    "repo": "TELOS",
+    "path": "saas-forge/breakouts.mjs",
+    "line": 29,
+    "declaration": "export async function runTeamBreakouts({ baseDir, architecture, maxRounds = 3, makeFns }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "saas-forge/forge.mjs",
+    "line": 71,
+    "declaration": "export function syntheticApprovals(dossierMeta) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "saas-forge/forge.mjs",
+    "line": 92,
+    "declaration": "export function runMarketGate({ projectRoot, dossierMeta, teamRecords, approvals, signed = false }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "saas-forge/forge.mjs",
+    "line": 127,
+    "declaration": "export async function forge({"
+  },
+  {
+    "repo": "TELOS",
+    "path": "saas-forge/generator.mjs",
+    "line": 18,
+    "declaration": "export function makeDemoGenerators(arch) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "saas-forge/live.mjs",
+    "line": 51,
+    "declaration": "export function councilApprovals({ callTool, models = {} }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "saas-forge/live.mjs",
+    "line": 196,
+    "declaration": "export function liveGenerators({ callTool, evidenceBaseDir }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "saas-forge/live.mjs",
+    "line": 250,
+    "declaration": "export function makeCouncilFactFns({"
+  },
+  {
+    "repo": "TELOS",
+    "path": "saas-forge/live.mjs",
+    "line": 361,
+    "declaration": "export async function runForgeLive({"
+  },
+  {
+    "repo": "TELOS",
+    "path": "saas-forge/plan.mjs",
+    "line": 8,
+    "declaration": "export function convergenceTaskDefs(architecture) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "saas-forge/plan.mjs",
+    "line": 19,
+    "declaration": "export function signerForTask(id) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "saas-forge/plan.mjs",
+    "line": 23,
+    "declaration": "export function compileConvergencePlan({ architecture, authorizedSigners }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "saas-forge/research.mjs",
+    "line": 84,
+    "declaration": "export async function offlineDocsFor(domain, _query) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "saas-forge/research.mjs",
+    "line": 98,
+    "declaration": "export function makeContext7DocsFor({ resolve, queryDocs, libraryHints = {} }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "saas-forge/research.mjs",
+    "line": 124,
+    "declaration": "export async function researchArchitecture({ telos, workstreams = [], docsFor = offlineDocsFor }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "saas-forge/research.mjs",
+    "line": 136,
+    "declaration": "export function renderArchitectureMarkdown(arch) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "saas-forge/research.mjs",
+    "line": 163,
+    "declaration": "export function stackLibraries(arch) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "saas-forge/research.mjs",
+    "line": 170,
+    "declaration": "export function designTools(arch) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "saas-forge/research.mjs",
+    "line": 183,
+    "declaration": "export function makeFigmaDesignSource({ getDesignContext, getVariableDefs }) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "saas-forge/workstreams.mjs",
+    "line": 211,
+    "declaration": "export const WORKSTREAMS = ["
+  },
+  {
+    "repo": "TELOS",
+    "path": "saas-forge/workstreams.mjs",
+    "line": 317,
+    "declaration": "export function nodeTestFor(ws, arch) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "saas-forge/workstreams.mjs",
+    "line": 321,
+    "declaration": "export function workstreamById(id) {"
+  },
+  {
+    "repo": "TELOS",
+    "path": "workflows/hestia.js",
+    "line": 1,
+    "declaration": "export const meta = {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/PostToolUse.d/lib/lint-cwd-paths.mjs",
+    "line": 41,
+    "declaration": "export function classify(src) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/PostToolUse.d/lib/lint-cwd-paths.mjs",
+    "line": 183,
+    "declaration": "export function lintCwdPaths(file, src = fs.readFileSync(file, 'utf8')) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/PostToolUse.d/lib/lint-workflow-tiers.mjs",
+    "line": 10,
+    "declaration": "export function lintWorkflowTiers(file, src = fs.readFileSync(file, 'utf8')) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/bounded-exec.mjs",
+    "line": 7,
+    "declaration": "export function boundedExecFileSync(file, args, options = {}) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/compliance.mjs",
+    "line": 30,
+    "declaration": "export function obligations(sid) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/compliance.mjs",
+    "line": 69,
+    "declaration": "export function record(sid) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/compliance.mjs",
+    "line": 78,
+    "declaration": "export function latest(sid) { return readJSON(path.join(DIR, `${safe(sid)}.json`), null); }"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/compliance.mjs",
+    "line": 82,
+    "declaration": "export function carried(sid) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/compliance.mjs",
+    "line": 89,
+    "declaration": "export function resolve(sid) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/compliance.mjs",
+    "line": 100,
+    "declaration": "export const render = (obs) => obs.map(o => `  ${o.met ? 'MET  ' : 'UNMET'} ${o.id}: ${o.detail}`).join('\\n');"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/darpa-gate.mjs",
+    "line": 33,
+    "declaration": "export const EVERY_N = Number(POLICY.darpa_review_every_n_prompts) > 0"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/darpa-gate.mjs",
+    "line": 39,
+    "declaration": "export const statePath = (sid) => path.join(HOME, '.claude/hooks/session-state', `darpa-${safe(sid)}.json`);"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/darpa-gate.mjs",
+    "line": 43,
+    "declaration": "export function spent() {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/darpa-gate.mjs",
+    "line": 53,
+    "declaration": "export function programState() {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/darpa-gate.mjs",
+    "line": 61,
+    "declaration": "export function renderDemand(ps, sid, duePrompt) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/darpa-gate.mjs",
+    "line": 98,
+    "declaration": "export function validateReview(text) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/darpa-gate.mjs",
+    "line": 111,
+    "declaration": "export function reviewDecision(text, explicit) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/dispatch.mjs",
+    "line": 16,
+    "declaration": "export function deadlineFor(event) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/dispatch.mjs",
+    "line": 82,
+    "declaration": "export function validate(event, out) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/dispatch.mjs",
+    "line": 118,
+    "declaration": "export function hooksFor(event) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/dispatch.mjs",
+    "line": 150,
+    "declaration": "export function merge(event, results) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/dispatch.mjs",
+    "line": 207,
+    "declaration": "export function runAll(event, payload) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/dispatch.mjs",
+    "line": 256,
+    "declaration": "export function staticHealth() {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/fix-rounds.mjs",
+    "line": 87,
+    "declaration": "export const DECISION_RE = /^fix-rounds:[ \\t]*(redesign|continue|abandon)[ \\t]+(\\S+)[ \\t]*$/i;"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/fix-rounds.mjs",
+    "line": 99,
+    "declaration": "export function decisionLines(prompt) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/fix-rounds.mjs",
+    "line": 120,
+    "declaration": "export function decisionLine(prompt) { return decisionLines(prompt).accepted[0] || null; }"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/fix-rounds.mjs",
+    "line": 133,
+    "declaration": "export function policy() {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/fix-rounds.mjs",
+    "line": 164,
+    "declaration": "export function withLock(sid, fn, { staleMs = policy().fix_rounds_lock_stale_ms, waitMs = staleMs / 2 } = {}) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/fix-rounds.mjs",
+    "line": 190,
+    "declaration": "export function readState(sid) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/fix-rounds.mjs",
+    "line": 219,
+    "declaration": "export function sketchOf(text) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/fix-rounds.mjs",
+    "line": 227,
+    "declaration": "export function sketchFile(p, size) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/fix-rounds.mjs",
+    "line": 242,
+    "declaration": "export function retained(recorded, now) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/fix-rounds.mjs",
+    "line": 258,
+    "declaration": "export function indexState(state) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/fix-rounds.mjs",
+    "line": 269,
+    "declaration": "export function makeCtx(state, P, memo = new Map()) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/fix-rounds.mjs",
+    "line": 283,
+    "declaration": "export function findKey(state, a, ctx) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/fix-rounds.mjs",
+    "line": 306,
+    "declaration": "export function effective(state, found, P) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/fix-rounds.mjs",
+    "line": 321,
+    "declaration": "export function recordFor(state, a, P, create, ctx) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/fix-rounds.mjs",
+    "line": 377,
+    "declaration": "export function candidatesOf(run, { home = HOME() } = {}) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/fix-rounds.mjs",
+    "line": 408,
+    "declaration": "export function artifactOf(p, { home = HOME() } = {}) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/fix-rounds.mjs",
+    "line": 416,
+    "declaration": "export function artifactsIn(text, { home = HOME(), cwd = null } = {}) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/fix-rounds.mjs",
+    "line": 430,
+    "declaration": "export function spawnText(input) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/fix-rounds.mjs",
+    "line": 440,
+    "declaration": "export function judge(state, artifacts, P, now, ctx) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/fix-rounds.mjs",
+    "line": 465,
+    "declaration": "export function evaluate(input, { now: injected = null } = {}) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/fix-rounds.mjs",
+    "line": 518,
+    "declaration": "export function observe(input) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/fix-rounds.mjs",
+    "line": 557,
+    "declaration": "export function decideFromPrompt(input, { home = HOME() } = {}) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/fix-rounds.mjs",
+    "line": 596,
+    "declaration": "export function hookMain() {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/fix-rounds.mjs",
+    "line": 603,
+    "declaration": "export function observeMain() {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/session-eval.mjs",
+    "line": 27,
+    "declaration": "export function statePath(sid) { return path.join(STATE_DIR, `${String(sid).replace(/[^\\w.-]/g, '_')}.json`); }"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/session-eval.mjs",
+    "line": 29,
+    "declaration": "export function scorecard(sid) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/session-eval.mjs",
+    "line": 73,
+    "declaration": "export function renderReport(sc) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/session-eval.mjs",
+    "line": 85,
+    "declaration": "export function validateVerdict(v) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/session-eval.mjs",
+    "line": 92,
+    "declaration": "export function record(sid, verdict) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/spend-authority.mjs",
+    "line": 35,
+    "declaration": "export const FLOOR_USD = 150;"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/spend-authority.mjs",
+    "line": 37,
+    "declaration": "export const authorityPaths = (home = os.homedir()) => {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/spend-authority.mjs",
+    "line": 56,
+    "declaration": "export function hardenCommand(home = os.homedir()) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/spend-authority.mjs",
+    "line": 63,
+    "declaration": "export function resolveSpendCap(policy, home = os.homedir()) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/spend-authority.mjs",
+    "line": 109,
+    "declaration": "export function capProvenance(resolved) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/worktree-create.mjs",
+    "line": 29,
+    "declaration": "export function baseRefSetting(home = HOME()) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/worktree-create.mjs",
+    "line": 34,
+    "declaration": "export function targetRepo({ cwd, env = process.env, home = HOME() }) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/worktree-create.mjs",
+    "line": 51,
+    "declaration": "export function createWorktree({ name, cwd, env = process.env, home = HOME() }) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/worktree-remove.mjs",
+    "line": 16,
+    "declaration": "export function inspectWorktree(dir) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "hooks/worktree-remove.mjs",
+    "line": 47,
+    "declaration": "export function removeWorktree(dir, { home = HOME() } = {}) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/bounded-review.mjs",
+    "line": 430,
+    "declaration": "export function migrateState(target, env = process.env) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/bounded-review.mjs",
+    "line": 509,
+    "declaration": "export function recordRound(target, kind, { cap, note } = {}, env = process.env) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/bounded-review.mjs",
+    "line": 563,
+    "declaration": "export function recordVerdict(target, verdict, { findings, roundId, hash } = {}, env = process.env) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/bounded-review.mjs",
+    "line": 649,
+    "declaration": "export function checkTarget(target, env = process.env) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/bounded-review.mjs",
+    "line": 675,
+    "declaration": "export function seedRounds(target, count, { cap } = {}, env = process.env) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/bounded-review.mjs",
+    "line": 698,
+    "declaration": "export function parkTarget(target, { reason } = {}, env = process.env) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/bounded-review.mjs",
+    "line": 709,
+    "declaration": "export function unparkTarget(target, env = process.env) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/bounded-review.mjs",
+    "line": 725,
+    "declaration": "export function overrideTarget(target, { reason } = {}, env = process.env) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/bounded-review.mjs",
+    "line": 758,
+    "declaration": "export function listTargets(env = process.env) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/checkpoint.mjs",
+    "line": 61,
+    "declaration": "export function validateCheckpoint(record) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/checkpoint.mjs",
+    "line": 123,
+    "declaration": "export function saveCheckpoint(record, { env = process.env } = {}) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/checkpoint.mjs",
+    "line": 146,
+    "declaration": "export function latestCheckpoint({ env = process.env } = {}) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/checkpoint.mjs",
+    "line": 187,
+    "declaration": "export function autofireDirective(record, { env = process.env } = {}) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/checkpoint.mjs",
+    "line": 191,
+    "declaration": "export function sessionCheckpoint(payload, { env = process.env } = {}) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/mutation-check.mjs",
+    "line": 69,
+    "declaration": "export function runCatalog(catalogPath, { onResult } = {}) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-evidence.mjs",
+    "line": 34,
+    "declaration": "export function extractCitations(evidence) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-evidence.mjs",
+    "line": 49,
+    "declaration": "export function extractQuotes(evidence) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-evidence.mjs",
+    "line": 88,
+    "declaration": "export function quoteFound(quote, haystack) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-evidence.mjs",
+    "line": 100,
+    "declaration": "export function resolveCited(file, roots) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-evidence.mjs",
+    "line": 112,
+    "declaration": "export function verifyEvidence(evidence, { roots = [], readFileFn = null } = {}) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-evidence.mjs",
+    "line": 177,
+    "declaration": "export function looksLikeNarration(evidence) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-loadout-metrics.mjs",
+    "line": 24,
+    "declaration": "export const LOADOUT_METRICS_VERSION = 1;"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-loadout-metrics.mjs",
+    "line": 34,
+    "declaration": "export const GENESIS = \"0\".repeat(16);"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-loadout-metrics.mjs",
+    "line": 38,
+    "declaration": "export function makeObservation({"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-loadout-metrics.mjs",
+    "line": 100,
+    "declaration": "export function validateObservation(o) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-loadout-metrics.mjs",
+    "line": 129,
+    "declaration": "export function record(file, observation) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-loadout-metrics.mjs",
+    "line": 148,
+    "declaration": "export function verifyChain(file) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-loadout-metrics.mjs",
+    "line": 163,
+    "declaration": "export function readObservations(file) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-loadout-metrics.mjs",
+    "line": 185,
+    "declaration": "export function summarize(observations, { minInvocations = 5, minFindings = 5, minTrueClaims = 3 } = {}) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-loadout-metrics.mjs",
+    "line": 274,
+    "declaration": "export function tuningVerdicts(summaries, { yieldFloor = 0.2 } = {}) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-loadouts.mjs",
+    "line": 23,
+    "declaration": "export const LOADOUTS_PATH = path.join(HERE, \"..\", \"records\", \"seat-loadouts.json\");"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-loadouts.mjs",
+    "line": 25,
+    "declaration": "export function loadLoadouts(file = LOADOUTS_PATH) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-loadouts.mjs",
+    "line": 38,
+    "declaration": "export function loadoutNames(seat, doc) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-loadouts.mjs",
+    "line": 44,
+    "declaration": "export function getLoadout(seat, name, doc) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-loadouts.mjs",
+    "line": 55,
+    "declaration": "export function buildLoadoutCommand(seat, name, prompt, doc, opts = {}) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-loadouts.mjs",
+    "line": 121,
+    "declaration": "export const REFUTER_SCHEMA = {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-loadouts.mjs",
+    "line": 136,
+    "declaration": "export const SUFFICIENCY_SCHEMA = {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-loadouts.mjs",
+    "line": 149,
+    "declaration": "export function validateVerdict(obj) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-loadouts.mjs",
+    "line": 172,
+    "declaration": "export function dedupeKey(finding) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-loadouts.mjs",
+    "line": 184,
+    "declaration": "export function dedupeFindings(findings) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-loadouts.mjs",
+    "line": 201,
+    "declaration": "export function agreementScore(group, minSeats = 2) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-loadouts.mjs",
+    "line": 223,
+    "declaration": "export function stableJson(value) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-loadouts.mjs",
+    "line": 235,
+    "declaration": "export function loadoutHash(seat, name, doc) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-loadouts.mjs",
+    "line": 244,
+    "declaration": "export function recordHash(doc) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-loadouts.mjs",
+    "line": 248,
+    "declaration": "export function loadoutAxes(seat, name, doc) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-loadouts.mjs",
+    "line": 266,
+    "declaration": "export function councilSafe(picks, doc, opts = {}) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-loadouts.mjs",
+    "line": 328,
+    "declaration": "export function grokAgentMarkdown(name, doc) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-loadouts.mjs",
+    "line": 404,
+    "declaration": "export function fixTeamPlan(doc, { triageFamily = null, priorFamilies = [], round = 1 } = {}) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-loadouts.mjs",
+    "line": 449,
+    "declaration": "export function refuterSetValid(picks, doc, opts = {}) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-refute.mjs",
+    "line": 28,
+    "declaration": "export const ROLE_PREAMBLE = (lens, canExecute) => ["
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-refute.mjs",
+    "line": 61,
+    "declaration": "export const TRISTATE_VERDICTS = [\"CONFIRMED_TRUE\", \"REFUTED\", \"UNCERTAIN\"];"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-refute.mjs",
+    "line": 63,
+    "declaration": "export const TRISTATE_SCHEMA = {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-refute.mjs",
+    "line": 91,
+    "declaration": "export const TRISTATE_PREAMBLE = (lens, canExecute) => ["
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-refute.mjs",
+    "line": 119,
+    "declaration": "export function validateTriVerdict(obj) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-refute.mjs",
+    "line": 151,
+    "declaration": "export function jsonObjectSpans(text) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-refute.mjs",
+    "line": 177,
+    "declaration": "export function finalVerdict(text, validate) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-refute.mjs",
+    "line": 190,
+    "declaration": "export function extractIntegers(text) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-refute.mjs",
+    "line": 198,
+    "declaration": "export function rederiveNumeric(verdict, groundTruth) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-refute.mjs",
+    "line": 221,
+    "declaration": "export function recoverEnvelope(partialStdout, validate) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-refute.mjs",
+    "line": 245,
+    "declaration": "export function findingSurvives({ refuted, rederivation = null, evidence = null, narration = null, counterexampleCheck = null }) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-refute.mjs",
+    "line": 254,
+    "declaration": "export async function refute({ claim, context, lenses, groundTruth = [], metricsFile, runId, timeoutMs = 300000, onResult = null, evidenceRoots = [], claimExpectedRefuted = null, mode = \"binary\", checkCounterexample = null }) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-seat-adapters.mjs",
+    "line": 53,
+    "declaration": "export const SEAT_NAMES = [\"codex\", \"claude\", \"gemini\", \"agy\", \"grok\"];"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-seat-adapters.mjs",
+    "line": 54,
+    "declaration": "export const PROMPT_BYTE_LIMIT = 131072;"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-seat-adapters.mjs",
+    "line": 56,
+    "declaration": "export function parseSeatOutput(seat, raw) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-seat-adapters.mjs",
+    "line": 115,
+    "declaration": "export function extractAnswerJson(text) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-seat-adapters.mjs",
+    "line": 144,
+    "declaration": "export function harvestUsage(seat, raw) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-seat-adapters.mjs",
+    "line": 200,
+    "declaration": "export function classifyQuota(seat, { exitCode = null, stderr = \"\", stdout = \"\", timedOut = false } = {}) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-seat-adapters.mjs",
+    "line": 206,
+    "declaration": "export function seatCommand(seat, prompt, env, opts = {}) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-seat-adapters.mjs",
+    "line": 239,
+    "declaration": "export function seatEnv(seat, env) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/scripts/swarm-seat-adapters.mjs",
+    "line": 246,
+    "declaration": "export function callSeat({ seat, prompt, cwd, timeoutMs = 300000, outputByteCap = null, effort = null }, env = process.env) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "skills/multi-model-seats/tests/test-mutation-check.mjs",
+    "line": 37,
+    "declaration": "export const LABEL = \"unobserved\";"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/forge-chain.js",
+    "line": 1,
+    "declaration": "export const meta = {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/github-trace.d/trace-ledger.mjs",
+    "line": 38,
+    "declaration": "export const LEDGER_FILE = 'trace-ledger.jsonl';"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/github-trace.d/trace-ledger.mjs",
+    "line": 39,
+    "declaration": "export const GENESIS = 'genesis';"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/github-trace.d/trace-ledger.mjs",
+    "line": 40,
+    "declaration": "export const CLASSES = ['cancelled', 'infra', 'lint', 'typecheck', 'test', 'build', 'external', 'unknown'];"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/github-trace.d/trace-ledger.mjs",
+    "line": 41,
+    "declaration": "export const RERUNNABLE = new Set(['cancelled', 'infra']);"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/github-trace.d/trace-ledger.mjs",
+    "line": 42,
+    "declaration": "export const FAILING = new Set(['failure', 'cancelled', 'timed_out', 'action_required', 'startup_failure']);"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/github-trace.d/trace-ledger.mjs",
+    "line": 46,
+    "declaration": "export function stableStringify(v) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/github-trace.d/trace-ledger.mjs",
+    "line": 53,
+    "declaration": "export const sha256 = (s) => createHash('sha256').update(s).digest('hex');"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/github-trace.d/trace-ledger.mjs",
+    "line": 54,
+    "declaration": "export const entryHash = (prev, body) => sha256(`${prev}\\n${stableStringify(body)}`);"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/github-trace.d/trace-ledger.mjs",
+    "line": 56,
+    "declaration": "export function readLedger(dir) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/github-trace.d/trace-ledger.mjs",
+    "line": 64,
+    "declaration": "export function verifyChain(entries) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/github-trace.d/trace-ledger.mjs",
+    "line": 80,
+    "declaration": "export function appendEntry(dir, kind, payload, at) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/github-trace.d/trace-ledger.mjs",
+    "line": 105,
+    "declaration": "export function redact(s) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/github-trace.d/trace-ledger.mjs",
+    "line": 112,
+    "declaration": "export function logTail(text, lines = 80) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/github-trace.d/trace-ledger.mjs",
+    "line": 147,
+    "declaration": "export function classifyFailure({ conclusion, job = '', step = '', log = '' } = {}) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/github-trace.d/trace-ledger.mjs",
+    "line": 160,
+    "declaration": "export function makeGh(bin = 'gh') {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/github-trace.d/trace-ledger.mjs",
+    "line": 183,
+    "declaration": "export function collect(opts, gh = makeGh(), sleep = syncSleep) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/github-trace.d/trace-ledger.mjs",
+    "line": 323,
+    "declaration": "export function summarize(dir) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/github-trace.js",
+    "line": 1,
+    "declaration": "export const meta = {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/hestia.js",
+    "line": 1,
+    "declaration": "export const meta = {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/iliad.d/barrier-check.mjs",
+    "line": 76,
+    "declaration": "export const CITATION_BUCKETS = [\"foreign\", \"allowlisted\", \"template\", \"glob\", \"absolute\", \"home\", \"relative\", \"bare\", \"word\", \"malformed\"];"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/iliad.d/barrier-check.mjs",
+    "line": 77,
+    "declaration": "export const NON_ALPHABET_RE = /[^\\t\\n\\r\\x20-\\x7E\\u2014]/u;          // rule 1 — spelled by code point, no Unicode categories"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/iliad.d/barrier-check.mjs",
+    "line": 78,
+    "declaration": "export const PROSE_PATHLIKE_RE = /[\\/\\\\]|[A-Za-z0-9]\\.[A-Za-z0-9]/;    // rule 4"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/iliad.d/barrier-check.mjs",
+    "line": 79,
+    "declaration": "export const CODE_DELIMS_RE = /[\\s'\"()\\[\\]{},;|=&]+/;                   // rule 5"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/iliad.d/barrier-check.mjs",
+    "line": 90,
+    "declaration": "export function decodeCard(src) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/iliad.d/barrier-check.mjs",
+    "line": 109,
+    "declaration": "export function regions(text) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/iliad.d/barrier-check.mjs",
+    "line": 133,
+    "declaration": "export function proseViolations(prose) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/iliad.d/barrier-check.mjs",
+    "line": 140,
+    "declaration": "export function piecesIn(code) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/iliad.d/barrier-check.mjs",
+    "line": 148,
+    "declaration": "export function classifyPiece(raw, allow = new Set()) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/iliad.d/barrier-check.mjs",
+    "line": 180,
+    "declaration": "export function resolveCitation(root, p) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/iliad.d/barrier-check.mjs",
+    "line": 192,
+    "declaration": "export const GLOB_WALK_CAP = 20000;"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/iliad.d/barrier-check.mjs",
+    "line": 194,
+    "declaration": "export function boundedGlob(pattern, cwd, cap = GLOB_WALK_CAP) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/iliad.d/barrier-check.mjs",
+    "line": 205,
+    "declaration": "export function moduleExports(source) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/iliad.d/barrier-check.mjs",
+    "line": 219,
+    "declaration": "export function runBarrier(specPath) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/iliad.d/f11-gate.mjs",
+    "line": 29,
+    "declaration": "export const DEFAULT_RUNNER = \"/home/colchis/Projects/TELOS/docs/institutional-memory/iliad/tools/run-daedalus-workshop.mjs\";"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/iliad.d/f11-gate.mjs",
+    "line": 30,
+    "declaration": "export const ADAPTER = \"/home/colchis/.claude/skills/multi-model-seats/scripts/swarm-seat-adapters.mjs\";"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/iliad.d/f11-gate.mjs",
+    "line": 37,
+    "declaration": "export function tokenize(source) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/iliad.d/f11-gate.mjs",
+    "line": 64,
+    "declaration": "export function staticChecks(source) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/iliad.d/f11-gate.mjs",
+    "line": 91,
+    "declaration": "export function runProbe(runner) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/iliad.d/kit-lint.mjs",
+    "line": 14,
+    "declaration": "export function lintKit(dir) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/context-sets.mjs",
+    "line": 38,
+    "declaration": "export function canonical(value) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/context-sets.mjs",
+    "line": 49,
+    "declaration": "export function assertionHash(a) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/context-sets.mjs",
+    "line": 57,
+    "declaration": "export function readLog(root, nodeId) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/context-sets.mjs",
+    "line": 76,
+    "declaration": "export function contribute(root, nodeId, facts) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/context-sets.mjs",
+    "line": 103,
+    "declaration": "export const contributionPath = (nodeId) => `${CONTEXT_DIR}/${nodeId}.jsonl`;"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/context-sets.mjs",
+    "line": 109,
+    "declaration": "export function deriveContext(root) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/context-sets.mjs",
+    "line": 137,
+    "declaration": "export function historyOf(context, key) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/context-sets.mjs",
+    "line": 147,
+    "declaration": "export function sliceContext(context, keys) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/context-sets.mjs",
+    "line": 160,
+    "declaration": "export function pin(context, keys) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/context-sets.mjs",
+    "line": 172,
+    "declaration": "export function verifyPin(pinned, currentContext) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/context-sets.mjs",
+    "line": 195,
+    "declaration": "export function diffSlice(previousSlice, currentContext) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/context-sets.mjs",
+    "line": 208,
+    "declaration": "export function dispatchContext(root, node) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/context-sets.mjs",
+    "line": 223,
+    "declaration": "export function settle(root, dispatched) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/contract-sets.mjs",
+    "line": 34,
+    "declaration": "export const CONTRACT_PREFIX = \"contract:\";"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/contract-sets.mjs",
+    "line": 35,
+    "declaration": "export const isContract = (r) => typeof r === \"string\" && r.startsWith(CONTRACT_PREFIX);"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/contract-sets.mjs",
+    "line": 40,
+    "declaration": "export function canonicalContract(c) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/contract-sets.mjs",
+    "line": 58,
+    "declaration": "export function contractHash(c) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/contract-sets.mjs",
+    "line": 67,
+    "declaration": "export function planContracts(nodes, contracts) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/contract-sets.mjs",
+    "line": 111,
+    "declaration": "export function dependencyLayers(nodes) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/contract-sets.mjs",
+    "line": 129,
+    "declaration": "export async function verifyProvider(root, contract) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/contract-sets.mjs",
+    "line": 148,
+    "declaration": "export function staticExports(src) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/contract-sets.mjs",
+    "line": 165,
+    "declaration": "export function verifyConsumer(root, consumerFile, contract) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/contract-sets.mjs",
+    "line": 188,
+    "declaration": "export async function verifyContracts(root, nodes, contracts) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/graph-watch.mjs",
+    "line": 37,
+    "declaration": "export function createWatcher(root, { pins = new Map(), onEvent = null } = {}) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/join-sets.mjs",
+    "line": 31,
+    "declaration": "export const JOIN_PREFIX = \"join:\";"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/join-sets.mjs",
+    "line": 32,
+    "declaration": "export const isJoin = (r) => typeof r === \"string\" && r.startsWith(JOIN_PREFIX);"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/join-sets.mjs",
+    "line": 33,
+    "declaration": "export const joinTarget = (r) => r.slice(JOIN_PREFIX.length);"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/join-sets.mjs",
+    "line": 37,
+    "declaration": "export function fragmentPath(target, nodeId) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/join-sets.mjs",
+    "line": 41,
+    "declaration": "export function fragmentDir(target) { return `${target}.parts`; }"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/join-sets.mjs",
+    "line": 94,
+    "declaration": "export const JOINERS = { jsonl: joinJsonl, \"lines-union\": joinLinesUnion, json: joinJson };"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/join-sets.mjs",
+    "line": 100,
+    "declaration": "export function joinResource(root, target, { mode = \"jsonl\", write = true } = {}) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/join-sets.mjs",
+    "line": 130,
+    "declaration": "export function planNode(node) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/join-sets.mjs",
+    "line": 144,
+    "declaration": "export function planNodes(nodes) { return nodes.map(planNode); }"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/join-sets.mjs",
+    "line": 147,
+    "declaration": "export function writeFragment(root, target, nodeId, text) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/research-graph.mjs",
+    "line": 54,
+    "declaration": "export function canonicalDomain(domain) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/research-graph.mjs",
+    "line": 65,
+    "declaration": "export function assertionsFor(lens) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/research-graph.mjs",
+    "line": 96,
+    "declaration": "export function ingestLenses(root, lenses, { idFor = defaultIdFor } = {}) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/research-graph.mjs",
+    "line": 112,
+    "declaration": "export function analyze(context) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/test-child-slow.js",
+    "line": 1,
+    "declaration": "export const meta = {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/test-child.js",
+    "line": 1,
+    "declaration": "export const meta = {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/write-sets.mjs",
+    "line": 49,
+    "declaration": "export function normalizeResource(resource) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/write-sets.mjs",
+    "line": 80,
+    "declaration": "export function resourcesConflict(a, b) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/write-sets.mjs",
+    "line": 104,
+    "declaration": "export function disjointBatches(nodes, { allowEmptyWriteSet = true } = {}) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/write-sets.mjs",
+    "line": 142,
+    "declaration": "export function snapshot(root, { ignore = [\".git\", \"node_modules\", \".telos\"] } = {}) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/write-sets.mjs",
+    "line": 182,
+    "declaration": "export function diffSnapshots(before, after) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/write-sets.mjs",
+    "line": 189,
+    "declaration": "export function verifyWriteSet(declared, before, after) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.d/write-sets.mjs",
+    "line": 206,
+    "declaration": "export async function runDisjoint(nodes, runOne, { root = null, onRound = null, attribution = \"round\" } = {}) {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/layered-swarm.js",
+    "line": 1,
+    "declaration": "export const meta = {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/meta-conductor.js",
+    "line": 1,
+    "declaration": "export const meta = {"
+  },
+  {
+    "repo": "claude-config",
+    "path": "workflows/reliability-loop.js",
+    "line": 1,
+    "declaration": "export const meta = {"
+  }
+]
