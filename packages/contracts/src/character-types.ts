@@ -1,0 +1,38 @@
+// Typed character-memory/1.0.0 wire grammar. Runtime validation remains mandatory.
+import type {Scope} from './generated.ts';
+export type CharacterCursor = { "sequence": number; "head": (string | null); "world_time": number };
+export type CharacterNature = { "description": string; "priorities": Array<string> };
+export type CharacterActivity = { "description": string; "busy_until": number };
+export type CharacterSpeechPolicy = { "max_characters": number; "minimum_interval": number };
+export type CharacterProfile = { "actor_id": string; "revision": number; "nature": CharacterNature; "activity": CharacterActivity; "speech_policy": CharacterSpeechPolicy };
+export type CharacterWitnessGrant = { "request_hash": string; "actor_ids": Array<string>; "party_id": (string | null) };
+export type CharacterConfigure = { "type": "configure"; "profile": CharacterProfile };
+export type CharacterSpeak = { "type": "speak"; "text": string; "addressed_actor_ids": Array<string> };
+export type CharacterWitnessAction = { "type": "witness_action"; "record_id": string };
+export type CharacterFormImpression = { "type": "form_impression"; "subject_actor_id": string; "evidence_ids": Array<string>; "interpretation": string; "previous_impression_id": (string | null) };
+export type CharacterSetActivity = { "type": "set_activity"; "activity": CharacterActivity };
+export type CharacterCommandBody = (CharacterConfigure | CharacterSpeak | CharacterWitnessAction | CharacterFormImpression | CharacterSetActivity);
+export type CharacterCommand = { "version": "character-memory/1.0.0"; "scope": Scope; "request_id": string; "expected_cursor": CharacterCursor; "body": CharacterCommandBody };
+export type CharacterRequester = { "principal_id": string; "actor_id": string; "role": ("player" | "npc" | "intervention" | "system") };
+export type CharacterImpressionData = { "owner_actor_id": string; "subject_actor_id": string; "evidence_ids": Array<string>; "nature_revision": number; "nature": CharacterNature; "interpretation": string; "previous_impression_id": (string | null) };
+export type CharacterConfigured = { "type": "configure"; "profile": CharacterProfile };
+export type CharacterSpoken = { "type": "speak"; "actor_id": string; "text": string; "addressed_actor_ids": Array<string>; "witnesses": CharacterWitnessGrant };
+export type CharacterActionWitnessed = { "type": "witness_action"; "record_id": string; "witnesses": CharacterWitnessGrant };
+export type CharacterImpressionFormed = { "type": "form_impression"; "data": CharacterImpressionData };
+export type CharacterActivitySet = { "type": "set_activity"; "actor_id": string; "activity": CharacterActivity };
+export type CharacterEnvelopeBody = (CharacterConfigured | CharacterSpoken | CharacterActionWitnessed | CharacterImpressionFormed | CharacterActivitySet);
+export type CharacterEnvelope = { "version": "character-memory/1.0.0"; "scope": Scope; "request_id": string; "request_hash": string; "requester": CharacterRequester; "body": CharacterEnvelopeBody };
+export type CharacterExperience = { "record_id": string; "kind": ("speech" | "action"); "actor_id": string; "principal_actor_id": string; "sequence": number; "world_time": number; "text": string; "action_type": (("move_item" | "record_consent" | "revoke_consent" | "transfer_time" | "grant_proxy" | "revoke_proxy" | "vanish_thread" | "name_anomaly" | "end_thread") | null); "addressed_actor_ids": Array<string> };
+export type CharacterAcquisition = { "actor_id": string; "sequence": number; "world_time": number; "party_id": (string | null) };
+export type CharacterMemoryRecord = { "experience": CharacterExperience; "acquisitions": Array<CharacterAcquisition> };
+export type CharacterImpression = { "impression_id": string; "sequence": number; "world_time": number; "data": CharacterImpressionData };
+export type CharacterActorState = { "actor_id": string; "alive": boolean };
+export type CharacterParty = { "party_id": string; "actor_ids": Array<string> };
+export type CharacterProjection = { "version": "character-memory/1.0.0"; "scope": Scope; "cursor": CharacterCursor; "activation_sequence": (number | null); "profiles": Array<CharacterProfile>; "actors": Array<CharacterActorState>; "parties": Array<CharacterParty>; "records": Array<CharacterMemoryRecord>; "impressions": Array<CharacterImpression>; "ontology_blocked": boolean; "engagement_closed": boolean };
+export type CharacterActorQuery = { "version": "character-memory/1.0.0"; "scope": Scope; "cursor": CharacterCursor; "actor_id": string };
+export type CharacterView = { "query": CharacterActorQuery; "profile": (CharacterProfile | null); "alive": boolean; "last_spoke_at": (number | null); "impressions": Array<CharacterImpression>; "experiences": Array<CharacterExperience>; "ontology_blocked": boolean; "engagement_closed": boolean };
+export type CharacterNarratorQuery = { "version": "character-memory/1.0.0"; "scope": Scope; "cursor": CharacterCursor; "traveler_id": string; "actor_id": string; "audience": ("actor" | "party"); "party_id": (string | null); "after_sequence": number; "limit": number };
+export type CharacterCoverage = { "activation_sequence": (number | null); "through_sequence": number; "captured_kinds": ["speech", "action"] };
+export type CharacterNarratorView = { "query": CharacterNarratorQuery; "records": Array<CharacterExperience>; "coverage": CharacterCoverage; "next_after_sequence": (number | null); "ontology_blocked": boolean; "engagement_closed": boolean };
+export type CharacterReceipt = { "version": "character-memory/1.0.0"; "scope": Scope; "request_id": string; "request_hash": string; "event_id": string; "event_hash": string; "cursor": CharacterCursor; "kind": ("configure" | "speak" | "witness_action" | "form_impression" | "set_activity") };
+export interface CharacterContractMap { "CharacterCursor": CharacterCursor; "CharacterNature": CharacterNature; "CharacterActivity": CharacterActivity; "CharacterSpeechPolicy": CharacterSpeechPolicy; "CharacterProfile": CharacterProfile; "CharacterWitnessGrant": CharacterWitnessGrant; "CharacterConfigure": CharacterConfigure; "CharacterSpeak": CharacterSpeak; "CharacterWitnessAction": CharacterWitnessAction; "CharacterFormImpression": CharacterFormImpression; "CharacterSetActivity": CharacterSetActivity; "CharacterCommandBody": CharacterCommandBody; "CharacterCommand": CharacterCommand; "CharacterRequester": CharacterRequester; "CharacterImpressionData": CharacterImpressionData; "CharacterConfigured": CharacterConfigured; "CharacterSpoken": CharacterSpoken; "CharacterActionWitnessed": CharacterActionWitnessed; "CharacterImpressionFormed": CharacterImpressionFormed; "CharacterActivitySet": CharacterActivitySet; "CharacterEnvelopeBody": CharacterEnvelopeBody; "CharacterEnvelope": CharacterEnvelope; "CharacterExperience": CharacterExperience; "CharacterAcquisition": CharacterAcquisition; "CharacterMemoryRecord": CharacterMemoryRecord; "CharacterImpression": CharacterImpression; "CharacterActorState": CharacterActorState; "CharacterParty": CharacterParty; "CharacterProjection": CharacterProjection; "CharacterActorQuery": CharacterActorQuery; "CharacterView": CharacterView; "CharacterNarratorQuery": CharacterNarratorQuery; "CharacterCoverage": CharacterCoverage; "CharacterNarratorView": CharacterNarratorView; "CharacterReceipt": CharacterReceipt }
