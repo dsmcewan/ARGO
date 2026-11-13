@@ -14,9 +14,9 @@ import {genesis,keys,principal,proposal} from './fixtures.ts';
 async function components(){
  try{
   const [authority,knowledge,presentation,agents,bridge]=await Promise.all([
-   import('../packages/ledger/src/characters.ts'),import('../packages/lexi-bridge/src/characters.ts'),
-   import('../packages/argo-dm/src/characters.ts'),import('../packages/interventions/src/characters.ts'),
-   import('../packages/telos-bridge/src/characters.ts'),
+   import('../packages/ledger/src/index.ts'),import('../packages/lexi-bridge/src/index.ts'),
+   import('../packages/argo-dm/src/index.ts'),import('../packages/interventions/src/index.ts'),
+   import('../packages/telos-bridge/src/index.ts'),
   ]);
   return {...authority,...knowledge,...presentation,...agents,...bridge};
  }catch(error){
