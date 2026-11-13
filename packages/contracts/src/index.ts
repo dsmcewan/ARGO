@@ -20,8 +20,13 @@ export function canonical(value:unknown):string{
   try{
    if(Reflect.ownKeys(v).some(k=>typeof k==='symbol'))fail('INVALID_CONTRACT','Canonical symbols are forbidden');
    if(Array.isArray(v)){
-    if(Object.keys(v).length!==v.length)fail('INVALID_CONTRACT','Sparse or decorated arrays are forbidden');
-    return '['+Array.from({length:v.length},(_,i)=>{if(!Object.hasOwn(v,i))fail('INVALID_CONTRACT','Sparse array');return visit(v[i]);}).join(',')+']';
+    const descriptors=Object.getOwnPropertyDescriptors(v);
+    if(Object.keys(descriptors).length!==v.length+1)fail('INVALID_CONTRACT','Sparse or decorated arrays are forbidden');
+    return '['+Array.from({length:v.length},(_,i)=>{
+     const d=descriptors[String(i)];
+     if(!d||!d.enumerable||!('value' in d))fail('INVALID_CONTRACT','Unsafe canonical array entry');
+     return visit(d.value);
+    }).join(',')+']';
    }
    if(Object.getPrototypeOf(v)!==Object.prototype&&Object.getPrototypeOf(v)!==null)fail('INVALID_CONTRACT','Only plain canonical objects are allowed');
    const descriptors=Object.getOwnPropertyDescriptors(v);
