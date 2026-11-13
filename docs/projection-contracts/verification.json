@@ -43,9 +43,84 @@
     }
   },
   "board": {
-    "status": "CLAIMED",
     "scope": "staging_data_packet",
-    "target_branch": "argo/projection-contracts"
+    "target_branch": "argo/projection-contracts",
+    "id": "PC-001",
+    "status": "MERGED",
+    "attempt": 1,
+    "epoch": 1,
+    "base_commit": "3f162b6f5662b3c2805c62ba1f2a822768447443",
+    "commit_sha": "1231bc22d040454d43e41a305b553f77b45fff72",
+    "merged_commit": "1231bc22d040454d43e41a305b553f77b45fff72",
+    "gate_result": {
+      "at_us": 1794595146726492,
+      "candidate": "1231bc22d040454d43e41a305b553f77b45fff72",
+      "completed": true,
+      "exit_code": 0,
+      "output_sha256": "c8e5d333557dde8964d0c966ffdfc49e63fcb2e8ebb8826ce26e2f0f81e18c1f",
+      "output_tail": "PASS projection packet structure and unchanged v1 freeze; application acceptance is external\n\nARGO_GATE_COMPLETED 961568e1b2624f239a0a200b42cd2724\n",
+      "passed": true,
+      "policy_sha256": "decd87c0663c4b0837a5481bdc225942a0e7a2c848d4a70e0854ddb70e8fdf8a"
+    },
+    "reviewer_model": null,
+    "audit_valid": true,
+    "accepted_artifacts": [
+      {
+        "logical_path": "SYSTEMS/proposals/headless-v2/CONTRACT.md",
+        "sha256": "6d443a5d3a8c8d7999e94cec2c145f5998fd64c7a38b9981d0763efe5c58fa5d",
+        "accepted": 1
+      },
+      {
+        "logical_path": "SYSTEMS/proposals/headless-v2/FREEZE.json",
+        "sha256": "3f45b293ab32829c6872cfc6221b77d8e66e81d3efa8faf1120f25d691504a28",
+        "accepted": 1
+      },
+      {
+        "logical_path": "SYSTEMS/proposals/headless-v2/projection-v2.schema.json",
+        "sha256": "a9322a33f03f62b2c2fc656f3bb6cef0b771901bc09cb9f262c96f8cbbf2badb",
+        "accepted": 1
+      },
+      {
+        "logical_path": "TESTS/projection-contracts.test.ts",
+        "sha256": "5f052b36d3526190d53ddb9b6ec7d59110b7345006c6e8d6594404e5324ef531",
+        "accepted": 1
+      },
+      {
+        "logical_path": "TESTS/projection-fixtures.ts",
+        "sha256": "032d93f252349db226ba589a3df08b5b199980dd0fcb9924abff2566c56dab0e",
+        "accepted": 1
+      },
+      {
+        "logical_path": "docs/projection-contracts/INTERFACE.md",
+        "sha256": "1b0c23b28c9c82a1647fe5b4afb23d017dd1aec8aa80a587fb58339064408e58",
+        "accepted": 1
+      },
+      {
+        "logical_path": "docs/projection-contracts/profile.json",
+        "sha256": "78bfa5a2cf79044f295f6c164e14e39784b1b7c9b274d7b42c1cdd7d59624302",
+        "accepted": 1
+      },
+      {
+        "logical_path": "packages/contracts/src/index.ts",
+        "sha256": "f519ea803c2a05385d0b278a822e486369be3c13cb01e986d12d94e8c84fea31",
+        "accepted": 1
+      },
+      {
+        "logical_path": "packages/contracts/src/projection-generated.ts",
+        "sha256": "1ca42c7d7c33156700371aa2cacb6c11a1101fb030ca903b2c38f8ee69f33663",
+        "accepted": 1
+      },
+      {
+        "logical_path": "packages/contracts/src/projection-v2.ts",
+        "sha256": "7177ab860e89f8e058fbebd30aa7b69bc8888711890c21ace08d4980f372f228",
+        "accepted": 1
+      },
+      {
+        "logical_path": "scripts/generate-projection-types.py",
+        "sha256": "c6411f3a2267b8ab83dbb3bc59b41ddfce7be6eef857109ee2566b0b6375faa7",
+        "accepted": 1
+      }
+    ]
   },
   "application_acceptance": {
     "status": "pending",
@@ -57,5 +132,19 @@
     "No 10000-event storage/replay workload",
     "No v1 migration or closure of R06/R10/R12/R13",
     "Native peers are not a paid cross-vendor pipeline"
-  ]
+  ],
+  "implementation_commit": "1231bc22d040454d43e41a305b553f77b45fff72",
+  "policy_adoption": {
+    "trusted_commit": "1231bc22d040454d43e41a305b553f77b45fff72",
+    "record": "trust-release.json",
+    "review": "policy-review.json",
+    "existing_policy_unchanged": true
+  },
+  "independent_review": {
+    "record": "independent-review.json",
+    "sha256": "740e4f34f0d4577d2ae762e551c7ff76f91d2ee1c4f9513ca7c74f398c7a9681",
+    "candidate": "1231bc22d040454d43e41a305b553f77b45fff72",
+    "verdict": "APPROVED_WITH_DOCUMENTED_LIMITS",
+    "independent_focused_tests_passed": 28
+  }
 }

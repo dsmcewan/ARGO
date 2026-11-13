@@ -54,9 +54,9 @@ Consumes: green contract candidate. Produces: independently reviewed local profi
 ## Task 4: actual acceptance and save
 
 Files: docs/projection-contracts verification/board records.
-- [ ] Upload candidate-matching CAS outputs; submit, run the pinned data gate and merge only the isolated staging branch.
-- [ ] Record actual board state without fabricated cross-vendor review or general application adapter claims.
-- [ ] Promote the independently reviewed TESTS/script policy into a separate immutable trusted checkout. Preserve prior policy bytes.
+- [x] Upload candidate-matching CAS outputs; submit, run the pinned data gate and merge only the isolated staging branch.
+- [x] Record actual board state without fabricated cross-vendor review or general application adapter claims.
+- [x] Promote the independently reviewed TESTS/script policy into a separate immutable trusted checkout. Preserve prior policy bytes.
 - [ ] Run all ten required checks through the actual trusted controller on the exact final candidate and integrate main only on success.
 - [ ] Push main non-forcing, verify remote identity and report CI honestly.
 

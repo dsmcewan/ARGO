@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "ticket": "PC-001",
+  "reviewer": "research_r5",
+  "role": "Independent native Codex whole-candidate reviewer; no author edits",
+  "reviewed_at": "2026-11-13T18:39:46.460041+00:00",
+  "worktree": "/workspace/ARGO/.board/projection-contracts/worktrees/PC-001-1-d3e0762186",
+  "candidate_commit": "1231bc22d040454d43e41a305b553f77b45fff72",
+  "baseline_commit": "d32da3b16b9f463a9a094445ab92da9748ebc568",
+  "clean_worktree_verified": true,
+  "verdict": "APPROVED_WITH_DOCUMENTED_LIMITS",
+  "findings": [],
+  "scope": "Additive opt-in projection/2.0.0 local contract, guards, pure reference selectors, generated declarations and focused acceptance tests. Approval is a source/semantic review of this exact candidate, not main integration or production acceptance.",
+  "reviewed_files": [
+    {
+      "path": "SYSTEMS/proposals/headless-v2/projection-v2.schema.json",
+      "sha256": "a9322a33f03f62b2c2fc656f3bb6cef0b771901bc09cb9f262c96f8cbbf2badb",
+      "bytes": 27380
+    },
+    {
+      "path": "SYSTEMS/proposals/headless-v2/CONTRACT.md",
+      "sha256": "6d443a5d3a8c8d7999e94cec2c145f5998fd64c7a38b9981d0763efe5c58fa5d",
+      "bytes": 7491
+    },
+    {
+      "path": "SYSTEMS/proposals/headless-v2/FREEZE.json",
+      "sha256": "3f45b293ab32829c6872cfc6221b77d8e66e81d3efa8faf1120f25d691504a28",
+      "bytes": 689
+    },
+    {
+      "path": "packages/contracts/src/projection-v2.ts",
+      "sha256": "7177ab860e89f8e058fbebd30aa7b69bc8888711890c21ace08d4980f372f228",
+      "bytes": 21233
+    },
+    {
+      "path": "packages/contracts/src/projection-generated.ts",
+      "sha256": "1ca42c7d7c33156700371aa2cacb6c11a1101fb030ca903b2c38f8ee69f33663",
+      "bytes": 4280
+    },
+    {
+      "path": "packages/contracts/src/index.ts",
+      "sha256": "f519ea803c2a05385d0b278a822e486369be3c13cb01e986d12d94e8c84fea31",
+      "bytes": 4939
+    },
+    {
+      "path": "TESTS/projection-contracts.test.ts",
+      "sha256": "5f052b36d3526190d53ddb9b6ec7d59110b7345006c6e8d6594404e5324ef531",
+      "bytes": 32651
+    },
+    {
+      "path": "TESTS/projection-fixtures.ts",
+      "sha256": "032d93f252349db226ba589a3df08b5b199980dd0fcb9924abff2566c56dab0e",
+      "bytes": 4002
+    },
+    {
+      "path": "scripts/generate-projection-types.py",
+      "sha256": "c6411f3a2267b8ab83dbb3bc59b41ddfce7be6eef857109ee2566b0b6375faa7",
+      "bytes": 6688
+    },
+    {
+      "path": "docs/projection-contracts/INTERFACE.md",
+      "sha256": "1b0c23b28c9c82a1647fe5b4afb23d017dd1aec8aa80a587fb58339064408e58",
+      "bytes": 9880
+    },
+    {
+      "path": "docs/projection-contracts/README.md",
+      "sha256": "963910800893f3627edd49393ba65fe79741ca5818e99707dffc45e9b3444b76",
+      "bytes": 4703
+    },
+    {
+      "path": "docs/projection-contracts/profile.json",
+      "sha256": "78bfa5a2cf79044f295f6c164e14e39784b1b7c9b274d7b42c1cdd7d59624302",
+      "bytes": 1559
+    },
+    {
+      "path": "docs/projection-contracts/verification.json",
+      "sha256": "8f3694b47343163751b54b2b86f5aa731115f43bdf3c35a96aac315bfa662657",
+      "bytes": 2636
+    },
+    {
+      "path": "SYSTEM_ROADMAP.md",
+      "sha256": "a471c761130dc0bccbc5d6cb984795e724546a2c771009732dae3aa3b1ea5d35",
+      "bytes": 42621
+    },
+    {
+      "path": "docs/roadmap/system.json",
+      "sha256": "b05aa970d59a4df25d7571b30d4012f7d940a7f665bffa9bd132fcf7feb61b69",
+      "bytes": 31214
+    }
+  ],
+  "review_basis": [
+    "Exact schema and normative contract bytes are the previously reviewed and approved pair. Installed freeze manifest is the independently approved byte-for-byte manifest; protected test pins its literal hash and exact two-file inventory and hashes the actual bodies.",
+    "Descriptor preflight runs before canonicalization or cloning; accessor/non-data containers, cycles, bare proxies, non-JSON values and bounded-resource violations are refused. Detached validated inputs are used and returned output is deeply frozen. No arbitrary host-code isolation guarantee is asserted.",
+    "Context guards bind full scope, requested actor/party, supplied authenticated principal and supplied policy to the exact checkpoint. Query time bounds include explicit genesis_world_time. Canonical queries require the specified system privilege.",
+    "Actor selection validates supplied rows including filtered rows, enforces acquisition cutoffs and references, deterministically deduplicates, strips private provenance and conservatively withholds claims under current policy cutoffs.",
+    "Canonical relation selection uses half-open valid-time and recorded-sequence intervals, rejects ambiguous selected revisions and preserves historical prefix behavior.",
+    "Sorted bounded ID tuple arrays avoid arbitrary Iterable execution and preserve permitted scalar identifiers. Generator emits structural declarations from actual schema and --check is read-only.",
+    "v1 public exports are changed only by additive re-exports. All four frozen v1 bodies and their existing freeze manifest remain byte-identical to baseline.",
+    "Final test/fixture/generator hashes exactly match research_r3 separate policy approval. Their trust promotion remains an explicit supervisor/controller action."
+  ],
+  "independent_verification": {
+    "focused_tests": {
+      "command": "node --test TESTS/projection-contracts.test.ts",
+      "context": "Offline native Node execution with authorized require_escalated to permit native test IPC",
+      "status": "passed",
+      "tests": 28,
+      "passed": 28,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "log": "/tmp/argo-pc-independent-final.log",
+      "log_sha256": "1443ffa94500932523acf06c1bb8159a22b18c45cd30b627355fa45640f91baf"
+    },
+    "projection_generator_check": {
+      "command": "python3 scripts/generate-projection-types.py --check",
+      "status": "passed",
+      "note": "Run independently in earlier review and again within passing focused generated-declarations test; generator bytes unchanged."
+    },
+    "v1_freeze": {
+      "status": "unchanged",
+      "manifest": "SYSTEMS/CONTRACT_FREEZE.json",
+      "files_verified": {
+        "SYSTEMS/argo-v1.schema.json": "8770f07efd24a47598d15171a3a10658d5f7b676d3fcc03362b1cac622b32a4e",
+        "SYSTEMS/ARCHITECTURE.md": "5f755e339dd068b439f991f793768e999ab9e96c464ebb7ffbc8c08caeab50c6",
+        "MECHANICS/tempted-fates-v1.md": "9dbc7f843704f52e51e3080cefd2dc2434f349af8a3a34366bbf7a74c5086645",
+        "SCENARIOS/Tempted_Fates.md": "95a9159170ec2288dfcb2b2881f3c0026e4a168673e0d29887f1f0be83c22008"
+      },
+      "comparison_baseline": "d32da3b16b9f463a9a094445ab92da9748ebc568"
+    },
+    "policy_hash_crosscheck": {
+      "status": "matched",
+      "review_path": "/tmp/argo-pc-policy-review.json",
+      "review_sha256": "ca3dd487dab089fbf795b1d86c7e38f71b608a7c974fb889719204bf74158a34",
+      "reviewer": "research_r3"
+    }
+  },
+  "root_reported_checks_not_rerun_here": [
+    "npm run typecheck passed",
+    "npm run contracts passed",
+    "Root focused suite 28/28 passed at /tmp/argo-pc-green.log",
+    "Absent-module RED before implementation retained at /tmp/argo-pc-red.log"
+  ],
+  "limits": [
+    "Pure local guards/selectors only: no persistent two-plane store, bus, service, transactional projector, crash recovery or deployed adapter is implemented or proven.",
+    "Trusted host must supply authenticated principal, current policy and release ordering, verified checkpoint ancestry/genesis, and verified source-event-to-row correspondence. Local consistency checks do not authenticate source rows or prove entitlement freshness or rollback resistance.",
+    "Public v2 actor claims are deliberately empty at current cutoff; v1 behavior is unchanged and callers opt in explicitly. The v2 genesis lower bound is also an explicit opt-in semantic constraint.",
+    "28 focused executable tests are not proof that the earlier 111 declarative design cases or 10000-event replay workload have run or passed.",
+    "Existing controller completion checks do not isolate arbitrary hostile same-interpreter runtime/protocol tampering. New test/fixture/generator trust policy needs supervisor adoption outside candidate control.",
+    "Board data-gate success is staging acceptance only. Exact candidate and trusted policy must pass all ten application-controller groups before main integration; this review does not implement or approve a general board application adapter.",
+    "R06/R10/R12/R13 and production authority/history/provider obligations remain deferred."
+  ],
+  "reviewer_activity": {
+    "repo_edits": false,
+    "temporary_artifacts_only": true,
+    "paid_calls": false,
+    "subagents": false,
+    "deployment": false
+  },
+  "remaining_acceptance": [
+    "Supervisor adopts exact separately reviewed policy bytes into immutable trusted checkout",
+    "Retain full ten-group trusted-controller result bound to exact candidate/trust commits before main integration"
+  ]
+}

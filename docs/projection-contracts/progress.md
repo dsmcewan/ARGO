@@ -17,3 +17,6 @@ Plan: docs/superpowers/plans/2026-11-13-projection-contracts.md. Baseline d32da3
 
 - Independent schema/runtime review accepted exact schema and normative bytes; manifest SHA-2563f45b293ab32829c6872cfc6221b77d8e66e81d3efa8faf1120f25d691504a28 copied unchanged and independently pinned in the new test.
 - GREEN: all28 focused tests pass, zero failures/skips/cancellations. Typecheck, v1 contracts and projection generator --check pass. No old v1 frozen or ledger/bridge files changed. Full controller acceptance still pending.
+
+- PC-001 actually passed its pinned data gate and merged implementation commit1231bc22d040454d43e41a305b553f77b45fff72 into the isolated staging branch. Audit valid;11 accepted CAS artifacts rehashed. No main integration yet.
+- Independent policy review approved exactly three added files; supervisor adopted immutable trusted commit1231bc22d040454d43e41a305b553f77b45fff72 in a separate clean checkout. All previous protected files unchanged.

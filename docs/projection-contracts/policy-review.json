@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "ticket": "PC-001",
+  "reviewer": "research_r3",
+  "reviewed_at": "2026-11-13T18:36:25.647896+00:00",
+  "worktree": "/workspace/ARGO/.board/projection-contracts/worktrees/PC-001-1-d3e0762186",
+  "checkout_head_at_review": "613b7462e508bdb5149392e0c0a0c6f4bc5660aa",
+  "identity_scope": "Three working-tree policy files identified by exact SHA-256, not a claim that these uncommitted additions are present in checkout HEAD.",
+  "verdict": "APPROVED_FOR_SUPERVISOR_TRUST_PROMOTION",
+  "findings": [],
+  "files": [
+    {
+      "path": "TESTS/projection-contracts.test.ts",
+      "bytes": 32651,
+      "sha256": "5f052b36d3526190d53ddb9b6ec7d59110b7345006c6e8d6594404e5324ef531"
+    },
+    {
+      "path": "TESTS/projection-fixtures.ts",
+      "bytes": 4002,
+      "sha256": "032d93f252349db226ba589a3df08b5b199980dd0fcb9924abff2566c56dab0e"
+    },
+    {
+      "path": "scripts/generate-projection-types.py",
+      "bytes": 6688,
+      "sha256": "c6411f3a2267b8ab83dbb3bc59b41ddfce7be6eef857109ee2566b0b6375faa7"
+    }
+  ],
+  "freeze_manifest_sha256": "3f45b293ab32829c6872cfc6221b77d8e66e81d3efa8faf1120f25d691504a28",
+  "final_delta_check": "Exactly one replacement of the reviewed freeze placeholder with the independently approved manifest digest; reconstructed prior test hash equals 983d5c0b49663580436f5d7795d9baeb057fa132561a84b9a606718e4370d31b. Fixture and generator hashes unchanged.",
+  "review_basis": [
+    "28 literal named tests provide independent explicit expectations for shape, authorization, scope/party isolation, temporal selection, provenance omission, detached frozen output, safe DTO boundaries, ID encoding and v1 compatibility. The expected behavior is not supplied by a candidate success report.",
+    "Fixtures contain deterministic literal data and type-only imports; they do not execute the implementation to construct expected outputs or access external resources.",
+    "The protected freeze test pins a literal independently reviewed manifest digest, restricts the referenced inventory to the exact two contract files and hashes both actual referenced file bodies. It cannot accept a manifest-only self-reported freeze.",
+    "The standard application gate discovers the new test. Its named generator check invokes fixed python3 argv without a shell, with 10-second timeout, 64-KiB output bound and a restricted environment; --check compares generated declarations and never writes candidate files.",
+    "Generator uses standard-library JSON parsing and deterministic structural rendering; no candidate Python import, eval, subprocess, download or network operation. Its explicit normal generation mode writes only the fixed generated-type path beneath the operator-selected root; acceptance uses --check.",
+    "Generator resolves only local definitions and the frozen v1 Scope reference. Property names/literals use JSON escaping. It documents structural type limits and does not purport to enforce semantic authorization, bounds or cross-field invariants.",
+    "Controller protects the complete new TESTS/scripts inventory after explicit independent trust adoption. Existing controller completion guards and sandbox assumptions are retained; no arbitrary interpreter/protocol-tampering isolation claim is added."
+  ],
+  "verification": {
+    "performed_by_reviewer": [
+      "Read all three policy files and relevant contract/controller references",
+      "Rehashed all three final policy files",
+      "Verified sole literal change by reconstructing the earlier test digest",
+      "Verified installed freeze-manifest digest and exact two referenced body hashes"
+    ],
+    "tests_run_by_reviewer": false,
+    "root_reported_focused_run": "Final native focused GREEN was in progress at review; no passing result asserted here.",
+    "repo_edits_by_reviewer": false,
+    "paid_calls": false,
+    "subagents": false
+  },
+  "remaining_acceptance": [
+    "Supervisor binds these exact reviewed policy bytes to immutable trusted commit T outside candidate control",
+    "Run and retain final focused tests and full ten-group controller result for exact candidate C/T",
+    "Keep board staging acceptance separate from application acceptance and final main integration"
+  ]
+}

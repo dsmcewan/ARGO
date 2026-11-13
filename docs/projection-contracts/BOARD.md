@@ -1,3 +1,9 @@
-# PC-001 blackboard record
+# Offline build board
 
-PC-001 is CLAIMED in the actual `.board/projection-contracts/` board. The board targets the isolated `argo/projection-contracts` staging branch. The application controller owns final main acceptance. This record will be replaced by the actual terminal board snapshot after staging integration.
+| Ticket | State | Attempt | Epoch | Title |
+| --- | --- | --- | --- | --- |
+| PC-001 | MERGED | 1 | 1 | Build reviewed versioned projection contracts and executable negative cases |
+
+Actual staging-board snapshot after the pinned data gate and Git integration of `1231bc22d040454d43e41a305b553f77b45fff72` into `argo/projection-contracts`. Audit chain verified; all 11 CAS artifacts are accepted and rehashed. Reviewer model is null; native independent review is retained separately and is not a fabricated vendor verdict.
+
+This MERGED state covers staging integration only. Main application acceptance requires the separately trusted controller. Later supervisor evidence records are not retroactively included in this accepted CAS attempt.
