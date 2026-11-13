@@ -30,6 +30,14 @@ import { realpathSync } from "node:fs";
 const IDENTIFIER = /^[A-Za-z0-9][A-Za-z0-9._:-]{0,63}$/;
 const RESERVED = new Set(["constructor", "prototype", "__proto__"]);
 
+// Shared admission contract: accepting a ticket that the runner cannot execute burns a seat.
+export function ticketRuntimeRefusal(ticket) {
+  if(!Array.isArray(ticket?.copy))return 'ticket.copy must be an array';
+  if(typeof ticket?.acceptance_cmd!=='string'||!ticket.acceptance_cmd.trim())return 'ticket.acceptance_cmd must be a non-empty string';
+  try{normalizeSlots(ticket);}catch(error){return `ticket.slot/slots: ${error.message}`;}
+  return null;
+}
+
 /** True when `candidate` is `root` itself or sits underneath it.
  *
  *  Not a string prefix test -- that would let "/Projects-evil" pass against "/Projects". Symlinks

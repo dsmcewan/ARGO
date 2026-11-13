@@ -164,7 +164,7 @@ test("Codex is a TRANSPORT of an existing vendor, not an unseatable one", () => 
 
 test("NOT_SEATED and SEATING cannot contradict each other", () => {
   // THE CONTRADICTION THIS EXISTS FOR, live on 2026-09-28 with a fully green suite: NOT_SEATED said
-  // claude-fable-5-1 "has no adapter because it is not a seat", while SEATING.planner seated it as
+  // claude-fable-5-2 "has no adapter because it is not a seat", while SEATING.planner seated it as
   // the hard rung forty lines away. Nothing checked the two against each other, so both could be
   // asserted at once and the suite had no opinion.
   //
@@ -264,7 +264,7 @@ test("the planner's last resort is another lab, and it is unreachable while the 
   }
   const hardNoAgy = selectFor("planner", { difficulty: "hard", avoid: ["agy_google"] });
   assert.equal(hardNoAgy.vendor, "anthropic");
-  assert.equal(hardNoAgy.model, "claude-fable-5-1");
+  assert.equal(hardNoAgy.model, "claude-fable-5-2");
 
   // And avoiding anthropic itself (the ORIGINAL scenario this test pins) no longer ends at openai:
   // agy_google is live, openai's credits are confirmed dead, and agy_google covers every difficulty
@@ -306,9 +306,9 @@ test("difficulty picks the rung; the cheap rung is the answer to an easy task, n
   assert.equal(selectFor("planner", { difficulty: "hard" }).model, "claude-opus-4-6-thinking");
   assert.equal(selectFor("planner", { difficulty: "easy", avoid: ["agy_google"] }).model, "claude-opus-5-5",
     "opus-5-5 is still easy/medium's answer on the anthropic ladder once agy_google is out of the running");
-  assert.equal(selectFor("planner", { difficulty: "hard", avoid: ["agy_google"] }).model, "claude-fable-5-1",
+  assert.equal(selectFor("planner", { difficulty: "hard", avoid: ["agy_google"] }).model, "claude-fable-5-2",
     "fable is still hard's answer on the anthropic ladder once agy_google is out of the running");
-  assert.notEqual(selectFor("planner", { difficulty: "medium" }).model, "claude-fable-5-1",
+  assert.notEqual(selectFor("planner", { difficulty: "medium" }).model, "claude-fable-5-2",
     "a medium plan must never fall UP onto the hard rung");
   assert.equal(selectFor("implementer", { difficulty: "easy" }).model, "gpt-6-luna");
   // UPDATED 2026-09-29, same reseat as planner above: hard now resolves to agy_google's new rung.
@@ -317,7 +317,7 @@ test("difficulty picks the rung; the cheap rung is the answer to an easy task, n
     "astra is still hard's answer on the openai ladder once agy_google is out of the running");
 
   // Every rung holds a 1M window, so CONTEXT never ordered them and cost never did either.
-  assert.equal(SEAT_FACTS.anthropic.windows["claude-sonnet-5"], SEAT_FACTS.anthropic.windows["claude-fable-5-1"]);
+  assert.equal(SEAT_FACTS.anthropic.windows["claude-sonnet-5"], SEAT_FACTS.anthropic.windows["claude-fable-5-2"]);
   // An unknown difficulty is refused by name rather than defaulted.
   assert.match(selectFor("planner", { difficulty: "trivial" }).why, /unknown difficulty/);
   // And a missing band falls DOWN, never up: quietly upgrading is how a cheap task lands on the dear rung.
@@ -359,7 +359,7 @@ test("effort escalates before the rung does, on the LAB's own value list", () =>
   }
   assert.deepEqual(steps, [
     "effort:claude-opus-5-5@high", "effort:claude-opus-5-5@xhigh", "effort:claude-opus-5-5@max",
-    "rung:claude-fable-5-1@high", "effort:claude-fable-5-1@xhigh", "effort:claude-fable-5-1@max",
+    "rung:claude-fable-5-2@high", "effort:claude-fable-5-2@xhigh", "effort:claude-fable-5-2@max",
   ], "effort first, rung second, and a rung change must not report itself as an effort change");
 });
 
@@ -677,7 +677,7 @@ test("the specified ladders are single-hose, so they can only be waited out", ()
   // still shares one hose among themselves -- what changed is a second pool now leads it.
   const planner = candidatesFor("planner");
   assert.deepEqual(planner.map(c => c.model),
-    ["claude-sonnet-4-6", "claude-opus-4-6-thinking", "claude-fable-5-1", "claude-opus-5-5", "gpt-6-sol"]);
+    ["claude-sonnet-4-6", "claude-opus-4-6-thinking", "claude-fable-5-2", "claude-opus-5-5", "gpt-6-sol"]);
   assert.equal(new Set(planner.map(c => c.pool)).size, 3, "three pools: agy_google (two rungs), the anthropic hose, and the way out");
   assert.equal(planner[0].basis, "TASTE", "the operator's stated default rung, named as a preference, not a measurement");
   assert.equal(planner[1].basis, "TASTE", "the escalation rung, same reasoning");

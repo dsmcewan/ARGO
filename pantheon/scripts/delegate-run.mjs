@@ -64,11 +64,11 @@ rmSync(dir, { recursive: true, force: true });
 console.log(JSON.stringify({ maxInside, completed }));
 process.exit(maxInside === 1 && completed === 4 ? 0 : 1);
 `);
-    const syn = await runAcceptance({ worktree: dir, cmd: "/usr/bin/node --check lock.mjs", timeout: 20_000 });
+    const syn = await runAcceptance({ worktree: dir, cmd: "node --check lock.mjs", timeout: 20_000 });
     if (syn.exit !== 0) {
       return { ok: false, detail: `syntax error: ${syn.out.split("\n")[0].slice(0, 160)}` };
     }
-    const r = await runAcceptance({ worktree: dir, cmd: "/usr/bin/node probe.mjs", timeout: 20_000 });
+    const r = await runAcceptance({ worktree: dir, cmd: "node probe.mjs", timeout: 20_000 });
     const out = r.out.trim().split("\n").pop() ?? "";
     if (r.exit === 0) return { ok: true, detail: `serialized correctly under 4 concurrent holders — ${out}` };
     // NOT a failure. The orchestrator can legitimately assign a code task that is not a lock

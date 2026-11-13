@@ -23,6 +23,7 @@
 // Everything else a caller wants to weigh is passed in per call as `prefer`, so a policy choice
 // stays visible at the call site instead of hardening into a table nobody re-examines.
 
+import { CAPABILITIES } from "../../../packages/model-client/registry.mjs";
 import { modelId } from "../config/models.mjs";
 
 // Facts, each labelled with how it is known. `unmeasured` fields exist so a caller asking for
@@ -164,6 +165,17 @@ export const SEAT_FACTS = {
     notes: "rides the subscription via OAuth; replay, so cost grows with conversation length",
   },
 };
+
+// Keep compatibility metadata derived from the active shared policy.
+for (const [model, cap] of Object.entries(CAPABILITIES)) {
+  const facts=SEAT_FACTS[cap.vendor];
+  facts.windows[model]=cap.window;
+  if(facts.effort && cap.efforts){
+    facts.effort.supports ??= {};
+    facts.effort.supports[model]=cap.efforts;
+    if(cap.vendor==='anthropic')facts.effort.default[model]='high';
+  }
+}
 
 // What a caller may ask for. Anything outside this set is rejected by name rather than silently
 // ignored — a router that accepts an unknown requirement and routes anyway is lying about having

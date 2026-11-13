@@ -3,6 +3,7 @@ import { join } from "node:path";
 import { homedir } from "node:os";
 import { streamTurn } from "./stream.mjs";
 import { modelId } from "../config/models.mjs";
+import { isFrontier, sendModelTurn } from "../../../packages/model-client/index.mjs";
 
 // SDK transport. Replaces spawning a vendor CLI and then going to find the transcript it wrote.
 //
@@ -150,6 +151,16 @@ export function makeClient(vendor, opts = {}) {
   const Ctor = { responses: OpenAI, genai: GoogleGenAI, messages: Anthropic }[spec.surface];
   if (!Ctor) throw new Error(`makeClient: pass the constructor for the ${spec.surface} surface (import it at the edge)`);
   const url = baseURL ?? spec.base_url;
+  if (opts.poolConfig) {
+    const pool = opts.poolConfig;
+    if (pool.vendor !== vendor || !env[pool.credential_env]) throw new Error('Configured pool credential unavailable');
+    if (pool.auth === 'oauth') {
+      if (!spec.oauth) throw new Error('Configured OAuth pool is unsupported for this transport');
+      return Object.assign(new Ctor({ apiKey: null, authToken: env[pool.credential_env], maxRetries: 0,
+        defaultHeaders: { 'anthropic-beta': spec.oauth.beta }, ...(url ? { baseURL: url } : {}) }), {argoBetaHeaders:[spec.oauth.beta]});
+    }
+    return makeClient(vendor, { ...opts, poolConfig: null, apiKey: env[pool.credential_env], prefer: 'key' });
+  }
 
   // Subscription OAuth first where the vendor supports it, because that is the credential the
   // operator actually pays for; the metered key is the fallback, not the default. `prefer` lets
@@ -159,7 +170,7 @@ export function makeClient(vendor, opts = {}) {
   if (spec.oauth && prefer !== "key" && !apiKey) {
     const token = (vendor === "anthropic" && env.CLAUDE_CODE_OAUTH_TOKEN) || readOauthToken(spec.oauth, opts.home ?? homedir());
     if (token) {
-      return new Ctor({
+      return Object.assign(new Ctor({
         // maxRetries: 0 because THIS HARNESS OWNS THE RETRY POLICY.
         //
         // The SDKs retry 429, 408, 409 and 5xx twice by default with exponential backoff. That is a
@@ -179,7 +190,7 @@ export function makeClient(vendor, opts = {}) {
         apiKey: null,
         ...(spec.oauth.beta ? { defaultHeaders: { "anthropic-beta": spec.oauth.beta } } : {}),
         ...(url ? { baseURL: url } : {}),
-      });
+      }), {argoBetaHeaders:spec.oauth.beta?[spec.oauth.beta]:[]});
     }
     if (prefer === "oauth-only") {
       throw new Error(`makeClient: ${vendor} has no subscription token at ~/${spec.oauth.file}`);
@@ -198,7 +209,7 @@ export function makeClient(vendor, opts = {}) {
   // retried 429/408/5xx four extra times while this comment claimed retries were off. Found by an
   // external review. `attempts: 1` is "no retries" per the SDK's own doc comment.
   if (spec.surface === "genai") {
-    return new Ctor({ apiKey: key, httpOptions: { retryOptions: { attempts: 1 }, ...(url ? { baseUrl: url } : {}) } });
+    return new Ctor({ apiKey: key, httpOptions: { apiVersion: 'v1beta1', retryOptions: { attempts: 1 }, ...(url ? { baseUrl: url } : {}) } });
   }
   return new Ctor({ apiKey: key, maxRetries: 0, ...(url ? { baseURL: url } : {}) });
 }
@@ -211,12 +222,19 @@ export function makeClient(vendor, opts = {}) {
 // just because a vendor offers it.
 export async function sendTurn({
   client, vendor, model, prompt, previousResponseId, history, onEvent, label, continuity, extra = {},
+  scope, sessionId, effort, architecture, contractHeader, signal, deadline,
 }) {
   const spec = ADAPTERS[vendor];
   if (!spec) throw new Error(`sendTurn: no SDK adapter for vendor "${vendor}"`);
   if (!client) throw new Error("sendTurn: client is required");
   if (typeof prompt !== "string" || prompt === "") throw new Error("sendTurn: prompt is required");
   const { mode } = continuityMode(vendor, continuity);
+  // The reusable client owns frontier policy on BOTH unary and streaming paths.
+  if (isFrontier(model ?? spec.default_model)) {
+    return sendModelTurn({ client, vendor, model: model ?? spec.default_model, prompt,
+      previousResponseId, history, onEvent, continuity: mode, extra, scope, sessionId,
+      effort, architecture, contractHeader, signal, deadline });
+  }
 
   // Streaming is an OBSERVATION channel, not a second result format: streamTurn accumulates
   // into the same shape the non-streaming path returns, so the seat layer hashes one thing.

@@ -17,7 +17,7 @@ test("loads all four vendors from models.json", () => {
 });
 
 test("modelId resolves a known vendor/name pair to its model string", () => {
-  assert.equal(modelId("anthropic", "fable"), "claude-fable-5-1");
+  assert.equal(modelId("anthropic", "fable"), "claude-fable-5-2");
   assert.equal(modelId("anthropic", "sonnet"), "claude-sonnet-5");
   assert.equal(modelId("anthropic", "opus"), "claude-opus-5");
   assert.equal(modelId("anthropic", "haiku"), "claude-haiku-4-5-20251001");

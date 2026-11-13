@@ -14,7 +14,7 @@ import { homedir } from "node:os";
 import { createBus } from "./bus.mjs";
 import { originPolicy, json } from "./http-safety.mjs";
 import { runOpenItem } from "../board/run-item.mjs";
-import { ticketContainmentRefusal, outDirFor } from "../board/ticket-safety.mjs";
+import { ticketContainmentRefusal, ticketRuntimeRefusal, outDirFor } from "../board/ticket-safety.mjs";
 import { VENDORS } from "../board/schema.mjs";
 
 // Two builds at once, a third refused. Two DIFFERENT tickets do not share state (each gets its own
@@ -53,7 +53,7 @@ export const REQUIRED_TICKET_FIELDS = ["key", "repo_root", "question", "title", 
  */
 export function requiredTicketFieldRefusal(ticket, { fields = REQUIRED_TICKET_FIELDS } = {}) {
   const missing = fields.filter(f => typeof ticket?.[f] !== "string" || !ticket[f].trim());
-  if (!missing.length) return null;
+  if (!missing.length) return ticketRuntimeRefusal(ticket);
   return `ticket is missing ${missing.length === 1 ? "a field" : "fields"} the build needs: ` +
     missing.map(f => `ticket.${f}`).join(", ") +
     " -- each must be a non-empty string. Refused here rather than part-way through, because the " +

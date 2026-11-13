@@ -17,7 +17,7 @@ import { requiredTicketFieldRefusal, REQUIRED_TICKET_FIELDS } from "../src/view/
 // tokens and the operator's minutes, and the error surfaces far from its cause.
 
 test("a ticket missing a field the pipeline requires is refused AT THE DOOR", () => {
-  const good = { key: "k", repo_root: "/r", question: "what breaks?", title: "t", goal: "g" };
+  const good = { key: "k", repo_root: "/r", question: "what breaks?", title: "t", goal: "g", copy:[], acceptance_cmd:"true", slot:"out" };
   assert.equal(requiredTicketFieldRefusal(good), null);
 
   for (const field of REQUIRED_TICKET_FIELDS) {
@@ -33,7 +33,7 @@ test("a ticket missing a field the pipeline requires is refused AT THE DOOR", ()
 test("empty and whitespace are missing, because that is what actually arrived", () => {
   // The failing ticket did not omit the key -- LEXI's own _REQUIRED_KEYS check passes on a key
   // that is PRESENT. What arrived was empty, which is why presence was never enough.
-  const base = { key: "k", repo_root: "/r", question: "q", title: "t", goal: "g" };
+  const base = { key: "k", repo_root: "/r", question: "q", title: "t", goal: "g", copy:[], acceptance_cmd:"true", slot:"out" };
   for (const bad of ["", "   ", "\n", null, 7, [], {}]) {
     const why = requiredTicketFieldRefusal({ ...base, question: bad });
     assert.ok(why, `question=${JSON.stringify(bad)} must be refused`);
@@ -64,4 +64,14 @@ test("the fields the door checks are ones the pipeline actually dereferences", (
     assert.ok(used.has(f), `${f} is not a field run-item.mjs reads; requiring it would refuse ` +
       `tickets that would have built fine`);
   }
+});
+
+test('runtime copy, acceptance command and slot plan are required before admission',()=>{
+ const base={key:'k',repo_root:'/r',question:'q',title:'t',goal:'g',copy:[],acceptance_cmd:'true',slot:'out'};
+ for(const field of ['copy','acceptance_cmd','slot']){
+  const bad={...base};delete bad[field];assert.match(requiredTicketFieldRefusal(bad),new RegExp(field));
+ }
+ assert.match(requiredTicketFieldRefusal({...base,slots:[{slot:'a'},{slot:'a'}],slot:undefined}),/duplicate/);
+ assert.match(requiredTicketFieldRefusal({...base,copy:null}),/copy/);
+ assert.equal(requiredTicketFieldRefusal({...base,slot:undefined,slots:[{slot:'a',path:'a.mjs'}]}),null);
 });

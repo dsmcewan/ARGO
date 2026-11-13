@@ -70,7 +70,7 @@ export const ROLES = {
   },
 
   implementer: {
-    charter: "Produce the artifact the ticket asks for. Nothing else.",
+    charter: "Own the assigned artifact end to end. Fix adjacent defects within your assigned ownership when they prevent the ticket from working; preserve unrelated behavior.",
     // artifact here is READ-WRITE under a lease. That mutation bit is what distinguishes this set
     // from the reviewer's, which otherwise names almost the same tokens.
     context: ["ticket", "work_item", "artifact", "tests", "trace", "repro"],

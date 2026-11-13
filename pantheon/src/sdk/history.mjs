@@ -177,3 +177,26 @@ export function commitHistory(seat, { home = pantheonHome() } = {}) {
   }
   return { ok: true, committed: messages.length };
 }
+
+// A compaction replaces a prefix: length-based acknowledgment cannot distinguish old and new.
+// Write immutable generations FIRST, then atomically acknowledge their digest in the seat record.
+// A crash before that acknowledgment leaves an orphan, never an implicitly committed tool turn.
+import {createHash} from 'node:crypto';
+const digestHistory=bytes=>createHash('sha256').update(bytes).digest('hex');
+export function stageHistoryGeneration(seat,messages,{home=pantheonHome()}={}){
+ if(!Array.isArray(messages))throw new Error('History generation must contain messages');
+ const body=JSON.stringify({key:seatKey(seat),messages}),digest=digestHistory(body);
+ const dir=join(home,'history','generations',seatKey(seat));mkdirSync(dir,{recursive:true,mode:0o700});
+ const file=join(dir,`${digest}.json`);
+ try{writeFileSync(file,body,{mode:0o600,flag:'wx',flush:true});}
+ catch(error){if(error.code!=='EEXIST')throw error;if(readFileSync(file,'utf8')!==body)throw new Error('Corrupt immutable history generation');}
+ return digest;
+}
+export function loadHistoryGeneration(seat,digest,{home=pantheonHome()}={}){
+ if(!/^[a-f0-9]{64}$/.test(digest))throw new Error('Invalid history generation digest');
+ const body=readFileSync(join(home,'history','generations',seatKey(seat),`${digest}.json`),'utf8');
+ if(digestHistory(body)!==digest)throw new Error('Corrupt history generation digest');
+ const value=JSON.parse(body);
+ if(value.key!==seatKey(seat)||!Array.isArray(value.messages))throw new Error('Invalid history generation identity');
+ return {messages:value.messages,committed:value.messages.length,dropped:0,pending:false,generation:digest};
+}

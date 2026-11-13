@@ -1,0 +1,9 @@
+[
+  {"id":"fable_1","vendor":"anthropic","auth":"oauth","credential_env":"ARGO_FABLE_POOL_1"},
+  {"id":"fable_2","vendor":"anthropic","auth":"oauth","credential_env":"ARGO_FABLE_POOL_2"},
+  {"id":"fable_3","vendor":"anthropic","auth":"oauth","credential_env":"ARGO_FABLE_POOL_3"},
+  {"id":"fable_4","vendor":"anthropic","auth":"oauth","credential_env":"ARGO_FABLE_POOL_4"},
+  {"id":"google_api","vendor":"agy_google","auth":"key","credential_env":"GEMINI_API_KEY"},
+  {"id":"openai_api","vendor":"openai","auth":"key","credential_env":"OPENAI_API_KEY"},
+  {"id":"xai_api","vendor":"xai","auth":"key","credential_env":"XAI_API_KEY"}
+]

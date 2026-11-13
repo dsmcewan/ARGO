@@ -29,16 +29,16 @@ function scriptedClients() {
     // that isn't on it -- which is how this fixture found out the planner is anthropic.
     makeClientFor: vendor => {
       const record = req => {
-        const prompt = String(req.input ?? req.messages?.at(-1)?.content ?? req.contents ?? "");
+        const prompt = typeof req.input === "string" ? req.input : req.input?.at(-1)?.content ?? req.messages?.at(-1)?.content ?? req.contents?.at(-1)?.parts?.map(p=>p.text??"").join("") ?? "";
         calls.push({ vendor, model: req.model, prompt });
         return answerFor(prompt);
       };
       return {
-        responses: {
+        responses: { inputTokens: {count: async () => ({input_tokens: 1000})},
           create: async req => {
             const text = record(req);
             const id = `resp_${++n}`;
-            const response = { id, output_text: text, output: [{ type: "message", content: [{ type: "output_text", text }] }] };
+            const response = { id, status: "completed", output_text: text, output: [{ type: "message", content: [{ type: "output_text", text }] }] };
             return {
               async *[Symbol.asyncIterator]() {
                 yield { type: "response.created", response: { id } };
@@ -53,17 +53,19 @@ function scriptedClients() {
             const text = record(req);
             return {
               async *[Symbol.asyncIterator]() {
-                yield { type: "content_block_delta", delta: { type: "text_delta", text } };
+                yield {type:"content_block_start",index:0,content_block:{type:"text",text:""}};
+                yield { type: "content_block_delta", index:0, delta: { type: "text_delta", text } };
+                yield {type:"message_delta",delta:{stop_reason:"end_turn"}};
                 yield { type: "message_stop" };
               },
             };
           },
         },
-        models: {
+        models: { countTokens: async () => ({totalTokens:1000}),
           generateContentStream: async req => {
             const text = record(req);
             return {
-              async *[Symbol.asyncIterator]() { yield { text }; },
+              async *[Symbol.asyncIterator]() { yield {candidates:[{finishReason:"STOP",content:{parts:[{text}]}}]}; },
             };
           },
         },

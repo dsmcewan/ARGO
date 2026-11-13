@@ -33,9 +33,11 @@ import { certifiedArtifacts } from "./artifacts.mjs";
 import { resolveRepoRoot } from "../../scripts/lib/repo-root.mjs";
 import { modelId } from "../config/models.mjs";
 import { tokenCapFor } from "../agents/store.mjs";
-import { ticketContainmentRefusal, normalizeSlots, isUnder } from "./ticket-safety.mjs";
+import { ticketContainmentRefusal, ticketRuntimeRefusal, normalizeSlots, isUnder } from "./ticket-safety.mjs";
 import { spawnPromise } from "./spawn.mjs";
 import { runAgyCliTurn } from "./agy-cli.mjs";
+import { frontierCandidates, readPools } from "../route/frontier.mjs";
+import { routeCall, openCooldownStore, isFrontier } from "../../../packages/model-client/index.mjs";
 
 // This repo's own root (for Antigravity role-card discovery and PANTHEON_HEAD provenance) -- NOT the ticket's
 // target repo. src/board/run-item.mjs -> src/board -> src -> repo root, so two levels up.
@@ -96,6 +98,8 @@ export async function runOpenItem(spec, opts = {}) {
   // A ticket names its file either singularly (`slot`, as every ticket written before this did) or
   // as a `slots` array, one entry per implementer. normalizeSlots below is what decides which.
   if (spec.slot === undefined && !Array.isArray(spec.slots)) throw new Error('ticket spec is missing "slot"');
+  const runtimeRefusal=ticketRuntimeRefusal(spec);
+  if(runtimeRefusal)throw new Error(runtimeRefusal);
   // Every path-shaped field is untrusted input here, not just at the HTTP door: this function is
   // an importable surface with three callers (the CLI, the build API, anything else that imports
   // it), and a ticket may have been drafted by a model rather than written by the operator. See
@@ -110,6 +114,11 @@ export async function runOpenItem(spec, opts = {}) {
   if (new Set(destinations).size !== destinations.length) throw new Error("duplicate artifact destination aliases");
 
   const REPO_ROOT = resolveRepoRoot(REPO, spec.repo_root);
+  const profile = opts.profile ?? "argo";
+  if (!["argo", "legacy"].includes(profile)) throw new Error("unknown routing profile");
+  const pools = opts.pools ?? readPools();
+  const cooldown = opts.cooldown ?? openCooldownStore(join(process.env.PANTHEON_COOLDOWN_DIR ?? join(homedir(), ".cache", "pantheon"), "v2"));
+  const forRole = (role, options = {}) => frontierCandidates(role, { pools, ...options });
   const OVERRIDES = seatOverrides;
   // WAS a synchronous refusal here for planner/implementer + agy_google unless
   // PANTHEON_AGY_TRANSPORT=cli was already set (scripts/agy-seat.py's --role choices are literally
@@ -159,7 +168,7 @@ export async function runOpenItem(spec, opts = {}) {
   const say = () => {};
   const check = (ok, line) => { if (!ok) failures++; progress({ event: "check", ok, detail: line }); };
   const clients = {};
-  const clientFor = v => (clients[v] ??= makeClientFor(v));
+  const clientFor = (v, pool, poolConfig) => (clients[`${v}:${pool ?? v}`] ??= makeClientFor(v, { pool, poolConfig }));
   const ticketCid = cidOf("entry", JSON.parse(JSON.stringify({ ...spec, repo_root: REPO_ROOT, slots: SLOTS })));
   const statePath = join(root, "run.json");
   let recordAllowed = false;
@@ -279,15 +288,15 @@ export async function runOpenItem(spec, opts = {}) {
     return { text, response_id: res.response_id, usage: res.usage, tool_calls: res.tool_calls, subagent_calls: res.subagent_calls };
   }
 
-  async function turn({ vendor, purpose, model, prompt, extra = undefined }) {
+  async function turn({ vendor, purpose, model, prompt, extra = undefined, pool, poolConfig, signal }) {
     const t0 = Date.now();
     progress({ event: "turn.start", seat: vendor, model, detail: `${purpose}, ${prompt.length} chars of prompt` });
-    if (vendor === "agy_google") {
+    if (vendor === "agy_google" && !isFrontier(model)) {
       let r;
       try { r = await agyTurn({ purpose, model, prompt }); }
       catch (e) { progress({ event: "turn.error", seat: vendor, model, detail: String(e?.message ?? e).slice(0, 200) }); throw e; }
       const ms = Date.now() - t0;
-      run.turns.push({ vendor, model, purpose, ms, chars: r.text.length, prompt_chars: prompt.length, response_id: r.response_id, streamed: true,
+      run.turns.push({ vendor, model, pool: pool ?? vendor, purpose, ms, chars: r.text.length, prompt_chars: prompt.length, response_id: r.response_id, streamed: true,
         tool_calls: r.tool_calls, subagent_calls: r.subagent_calls, usage: r.usage });
       progress({ event: "turn.done", seat: vendor, model, ms, detail: `${r.text.length} chars, ${r.tool_calls} tool call(s), ${r.subagent_calls} subagent(s)` });
       return r.text;
@@ -301,82 +310,36 @@ export async function runOpenItem(spec, opts = {}) {
       else if (e.type === "error") progress({ event: "turn.error", seat: vendor, model, detail: e.text ?? "stream error" });
     };
     let r;
-    try { r = await sdkTurn({ vendor, purpose, cwd: worktree, prompt, model, client: clientFor(vendor), home, onEvent, label: `${vendor}-${purpose}`, ...(extra ? { extra } : {}) }); }
+    try { r = await sdkTurn({ vendor, purpose: `${purpose}@${pool ?? vendor}@${model}`, cwd: worktree, prompt, model, client: clientFor(vendor, pool, poolConfig), home, onEvent, signal,
+      architecture: opts.architecture === true, contractHeader: opts.contractHeader, label: `${vendor}-${purpose}`, ...(extra ? { extra } : {}) }); }
     catch (e) { progress({ event: "turn.error", seat: vendor, model, detail: String(e?.message ?? e).slice(0, 200) }); throw e; }
     if (!r.ok) { progress({ event: "turn.error", seat: vendor, model, detail: r.why }); throw new Error(`${vendor}/${purpose}: ${r.why}`); }
     const text = r.result.text ?? "";
     const ms = Date.now() - t0;
-    run.turns.push({ vendor, model, purpose, ms, chars: text.length, prompt_chars: prompt.length, response_id: r.result.response_id ?? null, streamed: r.result.streamed ?? false });
+    run.turns.push({ vendor, model, pool: pool ?? vendor, purpose, ms, chars: text.length, prompt_chars: prompt.length, response_id: r.result.response_id ?? null, streamed: r.result.streamed ?? false });
     progress({ event: "turn.done", seat: vendor, model, ms, detail: `${text.length} chars` });
     return text;
   }
 
   /** Walk the seating table's fallbacks on a TRANSPORT failure only. */
   async function roleTurn({ role, purpose, prompt, avoid = [], extra = undefined, pin = null }) {
-    let candidates = OVERRIDES[role] ? [OVERRIDES[role]] : candidatesFor(role, { avoid });
-    if (!candidates.length) throw new Error(`no seated candidate for "${role}"`);
-    // A PINNED MODEL keeps the chair and its pack, and names the body in it -- the same thing a
-    // --seat override does, but per call, so one ticket can put gpt-6-astra on one slot and
-    // gpt-6-sol on another. The fallback ladder is preserved below the pin: if the pinned body
-    // fails at the transport, the remaining rungs are still tried, because a pin is a preference
-    // about which model does the work, not a demand that the run die if it is unavailable.
-    if (pin) candidates = [{ ...candidates[0], model: pin, basis: "PINNED", why: `pinned per slot: ${pin}` }, ...candidates];
-    // SEEDED FROM DISK. This set used to start empty on every role turn, so the knowledge that a
-    // pool was shut died with the turn that paid for it: the scouts could not tell the planner, and
-    // the next process started blind. On 2026-09-28 one build paid the same ten-minute discovery
-    // twice -- once in LEXI's drafting leg, then again in this loop, against the same exhausted
-    // subscription. A refusal is evidence; src/route/cooldown.mjs is where it survives.
-    const remembered = shutPools();
-    const tried = [], deadPools = new Set(remembered);
-    for (const c of candidates) {
-      const pool = cooldownPoolFor(c, process.env.PANTHEON_AGY_TRANSPORT ?? "sdk");
-      if (deadPools.has(pool)) {
-        // Saying WHICH kind of shut matters when reading a failed run: one of these cost a call to
-        // learn, the other cost nothing because an earlier turn already paid for it.
-        tried.push(`${c.vendor}: skipped, ${pool} hose shut` +
-          (remembered.has(pool) ? " (remembered from an earlier refusal, not retried)" : ""));
-        continue;
-      }
-      try {
-        const text = await turn({ vendor: c.vendor, purpose, model: c.model, prompt, extra: capFor(c.vendor, extra) });
-        recordSuccess(pool);   // one good answer ends the cooldown and the streak
-        return { text, seat: c };
-      } catch (err) {
-        if (isTimeout(err)) {
-          tried.push(`${c.vendor}/${c.model}: transport timeout`);
-          progress({ event: "reseat", detail: `${c.vendor}/${c.model} timed out; trying the next ${role} candidate` });
-          continue;
-        }
-        const f = shouldFallThrough(err);
-        tried.push(`${c.vendor}: ${f.why}`);
-        progress({ event: "reseat", detail: `${c.vendor}: ${f.why}` });
-        if (!f.ok) throw err;
-        if (f.same_vendor_viable) {
-          const waitS = Math.min(f.retry_after_s ?? 2, 60);
-          await new Promise(r => setTimeout(r, waitS * 1000));
-          try {
-            const text = await turn({ vendor: c.vendor, purpose, model: c.model, prompt, extra: capFor(c.vendor, extra) });
-            recordSuccess(pool);
-            return { text, seat: c };
-          } catch (e2) {
-            const f2 = shouldFallThrough(e2);
-            tried.push(`${c.vendor}: still ${f2.why}`);
-            deadPools.add(pool);
-            recordRefusal(pool, { retryAfterS: f2.retry_after_s, why: f2.why });
-            continue;
-          }
-        }
-        deadPools.add(pool);
-        // Only a REFUSAL is recorded, never a transport timeout: a timeout says the network was
-        // slow, not that the credential is spent, and disbelieving a healthy pool for fifteen
-        // minutes on that evidence would be the cache causing the outage it exists to avoid.
-        recordRefusal(pool, { retryAfterS: f.retry_after_s, why: f.why });
-      }
+    let candidates;
+    if (OVERRIDES[role]) {
+      const selected = OVERRIDES[role];
+      candidates = [{ ...selected, pool: selected.pool ?? selected.vendor }];
+      if (pin && pin !== selected.model) candidates = [forRole(role, { pin, avoid })[0], ...candidates];
+    } else if (profile === "argo") candidates = forRole(role, { avoid, pin });
+    else {
+      candidates = candidatesFor(role, { avoid });
+      if (pin) candidates = [forRole(role, { pin, avoid })[0], ...candidates];
     }
-    throw new Error(`every seated candidate for "${role}" was unavailable: ${tried.join("; ")}`);
+    if (!candidates.length || candidates.some(c => !c)) throw new Error(`no seated candidate for "${role}"`);
+    const routed = await routeCall({ candidates, cooldown, signal: opts.signal,
+      deadline: Date.now() + (opts.turnTimeoutMs ?? 900_000),
+      invoke: (candidate, { signal }) => turn({ ...candidate, purpose, prompt, signal, extra: capFor(candidate.vendor, extra) }) });
+    return { text: routed.value, seat: routed.seat };
   }
 
-  /** The repository HEAD, read from the ref files (no version-control process). */
   function repoHead() {
     try {
       const h = readFileSync(join(REPO, ".git", "HEAD"), "utf8").trim();
@@ -429,9 +392,11 @@ export async function runOpenItem(spec, opts = {}) {
         bytes: board.store.put("blob", baseline ?? Buffer.alloc(0)) } };
     });
     // ---------------------------------------------------------------- seating
-    const chain = seatingPlan({ roles: ["planner", "implementer", "reviewer"] });
+    const chain = profile === "argo"
+      ? { ok: true, assigned: Object.fromEntries(["planner", "implementer", "reviewer"].map(role => [role, forRole(role)[0]])) }
+      : seatingPlan({ roles: ["planner", "implementer", "reviewer"] });
     if (!chain.ok) throw new Error(chain.why);
-    const intake = seatingPlan({ roles: ["scout"], seating: INTAKE });
+    const intake = profile === "argo" ? { ok: true, assigned: { scout: forRole("scout")[0] } } : seatingPlan({ roles: ["scout"], seating: INTAKE });
     bar(`open item ${spec.key} — ${spec.title}`);
     progress({ event: "run.start", detail: `${spec.key}: ${spec.title} → ${SLOT}; acceptance: ${CMD}` });
     for (const r of seatingReport(chain)) say(r.line);
@@ -475,7 +440,7 @@ export async function runOpenItem(spec, opts = {}) {
         const p = promptFor("scout", { question: spec.question },
           NO_TOOLS + "Answer from what you already know in at most four sentences, name the concrete failure rather than a " +
           "category, and end with one line: `RAN: nothing`.");
-        const model = intake.assigned.scout.vendor === vendor ? intake.assigned.scout.model : (vendor === "xai" ? modelId("xai", "grok-4.6") : modelId("google", "gemini-3.5-flash"));
+        const model = intake.assigned.scout.vendor === vendor ? intake.assigned.scout.model : (vendor === "xai" ? modelId("xai", "grok-4.3") : modelId("google", "argon"));
         // The 700-token cap exists because grok-4.6 once answered this prompt with 82k characters.
         // It is WRONG for the multi-agent model and is skipped there, for two reasons that agree:
         // docs.x.ai says "The max_tokens parameter is not currently supported by the multi-agent
@@ -483,8 +448,10 @@ export async function runOpenItem(spec, opts = {}) {
         // model runs sixteen subagents whose whole output is a synthesis, so truncating it at 700
         // would pay for a research team and read four sentences of it.
         const cap = tokenCapFor("scout", model);
-        const text = await turn({ vendor, purpose: "scout", model, prompt: p.prompt,
-          extra: cap == null ? undefined : capFor(vendor, { tokens: cap }) });
+        const routed = await routeCall({ candidates: profile === "argo" ? forRole("scout").filter(c => c.vendor === vendor) : [{ vendor, model, pool: vendor }],
+          cooldown, signal: opts.signal, invoke: (candidate, { signal }) => turn({ ...candidate, purpose: "scout", prompt: p.prompt, signal,
+            extra: cap == null ? undefined : capFor(vendor, { tokens: cap }) }) });
+        const text = routed.value;
         const r = await publish({ ...board, ref: `refs/iso/${vendor}/scout`, author: seat, msg: `scout ${vendor}`,
           entries: [{ kind: "search", payload: { query: spec.question, urls: [] }, blob: text }] });
         if (!r.ok) throw new Error(`scout ${vendor} publish: ${r.why}`);
@@ -509,14 +476,19 @@ export async function runOpenItem(spec, opts = {}) {
       const pl = OVERRIDES.planner ?? chain.assigned.planner;
       plannerVendor = pl.vendor;
       {
-        const seat = { vendor: pl.vendor, seat_id: `${pl.vendor}-plan`, mode: "plan", occupancy_gen: 1 };
-        const planWip = `refs/seat/${seat.seat_id}/wip`;
+        let seat = { vendor: pl.vendor, seat_id: `${pl.vendor}-plan`, mode: "plan", occupancy_gen: 1 };
+        let planWip = `refs/seat/${seat.seat_id}/wip`;
         await board.refs.branch({ name: planWip, from: REF, author: seat });
         const { slice } = project(board.store, board.refs.resolve(REF), PROJECTION_FOR_ROLE.planner);
         const p = promptFor("planner", { ticket: slice.slots.ticket.payload.goal },
           NO_TOOLS + "Reply with exactly one line and nothing else: TITLE: <a one-line work item title for the single change this ticket asks for>");
         const { text, seat: ran } = await roleTurn({ role: "planner", purpose: "plan", prompt: p.prompt });
         plannerVendor = ran.vendor;
+        if (ran.vendor !== seat.vendor) {
+          seat = { ...seat, vendor: ran.vendor, seat_id: `${ran.vendor}-plan` };
+          planWip = `refs/seat/${seat.seat_id}/wip`;
+          await board.refs.branch({ name: planWip, from: REF, author: seat });
+        }
         const m = text.match(/^\s*TITLE:\s*(.+)$/mi);
         if (!m) throw new Error(`planner did not answer in the required form; got: ${text.slice(0, 200)}`);
         const title = m[1].trim().slice(0, 120);
@@ -545,7 +517,7 @@ export async function runOpenItem(spec, opts = {}) {
       // so choosing between gpt-6-astra / gpt-6-sol / gpt-6-luna is a ticket-time decision rather
       // than a seating-table edit.
       crew = SLOTS.map((sl, i) => {
-        const im = OVERRIDES[`implementer.${i}`] ?? OVERRIDES[`implementer.${sl.slot}`] ?? OVERRIDES.implementer ?? chain.assigned.implementer;
+        const im = OVERRIDES[`implementer.${i}`] ?? OVERRIDES[`implementer.${sl.slot}`] ?? OVERRIDES.implementer ?? (sl.model ? forRole("implementer", { pin: sl.model })[0] : chain.assigned.implementer);
         const seat = { vendor: im.vendor, seat_id: SLOTS.length === 1 ? `${im.vendor}-work` : `${im.vendor}-work-${sl.slot}`,
                        mode: "work", occupancy_gen: 1 };
         return { sl, seat, itemKey: itemKeyFor(sl), wip: `refs/seat/${seat.seat_id}/wip`,
@@ -597,6 +569,7 @@ export async function runOpenItem(spec, opts = {}) {
         for (const c of crew) {
           if (!board.refs.resolve(c.wip)) await board.refs.branch({ name: c.wip, from: REF, author: c.seat });
           const held = await board.runtime.acquire({ resource: `item:${c.itemKey}`, holder: c.seat, ttlMs: 1_800_000 });
+          if (!held.ok) throw new Error("could not acquire implementer lease");
           c.lease = { resource: `item:${c.itemKey}`, gen: held.lease.gen };
           board.runtime.setOccupancy(c.seat.seat_id, { status: "running", mode: "work", ref: c.wip });
         }
@@ -633,13 +606,22 @@ export async function runOpenItem(spec, opts = {}) {
                   : `Your revision ${rev - 1} of ${c.sl.path}, which FAILED the executed acceptance shown under tests (fix it; do not start over):\n\n${c.code}${attached}`,
                 tests: `${implTests.text}\n\n${oracle ? `The acceptance test file ${spec.tests_file}, verbatim (it runs as part of the command above):\n\n${oracle}` : ""}` },
               NO_TOOLS + `Output ONLY the complete new contents of ${c.sl.path}. No prose before or after, no markdown fence. ` +
-              `Keep every existing export and every existing behaviour; the acceptance command must exit 0.` + others);
+              `You own the complete assigned file, including adjacent defects that prevent the ticket from working. Fix those defects within this file and preserve unrelated behavior; the acceptance command must exit 0.` + others);
             writeFileSync(join(outDir, `implementer-prompt-${c.sl.slot}-rev${rev}.txt`), p.prompt);
             const made = await roleTurn({ role: "implementer", purpose: "work", prompt: p.prompt,
               ...(c.model ? { pin: c.model } : {}) });
             c.code = strip(made.text);
-            if (made.seat.vendor !== c.seat.vendor) throw new Error(
-              `the implementer for ${c.sl.slot} fell through to ${made.seat.vendor} but the seat identity is ${c.seat.vendor}: re-seating mid-run would mislabel who wrote the artifact`);
+            if (made.seat.vendor !== c.seat.vendor) {
+              await board.runtime.release({ resource: c.lease.resource, holder: c.seat, gen: c.lease.gen });
+              const priorWip = c.wip;
+              c.seat = { ...c.seat, vendor: made.seat.vendor, seat_id: `${made.seat.vendor}-work-${c.sl.slot}` };
+              c.wip = `refs/seat/${c.seat.seat_id}/wip`;
+              if (!board.refs.resolve(c.wip)) await board.refs.branch({ name: c.wip, from: priorWip, author: c.seat });
+              const held = await board.runtime.acquire({ resource: `item:${c.itemKey}`, holder: c.seat, ttlMs: 1_800_000 });
+              if (!held.ok) throw new Error("could not acquire the reseated implementer's lease");
+              c.lease = { resource: `item:${c.itemKey}`, gen: held.lease.gen };
+              if (c === crew[0]) { maker = c.seat; wip = c.wip; }
+            }
             writeArtifact(worktree, c.sl.path, c.code.endsWith("\n") ? c.code : c.code + "\n");
             progress({ event: "wrote", rev, slot: c.sl.slot, detail: `${c.sl.path} (${c.code.length} chars)` });
 
@@ -719,11 +701,11 @@ export async function runOpenItem(spec, opts = {}) {
         ? { reviewer: OVERRIDES.reviewer.vendor, why: `operator reseat: ${OVERRIDES.reviewer.vendor}/${OVERRIDES.reviewer.model}` }
         : (c => c ? { reviewer: c.vendor, why: `candidatesFor("reviewer"), first entry excluding the maker (${built.seat.vendor}) and planner (${plannerVendor})` }
                   : { reviewer: null, why: `no reviewer candidate left after avoiding ${built.seat.vendor}, ${plannerVendor}` }
-          )(candidatesFor("reviewer", { avoid: [built.seat.vendor, plannerVendor] })[0]);
+          )(profile === "argo" ? forRole("reviewer", { avoid: [built.seat.vendor, plannerVendor] })[0] : candidatesFor("reviewer", { avoid: [built.seat.vendor, plannerVendor] })[0]);
       if (!pairing.reviewer) throw new Error(`no clean reviewer: ${pairing.why}`);
       assertReviewCutsAcross({ assigner: { vendor: plannerVendor }, producer: { vendor: built.seat.vendor }, reviewer: { vendor: pairing.reviewer } });
-      const seat = { vendor: pairing.reviewer, seat_id: toReview.length === 1 ? `${pairing.reviewer}-critique` : `${pairing.reviewer}-critique-${built.sl.slot}`, mode: "critique", occupancy_gen: 1 };
-      const rref = `refs/seat/${seat.seat_id}/wip`;
+      let seat = { vendor: pairing.reviewer, seat_id: toReview.length === 1 ? `${pairing.reviewer}-critique` : `${pairing.reviewer}-critique-${built.sl.slot}`, mode: "critique", occupancy_gen: 1 };
+      let rref = `refs/seat/${seat.seat_id}/wip`;
       await board.refs.branch({ name: rref, from: built.wip, author: seat });
       const { slice, withheld } = project(board.store, board.refs.resolve(built.wip), PROJECTION_FOR_ROLE.reviewer, { reader: seat });
       check(withheld.some(w => w.slot === "(commit message)"), "the checker cannot read the maker's defense");
@@ -736,13 +718,18 @@ export async function runOpenItem(spec, opts = {}) {
         "behaviour it broke, or a case the acceptance test does not cover that would fail. If the executed acceptance failed, " +
         "you must request changes. End your reply with a line reading exactly `VERDICT: approve` or `VERDICT: request_changes`.");
       const reviewed = await roleTurn({ role: "reviewer", purpose: "critique", prompt: p.prompt, avoid: [built.seat.vendor, plannerVendor], extra: { tokens: 4000 } });
-      if (reviewed.seat.vendor !== seat.vendor) throw new Error(`the review fell through to ${reviewed.seat.vendor} but the critique seat is ${seat.vendor}; a mislabelled verdict is worse than none`);
+      if (reviewed.seat.vendor !== seat.vendor) {
+        assertReviewCutsAcross({ assigner: { vendor: plannerVendor }, producer: built.seat, reviewer: reviewed.seat });
+        seat = { ...seat, vendor: reviewed.seat.vendor, seat_id: `${reviewed.seat.vendor}-critique-${built.sl.slot}` };
+        rref = `refs/seat/${seat.seat_id}/wip`;
+        await board.refs.branch({ name: rref, from: built.wip, author: seat });
+      }
       reviewText = reviewed.text;
       writeFileSync(join(outDir, toReview.length === 1 ? "review.md" : `review-${built.sl.slot}.md`), `# ${reviewed.seat.vendor} · ${reviewed.seat.model} reviewing ${built.seat.vendor} on ${built.sl.slot} (rev ${rev})\n\n${reviewText}\n`);
       let m = reviewText.match(/^\s*VERDICT:\s*(approve|request_changes)\s*$/mi);
       if (!m) {
         progress({ event: "reask", seat: seat.vendor, detail: "no VERDICT line; asking once more" });
-        const again = await turn({ vendor: reviewed.seat.vendor, purpose: "critique", model: reviewed.seat.model, extra: capFor(reviewed.seat.vendor, { tokens: 800 }),
+        const again = await turn({ ...reviewed.seat, purpose: "critique", extra: capFor(reviewed.seat.vendor, { tokens: 800 }),
           prompt: NO_TOOLS + "Your previous reply ended without the required verdict. You cannot read anything further; the file and the " +
             "executed result were in the message before. Reply with ONE line, exactly `VERDICT: approve` or `VERDICT: request_changes`, " +
             "then at most three sentences naming the strongest specific flaw if you requested changes." });

@@ -13,7 +13,7 @@ export async function withPipeline(fn) {
   const calls = [];
   let implement = () => "export const ok = true;\n";
   const answer = (vendor, req) => {
-    const prompt = String(req.input ?? req.messages?.at(-1)?.content ?? req.contents ?? "");
+    const prompt = typeof req.input === "string" ? req.input : req.input?.at(-1)?.content ?? req.messages?.at(-1)?.content ?? req.contents?.at(-1)?.parts?.map(p=>p.text??"").join("") ?? "";
     calls.push({ vendor, prompt });
     if (/VERDICT/i.test(prompt)) return /exited 1\b/.test(prompt) ? "VERDICT: request_changes" : "VERDICT: approve";
     if (/TITLE:/i.test(prompt)) return "TITLE: fixture change";
@@ -21,20 +21,22 @@ export async function withPipeline(fn) {
     return implement(prompt);
   };
   const makeClientFor = vendor => ({
-    responses: { create: async req => {
+    responses: { inputTokens: {count: async () => ({input_tokens: 1000})}, create: async req => {
       const text = answer(vendor, req), id = `fixture_${++n}`;
       return { async *[Symbol.asyncIterator]() {
         yield { type: "response.created", response: { id } };
         yield { type: "response.output_text.delta", delta: text };
-        yield { type: "response.completed", response: { id, output_text: text, output: [
+        yield { type: "response.completed", response: { id, status: "completed", output_text: text, output: [
           { type: "message", content: [{ type: "output_text", text }] }] } };
       } };
     } },
     messages: { create: async req => {
       const text = answer(vendor, req);
       return { async *[Symbol.asyncIterator]() {
-        yield { type: "content_block_delta", delta: { type: "text_delta", text } };
-        yield { type: "message_stop" };
+        yield {type:"content_block_start",index:0,content_block:{type:"text",text:""}};
+                yield { type: "content_block_delta", index:0, delta: { type: "text_delta", text } };
+        yield {type:"message_delta",delta:{stop_reason:"end_turn"}};
+                yield { type: "message_stop" };
       } };
     } },
   });

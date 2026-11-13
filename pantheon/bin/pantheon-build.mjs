@@ -27,9 +27,10 @@ const allowedRoot = process.env.PANTHEON_BUILD_ROOT ?? join(homedir(), "Projects
 // Clients are built lazily, per seat, on first use: one missing credential should not refuse to
 // start the server, it should surface as that seat's own error inside the run that needed it.
 const cache = new Map();
-const makeClientFor = vendor => {
-  if (!cache.has(vendor)) cache.set(vendor, makeClient(vendor, { OpenAI, GoogleGenAI, Anthropic }));
-  return cache.get(vendor);
+const makeClientFor = (vendor, { pool = vendor, poolConfig } = {}) => {
+  const key = `${vendor}:${pool}`;
+  if (!cache.has(key)) cache.set(key, makeClient(vendor, { OpenAI, GoogleGenAI, Anthropic, poolConfig }));
+  return cache.get(key);
 };
 
 // A build runs for minutes and spends real money. An operator's ^C should stop the server, and

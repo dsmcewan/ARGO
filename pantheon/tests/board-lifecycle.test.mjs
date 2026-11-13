@@ -19,7 +19,7 @@ test("refusal, revision on resume, all-slot review/ship/export, guarded apply an
     writeFileSync(join(repo, "beta.mjs"), "export const ok = false;\n");
     writeFileSync(join(repo, "verify.mjs"), 'import assert from "node:assert/strict"; import {ok as a} from "./alpha.mjs"; import {ok as b} from "./beta.mjs"; assert.equal(a && b, true);');
     const spec = { ...specFor(repo), copy: ["alpha.mjs", "beta.mjs", "verify.mjs"],
-      acceptance_cmd: "/usr/bin/node verify.mjs" };
+      acceptance_cmd: "node verify.mjs" };
     implement(prompt => /Your revision/.test(prompt) ? "export const ok = true;\n" : "export const ok = false;\n");
     const first = await runOpenItem(spec, opts);
     assert.equal(first.shipped, false);
@@ -99,7 +99,7 @@ test("acceptance cannot inherit credentials or reach host files, and may not cha
       console.log("confined");`);
     try {
       const r = await runOpenItem({ key: "isolation", slot: "code", path: "code.mjs", repo_root: repo,
-        title: "boundary", goal: "boundary", question: "q", copy: [], acceptance_cmd: "/usr/bin/node code.mjs" }, opts);
+        title: "boundary", goal: "boundary", question: "q", copy: [], acceptance_cmd: "node code.mjs" }, opts);
       assert.equal(r.shipped, true, JSON.stringify(r.error));
       assert.equal(readFileSync(outside, "utf8"), "host-only");
     } finally { if (old === undefined) delete process.env.PANTHEON_FIX_DUMMY; else process.env.PANTHEON_FIX_DUMMY = old; }
@@ -107,7 +107,7 @@ test("acceptance cannot inherit credentials or reach host files, and may not cha
   await withPipeline(async ({ repo, opts, implement }) => {
     implement(() => 'import {writeFileSync} from "node:fs"; writeFileSync("code.mjs","// changed");');
     const r = await runOpenItem({ key: "mutation", slot: "code", path: "code.mjs", repo_root: repo,
-      title: "mutation", goal: "mutation", question: "q", copy: [], acceptance_cmd: "/usr/bin/node code.mjs" }, opts);
+      title: "mutation", goal: "mutation", question: "q", copy: [], acceptance_cmd: "node code.mjs" }, opts);
     assert.equal(r.shipped, false, "passing tests on changed files cannot certify the original CAS bytes");
   });
 });
@@ -121,7 +121,7 @@ test("a genuine single-slot TESTS refusal is never safe to apply", async () => {
       { ...opts, makeClientFor: vendor => {
         const client = opts.makeClientFor(vendor);
         if (vendor !== "xai") return client;
-        return { responses: { create: async req => {
+        return { responses: { inputTokens: {count: async () => ({input_tokens: 1000})}, create: async req => {
           if (!String(req.input).includes("VERDICT")) return client.responses.create(req);
           return { async *[Symbol.asyncIterator]() {
             yield { type: "response.output_text.delta", delta: "VERDICT: approve" };
@@ -139,7 +139,7 @@ test("a test-created symlink cannot redirect a later controller write onto the h
     const outside=join(repo,"host.mjs");writeFileSync(outside,"// host unchanged\n");
     implement(()=>`import {unlinkSync,symlinkSync} from "node:fs"; unlinkSync("code.mjs"); symlinkSync(${JSON.stringify(outside)},"code.mjs");`);
     const r=await runOpenItem({key:"alias",slot:"code",path:"code.mjs",repo_root:repo,
-      title:"alias",goal:"alias",question:"q",copy:[],acceptance_cmd:"/usr/bin/node code.mjs"},{...opts,revisions:2});
+      title:"alias",goal:"alias",question:"q",copy:[],acceptance_cmd:"node code.mjs"},{...opts,revisions:2});
     assert.equal(r.shipped,false);
     assert.match(r.error.message,/symlink/);
     assert.equal(readFileSync(outside,"utf8"),"// host unchanged\n");

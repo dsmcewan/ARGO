@@ -43,10 +43,10 @@ Files: `packages/model-client/` (model registry, request policy, async routing a
 
 Interfaces: `prepareRequest({vendor,model,prompt,history,extra,scope,...}, capabilities)`, `routeCall({candidates, invoke, signal, deadline, cooldown})`, injected SDK client constructors, result identity and complete/partial status. The client owns no world state. Exact requested API model seats route through their proper API transport; legacy CLI remains explicit.
 
-- [ ] Write and run failing tests for Fable extras/effort/compaction lifecycle, Gemini combined budget/continuation/partial responses, Astra 249999/250000 input, Grok encrypted multi-turn history/cache scope, terminal errors on every attempt, bounded 429 routing and cross-process pool state.
-- [ ] Implement the shared policy and route the active board/SDK path through it. Centralize model IDs without duplicate tables. Preserve true provider/pool identity through fallback.
-- [ ] Write failing child-process tests for byte caps, ignored SIGTERM, descendants, cancellation and event-loop responsiveness; fix runner and acceptance toolchain portability.
-- [ ] Run offline regressions and full Pantheon suite with necessary sandbox permissions. No disabled gates or live CLI fallbacks. Commit only after required checks pass; record environmental limitations explicitly if a check cannot run.
+- [x] Write and run failing tests for Fable extras/effort/compaction lifecycle, Gemini combined budget/continuation/partial responses, Astra 249999/250000 input, Grok encrypted multi-turn history/cache scope, terminal errors on every attempt, bounded 429 routing and cross-process pool state.
+- [x] Implement the shared policy and route the active board/SDK path through it. Centralize model IDs without duplicate tables. Preserve true provider/pool identity through fallback.
+- [x] Write failing child-process tests for byte caps, ignored SIGTERM, descendants, cancellation and event-loop responsiveness; fix runner and acceptance toolchain portability.
+- [x] Run offline regressions and full Pantheon suite with necessary sandbox permissions. No disabled gates or live CLI fallbacks. Commit only after required checks pass; record environmental limitations explicitly if a check cannot run.
 
 ### Task 3: authoritative ledger first
 

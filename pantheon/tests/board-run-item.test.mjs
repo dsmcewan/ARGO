@@ -15,7 +15,7 @@ const withTmp = async fn => {
 // always approves -- enough to drive one full intake -> promote -> plan -> work -> check -> ship
 // pass without a real vendor call, mirroring tests/sdk-transport.test.mjs's fakeClient shape.
 function fakeClientFor() {
-  const answer = req => /VERDICT/i.test(req.input ?? req.messages?.at(-1)?.content ?? "")
+  const answer = req => /VERDICT/i.test(typeof req.input==="string"?req.input:req.input?.at(-1)?.content ?? req.messages?.at(-1)?.content ?? "")
     ? "VERDICT: approve"
     : "TITLE: a fixture work item";
   // run-item observes every turn through the streaming path (src/sdk/stream.mjs), which asks the
@@ -25,7 +25,7 @@ function fakeClientFor() {
   const streamed = async function* (text) {
     yield { type: "response.created", response: { id: "resp_1" } };
     yield { type: "response.output_text.delta", delta: text };
-    yield { type: "response.completed", response: { id: "resp_1", output_text: text, output: [] } };
+    yield { type: "response.completed", response: { id: "resp_1", status: "completed", output_text: text, output: [{type:"message",content:[{type:"output_text",text}]}] } };
   };
   // Which SDK shape a seat speaks is decided by the live seating table and the shared cooldown
   // store (~/.cache/pantheon), not by the test: the planner is an anthropic chair unless that
@@ -35,11 +35,13 @@ function fakeClientFor() {
   // other process did to a cache file an hour ago.
   const anthropicStreamed = async function* (text) {
     yield { type: "message_start", message: { id: "msg_1" } };
-    yield { type: "content_block_delta", delta: { type: "text_delta", text } };
-    yield { type: "message_stop" };
+    yield {type:"content_block_start",index:0,content_block:{type:"text",text:""}};
+                yield { type: "content_block_delta", index:0, delta: { type: "text_delta", text } };
+    yield {type:"message_delta",delta:{stop_reason:"end_turn"}};
+                yield { type: "message_stop" };
   };
   return {
-    responses: {
+    responses: { inputTokens: {count: async () => ({input_tokens: 1000})},
       create: async req => req.stream ? streamed(answer(req)) : { id: "resp_1", output_text: answer(req) },
     },
     messages: {

@@ -24,7 +24,7 @@ import { seatKey } from "../seat/identity.mjs";
 import { withSeatLock } from "../seat/lock.mjs";
 import { pantheonHome } from "../seat/store.mjs";
 import { sendTurn, continuityMode } from "./adapter.mjs";
-import { loadHistoryState, saveHistory, commitHistory } from "./history.mjs";
+import { loadHistoryState, saveHistory, commitHistory, stageHistoryGeneration, loadHistoryGeneration } from "./history.mjs";
 import { createHash } from "node:crypto";
 import { join } from "node:path";
 
@@ -62,6 +62,7 @@ function readIntent(seat, home) {
 
 export async function sdkTurn({
   vendor, purpose, cwd, prompt, model, client, home, extra, onEvent, label, continuity, acknowledgeLost = false,
+  scope, sessionId, effort, architecture, contractHeader, signal, deadline,
 } = {}) {
   if (!vendor || !purpose || !cwd) throw new Error("sdkTurn: vendor, purpose and cwd are required");
   if (typeof prompt !== "string" || prompt === "") throw new Error("sdkTurn: prompt is required");
@@ -91,7 +92,9 @@ export async function sdkTurn({
     const previousResponseId = replay ? null : (held?.token?.value ?? null);
     // The COMMITTED prefix only. A pending tail is an exchange a crash left unacknowledged by the seat
     // record, and replaying it could repeat a tool call -- evidence §U1. See history.mjs.
-    const hist = replay ? loadHistoryState(seat, { ...opts, acknowledged: held?.history_len ?? null }) : null;
+    const hist = replay ? held?.history_generation
+      ? loadHistoryGeneration(seat,held.history_generation,opts)
+      : loadHistoryState(seat, { ...opts, acknowledged: held?.history_len ?? null }) : null;
     const history = replay ? hist.messages : undefined;
 
     const homeDir = home ?? pantheonHome();
@@ -111,7 +114,11 @@ export async function sdkTurn({
     const clearIntent = () => { try { unlinkSync(intentPath(seat, homeDir)); } catch { /* already gone */ } };
 
     let result;
-    try { result = await sendTurn({ client, vendor, model, prompt, previousResponseId, history, onEvent, label, continuity, extra }); }
+    try { result = await sendTurn({ client, vendor, model, prompt, previousResponseId, history, onEvent, label, continuity, extra,
+      scope: scope ?? { tenant_id: 'pantheon', rights_lane: 'private_upload', workspace_id: sha256(cwd),
+        workspace_tenant_id: `pantheon:private_upload:${sha256(cwd)}`, campaign_id: 'build', world_id: sha256(cwd),
+        branch_id: 'build', actor_id: purpose }, sessionId: sessionId ?? sha256(`${homeDir}:${purpose}:${model}`),
+      effort, architecture, contractHeader, signal, deadline }); }
     catch (e) { clearIntent(); throw e; }   // the failure is REPORTED to the caller; the intent's job is the silent case
 
     if (!result.usable_for_resume) {
@@ -130,7 +137,9 @@ export async function sdkTurn({
     // PHASE ONE of the §U1 two-phase write: the new tail goes to disk marked as NOT yet acknowledged,
     // because the seat record does not exist yet. A crash here leaves the mark short and the next load
     // drops the tail rather than replaying it.
-    if (replay) saveHistory(seat, result.history, { ...opts, committed: history.length });
+    const generation=replay&&(result.compacted||held?.history_generation)
+      ?stageHistoryGeneration(seat,result.history,opts):null;
+    if (replay&&!generation) saveHistory(seat, result.history, { ...opts, committed: history.length });
 
     const saved = saveSeat(seat, {
       // A replayed responses turn DOES return a real response id even though we do not resume by
@@ -144,11 +153,12 @@ export async function sdkTurn({
       // The seat acknowledges the whole replay history as of this turn. Written in the same atomic
       // record as the chain, so the two cannot disagree about how much conversation exists.
       ...(replay ? { history_len: result.history.length } : {}),
+      ...(generation?{history_generation:generation}:{}),
     }, opts);
 
     // PHASE TWO: the seat record is on disk, so the tail is real. Unconditional and idempotent -- a
     // non-replay vendor has no history file and commitHistory says so rather than throwing.
-    const committed = replay ? commitHistory(seat, opts) : null;
+    const committed = generation?{committed:result.history.length,generation}:replay ? commitHistory(seat, opts) : null;
     clearIntent();                           // the seat record is on disk; the exchange is now recorded
 
     return {

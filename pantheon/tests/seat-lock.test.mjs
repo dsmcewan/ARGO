@@ -52,7 +52,7 @@ await withSeatLock("shared-seat", async () => {
     const { spawn } = await import("node:child_process");
     const running = ["a", "b", "c", "d"].map(id =>
       new Promise((resolve, reject) => {
-        const p = spawn("/usr/bin/node", [worker, dir, log, id], { stdio: "inherit" });
+        const p = spawn(process.execPath, [worker, dir, log, id], { stdio: "inherit" });
         p.on("exit", code => (code === 0 ? resolve(id) : reject(new Error(`${id} exited ${code}`))));
       }));
     await Promise.all(running);

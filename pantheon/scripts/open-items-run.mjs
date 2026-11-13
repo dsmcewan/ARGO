@@ -39,7 +39,7 @@ const seatOverrides = Object.fromEntries(argv.flatMap((a, i) => a === "--seat" ?
 }));
 
 const clients = {};
-const clientFor = v => (clients[v] ??= makeClient(v, { OpenAI, GoogleGenAI, Anthropic }));
+const clientFor = (v, { pool = v, poolConfig } = {}) => (clients[`${v}:${pool}`] ??= makeClient(v, { OpenAI, GoogleGenAI, Anthropic, poolConfig }));
 
 const bar = s => console.log(`\n\x1b[1m${s}\x1b[0m`);
 const say = (k, v) => console.log(`  ${String(k).padEnd(13)} ${v}`);

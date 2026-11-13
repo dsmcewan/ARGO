@@ -38,19 +38,21 @@ function scriptedClients() {
     makeClientFor: () => {
       const record = req => answerFor(String(req.input ?? req.messages?.at(-1)?.content ?? req.contents ?? ""));
       return {
-        responses: { create: async req => { const text = record(req); const id = `resp_${++n}`;
+        responses: { inputTokens: {count: async () => ({input_tokens: 1000})}, create: async req => { const text = record(req); const id = `resp_${++n}`;
           return { async *[Symbol.asyncIterator]() {
             yield { type: "response.created", response: { id } };
             yield { type: "response.output_text.delta", delta: text };
-            yield { type: "response.completed", response: { id, output_text: text, output: [{ type: "message", content: [{ type: "output_text", text }] }] } };
+            yield { type: "response.completed", response: { id, status: "completed", output_text: text, output: [{ type: "message", content: [{ type: "output_text", text }] }] } };
           } }; } },
         messages: { create: async req => { const text = record(req);
           return { async *[Symbol.asyncIterator]() {
-            yield { type: "content_block_delta", delta: { type: "text_delta", text } };
-            yield { type: "message_stop" };
+            yield {type:"content_block_start",index:0,content_block:{type:"text",text:""}};
+                yield { type: "content_block_delta", index:0, delta: { type: "text_delta", text } };
+            yield {type:"message_delta",delta:{stop_reason:"end_turn"}};
+                yield { type: "message_stop" };
           } }; } },
-        models: { generateContentStream: async req => { const text = record(req);
-          return { async *[Symbol.asyncIterator]() { yield { text }; } }; } },
+        models: { countTokens: async () => ({totalTokens:1000}), generateContentStream: async req => { const text = record(req);
+          return { async *[Symbol.asyncIterator]() { yield {candidates:[{finishReason:"STOP",content:{parts:[{text}]}}]}; } }; } },
       };
     },
   };

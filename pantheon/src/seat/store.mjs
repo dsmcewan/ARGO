@@ -79,6 +79,7 @@ export function saveSeat(seat, patch, { home = pantheonHome() } = {}) {
   if (patch.history_len !== undefined && !(Number.isInteger(patch.history_len) && patch.history_len >= 0)) {
     throw new Error("saveSeat: history_len must be a non-negative integer");
   }
+  if(patch.history_generation!==undefined&&!/^[a-f0-9]{64}$/.test(patch.history_generation))throw new Error('Invalid history generation digest');
 
   const existing = loadSeat(seat, { home });
   const next = {
@@ -94,6 +95,7 @@ export function saveSeat(seat, patch, { home = pantheonHome() } = {}) {
     // commit mark, but that mark is written after this record, so a crash between the two leaves the
     // mark short of the truth. This number is the truth: the seat saw the tail, so the tail is real.
     history_len: existing?.history_len ?? null,
+    ...(existing?.history_generation?{history_generation:existing.history_generation}:{}),
     updated_at: new Date().toISOString(),
   };
   if (patch.token) {
@@ -103,6 +105,7 @@ export function saveSeat(seat, patch, { home = pantheonHome() } = {}) {
   if (patch.chain) next.chain = patch.chain;
   if (patch.exchanges) next.exchanges = patch.exchanges;
   if (patch.history_len !== undefined) next.history_len = patch.history_len;
+  if (patch.history_generation !== undefined) next.history_generation = patch.history_generation;
 
   const p = seatPath(seat, home);
   mkdirSync(join(home, "seats"), { recursive: true });

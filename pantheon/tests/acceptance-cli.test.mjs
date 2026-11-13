@@ -151,7 +151,11 @@ describe('conform', () => {
     const { root, ph, home } = makeFixtureRoot('conform');
     try {
       const before = snapshotTree(home);
-      const out = run(['conform'], { home, ph });
+      // Offline acceptance uses explicit help fixtures; deployment probes use real installed CLIs.
+      const bin=path.join(root,'bin');fs.mkdirSync(bin);
+      const helps={claude:'--resume --session-id --model --effort -p',codex:'resume -C -m',grok:'--resume --session-id --effort -p',agy:'--conversation --add-dir --model -p'};
+      for(const [name,flags] of Object.entries(helps))fs.writeFileSync(path.join(bin,name),`#!/bin/sh\nprintf '%s\\n' '${flags}'\n`,{mode:0o755});
+      const out = run(['conform'], { home, ph, env:{PATH:`${bin}:/usr/bin:/bin`} });
       assert.equal(out.status, EXIT.OK, `expected exit 0, got ${out.status}: ${out.stderr}`);
       assert.match(out.stdout, /claude/);
       assert.match(out.stdout, /codex/);

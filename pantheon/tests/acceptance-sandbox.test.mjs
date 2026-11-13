@@ -29,7 +29,7 @@ test("acceptance uses real filesystem/network isolation and still runs local too
     console.log("CONFINED");`);
   const old=process.env.PANTHEON_FIX_DUMMY;process.env.PANTHEON_FIX_DUMMY="not-a-real-secret";
   try {
-    const r=await runAcceptance({worktree,cmd:"/usr/bin/node probe.mjs && /usr/bin/python3 -c 'print(123)'",head:"fixture-head"});
+    const r=await runAcceptance({worktree,cmd:"node probe.mjs && /usr/bin/python3 -c 'print(123)'",head:"fixture-head"});
     assert.equal(r.exit,0,r.out);
     assert.match(r.out,/CONFINED/);
     assert.equal(readFileSync(join(worktree,"local-output"),"utf8"),"ok");
@@ -55,7 +55,7 @@ test("real nested-namespace denial never falls back to an ordinary shell", async
       const r=await runAcceptance({worktree:process.cwd(),cmd:"touch nested-command-ran"});
       assert.notEqual(r.exit,0,"nested user namespaces must be denied");
       assert.equal(existsSync("nested-command-ran"),false);`);
-    const r=await runAcceptance({worktree,cmd:"/usr/bin/node nested.mjs"});
+    const r=await runAcceptance({worktree,cmd:"node nested.mjs"});
     assert.equal(r.exit,0,r.out);
     assert.equal(readFileSync(join(worktree,"nested.mjs"),"utf8").includes("nested-command-ran"),true);
   } finally {rmSync(worktree,{recursive:true,force:true});}

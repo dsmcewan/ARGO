@@ -11,11 +11,12 @@ export async function runAcceptance({ worktree, cmd, head = "", timeout = 600_00
   const args = ["--unshare-user", "--unshare-all", "--disable-userns", "--assert-userns-disabled",
     "--cap-drop", "ALL", "--die-with-parent", "--new-session",
     "--ro-bind", "/usr", "/usr",
+    "--dir", "/tools", "--ro-bind", realpathSync(process.execPath), "/tools/node",
     "--symlink", "usr/bin", "/bin", "--symlink", "usr/sbin", "/sbin",
     "--symlink", "usr/lib", "/lib", "--symlink", "usr/lib64", "/lib64",
     "--proc", "/proc", "--dev", "/dev", "--tmpfs", "/tmp", "--dir", "/tmp/home",
     "--bind", cwd, "/workspace", "--chdir", "/workspace", "--clearenv",
-    "--setenv", "PATH", "/usr/bin:/bin", "--setenv", "HOME", "/tmp/home",
+    "--setenv", "PATH", "/tools:/usr/bin:/bin", "--setenv", "HOME", "/tmp/home",
     "--setenv", "TMPDIR", "/tmp", "--setenv", "LANG", "C.UTF-8",
     "--setenv", "PANTHEON_HEAD", head, "--", "/bin/sh", "-c", cmd];
   let r;
