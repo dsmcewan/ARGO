@@ -1,0 +1,85 @@
+{
+  "date": "2026-11-13",
+  "implementation_commit": "1f5436796e7faef73a3e8ce979518b700a742070",
+  "source_upload_commit": "6f75c29c8e66df2c76996c33b763390807d62bda",
+  "phase_order": [
+    "read_only_audit",
+    "contract_freeze",
+    "harness_patch",
+    "sequential_foundation"
+  ],
+  "independent_reviews": {
+    "foundation": "repairs_confirmed",
+    "harness": "repairs_confirmed"
+  },
+  "offline_tests": {
+    "foundation": 31,
+    "harness_and_model_client": 735,
+    "failed": 0
+  },
+  "controller_exercise": {
+    "trusted_commit": "1f5436796e7faef73a3e8ce979518b700a742070",
+    "valid_fixture_commit": "dfb6982e5162109050867ccc896480137955b23c",
+    "valid_candidate_merged": true,
+    "refused_with_target_unchanged": [
+      "modified_protected_policy",
+      "invalid_typescript",
+      "early_exit_before_assertions"
+    ],
+    "archive_identity_regressions": [
+      "export_subst",
+      "export_ignore",
+      "executable_mode",
+      "symlink_target",
+      "extra_file",
+      "submodule"
+    ],
+    "staging_gate_receipt": {
+      "controller": "deterministic-v1",
+      "commit": "ff363094be1124b2271112deec000646aa1d7345",
+      "workspace_sha256": "8291cf161a3de82ec4a4f8e7db9f0e13b1a4057a508c448c4e6f372274bdbe3a",
+      "merge_ready": true,
+      "checks": [
+        {
+          "name": "generated-types",
+          "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "schema",
+          "output_sha256": "67f16524049736f5c7ae4797b3c9a1905b4a092f4b4819e31854fc4e493866db"
+        },
+        {
+          "name": "boundaries",
+          "output_sha256": "6c62a971c2ccb9c3e2c0b66526c4b985a14750aff85df26cdcb1f4bb5c68f484"
+        },
+        {
+          "name": "types",
+          "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "foundation",
+          "output_sha256": "17809d3675dc1daf670e192ce4a0176b57d8238500fed5b5557fb23794ea180a"
+        },
+        {
+          "name": "model-and-process",
+          "output_sha256": "bf44e859e07ed8c2ec1fa0799f35853396f634e8fc4d432a800f4a7def2c322d"
+        }
+      ]
+    },
+    "note": "Disposable valid candidate adds only a harmless fixture file to the implementation commit. Staging metadata commit differs from candidate; raw paths, blobs and modes are verified before execution."
+  },
+  "github_actions": {
+    "commit": "280136eb96daa55b73d12fcca544214a108570c6",
+    "conclusion": "success",
+    "url": "https://github.com/dsmcewan/ARGO/actions/runs/43438148698"
+  },
+  "live_vendor_inference_calls": 0,
+  "deployed_gameplay_services_verified": false,
+  "parallel_feature_lanes_started": false,
+  "limitations": [
+    "LEXI and TELOS clients use injected transports and deterministic mocks; deployed gameplay endpoints and production authentication remain integration work.",
+    "Queue and transparent_fork policies are reserved and refused in v1.",
+    "Provider credentials, quota and billing entitlement have not been exercised."
+  ],
+  "final_merge_policy": "The exact final committed candidate must pass the externally pinned controller before advancing main."
+}
