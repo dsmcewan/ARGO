@@ -304,21 +304,35 @@ def collect_changes(worktree: Path, owned: list[OwnedPath], baseline: dict, conf
     found: set[str] = set()
     changes: list[Change] = []
     scanned = 0
+    retained = 0
+
+    def keep(change: Change):
+        nonlocal retained
+        size = len(change.data or b"")
+        if len(changes) >= config.max_artifacts or retained + size > config.max_total_bytes:
+            raise DispatchError("changed artifacts exceed configured count or byte bounds")
+        retained += size
+        changes.append(change)
 
     def read(path: Path, logical: str, placeholder=False):
         nonlocal scanned
+        scanned += 1
+        if scanned > 4096:
+            raise DispatchError("owned entry scan exceeds configured bounds")
         st = path.lstat()
         if path.is_symlink():
             raise DispatchError("symbolic output paths are refused")
         if path.is_dir():
-            for child in sorted(path.iterdir()):
-                read(child, logical + "/" + child.name)
+            # scandir is lazy; listdir/Path.iterdir+sorted can allocate an entire hostile
+            # directory before the entry bound has a chance to stop the traversal.
+            with os.scandir(path) as entries:
+                for entry in entries:
+                    read(Path(entry.path), logical + "/" + entry.name)
             return
         normalize_owned_paths([logical])
         if not stat.S_ISREG(st.st_mode) or st.st_nlink != 1:
             raise DispatchError("outputs must be unaliased regular files")
-        scanned += 1
-        if scanned > 4096 or st.st_size > config.max_artifact_bytes:
+        if st.st_size > config.max_artifact_bytes:
             raise DispatchError("owned file scan exceeds configured bounds")
         fd = os.open(path, os.O_RDONLY | os.O_NOFOLLOW)
         try:
@@ -334,7 +348,7 @@ def collect_changes(worktree: Path, owned: list[OwnedPath], baseline: dict, conf
         algorithm = "sha256" if old and len(old[1]) == 64 else "sha1"
         digest = hashlib.new(algorithm, f"blob {len(data)}\0".encode() + data).hexdigest()
         if old != (mode, digest) and not (placeholder and not data and old is None):
-            changes.append(Change(logical, mode, data))
+            keep(Change(logical, mode, data))
 
     for item in owned:
         path = worktree / item.path
@@ -342,9 +356,7 @@ def collect_changes(worktree: Path, owned: list[OwnedPath], baseline: dict, conf
             read(path, item.path, item.created and not item.directory)
     for name in baseline:
         if name not in found and any(name == item.path or name.startswith(item.path + "/") for item in owned):
-            changes.append(Change(name, "0", None))
-    if len(changes) > config.max_artifacts or sum(len(item.data or b"") for item in changes) > config.max_total_bytes:
-        raise DispatchError("changed artifacts exceed configured count or byte bounds")
+            keep(Change(name, "0", None))
     return sorted(changes, key=lambda item: item.path)
 
 

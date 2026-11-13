@@ -237,6 +237,30 @@ class DispatcherTests(unittest.IsolatedAsyncioTestCase):
 
 
 class BoundsTests(unittest.IsolatedAsyncioTestCase):
+    def test_aggregate_capture_budget_stops_before_reading_later_files(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            (root / "owned").mkdir()
+            for name in ["a", "b", "c"]:
+                (root / "owned" / name).write_bytes(b"12345678")
+            original_open = os.open
+            def bounded_open(path, *args, **kwargs):
+                if Path(path).name == "c":
+                    raise AssertionError("capture continued reading after its aggregate budget was exhausted")
+                return original_open(path, *args, **kwargs)
+            with patch.object(os, "open", bounded_open), self.assertRaises(dispatch.DispatchError):
+                dispatch.collect_changes(root, [dispatch.OwnedPath("owned", True)], {},
+                                         dispatch.Config(max_total_bytes=8, max_artifacts=1))
+
+    def test_empty_directories_are_bounded_during_output_traversal(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            (root / "owned").mkdir()
+            for index in range(4097):
+                (root / "owned" / str(index)).mkdir()
+            with self.assertRaises(dispatch.DispatchError):
+                dispatch.collect_changes(root, [dispatch.OwnedPath("owned", True)], {}, dispatch.Config())
+
     def test_unsafe_overlapping_and_symlink_owned_paths_fail_closed(self):
         for paths in [["."], ["../escape"], ["/tmp/out"], ["a/../b"], [".git/config"],
                       ["nested/.board/file"], ["src", "src/file"], ["src/", "src"]]:
