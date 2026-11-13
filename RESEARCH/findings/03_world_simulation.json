@@ -1,0 +1,176 @@
+{
+  "schema_version": "0.1.0",
+  "lane": "R3",
+  "status": "starter",
+  "base_commit": "05a292c403442a24b8f420e8b851f41f0f581ce5",
+  "requested_model": "grok-4.3",
+  "producer": {
+    "kind": "codex_starter",
+    "executed_model": null,
+    "paid_run": false
+  },
+  "title": "Bounded world ticks and ecology failure modes",
+  "summary": "Use compact state, finite action tables and inspectable event history. Proposed caps are design defaults, not measured throughput. NPC and intervention principals remain separate; neither can force a quest, consent, Fate action or anomaly.",
+  "sources": [
+    {
+      "id": "R3-S1",
+      "title": "Blades Progress Clocks",
+      "url": "https://bladesinthedark.com/progress-clocks",
+      "edition": "Online SRD, revision unspecified",
+      "accessed_on": "2026-11-13",
+      "retrieval": "primary_page",
+      "locator": "Opening guidance; Faction Clocks"
+    },
+    {
+      "id": "R3-S2",
+      "title": "Stars Without Number Revised, Free Edition",
+      "url": "https://tesera.ru/images/items/2287258/stars-without-number-revised_free_edition.pdf",
+      "edition": "Kevin Crawford, 2017",
+      "accessed_on": "2026-11-13",
+      "retrieval": "primary_work_mirror",
+      "locator": "Printed pp.211–214: Using Factions; Faction Turn; Acting During A Turn"
+    },
+    {
+      "id": "R3-S3",
+      "title": "Dwarf Fortress development: Legends and World Chronicle",
+      "url": "https://store.steampowered.com/news/posts/?appids=975370&enddate=1649948305&feed=steam_community_announcements",
+      "edition": "Bay12/Kitfox, 2022-01-13 and 2022-01-27",
+      "accessed_on": "2026-11-13",
+      "retrieval": "primary_page",
+      "locator": "New Legends Mode; World Chronicle"
+    },
+    {
+      "id": "R3-S4",
+      "title": "Did players destroy the UO ecology?",
+      "url": "https://www.raphkoster.com/games/snippets/did-players-destroy-the-uo-ecology/",
+      "edition": "Raph Koster, updated2024-08-28",
+      "accessed_on": "2026-11-13",
+      "retrieval": "primary_page",
+      "locator": "Numbered points1,4,5,8"
+    }
+  ],
+  "claims": [
+    {
+      "id": "R3-C1",
+      "statement": "Blades clocks summarize fictional progress, while SWN uses selective faction turns and typically one action type per faction per turn. Neither requires continuous simulation of every actor.",
+      "basis": "documented",
+      "source_ids": [
+        "R3-S1",
+        "R3-S2"
+      ]
+    },
+    {
+      "id": "R3-C2",
+      "statement": "Dwarf Fortress development notes describe accumulated historical entries and linked navigation. They support inspectable history, not proof of an ARGO-compatible replay algorithm.",
+      "basis": "documented",
+      "source_ids": [
+        "R3-S3"
+      ]
+    },
+    {
+      "id": "R3-C3",
+      "statement": "Koster’s firsthand retrospective says ecology AI was removed during beta because of search/pathfinding cost, and separately describes finite-resource hoarding blocking replenishment. He disputes popular retellings. Launch-week extinction is not established here.",
+      "basis": "documented",
+      "source_ids": [
+        "R3-S4"
+      ]
+    }
+  ],
+  "proposals": [
+    {
+      "id": "R3-P1",
+      "title": "Bounded deterministic background tick policy",
+      "targets": [
+        "SYSTEMS",
+        "MECHANICS",
+        "TESTS"
+      ],
+      "compatibility": "versioned_migration",
+      "source_ids": [
+        "R3-S1",
+        "R3-S2",
+        "R3-S3",
+        "R3-S4"
+      ],
+      "fields": [
+        {
+          "name": "authorized_target_tick",
+          "type": "nonnegative safe integer",
+          "visibility": "authority",
+          "meaning": "Explicit advance request; no wall-clock default"
+        },
+        {
+          "name": "processed_through_tick",
+          "type": "safe integer",
+          "visibility": "authority",
+          "meaning": "Durable catch-up cursor"
+        },
+        {
+          "name": "project_progress",
+          "type": "bounded integer/threshold",
+          "visibility": "authority",
+          "meaning": "Finite project state"
+        },
+        {
+          "name": "draw_slot",
+          "type": "versioned deterministic identifier",
+          "visibility": "authority",
+          "meaning": "Seed remains private; caller cannot fish by retry ID"
+        }
+      ],
+      "rules": [
+        "At most8ticks per invocation,16active entities,4projects per entity,64evaluated candidates per tick and32effect entries. Reject oversized configurations rather than silently dropping actors.",
+        "Canonical ID order; finite prerequisite/resource rules; one action per entity per tick. Waiting is valid. No LLM call required.",
+        "Authority derives draw slots from scope/ruleset/tick/entity/project/slot, never retry IDs or invocation chunking; this changes current RNG semantics and needs migration.",
+        "Validate all effects under the writer lock and head check, then commit the complete tick atomically or reject it.",
+        "Completion may produce one bounded follow-up candidate eligible next tick, never an immediate recursive cascade. Resume remaining authorized backlog only through another bounded call."
+      ]
+    }
+  ],
+  "benchmarks": [
+    {
+      "id": "R3-B1",
+      "title": "Wall-clock isolation",
+      "status": "proposed",
+      "coverage_path": null,
+      "given": "World is at10 with no authorized advance.",
+      "when": "30wall-clock days pass and polling occurs.",
+      "then": [
+        "World time, canonical projection and head are unchanged."
+      ],
+      "oracle": "Compare canonical snapshots and head."
+    },
+    {
+      "id": "R3-B2",
+      "title": "Chunk-independent catch-up",
+      "status": "proposed",
+      "coverage_path": null,
+      "given": "Explicit target20 from10 with a fixed seed.",
+      "when": "Run8ticks then2; compare10single-tick invocations.",
+      "then": [
+        "Same physical state and per-tick random commitments.",
+        "No skipped ticks; retries append no duplicate effects."
+      ],
+      "oracle": "Canonical graph/state comparison; full event hashes need identical message identities too."
+    },
+    {
+      "id": "R3-B3",
+      "title": "No completion cascade",
+      "status": "proposed",
+      "coverage_path": null,
+      "given": "Faction has1resource and project3/4.",
+      "when": "Valid action spends1 for1progress.",
+      "then": [
+        "One completion and zero remaining resource.",
+        "Follow-up cannot execute before next tick.",
+        "Injected consent/intervention effect is rejected."
+      ],
+      "oracle": "Effect counts, resource invariants and unchanged state on rejected tick."
+    }
+  ],
+  "open_questions": [
+    "SWN primary book was inspected on a third-party mirror; official storefront returned403. Pin the final distributed edition before encoding detailed rules.",
+    "UO testimony is retrospective and contested, not contemporaneous telemetry.",
+    "No background tick action, resource ecology or physical graph projection is implemented by this starter research."
+  ]
+}

@@ -1,0 +1,176 @@
+{
+  "schema_version": "0.1.0",
+  "lane": "R1",
+  "status": "starter",
+  "base_commit": "05a292c403442a24b8f420e8b851f41f0f581ce5",
+  "requested_model": "grok-4.3",
+  "producer": {
+    "kind": "codex_starter",
+    "executed_model": null,
+    "paid_run": false
+  },
+  "title": "Referee loops and session coordination",
+  "summary": "Proposed session state is separate from world truth. Ten minutes is a usability budget, not ten world minutes. Timers, silence and disconnects never imply an action, consent or world-clock advancement. Narrative, UI and voice implementation remain deferred behind headless gates.",
+  "sources": [
+    {
+      "id": "R1-S1",
+      "title": "D&D SRD 5.2.1",
+      "url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf",
+      "edition": "5.2.1, 2025-05-01",
+      "accessed_on": "2026-11-13",
+      "retrieval": "primary_page",
+      "locator": "Printed pp.5–6 Rhythm of Play / Ability Checks; pp.186–187 Passive Perception / Search"
+    },
+    {
+      "id": "R1-S2",
+      "title": "Cairn SRD",
+      "url": "https://cairnrpg.com/first-edition/cairn-srd/",
+      "edition": "First edition",
+      "accessed_on": "2026-11-13",
+      "retrieval": "primary_page",
+      "locator": "Principles for Wardens: Information, Difficulty, Danger, Choice; Teamwork"
+    },
+    {
+      "id": "R1-S3",
+      "title": "Blades Action Roll",
+      "url": "https://bladesinthedark.com/action-roll",
+      "edition": "Online SRD, revision unspecified",
+      "accessed_on": "2026-11-13",
+      "retrieval": "primary_page",
+      "locator": "Roll trigger; goal, method, position, effect, outcomes"
+    },
+    {
+      "id": "R1-S4",
+      "title": "Blades Core System",
+      "url": "https://bladesinthedark.com/core-system",
+      "edition": "Online SRD, revision unspecified",
+      "accessed_on": "2026-11-13",
+      "retrieval": "primary_page",
+      "locator": "Judgment calls; Game Structure"
+    }
+  ],
+  "claims": [
+    {
+      "id": "R1-C1",
+      "statement": "D&D describes situation, character declarations and adjudicated results, with opportunities for each character outside combat. This supports tracking invitations, not a particular queue algorithm.",
+      "basis": "documented",
+      "source_ids": [
+        "R1-S1"
+      ]
+    },
+    {
+      "id": "R1-C2",
+      "statement": "Cairn emphasizes useful information, understandable danger and clarification. Blades separates the intended goal from a fictional method and risk/effect judgments. These are ruleset-specific practices, not universal rules.",
+      "basis": "documented",
+      "source_ids": [
+        "R1-S2",
+        "R1-S3"
+      ]
+    },
+    {
+      "id": "R1-C3",
+      "statement": "SRD 5.2.1 distinguishes passive awareness from the Search action. Do not infer a universal passive floor for every active check or give the narrator authority to reveal hidden information.",
+      "basis": "documented",
+      "source_ids": [
+        "R1-S1"
+      ]
+    }
+  ],
+  "proposals": [
+    {
+      "id": "R1-P1",
+      "title": "Explicit referee/session state machine",
+      "targets": [
+        "SYSTEMS",
+        "MECHANICS",
+        "TESTS"
+      ],
+      "compatibility": "new_workflow",
+      "source_ids": [
+        "R1-S1",
+        "R1-S2",
+        "R1-S3",
+        "R1-S4"
+      ],
+      "fields": [
+        {
+          "name": "session_revision",
+          "type": "nonnegative integer",
+          "visibility": "session_only",
+          "meaning": "CAS for transport coordination, never ledger head"
+        },
+        {
+          "name": "phase",
+          "type": "enum FRAME COLLECT CLARIFY ADJUDICATE SUBMIT PRESENT ROTATE PAUSED ESCALATED REFRAME",
+          "visibility": "session_only",
+          "meaning": "Explicit state transition"
+        },
+        {
+          "name": "response_status_by_actor",
+          "type": "scoped map: awaiting/submitted/explicit_pass/deferred",
+          "visibility": "session_only",
+          "meaning": "Missing response does not fabricate a pass"
+        },
+        {
+          "name": "confirmed_intent_hash",
+          "type": "digest",
+          "visibility": "actor_scoped",
+          "meaning": "Invalidate confirmation if material stakes change"
+        }
+      ],
+      "rules": [
+        "FRAME -> COLLECT -> CLARIFY -> ADJUDICATE -> SUBMIT -> PRESENT -> ROTATE; complete intents may skip CLARIFY. Missing rules go to ESCALATED. Stale heads go to REFRAME.",
+        "Pinned rule/exception -> supported campaign ruling -> designated operator adjudication. Unsupported mechanics remain paused; the model cannot invent an authority rule.",
+        "Solo budget proposal: first minute frame, minutes1–3 clarify, minutes3–8 resolve supported actions, final2minutes checkpoint. Validate this schedule with users.",
+        "Party windows invite each participant before another ordinary invitation to the same participant; preserve actual ruleset initiative. Deliver private cues separately.",
+        "World state changes only through supported TELOS proposals; epistemic acquisition requires its authorized commit path."
+      ]
+    }
+  ],
+  "benchmarks": [
+    {
+      "id": "R1-B1",
+      "title": "Private passive cue",
+      "status": "proposed",
+      "coverage_path": null,
+      "given": "A alone satisfies a pinned perception rule and sensory condition.",
+      "when": "The perception procedure grants an observation.",
+      "then": [
+        "Only A acquires the claim after the authorized commit.",
+        "B and the party view remain unchanged."
+      ],
+      "oracle": "Compare authorized claim-ID sets; this ruleset procedure is future work."
+    },
+    {
+      "id": "R1-B2",
+      "title": "Deadline is not an action",
+      "status": "proposed",
+      "coverage_path": null,
+      "given": "A has submitted; B,C,D await invitations.",
+      "when": "A submits again and the soft session timer expires.",
+      "then": [
+        "B,C,D retain invitation priority.",
+        "No automatic pass, consent, proposal or world-time advance."
+      ],
+      "oracle": "Session transition table plus unchanged ledger head/time."
+    },
+    {
+      "id": "R1-B3",
+      "title": "Stale confirmation and retry",
+      "status": "proposed",
+      "coverage_path": null,
+      "given": "Two intents target head H.",
+      "when": "First commits, second submits against H, first retries unchanged.",
+      "then": [
+        "Second is rejected as stale.",
+        "First retry returns original outcome and adds no event.",
+        "Future session reframe invalidates confirmation when stakes change."
+      ],
+      "oracle": "Existing authority/CAS test patterns plus proposed session state test."
+    }
+  ],
+  "open_questions": [
+    "What invitation policy works for mixed text/voice and accessibility needs? No usability study is claimed.",
+    "Perception mechanics require the selected versioned ruleset; current Tempted Fates has no general Search action."
+  ]
+}

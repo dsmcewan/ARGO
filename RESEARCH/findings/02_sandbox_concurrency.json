@@ -1,0 +1,197 @@
+{
+  "schema_version": "0.1.0",
+  "lane": "R2",
+  "status": "starter",
+  "base_commit": "05a292c403442a24b8f420e8b851f41f0f581ce5",
+  "requested_model": "grok-4.3",
+  "producer": {
+    "kind": "codex_starter",
+    "executed_model": null,
+    "paid_run": false
+  },
+  "title": "Sandbox concurrency and rumor provenance",
+  "summary": "Keep scheduling and world time distinct. Current v1 implements serialized authority plus stale-head rejection; queue and transparent_fork remain unsupported. Proposed expedition calendars and truth assessments require migration.",
+  "sources": [
+    {
+      "id": "R2-S1",
+      "title": "Ben Robbins West Marches series, public transcription",
+      "url": "https://www.scribd.com/document/326760110/West-Marches",
+      "edition": "Original blog series 2007; transcription date unspecified",
+      "accessed_on": "2026-11-13",
+      "retrieval": "primary_work_mirror",
+      "locator": "Scheduling: Players Are In Control; Sharing Info; Shared World table map; Running Your Own"
+    },
+    {
+      "id": "R2-S2",
+      "title": "Open Table Manifesto, Part3",
+      "url": "https://thealexandrian.net/wordpress/38669/roleplaying-games/open-table-manifesto-part-3-organizing-your-open-table",
+      "edition": "2016-08-22",
+      "accessed_on": "2026-11-13",
+      "retrieval": "primary_page",
+      "locator": "Campaign Time Management; Lockdown; End of Session Status"
+    },
+    {
+      "id": "R2-S3",
+      "title": "Hexcrawl Tool: Rumor Tables",
+      "url": "https://thealexandrian.net/wordpress/48539/roleplaying-games/hexcrawl-tool-rumor-tables",
+      "edition": "2022-10-22",
+      "accessed_on": "2026-11-13",
+      "retrieval": "primary_page",
+      "locator": "Source; Focus; Truth Value"
+    },
+    {
+      "id": "R2-S4",
+      "title": "Hearing Rumors",
+      "url": "https://thealexandrian.net/wordpress/48549/roleplaying-games/hexcrawl-tool-rumor-tables-part-2-hearing-rumors",
+      "edition": "2022-10-23",
+      "accessed_on": "2026-11-13",
+      "retrieval": "primary_page",
+      "locator": "Contextualizing Rumors; Open Table Rumor Pool"
+    },
+    {
+      "id": "R2-S5",
+      "title": "Restocking Your Rumor Table",
+      "url": "https://thealexandrian.net/wordpress/48552/roleplaying-games/hexcrawl-tool-rumor-tables-part-3-restocking-your-rumor-table",
+      "edition": "2022-10-24",
+      "accessed_on": "2026-11-13",
+      "retrieval": "primary_page",
+      "locator": "Same Rumor, New Context; Evolve Situations"
+    }
+  ],
+  "claims": [
+    {
+      "id": "R2-C1",
+      "statement": "The reproduced Robbins protocol puts destinations and group assembly in players’ hands, coordinated with the referee. Shared reports and maps connect expeditions without proving every character knows every private fact.",
+      "basis": "documented",
+      "source_ids": [
+        "R2-S1"
+      ]
+    },
+    {
+      "id": "R2-C2",
+      "statement": "Alexander proposes real-day/campaign-day correspondence, then addresses journeys that outrun the calendar using character/location lockdowns. This is one design, not a universal West Marches requirement.",
+      "basis": "documented",
+      "source_ids": [
+        "R2-S2"
+      ]
+    },
+    {
+      "id": "R2-C3",
+      "statement": "Rumor content, provenance and underlying truth differ. Rumors can be partial or mixed, and changing circumstances can make an earlier report outdated. Sharing can remain an explicit player choice.",
+      "basis": "documented",
+      "source_ids": [
+        "R2-S3",
+        "R2-S4",
+        "R2-S5"
+      ]
+    }
+  ],
+  "proposals": [
+    {
+      "id": "R2-P1",
+      "title": "Explicit expedition checkpoints and authority-only rumor assessment",
+      "targets": [
+        "SYSTEMS",
+        "MECHANICS",
+        "TESTS"
+      ],
+      "compatibility": "versioned_migration",
+      "source_ids": [
+        "R2-S1",
+        "R2-S2",
+        "R2-S3"
+      ],
+      "fields": [
+        {
+          "name": "expedition_id",
+          "type": "stable ID",
+          "visibility": "actor_scoped",
+          "meaning": "Scheduling identity separate from causal history"
+        },
+        {
+          "name": "scheduled_start_utc",
+          "type": "timestamp",
+          "visibility": "session_only",
+          "meaning": "Appointment only, never world-time authority"
+        },
+        {
+          "name": "checkpoint_id",
+          "type": "existing scoped checkpoint reference",
+          "visibility": "actor_scoped",
+          "meaning": "Pin head/sequence/world_time"
+        },
+        {
+          "name": "truth_class",
+          "type": "true/false/partial/mixed/unknown",
+          "visibility": "authority",
+          "meaning": "Assessment at specified evidence prefix"
+        },
+        {
+          "name": "temporal_status",
+          "type": "current/outdated/undetermined",
+          "visibility": "authority",
+          "meaning": "Separate age from falsehood"
+        },
+        {
+          "name": "source_claim_id",
+          "type": "nullable provenance reference",
+          "visibility": "actor_scoped",
+          "meaning": "Preserve transmission chain and original acquisition"
+        }
+      ],
+      "rules": [
+        "A stale solo action after a raid commit returns CONFLICT without queuing, rebasing or forking automatically.",
+        "Rumor assessments bind assessed_at_sequence and evaluated_world_time; never leak them as narrator hints or retrieval-ranking side channels.",
+        "Keep existing ClaimRecord.acquired_at plus sequence cutoff; backdating occurrence cannot backdate knowledge.",
+        "Party membership alone grants no member’s private claim. Sharing commits specify eligible observers and party disclosure.",
+        "Do not insert late expedition actions behind the committed ledger head; new scheduling semantics need a reviewed migration."
+      ]
+    }
+  ],
+  "benchmarks": [
+    {
+      "id": "R2-B1",
+      "title": "Solo versus raid conflict",
+      "status": "proposed",
+      "coverage_path": null,
+      "given": "Two proposals target H.",
+      "when": "Raid commits before solo validation.",
+      "then": [
+        "Solo receives CONFLICT.",
+        "No second event, queue or new branch."
+      ],
+      "oracle": "Event count and branch identifiers; exact retry returns original outcome."
+    },
+    {
+      "id": "R2-B2",
+      "title": "Explicit disclosure and acquisition cutoff",
+      "status": "proposed",
+      "coverage_path": null,
+      "given": "A privately acquired R at tick10/sequence5.",
+      "when": "Party queries, then receives authorized disclosure at tick12/sequence8.",
+      "then": [
+        "Initial party view excludes R.",
+        "R appears only with both cutoffs and explicit observer authorization."
+      ],
+      "oracle": "Exact filtered claim sets, not model judgement."
+    },
+    {
+      "id": "R2-B3",
+      "title": "Outdated versus false",
+      "status": "proposed",
+      "coverage_path": null,
+      "given": "Bridge was passable at20, destroyed at30; old report is heard at40.",
+      "when": "Assess at20/40 and query actor knowledge before40.",
+      "then": [
+        "Assessment differs by evaluation time.",
+        "Acquisition stays40.",
+        "No authority-only assessment leaks to narrator."
+      ],
+      "oracle": "Bitemporal assessment and visibility fixtures; future migration."
+    }
+  ],
+  "open_questions": [
+    "Canonical Robbins URLs https://arsludi.lamemage.com/index.php/78/grand-experiments-west-marches/ and follow-ups returned403. The transcription is inspected evidence, not authenticated original retrieval; exclude its AI summary.",
+    "No retroactive expedition scheduler or authoritative rumor truth classifier is implemented in v1."
+  ]
+}

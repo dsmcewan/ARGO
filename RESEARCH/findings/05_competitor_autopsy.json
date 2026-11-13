@@ -1,0 +1,246 @@
+{
+  "schema_version": "0.1.0",
+  "lane": "R5",
+  "status": "starter",
+  "base_commit": "05a292c403442a24b8f420e8b851f41f0f581ce5",
+  "requested_model": "grok-4.7",
+  "producer": {
+    "kind": "codex_starter",
+    "executed_model": null,
+    "paid_run": false
+  },
+  "title": "VTT document boundaries and adversarial benchmarks",
+  "summary": "Documentation research only: no competitor attack was executed and no product-specific security defect is established. Foundry documentation is pinned to v13, not claimed latest. Existing test references mean source assertions were inspected; future graph/bus/voice tests are not passing implementations.",
+  "sources": [
+    {
+      "id": "R5-S1",
+      "title": "Foundry Actor",
+      "url": "https://foundryvtt.com/api/v13/classes/foundry.documents.Actor.html",
+      "edition": "v13",
+      "accessed_on": "2026-11-13",
+      "retrieval": "primary_page",
+      "locator": "isToken, itemTypes, getUserLevel, defineSchema"
+    },
+    {
+      "id": "R5-S2",
+      "title": "Foundry Item",
+      "url": "https://foundryvtt.com/api/v13/classes/foundry.documents.Item.html",
+      "edition": "v13",
+      "accessed_on": "2026-11-13",
+      "retrieval": "primary_page",
+      "locator": "actor aliases parent; isOwned aliases isEmbedded"
+    },
+    {
+      "id": "R5-S3",
+      "title": "Foundry Scene",
+      "url": "https://foundryvtt.com/api/v13/classes/foundry.documents.Scene.html",
+      "edition": "v13",
+      "accessed_on": "2026-11-13",
+      "retrieval": "primary_page",
+      "locator": "defineSchema: tokens, notes, walls, journal references"
+    },
+    {
+      "id": "R5-S4",
+      "title": "Foundry JournalEntry",
+      "url": "https://foundryvtt.com/api/v13/classes/foundry.documents.JournalEntry.html",
+      "edition": "v13",
+      "accessed_on": "2026-11-13",
+      "retrieval": "primary_page",
+      "locator": "embedded pages, ownership, permission methods"
+    },
+    {
+      "id": "R5-S5",
+      "title": "Foundry RollTable",
+      "url": "https://foundryvtt.com/api/v13/classes/foundry.documents.RollTable.html",
+      "edition": "v13",
+      "accessed_on": "2026-11-13",
+      "retrieval": "primary_page",
+      "locator": "TableResult; draw/drawMany; recursive and chat options"
+    },
+    {
+      "id": "R5-S6",
+      "title": "AI Dungeon context construction",
+      "url": "https://help.aidungeon.com/faq/what-goes-into-the-context-sent-to-the-ai",
+      "edition": "Unversioned live documentation",
+      "accessed_on": "2026-11-13",
+      "retrieval": "primary_page",
+      "locator": "Required/Dynamic context; summary, Story Cards, Memory Bank"
+    },
+    {
+      "id": "R5-S7",
+      "title": "AI Dungeon multiplayer",
+      "url": "https://help.aidungeon.com/faq/do-you-support-multiplayer",
+      "edition": "Unversioned live documentation",
+      "accessed_on": "2026-11-13",
+      "retrieval": "primary_page",
+      "locator": "Why use Third Person in Multiplayer?"
+    }
+  ],
+  "claims": [
+    {
+      "id": "R5-C1",
+      "statement": "Foundry documents parent/embedded relationships and ownership APIs. Item.isOwned describes embedding, not the current user’s authorization. Synthetic Token Actors require distinct identity from world Actors.",
+      "basis": "documented",
+      "source_ids": [
+        "R5-S1",
+        "R5-S2"
+      ]
+    },
+    {
+      "id": "R5-C2",
+      "statement": "Scenes can reference journals and embedded objects; journals contain pages; RollTable operations can recurse or emit chat. None of this establishes ARGO actor knowledge, historical acquisition or authoritative random draws.",
+      "basis": "design_inference",
+      "source_ids": [
+        "R5-S3",
+        "R5-S4",
+        "R5-S5"
+      ]
+    },
+    {
+      "id": "R5-C3",
+      "statement": "AI Dungeon documents finite context assembly and memory facilities; context may be trimmed. Its multiplayer documentation describes simultaneous character inputs. Neither proves cross-tenant leakage, voice corruption or that the product is stateless.",
+      "basis": "documented",
+      "source_ids": [
+        "R5-S6",
+        "R5-S7"
+      ]
+    },
+    {
+      "id": "R5-C4",
+      "statement": "Sycophancy, loot inflation, secret leakage and forced choices are attack hypotheses to measure, not findings proven against all competitors.",
+      "basis": "hypothesis",
+      "source_ids": [
+        "R5-S6"
+      ]
+    }
+  ],
+  "proposals": [
+    {
+      "id": "R5-P1",
+      "title": "Versioned adapter provenance and headless adversarial matrix",
+      "targets": [
+        "SYSTEMS",
+        "MECHANICS",
+        "TESTS"
+      ],
+      "compatibility": "versioned_migration",
+      "source_ids": [
+        "R5-S1",
+        "R5-S2",
+        "R5-S3",
+        "R5-S4",
+        "R5-S5",
+        "R5-S6",
+        "R5-S7"
+      ],
+      "fields": [
+        {
+          "name": "source_uuid",
+          "type": "stable source identifier",
+          "visibility": "authority",
+          "meaning": "Retain parent/synthetic identity"
+        },
+        {
+          "name": "source_document_type",
+          "type": "Actor/Item/Scene/JournalEntry/RollTable",
+          "visibility": "authority",
+          "meaning": "Map to a specific adapter"
+        },
+        {
+          "name": "source_system_version",
+          "type": "version tuple",
+          "visibility": "research_only",
+          "meaning": "Pin Foundry and game-system semantics"
+        },
+        {
+          "name": "source_sha256",
+          "type": "digest",
+          "visibility": "authority",
+          "meaning": "Bind imported bytes"
+        },
+        {
+          "name": "rights_provenance",
+          "type": "manifest reference",
+          "visibility": "authority",
+          "meaning": "Separate permission to import from permission to disclose"
+        }
+      ],
+      "rules": [
+        "Actor -> entity and scoped capability mapping; Item -> parent-qualified custody proposal; Scene -> authorized geography/view; JournalEntry -> typed source/claims; RollTable -> ruleset data, not independent RNG authority.",
+        "Foundry permissions never substitute for actor/tenant/rights/time authorization.",
+        "No live competitor verdicts: use synthetic canaries and deterministic oracles. Canary absence alone does not prove absence of every semantic leak.",
+        "Keep future voice tests parked until headless authority, graph and bus gates pass; present source references are not proof of an implemented voice stack."
+      ]
+    }
+  ],
+  "benchmarks": [
+    {
+      "id": "R5-B1",
+      "title": "Unauthorized narrator context",
+      "status": "existing_source_assertion",
+      "coverage_path": "TESTS/review-regressions.test.ts",
+      "given": "Stale/private FOREIGN_SECRET claim and clean authenticated refresh.",
+      "when": "Narrator attempts generation, including a retry after shared-object mutation.",
+      "then": [
+        "Captured vendor requests contain no FOREIGN_SECRET or foreign world."
+      ],
+      "oracle": "Captured request bytes; tests were inspected, not rerun by this research helper."
+    },
+    {
+      "id": "R5-B2",
+      "title": "Illegal loot/custody",
+      "status": "proposed",
+      "coverage_path": null,
+      "given": "Actor does not hold the requested object; prose claims a reward.",
+      "when": "Submit unauthorized custody transfer or render claimed reward.",
+      "then": [
+        "Rejected action appends nothing.",
+        "Narration cannot change canonical snapshot."
+      ],
+      "oracle": "Canonical state/event counts; general loot catalog adapter remains future."
+    },
+    {
+      "id": "R5-B3",
+      "title": "Deterministic replay",
+      "status": "existing_source_assertion",
+      "coverage_path": "TESTS/ledger.test.ts",
+      "given": "Fixed genesis and causal/epistemic/RNG event sequence.",
+      "when": "Rebuild each prefix and tamper an event.",
+      "then": [
+        "Snapshots match canonical replay.",
+        "Tampered authority/RNG records are rejected."
+      ],
+      "oracle": "Byte comparison and deterministic exception assertions."
+    },
+    {
+      "id": "R5-B4",
+      "title": "Refusal remains optional",
+      "status": "existing_source_assertion",
+      "coverage_path": "TESTS/tempted-fates.test.ts",
+      "given": "Each Fate or subscriber is offered a refused/declined action.",
+      "when": "Process leave/refuse or an empty candidate list.",
+      "then": [
+        "Returned proposal list is empty.",
+        "No forced quest, gift or canonical mutation."
+      ],
+      "oracle": "Proposal list and ledger event count."
+    },
+    {
+      "id": "R5-B5",
+      "title": "Future voice collision",
+      "status": "proposed",
+      "coverage_path": null,
+      "given": "A owns turn; B overlaps; A final is duplicated; narration epoch7 cancelled.",
+      "when": "Deliver late epoch7 audio.",
+      "then": [
+        "One A proposal; explicit busy response for B.",
+        "No extra commit from duplicate; no late epoch7 audio."
+      ],
+      "oracle": "Entire voice/gateway trace fixture is deferred, not implemented."
+    }
+  ],
+  "open_questions": [
+    "Full cross-tenant cache matrix and graph/bus replay workloads require new executable fixtures.",
+    "Foundry v13 import mapping is future work, not an integration currently shipped."
+  ]
+}

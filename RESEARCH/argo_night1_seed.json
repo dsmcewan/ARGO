@@ -1,0 +1,235 @@
+{
+  "schema_version": 1,
+  "tickets": [
+    {
+      "id": "T-101",
+      "wave": 1,
+      "lane": "A1",
+      "title": "Deep LEXI graph/tenant delta audit",
+      "seat_model": "grok-4.3",
+      "reviewer_model": null,
+      "owned_paths": [
+        "AUDIT/lexi/"
+      ],
+      "gate_cmd": [
+        "python3",
+        "RESEARCH/gate_ticket.py",
+        "T-101"
+      ],
+      "spec_path": "RESEARCH/tickets/T-101.md",
+      "depends_on": [],
+      "max_attempts": 3
+    },
+    {
+      "id": "T-102",
+      "wave": 1,
+      "lane": "A2",
+      "title": "TELOS authority and replay delta audit",
+      "seat_model": "grok-4.3",
+      "reviewer_model": null,
+      "owned_paths": [
+        "AUDIT/telos/"
+      ],
+      "gate_cmd": [
+        "python3",
+        "RESEARCH/gate_ticket.py",
+        "T-102"
+      ],
+      "spec_path": "RESEARCH/tickets/T-102.md",
+      "depends_on": [],
+      "max_attempts": 3
+    },
+    {
+      "id": "T-103",
+      "wave": 1,
+      "lane": "A3",
+      "title": "Pantheon process/router boundary delta audit",
+      "seat_model": "grok-4.3",
+      "reviewer_model": null,
+      "owned_paths": [
+        "AUDIT/pantheon/"
+      ],
+      "gate_cmd": [
+        "python3",
+        "RESEARCH/gate_ticket.py",
+        "T-103"
+      ],
+      "spec_path": "RESEARCH/tickets/T-103.md",
+      "depends_on": [],
+      "max_attempts": 3
+    },
+    {
+      "id": "T-104",
+      "wave": 1,
+      "lane": "R1",
+      "title": "Deepen 01 referee loops",
+      "seat_model": "grok-4.3",
+      "reviewer_model": null,
+      "owned_paths": [
+        "RESEARCH/findings/01_referee_loops.json",
+        "RESEARCH/findings/01_referee_loops.md"
+      ],
+      "gate_cmd": [
+        "python3",
+        "RESEARCH/gate_ticket.py",
+        "T-104"
+      ],
+      "spec_path": "RESEARCH/tickets/T-104.md",
+      "depends_on": [],
+      "max_attempts": 3
+    },
+    {
+      "id": "T-105",
+      "wave": 1,
+      "lane": "R2",
+      "title": "Deepen 02 sandbox concurrency",
+      "seat_model": "grok-4.3",
+      "reviewer_model": null,
+      "owned_paths": [
+        "RESEARCH/findings/02_sandbox_concurrency.json",
+        "RESEARCH/findings/02_sandbox_concurrency.md"
+      ],
+      "gate_cmd": [
+        "python3",
+        "RESEARCH/gate_ticket.py",
+        "T-105"
+      ],
+      "spec_path": "RESEARCH/tickets/T-105.md",
+      "depends_on": [],
+      "max_attempts": 3
+    },
+    {
+      "id": "T-106",
+      "wave": 1,
+      "lane": "R3",
+      "title": "Deepen 03 world simulation",
+      "seat_model": "grok-4.3",
+      "reviewer_model": null,
+      "owned_paths": [
+        "RESEARCH/findings/03_world_simulation.json",
+        "RESEARCH/findings/03_world_simulation.md"
+      ],
+      "gate_cmd": [
+        "python3",
+        "RESEARCH/gate_ticket.py",
+        "T-106"
+      ],
+      "spec_path": "RESEARCH/tickets/T-106.md",
+      "depends_on": [],
+      "max_attempts": 3
+    },
+    {
+      "id": "T-107",
+      "wave": 1,
+      "lane": "R4",
+      "title": "Deepen 04 open rulesets",
+      "seat_model": "grok-4.3",
+      "reviewer_model": null,
+      "owned_paths": [
+        "RESEARCH/findings/04_open_rulesets.json",
+        "RESEARCH/findings/04_open_rulesets.md"
+      ],
+      "gate_cmd": [
+        "python3",
+        "RESEARCH/gate_ticket.py",
+        "T-107"
+      ],
+      "spec_path": "RESEARCH/tickets/T-107.md",
+      "depends_on": [],
+      "max_attempts": 3
+    },
+    {
+      "id": "T-108",
+      "wave": 1,
+      "lane": "R5",
+      "title": "Deepen 05 competitor autopsy",
+      "seat_model": "grok-4.7",
+      "reviewer_model": null,
+      "owned_paths": [
+        "RESEARCH/findings/05_competitor_autopsy.json",
+        "RESEARCH/findings/05_competitor_autopsy.md"
+      ],
+      "gate_cmd": [
+        "python3",
+        "RESEARCH/gate_ticket.py",
+        "T-108"
+      ],
+      "spec_path": "RESEARCH/tickets/T-108.md",
+      "depends_on": [],
+      "max_attempts": 3
+    },
+    {
+      "id": "T-201",
+      "wave": 2,
+      "lane": "AUDIT-SYNTH",
+      "title": "Synthesize exact audit deltas",
+      "seat_model": "gemini-4-carbon",
+      "reviewer_model": "claude-fable-5-2",
+      "owned_paths": [
+        "AUDIT/SYNTHESIS/"
+      ],
+      "gate_cmd": [
+        "python3",
+        "RESEARCH/gate_ticket.py",
+        "T-201"
+      ],
+      "spec_path": "RESEARCH/tickets/T-201.md",
+      "depends_on": [
+        "T-101",
+        "T-102",
+        "T-103"
+      ],
+      "max_attempts": 3
+    },
+    {
+      "id": "T-202",
+      "wave": 2,
+      "lane": "RESEARCH-SYNTH",
+      "title": "Synthesize research with all eleven local invariant mappings",
+      "seat_model": "gemini-4-carbon",
+      "reviewer_model": "claude-fable-5-2",
+      "owned_paths": [
+        "RESEARCH/SYNTHESIS.md",
+        "RESEARCH/synthesis-result.json"
+      ],
+      "gate_cmd": [
+        "python3",
+        "RESEARCH/gate_ticket.py",
+        "T-202"
+      ],
+      "spec_path": "RESEARCH/tickets/T-202.md",
+      "depends_on": [
+        "T-104",
+        "T-105",
+        "T-106",
+        "T-107",
+        "T-108"
+      ],
+      "max_attempts": 3
+    },
+    {
+      "id": "T-301",
+      "wave": 2,
+      "lane": "ARCHITECT",
+      "title": "Propose versioned headless graph/wire schemas and negative fixtures",
+      "seat_model": "claude-fable-5-2",
+      "reviewer_model": "grok-4.7",
+      "owned_paths": [
+        "SYSTEMS/proposals/headless-v2/",
+        "MECHANICS/proposals/headless-v2/",
+        "TESTS/proposals/headless-v2/"
+      ],
+      "gate_cmd": [
+        "python3",
+        "RESEARCH/gate_ticket.py",
+        "T-301"
+      ],
+      "spec_path": "RESEARCH/tickets/T-301.md",
+      "depends_on": [
+        "T-201",
+        "T-202"
+      ],
+      "max_attempts": 3
+    }
+  ]
+}

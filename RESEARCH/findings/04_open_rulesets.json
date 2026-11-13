@@ -1,0 +1,242 @@
+{
+  "schema_version": "0.1.0",
+  "lane": "R4",
+  "status": "starter",
+  "base_commit": "05a292c403442a24b8f420e8b851f41f0f581ce5",
+  "requested_model": "grok-4.3",
+  "producer": {
+    "kind": "codex_starter",
+    "executed_model": null,
+    "paid_run": false
+  },
+  "title": "Edition-specific licensing and first ruleset kernel",
+  "summary": "Provisional recommendation: Knave first edition for a small CC BY 4.0 inventory/ability kernel; pin the actual licensed source and rule fixtures before implementation. Keep SRD5.2.1 as a later tactical adapter. The existing tempted-fates/1.0.0 remains unchanged. This is a source audit and engineering recommendation, not a blanket clearance of every asset or product.",
+  "sources": [
+    {
+      "id": "R4-S1",
+      "title": "Knave author storefront",
+      "url": "https://questingbeast.itch.io/knave",
+      "edition": "First edition, downloadable Knave1.0",
+      "accessed_on": "2026-11-13",
+      "retrieval": "primary_page",
+      "locator": "Features: classless equipment roles, six abilities, CC BY4.0; Purchase file names"
+    },
+    {
+      "id": "R4-S2",
+      "title": "Cairn first-edition SRD",
+      "url": "https://cairnrpg.com/first-edition/cairn-srd/",
+      "edition": "First edition",
+      "accessed_on": "2026-11-13",
+      "retrieval": "primary_page",
+      "locator": "License and Principles"
+    },
+    {
+      "id": "R4-S3",
+      "title": "Blades licensing",
+      "url": "https://bladesinthedark.com/licensing",
+      "edition": "Online SRD; attribution specifies CC BY3.0 Unported",
+      "accessed_on": "2026-11-13",
+      "retrieval": "primary_page",
+      "locator": "Requirements, attribution, excluded setting/art/maps"
+    },
+    {
+      "id": "R4-S4",
+      "title": "D&D SRD release page",
+      "url": "https://www.dndbeyond.com/srd",
+      "edition": "SRD5.2.1, page updated2026-03-02",
+      "accessed_on": "2026-11-13",
+      "retrieval": "primary_page",
+      "locator": "Download and Creative Commons FAQ"
+    },
+    {
+      "id": "R4-S5",
+      "title": "Publishing for Old-School Essentials",
+      "url": "https://necroticgnome.com/pages/publishing-for-old-school-essentials",
+      "edition": "Current2026 publisher guidance",
+      "accessed_on": "2026-11-13",
+      "retrieval": "primary_page",
+      "locator": "Pre2026 copying/adapting; new2026 license; planned2027 CC SRD"
+    },
+    {
+      "id": "R4-S6",
+      "title": "Year Zero Free Tabletop License",
+      "url": "https://freeleaguepublishing.com/wp-content/uploads/2023/11/Year-Zero-Engine-License-Agreement.pdf",
+      "edition": "FTL1.0,2023",
+      "accessed_on": "2026-11-13",
+      "retrieval": "search_excerpt",
+      "locator": "Search-indexed grant mentions printed/PDF/VTT forms; directPDF403"
+    },
+    {
+      "id": "R4-S7",
+      "title": "Knave Second Edition author storefront",
+      "url": "https://questingbeast.itch.io/knave-second-edition",
+      "edition": "Second edition",
+      "accessed_on": "2026-11-13",
+      "retrieval": "search_excerpt",
+      "locator": "Separate product; no verified CC BY grant in this pass"
+    }
+  ],
+  "claims": [
+    {
+      "id": "R4-C1",
+      "statement": "The author explicitly grants CC BY4.0 for Knave1.0 and describes a small classless, equipment-led six-ability toolkit. This grant is edition-specific. Full artifact bytes have not been acquired or hashed in this pass.",
+      "basis": "documented",
+      "source_ids": [
+        "R4-S1"
+      ]
+    },
+    {
+      "id": "R4-C2",
+      "statement": "Cairn text is CC BY-SA4.0, not plain CC BY. Commercial use and share-alike obligations must be assessed for adapted material; copying into a private upload lane does not remove license conditions.",
+      "basis": "documented",
+      "source_ids": [
+        "R4-S2"
+      ]
+    },
+    {
+      "id": "R4-C3",
+      "statement": "Blades SRD uses CC BY3.0 Unported with required credit. The setting, NPCs, artwork and maps outside the SRD are excluded; logo/trademark permissions are separate. Its adjudicative position/effect and consequences are not a tiny automatic three-result ruleset.",
+      "basis": "documented",
+      "source_ids": [
+        "R4-S3"
+      ]
+    },
+    {
+      "id": "R4-C4",
+      "statement": "D&D SRD5.2.1 is CC BY4.0; that does not license all Basic Rules, books, settings, artwork or brand use. Pin the specific SRD and required attribution.",
+      "basis": "documented",
+      "source_ids": [
+        "R4-S4"
+      ]
+    },
+    {
+      "id": "R4-C5",
+      "statement": "OSE is not established as a CC BY kernel: the publisher distinguishes pre2026 OGL material from a new2026 third-party license and describes a CC SRD as prospective for early2027. Availability of a compatibility logo is not blanket text permission.",
+      "basis": "documented",
+      "source_ids": [
+        "R4-S5"
+      ]
+    },
+    {
+      "id": "R4-C6",
+      "statement": "Year Zero uses a custom FTL, not CC BY. Retrieved excerpt specifies printed/PDF/VTT forms; full terms were inaccessible. Whether an autonomous AI runtime fits the grant remains unresolved. Do not treat Year Zero and Forged in the Dark as identical outcome systems.",
+      "basis": "documented",
+      "source_ids": [
+        "R4-S6"
+      ]
+    },
+    {
+      "id": "R4-C7",
+      "statement": "Do not transfer Knave1e’s CC BY grant to Knave2e. This pass has not authenticated a sufficient second-edition text/art reuse license.",
+      "basis": "design_inference",
+      "source_ids": [
+        "R4-S1",
+        "R4-S7"
+      ]
+    }
+  ],
+  "proposals": [
+    {
+      "id": "R4-P1",
+      "title": "Version-pinned Knave1e kernel and license manifest",
+      "targets": [
+        "SYSTEMS",
+        "MECHANICS",
+        "TESTS"
+      ],
+      "compatibility": "versioned_migration",
+      "source_ids": [
+        "R4-S1",
+        "R4-S2",
+        "R4-S3",
+        "R4-S4",
+        "R4-S5",
+        "R4-S6"
+      ],
+      "fields": [
+        {
+          "name": "ruleset_id",
+          "type": "versioned identifier",
+          "visibility": "authority",
+          "meaning": "New namespace separate from TemptedFates"
+        },
+        {
+          "name": "source_sha256",
+          "type": "digest",
+          "visibility": "research_only",
+          "meaning": "Hash actual reviewed rule artifact before encoding"
+        },
+        {
+          "name": "license_id",
+          "type": "exact license/version",
+          "visibility": "research_only",
+          "meaning": "Per-material legal provenance, not tenant entitlement"
+        },
+        {
+          "name": "attribution_text",
+          "type": "string",
+          "visibility": "research_only",
+          "meaning": "Credit creator/source/license and identify modifications"
+        },
+        {
+          "name": "rule_fixture_refs",
+          "type": "nonempty stable IDs",
+          "visibility": "research_only",
+          "meaning": "One deterministic example per selected procedure"
+        }
+      ],
+      "rules": [
+        "First acquire/pin lawfully distributed Knave1e source; no purchase or bulk source redistribution occurred here.",
+        "Implement a deliberately small supported subset: ability resolution, carried-item capacity, custody and explicit consequences. Refuse unimplemented combat/magic rather than inventing outcomes.",
+        "Keep license provenance separate from runtime rights scope. Even open-license material must not merge tenant-private campaign context.",
+        "SRD5.2.1 follows as an adapter with version-specific actions, initiative, resources and tests. No silent change to the existing ruleset version.",
+        "If avoiding any artifact acquisition is essential, evaluate the accessible Blades SRD as a fallback, accepting its larger adjudication surface. Cairn is an option only with an explicit share-alike content strategy."
+      ]
+    }
+  ],
+  "benchmarks": [
+    {
+      "id": "R4-B1",
+      "title": "Edition cannot inherit permission",
+      "status": "proposed",
+      "coverage_path": null,
+      "given": "License record names Knave1e artifact hash.",
+      "when": "Importer receives Knave2e or a different source hash.",
+      "then": [
+        "No automatic license approval or import."
+      ],
+      "oracle": "Exact artifact+edition+license match, not product-name similarity."
+    },
+    {
+      "id": "R4-B2",
+      "title": "Ruleset isolation",
+      "status": "proposed",
+      "coverage_path": null,
+      "given": "World pins tempted-fates/1.0.0.",
+      "when": "A Knave resolution payload is submitted without a migration.",
+      "then": [
+        "Unsupported action/ruleset is rejected.",
+        "No canonical event is appended."
+      ],
+      "oracle": "Schema/authority rejection and event count."
+    },
+    {
+      "id": "R4-B3",
+      "title": "No unrestricted content grant",
+      "status": "proposed",
+      "coverage_path": null,
+      "given": "Manifest licenses only SRD text.",
+      "when": "Importer includes setting artwork, logo or unlicensed module.",
+      "then": [
+        "Each asset needs independent permission evidence.",
+        "Unresolved assets remain excluded from shared retrieval."
+      ],
+      "oracle": "Manifest/material membership; future ingestion test."
+    }
+  ],
+  "open_questions": [
+    "Knave1e mechanics cannot be frozen from storefront summaries alone; obtain source bytes and exact rule fixtures first.",
+    "YearZero full-license access and AI-runtime applicability remain unresolved.",
+    "Recheck the actually published OSE2026 license; do not build on a promised2027 CC release."
+  ]
+}

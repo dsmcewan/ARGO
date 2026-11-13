@@ -1,0 +1,39 @@
+{
+  "schema_version": "0.1.0",
+  "baseline_commit": "05a292c403442a24b8f420e8b851f41f0f581ce5",
+  "paid_runs_authorized": false,
+  "vendor_pipeline_executed": false,
+  "reports": [
+    {
+      "lane": "R1",
+      "json": "findings/01_referee_loops.json",
+      "markdown": "findings/01_referee_loops.md"
+    },
+    {
+      "lane": "R2",
+      "json": "findings/02_sandbox_concurrency.json",
+      "markdown": "findings/02_sandbox_concurrency.md"
+    },
+    {
+      "lane": "R3",
+      "json": "findings/03_world_simulation.json",
+      "markdown": "findings/03_world_simulation.md"
+    },
+    {
+      "lane": "R4",
+      "json": "findings/04_open_rulesets.json",
+      "markdown": "findings/04_open_rulesets.md"
+    },
+    {
+      "lane": "R5",
+      "json": "findings/05_competitor_autopsy.json",
+      "markdown": "findings/05_competitor_autopsy.md"
+    }
+  ],
+  "synthesizer": "gemini-4-carbon",
+  "architect": {
+    "model": "claude-fable-5-2",
+    "effort": "high"
+  },
+  "gate": "local_deterministic_supervisor"
+}

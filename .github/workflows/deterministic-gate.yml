@@ -24,6 +24,13 @@ jobs:
         working-directory: pantheon
       - name: Exact candidate schema, types, processes and deterministic replay
         run: node scripts/gate.mjs --merge-ready
+      - name: Offline board, dispatcher and real Git handoff regressions
+        run: python3 -m unittest discover -s tools -p 'test_*.py' -v
+      - name: Research evidence structure and fail-closed planning gates
+        run: |
+          node RESEARCH/validate.mjs
+          node RESEARCH/test_validate.mjs
+          python3 -m unittest discover -s RESEARCH -p 'test_*.py' -v
       - name: Full offline Pantheon and vendor-policy regressions
         run: node --test tests/*.test.mjs ../packages/model-client/tests/*.test.mjs
         working-directory: pantheon
