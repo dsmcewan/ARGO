@@ -8,3 +8,5 @@
 - Independent review repaired per-process identity rotation, pending Board mutation drain and derived result-scope validation; retained failing and passing evidence.
 - Native focused verification: 29 Python and 11 Node tests passed without skips. Disposable Pantheon demo built two candidates, then serial gates merged A, refused stale B and accepted rebuilt B at epoch2.
 - Main integration remains pending separately trusted policy adoption and the complete deterministic controller.
+- MB-001 passed its pinned data gate and actually merged into argo/mesh-builds at eedd941fbdfe4207403ebf971c516d72ea40d483; 15 accepted CAS artifacts and audit validated.
+- Supervisor adopted the six independently reviewed policy additions at that immutable commit; existing protected bytes unchanged. Full application controller remains required before main.

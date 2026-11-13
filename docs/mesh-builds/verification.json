@@ -54,8 +54,105 @@
     "status": "pending_external_controller"
   },
   "board": {
-    "status": "CLAIMED",
-    "scope": "staging_data_packet"
+    "scope": "staging_data_packet",
+    "target_branch": "argo/mesh-builds",
+    "id": "MB-001",
+    "status": "MERGED",
+    "attempt": 1,
+    "epoch": 1,
+    "base_commit": "dc4629819ee07d9a46c8ae1e88300a1fd5b514ca",
+    "commit_sha": "eedd941fbdfe4207403ebf971c516d72ea40d483",
+    "merged_commit": "eedd941fbdfe4207403ebf971c516d72ea40d483",
+    "gate_result": {
+      "at_us": 1794597925896383,
+      "candidate": "eedd941fbdfe4207403ebf971c516d72ea40d483",
+      "completed": true,
+      "exit_code": 0,
+      "output_sha256": "48702dd7f13254d327c49e72325139007778792a20579bf93f6e7a61d21adf7f",
+      "output_tail": "PASS offline Mesh packet and unchanged v1 freeze; runtime acceptance is external\n\nARGO_GATE_COMPLETED e978035ebb2d4c3d82e68bb0b1f1edcd\n",
+      "passed": true,
+      "policy_sha256": "43402625d108389dd804cc8c0046d41c661a30d5b3e0007c0a77cdce17d295b9"
+    },
+    "reviewer_model": null,
+    "audit_valid": true,
+    "accepted_artifacts": [
+      {
+        "logical_path": "docs/mesh-builds/INTERFACE.md",
+        "sha256": "fb1455ca4aa63e8604a79140084a33cd36542ac519cc3cd9bd36816a5f5b4055",
+        "accepted": 1
+      },
+      {
+        "logical_path": "docs/mesh-builds/demo.py",
+        "sha256": "e4f11ecbe4d32abdb46fa7e84017a5ca80aac6ddcc4f6249c9aa8aafc4434ec3",
+        "accepted": 1
+      },
+      {
+        "logical_path": "docs/mesh-builds/examples/author.py",
+        "sha256": "9fd84b768f6dd0e18b76fc031759ddcfdbd2acfa4ec3a350afb88d997191ff7b",
+        "accepted": 1
+      },
+      {
+        "logical_path": "docs/mesh-builds/examples/peer.py",
+        "sha256": "ff3f314bdcb7fb91027c7e3b1d50c5d08341878679644148b0ca34fc9fd4a6eb",
+        "accepted": 1
+      },
+      {
+        "logical_path": "docs/mesh-builds/independent-review.json",
+        "sha256": "a2d817d4a5f5a3a01e56d7173f963d2f7e82455b9d003d87739422a10beee71c",
+        "accepted": 1
+      },
+      {
+        "logical_path": "docs/mesh-builds/policy-review.json",
+        "sha256": "485c20c476b2a3cf7b93c36bac4be5cc9d664cb52b63dc0496bc0c7d6688517a",
+        "accepted": 1
+      },
+      {
+        "logical_path": "docs/mesh-builds/profile.json",
+        "sha256": "1e03dd1a17d50bdb11e6e2426a1f29ef44c2a0883fb01bea3f70c0fcfdc58e12",
+        "accepted": 1
+      },
+      {
+        "logical_path": "pantheon/bin/pantheon-mesh.mjs",
+        "sha256": "b0f2ada6147904a63c8c3682638dc3d53cea7b36479520a46ebaf0c82c6e1c9f",
+        "accepted": 1
+      },
+      {
+        "logical_path": "pantheon/src/board/blackboard-mesh.mjs",
+        "sha256": "0fb06a2ae6eb33dfdaf745996ba76b7124f6972060447696c1a36a82e4f9bc32",
+        "accepted": 1
+      },
+      {
+        "logical_path": "pantheon/tests/blackboard-mesh.test.mjs",
+        "sha256": "a35e6d950a9814dac8e9fd64ab91b22c0f15db1ecd9d4f1aa8f331ee6b60c471",
+        "accepted": 1
+      },
+      {
+        "logical_path": "tools/MESH.md",
+        "sha256": "053195fa4d2e8a5420d48bc3db4d4c76607931b773e2a2e2eb5a1e29cae3f4dd",
+        "accepted": 1
+      },
+      {
+        "logical_path": "tools/mesh_dispatch.py",
+        "sha256": "b50a8bdabadc4a93053d3f1e3ed78b98af135e76e7b7cd4e58a702e724a2889b",
+        "accepted": 1
+      },
+      {
+        "logical_path": "tools/mesh_trace.py",
+        "sha256": "f6eaa1cf839b743bd0b6174a2d0166b8f519b1487f64bdfa094717fa90ff2782",
+        "accepted": 1
+      },
+      {
+        "logical_path": "tools/test_mesh_dispatch.py",
+        "sha256": "009a2393da099faacd14bd23831d03ea30e85c27c15e9923cb70b94a73521652",
+        "accepted": 1
+      },
+      {
+        "logical_path": "tools/test_mesh_trace.py",
+        "sha256": "91e0e7b265e0a2d6430f064e183f3a216443d69889dc57ebd096e1df9db8bd25",
+        "accepted": 1
+      }
+    ],
+    "scope_note": "Actual staging merge and immutable candidate artifacts. Later supervisor verification metadata is not retroactively claimed as accepted CAS."
   },
   "limits": [
     "Explicit offline local commands only; no authenticated provider broker or paid calls",
@@ -65,5 +162,11 @@
     "Hard termination is failure requiring reconciliation; no arbitrary storage completion guarantee",
     "Host traces are advisory, not accepted dependency CAS or external tamper anchors",
     "D09/W14 generic application adapter remains open"
-  ]
+  ],
+  "implementation_commit": "eedd941fbdfe4207403ebf971c516d72ea40d483",
+  "policy_adoption": {
+    "record": "trust-release.json",
+    "trusted_commit": "eedd941fbdfe4207403ebf971c516d72ea40d483",
+    "existing_policy_unchanged": true
+  }
 }
