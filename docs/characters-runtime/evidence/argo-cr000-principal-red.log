@@ -1,0 +1,48 @@
+✔ character commands accept five bounded variants without authorizing caller-chosen speech identity (12.137729ms)
+✔ character cursors reject inconsistent heads and noncanonical temporal integers (1.543972ms)
+✔ character scope identity and version are checked on nested public queries and envelopes (8.534064ms)
+✔ character DTO preflight rejects active objects without invoking user getters or proxy traps (0.766726ms)
+✔ character text and array bounds reject empty identity, unbounded speech and duplicate evidence (5.749298ms)
+✔ character experience variants distinguish authenticated speech from committed action summaries (1.716034ms)
+✔ character projection bounds every stored experience and acquisition to its authoritative cursor (10.947945ms)
+✔ character actor views bind impression ownership and profile to the queried actor (7.602449ms)
+✔ character narrator queries reject private viewer substitution, invalid page bounds and party mismatch (2.383084ms)
+✔ character narrator pages bind coverage and visible cursors without admitting observer metadata (3.803555ms)
+✔ character receipts bind event hash and cursor while preserving the exact command kind (1.742613ms)
+✔ character identity helpers bind scope, content and authenticated identity without receipt-list noise (3.89206ms)
+✔ character projection retains complete history beyond public page bounds (323.888455ms)
+✔ character profile schema is meta-valid, immutable and bound to the explicit local freeze (66.41164ms)
+✖ character principal validation rejects active authentication DTOs before detaching them (2.316038ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 14
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1610.464082
+
+✖ failing tests:
+
+test at TESTS/character-contracts.test.ts:125:1
+✖ character principal validation rejects active authentication DTOs before detaching them (2.316038ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:127:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,79 @@
+{
+  "recorded_at": "2026-11-13T23:47:29.253151+00:00",
+  "rows": [
+    {
+      "id": "CR-000",
+      "status": "VERIFYING",
+      "attempt": 1,
+      "epoch": 1,
+      "base_commit": "8f3e566ee64d74656ab8d0c423e1407cfcaf870f",
+      "commit_sha": "3f231e8c45adb76277a1da86768cd5c0009a8883",
+      "owned_paths": [
+        "SYSTEMS/characters-v1/",
+        "packages/contracts/src/characters.ts",
+        "packages/contracts/src/character-types.ts",
+        "packages/contracts/src/index.ts",
+        "TESTS/character-contracts.test.ts",
+        "TESTS/character-fixtures.ts"
+      ]
+    },
+    {
+      "id": "CR-100",
+      "status": "VERIFYING",
+      "attempt": 1,
+      "epoch": 1,
+      "base_commit": "3f231e8c45adb76277a1da86768cd5c0009a8883",
+      "commit_sha": "e45ef638f1acb0f090daaf07d8e61c621c204448",
+      "owned_paths": [
+        "packages/ledger/src/characters.ts",
+        "packages/telos-bridge/src/characters.ts",
+        "TESTS/character-authority.test.ts"
+      ]
+    },
+    {
+      "id": "CR-200",
+      "status": "VERIFYING",
+      "attempt": 1,
+      "epoch": 1,
+      "base_commit": "3f231e8c45adb76277a1da86768cd5c0009a8883",
+      "commit_sha": "550ee24e63793695a68a41004c3b02d9c2c6c891",
+      "owned_paths": [
+        "packages/lexi-bridge/src/characters.ts",
+        "TESTS/character-knowledge.test.ts"
+      ]
+    },
+    {
+      "id": "CR-300",
+      "status": "VERIFYING",
+      "attempt": 1,
+      "epoch": 1,
+      "base_commit": "3f231e8c45adb76277a1da86768cd5c0009a8883",
+      "commit_sha": "19140f5cfbdc4e3abf7272751950d3d53cba3219",
+      "owned_paths": [
+        "packages/argo-dm/src/characters.ts",
+        "packages/interventions/src/characters.ts",
+        "TESTS/character-presentation.test.ts"
+      ]
+    },
+    {
+      "id": "CR-900",
+      "status": "CLAIMED",
+      "attempt": 1,
+      "epoch": 1,
+      "base_commit": "3f231e8c45adb76277a1da86768cd5c0009a8883",
+      "commit_sha": null,
+      "owned_paths": [
+        "packages/ledger/src/index.ts",
+        "packages/telos-bridge/src/index.ts",
+        "packages/lexi-bridge/src/index.ts",
+        "packages/argo-dm/src/index.ts",
+        "packages/interventions/src/index.ts",
+        "TESTS/character-integration.test.ts",
+        "docs/characters-runtime/",
+        "docs/superpowers/plans/2026-11-13-character-runtime.md"
+      ]
+    }
+  ],
+  "audit_chain_verifies": true,
+  "note": "Snapshot while composing the integration evidence commit: CR-900 remains CLAIMED here. The coordinator submits its immutable commit afterward. Board v1 does not provide application acceptance; no MERGED status is claimed."
+}

@@ -1,0 +1,83 @@
+{
+  "reviewer": "character_contract_review",
+  "review_kind": "read-only independent same-model advisory review",
+  "commit": "550ee24e63793695a68a41004c3b02d9c2c6c891",
+  "clean_tree": true,
+  "verdict": "No concrete reader defect found against frozen character-memory/1.0.0 contracts within reviewed scope",
+  "findings": [],
+  "files": {
+    "TESTS/character-knowledge.test.ts": "661073287ee045452d2e5003ac6de15dab6345c067ab4bb257733e79837f725f",
+    "packages/lexi-bridge/src/characters.ts": "3ffedc6915f9dc52a992b83700cb4eb1780b2b90bb83721e39f8901a036b7446"
+  },
+  "checks": {
+    "reader_tests": {
+      "command": "node --test --test-isolation=none --test-reporter=tap TESTS/character-knowledge.test.ts",
+      "passed": 14,
+      "failed": 0
+    },
+    "typecheck": {
+      "command": "npm run typecheck",
+      "exit_code": 0
+    },
+    "adversarial": {
+      "command": "node /tmp/argo-cr200-adversarial.mjs /path/to/ARGO",
+      "result": {
+        "status": "pass",
+        "randomized_projections": 30,
+        "assertions": 1705,
+        "seed": "0xa031f27c",
+        "cases": [
+          "party filtering and pagination across 1/7/128 limits",
+          "earliest acquisition recency despite repeated grants",
+          "complete private traveler archive",
+          "cutoff after source update",
+          "unordered owner impression history",
+          "prototype-like actor identifiers",
+          "exact cursor binding",
+          "proxy source rejection without trap execution",
+          "future hidden acquisition rejection"
+        ]
+      }
+    }
+  },
+  "artifacts": {
+    "/tmp/argo-cr200-independent-tests.log": "c5e890e146e094bc72bab885dfa15d8541811d5de6f520b666ca8c312ddfdce5",
+    "/tmp/argo-cr200-independent-typecheck.log": "2cf20646d72113be26c6fbe14738bc101ebf909ab8a2374290f369e1d53c975c",
+    "/tmp/argo-cr200-adversarial.mjs": "cb022644359514ae62edd2525de8b9bfa20fd2c65f882d7bf96ddb6fbba27e6f",
+    "/tmp/argo-cr200-adversarial.log": "c35162454c95d020ca212f88e350fa4c1143e3a44758aefe8a7b410d88a4fb28"
+  },
+  "reviewed_properties": [
+    "Only authenticated viewer actor gets its own profile and latest impression per subject; traveler does not receive others impressions",
+    "First acquired sequence determines the bounded latest16 experiences; repeated grants do not refresh perception; returned experience rows remain in source order",
+    "Narrator party requires current viewer/traveler membership and exact same-party viewer acquisition, filtered before pagination",
+    "Queries, principal, source projection and outputs enforce scope and exact current cursor; passive DTO checks run before explicit cloning",
+    "Cutoff emits no narrator records or continuation, including after refreshing source projection",
+    "Complete narrator private history remains pageable without a lifetime cap; internal history is not passed through public DTOs"
+  ],
+  "limitations": [
+    {
+      "id": "trusted-host",
+      "detail": "Authentication of Principal, signature verification, actual witnessed perception, truthful acquisition/predecessor history and source freshness remain responsibilities of the privileged host/projection provider, as frozen spec states. The shape validator cannot establish them."
+    },
+    {
+      "id": "promise-boundary",
+      "detail": "The trusted async projection callback is executable host code. JavaScript Promise resolution may inspect a returned thenable/proxy before this reader receives it; no arbitrary-host-code isolation is claimed. Direct query and principal passive DTO boundaries were tested separately."
+    },
+    {
+      "id": "delivery-recheck",
+      "detail": "Readers bind one fresh projection during a call. Narration must independently refresh/recompare context before delivering asynchronous generated prose, as specified; that adapter is outside this lane."
+    },
+    {
+      "id": "integration-export",
+      "detail": "This isolated commit adds src/characters.ts without exporting createCharacterViews through @argo/lexi-bridge package root; root integration must add its planned barrel export. Current tests import the module directly."
+    },
+    {
+      "id": "performance",
+      "detail": "Projection validation, cloning and selection scan complete in-memory history on each request. This review tests correctness, not archival-scale performance or external-service integration."
+    }
+  ],
+  "excluded": [
+    "No runtime authority implementation or live provider calls reviewed",
+    "No Board mutations, source edits, pushes, policy-root changes or operational approval performed"
+  ]
+}

@@ -1,0 +1,346 @@
+✖ character authority captures signed private speech and reopens the exact projection (34.21597ms)
+✖ speech rejects actor spoofing, missing adjudication and invalid witness grants without append (14.771692ms)
+✖ exact retries survive later state while altered requests and authenticated identities conflict (11.736476ms)
+✖ two authorized observers retain different private impressions and unacquired evidence is refused (17.258342ms)
+✖ nature reconfiguration preserves activation, speech cooldown and impression predecessor history (11.151978ms)
+✖ ended actors cannot speak or form new impressions while historical actions remain witnessable (9.095615ms)
+✖ witness callback cannot append after a concurrent commit and never holds the ledger writer lock (9.443276ms)
+✖ cancelled and timed out witness adjudication cannot append when it settles late (10.989821ms)
+✖ callback DTO mutation and caller input mutation cannot rewrite accepted speech or authority snapshot (10.555353ms)
+✖ ordinary actor carrier lookalikes do not become trusted character records (10.303218ms)
+✖ system-authored invalid inner semantics and a changed carrier identity fail replay closed (12.17172ms)
+✖ signed inner request hashes, configured nature and predecessor claims are replay validated (10.672059ms)
+✖ action summaries exclude hidden rolls and consent evidence, and witnesses acquire only at annotation time (21.023277ms)
+✖ speech budget counts Unicode code points and cutoff rejects speech without adjudication (24.053615ms)
+✖ concurrent exact speech requests commit once even if host grants differ (10.893631ms)
+✖ character bridge binds receipts to scope, request content, kind and exact committed cursor (9.715165ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 0
+ℹ fail 16
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1195.331592
+
+✖ failing tests:
+
+test at TESTS/character-authority.test.ts:38:1
+✖ character authority captures signed private speech and reopens the exact projection (34.21597ms)
+  AssertionError [ERR_ASSERTION]: Character authority factory is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at setup (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:19:9)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:39:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-authority.test.ts:54:1
+✖ speech rejects actor spoofing, missing adjudication and invalid witness grants without append (14.771692ms)
+  AssertionError [ERR_ASSERTION]: Character authority factory is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at setup (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:19:9)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:55:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-authority.test.ts:66:1
+✖ exact retries survive later state while altered requests and authenticated identities conflict (11.736476ms)
+  AssertionError [ERR_ASSERTION]: Character authority factory is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at setup (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:19:9)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:67:22)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-authority.test.ts:75:1
+✖ two authorized observers retain different private impressions and unacquired evidence is refused (17.258342ms)
+  AssertionError [ERR_ASSERTION]: Character authority factory is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at setup (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:19:9)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:76:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-authority.test.ts:86:1
+✖ nature reconfiguration preserves activation, speech cooldown and impression predecessor history (11.151978ms)
+  AssertionError [ERR_ASSERTION]: Character authority factory is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at setup (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:19:9)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:87:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-authority.test.ts:98:1
+✖ ended actors cannot speak or form new impressions while historical actions remain witnessable (9.095615ms)
+  AssertionError [ERR_ASSERTION]: Character authority factory is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at setup (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:19:9)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:99:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-authority.test.ts:110:1
+✖ witness callback cannot append after a concurrent commit and never holds the ledger writer lock (9.443276ms)
+  AssertionError [ERR_ASSERTION]: Character authority factory is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at setup (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:19:9)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:112:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-authority.test.ts:118:1
+✖ cancelled and timed out witness adjudication cannot append when it settles late (10.989821ms)
+  AssertionError [ERR_ASSERTION]: Character authority factory is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at setup (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:19:9)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:119:76)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-authority.test.ts:127:1
+✖ callback DTO mutation and caller input mutation cannot rewrite accepted speech or authority snapshot (10.555353ms)
+  AssertionError [ERR_ASSERTION]: Character authority factory is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at setup (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:19:9)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:129:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-authority.test.ts:135:1
+✖ ordinary actor carrier lookalikes do not become trusted character records (10.303218ms)
+  AssertionError [ERR_ASSERTION]: Character authority factory is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at setup (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:19:9)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:136:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-authority.test.ts:141:1
+✖ system-authored invalid inner semantics and a changed carrier identity fail replay closed (12.17172ms)
+  AssertionError [ERR_ASSERTION]: Character authority factory is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at setup (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:19:9)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:142:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-authority.test.ts:149:1
+✖ signed inner request hashes, configured nature and predecessor claims are replay validated (10.672059ms)
+  AssertionError [ERR_ASSERTION]: Character authority factory is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at setup (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:19:9)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:150:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-authority.test.ts:154:1
+✖ action summaries exclude hidden rolls and consent evidence, and witnesses acquire only at annotation time (21.023277ms)
+  AssertionError [ERR_ASSERTION]: Character authority factory is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at setup (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:19:9)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:155:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-authority.test.ts:162:1
+✖ speech budget counts Unicode code points and cutoff rejects speech without adjudication (24.053615ms)
+  AssertionError [ERR_ASSERTION]: Character authority factory is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at setup (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:19:9)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:163:22)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-authority.test.ts:168:1
+✖ concurrent exact speech requests commit once even if host grants differ (10.893631ms)
+  AssertionError [ERR_ASSERTION]: Character authority factory is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at setup (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:19:9)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:170:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-authority.test.ts:174:1
+✖ character bridge binds receipts to scope, request content, kind and exact committed cursor (9.715165ms)
+  AssertionError [ERR_ASSERTION]: Character authority factory is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at setup (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:19:9)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:175:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,30 @@
+✔ character authority captures signed private speech and reopens the exact projection (722.114762ms)
+✔ speech rejects actor spoofing, missing adjudication and invalid witness grants without append (361.217053ms)
+✔ exact retries survive later state while altered requests and authenticated identities conflict (517.579466ms)
+✔ two authorized observers retain different private impressions and unacquired evidence is refused (938.693408ms)
+✔ nature reconfiguration preserves activation, speech cooldown and impression predecessor history (697.332701ms)
+✔ ended actors cannot speak or form new impressions while historical actions remain witnessable (341.33167ms)
+✔ witness callback cannot append after a concurrent commit and never holds the ledger writer lock (198.239801ms)
+✔ cancelled and timed out witness adjudication cannot append when it settles late (171.021785ms)
+✔ callback DTO mutation and caller input mutation cannot rewrite accepted speech or authority snapshot (160.357531ms)
+✔ ordinary actor carrier lookalikes do not become trusted character records (179.814624ms)
+✔ system-authored invalid inner semantics and a changed carrier identity fail replay closed (249.296039ms)
+✔ signed inner request hashes are replay validated (133.027964ms)
+✔ signed speech cannot bypass prior cooldown, death, party membership or outer private-carrier constraints (864.088242ms)
+✔ validly hashed signed impressions cannot forge evidence, nature or predecessor state (751.830038ms)
+✔ activity updates and profile revisions preserve observer histories and require the direct living actor (297.797028ms)
+✔ a full witness grant cannot silently truncate the automatically added speaker (96.304462ms)
+✔ action history retains literal custody and subject details without consent or grant proofs (195.541871ms)
+✔ a carrier using the service identity with a downgraded role fails closed (127.805891ms)
+✔ action summaries exclude hidden rolls and consent evidence, and witnesses acquire only at annotation time (215.321207ms)
+✔ speech budget counts Unicode code points and cutoff rejects speech without adjudication (480.700457ms)
+✔ concurrent exact speech requests commit once even if host grants differ (209.405919ms)
+✔ character bridge binds receipts to scope, request content, kind and exact committed cursor (132.408039ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9545.598117

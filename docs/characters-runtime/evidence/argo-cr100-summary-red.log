@@ -1,0 +1,46 @@
+✖ action history retains literal custody and subject details without consent or grant proofs (436.61501ms)
+✖ a carrier using the service identity with a downgraded role fails closed (315.283712ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2096.364105
+
+✖ failing tests:
+
+test at TESTS/character-authority.test.ts:206:1
+✖ action history retains literal custody and subject details without consent or grant proofs (436.61501ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'Moved an item.'
+  - 'Moved item "lamp" to actor "traveler".'
+           ^
+  
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:221:9)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Moved an item.',
+    expected: 'Moved item "lamp" to actor "traveler".',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-authority.test.ts:226:1
+✖ a carrier using the service identity with a downgraded role fails closed (315.283712ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-100-1-4ff292718b/TESTS/character-authority.test.ts:229:2)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /carrier|system/i,
+    operator: 'rejects',
+    diff: 'simple'
+  }

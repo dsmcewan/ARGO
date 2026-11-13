@@ -39,9 +39,9 @@ The alternative is a new physical ledger format and ruleset migration. The inter
 
 Files: `SYSTEMS/characters-v1/{CONTRACT.md,characters.schema.json,FREEZE.json}`, `packages/contracts/src/characters.ts`, additive exports in `packages/contracts/src/index.ts`, `TESTS/character-contracts.test.ts`.
 
-- [ ] Write failing schema/API tests for unknown fields, spoofed actor input, invalid cursors, scope identity, bounded arrays and temporal fields.
-- [ ] Implement the typed profile and runtime validators; make the tests pass and run typecheck.
-- [ ] Freeze schema/spec hashes before assigning runtime workers. The freeze records interface identity, not operational trust approval.
+- [x] Write failing schema/API tests for unknown fields, spoofed actor input, invalid cursors, scope identity, bounded arrays and temporal fields.
+- [x] Implement the typed profile and runtime validators; make the tests pass and run typecheck.
+- [x] Freeze schema/spec hashes before assigning runtime workers. The freeze records interface identity, not operational trust approval.
 
 ## Task 2 — Authority and replay (flat authority lane)
 
@@ -49,9 +49,9 @@ Files: `packages/ledger/src/characters.ts`, `packages/telos-bridge/src/character
 
 Interfaces: `createCharacterAuthority({ledger,systemPrincipal,authorizeWitnesses})` returns async `submit(command,principal,call)` and authority-only `readProjection(call)`. `replayCharacters(genesis,events,systemPrincipal)` is a pure reducer. `createCharacterBridge({scope,transport,timeoutMs})` binds command/receipt and forwards bounded calls. Exact DTO names are frozen by Task1.
 
-- [ ] RED: forged witnesses/internal markers, altered retries, dead speech, impression without acquisition and stale host callback must fail without an append.
-- [ ] Implement private carriers, replay/provenance, activation coverage, whitelisted action records, authorized speech and append-only impression revisions; publish only through the existing ledger.
-- [ ] GREEN: reopen ledger and compare replay at sampled prefixes; verify exact retries and receipt scope/hash bindings. Capture logs; commit only owned files.
+- [x] RED: forged witnesses/internal markers, altered retries, dead speech, impression without acquisition and stale host callback must fail without an append.
+- [x] Implement private carriers, replay/provenance, activation coverage, whitelisted action records, authorized speech and append-only impression revisions; publish only through the existing ledger.
+- [x] GREEN: reopen ledger and compare replay at sampled prefixes; verify exact retries and receipt scope/hash bindings. Capture logs; commit only owned files.
 
 ## Task 3 — Knowledge readers (flat knowledge lane)
 
@@ -59,9 +59,9 @@ Files: `packages/lexi-bridge/src/characters.ts`, `TESTS/character-knowledge.test
 
 Interface: `createCharacterViews({scope,readProjection,timeoutMs})` returns `actor(query,principal,call)` and `narrator(query,principal,call)`. The host supplies a trusted fresh projection reader. Queries require the exact current prefix; replaying a supplied prefix separately remains possible for tests. Actor views contain only their own latest impressions and the latest16 authorized experiences. Narrator pages filter audience before pagination and never return private impressions.
 
-- [ ] RED: traveler reading another observer's impressions, party/private crossover, future/stale prefix and unauthorized page membership.
-- [ ] Implement binding and detached results; exclude opaque carrier/provenance fields and all hidden authority material.
-- [ ] GREEN: literal expected private/party records, same-tick acquisition and pagination without hidden-row gaps/counts. Commit owned files.
+- [x] RED: traveler reading another observer's impressions, party/private crossover, future/stale prefix and unauthorized page membership.
+- [x] Implement binding and detached results; exclude opaque carrier/provenance fields and all hidden authority material.
+- [x] GREEN: literal expected private/party records, same-tick acquisition and pagination without hidden-row gaps/counts. Commit owned files.
 
 ## Task 4 — Quiet characters and narrator (flat presentation lane)
 
@@ -69,21 +69,23 @@ Files: `packages/interventions/src/characters.ts`, `packages/argo-dm/src/charact
 
 Interfaces: `createCharacterAgent({actorId,interpret,speak,timeoutMs})` produces optional `impress(view,subject,evidence,requestId,call)` and `respond(view,recordId,requestId,call)` commands. `createCharacterNarrator({scope,sessionId,candidates,clientFor,refreshContext})` exposes `narrate({query,prompt,persona?,signal?})`. No writer is accepted by either factory.
 
-- [ ] RED: busy/ended/unaddressed characters cause no speech callback; unauthorized evidence and oversized speech produce no valid proposal.
-- [ ] Implement sparse optional reactions through the observer's nature and current activity. Current turn and speech policy bind every proposal.
-- [ ] Implement common tired/dry/sarcastic onlooker header over audience-filtered archive pages, fixed private cache scope and pre/post-generation refresh. A changed disclosure view or cutoff discards output.
-- [ ] GREEN: captured model payload excludes private solo text, nature/impression context remains observer-owned, cutoff/mutation/retry behavior and legacy persona compatibility. Commit owned files.
+- [x] RED: busy/ended/unaddressed characters cause no speech callback; unauthorized evidence and oversized speech produce no valid proposal.
+- [x] Implement sparse optional reactions through the observer's nature and current activity. Current turn and speech policy bind every proposal.
+- [x] Implement common tired/dry/sarcastic onlooker header over audience-filtered archive pages, fixed private cache scope and pre/post-generation refresh. A changed disclosure view or cutoff discards output.
+- [x] GREEN: captured model payload excludes private solo text, nature/impression context remains observer-owned, cutoff/mutation/retry behavior and legacy persona compatibility. Commit owned files.
 
 ## Task 5 — Integration and delivery (root)
 
 Files: additive package public exports, `TESTS/character-integration.test.ts`, `docs/characters-runtime/`, ownership/roadmap documentation if needed.
 
-- [ ] Wire real ledger → character authority/bridge → views → two character agents → narrator using only injected provider transport. Two witnesses must preserve different impressions; a third actor gets neither.
-- [ ] Demonstrate accepted speech, custody action, private-to-party selection, quiet working characters, exact replay and Tempted Fates cutoff.
-- [ ] Run `npm test`, typecheck, frozen contract checks and the full ten-group gate in a network-isolated read-only candidate. No live models.
-- [ ] Obtain a separate same-model code review, fix material findings with reproducing tests, retain portable evidence and accurate blackboard states. Such review is advisory, not an operational trust-root promotion.
+- [x] Wire real ledger → character authority/bridge → views → two character agents → narrator using only injected provider transport. Two witnesses must preserve different impressions; a third actor gets neither.
+- [x] Demonstrate accepted speech, custody action, private-to-party selection, quiet working characters, exact replay and Tempted Fates cutoff.
+- [x] Run `npm test`, typecheck, frozen contract checks and the full ten-group gate in a network-isolated read-only candidate. No live models.
+- [x] Obtain a separate same-model code review, fix material findings with reproducing tests, retain portable evidence and accurate blackboard states. Such review is advisory, not an operational trust-root promotion.
 
 ## Progress
 
 - Baseline `100e6c2`: 80 foundation tests passed before changes.
 - Implementation runs in `.worktrees/character-runtime`; main and earlier repair branches are preserved.
+
+- Shared profile frozen at `3f231e8` before runtime leases. Authority, reader and presentation lanes are assembled at `0b827e1`; public entry-point integration passes 4 real-ledger tests and strict TypeScript. All ten candidate gate groups passed on that exact commit in a network-isolated, read-only clone. Its foundation group executes the complete native test suite; the separate authority review passed 26 existing tests and 6 additional real-ledger probes with no confirmed blocking finding. Portable evidence and exact code hashes are in `docs/characters-runtime/verification.json`.

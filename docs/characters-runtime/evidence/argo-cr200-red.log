@@ -1,0 +1,368 @@
+✖ character readers return only the owner profile and latest private impression per subject (11.14979ms)
+✖ private narrator archive contains the traveler record without other actor speech or private impressions (2.489745ms)
+✖ party narrator requires viewer acquisition in that party, filters before pagination, and reveals no hidden totals (1.651865ms)
+✖ actor identity and all tenant/rights/world/branch scope fields bind before transport (2.505704ms)
+✖ source scope, current cursor, existing actors, and party membership are enforced (1.55303ms)
+✖ same-tick acquisition never backdates knowledge to an earlier ledger prefix (1.412406ms)
+✖ actor context keeps latest 16 first acquisitions; repeated grants do not refresh memory (1.269338ms)
+✖ private impressions have no silent subject-count cap (1.377952ms)
+✖ current ontology and engagement cutoffs suppress every narrator page and carry through actor views (1.539515ms)
+✖ empty unconfigured source returns explicit absence, not fabricated character state (1.532421ms)
+✖ query, principal, factory configuration, and output remain detached across await boundaries (1.205969ms)
+✖ actor output owns detached nested profiles and impressions (1.038996ms)
+✖ passive guards reject active query/principal/source DTOs and validate the entire projection (1.144524ms)
+✖ bounded read transport supports cancellation without accepting a late projection (1.972215ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 0
+ℹ fail 14
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 839.885749
+
+✖ failing tests:
+
+test at TESTS/character-knowledge.test.ts:65:1
+✖ character readers return only the owner profile and latest private impression per subject (11.14979ms)
+  AssertionError [ERR_ASSERTION]: character view factory must be implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at factory (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:18:9)
+      at reads (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:56:43)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:66:39)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-knowledge.test.ts:81:1
+✖ private narrator archive contains the traveler record without other actor speech or private impressions (2.489745ms)
+  AssertionError [ERR_ASSERTION]: character view factory must be implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at factory (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:18:9)
+      at reads (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:56:43)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:82:39)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-knowledge.test.ts:91:1
+✖ party narrator requires viewer acquisition in that party, filters before pagination, and reveals no hidden totals (1.651865ms)
+  AssertionError [ERR_ASSERTION]: character view factory must be implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at factory (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:18:9)
+      at reads (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:56:43)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:92:35)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-knowledge.test.ts:110:1
+✖ actor identity and all tenant/rights/world/branch scope fields bind before transport (2.505704ms)
+  AssertionError [ERR_ASSERTION]: character view factory must be implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at factory (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:18:9)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:112:17)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-knowledge.test.ts:125:1
+✖ source scope, current cursor, existing actors, and party membership are enforced (1.55303ms)
+  AssertionError [ERR_ASSERTION]: character view factory must be implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at factory (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:18:9)
+      at reads (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:56:43)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:129:24)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-knowledge.test.ts:143:1
+✖ same-tick acquisition never backdates knowledge to an earlier ledger prefix (1.412406ms)
+  AssertionError [ERR_ASSERTION]: character view factory must be implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at factory (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:18:9)
+      at reads (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:56:43)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:148:22)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-knowledge.test.ts:157:1
+✖ actor context keeps latest 16 first acquisitions; repeated grants do not refresh memory (1.269338ms)
+  AssertionError [ERR_ASSERTION]: character view factory must be implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at factory (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:18:9)
+      at reads (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:56:43)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:161:21)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-knowledge.test.ts:168:1
+✖ private impressions have no silent subject-count cap (1.377952ms)
+  AssertionError [ERR_ASSERTION]: character view factory must be implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at factory (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:18:9)
+      at reads (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:56:43)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:174:21)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-knowledge.test.ts:179:1
+✖ current ontology and engagement cutoffs suppress every narrator page and carry through actor views (1.539515ms)
+  AssertionError [ERR_ASSERTION]: character view factory must be implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at factory (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:18:9)
+      at reads (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:56:43)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:183:23)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-knowledge.test.ts:192:1
+✖ empty unconfigured source returns explicit absence, not fabricated character state (1.532421ms)
+  AssertionError [ERR_ASSERTION]: character view factory must be implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at factory (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:18:9)
+      at reads (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:56:43)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:195:22)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-knowledge.test.ts:203:1
+✖ query, principal, factory configuration, and output remain detached across await boundaries (1.205969ms)
+  AssertionError [ERR_ASSERTION]: character view factory must be implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at factory (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:18:9)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:206:17)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-knowledge.test.ts:222:1
+✖ actor output owns detached nested profiles and impressions (1.038996ms)
+  AssertionError [ERR_ASSERTION]: character view factory must be implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at factory (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:18:9)
+      at reads (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:56:43)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:223:39)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-knowledge.test.ts:232:1
+✖ passive guards reject active query/principal/source DTOs and validate the entire projection (1.144524ms)
+  AssertionError [ERR_ASSERTION]: character view factory must be implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at factory (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:18:9)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:234:17)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-knowledge.test.ts:250:1
+✖ bounded read transport supports cancellation without accepting a late projection (1.972215ms)
+  AssertionError [ERR_ASSERTION]: character view factory must be implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at factory (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:18:9)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-200-1-d168124160/TESTS/character-knowledge.test.ts:252:17)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

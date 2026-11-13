@@ -1,0 +1,24 @@
+✖ a cutoff suppresses presentation even when no model context can fit the configured byte budget (8.678309ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1145.302581
+
+✖ failing tests:
+
+test at TESTS/character-presentation.test.ts:101:1
+✖ a cutoff suppresses presentation even when no model context can fit the configured byte budget (8.678309ms)
+  Error [ArgoError]: Narration context exceeds its configured byte budget
+      at fail (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-300-1-8827166903/packages/contracts/src/index.ts:12:77)
+      at serialize (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-300-1-8827166903/packages/argo-dm/src/characters.ts:51:69)
+      at current (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-300-1-8827166903/packages/argo-dm/src/characters.ts:59:51)
+      at async Object.narrate (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-300-1-8827166903/packages/argo-dm/src/characters.ts:61:15)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-300-1-8827166903/TESTS/character-presentation.test.ts:103:15)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    code: 'INVALID_CONTRACT'
+  }

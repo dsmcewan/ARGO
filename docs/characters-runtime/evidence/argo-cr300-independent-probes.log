@@ -1,0 +1,39 @@
+{
+  "passed": 8,
+  "failed": 0,
+  "paid_model_calls": 0,
+  "checks": [
+    {
+      "name": "changed authorized context before first invocation suppresses provider calls",
+      "passed": true
+    },
+    {
+      "name": "a cutoff after pool refusal suppresses cross-pool failover invocation",
+      "passed": true
+    },
+    {
+      "name": "caller cancellation before loading obtains no context and invokes no provider",
+      "passed": true
+    },
+    {
+      "name": "initial context deadline refuses generation and awaits no late result",
+      "passed": true
+    },
+    {
+      "name": "whole-page fingerprint includes pagination metadata before delivery",
+      "passed": true
+    },
+    {
+      "name": "branch campaign and rights identities receive distinct cache keys",
+      "passed": true
+    },
+    {
+      "name": "untrusted records and presentation request remain quoted JSON without tools",
+      "passed": true
+    },
+    {
+      "name": "actor callback cannot mutate owned context and malformed output yields no command",
+      "passed": true
+    }
+  ]
+}

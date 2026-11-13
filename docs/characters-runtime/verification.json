@@ -1,0 +1,117 @@
+{
+  "status": "implemented_and_offline_verified_candidate",
+  "profile": "character-memory/1.0.0",
+  "scope": "All-campaign headless character/narrator profile; first carrier uses existing v1 ledger",
+  "baseline": "100e6c2bb3b6f1a5a8ca07e7685f492b01c7f345",
+  "tested_code_commit": "0b827e1e41bc954c73df36d7513a9007de15a0cb",
+  "branch": "argo/character-runtime",
+  "main_changed": false,
+  "remote_writes": false,
+  "paid_model_calls": 0,
+  "operational_trust_promoted": false,
+  "application_merge_approved": false,
+  "full_gate": {
+    "checks_passed": 10,
+    "checks_failed": 0,
+    "record": "evidence/full-gate/gate-result.json",
+    "execution": "Offline disposable clone; read-only candidate; network-unshared Bubblewrap",
+    "elapsed_seconds": 166.861
+  },
+  "targeted_regressions": {
+    "contracts": 15,
+    "authority": 22,
+    "readers": 14,
+    "presentation": 23,
+    "real_ledger_integration": 4,
+    "all_targeted_passed": true
+  },
+  "separate_review": {
+    "kind": "Separate native Codex peers; same-model advisory evidence, not a different vendor or independent operator approval",
+    "confirmed_blocking_findings": 0,
+    "records": [
+      "evidence/argo-character-contract-independent-review.json",
+      "evidence/argo-cr200-independent-review.json",
+      "evidence/argo-cr300-independent-review.json",
+      "evidence/argo-character-combined-review.json"
+    ],
+    "additional_probes": {
+      "reader_randomized_projections": 30,
+      "reader_assertions": 1705,
+      "presentation_probes": 8,
+      "authority_combined_probes": 6
+    }
+  },
+  "lane_commit_mapping": [
+    {
+      "ticket": "CR-000",
+      "local_author_commit": "3f231e8c45adb76277a1da86768cd5c0009a8883",
+      "reachable_integration_commit": "3f231e8c45adb76277a1da86768cd5c0009a8883"
+    },
+    {
+      "ticket": "CR-100",
+      "local_author_commit": "e45ef638f1acb0f090daaf07d8e61c621c204448",
+      "reachable_integration_commit": "0b827e1e41bc954c73df36d7513a9007de15a0cb"
+    },
+    {
+      "ticket": "CR-200",
+      "local_author_commit": "550ee24e63793695a68a41004c3b02d9c2c6c891",
+      "reachable_integration_commit": "ae0c66ef1bd5a4dbc806d93d977c1582813674da"
+    },
+    {
+      "ticket": "CR-300",
+      "local_author_commit": "19140f5cfbdc4e3abf7272751950d3d53cba3219",
+      "reachable_integration_commit": "b87df6814e2249c7e0c01d382495e97a7b426bbc"
+    }
+  ],
+  "integration_source_commits": [
+    "e0d0753",
+    "3ec9eaf"
+  ],
+  "integration_source_note": "Local root source commits were cherry-picked as 3cc8096 and a25f060. Final evidence bookkeeping changes documentation only. Source hashes below bind every new/changed code, schema and test file to the full-gate commit.",
+  "code_sha256": {
+    "SYSTEMS/characters-v1/API.md": "90b853e6e50309c0b204ab6c3e7ca9fbcd69d145f51ccd40dcd3ff61a45e3f77",
+    "SYSTEMS/characters-v1/CONTRACT.md": "41e4b54bee1fa95a198c437443432cbdd058e9b6192b2eb410fad1e43171a759",
+    "SYSTEMS/characters-v1/FREEZE.json": "66709119d921a239fabaa9409e7e79032c058f118ac5ed74d73a9a290b1f586f",
+    "SYSTEMS/characters-v1/characters.schema.json": "b1e62cc9fa5c3266da55d845b008d6d7c0a94255e1ce3cdd48744172dc43ec93",
+    "TESTS/character-authority.test.ts": "3c1cdb98fdcce41a8f34da976205b38215477b8221b8e0da82070cdc9d1af87e",
+    "TESTS/character-contracts.test.ts": "270abbdaa97d98280e70db7bb6c664080e3a155ec08e2b4d85918ba52ef6bcfb",
+    "TESTS/character-fixtures.ts": "8f2c2e44dbf66d41239136a0a549497b3df27bc4a877e23f2e0effc1ef8e4b38",
+    "TESTS/character-integration.test.ts": "503597fac363bd107b33f53c6f4bb6ec6e10d805f66027dfa64b072949cd1a4f",
+    "TESTS/character-knowledge.test.ts": "661073287ee045452d2e5003ac6de15dab6345c067ab4bb257733e79837f725f",
+    "TESTS/character-presentation.test.ts": "2f6e62edf4535cdc148f22944effaae6c2d583eea7088818cab81751f2eea216",
+    "packages/argo-dm/src/characters.ts": "27eeab50cdd12a94a6338fa9f0100978ad057ae2f559ac68e8e5ab54063e54c6",
+    "packages/argo-dm/src/index.ts": "f644528cfca41a845a7c6f969b37d9b642f7fe6f3a646c809ce949fb6dbeecee",
+    "packages/contracts/src/character-types.ts": "1d5b1233d358730651c3c57ee84d810a6bb18ae589faff68c737ef9102a7f405",
+    "packages/contracts/src/characters.ts": "1e67ff2a1cd35d88997debd77898b922b1c041b8d4aafa15e64fcd11d1bea00c",
+    "packages/contracts/src/index.ts": "cda1fb92d72b5c336b5c4e351ecdb275be063aef84e81821220985e0a85cb15c",
+    "packages/interventions/src/characters.ts": "4ac87407fcad3db2f0116049dec9ef50681488a230a8605f159aa6a6894a6a3e",
+    "packages/interventions/src/index.ts": "1b7e04aad6d9601fd57be87c2975848e0d4b0559b1e6d35d4732019641943868",
+    "packages/ledger/src/characters.ts": "f866bc6d84b9d1c5298ef6276264f6fc196e005e32dc815f639336a5f3fd76f1",
+    "packages/ledger/src/index.ts": "c8f81d605349be711c31b2fd0726df6d940fa82f71c897b6253de9cbc89c0c4c",
+    "packages/lexi-bridge/src/characters.ts": "3ffedc6915f9dc52a992b83700cb4eb1780b2b90bb83721e39f8901a036b7446",
+    "packages/lexi-bridge/src/index.ts": "86842ae958b580ecd0db51bc69b6c4e77f998150fdedeacc108c2f2a559282b8",
+    "packages/telos-bridge/src/characters.ts": "e97bbba00f634121102192a57e56b84d79d811055631e459b1b534d652972bfc",
+    "packages/telos-bridge/src/index.ts": "30d707e65a3f5709f9ada6d5311b6e380d82bfbd48512bfa655f13b5743fbcba"
+  },
+  "board": {
+    "snapshot": "board-snapshot.json",
+    "seed": "seed.json",
+    "acceptance": "No application acceptance is claimed. Four runtime lanes are VERIFYING in the snapshot; CR-900 is CLAIMED while preparing its final submission. The live board receives that immutable commit after this record is written.",
+    "live_path": ".board/character-runtime/board.db"
+  },
+  "evidence_manifest": "evidence/manifest.json",
+  "preserved": [
+    "All frozen v1 and projection-v2 files unchanged",
+    "Existing controller, tools, Pantheon and model-client unchanged",
+    "Historical owner-intent archive unchanged",
+    "Separate review-repair candidate bfe2957 not merged"
+  ],
+  "limits": [
+    "Missing owner section 4/abuse fragments remain unimplemented",
+    "Host identity, legitimate perception and entitlements require production integration",
+    "No live provider tone or prompt-injection guarantee",
+    "Archive captures accepted speech and eligible actions from activation, with explicit audience-filtered pagination",
+    "Old v1 permission, cold-replay, crash-recovery and storage trust limits remain",
+    "No production service, UI, voice, general scheduler or new causal ruleset is added"
+  ]
+}

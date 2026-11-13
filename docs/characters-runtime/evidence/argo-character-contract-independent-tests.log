@@ -1,0 +1,100 @@
+TAP version 13
+# Subtest: character commands accept five bounded variants without authorizing caller-chosen speech identity
+ok 1 - character commands accept five bounded variants without authorizing caller-chosen speech identity
+  ---
+  duration_ms: 7.556795
+  type: 'test'
+  ...
+# Subtest: character cursors reject inconsistent heads and noncanonical temporal integers
+ok 2 - character cursors reject inconsistent heads and noncanonical temporal integers
+  ---
+  duration_ms: 0.814958
+  type: 'test'
+  ...
+# Subtest: character scope identity and version are checked on nested public queries and envelopes
+ok 3 - character scope identity and version are checked on nested public queries and envelopes
+  ---
+  duration_ms: 5.241792
+  type: 'test'
+  ...
+# Subtest: character DTO preflight rejects active objects without invoking user getters or proxy traps
+ok 4 - character DTO preflight rejects active objects without invoking user getters or proxy traps
+  ---
+  duration_ms: 0.354144
+  type: 'test'
+  ...
+# Subtest: character text and array bounds reject empty identity, unbounded speech and duplicate evidence
+ok 5 - character text and array bounds reject empty identity, unbounded speech and duplicate evidence
+  ---
+  duration_ms: 2.57513
+  type: 'test'
+  ...
+# Subtest: character experience variants distinguish authenticated speech from committed action summaries
+ok 6 - character experience variants distinguish authenticated speech from committed action summaries
+  ---
+  duration_ms: 1.350393
+  type: 'test'
+  ...
+# Subtest: character projection bounds every stored experience and acquisition to its authoritative cursor
+ok 7 - character projection bounds every stored experience and acquisition to its authoritative cursor
+  ---
+  duration_ms: 8.426144
+  type: 'test'
+  ...
+# Subtest: character actor views bind impression ownership and profile to the queried actor
+ok 8 - character actor views bind impression ownership and profile to the queried actor
+  ---
+  duration_ms: 5.848521
+  type: 'test'
+  ...
+# Subtest: character narrator queries reject private viewer substitution, invalid page bounds and party mismatch
+ok 9 - character narrator queries reject private viewer substitution, invalid page bounds and party mismatch
+  ---
+  duration_ms: 3.365523
+  type: 'test'
+  ...
+# Subtest: character narrator pages bind coverage and visible cursors without admitting observer metadata
+ok 10 - character narrator pages bind coverage and visible cursors without admitting observer metadata
+  ---
+  duration_ms: 2.444565
+  type: 'test'
+  ...
+# Subtest: character receipts bind event hash and cursor while preserving the exact command kind
+ok 11 - character receipts bind event hash and cursor while preserving the exact command kind
+  ---
+  duration_ms: 2.049614
+  type: 'test'
+  ...
+# Subtest: character identity helpers bind scope, content and authenticated identity without receipt-list noise
+ok 12 - character identity helpers bind scope, content and authenticated identity without receipt-list noise
+  ---
+  duration_ms: 3.835494
+  type: 'test'
+  ...
+# Subtest: character projection retains complete history beyond public page bounds
+ok 13 - character projection retains complete history beyond public page bounds
+  ---
+  duration_ms: 209.526178
+  type: 'test'
+  ...
+# Subtest: character profile schema is meta-valid, immutable and bound to the explicit local freeze
+ok 14 - character profile schema is meta-valid, immutable and bound to the explicit local freeze
+  ---
+  duration_ms: 25.126501
+  type: 'test'
+  ...
+# Subtest: character principal validation rejects active authentication DTOs before detaching them
+ok 15 - character principal validation rejects active authentication DTOs before detaching them
+  ---
+  duration_ms: 0.689443
+  type: 'test'
+  ...
+1..15
+# tests 15
+# suites 0
+# pass 15
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 928.852601
