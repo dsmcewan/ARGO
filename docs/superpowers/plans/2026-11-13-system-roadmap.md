@@ -29,8 +29,10 @@
 
 Files: SYSTEM_ROADMAP.md, docs/roadmap/system.json; navigation updates in README.md, AGENTS.md and STATUS_AND_ARCHITECTURE.md.
 
-- [ ] Reconcile actual components/storage/tests and existing research evidence against baseline eb2d4c5.
-- [ ] Document present and target boundaries, data availability, decisions, ordered work and deterministic acceptance.
-- [ ] Validate IDs, dependency references/acyclicity, evidence paths, link navigation and unchanged frozen bytes.
-- [ ] Obtain independent semantic review; submit the exact documentation commit to the pinned data gate.
-- [ ] Save verified documentation to private ARGO through the reviewed controller.
+- [x] Reconcile actual components/storage/tests and existing research evidence against baseline eb2d4c5.
+- [x] Document present and target boundaries, data availability, decisions, ordered work and deterministic acceptance.
+- [x] Validate IDs, dependency references/acyclicity, evidence paths, link navigation and unchanged frozen bytes.
+- [x] Obtain independent semantic review; submit the exact documentation commit to the pinned data gate.
+- Publication/main acceptance is recorded by the final Git commit and its Actions run; this checklist records the completed documentation and board-gate task.
+
+DOC-001 passed its pinned data-only gate and reached real MERGED at `cf7fa02dbbd0520b20a5e278c4bd58086426f40d`. Independent review and the sanitized CAS/audit record are in `docs/roadmap/verification.json`. The roadmap remains non-executable; no runtime work was dispatched.
