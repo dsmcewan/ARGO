@@ -2,6 +2,7 @@ import {prepareRequest,checkBudget,compactConversation} from './request.mjs';
 import {boundedCall} from './router.mjs';
 import {exchange} from './wire.mjs';
 import {CAPABILITIES} from './registry.mjs';
+import {googleCountConfig} from './google-count.mjs';
 
 export async function sendModelTurn({client,onEvent,countTokens,compactAfterBytes=512000,deadline=Date.now()+900000,...args}){
   if(!client)throw new Error('SDK client required');
@@ -36,10 +37,10 @@ function sdkCounter(client,{cap},signal){
       // The Developer API SDK's CountTokensConfig rejects system/tools/generationConfig.
       // Its REST countTokens endpoint accepts generateContentRequest instead. Inject the full
       // count request through the SDK's documented extraBody hook; omit the alternative contents.
-      const {systemInstruction,tools,toolConfig,safetySettings,abortSignal,httpOptions,automaticContinuation,...generationConfig}=config;
-      const full=systemInstruction!==undefined||tools!==undefined||toolConfig!==undefined||safetySettings!==undefined||config.responseSchema||config.responseJsonSchema;
+      const {systemInstruction,tools,toolConfig,safetySettings,...generationConfig}=googleCountConfig(config);
+      const full=systemInstruction!==undefined||tools!==undefined||toolConfig!==undefined||safetySettings!==undefined||generationConfig.responseSchema||generationConfig.responseJsonSchema;
       const body={model:`models/${model}`,contents,
-        ...(systemInstruction!==undefined?{systemInstruction:typeof systemInstruction==='string'?{parts:[{text:systemInstruction}],role:'user'}:systemInstruction}:{}),
+        ...(systemInstruction!==undefined?{systemInstruction}:{}),
         ...(tools!==undefined?{tools}:{}),...(toolConfig!==undefined?{toolConfig}:{}),
         ...(safetySettings!==undefined?{safetySettings}:{}),generationConfig};
       return (await client.models.countTokens({model,...(full?{}:{contents}),config:{abortSignal:signal,
