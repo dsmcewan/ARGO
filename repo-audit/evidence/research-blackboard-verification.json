@@ -77,5 +77,13 @@
     "No cgroup CPU/RAM/PID/disk quotas or external audit rollback anchor.",
     "Split gameplay graphs, component bus and 10000-event gameplay fuzzing remain future work."
   ],
-  "save_policy": "Final candidate must pass new CI checks and the externally pinned existing foundation controller before main advances."
+  "save_policy": "Final candidate must pass new CI checks and the externally pinned existing foundation controller before main advances.",
+  "ci_followup": {
+    "failed_commit": "401b5e3f7825912c54c0adea16fac83a531d3280",
+    "run": "https://github.com/dsmcewan/ARGO/actions/runs/43449157492",
+    "test": "test_aggregate_capture_budget_stops_before_reading_later_files",
+    "cause": "Fixture assumed os.scandir returned a,b,c order; directory enumeration order differs across filesystems.",
+    "repair": "Count actual file opens and require the bounded capture to stop by its second new eight-byte file, independent of filenames.",
+    "production_code_changed": false
+  }
 }
