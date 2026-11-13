@@ -28,7 +28,9 @@ try{
  await assertSafeStaging(source);
  const protectedPaths=['.npmrc','controller','scripts/run-tests.mjs','scripts/gate.mjs','scripts/check-contracts.mjs','scripts/check-boundaries.mjs','scripts/generate-contract-types.py','TESTS','pantheon/tests','packages/model-client/tests','SYSTEMS/CONTRACT_FREEZE.json','tsconfig.json','package.json','package-lock.json','pantheon/package.json','pantheon/package-lock.json'];
  await assertCandidatePolicy(source,policy,protectedPaths);
- const cache=process.env.ARGO_NPM_CACHE;const install=['ci','--ignore-scripts','--no-audit','--no-fund','--userconfig=/dev/null','--globalconfig=/dev/null',...(cache?['--cache',resolve(cache),'--offline']:[])];
+ // npm refuses the same config path for two scopes, even /dev/null. Use distinct empty files.
+ const userConfig=join(temporary,'user.npmrc'),globalConfig=join(temporary,'global.npmrc');await writeFile(userConfig,'');await writeFile(globalConfig,'');
+ const cache=process.env.ARGO_NPM_CACHE;const install=['ci','--ignore-scripts','--no-audit','--no-fund',`--userconfig=${userConfig}`,`--globalconfig=${globalConfig}`,...(cache?['--cache',resolve(cache),'--offline']:[])];
  await run('npm',install,source);
  await run('npm',install,join(source,'pantheon'));
  // Standalone metadata lets the confined gate inspect its staging tree without host Git access.
