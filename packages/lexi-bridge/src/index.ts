@@ -1,4 +1,4 @@
-import {assertContract,assertScope,requireScope,fail} from '@argo/contracts';
+import {assertContract,assertScope,requireScope,fail,own,assertKnowledgeDisclosure} from '@argo/contracts';
 import type {Scope,KnowledgeQuery,Principal,KnowledgeView,Snapshot} from '@argo/contracts';
 import {serviceCall,freezeDto} from '@argo/contracts';import type {ServiceOptions} from '@argo/contracts';
 export type LexiTransport=(query:KnowledgeQuery,principal:Principal,options:{signal:AbortSignal})=>Promise<unknown>;
@@ -14,7 +14,7 @@ export function createLexiBridge(options:{scope:Scope;transport?:LexiTransport;t
   if(!options.transport)fail('UNAVAILABLE','LEXI domain transport is not configured');
   const query=freezeDto(structuredClone(input)),principal=freezeDto(structuredClone(auth)),transport=options.transport;
   const result=await serviceCall(signal=>transport(query,principal,{signal}),options.timeoutMs??5000,call);
-  assertContract('KnowledgeView',result);requireScope(scope,result.scope);
+  assertKnowledgeDisclosure(result);requireScope(scope,result.scope);
   if(result.actor_id!==query.actor_id||result.audience!==query.audience||result.party_id!==query.party_id||result.as_of_sequence!==query.as_of_sequence||result.as_of_world_time!==query.as_of_world_time)fail('INVALID_CONTRACT','LEXI response does not bind query');
   for(const claim of result.claims)if(claim.acquired_at>query.as_of_world_time||claim.sequence>query.as_of_sequence||!claim.observation.observers.includes(query.actor_id)||(query.audience==='party'&&claim.observation.party_id!==query.party_id))fail('INVALID_CONTRACT','LEXI response exposes unauthorized knowledge');
   return freezeDto(structuredClone(result));
@@ -22,10 +22,10 @@ export function createLexiBridge(options:{scope:Scope;transport?:LexiTransport;t
 }
 export function projectKnowledge(current:Snapshot,query:KnowledgeQuery,principal:Principal):KnowledgeView{
  assertContract('Snapshot',current);authorize(query,principal,current.genesis.scope);
- if(!current.actors[query.actor_id])fail('UNAUTHORIZED','Unknown knowledge actor');
+ if(!own(current.actors,query.actor_id))fail('UNAUTHORIZED','Unknown knowledge actor');
  if(query.as_of_sequence>current.sequence)fail('CONFLICT','Knowledge query exceeds materialized cursor');
  if(query.as_of_world_time>current.world_time)fail('INVALID_ACTION','Knowledge query is in the future');
- if(query.audience==='party'&&!current.genesis.parties[query.party_id!]?.includes(query.actor_id))fail('UNAUTHORIZED','Actor is not an authorized party member');
+ if(query.audience==='party'&&!own(current.genesis.parties,query.party_id!)?.includes(query.actor_id))fail('UNAUTHORIZED','Actor is not an authorized party member');
  const claims=current.claims.filter(c=>c.acquired_at<=query.as_of_world_time&&c.sequence<=query.as_of_sequence&&c.observation.observers.includes(query.actor_id)&&(query.audience==='actor'||c.observation.party_id===query.party_id));
  // v1 has one world encounter namespace. Apply current cutoffs to all its speaker/actor views;
  // a historical prefix or a different observer cannot reopen ontology about the vanished thread.

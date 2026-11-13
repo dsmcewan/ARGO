@@ -1,7 +1,7 @@
 import {open,mkdir,readFile,rename,unlink,stat} from 'node:fs/promises';
 import {join} from 'node:path';import {sign,createPublicKey,randomUUID} from 'node:crypto';import type {KeyObject} from 'node:crypto';
 import {setTimeout as delay} from 'node:timers/promises';
-import {assertContract,canonical,fail,hash,requireScope,safeAdd} from '@argo/contracts';
+import {assertContract,canonical,fail,hash,requireScope,safeAdd,own} from '@argo/contracts';
 import type {Genesis,Snapshot,LedgerEvent,IntentProposal,Principal,Consent,Outcome} from '@argo/contracts';
 import {initialSnapshot,replay,verifyEvent,apply,validate,draw,unsigned,eventHash,outcome} from './mechanics.ts';
 export {replay,draw,initialSnapshot} from './mechanics.ts';
@@ -118,6 +118,6 @@ export type Ledger=Awaited<ReturnType<typeof openLedger>>;
 import type {EncounterCheckpoint} from '@argo/contracts';
 export function makeCheckpoint(state:Snapshot,id:string,actorIds:string[],expiresAt:number,policy:EncounterCheckpoint['policy']='reject'):EncounterCheckpoint{
  if(policy!=='serialize'&&policy!=='reject')fail('CAPABILITY_UNSUPPORTED','Checkpoint queue/fork policy is unsupported in v1');
- if(expiresAt<=state.world_time||actorIds.some(actor=>!state.actors[actor]))fail('INVALID_ACTION','Checkpoint participants or expiry invalid');
+ if(expiresAt<=state.world_time||actorIds.some(actor=>!own(state.actors,actor)))fail('INVALID_ACTION','Checkpoint participants or expiry invalid');
  const value:EncounterCheckpoint={checkpoint_id:id,scope:structuredClone(state.genesis.scope),head:state.head,sequence:state.sequence,world_time:state.world_time,actor_ids:[...actorIds],policy,expires_at:expiresAt};assertContract('EncounterCheckpoint',value);return value;
 }

@@ -25,6 +25,7 @@ import { withSeatLock } from "../seat/lock.mjs";
 import { pantheonHome } from "../seat/store.mjs";
 import { sendTurn, continuityMode } from "./adapter.mjs";
 import { loadHistoryState, saveHistory, commitHistory, stageHistoryGeneration, loadHistoryGeneration } from "./history.mjs";
+import { cacheKey } from "../../../packages/model-client/index.mjs";
 import { createHash } from "node:crypto";
 import { join } from "node:path";
 
@@ -67,7 +68,8 @@ export async function sdkTurn({
   if (!vendor || !purpose || !cwd) throw new Error("sdkTurn: vendor, purpose and cwd are required");
   if (typeof prompt !== "string" || prompt === "") throw new Error("sdkTurn: prompt is required");
 
-  const seat = { vendor, purpose, cwd };
+  const identity = scope || sessionId ? cacheKey({scope:scope ?? {cwd},sessionId:sessionId ?? purpose,vendor,model:model ?? "default"}) : null;
+  const seat = { vendor, purpose: identity ? `${purpose}@scope-${identity}` : purpose, cwd };
   const opts = home ? { home } : undefined;
 
   // The whole read-modify-write is one critical section, INCLUDING the model call.

@@ -94,3 +94,7 @@ test('compaction preserves required authentication betas and refuses an unresolv
  assert.match(seen.headers['anthropic-beta'],/oauth-required/);
  await assert.rejects(compactConversation({client,model:'claude-fable-5-2',history:[{role:'assistant',content:[{type:'tool_use',id:'t',name:'write',input:{}}]}]}),/unresolved tool/i);
 });
+
+test('Google caller config cannot replace counted contents, cache scope or protected budgets at serialization',()=>{
+ assert.throws(()=>prepareRequest(call('agy_google','gemini-4-carbon',{extra:{config:{httpOptions:{extraBody:{contents:[{role:'user',parts:[{text:'uncounted'}]}],cachedContent:'foreign',generationConfig:{maxOutputTokens:2000000,temperature:0.5}}}}}})),/unsupported|transport/i);
+});

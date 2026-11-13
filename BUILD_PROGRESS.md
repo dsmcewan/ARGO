@@ -19,3 +19,6 @@ Plan: `docs/superpowers/plans/2026-11-13-argo-foundation.md`.
 
 - Phase 4 sequential spine passed: asynchronous scoped bridges/mocks, proposal-only Fate/NPC/intervention adapters and Test Zero TF-01..TF-12. Post-disappearance exposition is suppressed for every persona/observer and historical query; narration refreshes policy after asynchronous generation. Full foundation gate passed with schema, workspace boundaries, types, authority/replay, transport, process and isolation checks (`/tmp/argo-foundation-gate.log`).
 - Independent review and a real trusted-controller exercise follow the completed spine. No feature worker lanes or paid model runs have been launched.
+
+- Independent foundation and harness reviews completed. Regression-backed repairs cover fresh immutable narration context across retries, absent-thread genesis, own-property actor checks, scoped stored SDK history, bounded signed Google continuation, Retry-After preservation, and transport override refusal.
+- Controller review repairs reject symlink redirects, policy changes, archive substitutions/omissions and early-exit test bypasses. Trusted tests must actually execute. The entire deterministic gate passed after repairs; full offline Pantheon/model suite passed **735 tests, 0 failures**. Disposable-repository controller exercise and final save follow this checkpoint.

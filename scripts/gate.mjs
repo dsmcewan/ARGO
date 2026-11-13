@@ -17,10 +17,10 @@ for(const [name,cmd,args,opts] of [
  ['schema',process.execPath,['scripts/check-contracts.mjs']],
  ['boundaries',process.execPath,['scripts/check-boundaries.mjs']],
  ['types',process.execPath,['node_modules/typescript/bin/tsc','--noEmit']],
- ['foundation',process.execPath,['--test',...(await readdir(resolve(root,'TESTS'))).filter(f=>f.endsWith('.test.ts')).sort().map(f=>'TESTS/'+f)]],
- ['model-and-process',process.execPath,['--test',...(await readdir(resolve(root,'packages/model-client/tests'))).filter(f=>f.endsWith('.test.mjs')).sort().map(f=>'packages/model-client/tests/'+f),'pantheon/tests/spawn-bounds.test.mjs','pantheon/tests/acceptance-sandbox.test.mjs','pantheon/tests/google-long-decode.test.mjs','pantheon/tests/compaction-history.test.mjs','pantheon/tests/frontier-board.test.mjs']],
+ ['foundation',process.execPath,['scripts/run-tests.mjs',...(await readdir(resolve(root,'TESTS'))).filter(f=>f.endsWith('.test.ts')).sort().map(f=>'TESTS/'+f)]],
+ ['model-and-process',process.execPath,['scripts/run-tests.mjs',...(await readdir(resolve(root,'packages/model-client/tests'))).filter(f=>f.endsWith('.test.mjs')).sort().map(f=>'packages/model-client/tests/'+f),'pantheon/tests/spawn-bounds.test.mjs','pantheon/tests/acceptance-sandbox.test.mjs','pantheon/tests/google-long-decode.test.mjs','pantheon/tests/compaction-history.test.mjs','pantheon/tests/frontier-board.test.mjs','pantheon/tests/scoped-history.test.mjs','pantheon/tests/frontier-adapter.test.mjs']],
 ]){
- const output=await run(cmd,args,opts);checks.push({name,output_sha256:createHash('sha256').update(output).digest('hex')});console.log(`PASS ${name}`);
+ const output=await run(cmd,args,opts);if(name==='schema'&&!output.includes('Frozen schemas: 36 definitions'))throw new Error('Schema checker did not complete');checks.push({name,output_sha256:createHash('sha256').update(output).digest('hex')});console.log(`PASS ${name}`);
 }
 if(await candidate()!==before||(await run('git',['rev-parse','HEAD'])).trim()!==head)throw new Error('Candidate changed during verification');
 console.log(JSON.stringify({controller:'deterministic-v1',commit:head,workspace_sha256:before,merge_ready:mergeReady,checks}));

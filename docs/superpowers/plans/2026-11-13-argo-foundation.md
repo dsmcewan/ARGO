@@ -72,5 +72,5 @@ Interfaces: Task 1's async calls, deterministic mocks, NPC/Fate/intervention sub
 
 ### Final review and save
 
-- [ ] Obtain one independent whole-branch review after the sequential spine, fix material issues with red→green tests, and rerun the required gate.
+- [x] Obtain one independent whole-branch review after the sequential spine, fix material issues with red→green tests, and rerun the required gate.
 - [ ] Save the tested branch and merge results to the private ARGO repository, preserving any new user commits. Update README/status with actual passed gates and live-service limitations.

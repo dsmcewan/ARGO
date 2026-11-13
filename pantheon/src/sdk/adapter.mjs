@@ -3,7 +3,7 @@ import { join } from "node:path";
 import { homedir } from "node:os";
 import { streamTurn } from "./stream.mjs";
 import { modelId } from "../config/models.mjs";
-import { isFrontier, sendModelTurn } from "../../../packages/model-client/index.mjs";
+import { isFrontier, sendModelTurn, providerFetch } from "../../../packages/model-client/index.mjs";
 
 // SDK transport. Replaces spawning a vendor CLI and then going to find the transcript it wrote.
 //
@@ -209,7 +209,7 @@ export function makeClient(vendor, opts = {}) {
   // retried 429/408/5xx four extra times while this comment claimed retries were off. Found by an
   // external review. `attempts: 1` is "no retries" per the SDK's own doc comment.
   if (spec.surface === "genai") {
-    return new Ctor({ apiKey: key, httpOptions: { apiVersion: 'v1beta1', retryOptions: { attempts: 1 }, ...(url ? { baseUrl: url } : {}) } });
+    return new Ctor({ apiKey: key, httpOptions: { apiVersion: 'v1beta1', fetch: providerFetch(opts.fetch), retryOptions: { attempts: 1 }, ...(url ? { baseUrl: url } : {}) } });
   }
   return new Ctor({ apiKey: key, maxRetries: 0, ...(url ? { baseURL: url } : {}) });
 }

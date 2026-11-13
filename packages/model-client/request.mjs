@@ -49,6 +49,8 @@ export function prepareRequest({vendor,model,prompt,history=[],previousResponseI
     config.maxOutputTokens??=e.max_output_tokens??e.max_tokens;
     delete e.max_output_tokens;delete e.max_tokens;
     delete config.cachedContent;
+    const allowedConfig=["maxOutputTokens","thinkingConfig","systemInstruction","tools","toolConfig","responseMimeType","responseSchema","responseJsonSchema","stopSequences","safetySettings","candidateCount","temperature","topP","topK"];
+    for(const key of Object.keys(config))if(!allowedConfig.includes(key))throw new Error(`Unsupported Google config parameter: ${key}`);
     for(const key of ['temperature','topP','topK'])delete config[key];
     const thinking={...config.thinkingConfig};
     delete thinking.thinkingBudget;

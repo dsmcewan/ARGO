@@ -51,3 +51,9 @@ export function safeAdd(a:number,b:number):number{const value=a+b;if(!Number.isS
 export const schemaDefinition=schema;
 export {serviceCall,freezeDto} from './transport.ts';
 export type {ServiceOptions} from './transport.ts';
+export function own<T>(record:Record<string,T>,key:string):T|undefined{return Object.hasOwn(record,key)?record[key]:undefined;}
+export function assertKnowledgeDisclosure(value:unknown):asserts value is ContractMap['KnowledgeView']{
+ assertContract('KnowledgeView',value);assertScope(value.scope);
+ if(value.audience==='actor'&&value.party_id!==null||value.audience==='party'&&value.party_id===null)fail('INVALID_CONTRACT','Invalid knowledge audience');
+ for(const claim of value.claims)if(claim.acquired_at>value.as_of_world_time||claim.sequence>value.as_of_sequence||!claim.observation.observers.includes(value.actor_id)||(value.audience==='party'&&claim.observation.party_id!==value.party_id))fail('INVALID_CONTRACT','Knowledge disclosure exceeds actor, party or time boundary');
+}

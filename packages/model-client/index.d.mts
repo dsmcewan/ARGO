@@ -13,3 +13,4 @@ export function isFrontier(model:string):boolean;
 export function cacheKey(options:{scope:OpaqueItem;sessionId:string;vendor:string;model:string}):string;
 export const models:Record<string,Record<string,string>>;
 export const CAPABILITIES:Readonly<Record<string,{vendor:Vendor;surface:string;window:number;output:number|null;efforts:string[];compaction?:boolean;inputCeiling?:number;combined?:boolean}>>;
+export function providerFetch(fetchImpl?:typeof fetch):typeof fetch;

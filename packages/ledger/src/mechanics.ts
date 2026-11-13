@@ -1,5 +1,5 @@
 import {createHmac,createPublicKey,verify} from 'node:crypto';
-import {assertContract,assertScope,canonical,hash,fail,requireScope,safeAdd} from '@argo/contracts';
+import {assertContract,assertScope,canonical,hash,fail,requireScope,safeAdd,own} from '@argo/contracts';
 import type {Genesis,Snapshot,IntentProposal,Principal,LedgerEvent,RngRecord,Outcome} from '@argo/contracts';
 
 export function initialSnapshot(genesis:Genesis):Snapshot{
@@ -7,11 +7,12 @@ export function initialSnapshot(genesis:Genesis):Snapshot{
  if(createPublicKey(genesis.authority_public_key).asymmetricKeyType!=='ed25519')fail('INVALID_CONTRACT','Authority key must be Ed25519');
  for(const item of Object.values(genesis.items))if(item.custodian_id!==null&&!Object.hasOwn(genesis.actors,item.custodian_id))fail('INVALID_CONTRACT','Unknown genesis custodian');
  for(const members of Object.values(genesis.parties))for(const id of members)if(!Object.hasOwn(genesis.actors,id))fail('INVALID_CONTRACT','Unknown genesis party actor');
+ for(const actor of Object.values(genesis.actors)){if(actor.thread==='absent')fail('INVALID_CONTRACT','Absent-thread genesis requires a committed cutoff; use the system fixture event');if(actor.thread==='ended'&&actor.alive)fail('INVALID_CONTRACT','Ended genesis thread cannot be alive');}
  const roles=Object.values(genesis.actors).map(a=>a.fate_role).filter(x=>x!==null);
  if(new Set(roles).size!==roles.length)fail('INVALID_CONTRACT','Fate jurisdictions must have independent unique actors');
  return {genesis:structuredClone(genesis),sequence:0,head:null,world_time:genesis.world_time,actors:structuredClone(genesis.actors),items:structuredClone(genesis.items),claims:[],consents:{},grants:{},cutoffs:{},transfers:[],rng_counter:0,proposals:{}};
 }
-const exists=(s:Snapshot,id:string)=>{const value=s.actors[id];if(!value)fail('INVALID_ACTION','Unknown actor');return value;};
+const exists=(s:Snapshot,id:string)=>{const value=own(s.actors,id);if(!value)fail('INVALID_ACTION','Unknown actor');return value;};
 function direct(p:IntentProposal,principal:Principal){if(p.proxy_grant_id!==null||p.actor_id!==principal.actor_id)fail('UNAUTHORIZED','Direct actor authentication required');}
 function system(p:IntentProposal,principal:Principal){direct(p,principal);if(principal.role!=='system')fail('UNAUTHORIZED','System authority required');}
 export function validate(p:IntentProposal,principal:Principal,s:Snapshot,receiptHash:string|null=null):void{
@@ -24,7 +25,7 @@ export function validate(p:IntentProposal,principal:Principal,s:Snapshot,receipt
  else if(p.world_time!==s.world_time)fail('INVALID_ACTION','Action world time must equal current clock');
  if(p.proxy_grant_id!==null){
   if(a.type!=='move_item'&&a.type!=='observe_claim')fail('UNAUTHORIZED','Proxy action outside grant scope');
-  const row=s.grants[p.proxy_grant_id];if(!row)fail('UNAUTHORIZED','Unknown proxy grant');
+  const row=own(s.grants,p.proxy_grant_id);if(!row)fail('UNAUTHORIZED','Unknown proxy grant');
   const g=row.grant,resource=a.type==='move_item'?a.item_id:a.observation.claim_id;
   if(row.revoked)fail('REVOKED','Proxy grant revoked');
   if(s.world_time<g.valid_from||s.world_time>=g.expires_at)fail('EXPIRED','Proxy grant outside its time interval');
@@ -33,22 +34,22 @@ export function validate(p:IntentProposal,principal:Principal,s:Snapshot,receipt
  switch(a.type){
  case 'advance_time':system(p,principal);break;
  case 'move_item':{
-  const item=s.items[a.item_id];if(!item||item.destroyed||item.custodian_id!==p.actor_id)fail('UNAUTHORIZED','Actor does not hold movable item');
+  const item=own(s.items,a.item_id);if(!item||item.destroyed||item.custodian_id!==p.actor_id)fail('UNAUTHORIZED','Actor does not hold movable item');
   if(a.to_actor_id!==null)exists(s,a.to_actor_id);break;
  }
  case 'record_consent':{
   direct(p,principal);const c=a.consent;const donor=exists(s,c.donor_id);exists(s,c.recipient_id);
   if(p.actor_id!==c.donor_id||principal.role!=='player'||!donor.alive||c.donor_id===c.recipient_id)fail('UNAUTHORIZED','Consent requires the living donor directly');
-  if(s.consents[c.consent_id]||Object.values(s.consents).some(x=>x.consent.confirmation_id===c.confirmation_id))fail('INVALID_ACTION','Consent or receipt already recorded');
+  if(own(s.consents,c.consent_id)||Object.values(s.consents).some(x=>x.consent.confirmation_id===c.confirmation_id))fail('INVALID_ACTION','Consent or receipt already recorded');
   if(c.expires_at<=s.world_time)fail('EXPIRED','Consent expiry must be future');
   if(!principal.confirmed_receipts.includes(c.confirmation_id)||receiptHash!==hash(c))fail('UNAUTHORIZED','Verified donor receipt required');
   break;
  }
  case 'revoke_consent':{
-  direct(p,principal);const row=s.consents[a.consent_id];if(!row||row.consent.donor_id!==p.actor_id||row.used)fail('UNAUTHORIZED','Only direct donor can revoke unused consent');break;
+  direct(p,principal);const row=own(s.consents,a.consent_id);if(!row||row.consent.donor_id!==p.actor_id||row.used)fail('UNAUTHORIZED','Only direct donor can revoke unused consent');break;
  }
  case 'transfer_time':{
-  direct(p,principal);const row=s.consents[a.consent_id];if(!row)fail('INVALID_ACTION','Unknown consent');const c=row.consent;
+  direct(p,principal);const row=own(s.consents,a.consent_id);if(!row)fail('INVALID_ACTION','Unknown consent');const c=row.consent;
   if(![c.donor_id,c.recipient_id].includes(p.actor_id)||principal.role!=='player')fail('UNAUTHORIZED','Direct donor or recipient required');
   if(row.revoked)fail('REVOKED','Consent revoked');if(c.expires_at<=s.world_time)fail('EXPIRED','Consent expired');
   if(row.used||!exists(s,c.donor_id).alive||!exists(s,c.recipient_id).alive)fail('INVALID_ACTION','Consent spent or actor no longer living');
@@ -57,21 +58,21 @@ export function validate(p:IntentProposal,principal:Principal,s:Snapshot,receipt
  case 'grant_proxy':{
   direct(p,principal);const g=a.grant;exists(s,g.grantee_id);
   if(g.grantor_id!==p.actor_id||g.grantee_id===p.actor_id||!exists(s,p.actor_id).alive)fail('UNAUTHORIZED','Direct living grantor required');
-  if(s.grants[g.grant_id]||g.expires_at<=g.valid_from||g.expires_at<=s.world_time)fail('INVALID_ACTION','Invalid grant identity or interval');break;
+  if(own(s.grants,g.grant_id)||g.expires_at<=g.valid_from||g.expires_at<=s.world_time)fail('INVALID_ACTION','Invalid grant identity or interval');break;
  }
- case 'revoke_proxy':direct(p,principal);if(s.grants[a.grant_id]?.grant.grantor_id!==p.actor_id)fail('UNAUTHORIZED','Only grantor may revoke');break;
+ case 'revoke_proxy':direct(p,principal);if(own(s.grants,a.grant_id)?.grant.grantor_id!==p.actor_id)fail('UNAUTHORIZED','Only grantor may revoke');break;
  case 'observe_claim':{
   const o=a.observation;if(o.occurred_at>s.world_time)fail('INVALID_ACTION','Observation cannot occur in the future');
   if(s.claims.some(c=>c.observation.claim_id===o.claim_id))fail('INVALID_ACTION','Claim already recorded');
   for(const id of o.observers)exists(s,id);
   if(o.source_id!==p.actor_id&&!o.observers.includes(p.actor_id))fail('UNAUTHORIZED','Actor must speak or observe the claim');
-  if(o.party_id!==null){const members=s.genesis.parties[o.party_id];if(!members||!members.includes(p.actor_id)||o.observers.some(id=>!members.includes(id)))fail('UNAUTHORIZED','Party disclosure outside membership');}
+  if(o.party_id!==null){const members=own(s.genesis.parties,o.party_id);if(!members||!members.includes(p.actor_id)||o.observers.some(id=>!members.includes(id)))fail('UNAUTHORIZED','Party disclosure outside membership');}
   break;
  }
  case 'vanish_thread':system(p,principal);if(exists(s,a.traveler_id).thread!=='present')fail('INVALID_ACTION','Only a present thread can vanish');break;
- case 'name_anomaly':direct(p,principal);if(exists(s,p.actor_id).fate_role!=='clotho')fail('UNAUTHORIZED','Only Clotho may name the anomaly');if(exists(s,a.traveler_id).thread!=='absent'||!s.cutoffs[a.traveler_id]||s.cutoffs[a.traveler_id]!.named_at_sequence!==null)fail('INVALID_ACTION','Absent unnamed thread required');break;
+ case 'name_anomaly':direct(p,principal);if(exists(s,p.actor_id).fate_role!=='clotho')fail('UNAUTHORIZED','Only Clotho may name the anomaly');if(exists(s,a.traveler_id).thread!=='absent'||!own(s.cutoffs,a.traveler_id)||own(s.cutoffs,a.traveler_id)!.named_at_sequence!==null)fail('INVALID_ACTION','Absent unnamed thread required');break;
  case 'end_thread':direct(p,principal);if(exists(s,p.actor_id).fate_role!=='atropos')fail('UNAUTHORIZED','Only Atropos may end a thread');if(exists(s,a.traveler_id).thread!=='present')fail('INVALID_ACTION','No present thread to end');break;
- case 'draw':system(p,principal);if(a.visibility==='authority'&&a.audience_id!==null||a.visibility!=='authority'&&a.audience_id===null)fail('INVALID_ACTION','Invalid random audience');if(a.visibility==='actor')exists(s,a.audience_id!);if(a.visibility==='party'&&!s.genesis.parties[a.audience_id!])fail('INVALID_ACTION','Unknown random audience');break;
+ case 'draw':system(p,principal);if(a.visibility==='authority'&&a.audience_id!==null||a.visibility!=='authority'&&a.audience_id===null)fail('INVALID_ACTION','Invalid random audience');if(a.visibility==='actor')exists(s,a.audience_id!);if(a.visibility==='party'&&!own(s.genesis.parties,a.audience_id!))fail('INVALID_ACTION','Unknown random audience');break;
  }
 }
 export function draw(seed:string,index:number,label:string,bound:number):RngRecord{
@@ -113,7 +114,7 @@ export function verifyEvent(s:Snapshot,event:LedgerEvent,parents:Set<string>):vo
  if(event.ruleset_version!==s.genesis.ruleset_version||event.sequence!==s.sequence+1||event.previous_hash!==s.head||event.event_id!==`event_${event.sequence}`)fail('CORRUPT_LEDGER','Corrupt ledger identity or order');
  if(event.authority.key_id!==s.genesis.authority_key_id||event.hash!==eventHash(event)||!verify(null,Buffer.from(canonical(unsigned(event))),s.genesis.authority_public_key,Buffer.from(event.authority.signature,'base64')))fail('CORRUPT_LEDGER','Corrupt ledger signature or hash');
  if(event.proposal.causal_parents.some(p=>!parents.has(p)))fail('CORRUPT_LEDGER','Unknown causal parent');
- if(s.proposals[event.proposal.proposal_id])fail('CORRUPT_LEDGER','Duplicate committed proposal');
+ if(own(s.proposals,event.proposal.proposal_id))fail('CORRUPT_LEDGER','Duplicate committed proposal');
  const receipt=event.proposal.action.type==='record_consent'?event.proposal.action.consent.confirmation_id:null;
  if(event.proposal.action.type!=='record_consent'&&event.authority.receipt_hash!==null)fail('CORRUPT_LEDGER','Unexpected consent receipt');
  validate(event.proposal,{principal_id:event.authority.principal_id,actor_id:event.authority.principal_actor_id,role:event.authority.principal_role,scope:event.scope,confirmed_receipts:receipt?[receipt]:[]},s,event.authority.receipt_hash);

@@ -1,6 +1,7 @@
 // Execute from a trusted checkout, never from the branch being judged.
+import {assertCandidatePolicy,assertSafeStaging,assertExactGitTree} from './policy.ts';
 import {execFile} from 'node:child_process';import {promisify} from 'node:util';
-import {mkdtemp,rm,writeFile,cp,mkdir} from 'node:fs/promises';import {tmpdir} from 'node:os';import {join,resolve} from 'node:path';
+import {mkdtemp,rm,writeFile,mkdir} from 'node:fs/promises';import {tmpdir} from 'node:os';import {join,resolve} from 'node:path';
 const exec=promisify(execFile);
 const opts=Object.fromEntries(process.argv.slice(2).reduce((pairs,value,index,args)=>index%2===0?[...pairs,[value,args[index+1]]]:pairs,[]));
 const repository=resolve(opts['--repo']??'.'),candidate=opts['--candidate'],trusted=opts['--trusted'];
@@ -22,11 +23,14 @@ try{
  const source=join(temporary,'candidate'),policy=join(temporary,'policy');await mkdir(source);await mkdir(policy);
  for(const [sha,dest] of [[candidate,source],[trusted,policy]]){
   const archive=join(temporary,`${sha}.tar`);await writeFile(archive,await run('git',['archive','--format=tar',sha],repository,true));await run('tar',['-xf',archive,'-C',dest]);
+  await assertExactGitTree(dest,await run('git',['ls-tree','-rz','--full-tree',sha],repository,true));
  }
- const protectedPaths=['scripts/gate.mjs','scripts/check-contracts.mjs','scripts/check-boundaries.mjs','scripts/generate-contract-types.py','TESTS','pantheon/tests','packages/model-client/tests','SYSTEMS/CONTRACT_FREEZE.json','tsconfig.json','package.json','package-lock.json','pantheon/package.json','pantheon/package-lock.json'];
- for(const path of protectedPaths){await rm(join(source,path),{recursive:true,force:true});await cp(join(policy,path),join(source,path),{recursive:true,dereference:false});}
- await run('npm',['ci','--ignore-scripts','--no-audit','--no-fund'],source);
- await run('npm',['ci','--ignore-scripts','--no-audit','--no-fund'],join(source,'pantheon'));
+ await assertSafeStaging(source);
+ const protectedPaths=['.npmrc','controller','scripts/run-tests.mjs','scripts/gate.mjs','scripts/check-contracts.mjs','scripts/check-boundaries.mjs','scripts/generate-contract-types.py','TESTS','pantheon/tests','packages/model-client/tests','SYSTEMS/CONTRACT_FREEZE.json','tsconfig.json','package.json','package-lock.json','pantheon/package.json','pantheon/package-lock.json'];
+ await assertCandidatePolicy(source,policy,protectedPaths);
+ const cache=process.env.ARGO_NPM_CACHE;const install=['ci','--ignore-scripts','--no-audit','--no-fund','--userconfig=/dev/null','--globalconfig=/dev/null',...(cache?['--cache',resolve(cache),'--offline']:[])];
+ await run('npm',install,source);
+ await run('npm',install,join(source,'pantheon'));
  // Standalone metadata lets the confined gate inspect its staging tree without host Git access.
  await run('git',['init','-q'],source);await run('git',['add','--all'],source);
  await run('git',['-c','user.name=ARGO Controller','-c','user.email=controller@argo.local','commit','-qm','deterministic staging'],source);

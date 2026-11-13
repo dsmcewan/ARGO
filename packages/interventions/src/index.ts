@@ -1,9 +1,9 @@
-import {assertContract,requireScope,fail} from '@argo/contracts';import type {KnowledgeView,EncounterCheckpoint,IntentProposal} from '@argo/contracts';
+import {assertContract,requireScope,fail,assertKnowledgeDisclosure} from '@argo/contracts';import type {KnowledgeView,EncounterCheckpoint,IntentProposal} from '@argo/contracts';
 import {serviceCall,freezeDto} from '@argo/contracts';import type {ServiceOptions} from '@argo/contracts';
 export interface DerivedContext {view:KnowledgeView;checkpoint:EncounterCheckpoint}
 export function createProposalSubscriber(options:{actorId:string;plan:(context:DerivedContext,options:{signal:AbortSignal})=>Promise<readonly IntentProposal[]>;timeoutMs?:number}){
  return Object.freeze({onView:async(input:DerivedContext,call:ServiceOptions={}):Promise<readonly IntentProposal[]>=>{
-  assertContract('KnowledgeView',input.view);assertContract('EncounterCheckpoint',input.checkpoint);requireScope(input.view.scope,input.checkpoint.scope);
+  assertKnowledgeDisclosure(input.view);assertContract('EncounterCheckpoint',input.checkpoint);requireScope(input.view.scope,input.checkpoint.scope);
   if(input.view.actor_id!==options.actorId||!input.checkpoint.actor_ids.includes(options.actorId))fail('UNAUTHORIZED','Subscriber actor is outside derived view');
   if(input.view.as_of_sequence!==input.checkpoint.sequence||input.view.as_of_world_time!==input.checkpoint.world_time)fail('CONFLICT','Derived view and checkpoint differ');
   const context=freezeDto(structuredClone(input));

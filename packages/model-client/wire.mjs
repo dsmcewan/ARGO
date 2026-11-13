@@ -65,33 +65,38 @@ export async function exchange(prepared,client,onEvent){
     text=textOf(output);
     tools=output.filter(x=>x.type==='tool_use').map(x=>x.name);
   }else{
-    if(onEvent){
-      const stream=await client.models.generateContentStream(request);
-      let reason=null,continuation=false;
-      for await(const chunk of stream){
-        const candidate=chunk.candidates?.[0];
-        reason=candidate?.finishReason??reason;
-        continuation=Boolean(chunk.continuationToken??chunk.continuation_token);
-        usage=chunk.usageMetadata??usage;
-        for(const part of candidate?.content?.parts??[]){
-          const p=structuredClone(part),last=output.at(-1);
-          // Text fragments form one signed part; function-call parts retain exact boundaries.
-          if(typeof p.text==='string'&&last&&typeof last.text==='string'&&!last.thoughtSignature&&
-            last.thought===p.thought&&!last.functionCall&&!p.functionCall){
-            last.text+=p.text;
-            for(const [key,value] of Object.entries(p))if(key!=='text')last[key]=value;
-          }else output.push(p);
-          if(p.thought)emit('thinking',{bytes:Buffer.byteLength(p.text??'')});
-          else if(p.text)emit('delta',{text:p.text});
-          else if(p.functionCall?.name)emit('tool',{name:p.functionCall.name});
+    const seen=new Set();let checkpoint;
+    const append=(part,streamFragment=false,hopStart=0)=>{
+      const p=structuredClone(part),last=output.at(-1);
+      if(streamFragment&&output.length>hopStart&&typeof p.text==='string'&&last&&typeof last.text==='string'&&!last.thoughtSignature&&!p.thoughtSignature&&last.thought===p.thought&&!last.functionCall&&!p.functionCall){
+        last.text+=p.text;for(const [key,value] of Object.entries(p))if(key!=='text')last[key]=value;
+      }else output.push(p);
+      if(p.thought)emit('thinking',{bytes:Buffer.byteLength(p.text??'')});else if(p.text)emit('delta',{text:p.text});else if(p.functionCall?.name)emit('tool',{name:p.functionCall.name});
+    };
+    // Own continuation on both surfaces: the pinned SDK's unary auto-loop does not detect a
+    // repeated checkpoint. Its unchecked loop can spend indefinitely and duplicate generated code.
+    for(let hop=0;hop<16;hop++){
+      const req={...request,config:{...request.config,automaticContinuation:false,...(checkpoint?{continuationToken:checkpoint}:{})}};
+      let reason=null,token=null,blocked=false;const hopStart=output.length;
+      if(onEvent){
+        const stream=await client.models.generateContentStream(req);
+        for await(const chunk of stream){
+          const candidate=chunk.candidates?.[0];reason=candidate?.finishReason??reason;
+          token=candidate?.continuationToken??chunk.continuationToken??chunk.continuation_token??token;
+          blocked=blocked||Boolean(chunk.promptFeedback?.blockReason);usage=chunk.usageMetadata??usage;
+          for(const [index,part] of (candidate?.content?.parts??[]).entries())append(part,index===0,hopStart);
         }
+      }else{
+        response=await client.models.generateContent(req);const candidate=response?.candidates?.[0];
+        reason=candidate?.finishReason;token=candidate?.continuationToken??response?.continuationToken??response?.continuation_token;
+        blocked=Boolean(response?.promptFeedback?.blockReason);usage=response?.usageMetadata??usage;
+        for(const part of candidate?.content?.parts??[])append(part);
       }
-      complete=reason==='STOP'&&!continuation;
-    }else{
-      response=await client.models.generateContent(request);
-      const candidate=response?.candidates?.[0];
-      output=candidate?.content?.parts??[];usage=response?.usageMetadata??null;
-      complete=candidate?.finishReason==='STOP'&&!response?.continuationToken&&!response?.continuation_token;
+      if(reason==='STOP'&&!blocked){complete=true;break;}
+      if(reason!=='CONTINUATION'||blocked||typeof token!=='string'||!token)break;
+      if(seen.has(token))throw new Error('Repeated Google continuation checkpoint');
+      seen.add(token);checkpoint=token;
+      if(hop===15)throw new Error('Google continuation hop limit exceeded');
     }
     complete=complete&&output.length>0;
     text=textOf(output);
