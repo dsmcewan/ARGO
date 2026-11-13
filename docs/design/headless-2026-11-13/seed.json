@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "tickets": [
+    {
+      "id": "HD-001",
+      "wave": 0,
+      "lane": "headless-evidence-design",
+      "title": "Prepare source evidence and headless design proposals with adversarial cases",
+      "seat_model": "gpt-6-astra",
+      "reviewer_model": null,
+      "owned_paths": [
+        "docs/design/headless-2026-11-13/",
+        "SYSTEM_ROADMAP.md"
+      ],
+      "gate_cmd": [
+        "python3",
+        "-c",
+        "import json,re\nfrom pathlib import Path\np=Path('docs/design/headless-2026-11-13')\nd=json.loads((p/'packet.json').read_text())\nassert d['schema_version']==1 and d['status']=='proposed' and d['baseline_commit']=='41f2cb8568b53fac984e1114d7342eef540bb6d5'\nassert d['runtime_changed'] is False and d['paid_runs'] is False and d['contracts_frozen'] is False\nassert set(d['decisions'])=={'D01','D02','D03','D04','D05','D06','D09','D10'}\nassert set(d['work_items'])=={'W01','W02'}\nfor name in ('README.md','temporal-storage.md','authority-history.md','build-gate-protocol.md','mechanics-fixtures.md','source-delta.md'):\n text=(p/name).read_text()\n assert len(text)>1500,name\nfor path in d['code_references']:assert Path(path).is_file(),path\ncases=json.loads((p/'cases.json').read_text())\nassert cases['status']=='declarative_not_executed'\nids=set()\ncoverage=set()\nassert len(cases['cases'])>=24\nfor c in cases['cases']:\n assert c['id'] not in ids and c['id'];ids.add(c['id'])\n assert set(c['decisions'])<=set(d['decisions']) and c['decisions'];coverage.update(c['decisions'])\n assert c['given'] and c['when'] and c['then'] and c['invariant']\n assert c['verification_status']=='not_executed'\nassert coverage==set(d['decisions'])\ns=json.loads((p/'source-evidence.json').read_text())\nassert s['schema_version']==1 and s['private_databases_accessed'] is False\nassert len(s['sources'])>=3\nfor x in s['sources']:\n assert x['repository'] and x['baseline_identity'] and x['identity_kind']\n assert x['refresh_status'] in ('verified_same_tree','verified_changed_tree','unavailable','local_code_verified')\n assert x['limitations']\nroad=json.loads(Path('docs/roadmap/system.json').read_text())\nassert len(road['decisions'])==11 and len(road['work_items'])==17\nfor x in road['decisions']:assert x['status']=='ready_for_design'\nassert 'docs/design/headless-2026-11-13/README.md' in Path('SYSTEM_ROADMAP.md').read_text()\nprint('PASS headless packet structure, decision coverage, fixture references and non-execution labels')\n"
+      ],
+      "spec_path": "docs/design/headless-2026-11-13/HD-001.md",
+      "depends_on": [],
+      "max_attempts": 3
+    }
+  ]
+}
