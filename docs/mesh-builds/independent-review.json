@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "ticket": "MB-001",
+  "reviewer": "research_r5",
+  "reviewed_at": "2026-11-13T19:22:07.504319+00:00",
+  "role": "Independent native Codex product implementation reviewer; not a paid vendor review",
+  "worktree": "/workspace/ARGO/.board/mesh-builds/worktrees/MB-001-1-10da5f9ac6",
+  "checkout_head_at_review": "dc4629819ee07d9a46c8ae1e88300a1fd5b514ca",
+  "identity_scope": "Exact working-tree product file SHA-256 identities. The reviewed additions are not represented as an immutable commit until the supervisor commits and confirms these same bytes.",
+  "verdict": "APPROVED_PRODUCT_BYTES_WITH_DOCUMENTED_LIMITS",
+  "remaining_product_findings": [],
+  "reviewed_product_files": [
+    {
+      "path": "tools/mesh_dispatch.py",
+      "sha256": "b50a8bdabadc4a93053d3f1e3ed78b98af135e76e7b7cd4e58a702e724a2889b",
+      "bytes": 32707
+    },
+    {
+      "path": "tools/mesh_trace.py",
+      "sha256": "f6eaa1cf839b743bd0b6174a2d0166b8f519b1487f64bdfa094717fa90ff2782",
+      "bytes": 18548
+    },
+    {
+      "path": "pantheon/src/board/blackboard-mesh.mjs",
+      "sha256": "0fb06a2ae6eb33dfdaf745996ba76b7124f6972060447696c1a36a82e4f9bc32",
+      "bytes": 7252
+    },
+    {
+      "path": "pantheon/bin/pantheon-mesh.mjs",
+      "sha256": "b0f2ada6147904a63c8c3682638dc3d53cea7b36479520a46ebaf0c82c6e1c9f",
+      "bytes": 2038
+    }
+  ],
+  "resolved_findings": [
+    {
+      "id": "MB-R5-01",
+      "severity": "P2",
+      "title": "Edge accepted a trace scope unrelated to the result attempt",
+      "original_file": "pantheon/src/board/blackboard-mesh.mjs",
+      "original_sha256": "8c83ea14432a0d99f262fce485dc4eb4db84fc68623a15bb1a023ac17d948c3f",
+      "original_locator": "resultContract lines 39-40",
+      "observed": "Native direct-module probe accepted ffff... scope for a T-1 epoch1 binding whose canonical scope was 8cd36aac8c8a4b72583576d4768d5f97dff6ace78b03e982082b578a9c50adc3.",
+      "repair": "Edge derives canonical SHA256 from validated id, epoch, base commit, candidate commit and specification hash and compares it to mesh.scope.",
+      "verification": "Independent edge test file run:9/9 pass, including positive VERIFYING and foreign identity/scope refusals."
+    },
+    {
+      "id": "MB-R5-02",
+      "severity": "P2",
+      "title": "Cancellation released supervisor flock while a Board submission thread remained live",
+      "original_file": "tools/mesh_dispatch.py",
+      "original_sha256": "ffae3c881e835c84e23dff0f6b7d0095a7599eb80b309ab7ec407e76b796bd13",
+      "original_locator": "inherited _one/_board and run finally around lines223-234/443-470",
+      "reproduction": "/tmp/argo-mb-submit-cancel-probe.py",
+      "red_log": "/tmp/argo-mb-submit-cancel-probe.log",
+      "observed": "Real Board/Git/Bubblewrap with delayed actual submit transaction: cancellation returned after10.17s, submit remained live, common flock was available, and the released transaction later moved the ticket to VERIFYING.",
+      "repair": "All Board thread tasks remain tracked/shielded and are drained under the common-directory flock. Exact unfinished claims are settled after mutation drain; unexpected late errors surface and already committed VERIFYING state is preserved.",
+      "verification": "Independent real prepare/artifact/submit drain regressions plus late-claim test pass. Each requires no normal run settlement or common-lock release before the actual transaction finishes."
+    },
+    {
+      "id": "MB-R5-03",
+      "severity": "P2",
+      "title": "Three peer commands could rotate their claimed peer identities",
+      "original_file": "tools/mesh_dispatch.py",
+      "original_sha256": "ffae3c881e835c84e23dff0f6b7d0095a7599eb80b309ab7ec407e76b796bd13",
+      "original_locator": "_peer lines318-342",
+      "reproduction": "/tmp/argo-mb-peer-attribution-probe.py",
+      "red_log": "/tmp/argo-mb-peer-attribution-probe.log",
+      "observed": "Three actual confined peer commands cyclically swapped peer_id; aggregate membership remained complete and candidate reached VERIFYING with falsely attributed traces.",
+      "repair": "Each process response must exactly echo that invocation protocol, binding, peer_id, round and seen_version before aggregate round validation.",
+      "verification": "Protected rotated-ID regression passes and original standalone reproduction now returns failed with candidate_submitted:false.",
+      "green_log": "/tmp/argo-mb-peer-attribution-fixed.log"
+    }
+  ],
+  "independent_checks": [
+    {
+      "log": "/tmp/argo-mesh-r5-repair-tests.log",
+      "sha256": "7c73710c1647dc05f9bd39999efb02b7121c9b86bcac9a454a98a2daf467fb7c",
+      "passed": 5,
+      "failed": 0,
+      "context": "Offline native execution; escalation used where Linux/Node/Bubblewrap process facilities required"
+    },
+    {
+      "log": "/tmp/argo-mesh-r5-edge-final.log",
+      "sha256": "901644bd7fd030e115687719bfa578e3dceb132f9bb0609e6daa9374a1e610ba",
+      "passed": 9,
+      "failed": 0,
+      "context": "Offline native execution; escalation used where Linux/Node/Bubblewrap process facilities required"
+    },
+    {
+      "log": "/tmp/argo-mb-r5-trace.log",
+      "sha256": "402b494baac9117587a68d77a2d84175ec18be766d7478394e40cb9f04d10394",
+      "passed": 12,
+      "failed": 0,
+      "context": "Offline native execution; escalation used where Linux/Node/Bubblewrap process facilities required"
+    }
+  ],
+  "review_basis": [
+    "Snapshot uses trusted no-replacement Git reads of exact candidate tree/blobs, checks paths/modes/blob IDs/contained links and bounds files/bytes/time. Peer mounts expose no owned writable path, host Board database, host Git metadata, credentials or network.",
+    "Per-attempt ContextVar and immutable configuration prevent concurrent jobs replacing a shared runner/config; scheduler claims only available capacity, bounds total admissions and keeps result order tied to claim order.",
+    "Single host-owned trace store validates complete bounded three-peer responses before an append, retains dissent/superseded history and returns detached data. Parent API remains embargoed until closure. Protocol completion is advisory and never invokes Board acceptance or merge.",
+    "Normal cancellation settles peer/author process groups and actual Board operations before releasing the Mesh admission lock. In-flight atomic submit can finish VERIFYING; cancellation is not rollback. Existing separately grouped process handling remains under the reviewed runtime boundary.",
+    "Node edge uses fixed trusted script location, structured argv, bounded output/batch deadline, explicit offline authorization and response correlation. CLI config alone cannot enable offline execution.",
+    "One Board remains the ownership domain and integration remains separately supervised/serialized. Dispatcher never runs verify, review, merge or application controller."
+  ],
+  "test_author_separation": {
+    "reviewer_authored_temp_oracle": "/tmp/argo-mesh-edge-native-tests.mjs",
+    "oracle_sha256": "a429be0b7dde68f67ce76a92b8ae2d4c16714115f1acfc3603ddc915ef0283f5",
+    "not_self_approved": true,
+    "independent_policy_reviewer": "research_r3",
+    "execution_evidence_only": {
+      "green_log": "/tmp/argo-mesh-edge-native-green.log",
+      "green_tests": 2,
+      "ignored_signal_mutant_red": "/tmp/argo-mesh-edge-native-ignore-red.log",
+      "early_settlement_mutant_red": "/tmp/argo-mesh-edge-native-early-red.log"
+    },
+    "note": "The native two-test oracle was authored separately in /tmp at supervisor request. Its successful runs/mutation checks are evidence, not this reviewer approving their own trust-policy contribution."
+  },
+  "limits": [
+    "Offline local operators/fixtures only. No paid providers, authenticated remote Mesh broker, quota reservation, or cross-vendor model-quality/throughput claim.",
+    "flock excludes participating Mesh supervisors in a Git common directory, not legacy dispatchers/arbitrary Git processes. One Board ownership domain and one supervised target integration queue remain required.",
+    "Worker-group concurrency limits are not CPU/RAM/PID/disk quotas.",
+    "Trace store trusts its host-owned file path and operator. Inode/size checks do not detect every same-inode same-length external rewrite; there is no external append-integrity anchor or crash reopen/recovery protocol.",
+    "Parent embargo and acknowledged input watermarks are host API protocol rules, not proof that an analyst reasoned about every supplied trace.",
+    "The Node60-second grace is a forced-transport-failure bound, not proof all arbitrarily stalled storage finishes within60seconds. Hard kill/crash requires actual Board/lease inspection and must not be treated as completion.",
+    "Completed peer rounds do not certify code correctness and do not authorize MERGED. Data-fixture Board gates and the separately trusted full application controller retain their own authority. General D09/W14 application adapter remains absent.",
+    "This approval covers four identified runtime files. Supervisor must bind final candidate/trusted policy bytes and complete all required acceptance groups before integration; separate reviewers own new oracle/policy trust adoption."
+  ],
+  "documentation_note": "Requested correction to tools/MESH.md direct CLI example: offline-fixture is rejected by existing Board vendor-label validation; use a registered scheduling label while explicitly stating no model invocation.",
+  "reviewer_activity": {
+    "repo_edits": false,
+    "temporary_probes_and_oracle_only": true,
+    "paid_calls": false,
+    "subagents": false,
+    "deployment": false
+  }
+}

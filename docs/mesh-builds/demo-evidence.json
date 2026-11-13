@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "paid_model_calls": 0,
+  "fixture_only": true,
+  "initial": {
+    "execution": "operator command; no model execution claimed",
+    "mode": "offline",
+    "requested_seat_model": "gpt-6-astra",
+    "results": [
+      {
+        "artifacts": [
+          {
+            "logical_path": "results/a/result.json",
+            "sha256": "db1441b3485a082b9ab2809e6e8b9cf95e81467ffa93acfa59dffd95c72b12de"
+          }
+        ],
+        "base_commit": "f723cdc7f2dd482164dac62e86a70c664ceaf972",
+        "candidate_commit": "61e036656f4a48d2793d2743f4dc070d7bf5954e",
+        "epoch": 1,
+        "id": "A",
+        "mesh": {
+          "candidate_commit": "61e036656f4a48d2793d2743f4dc070d7bf5954e",
+          "peer_ids": [
+            "critic",
+            "counterexample",
+            "reconciler"
+          ],
+          "protocol": "argo.mesh/1",
+          "rounds": 2,
+          "scope": "0f7a20e85106f1228e7d841a9a38ad269b26b11edaaae2f93878e534df34f893",
+          "status": "completed",
+          "trace_path": "/tmp/argo-mesh-demo/.board/mesh-traces/0f7a20e85106f1228e7d841a9a38ad269b26b11edaaae2f93878e534df34f893.jsonl",
+          "trace_sha256": "ab292fdad6e88ce5ed027df077225b27110fa7f7aec8421e8e8bb7b5acc12677"
+        },
+        "spec_sha256": "e284dca3cfedbab314f2bfe2d8f0559affa7da48f273e913bb8267da566019e2",
+        "status": "VERIFYING"
+      },
+      {
+        "artifacts": [
+          {
+            "logical_path": "results/b/result.json",
+            "sha256": "fbe135bdee63f24d35ebe85f5572711c3a42e8231c83f3af743ae4d0a7af96a7"
+          }
+        ],
+        "base_commit": "f723cdc7f2dd482164dac62e86a70c664ceaf972",
+        "candidate_commit": "d1e8e5736abd84f0fabe42ff625d0d3937dc8396",
+        "epoch": 1,
+        "id": "B",
+        "mesh": {
+          "candidate_commit": "d1e8e5736abd84f0fabe42ff625d0d3937dc8396",
+          "peer_ids": [
+            "critic",
+            "counterexample",
+            "reconciler"
+          ],
+          "protocol": "argo.mesh/1",
+          "rounds": 2,
+          "scope": "4d085f3d03b5338807db7fe56e7ffa0a2def1f278a2e87d80327561b528b70ac",
+          "status": "completed",
+          "trace_path": "/tmp/argo-mesh-demo/.board/mesh-traces/4d085f3d03b5338807db7fe56e7ffa0a2def1f278a2e87d80327561b528b70ac.jsonl",
+          "trace_sha256": "511d9b813342100d5fcb298c6fdb2e586be82c513f89257ce1f7f6d523f1d3b9"
+        },
+        "spec_sha256": "e284dca3cfedbab314f2bfe2d8f0559affa7da48f273e913bb8267da566019e2",
+        "status": "VERIFYING"
+      }
+    ],
+    "transport_exit": 0
+  },
+  "serial_merge": [
+    {
+      "ticket": "A",
+      "verify": "REVIEW"
+    },
+    {
+      "ticket": "B",
+      "verify": "REVIEW"
+    },
+    {
+      "ticket": "A",
+      "merge": "MERGED"
+    },
+    {
+      "ticket": "B",
+      "merge": "READY"
+    }
+  ],
+  "retry": {
+    "execution": "operator command; no model execution claimed",
+    "mode": "offline",
+    "requested_seat_model": "gpt-6-astra",
+    "results": [
+      {
+        "artifacts": [
+          {
+            "logical_path": "results/b/result.json",
+            "sha256": "e509fc78630ec0cc09c48892e37f0510192379b3f4c8ce452c25ce824caccbd2"
+          }
+        ],
+        "base_commit": "61e036656f4a48d2793d2743f4dc070d7bf5954e",
+        "candidate_commit": "4e396be9e9f897dc6e43b3488f0e8224cf56e30a",
+        "epoch": 2,
+        "id": "B",
+        "mesh": {
+          "candidate_commit": "4e396be9e9f897dc6e43b3488f0e8224cf56e30a",
+          "peer_ids": [
+            "critic",
+            "counterexample",
+            "reconciler"
+          ],
+          "protocol": "argo.mesh/1",
+          "rounds": 2,
+          "scope": "d3d41bd461d22870aa063e852aa02c71f35c93ae4cce2dea2c3ce2d980e399ee",
+          "status": "completed",
+          "trace_path": "/tmp/argo-mesh-demo/.board/mesh-traces/d3d41bd461d22870aa063e852aa02c71f35c93ae4cce2dea2c3ce2d980e399ee.jsonl",
+          "trace_sha256": "2483e8848607f3714d09ea0798cbbe296a48401fb1aacf1baea0e13bdf087331"
+        },
+        "spec_sha256": "e284dca3cfedbab314f2bfe2d8f0559affa7da48f273e913bb8267da566019e2",
+        "status": "VERIFYING"
+      }
+    ],
+    "transport_exit": 0
+  },
+  "dry_run": {
+    "board": "/tmp/argo-mesh-demo/.board/BOARD.md",
+    "message": "No lease acquired and no worker executed.",
+    "mode": "dry-run",
+    "requested_seat_model": "gpt-6-astra",
+    "transport_exit": 0
+  },
+  "final": [
+    {
+      "id": "A",
+      "status": "MERGED",
+      "attempt": 1,
+      "epoch": 1,
+      "base_commit": "f723cdc7f2dd482164dac62e86a70c664ceaf972",
+      "commit_sha": "61e036656f4a48d2793d2743f4dc070d7bf5954e",
+      "merged_commit": "61e036656f4a48d2793d2743f4dc070d7bf5954e"
+    },
+    {
+      "id": "B",
+      "status": "MERGED",
+      "attempt": 2,
+      "epoch": 2,
+      "base_commit": "61e036656f4a48d2793d2743f4dc070d7bf5954e",
+      "commit_sha": "4e396be9e9f897dc6e43b3488f0e8224cf56e30a",
+      "merged_commit": "4e396be9e9f897dc6e43b3488f0e8224cf56e30a"
+    }
+  ],
+  "final_head": "4e396be9e9f897dc6e43b3488f0e8224cf56e30a",
+  "audit_valid": true,
+  "trace_files": {
+    "trace-A-epoch1.jsonl": "ab292fdad6e88ce5ed027df077225b27110fa7f7aec8421e8e8bb7b5acc12677",
+    "trace-B-epoch1.jsonl": "511d9b813342100d5fcb298c6fdb2e586be82c513f89257ce1f7f6d523f1d3b9",
+    "trace-B-epoch2.jsonl": "2483e8848607f3714d09ea0798cbbe296a48401fb1aacf1baea0e13bdf087331"
+  }
+}

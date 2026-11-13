@@ -67,6 +67,12 @@ The five build-board tables are [defined in `tools/board.py`](tools/board.py):
 
 The gameplay `Snapshot` has `genesis`, `sequence`, `head`, `world_time`, `actors`, `items`, `claims`, `consents`, `grants`, `cutoffs`, `transfers`, `rng_counter` and `proposals`. Actor records include alive/time balance/age/Fate role/thread; items include custodian and destruction state. See [generated types](packages/contracts/src/generated.ts) and [mechanics](packages/ledger/src/mechanics.ts). These records are already enough to test custody, observations, gifts, grants and replay. They are not a complete geography, combat, inventory, economy or faction ruleset.
 
+## Concurrent build execution
+
+[MB-001](docs/mesh-builds/MB-001.md) adds an offline Mesh supervisor and a Pantheon CLI edge over the existing Python board. It runs 1–8 independent ticket attempts concurrently, each with one path-confined author and exactly three read-only peers exchanging bounded feedback rounds. Claims, leases, immutable candidates and CAS remain owned by the board. The dispatcher stops at VERIFYING; model agreement cannot merge code.
+
+The implementation adapts the scoped pattern from TELOS draft PR205 at a pinned commit. [Usage and limits](tools/MESH.md) include the disposable two-build example, cancellation semantics and stale-sibling rebuild rules. [Verification](docs/mesh-builds/verification.json) distinguishes native fixture checks, board staging acceptance and the separately trusted application controller. No paid provider was invoked. D09/W14 and operational provider/quota admission remain open; this does not make the future research/build DAG executable.
+
 ## What we are building toward
 
 A player observes only what their actor can know, declares intent, receives a deterministic ruling where rules/RNG apply, and sees consequences persist. Other actors and bounded background processes may act between sessions. A narrator presents the result; it cannot make prose into truth.

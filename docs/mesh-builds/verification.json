@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "ticket": "MB-001",
+  "protocol": "argo.mesh/1",
+  "baseline_commit": "8f6e5fafaf50755dc7a1dd1dba5c3107916e4008",
+  "upstream_source": "acc61c2abcf3611d2b3f7c7b03d59d493316f292",
+  "paid_model_calls": 0,
+  "files": {
+    "tools/mesh_dispatch.py": "b50a8bdabadc4a93053d3f1e3ed78b98af135e76e7b7cd4e58a702e724a2889b",
+    "tools/mesh_trace.py": "f6eaa1cf839b743bd0b6174a2d0166b8f519b1487f64bdfa094717fa90ff2782",
+    "tools/test_mesh_dispatch.py": "009a2393da099faacd14bd23831d03ea30e85c27c15e9923cb70b94a73521652",
+    "tools/test_mesh_trace.py": "91e0e7b265e0a2d6430f064e183f3a216443d69889dc57ebd096e1df9db8bd25",
+    "tools/MESH.md": "053195fa4d2e8a5420d48bc3db4d4c76607931b773e2a2e2eb5a1e29cae3f4dd",
+    "pantheon/src/board/blackboard-mesh.mjs": "0fb06a2ae6eb33dfdaf745996ba76b7124f6972060447696c1a36a82e4f9bc32",
+    "pantheon/bin/pantheon-mesh.mjs": "b0f2ada6147904a63c8c3682638dc3d53cea7b36479520a46ebaf0c82c6e1c9f",
+    "pantheon/tests/blackboard-mesh.test.mjs": "a35e6d950a9814dac8e9fd64ab91b22c0f15db1ecd9d4f1aa8f331ee6b60c471",
+    "docs/mesh-builds/demo.py": "e4f11ecbe4d32abdb46fa7e84017a5ca80aac6ddcc4f6249c9aa8aafc4434ec3",
+    "docs/mesh-builds/examples/author.py": "9fd84b768f6dd0e18b76fc031759ddcfdbd2acfa4ec3a350afb88d997191ff7b",
+    "docs/mesh-builds/examples/peer.py": "ff3f314bdcb7fb91027c7e3b1d50c5d08341878679644148b0ca34fc9fd4a6eb"
+  },
+  "checks": {
+    "python_mesh": {
+      "command": "python3 -m unittest discover -s tools -p 'test_mesh_*.py' -v",
+      "passed": 29,
+      "failed": 0,
+      "skipped": 0
+    },
+    "pantheon_mesh": {
+      "command": "node --test pantheon/tests/blackboard-mesh.test.mjs",
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0
+    },
+    "demo": {
+      "record": "demo-evidence.json",
+      "two_candidates": "VERIFYING",
+      "serial_merge": "A merged, stale B refused, fresh B epoch2 reverified and merged",
+      "authority": "local deterministic data gates; no application merge or model grading"
+    }
+  },
+  "logs": {
+    "python-focused.log": "34987a4faa392660d4476a514be68c5bbf42d5798b441bb5db516956fbb69e2f",
+    "pantheon-focused.log": "234d85da1799fab092094e4bd674ecdb78e73223cff5181ad24d643933c2bde1",
+    "peer-identity-red.log": "ee2a13444877db2d71e89d8a46dfe7603dbe79d41c9524143f4fea34cf1c410b",
+    "peer-identity-green.log": "4190264f57c0cbb32e1cc56c42ec9ff923810bd8b9f24d0bec33bc6c6fb73c02",
+    "pending-submit-red.log": "f2a9f448dfd71979008bede7e734b38eb859f7898dfa4a1308d27adc1842d163",
+    "repair-green.log": "7c73710c1647dc05f9bd39999efb02b7121c9b86bcac9a454a98a2daf467fb7c"
+  },
+  "reviews": {
+    "policy": "policy-review.json",
+    "product": "independent-review.json"
+  },
+  "application_acceptance": {
+    "status": "pending_external_controller"
+  },
+  "board": {
+    "status": "CLAIMED",
+    "scope": "staging_data_packet"
+  },
+  "limits": [
+    "Explicit offline local commands only; no authenticated provider broker or paid calls",
+    "Peers are advisory and do not rewrite the author candidate",
+    "One Board ownership domain; common lock excludes Mesh supervisors only",
+    "Graceful cancellation drains actual Board mutations; atomic submit may remain VERIFYING",
+    "Hard termination is failure requiring reconciliation; no arbitrary storage completion guarantee",
+    "Host traces are advisory, not accepted dependency CAS or external tamper anchors",
+    "D09/W14 generic application adapter remains open"
+  ]
+}

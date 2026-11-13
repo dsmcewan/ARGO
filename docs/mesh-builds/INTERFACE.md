@@ -6,7 +6,7 @@ Target: ARGO's Python blackboard, reached directly or through a new Pantheon edg
 
 New `tools/mesh_dispatch.py` exports frozen dataclasses `Peer(id: str, command: tuple[str,...])`, `MeshConfig(Config)` and `MeshDispatcher(Dispatcher)` plus `main(argv=None)`.
 
-Additional MeshConfig fields: `parallel=1` (integer1..8), `peers=()` (exactly3 distinct Peer commands for offline execution), `rounds=2` (integer2..8), `mesh_timeout=120` seconds (finite>0..300), `max_trace_writes=24` (integer6..96). Existing Config fields and limits remain; bool is not an integer limit. Dry-run needs no commands/peers and acquires no lease or execution lock. CLI retains existing dispatcher flags and adds `--parallel`, `--peer-commands-json` (array of exactly `{id,command}` records), `--mesh-rounds`, `--mesh-timeout`, `--max-trace-writes`. --once requires max_tickets1. No implicit model/provider lookup.
+Additional MeshConfig fields: `parallel=1` (integer1..8), `peers=()` (exactly3 distinct Peer IDs (commands may be identical) for offline execution), `rounds=2` (integer2..8), `mesh_timeout=120` seconds (finite>0..300), `max_trace_writes=24` (integer6..96). Existing Config fields and limits remain; bool is not an integer limit. Dry-run needs no commands/peers and acquires no lease or execution lock. CLI retains existing dispatcher flags and adds `--parallel`, `--peer-commands-json` (array of exactly `{id,command}` records), `--mesh-rounds`, `--mesh-timeout`, `--max-trace-writes`. --once requires max_tickets1. No implicit model/provider lookup.
 
 One Mesh supervisor holds a nonblocking flock in the Git common directory for its entire offline run, refusing a duplicate Mesh supervisor for linked worktrees/boards in the same repository. One Board remains the ownership domain. This does not claim to exclude legacy dispatchers or arbitrary external Git users; only one supervisor may drive integration. Maximum live worker groups is `3 * parallel`; authors and peer rounds do not overlap within one attempt. Each peer process may spawn children, so this is not a cgroup PID/RAM quota.
 
@@ -53,3 +53,15 @@ New `pantheon/src/board/blackboard-mesh.mjs` exports `runBlackboardMesh({repo,bo
 ## Acceptance
 
 New normal unittest files and named Pantheon tests; independent oracle before product integration. Prove native two-author overlap with a host barrier, isolated worktrees/paths/traces, complete feedback rounds, read-only peers, malformed/foreign/stale response refusal, process timeout/cancel cleanup, one-board path conflicts and finite bounds, parent embargo, exact CAS/commit binding, and actual serialized data-fixture merges including stale sibling fresh retry. Whole-control-policy additions independently reviewed and adopted before all ten controller gates. Application merges stay supervised; no generic D09 adapter is claimed.
+
+## Reviewed clarifications
+
+Peer IDs match `[A-Za-z][A-Za-z0-9_.-]{0,63}`; `mesh-supervisor` is reserved. The dispatcher binds each output to that process's exact protocol, binding, peer ID, round and read watermark before aggregate validation. Coordinated identity rotation is refused.
+
+Each committed trace is `{id,scope,round,peer_id,ordinal,type,payload,response_to,supersedes}`; ordinal begins at zero for each peer. IDs hash canonical `{scope,round,peer_id,ordinal}`. Canonical JSON uses sorted keys, compact separators, UTF-8 without ASCII escaping and no nonfinite numbers. A round record is `{kind:"round",protocol,binding,round,version,peer_ids,traces}`; a close record is `{kind:"close",protocol,binding,status,version}`. Invalid close enums have no effect; incomplete `completed` closes as failed and raises. Same-terminal close is idempotent; a different terminal close is refused.
+
+Cancellation retains every in-flight Board thread until its actual operation settles under the repository lock. Fenced heartbeat/failure-record refusals are diagnostics; unexpected late operation failures surface explicitly. Exact-token cleanup retries only unfinished CLAIMED tickets. An atomic submit can legitimately finish as VERIFYING during cancellation. There is no rollback claim.
+
+The Pantheon transport deadline is `maxTickets * (timeout + meshTimeout + 120) * 1000 + 60000` milliseconds, with 60 seconds of termination grace. That grace is not an upper-bound proof for arbitrary storage stalls. Forced termination is failed transport and requires inspection of the actual Board. Normal graceful termination drains descendants and Board mutations before releasing the lock.
+
+The trace store assumes a trusted host: inode/size preflights are not a cryptographic defense against same-inode, same-size host tampering. Peer sandboxes cannot access the trace store. Host-only traces are advisory and are not automatically promoted into dependency artifacts.

@@ -1,0 +1,20 @@
+Mesh refused: Execution requires the explicit --offline flag; config alone cannot enable it
+✔ blackboard mesh edge stays dry-run without explicit offline execution (34.225503ms)
+✔ blackboard mesh edge passes structured argv to the single Python supervisor (21.70794ms)
+✔ blackboard mesh edge validates bounded explicit peer and scheduling inputs before spawn (4.428691ms)
+✔ blackboard mesh edge keeps transport failure separate from application acceptance (3.315555ms)
+✔ blackboard mesh edge rejects overreported or duplicate attempt results (1.700537ms)
+✔ blackboard mesh cancellation has an explicit drain grace and whole-batch deadline (1.725054ms)
+✔ blackboard mesh CLI cannot enable offline work through a config file alone (460.896014ms)
+✔ blackboard mesh edge accepts a complete attempt binding without claiming acceptance (5.042321ms)
+✔ blackboard mesh edge derives scope from exact ticket epoch base candidate and spec (6.859428ms)
+✔ native blackboard Mesh edge AbortSignal drains a confined author and descendant before settlement (2087.391157ms)
+✔ native blackboard Mesh edge AbortSignal drains all confined peer groups and descendants before settlement (2682.005948ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5735.328984

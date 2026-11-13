@@ -144,6 +144,18 @@
         "RESEARCH/HEADLESS_FOUNDATION.md"
       ],
       "limit": "Local projection/query profile has executable guards and selectors; persistent storage, transactional projectors, delivery and migration remain unimplemented."
+    },
+    {
+      "id": "mesh-builds",
+      "status": "implemented_offline",
+      "capability": "Bounded concurrent blackboard attempts with three read-only peers, round-scoped traces and Pantheon CLI edge",
+      "evidence_paths": [
+        "tools/mesh_dispatch.py",
+        "tools/mesh_trace.py",
+        "pantheon/src/board/blackboard-mesh.mjs",
+        "docs/mesh-builds/verification.json"
+      ],
+      "limit": "Stops at VERIFYING; paid providers remain off; external application acceptance and operational quota admission remain separate."
     }
   ],
   "data_assets": [
@@ -660,7 +672,8 @@
     "Contract and shared-package ownership must be serialized even where design lanes are independent.",
     "Existing Tempted Fates actions suffice for projection tests; a new licensed ruleset is not their prerequisite.",
     "R06/R12/R13 block their specific remote receipt, authenticated import and rollback assurances, not all local projection exploration.",
-    "PC-001 is an opt-in local contract milestone; its acceptance does not close R06/R10/R12/R13, choose production storage/authentication, or implement W07/W14."
+    "PC-001 is an opt-in local contract milestone; its acceptance does not close R06/R10/R12/R13, choose production storage/authentication, or implement W07/W14.",
+    "MB-001 supplies concurrent offline execution; it does not close D09/W14 or authorize paid provider runs."
   ],
   "projection_profile": {
     "ticket": "PC-001",

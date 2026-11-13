@@ -26,6 +26,7 @@ LEXI/TELOS transports are injected and default to unavailable. Their determinist
 - [Consolidated status, CI timeline and architecture](STATUS_AND_ARCHITECTURE.md)
 - [Project brief](ARGO_BRIEF.md)
 - [RPG research and offline blackboard](RESEARCH/README.md)
+- [Concurrent Mesh builds through Pantheon](tools/MESH.md)
 - [Repository inventory](REPO_INVENTORY.md)
 - [Tempted Fates source](SCENARIOS/Tempted_Fates.md)
 - [Scenario requirements and canon boundary](repo-audit/SCENARIO_REQUIREMENTS.md)
