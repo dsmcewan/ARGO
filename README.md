@@ -21,6 +21,8 @@ LEXI/TELOS transports are injected and default to unavailable. Their determinist
 
 ## Start here
 
+- [Current system, target architecture, data and next dependencies](SYSTEM_ROADMAP.md)
+
 - [Consolidated status, CI timeline and architecture](STATUS_AND_ARCHITECTURE.md)
 - [Project brief](ARGO_BRIEF.md)
 - [RPG research and offline blackboard](RESEARCH/README.md)

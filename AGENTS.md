@@ -1,6 +1,6 @@
 # ARGO working instructions
 
-Read `README.md`, `ARGO_BRIEF.md`, `REPO_INVENTORY.md`, and `repo-audit/AUDIT_STATUS.json` before continuing. Use `STATUS_AND_ARCHITECTURE.md` for current status and `REPAIRS/RESOLUTIONS.md` for the active review repairs; `BUILD_PROGRESS.md` retains historical gates; `repo-audit/RESUME_AUDIT.md` preserves historical extraction instructions.
+Read `README.md`, `ARGO_BRIEF.md`, `REPO_INVENTORY.md`, and `repo-audit/AUDIT_STATUS.json` before continuing. Use `SYSTEM_ROADMAP.md` for the current-to-target system map, available data and next dependency gates; use `STATUS_AND_ARCHITECTURE.md` for current status and `REPAIRS/RESOLUTIONS.md` for the active review repairs; `BUILD_PROGRESS.md` retains historical gates; `repo-audit/RESUME_AUDIT.md` preserves historical extraction instructions.
 
 - Preserve the user's phase order: audit → contract freeze → harness patch → sequential foundation → parallel feature lanes.
 - Repository creation and archival are authorized. Their completion does not imply that any implementation phase passed.

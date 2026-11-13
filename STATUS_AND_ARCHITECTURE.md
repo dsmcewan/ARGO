@@ -4,6 +4,8 @@ Checked **2026-11-13** against Git history, GitHub Actions job logs and the impl
 
 **Current state:** the four-phase foundation and the offline build board are implemented and verified. Five starter research reports and an 11-ticket headless planning seed are saved. Paid vendor runs and live gameplay service deployment have not been performed or verified in this work. The proposed two-plane graph stores and general component bus remain unimplemented in this repository.
 
+For the consolidated present/target/data/build-dependency guide, read [SYSTEM_ROADMAP.md](SYSTEM_ROADMAP.md). It is planning documentation; the frozen contracts and historical evidence below retain their scope.
+
 ## Subsequent review and active repairs
 
 The review of `a9745e72e93d82c72e87f5159edd5c59f4c426c0` found two P1, eight P2 and six P3 issues that the earlier passing suites did not cover. [The original review](REPAIRS/REVIEW_2026-11-13.md) and [repair resolutions](REPAIRS/RESOLUTIONS.md) supersede any implication that the historical verification below establishes unattended-build readiness. All twelve contained findings have been repaired across five disjoint blackboard lanes and independently reviewed; the integrated code at `ff22632` passed all ten unified gate groups. Four versioned-contract/storage decisions remain held back; no paid vendor runs are authorized.

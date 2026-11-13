@@ -1,0 +1,624 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "eb2d4c57d409458d09bf27d4a70ebb067e8e7a8f",
+  "executable": false,
+  "paid_runs_authorized": false,
+  "current_components": [
+    {
+      "id": "contracts",
+      "status": "implemented_offline",
+      "capability": "36 frozen v1 definitions, generated TypeScript, canonical codec and disclosure guards",
+      "evidence_paths": [
+        "SYSTEMS/argo-v1.schema.json",
+        "SYSTEMS/CONTRACT_FREEZE.json",
+        "packages/contracts/src/index.ts"
+      ],
+      "limit": "A schema checks shape and required scope, not authenticated identity or entitlement."
+    },
+    {
+      "id": "authority-ledger",
+      "status": "implemented_offline",
+      "capability": "Signed causal/epistemic file journal, deterministic reducer/replay, writer lock/CAS, scoped grants and consent",
+      "evidence_paths": [
+        "packages/ledger/src/index.ts",
+        "packages/ledger/src/mechanics.ts"
+      ],
+      "limit": "Current rules are the Tempted Fates integration kernel; external history/receipt assurances still have four open decisions."
+    },
+    {
+      "id": "lexi-bridge",
+      "status": "mock_or_injected",
+      "capability": "Async scoped query and snapshot-based actor/party knowledge mock",
+      "evidence_paths": [
+        "packages/lexi-bridge/src/index.ts"
+      ],
+      "limit": "No persistent gameplay KG; no configured transport means UNAVAILABLE."
+    },
+    {
+      "id": "telos-bridge",
+      "status": "mock_or_injected",
+      "capability": "Async proposal submission and in-process authority delegation",
+      "evidence_paths": [
+        "packages/telos-bridge/src/index.ts"
+      ],
+      "limit": "No deployed gameplay endpoint; complete response binding is R06."
+    },
+    {
+      "id": "dm",
+      "status": "implemented_offline",
+      "capability": "Typed proposal builder, three narrator personas and refreshed cutoff-safe rendering",
+      "evidence_paths": [
+        "packages/argo-dm/src/index.ts"
+      ],
+      "limit": "Not a general natural-language intent parser, production gateway, session UI or voice stack."
+    },
+    {
+      "id": "autonomy",
+      "status": "implemented_offline",
+      "capability": "Bounded proposal subscriber and async-iterator runner",
+      "evidence_paths": [
+        "packages/interventions/src/index.ts"
+      ],
+      "limit": "No general event bus or persistent off-screen world simulator."
+    },
+    {
+      "id": "scenario",
+      "status": "implemented_offline",
+      "capability": "Independent Fates and deterministic Tempted Fates integration seed",
+      "evidence_paths": [
+        "scenarios/tempted-fates/index.ts",
+        "TESTS/tempted-fates.test.ts"
+      ],
+      "limit": "No automatic anomaly trigger or guaranteed quest; illustrative dialogue is not an event script."
+    },
+    {
+      "id": "model-client",
+      "status": "implemented_offline",
+      "capability": "Reusable vendor policy, budget/cooldown/failover and SDK adapters with public TypeScript types",
+      "evidence_paths": [
+        "packages/model-client/README.md",
+        "packages/model-client/client.mjs",
+        "packages/model-client/router.mjs"
+      ],
+      "limit": "Offline serialization and failure tests do not prove live provider access, price or quotas."
+    },
+    {
+      "id": "python-board",
+      "status": "implemented_offline",
+      "capability": "SQLite WAL, fenced leases, DAG/path locks, CAS, data gates and real Git integration",
+      "evidence_paths": [
+        "tools/board.py",
+        "tools/dispatch.py",
+        "tools/README.md"
+      ],
+      "limit": "Data-validator acceptance only; application/control-policy repairs need separate reviewed acceptance."
+    },
+    {
+      "id": "controller",
+      "status": "implemented_offline",
+      "capability": "Ten-group acceptance, trusted policy, read-only candidate staging and exact safe fast-forward",
+      "evidence_paths": [
+        "controller/README.md",
+        "controller/acceptance-policy.mjs",
+        "scripts/gate.mjs"
+      ],
+      "limit": "Entire Python tools control plane must be trusted before its in-process tests execute."
+    },
+    {
+      "id": "pantheon",
+      "status": "implemented_offline",
+      "capability": "Active JavaScript build harness and its own content-addressed board",
+      "evidence_paths": [
+        "pantheon/src/board/index.mjs",
+        "pantheon/src/board/cas.mjs",
+        "pantheon/src/board/runtime.mjs"
+      ],
+      "limit": "Separate from Python board and gameplay state; historical seat-core mirror is not the active client."
+    },
+    {
+      "id": "legacy-platforms",
+      "status": "historical_source",
+      "capability": "Pinned LEXI forensic and TELOS build-platform catalogs",
+      "evidence_paths": [
+        "REPO_INVENTORY.md",
+        "repo-audit/evidence/source-manifest.json"
+      ],
+      "limit": "Source catalogs are retained; source copies and private live databases are not included."
+    },
+    {
+      "id": "two-plane-graphs-and-bus",
+      "status": "not_implemented",
+      "capability": "Canonical/epistemic stores, common projection checkpoints and bounded component bus are target capabilities",
+      "evidence_paths": [
+        "RESEARCH/HEADLESS_FOUNDATION.md"
+      ],
+      "limit": "Storage engine, temporal contracts, delivery semantics and migration remain design work."
+    }
+  ],
+  "data_assets": [
+    {
+      "id": "audit-catalogs",
+      "availability": "tracked",
+      "description": "840 verified blob records and 525 module classifications across the original audit sources and supplied Pantheon folders",
+      "evidence_paths": [
+        "repo-audit/evidence/source-manifest.json",
+        "repo-audit/evidence/module-inventory.json",
+        "repo-audit/evidence/pantheon-source-manifest.json",
+        "repo-audit/evidence/pantheon-modules.json"
+      ],
+      "limit": "Pinned historical evidence; active ARGO/Pantheon implementation has later commits."
+    },
+    {
+      "id": "legacy-source-bundles",
+      "availability": "catalog_only",
+      "description": "LEXI 288 files; TELOS 137; claude-config 142, with tree indexes and per-file hashes",
+      "evidence_paths": [
+        "repo-audit/evidence/LEXI-tree.json",
+        "repo-audit/evidence/TELOS-tree.json",
+        "repo-audit/evidence/claude-config-tree.json"
+      ],
+      "limit": "Restore and verify the exact source bundle for refreshed extraction. Recorded tree IDs must not be relabeled as proven commit IDs."
+    },
+    {
+      "id": "lexi-interfaces",
+      "availability": "tracked",
+      "description": "170 route declarations;114 class declarations;104 direct BaseModel/SQLModel subclasses;25 SQLModel table declarations",
+      "evidence_paths": [
+        "repo-audit/evidence/lexi-routes.json",
+        "repo-audit/evidence/lexi-models.json",
+        "repo-audit/evidence/class-count-clarification.json"
+      ],
+      "limit": "Not live OpenAPI, a complete physical database inventory, or actor-scoped gameplay APIs."
+    },
+    {
+      "id": "scenario-source",
+      "availability": "tracked",
+      "description": "Supplied 17,573-byte Tempted Fates source with pinned digest",
+      "evidence_paths": [
+        "SCENARIOS/Tempted_Fates.md",
+        "repo-audit/evidence/tempted-fates-source.json",
+        "repo-audit/SCENARIO_REQUIREMENTS.md"
+      ],
+      "limit": "Supplied content is not a public redistribution grant or a complete world dataset."
+    },
+    {
+      "id": "gameplay-fixtures",
+      "availability": "fixture_only",
+      "description": "Synthetic genesis/actors/party/item and observation example; ephemeral test keys and fake transport/model replies",
+      "evidence_paths": [
+        "TESTS/fixtures.ts",
+        "SYSTEMS/examples/observe-claim.json",
+        "TESTS/ledger.test.ts",
+        "TESTS/boundary-repairs.test.ts"
+      ],
+      "limit": "Sufficient for offline substrate proofs, not a production campaign or consent corpus."
+    },
+    {
+      "id": "starter-research",
+      "availability": "tracked",
+      "description": "Five source-backed reports, JSON sidecars, local synthesis and future benchmarks",
+      "evidence_paths": [
+        "RESEARCH/manifest.json",
+        "RESEARCH/SYNTHESIS.md",
+        "RESEARCH/findings/04_open_rulesets.md"
+      ],
+      "limit": "Starter research only; no named vendor synthesis/architect pipeline ran and proposed benchmarks are not implemented tests."
+    },
+    {
+      "id": "rules-license-pack",
+      "availability": "missing_or_unverified",
+      "description": "Exact selected rule bytes, license attribution bundle and executable rule fixtures remain needed",
+      "evidence_paths": [
+        "RESEARCH/findings/04_open_rulesets.md"
+      ],
+      "limit": "Knave1e is provisional; edition/material boundaries and Year Zero applicability remain unresolved."
+    },
+    {
+      "id": "live-services-and-world-data",
+      "availability": "missing_or_unverified",
+      "description": "No deployed gameplay endpoints, populated gameplay graphs or production world/case corpus are established",
+      "evidence_paths": [
+        "STATUS_AND_ARCHITECTURE.md",
+        "RESEARCH/HEADLESS_FOUNDATION.md"
+      ],
+      "limit": "Deployment/auth/entitlements/consent operations and rights-scoped campaign content are future inputs."
+    },
+    {
+      "id": "verification-evidence",
+      "availability": "tracked",
+      "description": "Repair review, ten-group local gate, negative-controller probes and GitHub Actions CI identities",
+      "evidence_paths": [
+        "REPAIRS/acceptance/verification.json",
+        "REPAIRS/acceptance/review-record.json",
+        "scripts/gate.mjs"
+      ],
+      "limit": "Offline assurance only; historical suite totals are not a current unique-test census."
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D01",
+      "title": "Bind outcomes to authenticated scope and full proposals (R06)",
+      "status": "ready_for_design",
+      "owner": "authority + contracts",
+      "depends_on": [],
+      "deliverable": "Versioned receipt/verification ADR and v1 compatibility proposal.",
+      "acceptance": "Reject foreign scope/authority and different requests sharing ID, type, sequence and time; exact retries retain identity.",
+      "needed_inputs": "Authority trust/key-distribution model and transport envelope choice; distinguish outcome receipts from donor consent receipts."
+    },
+    {
+      "id": "D02",
+      "title": "Make identifier and canonical-map domains agree (R10)",
+      "status": "ready_for_design",
+      "owner": "contracts + authority",
+      "depends_on": [],
+      "deliverable": "Identifier-domain or map-encoding ADR, inventory of affected IDs and migration fixtures.",
+      "acceptance": "Every permitted ID round-trips and replays; unsafe IDs fail before mutation; no silent renaming of signed history.",
+      "needed_inputs": "Compatibility requirements for persisted v1 records and all proposed graph identifiers."
+    },
+    {
+      "id": "D03",
+      "title": "Authenticate genesis for standalone import/rebuild (R12)",
+      "status": "ready_for_design",
+      "owner": "authority + operations",
+      "depends_on": [],
+      "deliverable": "Versioned genesis commitment or authenticated import-manifest design.",
+      "acceptance": "Changing any initial actor/item/balance/party/clock/seed under an unchanged event head fails authenticated import.",
+      "needed_inputs": "Trust source for imported genesis; legacy-history anchoring and private seed handling."
+    },
+    {
+      "id": "D04",
+      "title": "Choose storage rollback and recovery assurance (R13)",
+      "status": "ready_for_design",
+      "owner": "operations + authority",
+      "depends_on": [],
+      "deliverable": "Explicit storage trust/restore ADR; independent monotonic-anchor protocol if that assurance is selected.",
+      "acceptance": "If selected, reject pre-revocation prefix/whole-directory rollback and conflicting heads; define checkpoint-unavailable and append/checkpoint crash behavior.",
+      "needed_inputs": "Threat model, backup/restore objectives, availability tradeoffs and independent checkpoint owner. Another file in the same rollback domain is insufficient."
+    },
+    {
+      "id": "D05",
+      "title": "Specify two-plane storage and temporal/query semantics",
+      "status": "ready_for_design",
+      "owner": "knowledge + contracts",
+      "depends_on": [],
+      "deliverable": "Storage ADR and v1-to-proposed temporal mapping: valid time, recorded sequence, acquisition and shared projection checkpoints.",
+      "acceptance": "Worked delayed/equal-tick/correction timelines have unambiguous answers; unscoped, foreign, future-acquired and mixed-prefix reads fail.",
+      "needed_inputs": "Target workload, store separation, transaction/cursor strategy, rebuild/recovery needs and pinned source delta evidence. SQLite is a candidate, not an established gameplay store."
+    },
+    {
+      "id": "D06",
+      "title": "Define expedition/session world-time and disclosure delivery",
+      "status": "ready_for_design",
+      "owner": "mechanics + session coordination",
+      "depends_on": [],
+      "deliverable": "Clock-driving, solo/raid checkpoint and delivery-to-epistemic-commit protocol.",
+      "acceptance": "Pause/retry/reorder/cancellation do not silently advance time, duplicate observations or merge private facts; each supported conflict mode has deterministic behavior.",
+      "needed_inputs": "Supported release modes, real-time cadence/catch-up policy, what counts as heard/observed and fork return policy if forks are selected."
+    },
+    {
+      "id": "D07",
+      "title": "Bind identity, rights and consent at live service boundaries",
+      "status": "ready_for_design",
+      "owner": "gateway + operations",
+      "depends_on": [],
+      "deliverable": "Authenticated principal/entitlement/consent-capture and revocation design.",
+      "acceptance": "Forged actor/tenant/right claims, cache crossover and narrator-made consent fail at runtime; disclosure is rechecked at delivery.",
+      "needed_inputs": "Identity provider, content entitlements, receipt provenance and key/custody operations. Mandatory JSON fields alone are not authentication."
+    },
+    {
+      "id": "D08",
+      "title": "Select a source-pinned licensed rules kernel",
+      "status": "ready_for_design",
+      "owner": "mechanics + content rights",
+      "depends_on": [],
+      "deliverable": "Edition-specific material/license/attribution decision and minimal ruleset scope.",
+      "acceptance": "Selected rule bytes and license are hashed and reviewed; executable examples reproduce rules; excluded setting/art/product material stays excluded.",
+      "needed_inputs": "Exact rule text and redistribution/adaptation terms; Knave1e remains provisional, with no Knave2e inheritance."
+    },
+    {
+      "id": "D09",
+      "title": "Connect application verification to board acceptance safely",
+      "status": "ready_for_design",
+      "owner": "build-control + controller",
+      "depends_on": [],
+      "deliverable": "Reviewed external gate/receipt protocol and a single owner of Git integration/recovery.",
+      "acceptance": "A worker cannot forge success; receipts bind exact candidate/tree/policy/base; timeout, stale base, crash/recovery and artifact handoff are deterministic.",
+      "needed_inputs": "Choose how board and separately trusted controller coordinate; do not execute arbitrary application imports inside the data-validator oracle."
+    },
+    {
+      "id": "D10",
+      "title": "Specify deterministic background simulation budgets",
+      "status": "ready_for_design",
+      "owner": "mechanics + autonomy",
+      "depends_on": [],
+      "deliverable": "Discrete tick, RNG slot, scheduling and resource-budget design.",
+      "acceptance": "Identical seed/events yield identical proposals/effects; rejected/empty proposals have no side effects; backlog and resource use are bounded.",
+      "needed_inputs": "Selected simulation granularity and budgets. Starter R3 cadence/caps are hypotheses, not measured production limits."
+    },
+    {
+      "id": "D11",
+      "title": "Define the first playable world and content provenance",
+      "status": "ready_for_design",
+      "owner": "product + content rights",
+      "depends_on": [],
+      "deliverable": "Playable scope/world-seed manifest and import policy.",
+      "acceptance": "Every entity/item/faction/source has explicit scope, origin and rights; imported material cannot grant authority or silently become canon.",
+      "needed_inputs": "Chosen world, session modes, ruleset and licensed/homebrew assets. The supplied scenario is an integration slice, not a populated general sandbox."
+    }
+  ],
+  "work_items": [
+    {
+      "id": "W01",
+      "title": "Refresh exact source/storage delta evidence",
+      "status": "ready_for_design",
+      "owner": "audit",
+      "depends_on": [],
+      "deliverable": "Verified source bundle references, API/table/edge/encryption/tenant and async capability-gap matrix.",
+      "acceptance": "Every reuse claim names a pinned file/symbol/hash; unavailable source remains explicit; no legacy database or repository mutation.",
+      "proposed_paths": [
+        "AUDIT/lexi/",
+        "AUDIT/telos/",
+        "AUDIT/pantheon/"
+      ]
+    },
+    {
+      "id": "W02",
+      "title": "Pin mechanics, license evidence and adversarial fixtures",
+      "status": "ready_for_design",
+      "owner": "research",
+      "depends_on": [],
+      "deliverable": "Evidence-backed timeline/rumor/tick/session examples, selected license/source bytes and benchmark fixtures.",
+      "acceptance": "Separate source claims from hypotheses; retain provenance and edition-specific grants; do not label proposals as executed benchmarks.",
+      "proposed_paths": [
+        "RESEARCH/findings/",
+        "RESEARCH/SYNTHESIS.md"
+      ]
+    },
+    {
+      "id": "W03",
+      "title": "Freeze reviewed projection/query contracts",
+      "status": "blocked",
+      "owner": "contracts",
+      "depends_on": [
+        "W01",
+        "D02",
+        "D05"
+      ],
+      "deliverable": "Versioned proposal/migration and negative fixtures for graph records, scoped queries, cursors and common checkpoints.",
+      "acceptance": "Schema conformance plus runtime negative tests reject foreign/unscoped/mixed-prefix/future-acquired views; v1 remains readable under explicit compatibility.",
+      "proposed_paths": [
+        "SYSTEMS/proposals/headless-v2/",
+        "packages/contracts/",
+        "TESTS/proposals/headless-v2/"
+      ]
+    },
+    {
+      "id": "W04",
+      "title": "Implement reviewed authority/history migrations",
+      "status": "blocked",
+      "owner": "authority",
+      "depends_on": [
+        "D01",
+        "D02",
+        "D03",
+        "D04"
+      ],
+      "deliverable": "Versioned receipt, identifier and authenticated-history changes; selected rollback protocol or explicit bounded trust model.",
+      "acceptance": "Cross-scope receipt and changed-genesis import fail; old histories retain defined replay; selected restore guarantees are tested before reliance.",
+      "proposed_paths": [
+        "packages/ledger/",
+        "packages/telos-bridge/",
+        "packages/contracts/"
+      ]
+    },
+    {
+      "id": "W05",
+      "title": "Build canonical Plane A projector",
+      "status": "blocked",
+      "owner": "canonical projection",
+      "depends_on": [
+        "W03"
+      ],
+      "deliverable": "Deterministic entity/edge/custody/clock projection with a durable prefix cursor.",
+      "acceptance": "Rebuild and incremental results match at every sampled prefix; direct agent writes are impossible through public APIs; crash/restart cannot advance cursor past durable state.",
+      "proposed_paths": [
+        "packages/kg/canonical/"
+      ]
+    },
+    {
+      "id": "W06",
+      "title": "Build epistemic Plane B and scoped reads",
+      "status": "blocked",
+      "owner": "knowledge",
+      "depends_on": [
+        "W03"
+      ],
+      "deliverable": "Actor-scoped claim/rumor/observation/provenance index and a projection-backed LEXI adapter.",
+      "acceptance": "Private-to-party, rights-lane and future-acquisition leakage fail; contradictory accounts coexist without replacing canon; replay preserves disclosure.",
+      "proposed_paths": [
+        "packages/kg/epistemic/",
+        "packages/lexi-bridge/"
+      ]
+    },
+    {
+      "id": "W07",
+      "title": "Prove shared-checkpoint replay at scale",
+      "status": "blocked",
+      "owner": "verification + projection integration",
+      "depends_on": [
+        "W05",
+        "W06"
+      ],
+      "deliverable": "Common-checkpoint integration and a seeded 10,000-event workload with retained failing traces.",
+      "acceptance": "Sampled-prefix rebuilds equal incremental state and both graph hashes; custody contention, rumors, disclosures and authorized clock jumps are covered.",
+      "proposed_paths": [
+        "packages/kg/checkpoints/",
+        "TESTS/projection/"
+      ]
+    },
+    {
+      "id": "W08",
+      "title": "Integrate the bounded component bus",
+      "status": "blocked",
+      "owner": "transport + authority",
+      "depends_on": [
+        "W07",
+        "W04",
+        "D06"
+      ],
+      "deliverable": "Versioned message delivery/acknowledgement, durable cursors and bounded retry/backpressure through the authority boundary.",
+      "acceptance": "Duplicate/reordered delivery, lag, cancellation and stale heads cannot double-apply actions or mix views; delivery uncertainty is reconciled by identity.",
+      "proposed_paths": [
+        "packages/bus/",
+        "packages/telos-bridge/"
+      ]
+    },
+    {
+      "id": "W09",
+      "title": "Add optional NPC and intervention loops",
+      "status": "blocked",
+      "owner": "autonomy",
+      "depends_on": [
+        "W08",
+        "D10"
+      ],
+      "deliverable": "Separate bounded principals consuming authorized views/triggers and submitting optional proposals.",
+      "acceptance": "No direct ledger/graph writes, forced quests, fabricated consent or hidden-roll disclosure; empty/rejected proposals leave canon unchanged.",
+      "proposed_paths": [
+        "packages/npcs/",
+        "packages/interventions/"
+      ]
+    },
+    {
+      "id": "W10",
+      "title": "Pass headless solo/raid and concurrency acceptance",
+      "status": "blocked",
+      "owner": "integration verification",
+      "depends_on": [
+        "W07",
+        "W08",
+        "W09",
+        "D06"
+      ],
+      "deliverable": "End-to-end headless checkpoints, explicit disclosures and failure/recovery workloads.",
+      "acceptance": "Race contention has deterministic results; solo secrets stay private; no zombie effects; seeded replay and Tempted Fates cutoff/jurisdiction tests remain green.",
+      "proposed_paths": [
+        "TESTS/headless/",
+        "scenarios/tempted-fates/"
+      ]
+    },
+    {
+      "id": "W11",
+      "title": "Provide authenticated services and operational recovery",
+      "status": "future",
+      "owner": "services + operations",
+      "depends_on": [
+        "W10",
+        "W04",
+        "D07",
+        "D04"
+      ],
+      "deliverable": "Real domain transports, principal/entitlement/consent enforcement, key operations, backups and selected restore guarantees.",
+      "acceptance": "Authenticated integration tests enforce scope and rights end-to-end; backup/restore drills meet the selected trust model; unavailable services fail closed.",
+      "proposed_paths": [
+        "packages/lexi-bridge/",
+        "packages/telos-bridge/",
+        "services/"
+      ]
+    },
+    {
+      "id": "W12",
+      "title": "Add the selected licensed ruleset adapter",
+      "status": "future",
+      "owner": "mechanics",
+      "depends_on": [
+        "W02",
+        "D08",
+        "W03"
+      ],
+      "deliverable": "Reviewed versioned ruleset extension/registry and source-pinned minimal kernel, retaining Tempted Fates compatibility.",
+      "acceptance": "Deterministic rule fixtures and replay pass; attribution is retained; no new fields or state model are invented outside contract review.",
+      "proposed_paths": [
+        "MECHANICS/proposals/",
+        "packages/rulesets/"
+      ]
+    },
+    {
+      "id": "W13",
+      "title": "Build player-facing session/narration then voice",
+      "status": "future",
+      "owner": "gateway + presentation",
+      "depends_on": [
+        "W10",
+        "W11",
+        "W12",
+        "W16"
+      ],
+      "deliverable": "Intent/session coordinator over rulings and scoped views; text interaction first, voice after turn/cancellation/disclosure semantics pass.",
+      "acceptance": "Prose cannot mutate truth; partial speech and interruptions cannot invent knowledge or consent; actor visibility and anomaly cutoffs survive live turns.",
+      "proposed_paths": [
+        "packages/argo-dm/",
+        "apps/"
+      ]
+    },
+    {
+      "id": "W14",
+      "title": "Implement the reviewed board application adapter",
+      "status": "blocked",
+      "owner": "build-control",
+      "depends_on": [
+        "D09"
+      ],
+      "deliverable": "External application verification/recovery integration, fresh immutable seed/policy and real handoff fixtures.",
+      "acceptance": "Altered/stale/forged receipts and early exits fail; crash/recovery yields one real merge and accepted CAS handoff; no self-grading.",
+      "proposed_paths": [
+        "tools/",
+        "controller/"
+      ]
+    },
+    {
+      "id": "W15",
+      "title": "Enable operational worker dispatch only after readiness",
+      "status": "future",
+      "owner": "build operations",
+      "depends_on": [
+        "W14",
+        "W01",
+        "W02",
+        "W03"
+      ],
+      "deliverable": "Reviewed semantic oracles and immutable dependency/path scopes; credential/capacity/cancellation policy for any future provider dispatch.",
+      "acceptance": "Audit/synthesis/architecture gates no longer return GATE_NOT_IMPLEMENTED; zombie/429/lease loss and quotas are tested; explicit paid-run authorization is separately required.",
+      "proposed_paths": [
+        "tools/",
+        "RESEARCH/tickets/"
+      ]
+    },
+    {
+      "id": "W16",
+      "title": "Prepare a rights-scoped playable world seed",
+      "status": "future",
+      "owner": "content + world bootstrap",
+      "depends_on": [
+        "D11",
+        "D07",
+        "W12",
+        "D03"
+      ],
+      "deliverable": "Validated, provenance-bearing world seed and content ingestion fixtures compatible with the chosen ruleset.",
+      "acceptance": "No private/licensed context bleed or imported privilege grants; seed identity and rights are verified; no mandatory storyline or automatic anomaly-farming trigger.",
+      "proposed_paths": [
+        "scenarios/",
+        "SYSTEMS/proposals/content-import/"
+      ]
+    }
+  ],
+  "notes": [
+    "Planning dependencies are acceptance prerequisites, not permission to start paid workers.",
+    "Decision and work-item statuses describe future work; ready_for_design is not ready_for_implementation.",
+    "Contract and shared-package ownership must be serialized even where design lanes are independent.",
+    "Existing Tempted Fates actions suffice for projection tests; a new licensed ruleset is not their prerequisite.",
+    "R06/R12/R13 block their specific remote receipt, authenticated import and rollback assurances, not all local projection exploration."
+  ]
+}
