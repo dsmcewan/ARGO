@@ -17,7 +17,7 @@
     },
     {
       "id": "projection-contracts",
-      "status": "pending_final_acceptance",
+      "status": "implemented_offline",
       "capability": "15 additive projection definitions, generated TypeScript, context-bound guards and pure actor/bitemporal selectors",
       "evidence_paths": [
         "SYSTEMS/proposals/headless-v2/CONTRACT.md",
@@ -262,13 +262,13 @@
     {
       "id": "D02",
       "title": "Make identifier and canonical-map domains agree (R10)",
-      "status": "ready_for_design",
+      "status": "partially_resolved_local_profile",
       "owner": "contracts + authority",
       "depends_on": [],
       "deliverable": "Identifier-domain or map-encoding ADR, inventory of affected IDs and migration fixtures.",
       "acceptance": "Every permitted ID round-trips and replays; unsafe IDs fail before mutation; no silent renaming of signed history.",
       "needed_inputs": "Compatibility requirements for persisted v1 records and all proposed graph identifiers.",
-      "local_profile_progress": "PC-001 defines sorted identifier entry arrays and temporal/query semantics for opt-in projection/2.0.0. Final acceptance is recorded separately.",
+      "local_profile_progress": "PC-001 accepted projection/2.0.0 after independent review and all ten controller checks: sorted identifier entry arrays and explicit temporal/scoped query semantics. Wider migration/storage decisions remain open.",
       "remaining": "Persisted v1 identifier migration and R10 remain open."
     },
     {
@@ -294,13 +294,13 @@
     {
       "id": "D05",
       "title": "Specify two-plane storage and temporal/query semantics",
-      "status": "ready_for_design",
+      "status": "partially_resolved_local_profile",
       "owner": "knowledge + contracts",
       "depends_on": [],
       "deliverable": "Storage ADR and v1-to-proposed temporal mapping: valid time, recorded sequence, acquisition and shared projection checkpoints.",
       "acceptance": "Worked delayed/equal-tick/correction timelines have unambiguous answers; unscoped, foreign, future-acquired and mixed-prefix reads fail.",
       "needed_inputs": "Target workload, store separation, transaction/cursor strategy, rebuild/recovery needs and pinned source delta evidence. SQLite is a candidate, not an established gameplay store.",
-      "local_profile_progress": "PC-001 defines sorted identifier entry arrays and temporal/query semantics for opt-in projection/2.0.0. Final acceptance is recorded separately.",
+      "local_profile_progress": "PC-001 accepted projection/2.0.0 after independent review and all ten controller checks: sorted identifier entry arrays and explicit temporal/scoped query semantics. Wider migration/storage decisions remain open.",
       "remaining": "Storage engine, row/cursor transactions, retained reads, common-checkpoint publication and recovery remain to be selected and implemented."
     },
     {
@@ -397,7 +397,7 @@
     {
       "id": "W03",
       "title": "Freeze reviewed projection/query contracts",
-      "status": "pending_final_acceptance",
+      "status": "completed_local_profile",
       "owner": "contracts",
       "depends_on": [
         "W01",
@@ -412,7 +412,8 @@
         "TESTS/projection-contracts.test.ts",
         "TESTS/projection-fixtures.ts"
       ],
-      "progress_record": "docs/projection-contracts/verification.json"
+      "progress_record": "docs/projection-contracts/verification.json",
+      "scope": "Opt-in local contracts over verified histories; does not claim broader source restoration, production providers or storage implementation."
     },
     {
       "id": "W04",
@@ -436,7 +437,7 @@
     {
       "id": "W05",
       "title": "Build canonical Plane A projector",
-      "status": "blocked",
+      "status": "ready_for_scaffolding",
       "owner": "canonical projection",
       "depends_on": [
         "W03"
@@ -446,12 +447,12 @@
       "proposed_paths": [
         "packages/kg/canonical/"
       ],
-      "next_step": "After PC-001 application acceptance, settle shared storage/cursor scaffolding under one owner, then create disjoint projector implementation tickets. No durable implementation exists yet."
+      "next_step": "Select shared local storage/cursor scaffolding under one owner, then create disjoint implementation tickets. Durable projector implementation has not started."
     },
     {
       "id": "W06",
       "title": "Build epistemic Plane B and scoped reads",
-      "status": "blocked",
+      "status": "ready_for_scaffolding",
       "owner": "knowledge",
       "depends_on": [
         "W03"
@@ -462,7 +463,7 @@
         "packages/kg/epistemic/",
         "packages/lexi-bridge/"
       ],
-      "next_step": "After PC-001 application acceptance, settle shared storage/cursor scaffolding under one owner, then create disjoint projector implementation tickets. No durable implementation exists yet."
+      "next_step": "Select shared local storage/cursor scaffolding under one owner, then create disjoint implementation tickets. Durable projector implementation has not started."
     },
     {
       "id": "W07",
@@ -655,7 +656,7 @@
   ],
   "notes": [
     "Planning dependencies are acceptance prerequisites, not permission to start paid workers.",
-    "Decision and work-item statuses describe future work; ready_for_design is not ready_for_implementation.",
+    "Statuses distinguish accepted local contracts from partial decisions and future work. ready_for_design/ready_for_scaffolding do not mean durable projectors are implemented.",
     "Contract and shared-package ownership must be serialized even where design lanes are independent.",
     "Existing Tempted Fates actions suffice for projection tests; a new licensed ruleset is not their prerequisite.",
     "R06/R12/R13 block their specific remote receipt, authenticated import and rollback assurances, not all local projection exploration.",
@@ -664,8 +665,9 @@
   "projection_profile": {
     "ticket": "PC-001",
     "profile": "projection/2.0.0",
-    "status": "pending_final_acceptance",
+    "status": "accepted_local_contract",
     "record": "docs/projection-contracts/verification.json",
-    "scope": "Local pure contracts/selectors only; no durable projectors, service, migration or paid runs."
+    "scope": "Local pure contracts/selectors only; no durable projectors, service, migration or paid runs.",
+    "application_accepted_commit": "140b644c0bb86f45141f23b7f00788aeae04e389"
   }
 }

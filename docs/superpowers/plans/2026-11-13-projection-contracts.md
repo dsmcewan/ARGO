@@ -57,9 +57,11 @@ Files: docs/projection-contracts verification/board records.
 - [x] Upload candidate-matching CAS outputs; submit, run the pinned data gate and merge only the isolated staging branch.
 - [x] Record actual board state without fabricated cross-vendor review or general application adapter claims.
 - [x] Promote the independently reviewed TESTS/script policy into a separate immutable trusted checkout. Preserve prior policy bytes.
-- [ ] Run all ten required checks through the actual trusted controller on the exact final candidate and integrate main only on success.
+- [x] Run all ten required checks through the actual trusted controller on the exact final candidate and integrate main only on success.
 - [ ] Push main non-forcing, verify remote identity and report CI honestly.
 
 ## Rulings and scope
 
 User continuation authorizes this next contract work from the previously reviewed design; no repeated design-approval question is necessary. The supervisor selects TypeScript/Ajv and conservative local DTO bounds, not a new storage vendor. Public v2 cutoff withholding is deliberately stricter than the v1 payload-plus-flags interface and must be documented/tested. Storage implementation and production D07/D06 providers remain later prerequisites. Use the user-requested blackboard and retained progress record as the execution ledger; do not replace them with hidden agent completion claims.
+
+Execution snapshot: local acceptance completed; publication is performed after this evidence commit is itself accepted. See the final remote commit and CI run for publication evidence.

@@ -1,6 +1,6 @@
 # ARGO system roadmap: present, target and the path between
 
-Baseline **`d32da3b16b9f463a9a094445ab92da9748ebc568`**, checked 2026-11-13. [Main CI passed](https://github.com/dsmcewan/ARGO/actions/runs/43479525034) for that exact commit. The additive PC-001 contract candidate and its separate acceptance evidence are tracked in [projection contracts](docs/projection-contracts/README.md). The [repair evidence](REPAIRS/acceptance/verification.json) records the integrated code at `ff22632`; later documentation does not change its runtime. Twelve review findings are repaired; four remain explicit design decisions.
+Baseline **`d32da3b16b9f463a9a094445ab92da9748ebc568`**, checked 2026-11-13. [Main CI passed](https://github.com/dsmcewan/ARGO/actions/runs/43479525034) for that exact commit. The additive PC-001 local contract profile passed all ten controller checks and main integration at `140b644`; its exact candidate/trust evidence is in [projection contracts](docs/projection-contracts/verification.json). The [repair evidence](REPAIRS/acceptance/verification.json) records the integrated code at `ff22632`; later documentation does not change its runtime. Twelve review findings are repaired; four remain explicit design decisions.
 
 **We have enough evidence to define the system and sequence the work. We do not yet have every decision, data asset or implemented service needed to deliver the target.** The current product is a verified offline foundation: signed authority, scoped knowledge mocks, deterministic rules and build tooling. The target is a persistent, multi-actor world with separate fact and belief projections, bounded off-screen activity, and reliable solo/party interaction.
 
@@ -137,7 +137,7 @@ What still has to be supplied or decided: verified source bundles for deeper reu
 
 ## Decisions before implementation
 
-`ready_for_design` means there is enough context to draft and review a decision. It does **not** mean that the decision is resolved, implementation is authorized, or missing inputs may be guessed. D02 and D05 now have a bounded local contract implementation in PC-001; their wider migration/storage decisions remain open. R06/R10/R12/R13 remain the four deferred repair findings.
+`ready_for_design` means there is enough context to draft and review a decision. It does **not** mean that the decision is resolved, implementation is authorized, or missing inputs may be guessed. D02 and D05 now have an accepted bounded local contract implementation in PC-001; their wider migration/storage decisions remain open. R06/R10/R12/R13 remain the four deferred repair findings.
 
 ### D01 — Bind outcomes to authenticated scope and full proposals (R06)
 
@@ -308,7 +308,7 @@ The [headless evidence packet](docs/design/headless-2026-11-13/README.md) is ret
 
 The bounded contract establishes full scope binding, explicit actor/party acquisition filters, common-prefix checks, bitemporal relation revision selection, current-cutoff withholding and safe identifier entry arrays. It preserves v1 bytes and query meanings. This resolves the local encoding/query portion of D02/D05; it does not repair v1 map handling, authenticate imported history or choose a persistent store.
 
-After PC-001 passes the full application controller, the next build is **shared projector storage and cursor scaffolding**, followed by W05/W06 under disjoint path leases. First settle the local storage choice, two physical planes, transactional row/cursor publication, source-event verification and retained read transactions. Then implement canonical and epistemic projections over verified existing histories. W07 follows with common-checkpoint recovery and the seeded 10,000-event rebuild/incremental proof. The existing Tempted Fates kernel is sufficient for these tests.
+PC-001 has passed the full application controller. The next build is **shared projector storage and cursor scaffolding**, followed by W05/W06 under disjoint path leases. First settle the local storage choice, two physical planes, transactional row/cursor publication, source-event verification and retained read transactions. Then implement canonical and epistemic projections over verified existing histories. W07 follows with common-checkpoint recovery and the seeded 10,000-event rebuild/incremental proof. The existing Tempted Fates kernel is sufficient for these tests.
 
 The independent authority/history work remains D01/D03/D04 and the v1 migration portion of D02. D06/D07 still own delivery ordering and authenticated current policy. A shape-valid context is not proof of identity, entitlement, freshness or rollback resistance. W11–W13/W16 retain their later operational/content prerequisites.
 
