@@ -283,13 +283,17 @@ class BoundsTests(unittest.IsolatedAsyncioTestCase):
             for name in ["a", "b", "c"]:
                 (root / "owned" / name).write_bytes(b"12345678")
             original_open = os.open
-            def bounded_open(path, *args, **kwargs):
-                if Path(path).name == "c":
-                    raise AssertionError("capture continued reading after its aggregate budget was exhausted")
-                return original_open(path, *args, **kwargs)
-            with patch.object(os, "open", bounded_open), self.assertRaises(dispatch.DispatchError):
+            opened = 0
+            def counted_open(path, *args, **kwargs):
+                nonlocal opened
+                fd = original_open(path, *args, **kwargs)
+                opened += 1
+                return fd
+            with patch.object(os, "open", counted_open), self.assertRaises(dispatch.DispatchError):
                 dispatch.collect_changes(root, [dispatch.OwnedPath("owned", True)], {},
                                          dispatch.Config(max_total_bytes=8, max_artifacts=1))
+            self.assertGreater(opened, 0, "capture must inspect an output before rejecting its aggregate size")
+            self.assertLessEqual(opened, 2, "capture must stop by the second new eight-byte file, regardless of traversal order")
 
     def test_empty_directories_are_bounded_during_output_traversal(self):
         with tempfile.TemporaryDirectory() as temporary:
