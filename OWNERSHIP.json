@@ -102,12 +102,12 @@
   ],
   "rules": [
     "Each worker uses an isolated Git worktree and branch",
-    "No simultaneous ownership of a path",
+    "No simultaneous active claims on overlapping paths",
     "Workers receive bridge interfaces, never ledger keys or writer handles",
     "Controller serializes merges of the exact tested candidate",
     "Schema changes cannot be resolved by inventing a lane-local state model"
   ],
-  "ownership_semantics": "Component maintenance and review responsibility, not an executable scheduling ACL. The board enforces each immutable ticket owned_paths and active prefix locks.",
+  "ownership_semantics": "Component maintenance and review responsibility, not an executable scheduling ACL. The board enforces each immutable ticket owned_paths and active prefix locks. Lane membership grants no merge approval or gameplay authority. Unlisted paths require explicit supervisor ticket assignment. Dispatcher filesystem confinement applies only when that dispatcher is used.",
   "ticket_scope_policy": "The operator reviews each immutable seed. A ticket may span maintenance owners (for example T-301 proposals under SYSTEMS, MECHANICS and TESTS); affected owners review the change. This does not bypass active path locks or frozen-contract gates.",
   "path_exemptions": [
     {
