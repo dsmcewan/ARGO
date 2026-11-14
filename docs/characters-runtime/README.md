@@ -4,6 +4,8 @@ This implements the available [owner intent](../design-intent/characters-and-nar
 
 Each observer owns their interpretation of a witnessed act. That interpretation records the observer's nature revision and evidence; it never becomes a property on the traveler or a canonical fact. Characters retain their current activity, can decline to reply, and have explicit speech budgets and intervals. The narrator reads an authorized traveler record through a separate capability and has no gameplay identity or writer.
 
+NPC dialogue remains an integration seam: `createCharacterAgent` receives injected `interpret` and `speak` functions, with no supplied production model adapter or dialogue-template engine. The speech callback receives the actor's scoped view and the incoming addressed record, then returns free-form text or silence. Fixed replies in tests are fixtures, not tested conversational quality. There is no explicit per-turn communicative-intent field; campaign `wants`, `will_not` and `speech_example` fields are not automatically included in runtime profiles. The narrator's model adapter generates world-external prose and does not provide NPC replies. See the [current release scope](../releases/2026-11-14-rpg-foundation.md) for the remaining context integration.
+
 ## Components
 
 | Package entry point | Capability | Inputs the host must supply |

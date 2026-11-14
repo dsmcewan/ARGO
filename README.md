@@ -21,6 +21,9 @@ LEXI/TELOS transports are injected and default to unavailable. Their determinist
 
 ## Start here
 
+- [Character runtime, Tempting Fates campaign and mortal RPG release scope](docs/releases/2026-11-14-rpg-foundation.md)
+- [Playable Tempting Fates campaign kit](CAMPAIGNS/Tempting_Fates/README.md)
+- [Authoritative mortal rules and measured balance](docs/rpg-phase2/README.md)
 - [Current system, target architecture, data and next dependencies](SYSTEM_ROADMAP.md)
 
 - [Consolidated status, CI timeline and architecture](STATUS_AND_ARCHITECTURE.md)
