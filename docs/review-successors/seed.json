@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "tickets": [
+    {
+      "id": "DR-201",
+      "wave": 1,
+      "lane": "encounters",
+      "title": "Scoped mortal-v3 encounters and referee recovery",
+      "seat_model": "gpt-6-astra",
+      "reviewer_model": null,
+      "owned_paths": [
+        "SYSTEMS/mortal-v3/",
+        "packages/contracts/src/mortal-v3.ts",
+        "packages/contracts/src/mortal-v3-types.ts",
+        "packages/ledger/src/mortal-v3/",
+        "TESTS/mortal-v3-contracts.test.ts",
+        "TESTS/mortal-v3-rules.test.ts",
+        "TESTS/mortal-v3-storage.test.ts",
+        "TESTS/mortal-v3-helpers.ts"
+      ],
+      "gate_cmd": [
+        "python3",
+        "-c",
+        "raise SystemExit('Application acceptance remains external to data-only Board policy')"
+      ],
+      "spec_path": "docs/review-successors/tickets/DR-201.md",
+      "depends_on": [],
+      "max_attempts": 3
+    },
+    {
+      "id": "DR-211",
+      "wave": 1,
+      "lane": "knowledge",
+      "title": "Curated authored actor knowledge and dialogue extension",
+      "seat_model": "gpt-6-astra",
+      "reviewer_model": null,
+      "owned_paths": [
+        "SYSTEMS/dialogue-knowledge-v1/",
+        "packages/contracts/src/dialogue-knowledge.ts",
+        "packages/contracts/src/dialogue-knowledge-types.ts",
+        "scenarios/tempted-fates/campaign/knowledge/",
+        "packages/interventions/src/dialogue-types.ts",
+        "packages/interventions/src/dialogue-context.ts",
+        "TESTS/campaign-knowledge.test.ts",
+        "TESTS/dialogue-knowledge.test.ts"
+      ],
+      "gate_cmd": [
+        "python3",
+        "-c",
+        "raise SystemExit('Application acceptance remains external to data-only Board policy')"
+      ],
+      "spec_path": "docs/review-successors/tickets/DR-211.md",
+      "depends_on": [],
+      "max_attempts": 3
+    },
+    {
+      "id": "DR-221",
+      "wave": 1,
+      "lane": "observations",
+      "title": "Restrict new legacy observation admission",
+      "seat_model": "gpt-6-astra",
+      "reviewer_model": null,
+      "owned_paths": [
+        "SYSTEMS/observation-admission-v1/",
+        "packages/contracts/src/observation-admission.ts",
+        "packages/ledger/src/observation-admission.ts",
+        "packages/ledger/src/index.ts",
+        "TESTS/observation-admission.test.ts"
+      ],
+      "gate_cmd": [
+        "python3",
+        "-c",
+        "raise SystemExit('Application acceptance remains external to data-only Board policy')"
+      ],
+      "spec_path": "docs/review-successors/tickets/DR-221.md",
+      "depends_on": [],
+      "max_attempts": 3
+    }
+  ]
+}
