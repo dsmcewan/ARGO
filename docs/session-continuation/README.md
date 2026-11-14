@@ -1,8 +1,8 @@
 # Startup and durable conversation
 
-This continuation builds on the fresh shared-world profile. The startup optimization and durable conversation host have passed their separate source reviews. The explicit offline CLI and final integrated application acceptance are still in progress. No paid calls or deployment are enabled.
+This continuation builds on the fresh shared-world profile. The startup optimization, durable conversation host, explicit offline CLI and bounded gate repair have passed their separate source reviews. The complete integrated application gate is running on `fe172914c8b937b189f407d161b2ff71e0cdc531`; application acceptance remains pending. No paid calls or deployment are enabled.
 
-[Startup measurements](COLD_RESULTS.md) · [Turn contract](TURN_CONTRACT.md) · [Host source acceptance](SC-620_ACCEPTANCE.md) · [Implementation plan](PLAN.md) · [Checkpoint proposal](CHECKPOINT_BOOT_PROPOSAL.md)
+[Startup measurements](COLD_RESULTS.md) · [Turn contract](TURN_CONTRACT.md) · [Host source acceptance](SC-620_ACCEPTANCE.md) · [CLI source acceptance](SC-630_ACCEPTANCE.md) · [Gate budget](GATE_BUDGET.md) · [Implementation plan](PLAN.md) · [Checkpoint proposal](CHECKPOINT_BOOT_PROPOSAL.md)
 
 ## State and recovery
 
@@ -23,6 +23,6 @@ The cold source `c4654d5` preserves existing state and signed-event hashes. At t
 
 The host source `0458268` has separate ordinary-process store and driver reviews. [Retained evidence](evidence/) preserves original failures, repairs, harness corrections and immutable source identities. Here independent review means another native Codex peer, not a person or different vendor. These are bounded verification results, not proof against arbitrary malicious code.
 
-The actual source Board records remain distinct from application acceptance. SC-610 is VERIFYING; SC-620's manifest change was refused by protected policy, its one-attempt lease was retired through the public API, and its actual state is FAILED. CAS artifacts and independent source acceptance are retained; no Board MERGED state or controller trust promotion is fabricated.
+The actual source Board records remain distinct from application acceptance. SC-610 and SC-630 are VERIFYING. SC-620's manifest change and SC-640's gate changes were refused by protected policy; their one-attempt leases were retired through the public API, and their actual states are FAILED. CAS artifacts and independent source acceptance are retained; no Board MERGED state or controller trust promotion is fabricated.
 
 Checkpoint boot remains a proposal requiring a new storage/trust contract. Current boot still verifies every event. Archiving alone cannot shrink the state's full memory history or supply an external rollback anchor. Fate/lifespan ports, historical-world migration, a general graph store/component bus, autonomous background play, UI/voice and live dialogue evaluation remain separate work.

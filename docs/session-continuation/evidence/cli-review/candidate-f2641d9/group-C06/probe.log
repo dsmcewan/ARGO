@@ -1,0 +1,2 @@
+PASS C06 restart retry cancellation and status do not replace durable intent
+{"passed":1,"failed":0}

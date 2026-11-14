@@ -1,0 +1,225 @@
+{
+  "candidate": "f2641d92f5f07bc69b672ee6f6c3a189ee5f46cc",
+  "verdict": "READY",
+  "scope": "Independent SC-630 offline CLI source/authority/compatibility review, not full application-gate acceptance",
+  "planned_areas_verified": 12,
+  "planned_area_results": [
+    {
+      "id": "C01",
+      "name": "ordinary exclusive creation/open and private canonical path",
+      "status": "pass",
+      "elapsed_ms": 50912.034477,
+      "details": {
+        "exclusive_create": true,
+        "missing_open_did_not_create": true,
+        "canonical_path": "WORLD/turns.sqlite",
+        "private_files": 5
+      }
+    },
+    {
+      "id": "C02",
+      "name": "complete fixture binding and private path refusal preserve logical stores",
+      "status": "pass",
+      "elapsed_ms": 81990.99186100002,
+      "details": {
+        "refusal_cases": 16,
+        "canonical_format_only_reopen": true,
+        "logical_stores_unchanged": true
+      }
+    },
+    {
+      "id": "C03",
+      "name": "closed fixture caps and malformed bytes reject before outbox creation",
+      "status": "pass",
+      "elapsed_ms": 44345.672051,
+      "details": {
+        "negative_fixtures": 16,
+        "top_level_error_labeled": true,
+        "legal_256_turn_cap": true,
+        "actor_caps_exact": true
+      }
+    },
+    {
+      "id": "C04",
+      "name": "known-ID exact-input preflight refuses without any dispatch",
+      "status": "pass",
+      "elapsed_ms": 16028.511692,
+      "details": {
+        "refusals": 8,
+        "known_absent_read": null,
+        "world_and_outbox_unchanged": true
+      }
+    },
+    {
+      "id": "C05",
+      "name": "ordinary exact responses and same-text distinct immutable selection",
+      "status": "pass",
+      "elapsed_ms": 12289.447092999999,
+      "details": {
+        "events": 7,
+        "turns": 4,
+        "exact_whitespace_unicode": true,
+        "distinct_same_text_replies": true,
+        "null_response": "no_reply"
+      }
+    },
+    {
+      "id": "C06",
+      "name": "restart retry cancellation and status do not replace durable intent",
+      "status": "pass",
+      "elapsed_ms": 15941.192928,
+      "details": {
+        "stable_delivery_id": true,
+        "stable_receipts": true,
+        "stable_retry_revision": true,
+        "cancellation_suppresses_existing_delivery": true
+      }
+    },
+    {
+      "id": "C07",
+      "name": "actual signed replay confirms speak-only effects and fixed context success",
+      "status": "pass",
+      "elapsed_ms": 3816.940503,
+      "details": {
+        "signed_events": 7,
+        "full_replay_equal": true,
+        "physical_unchanged": true,
+        "offers": 0,
+        "loans": 0,
+        "draws": 0,
+        "context_validation": "actual fixed adapter succeeded; hostile packet paths inspected statically because fixtureReply is private"
+      }
+    },
+    {
+      "id": "C08",
+      "name": "real current PLAYER disclosure suppresses committed text after eviction and closure",
+      "status": "pass",
+      "elapsed_ms": 44223.084587,
+      "details": {
+        "evicting_real_events": 33,
+        "eviction_reads": 3,
+        "closure_reads": 3,
+        "receipts_preserved": true,
+        "current_player_positive_control": true
+      }
+    },
+    {
+      "id": "C09",
+      "name": "held/rejected/numeric sinks stop further admission and close real resources",
+      "status": "pass",
+      "elapsed_ms": 48497.692299,
+      "details": {
+        "held_input_not_advanced": true,
+        "failed_sink_cases": 8,
+        "recursive_sink_calls": 0,
+        "numeric_sink": true,
+        "init_awaited": true,
+        "reopen_after_failure": true
+      }
+    },
+    {
+      "id": "C10",
+      "name": "public writer applies complete 16 MiB bound and callback backpressure",
+      "status": "pass",
+      "elapsed_ms": 430.2663389999998,
+      "details": {
+        "callback_awaited": true,
+        "complete_encoded_bytes": 16777216,
+        "one_extra_byte_refused": true,
+        "escaping_wrapper_newline_included": true,
+        "broken_write_rejected": true,
+        "hostile_getter_calls": 0
+      }
+    },
+    {
+      "id": "C11F",
+      "name": "observed same-ID conflict reconciles exact committed turn; distinct processes remain isolated",
+      "status": "pass",
+      "elapsed_ms": 25639.971064999998,
+      "details": {
+        "original_successes": 1,
+        "original_honest_conflicts": 1,
+        "original_events": 2,
+        "original_turns": 1,
+        "reconciled_reads": 3,
+        "logical_state_unchanged_by_exact_retry": true,
+        "attempt_unchanged": true,
+        "distinct_processes": 2,
+        "distinct_conflicts": 1,
+        "all_signed_replay_equal": true,
+        "cross_turn_response_mix": false,
+        "limit": "Concurrent pre-CAS context can return CONFLICT; no all-callers-success availability claim."
+      }
+    },
+    {
+      "id": "C12",
+      "name": "ordinary legacy operations and seven-event demo retain behavior",
+      "status": "pass",
+      "elapsed_ms": 41414.39645,
+      "details": {
+        "legacy_query_view_prepare_submit": true,
+        "referee_query_refused": true,
+        "demo_events": 7,
+        "demo_replay": true
+      }
+    }
+  ],
+  "supplemental_controls": [
+    {
+      "name": "C06P actual accepted-row status stays non-driving and cancellation wins before dispatch",
+      "status": "pass",
+      "details": {
+        "status_phase": "accepted",
+        "status_revision": 0,
+        "unchanged_row": true,
+        "committed_events": 0,
+        "provider_calls": 0,
+        "cancel_prevents_saved_input": true
+      }
+    },
+    {
+      "candidate": "f2641d92f5f07bc69b672ee6f6c3a189ee5f46cc",
+      "name": "C10P retained actual executable stdout-failure evidence with correct Node error formatting",
+      "status": "pass",
+      "original_execution_preserved": true,
+      "original_failed_assertion": "Error name formatting only: Node prints OutputFailure [Error], not OutputFailure:",
+      "child_exit_code": 1,
+      "child_exit_evidence": "Original probe asserted code===1 immediately before the retained failing formatting assertion.",
+      "stdout_bytes": 0,
+      "ordinary_process": true,
+      "injected_fault": "stdout is a read-only private regular-file descriptor (EBADF)",
+      "turns": 1,
+      "world_events": 2,
+      "second_input_not_admitted": true,
+      "signed_replay_equal": true,
+      "no_reply_or_private_key_in_stderr": true,
+      "stderr_sha256": "0c58e086385aff0b2dda920a0dfbcf084bec301d2079a1f316d182914ddf8dfa",
+      "fresh_child_not_reexecuted": true
+    }
+  ],
+  "blocking_findings": [],
+  "preserved_initial_outcomes": [
+    {
+      "artifact": "run.json",
+      "outcome": "180-second aggregate launcher timeout after C01/C02 passed; no assertion failure. Subsequent group selection preserves all twelve bodies and all original deadlines."
+    },
+    {
+      "artifact": "group-C11/results.json",
+      "outcome": "Failed expectation that both simultaneous callers exit 0. One safe pre-CAS CONFLICT; unchanged intent/attempt/receipts/dedup established in concurrency-reconciliation/results.json."
+    },
+    {
+      "artifact": "pending-and-stdout/results.json",
+      "outcome": "C10P expected OutputFailure: but Node printed OutputFailure [Error]:. Retained OS-fault stdout/world artifacts checked separately without reexecuting the child."
+    }
+  ],
+  "no_source_changes": true,
+  "paid_calls": 0,
+  "source_status_after": "clean",
+  "limits": [
+    "No native gate or full application acceptance claimed.",
+    "No arbitrary injected context packet execution through private fixtureReply; its hostile binding branches were inspected statically and real focused context exercised end-to-end.",
+    "No all-concurrent-callers-success availability guarantee; labeled stale-cursor conflicts remain possible.",
+    "Trusted-local filesystem/sidecar rollback limits unchanged.",
+    "No live provider/model quality/performance evidence."
+  ]
+}

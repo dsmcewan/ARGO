@@ -1,0 +1,2 @@
+PASS C08 real current PLAYER disclosure suppresses committed text after eviction and closure
+{"passed":1,"failed":0}

@@ -1,0 +1,23 @@
+{
+  "candidate": "f2641d92f5f07bc69b672ee6f6c3a189ee5f46cc",
+  "ordinary_process": true,
+  "paid_calls": 0,
+  "checks": [
+    {
+      "id": "C10",
+      "name": "public writer applies complete 16 MiB bound and callback backpressure",
+      "status": "pass",
+      "elapsed_ms": 430.2663389999998,
+      "details": {
+        "callback_awaited": true,
+        "complete_encoded_bytes": 16777216,
+        "one_extra_byte_refused": true,
+        "escaping_wrapper_newline_included": true,
+        "broken_write_rejected": true,
+        "hostile_getter_calls": 0
+      }
+    }
+  ],
+  "passed": 1,
+  "failed": 0
+}

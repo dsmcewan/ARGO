@@ -1,0 +1,102 @@
+[
+  {
+    "group": "C03",
+    "candidate": "f2641d92f5f07bc69b672ee6f6c3a189ee5f46cc",
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 47.40657884000393,
+    "ordinary_process": true,
+    "deadline_seconds": 180,
+    "source_after": "clean unchanged"
+  },
+  {
+    "group": "C04",
+    "candidate": "f2641d92f5f07bc69b672ee6f6c3a189ee5f46cc",
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 19.09886633399583,
+    "ordinary_process": true,
+    "deadline_seconds": 180,
+    "source_after": "clean unchanged"
+  },
+  {
+    "group": "C05",
+    "candidate": "f2641d92f5f07bc69b672ee6f6c3a189ee5f46cc",
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 14.918989986996166,
+    "ordinary_process": true,
+    "deadline_seconds": 180,
+    "source_after": "clean unchanged"
+  },
+  {
+    "group": "C06",
+    "candidate": "f2641d92f5f07bc69b672ee6f6c3a189ee5f46cc",
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 19.203344013003516,
+    "ordinary_process": true,
+    "deadline_seconds": 180,
+    "source_after": "clean unchanged"
+  },
+  {
+    "group": "C07",
+    "candidate": "f2641d92f5f07bc69b672ee6f6c3a189ee5f46cc",
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 7.271627670008456,
+    "ordinary_process": true,
+    "deadline_seconds": 180,
+    "source_after": "clean unchanged"
+  },
+  {
+    "group": "C08",
+    "candidate": "f2641d92f5f07bc69b672ee6f6c3a189ee5f46cc",
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 47.79321800499747,
+    "ordinary_process": true,
+    "deadline_seconds": 180,
+    "source_after": "clean unchanged"
+  },
+  {
+    "group": "C09",
+    "candidate": "f2641d92f5f07bc69b672ee6f6c3a189ee5f46cc",
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 51.2896793569962,
+    "ordinary_process": true,
+    "deadline_seconds": 180,
+    "source_after": "clean unchanged"
+  },
+  {
+    "group": "C10",
+    "candidate": "f2641d92f5f07bc69b672ee6f6c3a189ee5f46cc",
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 3.714079360011965,
+    "ordinary_process": true,
+    "deadline_seconds": 180,
+    "source_after": "clean unchanged"
+  },
+  {
+    "group": "C11",
+    "candidate": "f2641d92f5f07bc69b672ee6f6c3a189ee5f46cc",
+    "exit_code": 1,
+    "timed_out": false,
+    "elapsed_seconds": 18.756373736003297,
+    "ordinary_process": true,
+    "deadline_seconds": 180,
+    "source_after": "clean unchanged"
+  },
+  {
+    "group": "C12",
+    "candidate": "f2641d92f5f07bc69b672ee6f6c3a189ee5f46cc",
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 44.716236552994815,
+    "ordinary_process": true,
+    "deadline_seconds": 180,
+    "source_after": "clean unchanged"
+  }
+]

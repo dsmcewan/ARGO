@@ -1,0 +1,2 @@
+PASS C03 closed fixture caps and malformed bytes reject before outbox creation
+{"passed":1,"failed":0}

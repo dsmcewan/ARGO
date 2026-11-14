@@ -1,0 +1,81 @@
+{
+  "restart_process_a": [
+    {
+      "op": "talk",
+      "turn_id": "same_a",
+      "text": "May I borrow your lamp?"
+    }
+  ],
+  "restart_process_b": [
+    {
+      "op": "talk",
+      "turn_id": "same_a",
+      "text": "May I borrow your lamp?"
+    },
+    {
+      "op": "status",
+      "turn_id": "same_a"
+    },
+    {
+      "op": "continue",
+      "turn_id": "same_a"
+    }
+  ],
+  "distinct_selection": [
+    {
+      "op": "talk",
+      "turn_id": "same_b",
+      "text": "May I borrow your lamp?"
+    },
+    {
+      "op": "talk",
+      "turn_id": "exact",
+      "text": "  Keep my exact words: \u00e9 e\u0301 \ud83d\ude42\nplease.  "
+    },
+    {
+      "op": "talk",
+      "turn_id": "silent",
+      "text": "I will wait for your answer."
+    }
+  ],
+  "precheck_refusals": [
+    {
+      "op": "talk",
+      "turn_id": "unknown",
+      "text": "May I borrow your lamp?"
+    },
+    {
+      "op": "talk",
+      "turn_id": "same_a",
+      "text": "May I borrow your lamp? "
+    },
+    {
+      "op": "continue",
+      "turn_id": "unknown"
+    },
+    {
+      "op": "status",
+      "turn_id": "unknown"
+    },
+    {
+      "op": "cancel",
+      "turn_id": "unknown"
+    },
+    {
+      "op": "talk",
+      "turn_id": "fresh",
+      "text": "This is a separate known turn.",
+      "actor_id": "melia"
+    }
+  ],
+  "cancelled_known": [
+    {
+      "op": "cancel",
+      "turn_id": "cancelled"
+    },
+    {
+      "op": "status",
+      "turn_id": "cancelled"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "candidate": "f2641d92f5f07bc69b672ee6f6c3a189ee5f46cc",
+  "ordinary_process": true,
+  "paid_calls": 0,
+  "checks": [
+    {
+      "id": "C06",
+      "name": "restart retry cancellation and status do not replace durable intent",
+      "status": "pass",
+      "elapsed_ms": 15941.192928,
+      "details": {
+        "stable_delivery_id": true,
+        "stable_receipts": true,
+        "stable_retry_revision": true,
+        "cancellation_suppresses_existing_delivery": true
+      }
+    }
+  ],
+  "passed": 1,
+  "failed": 0
+}

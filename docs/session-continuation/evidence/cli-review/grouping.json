@@ -1,0 +1,9 @@
+{
+  "reason": "Original aggregate run reached 180s after C01/C02 passed; segment unchanged check bodies to separate cumulative startup cost.",
+  "original_sha256": "93096da8b2e51e759d8d7187ca4cb5a6ceec92e5fb8d22377a9bce7b59558140",
+  "grouped_sha256": "29ba59aa6e4b2e17ed3dd56bc54b0087cd0298332ccddd617a6f05bf46c2b16b",
+  "all_twelve_check_bodies_verbatim_unchanged": true,
+  "ordinary_child_deadline_seconds": 45,
+  "host_generation_deadline_ms": 10000,
+  "external_group_deadline_seconds": 180
+}

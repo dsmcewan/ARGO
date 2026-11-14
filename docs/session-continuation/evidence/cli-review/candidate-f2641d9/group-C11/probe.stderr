@@ -1,0 +1,5 @@
+FAIL C11 two ordinary processes share one turn without cross-turn fixture selection {"type":"error","code":"CONFLICT","message":"World query requires the exact shared cursor","mode":"offline_fixture","fixture_id":"independent_cli_v1","fixture_hash":"99159b5a4e9a78ac29359612063143c85117b11c9d3b88164a193de106951ab6"}
+
+
+1 !== 0
+

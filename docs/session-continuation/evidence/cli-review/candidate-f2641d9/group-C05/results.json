@@ -1,0 +1,22 @@
+{
+  "candidate": "f2641d92f5f07bc69b672ee6f6c3a189ee5f46cc",
+  "ordinary_process": true,
+  "paid_calls": 0,
+  "checks": [
+    {
+      "id": "C05",
+      "name": "ordinary exact responses and same-text distinct immutable selection",
+      "status": "pass",
+      "elapsed_ms": 12289.447092999999,
+      "details": {
+        "events": 7,
+        "turns": 4,
+        "exact_whitespace_unicode": true,
+        "distinct_same_text_replies": true,
+        "null_response": "no_reply"
+      }
+    }
+  ],
+  "passed": 1,
+  "failed": 0
+}

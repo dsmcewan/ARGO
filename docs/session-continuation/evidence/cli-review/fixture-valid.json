@@ -1,0 +1,36 @@
+{
+  "version": "shared-world-offline-fixture/1.0.0",
+  "fixture_id": "independent_cli_v1",
+  "turns": [
+    {
+      "turn_id": "same_a",
+      "player_text": "May I borrow your lamp?",
+      "reply_text": "First fixture reply: no fee or deposit."
+    },
+    {
+      "turn_id": "same_b",
+      "player_text": "May I borrow your lamp?",
+      "reply_text": "Second fixture reply: return it at the harbor."
+    },
+    {
+      "turn_id": "silent",
+      "player_text": "I will wait for your answer.",
+      "reply_text": null
+    },
+    {
+      "turn_id": "exact",
+      "player_text": "  Keep my exact words: \u00e9 e\u0301 \ud83d\ude42\nplease.  ",
+      "reply_text": "  Exact reply: \"lamp\" \\ oil\n\ud83d\ude42 \u00e9 e\u0301  "
+    },
+    {
+      "turn_id": "cancelled",
+      "player_text": "May I ask another question?",
+      "reply_text": "This fixture must not bypass cancellation."
+    },
+    {
+      "turn_id": "fresh",
+      "player_text": "This is a separate known turn.",
+      "reply_text": "This reply belongs only to fresh."
+    }
+  ]
+}

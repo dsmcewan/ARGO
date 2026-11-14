@@ -1,0 +1,21 @@
+{
+  "candidate": "f2641d92f5f07bc69b672ee6f6c3a189ee5f46cc",
+  "ordinary_process": true,
+  "paid_calls": 0,
+  "checks": [
+    {
+      "id": "C12",
+      "name": "ordinary legacy operations and seven-event demo retain behavior",
+      "status": "pass",
+      "elapsed_ms": 41414.39645,
+      "details": {
+        "legacy_query_view_prepare_submit": true,
+        "referee_query_refused": true,
+        "demo_events": 7,
+        "demo_replay": true
+      }
+    }
+  ],
+  "passed": 1,
+  "failed": 0
+}

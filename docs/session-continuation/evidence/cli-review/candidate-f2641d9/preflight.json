@@ -1,0 +1,20 @@
+{
+  "candidate": "f2641d92f5f07bc69b672ee6f6c3a189ee5f46cc",
+  "base": "3c8ff55d872891014c89fe43515b3c28fd492626",
+  "status": "clean",
+  "source_sha256": {
+    "TESTS/shared-world-conversation-cli.test.ts": "c89502f1c6faf9906a956383093e299bdff3674d4d276ba3dd7e3942249b7619",
+    "scenarios/tempted-fates/shared-world/README.md": "61c92ce62d85799ecbf9a018bae06e1466684a64d15ec9e695c1e077fb3f8004",
+    "scenarios/tempted-fates/shared-world/cli.ts": "103d6e324e6aa146ab49e5abc1518bef1441323597deb5d30e4d46c6b17d4600"
+  },
+  "unchanged_controls": {
+    "SYSTEMS": true,
+    "packages": true,
+    "scripts": true,
+    "controller": true
+  },
+  "spec_sha256": {
+    "docs/session-continuation/tickets/SC-630.md": "41b2fc49a59aa612f12c350c6d6799e52038dabb51d5af78dba7146da1cd9d0a",
+    "docs/session-continuation/TURN_CONTRACT.md": "d4380e49c08d6b7f0435114bc2d50ab516aca6b56684ad6aec6fb3e4da80a2ee"
+  }
+}

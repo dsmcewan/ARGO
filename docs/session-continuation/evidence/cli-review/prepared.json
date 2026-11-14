@@ -1,0 +1,33 @@
+{
+  "status": "PREPARED_AWAITING_IMMUTABLE_CANDIDATE",
+  "preparation_source": "8cce63eef284bbb2f68af942e18f92754eb270df",
+  "source_sha256": {
+    "docs/session-continuation/tickets/SC-630.md": "41b2fc49a59aa612f12c350c6d6799e52038dabb51d5af78dba7146da1cd9d0a",
+    "docs/session-continuation/TURN_CONTRACT.md": "d4380e49c08d6b7f0435114bc2d50ab516aca6b56684ad6aec6fb3e4da80a2ee",
+    "docs/session-continuation/DESIGN.md": "2fe2b52671dbd0cf4d75aeb19cf3744315d62b225bc26ced7908becac01eb7e4",
+    "docs/session-continuation/PLAN.md": "004763e435b265588d3546f512ff040c6e0515a845edea9ef3995839899f3e88",
+    "scenarios/tempted-fates/shared-world/cli.ts": "1f40728429c4bc473f8c49905f7ea0a8770112adbf8839cc3cafbbd410e5423b",
+    "scenarios/tempted-fates/shared-world/README.md": "79deac283c1df298d7b86f40a9f565f9c6a86a0288f797a2e88026804f35733e",
+    "packages/ledger/src/world/view.ts": "091a46c5549ad359466ca3dbb8f695b28c5a81bf087b290597b37d78b2838aea"
+  },
+  "plan_groups": 12,
+  "runtime_tests_run": 0,
+  "only_validation_performed": "Python syntax parse and local data sanity",
+  "production_edits": 0,
+  "provider_calls": 0,
+  "uncommitted_candidate_reviewed": false,
+  "candidate_sha": null,
+  "source_note": "Read committed legacy CLI and frozen contract only; pin new wrapper/API assertions after exact SC-630 candidate arrives.",
+  "artifacts_sha256": {
+    "PLAN.md": "8898967fa3a723fe6bed9921eb1a71e5c36ce175925b427e775bd374259a6c04",
+    "cancelled_known.jsonl": "7a103b6f838779668fc620ff8257109fba79165dec78990c185c679642b9d955",
+    "distinct_selection.jsonl": "29cf00b1f6f9561ec23445de358f444dcae7181ca6691dd5e3bd535d9b43f9ca",
+    "fixture-valid.json": "857b6e017ba4ef3974bc05aa6dc566576c2bf3c4eb65997429f61ac37907da35",
+    "operation-sequences.json": "81ccae5322208b636e919286cd15d6d99f3ac534105152371c7e7a2164039acb",
+    "precheck_refusals.jsonl": "e2f536f1b35cf348a7a500b29bac637eea8c05d90008a666b4038680826ba7a7",
+    "process-harness.py": "091458d819ba3e96c4bcf8996f22a522256666fc424701dde7b22df19d8aa290",
+    "restart_process_a.jsonl": "afb12a536ce95c8751fa0760c409c11764b7711f9014f206aa4a87910bc1140f",
+    "restart_process_b.jsonl": "cd477b9ad7011758caa4eba60488dd5b032a49d933c83e1e5fd51210f6dac6f5",
+    "world-config.json": "2e905559c21b796d4919c6e329a5a059325509f3169807867b862a38311e1740"
+  }
+}

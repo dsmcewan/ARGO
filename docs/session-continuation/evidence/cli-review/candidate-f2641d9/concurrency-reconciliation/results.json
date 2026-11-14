@@ -1,0 +1,29 @@
+{
+  "candidate": "f2641d92f5f07bc69b672ee6f6c3a189ee5f46cc",
+  "ordinary_process": true,
+  "paid_calls": 0,
+  "checks": [
+    {
+      "id": "C11F",
+      "name": "observed same-ID conflict reconciles exact committed turn; distinct processes remain isolated",
+      "status": "pass",
+      "elapsed_ms": 25639.971064999998,
+      "details": {
+        "original_successes": 1,
+        "original_honest_conflicts": 1,
+        "original_events": 2,
+        "original_turns": 1,
+        "reconciled_reads": 3,
+        "logical_state_unchanged_by_exact_retry": true,
+        "attempt_unchanged": true,
+        "distinct_processes": 2,
+        "distinct_conflicts": 1,
+        "all_signed_replay_equal": true,
+        "cross_turn_response_mix": false,
+        "limit": "Concurrent pre-CAS context can return CONFLICT; no all-callers-success availability claim."
+      }
+    }
+  ],
+  "passed": 1,
+  "failed": 0
+}

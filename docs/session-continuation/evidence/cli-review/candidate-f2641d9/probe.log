@@ -1,0 +1,2 @@
+PASS C01 ordinary exclusive creation/open and private canonical path
+PASS C02 complete fixture binding and private path refusal preserve logical stores
