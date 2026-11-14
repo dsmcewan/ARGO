@@ -1,0 +1,85 @@
+{
+  "candidate": "ba72fe06fef3ebf5a4c14c942a5a1c35d4f116c9",
+  "source_commit": "bc1d79e93ed7f3c1a3f287e49b7f0e4837378223",
+  "verdict": "READY within reviewed mortal-v3 runtime scope",
+  "findings": [],
+  "checkout_clean": true,
+  "frozen_v3_hashes_verified": true,
+  "preservation_checks": [
+    {
+      "check": "v2 implementation preserved",
+      "base": "7292ef71c6c96f6bcdcc82f0e3740f5e3b4b885f",
+      "paths": [
+        "SYSTEMS/mortal-v2",
+        "packages/contracts/src/mortal.ts",
+        "packages/contracts/src/mortal-types.ts",
+        "packages/ledger/src/mortal",
+        "scenarios/tempted-fates/runtime.ts"
+      ],
+      "passed": true
+    },
+    {
+      "check": "frozen v3 contracts preserved",
+      "base": "800f36152b57183f0ad7d460355f513e8056941c",
+      "paths": [
+        "SYSTEMS/mortal-v3",
+        "packages/contracts/src/mortal-v3.ts",
+        "packages/contracts/src/mortal-v3-types.ts"
+      ],
+      "passed": true
+    },
+    {
+      "check": "reviewed runtime source unchanged by integration",
+      "base": "bc1d79e93ed7f3c1a3f287e49b7f0e4837378223",
+      "paths": [
+        "packages/ledger/src/mortal-v3",
+        "TESTS/mortal-v3-rules.test.ts",
+        "TESTS/mortal-v3-storage.test.ts"
+      ],
+      "passed": true
+    }
+  ],
+  "checks": [
+    {
+      "command": "ARGO_MORTAL_REVIEW_ROOT=/workspace/ARGO/.worktrees/successor-review-runtime node --test --test-isolation=none /workspace/reports/2026-11-14-argo-followup/runtime-mortal-review/probes.mts",
+      "exit_code": 0,
+      "passed": 10,
+      "failed": 0,
+      "log": "probes-ba72fe0.log"
+    },
+    {
+      "command": "node --test --test-isolation=none TESTS/mortal-v3-contracts.test.ts TESTS/mortal-v3-rules.test.ts TESTS/mortal-v3-storage.test.ts TESTS/mortal-v3-campaign.test.ts",
+      "exit_code": 0,
+      "passed": 40,
+      "failed": 0,
+      "log": "targeted-ba72fe0.log"
+    },
+    {
+      "check": "@argo/ledger public exports",
+      "export_count": 10,
+      "exit_code": 0,
+      "log": "public-exports-ba72fe0.log"
+    }
+  ],
+  "source_hashes": "source-hashes-ba72fe0.json",
+  "independent_normalized_diff": "independent-normalized.diff",
+  "reviewed_author_normalized_diff": "../encounters/phase-b-v2-adaptation.diff",
+  "declined_to_judge": [
+    "Other successor runtime lanes and whole-application gate",
+    "Host caller authentication and deployed principal injection",
+    "Wall-clock timeout proof, scheduler and service behavior",
+    "Existing-world migration or v2 continuation",
+    "Malicious privileged rewriting of previously verified SQLite rows; documented append-only live-cache trust applies",
+    "Host durability of external monotonic checkpoint across restart/rollback",
+    "Paid/live-provider behavior and production operational reliability",
+    "Exhaustive gameplay balance or unrelated pre-existing v2 defects"
+  ],
+  "evidence_hashes": {
+    "probes.mts": "2162bbc9a7c4a53e1a588cdb0dd061d9ea7cf186701a96f94c0b243102b1b352",
+    "probes-ba72fe0.log": "6074348506c6a72c053a49f6f9bd5aa6fdbd1979ec9f8378e88c3690eded8bf1",
+    "targeted-ba72fe0.log": "b9a06514630a43d73bc69af7411ebcba5b6c00d80ff5623c3adc8d731ac5db57",
+    "public-exports-ba72fe0.log": "57f9ee9c4ac9313515db985ab0a58f458f4369016eed3deb61ed65ee7744f4cd",
+    "source-hashes-ba72fe0.json": "9f0e32fd8bca211d0dcc64dd962e3bb094804e0a1c2f91107529fe5761b1ee61",
+    "independent-normalized.diff": "ad03a769bcf3752d3415dc6b6777da8f66abcfb98d8d382c415abba9b697f9b9"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "reviewed_candidate": "648f9fae620f9692364e949fea8c0abe420fd22c",
+  "integrated_candidate": "ba72fe06fef3ebf5a4c14c942a5a1c35d4f116c9",
+  "identical_knowledge_files": 19,
+  "files": {
+    "SYSTEMS/dialogue-knowledge-v1/CONTRACT.md": {
+      "reviewed_sha256": "3fc976f9e2c875f950c46bcc9c793297196e874eefb4f26430a19a8641c29272",
+      "integration_sha256": "3fc976f9e2c875f950c46bcc9c793297196e874eefb4f26430a19a8641c29272"
+    },
+    "SYSTEMS/dialogue-knowledge-v1/FREEZE.json": {
+      "reviewed_sha256": "f3a3f18982fcb8986c94e6e158e03dd9ceef7aa7453fff2b0dc340f6d78aa13f",
+      "integration_sha256": "f3a3f18982fcb8986c94e6e158e03dd9ceef7aa7453fff2b0dc340f6d78aa13f"
+    },
+    "SYSTEMS/dialogue-knowledge-v1/authored-sources.json": {
+      "reviewed_sha256": "ca15ebcbe3d0bbaf2ee721df26f22b50abdcff93dc632c95c1af72d5b40fac97",
+      "integration_sha256": "ca15ebcbe3d0bbaf2ee721df26f22b50abdcff93dc632c95c1af72d5b40fac97"
+    },
+    "SYSTEMS/dialogue-knowledge-v1/knowledge.schema.json": {
+      "reviewed_sha256": "b336a195b7ec00e9ce78b980930262bbee91735ca228935ee2dfc79f6cb3cdf1",
+      "integration_sha256": "b336a195b7ec00e9ce78b980930262bbee91735ca228935ee2dfc79f6cb3cdf1"
+    },
+    "packages/contracts/src/dialogue-knowledge-types.ts": {
+      "reviewed_sha256": "582becd45418f9909c5ddf725b4e8a3773096b70d56e7e6312d7f5e6bacef13b",
+      "integration_sha256": "582becd45418f9909c5ddf725b4e8a3773096b70d56e7e6312d7f5e6bacef13b"
+    },
+    "packages/contracts/src/dialogue-knowledge.ts": {
+      "reviewed_sha256": "acf09f258bcfbfb0647fe1ea143d48e00b487644f952651bf8a0b6416b31b267",
+      "integration_sha256": "acf09f258bcfbfb0647fe1ea143d48e00b487644f952651bf8a0b6416b31b267"
+    },
+    "packages/interventions/src/character-model.ts": {
+      "reviewed_sha256": "273b84e0c366a94cbf2eb47a63ec14bbf2a95ce9caab4884305f584bca751cbb",
+      "integration_sha256": "273b84e0c366a94cbf2eb47a63ec14bbf2a95ce9caab4884305f584bca751cbb"
+    },
+    "packages/interventions/src/dialogue-context.ts": {
+      "reviewed_sha256": "cca79fa2d3a7973194e3473ff71f6425363a8e488aeee0ff2b22378cc1f45953",
+      "integration_sha256": "cca79fa2d3a7973194e3473ff71f6425363a8e488aeee0ff2b22378cc1f45953"
+    },
+    "packages/interventions/src/dialogue-types.ts": {
+      "reviewed_sha256": "bd7da2b4361c3c416869649cda964c5ba811fe85f3eda4228006bbc15751d1d7",
+      "integration_sha256": "bd7da2b4361c3c416869649cda964c5ba811fe85f3eda4228006bbc15751d1d7"
+    },
+    "packages/model-client/client.mjs": {
+      "reviewed_sha256": "b2c75083519fe1f600398d83a53b107dfa1dbd26aabc41480e50547805a4143d",
+      "integration_sha256": "b2c75083519fe1f600398d83a53b107dfa1dbd26aabc41480e50547805a4143d"
+    },
+    "packages/model-client/request.mjs": {
+      "reviewed_sha256": "9c70406f2e2c3709ae1ef364428db5739b474d6f6bda1f4f9b325c4a25e2b516",
+      "integration_sha256": "9c70406f2e2c3709ae1ef364428db5739b474d6f6bda1f4f9b325c4a25e2b516"
+    },
+    "packages/model-client/wire.mjs": {
+      "reviewed_sha256": "b521cb9615963967edd72640978bca171fe74476c366dff3e6d3c2b36d21b56a",
+      "integration_sha256": "b521cb9615963967edd72640978bca171fe74476c366dff3e6d3c2b36d21b56a"
+    },
+    "scenarios/tempted-fates/campaign/dialogue.ts": {
+      "reviewed_sha256": "fd734e27e9e6b846c2287f3ae5d0545675f2e3be96705f7f1a2b9eacb9798fcc",
+      "integration_sha256": "fd734e27e9e6b846c2287f3ae5d0545675f2e3be96705f7f1a2b9eacb9798fcc"
+    },
+    "scenarios/tempted-fates/campaign/knowledge/README.md": {
+      "reviewed_sha256": "d914f159444a131c619e7c2f72c30286fe4e83f4fbfefc9cf433b6d08997ec06",
+      "integration_sha256": "d914f159444a131c619e7c2f72c30286fe4e83f4fbfefc9cf433b6d08997ec06"
+    },
+    "scenarios/tempted-fates/campaign/knowledge/catalog.json": {
+      "reviewed_sha256": "1144325430fd2e214c95d20a74b2bfd3b5e8a09a21531fc819c94458ab02977f",
+      "integration_sha256": "1144325430fd2e214c95d20a74b2bfd3b5e8a09a21531fc819c94458ab02977f"
+    },
+    "scenarios/tempted-fates/campaign/knowledge/identity.json": {
+      "reviewed_sha256": "70a85f31bd4ea145c57527b962b12380df2cf0a04b74884a77fdbaec4b0c2445",
+      "integration_sha256": "70a85f31bd4ea145c57527b962b12380df2cf0a04b74884a77fdbaec4b0c2445"
+    },
+    "scenarios/tempted-fates/campaign/knowledge/index.ts": {
+      "reviewed_sha256": "36eee1d08797f1f3e6b43fc57fa6b7efd9a7ef91a0fde0001fa2832350c32ad7",
+      "integration_sha256": "36eee1d08797f1f3e6b43fc57fa6b7efd9a7ef91a0fde0001fa2832350c32ad7"
+    },
+    "scenarios/tempted-fates/campaign/knowledge/sources.json": {
+      "reviewed_sha256": "ca15ebcbe3d0bbaf2ee721df26f22b50abdcff93dc632c95c1af72d5b40fac97",
+      "integration_sha256": "ca15ebcbe3d0bbaf2ee721df26f22b50abdcff93dc632c95c1af72d5b40fac97"
+    },
+    "scenarios/tempted-fates/campaign/world.json": {
+      "reviewed_sha256": "0cd93546979225b2566be756558bf9d3dc0c060cdeffe2dbc3c08fa7568ba363",
+      "integration_sha256": "0cd93546979225b2566be756558bf9d3dc0c060cdeffe2dbc3c08fa7568ba363"
+    }
+  },
+  "public_exports_rechecked_separately": true
+}
