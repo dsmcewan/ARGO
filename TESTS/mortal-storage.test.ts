@@ -5,7 +5,7 @@ import {join} from 'node:path';
 import {tmpdir} from 'node:os';
 import {Worker} from 'node:worker_threads';
 import {DatabaseSync} from 'node:sqlite';
-import {ArgoError, hash} from '../packages/contracts/src/index.ts';
+import {ArgoError, canonical, hash} from '../packages/contracts/src/index.ts';
 import type {MortalLedger} from '../packages/contracts/src/mortal-types.ts';
 import {mortalGenesis, mortalPrincipal, mortalCommand, keys} from './mortal-fixtures.ts';
 
@@ -100,6 +100,21 @@ test('storage refuses corrupt event/index/receipt bytes on reopen and never pers
  }
  const db = new DatabaseSync(f.path); db.exec('DROP TRIGGER mortal_events_no_update; UPDATE mortal_events SET request_hash = lower(hex(zeroblob(32))) WHERE sequence=1;'); db.close();
  await assert.rejects(f.connect(), code('CORRUPT_LEDGER'));
+});
+
+test('cached history pages and retries rebind event bytes to their signed receipt hash', async t => {
+ const f = await setup(t), l = await f.connect(), initial = await l.snapshot(), p = mortalPrincipal(f.genesis);
+ const command = mortalCommand(initial, {type: 'wait', turns: 1});
+ await l.submit(command, p); await l.events();
+ const db = new DatabaseSync(f.path);
+ const row = db.prepare('SELECT event_json FROM mortal_events WHERE sequence=1').get()!;
+ const event = JSON.parse(row.event_json as string); event.before_hash = '1'.repeat(64);
+ db.exec('DROP TRIGGER mortal_events_no_update;');
+ db.prepare('UPDATE mortal_events SET event_json=? WHERE sequence=1').run(canonical(event)); db.close();
+ // The cached head, SQL hash column, receipt signature and command remain
+ // unchanged. A historical page must still refuse altered event body bytes.
+ await assert.rejects(l.events({after: 0, limit: 1}), code('CORRUPT_LEDGER'));
+ await assert.rejects(l.submit(command, p), code('CORRUPT_LEDGER'));
 });
 
 test('host API rejects active DTOs before cloning, bounds page requests, and closes idempotently', async t => {

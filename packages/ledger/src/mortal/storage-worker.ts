@@ -34,6 +34,11 @@ function rowValue(row: Row): {event: MortalEvent; receipt: MortalReceipt} {
  try {
   const event = decode(row.event_json), receipt = decode(row.receipt_json);
   assertMortalContract('Event', event); assertMortalContract('Receipt', receipt);
+  // Pages and exact retries may read an already verified prefix. Its signed
+  // receipt pins the complete event hash, so rebind the bytes on every read
+  // without replaying the rules for that historical event.
+  const {hash: eventHash, ...signedEvent} = event;
+  if (hash(signedEvent) !== eventHash) corrupt('Mortal stored event bytes differ from their hash');
   verifyMortalReceipt(receipt, {scope: genesis.scope, genesis_hash: hash(genesis), authority_key_id: genesis.authority_key_id, authority_public_key: genesis.authority_public_key});
   if (row.sequence !== event.sequence || row.event_hash !== event.hash || row.request_id !== event.command.request_id || row.request_hash !== hash({command: event.command, principal: event.principal}) || receipt.request_hash !== row.request_hash || receipt.request_id !== row.request_id || receipt.event_hash !== event.hash || receipt.cursor.sequence !== event.sequence || receipt.state_hash !== event.after_hash || canonical(receipt.effects) !== canonical(event.effects)) corrupt('Mortal event/idempotency/receipt binding differs');
   return {event, receipt};
