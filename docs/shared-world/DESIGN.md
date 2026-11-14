@@ -59,6 +59,8 @@ Recipient/content policy is explicit:
 
 Actor views expose only acquired offer terms/updates through memory, not live global offer/loan tables. A failed later acceptance can report refusal without retroactively granting a remote withdrawal memory. NPC `speak` requires a non-null inbound reference to acquired speech that explicitly addressed that NPC; `(NPC ID, inbound record ID)` is consumed once in the same transaction. Player speech may start a conversation without an inbound reference. NPC proactive speech is deferred.
 
+When a mortal custody action also fulfills a loan, the restrictive return/fulfillment memory policy takes precedence for that compound record. Do not union general room witnesses with private loan participants and then disclose the whole payload to everyone.
+
 Loan acceptance retains the borrower as the outer authenticated event principal. Only after matching the stored exact live offer may the reducer reconstruct a narrowly scoped internal mortal `transfer_item` from that lender to that borrower for that item, using the immutable lender controller identity. That capability is not caller-supplied and cannot authorize any other action. Current lender/borrower standing, custody, location, capacity and encounter checks still apply. Return uses the actual current holder's authority.
 
 Memory IDs derive from domain, complete genesis hash, request ID and sequence before signing; no after-state field contains its enclosing event hash. Initial knowledge grants are genesis entry IDs with origin/sequence zero, not self-referential genesis hashes. Dynamic acquisitions bind sequence/time. State hashing excludes only the new event head, as the existing mortal journal does; signed event provenance binds the resulting state to that head.
