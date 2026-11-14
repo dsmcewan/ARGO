@@ -1,0 +1,48 @@
+{
+  "candidate": "0c4b1026f40dbc804f38c274f6cbbc0415e97bcd",
+  "base": "1ea79ef89c649f4930b18327071d4a5ef9f97ebd",
+  "status_before_after": "clean",
+  "byte_exact_only_executable_change": "foundation fourth tuple argument {timeout:600000}",
+  "gate_sha256_before": "f81dcb0b3f7d4d15e3d8c7218cdb1ebcc4719c1a487187eae692ef7871334bc0",
+  "gate_sha256_after": "2711c874af35eb93c3b67a566cf33413cbf2569c3e0328d13df0983d3d10e79b",
+  "groups": [
+    "generated-types",
+    "schema",
+    "boundaries",
+    "types",
+    "board-and-dispatch",
+    "research-python",
+    "research-tests",
+    "research-package",
+    "foundation",
+    "model-and-process"
+  ],
+  "preserved_controls_sha256": {
+    "scripts/run-tests.mjs": "365438eded7e911a93b39279fd9ec63def4ba01e9d6b8b8b8eb1c08f27f78d6a",
+    "scripts/run-python-tests.py": "e5ba1bdb2eecbb192bd9a0a31530cc70269d83a28ef2edde8f3c0afe70c8f020",
+    "controller/acceptance-policy.mjs": "d52d7021dac0019c3876d083e2fcd29ef2005b1ca6fb445dc5b4cc2e8cc6e531",
+    "controller/policy.ts": "beeca198fc7df1048f2559af4368c296e3ea626166a1a83659dec6b5ac8c66da",
+    "controller/merge.mjs": "67bf46b74d0d055e4dda4c73fa81c56ff74f0442a9d24a1029a6ac32efbb978b",
+    "tools/board.py": "26d992c798fcd661f347ce542c7b6a1b9b740b5122fad69e95216d3da1bf35fa",
+    ".github/workflows/deterministic-gate.yml": "849fc7aa40a7b8e66f7d3966a7d50cc14ff49f59a88b70a4396530c067853fca",
+    "docs/characters-runtime/evidence/run-candidate-gate.py": "7e6ffc9b056cdc42055b151ccfa74309eb92e278c58662bc927bd7937eac6b7c"
+  },
+  "protected_policy_refusal": {
+    "protected_scripts": true,
+    "unchanged_policy_control": "passes",
+    "exact_changed_gate_policy_comparison": "Candidate protected policy differs: scripts",
+    "trust_pin_modified": false
+  },
+  "prior_failure_log_hashes": {
+    "docs/shared-world/evidence/full-gate-83bc6c1/failure.json": "7a5304a0fb0f382ea8ad0d1a8336b54d71da589c5bd011cf3406569294cec948",
+    "docs/shared-world/evidence/full-gate-83bc6c1/application-gate.log": "5cad8ba3901c837e30c1cfe14a5e2bbc17e07cf32858c385a9d28452e0f598a2",
+    "docs/shared-world/evidence/full-gate-83bc6c1/checkout.log": "51e97a79cd2f20383b51d56cd0ea2d1daa8bcc84181c4f382d576e3211894e33",
+    "docs/shared-world/evidence/full-gate-83bc6c1/clone.log": "e2746ac7e68afda34c234a5197f97aef4542b1d117ffb70f4ee4489eda55fdab",
+    "docs/shared-world/evidence/full-gate-83bc6c1/pantheon-install.log": "178c8457015fa8fcd91650ef25c0d212e906ce8bfed7373fc2dfde9e57be1dfd",
+    "docs/shared-world/evidence/full-gate-83bc6c1/root-install.log": "85d66efc5af19832f7add7e3b176eeedee7a3ad92b9afb6f46993f9296355715"
+  },
+  "syntax_check": "pass",
+  "diff_check": "pass",
+  "full_suite_executed": false,
+  "trust_pin_modified": false
+}

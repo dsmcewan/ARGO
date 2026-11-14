@@ -97,12 +97,16 @@ Produces `createWorldSession({genesis,ledger,principal})`, a host capability wit
 The first immutable full gate at `83bc6c1` passed eight groups and then killed the expanded serial foundation suite at its 300000 ms cap. It emitted no assertion failure before termination, but did not complete. This is a failed acceptance result.
 
 - [x] Retain the failed run and open an isolated Board ticket with ownership of `scripts/gate.mjs` and the budget rationale only.
-- [ ] Independently review the minimal bounded 600000 ms foundation override; preserve every group/assertion/native completion check and all other resource/trust limits.
-- [ ] Rerun the complete immutable application gate; no completion claim until it passes.
+- [x] Independently review the minimal bounded 600000 ms foundation override; preserve every group/assertion/native completion check and all other resource/trust limits.
+- [x] Rerun the complete immutable application gate: all ten groups passed at `dcfc4d9`; see verification.json.
+
+SW-520 submission was refused by the existing pinned-policy check. Its two CAS artifacts and exact source remain retained; `Board.fail_claim` released the claim to actual READY. The batch is operationally retired. No Board status or trust policy was rewritten; independent policy review and full external acceptance are separate.
 
 ## Final acceptance and delivery
 
 - [x] Integrate all exact source commits, exports and manifests; run contracts/typecheck/boundaries and relevant tests.
 - [x] Obtain independent native reviews of authority/storage and context/host; fix and retest findings.
-- [ ] Run all ten application groups and named assertions on an immutable candidate in read-only network isolation. The first full run at83bc6c1 timed out; SW-520 separately reviews a foundation-only bounded timer adjustment before rerun.
-- [ ] Retain portable evidence and real Board states; push PR, require successful GitHub checks, merge under standing authorization and synchronize main.
+- [x] Run all ten application groups and named assertions on an immutable candidate in read-only network isolation. The first full run at83bc6c1 timed out; SW-520 separately reviews a foundation-only bounded timer adjustment before rerun.
+- [x] Retain portable evidence and real Board states.
+
+Publication follows the [GitHub PR for this branch](https://github.com/dsmcewan/ARGO/pulls?q=is%3Apr+head%3Aargo%2Fshared-world): require successful checks on its exact head, preserve source ancestry with a merge commit, then synchronize main. The PR/check/merge records are the authoritative delivery status; this source checklist records local acceptance before publication.
