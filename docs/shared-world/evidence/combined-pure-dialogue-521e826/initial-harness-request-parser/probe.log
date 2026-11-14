@@ -1,0 +1,96 @@
+{
+  "candidate": "521e826b9588a1293ed22c243a14b83924c275bd",
+  "before": {
+    "head": "521e826b9588a1293ed22c243a14b83924c275bd",
+    "status": ""
+  },
+  "after": {
+    "head": "521e826b9588a1293ed22c243a14b83924c275bd",
+    "status": ""
+  },
+  "checks": [
+    {
+      "name": "Public package exports, exact seed pins and explicit borrowed kit compose without implicit grants",
+      "status": "pass",
+      "details": {
+        "package_paths": {
+          "@argo/contracts": "file:///tmp/argo-combined-pure-dialogue-521e826/packages/contracts/src/index.ts",
+          "@argo/ledger": "file:///tmp/argo-combined-pure-dialogue-521e826/packages/ledger/src/index.ts",
+          "@argo/interventions": "file:///tmp/argo-combined-pure-dialogue-521e826/packages/interventions/src/index.ts",
+          "@argo/tempted-fates": "file:///tmp/argo-combined-pure-dialogue-521e826/scenarios/tempted-fates/index.ts",
+          "@argo/model-client": "file:///tmp/argo-combined-pure-dialogue-521e826/packages/model-client/index.mjs"
+        },
+        "manifest": {
+          "adapter": "tempting-fates-shared/0.1.0",
+          "pack_hash": "70adb204c3f5626957d69ff5c0107b4c2954714390f1e5cb37a97de61fea5161",
+          "genesis_hash": "1abc74b1c7f68d52f4a8efc13120d24fed947e51857ee1738488331571982efd",
+          "mortal_genesis_hash": "21e64010378a2daac9312cbc268c855f60e5f5413ed5c1c30ac5ec121f064aa4",
+          "catalog_hash": "da7f45ff9a8d6874c98d4eba4e0c7e658c0259d139f032bf6e146f1872ebb2a0",
+          "source_manifest_hash": "c6ec5f0c7a8824d83939028a5660df8e8c24202bd6029660f150ef9b3de0391f",
+          "variant": "legend",
+          "hp_mode": "floor4",
+          "environment": "night",
+          "starting_kit": "borrowed_lamp",
+          "initial_knowledge_ids": [
+            "melia_lamp_loan_offer"
+          ]
+        },
+        "model_profile": "shared-world-dialogue/0.1.0"
+      }
+    },
+    {
+      "name": "Actual private inbound and owner policy reach the injected provider exactly once without private pack/context bleed",
+      "status": "fail",
+      "error": "SyntaxError: Unexpected token 'Y', \"You portra\"... is not valid JSON",
+      "stack": "SyntaxError: Unexpected token 'Y', \"You portra\"... is not valid JSON\n    at JSON.parse (<anonymous>)\n    at file:///workspace/reports/2026-11-14-argo-shared-world/combined-pure-dialogue-521e826/probe.mjs:36:1092\n    at async check (file:///workspace/reports/2026-11-14-argo-shared-world/combined-pure-dialogue-521e826/probe.mjs:33:91)\n    at async file:///workspace/reports/2026-11-14-argo-shared-world/combined-pure-dialogue-521e826/probe.mjs:36:1"
+    },
+    {
+      "name": "Generated reply resolves only through actual Melia authority and plain words never create a loan or custody transfer",
+      "status": "pass"
+    },
+    {
+      "name": "Exact structured offer and borrower acceptance compose atomically in the same world",
+      "status": "pass"
+    },
+    {
+      "name": "Foreign, nonexistent and remote audiences reject; unaddressed overhearing never starts an NPC response",
+      "status": "pass"
+    },
+    {
+      "name": "Real travel rejects an already generated stale command and suppresses a still-running model response",
+      "status": "pass"
+    },
+    {
+      "name": "Real closure rejects stale speech, suppresses pending model release and prevents further generation",
+      "status": "pass"
+    },
+    {
+      "name": "Denied actor/scope calls never reach the provider and exact public identities remain pinned",
+      "status": "pass",
+      "details": {
+        "public_exports": {
+          "campaign": [
+            "buildSharedWorldCampaign"
+          ],
+          "ledger": [
+            "initialWorldState",
+            "resolveWorld",
+            "worldStateHash",
+            "viewWorldActor"
+          ],
+          "interventions": [
+            "createWorldModelAgent",
+            "worldDialoguePacket"
+          ]
+        },
+        "model_profile": "shared-world-dialogue/0.1.0"
+      }
+    }
+  ],
+  "passed": 7,
+  "failed": 1,
+  "injected_provider_calls": 5,
+  "paid_calls": 0,
+  "outside_node_test_runner": true,
+  "scope": "Combined seed/pure authority/model API only; private ownership helper sets synthetic heads, not journal verification or host authentication"
+}
