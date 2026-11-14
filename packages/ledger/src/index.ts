@@ -180,3 +180,5 @@ export * from './mortal/index.ts';
 
 // Explicit successor API; existing mortal-v2 entry points remain unchanged.
 export * from './mortal-v3/index.ts';
+export {initialWorldState,resolveWorld,worldStateHash} from './world/rules.ts';
+export {viewWorldActor} from './world/view.ts';
