@@ -4,9 +4,9 @@ import {lstatSync} from 'node:fs';
 import {ArgoError,assertWorldData,canonical,hash} from '@argo/contracts';
 import type {ConversationBinding,TurnRow,Mutation} from './conversation-types.ts';
 import {CONVERSATION_VERSION} from './conversation-types.ts';
-import {assertBinding,assertRow,assertInput,fields,integer,turnId,bindingHash,inputHash,initialRow,mutate,corrupt,invalid,MAX_RPC,MAX_TURNS,MAX_TOTAL} from './conversation-guards.ts';
+import {assertBinding,assertRow,assertInput,fields,integer,turnId,bindingHash,inputHash,initialRow,mutate,corrupt,invalid,MAX_ROW,MAX_RPC,MAX_TURNS,MAX_TOTAL} from './conversation-guards.ts';
 const port=parentPort;if(!port)throw Error('Outbox worker requires parent');
-const config=workerData as {path:string;mode:'create'|'open';binding:ConversationBinding;maxCharacters:number};
+const config=workerData as {path:string;mode:'create'|'open';binding:ConversationBinding;maxCharacters:number;maxReplyCharacters:number};
 const APP_ID=0x41525443;
 const schema=[
  `CREATE TABLE conversation_meta(singleton INTEGER PRIMARY KEY CHECK(singleton=1),format TEXT NOT NULL,binding_hash TEXT NOT NULL,binding_json TEXT NOT NULL) STRICT`,
@@ -19,28 +19,28 @@ let db:DatabaseSync|undefined;
 function reply(id:number,value:unknown){const envelope={id,ok:true,value};if(Buffer.byteLength(JSON.stringify(envelope))>MAX_RPC)invalid('Outbox reply capacity exceeded');port!.postMessage(envelope);}
 function error(id:number,e:unknown){port!.postMessage({id,ok:false,code:e instanceof ArgoError?e.code:'UNAVAILABLE'});}
 try{
- fields(config,['path','mode','binding','maxCharacters']);assertBinding(config.binding);integer(config.maxCharacters,1,2048);const binding=config.binding,identity=bindingHash(binding),bindingText=canonical(binding);
+ fields(config,['path','mode','binding','maxCharacters','maxReplyCharacters']);assertBinding(config.binding);integer(config.maxCharacters,1,2048);integer(config.maxReplyCharacters,1,2048);const binding=config.binding,identity=bindingHash(binding),bindingText=canonical(binding);
  const file=lstatSync(config.path);if(!file.isFile()||file.isSymbolicLink()||(file.mode&0o777)!==0o600||process.getuid&&file.uid!==process.getuid())invalid('Unsafe outbox file');
  db=new DatabaseSync(config.path);db.exec('PRAGMA busy_timeout=5000');
- const existing=db.prepare("SELECT sql FROM sqlite_schema WHERE name NOT LIKE 'sqlite_%' ORDER BY sql").all().map(r=>r.sql);
+ const existing=db.prepare("SELECT sql FROM sqlite_schema WHERE name NOT GLOB 'sqlite_*' ORDER BY sql").all().map(r=>r.sql);
  if(config.mode==='create'){
   if(existing.length||Number(db.prepare('PRAGMA application_id').get()!.application_id)!==0)corrupt('New outbox file is not empty');
   db.exec('BEGIN IMMEDIATE');try{for(const sql of schema)db.exec(sql);db.exec(`PRAGMA application_id=${APP_ID}; PRAGMA user_version=1`);db.prepare('INSERT INTO conversation_meta VALUES(1,?,?,?)').run(CONVERSATION_VERSION,identity,bindingText);db.exec('COMMIT');}catch(e){db.exec('ROLLBACK');throw e;}
  }else if(config.mode!=='open')invalid('Invalid outbox mode');
  function metadata(){
   if(Number(db!.prepare('PRAGMA application_id').get()!.application_id)!==APP_ID||Number(db!.prepare('PRAGMA user_version').get()!.user_version)!==1)corrupt('Foreign outbox application');
-  const definitions=db!.prepare("SELECT sql FROM sqlite_schema WHERE name NOT LIKE 'sqlite_%' ORDER BY sql").all().map(r=>r.sql);
+  const definitions=db!.prepare("SELECT sql FROM sqlite_schema WHERE name NOT GLOB 'sqlite_*' ORDER BY sql").all().map(r=>r.sql);
   if(canonical(definitions)!==canonical([...schema].sort()))corrupt('Foreign outbox schema');
   const rows=db!.prepare('SELECT * FROM conversation_meta').all(),m=rows[0];if(rows.length!==1||!m||m.singleton!==1||m.format!==CONVERSATION_VERSION||m.binding_hash!==identity||m.binding_json!==bindingText)corrupt('Outbox binding differs');
  }
  function decode(raw:Record<string,unknown>):TurnRow{
-  try{if(typeof raw.row_json!=='string')corrupt('Missing row JSON');const row:unknown=JSON.parse(raw.row_json);assertRow(row,binding,config.maxCharacters);
+  try{if(typeof raw.row_json!=='string'||Buffer.byteLength(raw.row_json)>MAX_ROW||raw.row_bytes!==Buffer.byteLength(raw.row_json))corrupt('Invalid raw outbox row size');const row:unknown=JSON.parse(raw.row_json);assertRow(row,binding,config.maxCharacters,config.maxReplyCharacters);
    if(raw.turn_key!==row.turn_key||raw.turn_id!==row.turn_id||raw.input_hash!==row.input_hash||raw.revision!==row.revision||raw.phase!==row.phase||raw.cancel_requested!==Number(row.cancel_requested)||raw.inbound_record_id!==row.inbound_record_id||raw.row_json!==canonical(row)||raw.row_hash!==hash(row)||raw.row_bytes!==Buffer.byteLength(raw.row_json))corrupt('Outbox duplicate columns differ');return row;
   }catch{corrupt('Outbox row is corrupt');}
  }
  const load=(id:string)=>{const raw=db!.prepare('SELECT * FROM conversation_turns WHERE turn_id=?').get(id);return raw?decode(raw):null;};
  function budget(delta:number,adding:boolean){const row=db!.prepare('SELECT count(*) n,coalesce(sum(row_bytes),0) bytes FROM conversation_turns').get()!;if(Number(row.n)+(adding?1:0)>MAX_TURNS||Number(row.bytes)+delta>MAX_TOTAL)invalid('Conversation outbox capacity reached');}
- function write(row:TurnRow,old:TurnRow|null){assertRow(row,binding,config.maxCharacters);const text=canonical(row),bytes=Buffer.byteLength(text);budget(bytes-(old?Buffer.byteLength(canonical(old)):0),old===null);
+ function write(row:TurnRow,old:TurnRow|null){assertRow(row,binding,config.maxCharacters,config.maxReplyCharacters);const text=canonical(row),bytes=Buffer.byteLength(text);budget(bytes-(old?Buffer.byteLength(canonical(old)):0),old===null);
   const args=[row.turn_key,row.turn_id,row.input_hash,row.revision,row.phase,Number(row.cancel_requested),row.inbound_record_id,bytes,hash(row),text];
   if(old)db!.prepare('UPDATE conversation_turns SET turn_key=?,turn_id=?,input_hash=?,revision=?,phase=?,cancel_requested=?,inbound_record_id=?,row_bytes=?,row_hash=?,row_json=? WHERE turn_key=? AND revision=?').run(...args,old.turn_key,old.revision);
   else db!.prepare('INSERT INTO conversation_turns VALUES(?,?,?,?,?,?,?,?,?,?)').run(...args);

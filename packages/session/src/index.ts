@@ -78,3 +78,4 @@ export function createWorldSession(input:WorldSessionOptions):WorldSession{
 
 export {openWorldConversationStore} from './conversation-store.ts';
 export type {ConversationCandidate,ConversationPolicy,ConversationBinding,OpenConversationStoreOptions,WorldConversationStore,ConversationCallContext,ConversationModelInjection,CreateConversationOptions,TurnInput,TurnRef,WaitOptions,TurnResult,WorldConversation} from './conversation-types.ts';
+export {createWorldConversation} from './conversation.ts';
