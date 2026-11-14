@@ -22,6 +22,9 @@ function option(name, fallback) {
 if (Object.hasOwn(process.env, 'NODE_TEST_CONTEXT')) throw Error('Run outside the test runner');
 const repo = resolve(option('--repo', join(import.meta.dirname, '../..')));
 const output = resolve(option('--output', join(tmpdir(), 'argo-shared-world-measurement')));
+const git = (...args) => execFileSync('git',args,{cwd:repo,encoding:'utf8'}).trim();
+const candidate = git('rev-parse','HEAD');
+assert.equal(git('status','--porcelain'),'','Measurement requires a clean committed checkout');
 const targets = [128, 512, 1000, 2000];
 const mod = async path => import(pathToFileURL(join(repo, path)).href);
 const {hash, WORLD_PROFILE} = await mod('packages/contracts/src/index.ts');
@@ -68,13 +71,16 @@ try {
   const scoped_view = await samples(async () => viewWorldActor(genesis,await writer.snapshot(),currentQuery(),npcPrincipal));
   const opening = await elapsed(() => openWorldLedger({...options,expectedHead:cursor}));
   sibling = opening.value;
-  assert.equal(worldStateHash(await sibling.snapshot()),worldStateHash(snap));
+  const reopened = await sibling.snapshot();
+  assert.deepEqual(reopened.cursor,snap.cursor);
+  assert.equal(worldStateHash(reopened),worldStateHash(snap));
   const pending = command();
   const append = await elapsed(() => writer.submit(pending,principal));
   cursor = append.value.cursor;
   const retry = await samples(async () => assert.deepEqual(await writer.submit(pending,principal),append.value));
   const refresh = await elapsed(() => sibling.snapshot());
   assert.deepEqual(refresh.value.cursor,cursor);
+  assert.equal(worldStateHash(refresh.value),append.value.state_hash);
   let modelCalls=0,contextReads=0;
   const agent=createWorldModelAgent({scope,actorId:'melia',sessionId:'offline_measurement',candidates:[{vendor:'xai',model:'grok-4.7',pool:'injected'}],
    clientFor:()=>({responses:{create:async()=>{modelCalls++;return {id:'fixture',status:'completed',output:[{type:'message',content:[{type:'output_text',text:JSON.stringify({text:'It is a free loan. Bring it back and supply your own oil.'})}]}]};}}}),
@@ -86,7 +92,9 @@ try {
   });
   assert.equal(modelCalls,1);
   const expected = await writer.snapshot();
-  assert.equal(worldStateHash(await sibling.snapshot()),worldStateHash(expected));
+  const refreshed = await sibling.snapshot();
+  assert.deepEqual(refreshed.cursor,expected.cursor);
+  assert.equal(worldStateHash(refreshed),worldStateHash(expected));
   await sibling.close(); sibling = undefined;
   const row={prefix_events:target,after_sample_events:cursor.sequence,fill_ms,cold_handle_open_ms:opening.ms,warm_snapshot:snapshot,warm_scoped_view:scoped_view,
    warm_speech_append_ms:append.ms,warm_contextual_dialogue_and_commit_ms:dialogue.ms,dialogue_context_reads:contextReads,injected_model_calls:modelCalls,
@@ -101,7 +109,9 @@ try {
  const replay=await elapsed(()=>replayWorld(genesis,allEvents));
  const final=await writer.snapshot();
  assert.deepEqual(replay.value,final);
- const record={candidate:execFileSync('git',['rev-parse','HEAD'],{cwd:repo,encoding:'utf8'}).trim(),node:process.version,platform:process.platform,
+ assert.equal(git('rev-parse','HEAD'),candidate,'Measurement candidate changed');
+ assert.equal(git('status','--porcelain'),'','Measurement checkout changed');
+ const record={candidate,checkout_clean_before_after:true,node:process.version,platform:process.platform,
   test_runner:false,paid_calls:0,genesis_hash:hash(genesis),targets,rows,final_sequence:final.cursor.sequence,full_replay_ms:replay.ms,
   replay_equals_snapshot:true,final_state_hash:worldStateHash(final),host_workload_parent_event_loop_delay_ms,
   limits:['One machine; five warm read/retry samples, one append and one suffix refresh per checkpoint.',
