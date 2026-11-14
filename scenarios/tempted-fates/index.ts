@@ -17,3 +17,8 @@ export function createFates(ids:Record<FateRole,string>){
   }
  }));
 }
+
+// Additive campaign authoring and tabletop preview tools; no new world writer.
+export type * from './campaign/types.ts';
+export * from './campaign/catalog.ts';
+export * from './campaign/rules.ts';
