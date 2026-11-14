@@ -13,7 +13,7 @@ import {createCharacterViews} from '../packages/lexi-bridge/src/index.ts';
 import {keys,scope,proposal} from './fixtures.ts';
 
 async function components(){
- try{return {...await import('../scenarios/tempted-fates/campaign/catalog.ts'),...await import('../scenarios/tempted-fates/campaign/rules.ts')};}
+ try{return await import('../scenarios/tempted-fates/index.ts');}
  catch(error){if(error instanceof Error&&'code'in error&&error.code==='ERR_MODULE_NOT_FOUND')assert.fail('The campaign catalog and rules tools are not implemented yet');throw error;}
 }
 async function pack():Promise<CampaignPack>{return JSON.parse(await readFile(new URL('../scenarios/tempted-fates/campaign/world.json',import.meta.url),'utf8')) as CampaignPack;}
