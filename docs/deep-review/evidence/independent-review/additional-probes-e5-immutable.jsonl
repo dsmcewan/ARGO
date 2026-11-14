@@ -1,0 +1,3 @@
+{"probe":"character_acknowledged_append_rollback_injected_source","acknowledged_sequence":1,"observed_sequence":0}
+{"probe":"mutable_injected_event_objects","result":"prior projection detached; next read rejects mutation; restoration recovers"}
+{"probe":"signed_bad_carrier_after_valid_mutating_suffix","result":"rejected atomically; previous projection and cache preserved"}

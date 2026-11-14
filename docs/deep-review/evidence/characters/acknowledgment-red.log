@@ -1,0 +1,64 @@
+✔ unchanged character reads do no repeated signature work and an append verifies only its suffix (241.696731ms)
+✔ a warm character authority rejects rollback and a signed divergent observed prefix (164.702653ms)
+✔ changed cached carrier bytes fail even when the stored event hash is unchanged (81.024406ms)
+✔ a bad later suffix cannot publish earlier carrier mutations or poison the cache (185.339589ms)
+✔ overlapping event loads cannot publish a later prefix ahead of an older in-flight read (127.054837ms)
+✔ a character read cancelled before enqueue settles before the preceding source is released (73.837926ms)
+✔ a character read cancelled while queued settles before the preceding source is released (137.696894ms)
+✖ an acknowledged character commit must appear in subsequent structural ledger reads (92.926235ms)
+✖ an older in-flight character read cannot publish after a newer commit is acknowledged (85.478068ms)
+✖ out-of-order character acknowledgments cannot lower the required committed prefix (131.992514ms)
+✔ witness freshness, cancellation and exact retries survive intervening cached reads (219.476733ms)
+✔ incremental prefixes match cold replay without backdating same-tick acquisitions or profile revisions (513.291607ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 9
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2067.621149
+
+✖ failing tests:
+
+test at TESTS/character-cache.test.ts:121:1
+✖ an acknowledged character commit must appear in subsequent structural ledger reads (92.926235ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/deep-review/worktrees/DR-110-1-42e155104b/TESTS/character-cache.test.ts:126:2)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: [Object],
+    operator: 'rejects',
+    diff: 'simple'
+  }
+
+test at TESTS/character-cache.test.ts:132:1
+✖ an older in-flight character read cannot publish after a newer commit is acknowledged (85.478068ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/deep-review/worktrees/DR-110-1-42e155104b/TESTS/character-cache.test.ts:144:47)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: [Object],
+    operator: 'rejects',
+    diff: 'simple'
+  }
+
+test at TESTS/character-cache.test.ts:147:1
+✖ out-of-order character acknowledgments cannot lower the required committed prefix (131.992514ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/deep-review/worktrees/DR-110-1-42e155104b/TESTS/character-cache.test.ts:161:2)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: [Object],
+    operator: 'rejects',
+    diff: 'simple'
+  }

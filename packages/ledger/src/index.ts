@@ -3,7 +3,7 @@ import {join} from 'node:path';import {sign,createPublicKey,randomUUID} from 'no
 import {setTimeout as delay} from 'node:timers/promises';
 import {assertContract,canonical,fail,hash,requireScope,safeAdd,own} from '@argo/contracts';
 import type {Genesis,Snapshot,LedgerEvent,IntentProposal,Principal,Consent,Outcome} from '@argo/contracts';
-import {initialSnapshot,replay,verifyEvent,apply,validate,draw,unsigned,eventHash,outcome} from './mechanics.ts';
+import {initialSnapshot,verifyEvent,apply,validate,draw,unsigned,eventHash,outcome} from './mechanics.ts';
 export {replay,draw,initialSnapshot} from './mechanics.ts';
 
 export interface LedgerOptions {
@@ -12,7 +12,7 @@ export interface LedgerOptions {
 }
 export interface CallOptions {signal?:AbortSignal}
 const missing=(e:unknown):boolean=>typeof e==='object'&&e!==null&&'code' in e&&e.code==='ENOENT';
-const decode=(bytes:Buffer):string=>{try{return new TextDecoder('utf-8',{fatal:true}).decode(bytes);}catch{fail('CORRUPT_LEDGER','Invalid UTF-8 ledger bytes');}};
+const decode=(bytes:Buffer,preserveBom=false):string=>{try{return new TextDecoder('utf-8',{fatal:true,ignoreBOM:preserveBom}).decode(bytes);}catch{fail('CORRUPT_LEDGER','Invalid UTF-8 ledger bytes');}};
 const syncDirectory=async(directory:string)=>{const h=await open(directory,'r');try{await h.sync();}finally{await h.close();}};
 async function atomicFile(directory:string,name:string,body:string):Promise<void>{
  const temporary=join(directory,`.${name}.${randomUUID()}.tmp`),target=join(directory,name);
@@ -40,16 +40,31 @@ export async function openLedger(options:LedgerOptions){
  const directory=options.directory,timeout=options.lockTimeoutMs??5000;
  if(!Number.isFinite(timeout)||timeout<1||timeout>60000)fail('INVALID_CONTRACT','Invalid lock timeout');
  await mkdir(directory,{recursive:true,mode:0o700});
- const read=async():Promise<{state:Snapshot;events:LedgerEvent[]} >=>{
-  let text:string;try{text=decode(await readFile(join(directory,'events.jsonl')));}catch(error){if(missing(error))fail('CORRUPT_LEDGER','Ledger event file missing');throw error;}
+ // This process-local cache is derived only from verified journal bytes. Every
+ // call still reads and compares the entire prefix under the writer lock: file
+ // size/mtime or a cached terminal hash alone cannot detect edits to old rows.
+ // Reopening performs a cold replay. This is not a cross-restart rollback anchor.
+ let cached:{bytes:Buffer;state:Snapshot;events:LedgerEvent[];parents:Set<string>;proposals:Map<string,LedgerEvent>}=
+  {bytes:Buffer.alloc(0),state:initialSnapshot(genesis),events:[],parents:new Set(),proposals:new Map()};
+ const read=async()=>{
+  let bytes:Buffer;try{bytes=await readFile(join(directory,'events.jsonl'));}catch(error){if(missing(error))fail('CORRUPT_LEDGER','Ledger event file missing');throw error;}
+  if(bytes.length<cached.bytes.length||!bytes.subarray(0,cached.bytes.length).equals(cached.bytes))fail('CORRUPT_LEDGER','Previously verified ledger prefix changed or disappeared');
+  if(bytes.length===cached.bytes.length)return cached;
+  // A BOM can only have the decoder's historical start-of-file meaning at
+  // offset zero. Stripping one at an append boundary would accept bytes that
+  // a cold replay rejects as an invalid interior record.
+  const text=decode(bytes.subarray(cached.bytes.length),cached.bytes.length>0);
   if(text&&!text.endsWith('\n'))fail('CORRUPT_LEDGER','Partial ledger tail');
-  const lines=text.split('\n');while(lines.at(-1)==='')lines.pop();const events:LedgerEvent[]=[];
-  for(const line of lines){
+  // Stage the complete suffix. A bad last record must not publish earlier rows
+  // into the cache, and a derived snapshot file never supplies authority.
+  const events=[...cached.events],parents=new Set(cached.parents),proposals=new Map(cached.proposals);let state=cached.state;
+  for(const line of text.slice(0,-1).split('\n')){
    if(!line)fail('CORRUPT_LEDGER','Blank ledger record');
    let value:unknown;try{value=JSON.parse(line);}catch{fail('CORRUPT_LEDGER','Corrupt ledger JSON');}
-   assertContract('LedgerEvent',value);if(canonical(value)!==line)fail('CORRUPT_LEDGER','Noncanonical ledger record');events.push(value);
+   assertContract('LedgerEvent',value);if(canonical(value)!==line)fail('CORRUPT_LEDGER','Noncanonical ledger record');
+   verifyEvent(state,value,parents);state=apply(state,value);events.push(value);parents.add(value.hash);proposals.set(value.proposal.proposal_id,value);
   }
-  return {state:replay(genesis,events),events};
+  cached={bytes,state,events,parents,proposals};return cached;
  };
  await locked(directory,timeout,undefined,async()=>{
   let existing:string|null=null;try{existing=decode(await readFile(join(directory,'genesis.json')));}catch(error){if(!missing(error))throw error;}
@@ -72,13 +87,13 @@ export async function openLedger(options:LedgerOptions){
    const p=structuredClone(input),principal=structuredClone(authenticated);
    requireScope(genesis.scope,p.scope);requireScope(genesis.scope,principal.scope);
    return locked(directory,timeout,call.signal,async()=>{
-    const {state,events}=await readChecked();const prior=events.find(e=>e.proposal.proposal_id===p.proposal_id);
+    const {state,parents,proposals}=await readChecked();const prior=proposals.get(p.proposal_id);
     if(prior){
      if(hash(p)!==hash(prior.proposal))fail('CONFLICT','Proposal idempotency conflict');
      if(principal.principal_id!==prior.authority.principal_id||principal.actor_id!==prior.authority.principal_actor_id||principal.role!==prior.authority.principal_role)fail('UNAUTHORIZED','Idempotent actor authentication differs');
      return outcome(prior);
     }
-    const parents=new Set(events.map(e=>e.hash));if(p.causal_parents.some(parent=>!parents.has(parent)))fail('INVALID_ACTION','Unknown causal parent');
+    if(p.causal_parents.some(parent=>!parents.has(parent)))fail('INVALID_ACTION','Unknown causal parent');
     let receiptHash:string|null=null;
     if(p.action.type==='record_consent'){
      // Validate cheap actor/scope/head requirements before calling any external verifier.
@@ -104,8 +119,14 @@ export async function openLedger(options:LedgerOptions){
      rng:a.type==='draw'?draw(genesis.seed,state.rng_counter,a.label,a.bound):null};
     event.authority.signature=sign(null,Buffer.from(canonical(unsigned(event))),options.privateKey).toString('base64');event.hash=eventHash(event);
     verifyEvent(state,event,parents);const next=apply(state,event);
-    const file=await open(join(directory,'events.jsonl'),'a',0o600);
-    try{await file.writeFile(canonical(event)+'\n');await file.sync();}finally{await file.close();}
+    const record=Buffer.from(canonical(event)+'\n'),file=await open(join(directory,'events.jsonl'),'a',0o600);
+    try{
+     await file.writeFile(record);await file.sync();
+     // A durable append is already verified. Remember it before close or the
+     // disposable snapshot write can fail; neither failure erases the commit.
+     cached={bytes:Buffer.concat([cached.bytes,record]),state:next,events:[...cached.events,event],
+      parents:new Set([...parents,event.hash]),proposals:new Map([...proposals,[p.proposal_id,event]])};
+    }finally{await file.close();}
     // This cache is derived, never authority. A crash before its write still recovers the append.
     await atomicFile(directory,'snapshot.json',canonical(next)+'\n');
     return outcome(event);

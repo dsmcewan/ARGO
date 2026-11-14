@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "tickets": [
+    {
+      "id": "DR-100",
+      "wave": 1,
+      "lane": "ledger",
+      "title": "Incremental journal verification",
+      "seat_model": "gpt-6-astra",
+      "reviewer_model": null,
+      "owned_paths": [
+        "packages/ledger/src/index.ts",
+        "TESTS/ledger-cache.test.ts",
+        "docs/deep-review/"
+      ],
+      "gate_cmd": [
+        "python3",
+        "-c",
+        "raise SystemExit('Application acceptance remains external to data-only Board policy')"
+      ],
+      "spec_path": "docs/deep-review/tickets/DR-100.md",
+      "depends_on": [],
+      "max_attempts": 3
+    },
+    {
+      "id": "DR-110",
+      "wave": 1,
+      "lane": "character-projection",
+      "title": "Incremental character projection",
+      "seat_model": "gpt-6-astra",
+      "reviewer_model": null,
+      "owned_paths": [
+        "packages/ledger/src/characters.ts",
+        "TESTS/character-cache.test.ts"
+      ],
+      "gate_cmd": [
+        "python3",
+        "-c",
+        "raise SystemExit('Application acceptance remains external to data-only Board policy')"
+      ],
+      "spec_path": "docs/deep-review/tickets/DR-110.md",
+      "depends_on": [],
+      "max_attempts": 3
+    }
+  ]
+}

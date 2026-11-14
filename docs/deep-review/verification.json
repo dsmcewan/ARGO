@@ -1,0 +1,78 @@
+{
+  "baseline": "0c24b32f947143c5b1095f702c878ed92888aa8d",
+  "implementation": "9564af23fc52ff934c8ac39dd0777dc7c683120a",
+  "application_gate": {
+    "candidate": "9564af23fc52ff934c8ac39dd0777dc7c683120a",
+    "passed": 10,
+    "failed": 0,
+    "elapsed_seconds": 265.151,
+    "record": "evidence/full-gate/gate-result.json"
+  },
+  "independent_native_peer": {
+    "candidate": "9564af23fc52ff934c8ac39dd0777dc7c683120a",
+    "verdict": "ready",
+    "targeted_tests": 64,
+    "independent_probes": 7,
+    "report": "evidence/independent-review/review-final-9564af2.md",
+    "cross_vendor": false
+  },
+  "cache_regressions": 24,
+  "benchmark": {
+    "baseline_runtime": "0c24b32",
+    "final_runtime": "9564af23fc52ff934c8ac39dd0777dc7c683120a",
+    "baseline": "evidence/benchmark-before.jsonl",
+    "final": "evidence/benchmark-9564af2.jsonl",
+    "completed_event_counts": [
+      128,
+      512,
+      1000
+    ],
+    "samples_per_case": 1,
+    "live_provider_calls": 0,
+    "limits": "Shared machine/review load; scripted provider; cold startup excluded from warm dialog; no 2000-event result"
+  },
+  "frozen_contracts_changed": false,
+  "control_plane_or_test_gate_changed": false,
+  "source_tickets": [
+    {
+      "ticket": "DR-100",
+      "source_commit": "48459fb82053076729f8bf16388d2a4b323991b7",
+      "status": "VERIFYING",
+      "disposition": "Submitted to VERIFYING; application acceptance remains external",
+      "artifacts": 4
+    },
+    {
+      "ticket": "DR-110",
+      "source_commit": "853768b279caa4011a6dedf47b7ba0930c11e25d",
+      "status": "VERIFYING",
+      "disposition": "Submitted to VERIFYING; application acceptance remains external",
+      "artifacts": 2
+    }
+  ],
+  "integration_commits": {
+    "DR-100": [
+      "23ec049927142e4c6d870b208a41d61e9761fc57",
+      "2818f6890f789f90a9e4b5dcb9c8f9dd3cf3eb57"
+    ],
+    "DR-110": [
+      "e5a6c55e6a2b53652a58c1e01d1068b05dfda8fc",
+      "97dc6c0726f323d25f1fba9f6a3295ea17aa99d9"
+    ],
+    "final_supervisor_correction": "9564af23fc52ff934c8ac39dd0777dc7c683120a"
+  },
+  "files": {
+    "packages/ledger/src/index.ts": "9ea56eeab6735df65e70da59c68ccee6cfdeeb254753994a1a5c513d9009e8f4",
+    "packages/ledger/src/characters.ts": "751401b2ddfe8b1293b6cf990ff0546fa55ccbbc08f4a16c8bfe9851e51ec957",
+    "TESTS/ledger-cache.test.ts": "96df025536801a13bfb05f6f671c3cb1be5812bf954765988e72cbb1aa234278",
+    "TESTS/character-cache.test.ts": "620966006347c1287a1a0b7f639898f8e5ade2fc2c18c8329e07aafea075690f"
+  },
+  "paid_model_calls": 0,
+  "operational_trust_promoted": false,
+  "board_merged_by_model": false,
+  "remaining_supplied_high_findings": [
+    2,
+    3,
+    4
+  ],
+  "unretrieved_ranked_findings": 14
+}

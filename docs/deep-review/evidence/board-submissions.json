@@ -1,0 +1,16 @@
+[
+  {
+    "ticket": "DR-100",
+    "source_commit": "48459fb82053076729f8bf16388d2a4b323991b7",
+    "status": "VERIFYING",
+    "disposition": "Submitted to VERIFYING; application acceptance remains external",
+    "artifacts": 4
+  },
+  {
+    "ticket": "DR-110",
+    "source_commit": "853768b279caa4011a6dedf47b7ba0930c11e25d",
+    "status": "VERIFYING",
+    "disposition": "Submitted to VERIFYING; application acceptance remains external",
+    "artifacts": 2
+  }
+]

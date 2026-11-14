@@ -1,0 +1,29 @@
+{
+  "checked_at": "2026-11-14T11:31:21.323162+00:00",
+  "artifact_url": "https://claude.ai/artifact/31nrKCwLc2VyseqdXvKFCs",
+  "frame_uuid": "104e8895-b01a-4ce0-b077-3fd571fdd088",
+  "public_wrapper": {
+    "file": "external-review.html",
+    "bytes": 37245,
+    "sha256": "c68ff63a872f5f713ea3ffd410db9be185ab023d41b03259e5851c2a5d6f8f88"
+  },
+  "requests": [
+    {
+      "url": "https://claude.ai/api/frame/104e8895-b01a-4ce0-b077-3fd571fdd088?via=user_open&bk=initial&actor=id&vt=1&rw=1",
+      "status": 401,
+      "source": "URL constructed exactly by the wrapper bootstrap with no account/org/share-key values"
+    },
+    {
+      "url": "https://assets-proxy.anthropic.com/claude-ai/v2/assets/v1/frame-shell-DNo7fyn8.js",
+      "status": 200,
+      "bytes": 178107,
+      "sha256": "2b8839ca0ddd0c0b12538e4dd83aaf90f16f649569a6bf803567591168aa9599",
+      "file": "external-frame-shell.js"
+    }
+  ],
+  "credentials_used": false,
+  "cookies_used": false,
+  "tokens_logged": false,
+  "provider_inference_calls": 0,
+  "result": "Content inaccessible without sign-in; full report and remaining fourteen findings not retrieved or assessed."
+}
