@@ -34,6 +34,14 @@ export function worldAcceptedState():WorldState {
  state.memories.push(memory);state.cursor.sequence=2;state.physical.items.find(i=>i.id==='lamp')!.owner_id='companion';
  state.loans=[{loan_id:'lamp_offer',offer_id:'lamp_offer',offer_hash:offer.offer_hash,item_id:'lamp',lender_actor_id:'hero',borrower_actor_id:'companion',accepted_sequence:2,accepted_at:0,status:'open',returned_sequence:null}];return state;
 }
+export function worldImpressionState():{genesis:WorldGenesis;state:WorldState} {
+ const genesis=worldGenesis(),state=worldState();genesis.profiles[0]!.revision=3;state.profiles=structuredClone(genesis.profiles);state.genesis_hash=hash(genesis);
+ const heard:WorldMemory={...worldMemory(),actor_id:'companion',acquired_by:['companion','hero'],payload:{type:'speak',text:'I can help.',audience:{kind:'whisper',addressed_actor_ids:['hero']},in_reply_to:null}};
+ heard.record_id=hash({domain:'shared-world/0.1.0/memory',genesis_hash:state.genesis_hash,request_id:heard.request_id,sequence:1});
+ const thought:WorldMemory={record_id:hash({domain:'shared-world/0.1.0/memory',genesis_hash:state.genesis_hash,request_id:'impress_2',sequence:2}),request_id:'impress_2',sequence:2,world_time:0,actor_id:'hero',acquired_by:['hero'],payload:{type:'impress',subject_actor_id:'companion',interpretation:'Helpful.',impression_id:''}};
+ if(thought.payload.type==='impress')thought.payload.impression_id=thought.record_id;
+ state.memories=[heard,thought];state.cursor={sequence:2,head:worldDigest,world_time:0};state.impressions=[{impression_id:thought.record_id,owner_actor_id:'hero',subject_actor_id:'companion',evidence_ids:[heard.record_id],sequence:2,world_time:0,nature_revision:3,nature:structuredClone(genesis.profiles[0]!.nature),interpretation:'Helpful.',previous_impression_id:null}];return {genesis,state};
+}
 export function worldView():WorldActorView {
  const g=worldGenesis(),s=worldState(),{controller_id:_,kind:__,...self}=g.mortal.actors[0]!;
  return {version:s.version,genesis_hash:s.genesis_hash,query:{version:s.version,scope:s.scope,actor_id:'hero',cursor:s.cursor},profile:g.profiles[0]!,physical:{self,items:g.mortal.items.filter(i=>i.owner_id==='hero'),location:g.mortal.locations[0]!,routes:g.mortal.routes,encounter:null,activity_lock:null},scene:{...g.scenes[0]!,environment:g.environment,occupants:g.mortal.actors.map(a=>({actor_id:a.id,name:a.name,condition:'standing'}))},memories:[],impressions:[],knowledge:[{entry:g.knowledge_catalog.entries[0]!,acquisition:s.knowledge[0]!}],knowledge_source:{pack_hash:g.mortal.pack_hash,catalog_hash:hash(g.knowledge_catalog),source_manifest_hash:hash(g.source_manifest)},source_definitions:g.source_manifest.sources,replied_to:[],coverage:{memory_total:0,memory_returned:0,impressions_total:0,impressions_returned:0,complete:true},mythic_closed:false};

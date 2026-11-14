@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {readFile} from 'node:fs/promises';
 import {ArgoError,hash} from '../packages/contracts/src/index.ts';
-import {worldGenesis,worldState,worldCommand,worldOffer,worldMemory,worldOfferedState,worldAcceptedState,worldView,worldEvent,worldReceipt} from './shared-world-contract-fixtures.ts';
+import {worldGenesis,worldState,worldCommand,worldOffer,worldMemory,worldOfferedState,worldAcceptedState,worldImpressionState,worldView,worldEvent,worldReceipt} from './shared-world-contract-fixtures.ts';
 type Api=typeof import('../packages/contracts/src/shared-world.ts');
 async function api():Promise<Api>{
  const result=await import(new URL('../packages/contracts/src/shared-world.ts',import.meta.url).href).catch(error=>{if(error.code==='ERR_MODULE_NOT_FOUND')return {};throw error;});
@@ -127,6 +127,43 @@ test('passive byte limits include JSON escaping, quotes, keys and container punc
  reject(()=>m.assertWorldData('a'.repeat(16777215)));
  reject(()=>m.assertWorldData('\u0000'.repeat(2796203)));
  reject(()=>m.assertWorldData({x:'a'.repeat(16777209)}));
+});
+
+test('genesis-bound resolutions preserve every nested State binding',async()=>{
+ const m:Api=await api();const g=worldGenesis(),s=worldOfferedState();const resolution=(state:typeof s)=>({state,draws:[],effects:[],memory:state.memories.at(-1)!});m.assertWorldContract('Resolution',resolution(s),g);
+ for(const mutate of [(x:typeof s)=>{x.physical.actors[0]!.controller_id='forged';},(x:typeof s)=>{x.scope.world_id='foreign';},(x:typeof s)=>{x.physical.items[0]!.name='Invented';},(x:typeof s)=>{x.profiles[0]!.revision++;}]){
+  const bad=structuredClone(s);mutate(bad);m.assertWorldContract('State',bad);reject(()=>m.assertWorldContract('State',bad,g));reject(()=>m.assertWorldContract('Resolution',resolution(bad),g));
+ }
+});
+test('immutable profile nature and revision bind impressions in state and visible projections',async()=>{
+ const m:Api=await api();const {genesis:g,state:s}=worldImpressionState();m.assertWorldContract('State',s,g);
+ const v=worldView();v.genesis_hash=hash(g);v.profile=structuredClone(g.profiles[0]!);v.query.cursor=s.cursor;v.impressions=structuredClone(s.impressions);v.coverage={memory_total:2,memory_returned:0,impressions_total:1,impressions_returned:1,complete:false};m.assertWorldContract('ActorView',v,g);m.assertWorldContract('Impression',s.impressions[0],g);
+ for(const mutate of [(x:any)=>{x.nature_revision=2;},(x:any)=>{x.nature.description='Fabricated personality';},(x:any)=>{x.nature_revision=2;x.nature.priorities=['Fabricated motive'];}]){
+  const bad=structuredClone(s);mutate(bad.impressions[0]);reject(()=>m.assertWorldContract('State',bad,g));reject(()=>m.assertWorldContract('Impression',bad.impressions[0],g));
+  const view=structuredClone(v);mutate(view.impressions[0]);reject(()=>m.assertWorldContract('ActorView',view,g));
+ }
+});
+test('genesis-bound actor views pin all immutable definitions while allowing current mutable state',async()=>{
+ const m:Api=await api();const g=worldGenesis();
+ for(const mutate of [(v:any)=>{v.profile.revision++;},(v:any)=>{v.profile.nature.priorities=['Forged'];},(v:any)=>{v.profile.max_speech_characters++;},(v:any)=>{v.profile.presentation.occupation='Forged';},(v:any)=>{v.physical.self.max_hp++;},(v:any)=>{v.physical.self.abilities.strength++;},(v:any)=>{v.physical.items[0].name='Forged';},(v:any)=>{v.physical.items[0].damage_die=8;},(v:any)=>{v.physical.items[0].slots++;},(v:any)=>{v.physical.items[0].attack_ability='wisdom';},(v:any)=>{v.physical.routes[0].turns++;}]){
+  const v=worldView();mutate(v);reject(()=>m.assertWorldContract('ActorView',v,g));
+ }
+ const v=worldView();v.query.cursor={sequence:1,head:'a'.repeat(64),world_time:10};v.profile.activity={description:'Working now',busy_until:20};v.physical.self.hp--;v.physical.self.resources.obols++;v.physical.self.location_id='ruin';v.physical.location=structuredClone(g.mortal.locations[1]!);v.scene={...g.scenes[1]!,environment:g.environment,occupants:[{actor_id:'hero',name:v.physical.self.name,condition:'standing'}]};v.physical.items[0]!.equipped=false;
+ const acquired=structuredClone(g.mortal.items.find(item=>item.owner_id!=='hero')!);acquired.owner_id='hero';acquired.location_id=null;acquired.equipped=false;v.physical.items.push(acquired);m.assertWorldContract('ActorView',v,g);
+});
+test('visible offer memories bind source, world, issued prefix and authored policy references',async()=>{
+ const m:Api=await api();const g=worldGenesis();
+ const offered=()=>{const v=worldView(),o=worldOffer();v.query.cursor={sequence:1,head:'a'.repeat(64),world_time:0};v.memories=[{record_id:'b'.repeat(64),sequence:1,world_time:0,actor_id:'hero',payload:{type:'loan_offered',terms:o.terms,offer_hash:o.offer_hash}}];v.coverage={memory_total:1,memory_returned:1,impressions_total:0,impressions_returned:0,complete:true};return v;};m.assertWorldContract('ActorView',offered(),g);
+ const noCurrentPolicy=offered();noCurrentPolicy.query.cursor.sequence=2;noCurrentPolicy.knowledge=[];noCurrentPolicy.source_definitions=[];m.assertWorldContract('ActorView',noCurrentPolicy,g);
+ for(const mutate of [(r:any)=>{r.payload.terms.genesis_hash='f'.repeat(64);},(r:any)=>{r.actor_id='companion';},(r:any)=>{r.actor_id=null;},(r:any)=>{r.payload.terms.issued_sequence=2;},(r:any)=>{r.payload.terms.issued_at=1;},(r:any)=>{r.payload.terms.policy_id='missing';},(r:any)=>{r.payload.terms.item_id='sword';},(r:any)=>{r.payload.terms.repair_cap_obols=6;},(r:any)=>{r.payload.terms.borrower_actor_id='missing';},(r:any)=>{r.payload.terms.return_location_id='missing';},(r:any)=>{r.actor_id='companion';r.payload.terms.lender_actor_id='companion';r.payload.terms.borrower_actor_id='hero';}]){
+  const v=offered();mutate(v.memories[0]);const p=v.memories[0]!.payload;if(p.type==='loan_offered')p.offer_hash=hash({domain:'shared-world/0.1.0/loan-offer',terms:p.terms});reject(()=>m.assertWorldContract('ActorView',v,g));
+ }
+});
+test('visible speech has a known direct source and genesis-origin grants require initial eligibility at every prefix',async()=>{
+ const m:Api=await api();const g=worldGenesis();
+ for(const actor_id of [null,'missing']){const v=worldView();v.query.cursor={sequence:1,head:'a'.repeat(64),world_time:0};v.memories=[{record_id:'b'.repeat(64),sequence:1,world_time:0,actor_id,payload:{type:'speak',text:'I said this',audience:{kind:'room',addressed_actor_ids:[]},in_reply_to:null}}];v.coverage={memory_total:1,memory_returned:1,impressions_total:0,impressions_returned:0,complete:true};reject(()=>m.assertWorldContract('ActorView',v,g));}
+ g.initial_knowledge_ids=[];for(const sequence of [0,2]){const v=worldView();v.genesis_hash=hash(g);v.query.cursor={sequence,head:sequence?'a'.repeat(64):v.genesis_hash,world_time:0};reject(()=>m.assertWorldContract('ActorView',v,g));}
+ const activated=worldView();activated.genesis_hash=hash(g);activated.query.cursor={sequence:2,head:'a'.repeat(64),world_time:0};activated.knowledge[0]!.acquisition={knowledge_id:'lamp_policy',origin:'event',sequence:1,world_time:0,active:true};m.assertWorldContract('ActorView',activated,g);
 });
 test('the freeze candidate pins exactly the new contract schema and type/guard bytes',async()=>{
  const file=await readFile(new URL('../SYSTEMS/shared-world-v1/FREEZE.json',import.meta.url),'utf8').catch(error=>{if(error.code==='ENOENT')return null;throw error;});assert.notEqual(file,null);
