@@ -61,7 +61,7 @@ Responses must be exactly one JSON object with `text` containing nonempty bounde
 
 ## Verification and remaining work
 
-Offline tests cover different private reactions to one scene, exact addressed input, historical nature, silence, stale suppression, failover, cancellation, token counting and explicit limits across four provider surfaces. A real signed-journal integration proves speech is committed through the authenticated bridge and replays without a model. The complete repository gate and its exact candidate identity are recorded in delivery evidence/CI.
+Offline tests cover different private reactions to one scene, exact addressed input, historical nature, silence, stale suppression, failover, cancellation, token counting and explicit limits across four provider surfaces. A real signed-journal integration proves speech is committed through the authenticated bridge and replays without a model. All ten repository gates passed at `4f884fd41d2940b619c319259e3b8b085944d75b`; [verification](verification.json) retains the exact identity, source hashes and logs. GitHub delivery checks validate the final PR head.
 
 The implementation is a callable headless library connection, not a deployed game or paid live-provider trial. No live latency or dialogue-quality claim follows from injected fixtures. Host authentication, SDK credentials, scene disclosure and delivery remain host integrations. Mortal worlds and the older character/Fate authority profiles remain separate; this change does not join them by actor name. Weather, dynamic scene state, archive relevance retrieval and a measured live dialogue benchmark remain later work.
 

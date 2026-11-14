@@ -81,7 +81,7 @@
     "retained": "review.md",
     "original_sha256": "a3e6e13b9ff9578fd818e4ffad40612d5b7f50462da171c313900f045006fe0f",
     "retained_sha256": "a3e6e13b9ff9578fd818e4ffad40612d5b7f50462da171c313900f045006fe0f",
-    "transformation": "Repository links made relative to retained evidence directory"
+    "transformation": "Repository links made relative and line anchors converted to GitHub #L syntax"
   },
   {
     "report_relative_source": "review/probes.mts",
@@ -89,5 +89,35 @@
     "original_sha256": "ef2ee935db8956ecf6138847412f9594a7bc711548986b6dafd3e725493fb342",
     "retained_sha256": "962dbe49e36b37e28c456846141093d4827ea521597e93ee27d8f8fdceb94cf1",
     "transformation": "Repository root supplied by first CLI argument; probe assertions unchanged"
+  },
+  {
+    "retained": "full-gate/application-gate.log",
+    "retained_sha256": "9ada92e4e724191da8f5ad7ee3a70327907538cbb05616bc00bdddf695fd127e",
+    "transformation": null
+  },
+  {
+    "retained": "full-gate/checkout.log",
+    "retained_sha256": "8fbffa21247c56d233d5580b3e479fc7c77e7707ae115e75eeb1ffd5b7af6513",
+    "transformation": null
+  },
+  {
+    "retained": "full-gate/clone.log",
+    "retained_sha256": "25a44968d0bdc0dc05e80a67c2515f6bc2289b2242262c67e77a62791891a0c1",
+    "transformation": null
+  },
+  {
+    "retained": "full-gate/gate-result.json",
+    "retained_sha256": "816fb5b13b6c5745acf04f3668a698fe9733341ca4df33132706526960b5aa4c",
+    "transformation": null
+  },
+  {
+    "retained": "full-gate/pantheon-install.log",
+    "retained_sha256": "178c8457015fa8fcd91650ef25c0d212e906ce8bfed7373fc2dfde9e57be1dfd",
+    "transformation": null
+  },
+  {
+    "retained": "full-gate/root-install.log",
+    "retained_sha256": "e845549e7a93d4cf20e361edea6827ade6a4c65ad077834ef7a603f44cae8720",
+    "transformation": null
   }
 ]

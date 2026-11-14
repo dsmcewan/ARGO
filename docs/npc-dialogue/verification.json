@@ -1,5 +1,5 @@
 {
-  "record_kind": "pre_release_targeted_verification",
+  "record_kind": "offline_application_verification_before_delivery",
   "baseline": "6ff1218d4d77834b5c640909ad6da9efd87f688a",
   "implementation_commit": "9296e9b80c6336d65aba79bb045c96486ce221c4",
   "branch": "argo/npc-dialogue",
@@ -23,7 +23,14 @@
     "regressions": "Four new assertions failed before the fix and passed afterward; agent-final.log contains 20 passing tests",
     "regrading": "Mixed refusal/tool output was also fixed because this adapter promises text-only responses"
   },
-  "application_gate": "Required before delivery. This record captures earlier targeted checks; final exact-candidate gate and GitHub CI results belong to the release/PR records.",
+  "application_gate": {
+    "candidate": "4f884fd41d2940b619c319259e3b8b085944d75b",
+    "checks_passed": 10,
+    "checks_failed": 0,
+    "record": "evidence/full-gate/gate-result.json",
+    "elapsed_seconds": 277.365,
+    "execution": "Disposable clone; full candidate read-only; network-unshared Bubblewrap; offline dependencies"
+  },
   "source_sha256": {
     "TESTS/campaign-dialogue.test.ts": "f1b0beac018640b55c68510c69b5209ae57ac5ede66186b2afe592dc07fee7e1",
     "TESTS/character-model-integration.test.ts": "b7eaf919c68ed19a9413cb29868764f243286b7bfbd52e9135a0eb1b92e8a8ab",
@@ -67,5 +74,6 @@
     "No live-model coherence, latency or token savings measurement.",
     "Reader supplies its latest 16 acquired experiences; older promises need future retrieval."
   ],
-  "outer_sandbox_notes": "Some native child assertions, Python spawn and Bubblewrap tests failed under the outer sandbox. No test runner was weakened; full immutable offline gate uses approved outer-sandbox execution with its own network-isolated Bubblewrap."
+  "outer_sandbox_notes": "Some native child assertions, Python spawn and Bubblewrap tests failed under the outer sandbox. No test runner was weakened; full immutable offline gate uses approved outer-sandbox execution with its own network-isolated Bubblewrap.",
+  "post_gate_changes": "Documentation and retained evidence only; runtime/test source hashes remain identical. GitHub delivery checks bind the final PR head."
 }

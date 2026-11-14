@@ -46,12 +46,14 @@ Files: `scenarios/tempted-fates/campaign/dialogue.ts`, scenario entry; `TESTS/ca
 
 ### Integration and release verification
 
-- [ ] Run typechecks, relevant suites and the full immutable offline application gate.
+- [x] Run typechecks, relevant suites and the full immutable offline application gate.
 - [x] Obtain a separate review of the assembled change; fix reproduced material defects.
-- [ ] Record exact code identities, evidence and Board dispositions honestly. Documentation distinguishes connected library functionality from deployed live services and measured dialogue quality.
+- [x] Record exact code identities, evidence and Board dispositions honestly. Documentation distinguishes connected library functionality from deployed live services and measured dialogue quality.
 
 ## Progress
 
 The merged baseline has an identical tree to the prior release's ten-gate candidate. The two read-only scouts confirmed the fixed interface's compatibility and the Google cap issue. Implementation has not started when this plan is recorded.
 
 Implementation lanes are assembled and typechecked. Separate review found two important issues (post-count disclosure/deadline and Google continuation) and one mixed-response issue; all were fixed with failing-then-passing regressions. Native fixtures cover 47 targeted cases. The remaining full application gate runs on an immutable candidate; Board dispositions remain separate from application acceptance.
+
+The immutable full gate passed all ten checks at `4f884fd41d2940b619c319259e3b8b085944d75b` in 277.365 seconds. Subsequent changes retain this evidence and update documentation only. No paid provider call or trust-root promotion occurred.
