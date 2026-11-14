@@ -194,7 +194,12 @@ export function resolveWorld(inputGenesis:WorldGenesis,inputState:WorldState,inp
   applyMechanical(mechanical(g,s,action.action,id,principal,command.request_id));({payload,recipients}=mortalMemory(s,next,action.action,id));
   if(action.action.type==='transfer_item'||action.action.type==='pickup'||action.action.type==='loot'){
    const fulfilled=meta.index.openLoans.get(action.action.item_id);
-   if(fulfilled&&next.physical.items.find(i=>i.id===fulfilled.item_id)?.owner_id===fulfilled.lender_actor_id){next.loans=s.loans.map(l=>l===fulfilled?{...l,status:'returned',returned_sequence:sequence}:l);({payload,recipients}=loanReturn(next,fulfilled,id!,action.action.type));}
+   if(fulfilled&&next.physical.items.find(i=>i.id===fulfilled.item_id)?.owner_id===fulfilled.lender_actor_id){
+    // Compound fulfillment requires a standing lender, as direct return does.
+    // A refusal discards the detached mortal result before history/cache changes.
+    standing(next,fulfilled.lender_actor_id);
+    next.loans=s.loans.map(l=>l===fulfilled?{...l,status:'returned',returned_sequence:sequence}:l);({payload,recipients}=loanReturn(next,fulfilled,id!,action.action.type));
+   }
   }break;
  }
  case 'set_knowledge':{

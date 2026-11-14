@@ -53,6 +53,24 @@ test('failed acceptance leaves no promise, custody, time or RNG changes',()=>{
  const far=commit(g,s,{type:'mortal',action:{type:'travel',route_id:'road'}},'companion');assert.throws(()=>run(g,far,accept(far),'companion'));
  assert.equal(canonical(s),before);
 });
+test('ordinary loan return to an unconscious lender rejects atomically without changing unrelated transfer rules',()=>{
+ const g=genesis();g.mortal.seed='6'.padStart(64,'0');g.mortal.actors[0]!.hp=1;g.mortal.actors[0]!.resources.rations=0;
+ let s=commit(g,start(g),offer('unconscious_return',3000));s=commit(g,s,accept(s),'companion');
+ const action={type:'mortal' as const,action:{type:'transfer_item' as const,item_id:'lamp',to_actor_id:'hero'}};
+ const positive=run(g,s,action,'companion');assert.equal(positive.state.loans[0]!.status,'returned');assert.equal(item(positive.state).owner_id,'hero');assert.deepEqual(positive.memory.acquired_by,['hero','companion']);assertWorldContract('Resolution',positive,g);
+ s=commit(g,s,{type:'mortal',action:{type:'wait',turns:1}});assert.equal(actor(s).hp,0);
+ const before=canonical(s),beforeHash=worldStateHash(s),request='rejected_return';
+ assert.throws(()=>run(g,s,{type:'return_loan',loan_id:'unconscious_return'},'companion'),code('UNAUTHORIZED'));
+ assert.throws(()=>run(g,s,action,'companion',request),code('UNAUTHORIZED'));
+ assert.equal(canonical(s),before);assert.equal(worldStateHash(s),beforeHash);assert.equal(item(s).owner_id,'companion');assert.equal(s.loans[0]!.status,'open');assert.equal(s.offers[0]!.status,'accepted');assert.equal(s.memories.length,3);assert.equal(s.cursor.sequence,3);
+ // A rejected request never enters the history/index: this valid alternative
+ // can use that ID and the same prefix without fulfilling the loan.
+ const alternate=run(g,s,{...action,action:{...action.action,to_actor_id:'watcher'}},'companion',request);assert.equal(alternate.memory.request_id,request);assert.equal(alternate.state.loans[0]!.status,'open');assert.equal(item(alternate.state).owner_id,'watcher');assert.equal(alternate.state.memories.length,4);assertWorldContract('Resolution',alternate,g);
+ // Existing mortal rules allow giving an ordinary item to a living unconscious
+ // recipient. The shared loan constraint must not broaden that admission rule.
+ const ordinary=run(g,s,{...action,action:{...action.action,item_id:'club'}},'raider');assert.equal(item(ordinary.state,'club').owner_id,'hero');assert.equal(ordinary.memory.payload.type,'mortal');assert.equal(ordinary.memory.acquired_by.includes('hero'),false);assert.equal(ordinary.state.loans[0]!.status,'open');assertWorldContract('Resolution',ordinary,g);
+ assert.equal(canonical(s),before);
+});
 test('offer lifecycle handles exact expiry, permanent IDs, withdrawal, knowledge revocation and custody loss',()=>{
  const g=genesis();let s=commit(g,start(g),offer());
  s=commit(g,s,{type:'set_knowledge',knowledge_id:'lamp_policy',active:false},'host');assert.equal(s.offers[0]!.status,'open');assert.equal(run(g,s,accept(s),'companion').state.loans.length,1);
