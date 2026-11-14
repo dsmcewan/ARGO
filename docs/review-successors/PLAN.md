@@ -31,11 +31,11 @@ Files: new `SYSTEMS/mortal-v3/`, `packages/contracts/src/mortal-v3{,-types}.ts`,
 
 Produces `MORTAL_V3_PROFILE`, `MortalV3*` DTOs, `assertMortalV3Contract`, `assertMortalV3Genesis`, `assertMortalV3Data`, `mortalV3Schema`; then explicit v3 initialization/resolution/journal/store/view APIs. Consumes the scoped v1 namespace and immutable v2 definitions only where reuse preserves version distinctions.
 
-- [ ] Write failing schema tests: closed recovery command/turn token, cross-version rejection, unsafe payloads and freeze identity.
-- [ ] Implement/freeze schema/types/guards; verify with `node --test --test-isolation=none TESTS/mortal-v3-contracts.test.ts`; commit for contract review.
-- [ ] After freeze, write failures for remote travel/wait, protected site/roster, forged/stale recovery, exact pass/close time, resource conservation and version mixing.
-- [ ] Implement explicit v3 reducer/journal/async store/view; verify deterministic replay/restart/receipt binding and concurrency.
-- [ ] Commit source and report exact SHA plus evidence; coordinator supplies a fresh-campaign v3 builder and exports.
+- [x] Write failing schema tests: closed recovery command/turn token, cross-version rejection, unsafe payloads and freeze identity.
+- [x] Implement/freeze schema/types/guards; verify with `node --test --test-isolation=none TESTS/mortal-v3-contracts.test.ts`; commit for contract review.
+- [x] After freeze, write failures for remote travel/wait, protected site/roster, forged/stale recovery, exact pass/close time, resource conservation and version mixing.
+- [x] Implement explicit v3 reducer/journal/async store/view; verify deterministic replay/restart/receipt binding and concurrency.
+- [x] Commit source and report exact SHA plus evidence; coordinator supplies a fresh-campaign v3 builder and exports.
 
 ## DR-211: authored actor knowledge
 
@@ -43,11 +43,11 @@ Files: new `SYSTEMS/dialogue-knowledge-v1/`, `packages/contracts/src/dialogue-kn
 
 Produces closed `AuthoredSourceManifest`, `AuthoredKnowledgeCatalog`, `AuthoredKnowledgeActivation`, `AuthoredKnowledgeDisclosure` and dialogue0.2 selected knowledge. Consumes the exact CharacterActorQuery and frozen campaign pack; grant authentication/ancestry remains a trusted host loader obligation.
 
-- [ ] Write failing tests for wrong actor/scope/hash/time/head, missing activation, unselected/oversized/active data and unsupported entry kinds.
-- [ ] Implement/freeze the contract and pinned source-manifest format, run dedicated schema tests and commit for contract review.
-- [ ] After freeze, curate source-backed Melia terms, implement opt-in projection and additive supplement parsing/packet construction.
-- [ ] Capture the injected provider request: exact terms present for Melia only; no referee secrets; reading causes no ledger/custody/resource mutation; changed grants suppress late generation.
-- [ ] Commit source and evidence; coordinator exports the helper and documents persisted initialization/activation and exact-query host disclosure.
+- [x] Write failing tests for wrong actor/scope/hash/time/head, missing activation, unselected/oversized/active data and unsupported entry kinds.
+- [x] Implement/freeze the contract and pinned source-manifest format, run dedicated schema tests and commit for contract review.
+- [x] After freeze, curate source-backed Melia terms, implement opt-in projection and additive supplement parsing/packet construction.
+- [x] Capture the injected provider request: exact terms present for Melia only; no referee secrets; reading causes no ledger/custody/resource mutation; changed grants suppress late generation.
+- [x] Commit source and evidence; coordinator exports the helper and documents persisted initialization/activation and exact-query host disclosure.
 
 ## DR-221: restrictive new observation admission
 
@@ -55,16 +55,17 @@ Files: `SYSTEMS/observation-admission-v1/`, `packages/contracts/src/observation-
 
 Produces `OBSERVATION_ADMISSION_PROFILE`, `ObservationAdmissionRequest`, `ObservationWitnessGrant`, `observationNeedsWitness`, `createObservationAdmissionRequest`, `assertObservationWitnessGrant`. A per-attempt request hashes full proposal/principal/window; a host grant binds it to scope, cursor, source and recipients. Historic v1 replay remains unchanged.
 
-- [ ] Write failing contract tests for source/proxy forgery and altered grant bindings/deadlines; implement/freeze guards and commit for review.
-- [ ] After freeze, test the supplied foreign-recipient attack, no-host refusal, correct host grant, slow host/nonblocking read, stale cursor, exact concurrent retry and cancellation/deadline.
-- [ ] Implement locked preflight, outside-lock grant and locked retry-first revalidation/append; never infer witnesses from party membership.
-- [ ] Preserve historical signed replay tests separately from new admission tests; coordinator updates only fixture setup whose old writes are intentionally invalid now.
-- [ ] Commit source/evidence; record admission-only limit and deferred persisted witness evidence.
+- [x] Write failing contract tests for source/proxy forgery and altered grant bindings/deadlines; implement/freeze guards and commit for review.
+- [x] After freeze, test the supplied foreign-recipient attack, no-host refusal, correct host grant, slow host/nonblocking read, stale cursor, exact concurrent retry and cancellation/deadline.
+- [x] Implement locked preflight, outside-lock grant and locked retry-first revalidation/append; never infer witnesses from party membership.
+- [x] Preserve historical signed replay tests separately from new admission tests; coordinator updates only fixture setup whose old writes are intentionally invalid now.
+- [x] Commit source/evidence; record admission-only limit and deferred persisted witness evidence.
 
 ## Integration and acceptance
 
 - [x] Review the contract commits before permitting runtime work; record hashes (contract-record.json).
-- [ ] Cherry-pick immutable source commits, wire exports/fresh campaign helper and compatibility fixtures; run contracts, typecheck and affected tests.
-- [ ] Obtain independent native adversarial review; reproduce/fix reported gaps and retest affected paths.
-- [ ] Run the exact immutable candidate through all ten offline application groups without changing gate policy.
-- [ ] Retain portable evidence and truthful Board state, push PR, check GitHub CI, then merge under standing authorization and synchronize main.
+- [x] Integrate immutable source commits with their source ancestry, wire exports/fresh campaign helper and compatibility fixtures; run contracts, typecheck and affected tests.
+- [x] Obtain independent native adversarial review; reproduce/fix reported gaps and retest affected paths.
+- [x] Run the exact immutable candidate through all ten offline application groups without changing gate policy.
+- [x] Retain portable evidence and truthful Board state.
+- [ ] Delivery checkpoint: push PR, check GitHub CI, then merge under standing authorization and synchronize main. The PR and workflow records are the live delivery authority; this pre-publication checklist is a historical snapshot.

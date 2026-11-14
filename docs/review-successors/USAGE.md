@@ -1,6 +1,6 @@
 # Using the review successor interfaces
 
-Implementation is in progress until the final verification record is present. These are opt-in host-library interfaces, not a deployed game or a new common world. Never pass model JSON as authenticated host capabilities.
+The final offline verification is recorded in [verification.json](verification.json). These are opt-in host-library interfaces, not a deployed game or a new common world. Never pass model JSON as authenticated host capabilities.
 
 ## Fresh mortal worlds
 
