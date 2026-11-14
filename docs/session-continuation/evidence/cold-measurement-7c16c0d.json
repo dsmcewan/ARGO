@@ -1,0 +1,208 @@
+{
+  "candidate": "7c16c0d8709b0b53dba0ab36051c1fe0100bd35a",
+  "checkout_clean_before_after": true,
+  "node": "v24.22.1",
+  "platform": "linux",
+  "test_runner": false,
+  "paid_calls": 0,
+  "interface": "createWorldSession: query, view, submit",
+  "genesis_hash": "bb2a88855b000ebaff3e8e5cc3788ef7028c8355926dc8b2efb6b97bb356b652",
+  "targets": [
+    128,
+    512,
+    1000,
+    2000
+  ],
+  "rows": [
+    {
+      "prefix_events": 128,
+      "after_sample_events": 130,
+      "fill_ms": 922.1189510000004,
+      "cold_handle_open_ms": 2482.633550999999,
+      "warm_snapshot": {
+        "median_ms": 0.3517500000007203,
+        "samples_ms": [
+          0.8751920000004247,
+          0.7493420000000697,
+          0.33764400000018213,
+          0.3517500000007203,
+          0.3468510000002425
+        ]
+      },
+      "warm_scoped_view": {
+        "median_ms": 14.492562999999791,
+        "samples_ms": [
+          68.54491700000017,
+          14.137316999999712,
+          14.492562999999791,
+          16.51820299999963,
+          13.366109999999935
+        ]
+      },
+      "warm_speech_append_ms": 6.853248000001258,
+      "warm_contextual_dialogue_and_commit_ms": 196.42740799999956,
+      "dialogue_context_reads": 5,
+      "injected_model_calls": 1,
+      "exact_retry": {
+        "median_ms": 4.827574999999342,
+        "samples_ms": [
+          5.941084000000046,
+          4.827574999999342,
+          3.6620339999990392,
+          6.028588999999556,
+          3.5032310000005964
+        ]
+      },
+      "two_handle_one_event_refresh_ms": 39.51124299999901,
+      "state_bytes": 64273,
+      "state_hash": "42803d2176f5d1da0b83b62e8d43ccbf21ca1588e6937daf4789e350d8ad8a11"
+    },
+    {
+      "prefix_events": 512,
+      "after_sample_events": 514,
+      "fill_ms": 2938.919247,
+      "cold_handle_open_ms": 3640.522588,
+      "warm_snapshot": {
+        "median_ms": 0.41108100000019476,
+        "samples_ms": [
+          0.8712429999995948,
+          0.6859659999990981,
+          0.3290870000000723,
+          0.41108100000019476,
+          0.29690599999958067
+        ]
+      },
+      "warm_scoped_view": {
+        "median_ms": 13.083301999999094,
+        "samples_ms": [
+          11.917727000000014,
+          10.380024000000049,
+          13.186854999999923,
+          15.132931000000099,
+          13.083301999999094
+        ]
+      },
+      "warm_speech_append_ms": 12.014773000000787,
+      "warm_contextual_dialogue_and_commit_ms": 140.75985200000105,
+      "dialogue_context_reads": 5,
+      "injected_model_calls": 1,
+      "exact_retry": {
+        "median_ms": 3.2258959999999206,
+        "samples_ms": [
+          4.087752999999793,
+          3.2258959999999206,
+          3.7801200000012614,
+          3.1481540000004316,
+          2.7940899999994144
+        ]
+      },
+      "two_handle_one_event_refresh_ms": 67.19876600000134,
+      "state_bytes": 216145,
+      "state_hash": "d576c3ef8f27f0cd9bb58c1ec03a989898463bf85e6bbb0c79691395f445c3d0"
+    },
+    {
+      "prefix_events": 1000,
+      "after_sample_events": 1002,
+      "fill_ms": 4940.828505000001,
+      "cold_handle_open_ms": 6784.490591999998,
+      "warm_snapshot": {
+        "median_ms": 0.47122400000080233,
+        "samples_ms": [
+          2.7391939999979513,
+          0.37598500000240165,
+          0.2523120000005292,
+          0.5147140000008221,
+          0.47122400000080233
+        ]
+      },
+      "warm_scoped_view": {
+        "median_ms": 13.202206000001752,
+        "samples_ms": [
+          16.38176399999793,
+          11.865820000002714,
+          12.516891999999643,
+          13.202206000001752,
+          16.280883000003087
+        ]
+      },
+      "warm_speech_append_ms": 32.046972000000096,
+      "warm_contextual_dialogue_and_commit_ms": 228.4758150000016,
+      "dialogue_context_reads": 5,
+      "injected_model_calls": 1,
+      "exact_retry": {
+        "median_ms": 6.0614779999996244,
+        "samples_ms": [
+          6.0614779999996244,
+          7.887053999998898,
+          6.397168999999849,
+          3.251914000000397,
+          2.830094000000827
+        ]
+      },
+      "two_handle_one_event_refresh_ms": 92.53783100000146,
+      "state_bytes": 409157,
+      "state_hash": "4435e7f1b1a7f50399f72d47ae79a0438240023c9daf4c6866bdbac9225e4039"
+    },
+    {
+      "prefix_events": 2000,
+      "after_sample_events": 2002,
+      "fill_ms": 17741.659759000002,
+      "cold_handle_open_ms": 13884.146790000006,
+      "warm_snapshot": {
+        "median_ms": 0.3324129999964498,
+        "samples_ms": [
+          3.1393910000042524,
+          0.36613499999657506,
+          0.3324129999964498,
+          0.2745250000007218,
+          0.26670000000012806
+        ]
+      },
+      "warm_scoped_view": {
+        "median_ms": 13.952518999998574,
+        "samples_ms": [
+          9.923360000000685,
+          9.914944999996806,
+          14.881288999997196,
+          13.952518999998574,
+          19.2730670000019
+        ]
+      },
+      "warm_speech_append_ms": 42.185214000004635,
+      "warm_contextual_dialogue_and_commit_ms": 369.2419729999965,
+      "dialogue_context_reads": 5,
+      "injected_model_calls": 1,
+      "exact_retry": {
+        "median_ms": 3.234723000001395,
+        "samples_ms": [
+          4.133266999997431,
+          2.8482379999986733,
+          3.234723000001395,
+          2.901889000000665,
+          7.984045999997761
+        ]
+      },
+      "two_handle_one_event_refresh_ms": 272.873437000002,
+      "state_bytes": 807157,
+      "state_hash": "fa6f4d292f9dfcc4fa5e7d8643d3e95bba1f7826a47685599b402a57d5cc5d5a"
+    }
+  ],
+  "final_sequence": 2002,
+  "full_replay_ms": 10088.97782700001,
+  "replay_equals_snapshot": true,
+  "final_state_hash": "fa6f4d292f9dfcc4fa5e7d8643d3e95bba1f7826a47685599b402a57d5cc5d5a",
+  "host_workload_parent_event_loop_delay_ms": {
+    "mean": 10.830012970218627,
+    "max": 335.020031,
+    "p99": 17.055743
+  },
+  "limits": [
+    "One machine; five warm read/retry samples, one append and one suffix refresh per checkpoint.",
+    "History-bearing state hashes grow with history; cold replay is not claimed to be linear.",
+    "Cold handle opening includes full verification but uses a warmed OS page cache; this is not a cold-disk measurement.",
+    "Parent event-loop samples cover the whole host workload, including projection, hashes, JSON sizing and logging; they do not isolate store/worker blocking. The final standalone synchronous forensic replay is measured separately.",
+    "Alternating addressed speech in the actual campaign; bulk turns use explicit fixtures and the measured contextual reply uses an injected provider.",
+    "Measured actor reads, appends, retries and dialogue use fixed-principal sessions; bulk history filling uses the underlying authority. Dialogue includes current-query acquisition, five refreshed views and signed-receipt verification.",
+    "No provider latency, combat-load or general graph-scale claim."
+  ]
+}
