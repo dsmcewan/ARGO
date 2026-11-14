@@ -11,7 +11,7 @@ node scenarios/tempted-fates/shared-world/cli.ts resume --dir /tmp/my-new-argo-w
 
 Choose a new private directory outside the checkout. The demo injects a model response and proves a conversation, explicit lamp loan, night journey, return and identical restart/replay. The [CLI guide](scenarios/tempted-fates/shared-world/README.md) describes JSON-line play and the trusted local operator boundary. This is a fresh ordinary mortal profile; the Fate/lifespan kernel remains separate, and live model quality has not been tested.
 
-[Verified startup work](docs/session-continuation/COLD_RESULTS.md) reduced the measured 2,000-event open from 74.37 to 13.88 seconds while preserving full replay checks; the under-ten-second goal remains unmet. The [durable conversation continuation](docs/session-continuation/PLAN.md) is pending final integrated acceptance. The requested [checkpoint-boot proposal](docs/session-continuation/CHECKPOINT_BOOT_PROPOSAL.md) is documented but not implemented.
+[Verified startup work](docs/session-continuation/COLD_RESULTS.md) reduced the measured 2,000-event open from 74.37 to 13.88 seconds while preserving full replay checks; the under-ten-second goal remains unmet. The accepted [durable conversation continuation](docs/session-continuation/README.md) adds bounded turns for one authenticated player/NPC pair, saved-command recovery and fresh player-scoped delivery. Its [CLI guide](scenarios/tempted-fates/shared-world/README.md) uses explicit offline fixtures; integration checks do not establish live character quality. The requested [checkpoint-boot proposal](docs/session-continuation/CHECKPOINT_BOOT_PROPOSAL.md) is documented but not implemented.
 
 All four foundation phases are complete: source audit, frozen contracts, repaired Pantheon model boundary, and the sequential ledger/bridge/Tempted Fates spine. The earlier foundation repairs passed their deterministic gates. Twelve subsequent structural-review findings are repaired and independently verified; four contract/storage decisions remain blocked in [the repair record](REPAIRS/RESOLUTIONS.md). Verification is recorded in [BUILD_PROGRESS.md](BUILD_PROGRESS.md), [AUDIT_STATUS.json](repo-audit/AUDIT_STATUS.json), and [the verification record](repo-audit/evidence/foundation-verification.json).
 
@@ -33,7 +33,7 @@ LEXI/TELOS transports are injected and default to unavailable. Their determinist
 ## Start here
 
 - [One shared headless world: run commands, evidence and next dependencies](docs/shared-world/README.md)
-- [Startup results and durable conversation work](docs/session-continuation/PLAN.md)
+- [Startup results and durable offline conversation](docs/session-continuation/README.md)
 - [Review repairs: scoped encounters, authored NPC knowledge and observation admission](docs/review-successors/README.md)
 
 - [Connected character dialogue and scoped scene context](docs/npc-dialogue/README.md)

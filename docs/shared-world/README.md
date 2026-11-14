@@ -4,6 +4,8 @@ The new `shared-world/0.1.0` profile connects ordinary mortal dialogue, knowledg
 
 **Local acceptance:** all ten groups passed at `dcfc4d9` in a read-only, network-isolated clone. [Verification record](verification.json) · [Complete gate](evidence/full-gate-dcfc4d9/gate-result.json) · [GitHub delivery](https://github.com/dsmcewan/ARGO/pulls?q=is%3Apr+head%3Aargo%2Fshared-world)
 
+The later [startup and durable conversation continuation](../session-continuation/README.md) has its own source reviews and complete application-gate record; the original milestone evidence below is preserved.
+
 [Run the CLI](../../scenarios/tempted-fates/shared-world/README.md) · [Design](DESIGN.md) · [Frozen contract](../../SYSTEMS/shared-world-v1/CONTRACT.md) · [Plan](PLAN.md) · [Next dependencies](NEXT.md)
 
 ## Run a session

@@ -1,6 +1,6 @@
 # Startup and durable conversation
 
-This continuation builds on the fresh shared-world profile. The startup optimization, durable conversation host, explicit offline CLI and bounded gate repair have passed their separate source reviews. The complete integrated application gate is running on `fe172914c8b937b189f407d161b2ff71e0cdc531`; application acceptance remains pending. No paid calls or deployment are enabled.
+This continuation builds on the fresh shared-world profile. The startup optimization, durable conversation host, explicit offline CLI and bounded gate repair have passed their separate source reviews. All ten application groups passed at `fe172914c8b937b189f407d161b2ff71e0cdc531`; see the [exact gate record](evidence/full-gate-fe17291/gate-result.json) and [verification](verification.json). [PR #6](https://github.com/dsmcewan/ARGO/pull/6) records exact-head CI and delivery. No paid calls or deployment are enabled.
 
 [Startup measurements](COLD_RESULTS.md) · [Turn contract](TURN_CONTRACT.md) · [Host source acceptance](SC-620_ACCEPTANCE.md) · [CLI source acceptance](SC-630_ACCEPTANCE.md) · [Gate budget](GATE_BUDGET.md) · [Implementation plan](PLAN.md) · [Checkpoint proposal](CHECKPOINT_BOOT_PROPOSAL.md)
 

@@ -1,7 +1,7 @@
 {
   "base": "8e2104c6d466b8b2bee2d0b23d984d2e60a65e11",
   "application_candidate": "fe172914c8b937b189f407d161b2ff71e0cdc531",
-  "application_acceptance": "pending_complete_gate",
+  "application_acceptance": "passed_all_ten_groups",
   "sources": {
     "SC-610": {
       "commit": "c4654d52b1a08bdb4bfa18822d2cc74229d606b6",
@@ -45,5 +45,10 @@
   "board_merged_claimed": false,
   "controller_trust_promoted": false,
   "paid_calls": 0,
-  "checkpoint_boot": "proposal_only_not_implemented"
+  "checkpoint_boot": "proposal_only_not_implemented",
+  "application_gate": "evidence/full-gate-fe17291/gate-result.json",
+  "application_elapsed_seconds": 1017.394,
+  "runtime_and_gate_bytes_unchanged_since_test_candidate": true,
+  "delivery_pr": "https://github.com/dsmcewan/ARGO/pull/6",
+  "delivery_status": "Exact-head CI and merge tracked in PR; local acceptance is not remote delivery"
 }
