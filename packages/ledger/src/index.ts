@@ -120,12 +120,13 @@ export async function openLedger(options:LedgerOptions){
     event.authority.signature=sign(null,Buffer.from(canonical(unsigned(event))),options.privateKey).toString('base64');event.hash=eventHash(event);
     verifyEvent(state,event,parents);const next=apply(state,event);
     const record=Buffer.from(canonical(event)+'\n'),file=await open(join(directory,'events.jsonl'),'a',0o600);
-    try{await file.writeFile(record);await file.sync();}finally{await file.close();}
-    // An acknowledged durable append is already verified. Publish it now,
-    // before the disposable snapshot write, so a subsequent rollback cannot
-    // erase this handle's knowledge of its own just-committed event.
-    cached={bytes:Buffer.concat([cached.bytes,record]),state:next,events:[...cached.events,event],
-     parents:new Set([...parents,event.hash]),proposals:new Map([...proposals,[p.proposal_id,event]])};
+    try{
+     await file.writeFile(record);await file.sync();
+     // A durable append is already verified. Remember it before close or the
+     // disposable snapshot write can fail; neither failure erases the commit.
+     cached={bytes:Buffer.concat([cached.bytes,record]),state:next,events:[...cached.events,event],
+      parents:new Set([...parents,event.hash]),proposals:new Map([...proposals,[p.proposal_id,event]])};
+    }finally{await file.close();}
     // This cache is derived, never authority. A crash before its write still recovers the append.
     await atomicFile(directory,'snapshot.json',canonical(next)+'\n');
     return outcome(event);

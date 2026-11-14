@@ -1,6 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import crypto from 'node:crypto';
+import fs from 'node:fs/promises';
 import {syncBuiltinESMExports} from 'node:module';
 import {mkdtemp,rm,readFile,writeFile,mkdir,appendFile,utimes,stat} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
@@ -76,6 +77,27 @@ test('a durable append stays protected when its derived snapshot write fails',as
  const p=proposal(await f.ledger.snapshot(),{type:'move_item',item_id:'lamp',to_actor_id:'traveler'});
  await assert.rejects(f.ledger.submit(p,principal()),/directory|EISDIR/i);
  const good=await readFile(f.path);await writeFile(f.path,'');
+ await assert.rejects(f.ledger.snapshot(),/prefix|corrupt/i);
+ await writeFile(f.path,good);assert.equal((await f.ledger.snapshot()).sequence,1);
+});
+
+test('a durable append stays protected if closing the synchronized event file fails',async t=>{
+ const f=await setup(t),realOpen=fs.open;
+ const p=proposal(await f.ledger.snapshot(),{type:'advance_time',to_time:11},'system');
+ let synchronized=false;
+ const spy=t.mock.method(fs,'open',async(...args:Parameters<typeof fs.open>)=>{
+  const file=await realOpen(...args);
+  if(args[0]===f.path&&args[1]==='a'){
+   const close=file.close.bind(file),sync=file.sync.bind(file);
+   file.sync=async()=>{await sync();synchronized=true;};
+   file.close=async()=>{await close();throw Object.assign(new Error('Injected close EIO'),{code:'EIO'});};
+  }
+  return file;
+ });
+ syncBuiltinESMExports();t.after(()=>{spy.mock.restore();syncBuiltinESMExports();});
+ await assert.rejects(f.ledger.submit(p,principal('system','system')),/Injected close EIO/);
+ spy.mock.restore();syncBuiltinESMExports();assert.equal(synchronized,true);
+ const good=await readFile(f.path);assert.ok(good.length>0);await writeFile(f.path,'');
  await assert.rejects(f.ledger.snapshot(),/prefix|corrupt/i);
  await writeFile(f.path,good);assert.equal((await f.ledger.snapshot()).sequence,1);
 });
