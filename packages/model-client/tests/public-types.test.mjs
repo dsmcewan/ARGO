@@ -20,6 +20,9 @@ test('strict consumers can use every public root export and request/router subpa
       import {routeCall, boundedCall, classifyFailure} from '@argo/model-client/router';
       ${Object.keys(runtime).map(name=>`void model.${name};`).join('\n')}
       const prepared = prepareRequest({vendor:'openai',model:'gpt-6-astra',prompt:'fixture'});
+      const boundedOutput = prepareRequest({vendor:'agy_google',model:'gemini-4-carbon',prompt:'fixture',outputBudgetPolicy:'explicit',extra:{max_output_tokens:2048}});
+      const legacyOutput = prepareRequest({vendor:'agy_google',model:'gemini-4-carbon',prompt:'fixture',outputBudgetPolicy:'long_decode'});
+      const boundedTurn: model.TurnOptions = {client:{},vendor:'xai',model:'grok-4.7',prompt:'fixture',outputBudgetPolicy:'explicit',extra:{max_output_tokens:2048},responseMode:'text_only',beforeGenerate:async ({signal})=>{signal.throwIfAborted();}};
       const count: Promise<number|null> = checkBudget(prepared,async request => { const body: unknown = request; return 10; });
       const history: Promise<Record<string,unknown>[]> = compactConversation({client:{},model:'claude-fable-5-2',history:[]});
       const key: string = cacheKey({scope:{tenant:'fixture'},sessionId:'s',vendor:'openai',model:'gpt-6-astra'});
@@ -31,6 +34,8 @@ test('strict consumers can use every public root export and request/router subpa
       const retained: string = routed.seat.label;
       // @ts-expect-error Unknown provider is rejected by the public request contract.
       prepareRequest({vendor:'unknown',model:'x',prompt:'fixture'});
+      // @ts-expect-error Output policy must be one of the supported modes.
+      prepareRequest({vendor:'xai',model:'grok-4.7',prompt:'fixture',outputBudgetPolicy:'unbounded'});
       // @ts-expect-error Token counters must return numbers.
       checkBudget(prepared,async () => '10');
       // @ts-expect-error Router result retains the invoke result type.

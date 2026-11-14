@@ -1,0 +1,12 @@
+✔ generation preflight follows token counting and can prevent provider invocation (5.378348ms)
+✔ text-only presentation refuses unsupported content on every response surface (2.98329ms)
+✔ ordinary tool-capable callers retain their existing response behavior (0.531226ms)
+✔ presentation options are validated before provider invocation (0.541264ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 32.007604

@@ -1,0 +1,23 @@
+✔ campaign dialogue exports only the queried NPC disposition and explicitly disclosed room (25.323412ms)
+✔ null location grants disclose no room despite seed NPC occupancy (5.488167ms)
+✔ the host selected room is projected without inferring presence from seed occupancy (5.158129ms)
+✔ travelers receive no NPC disposition even when a room is explicitly disclosed (4.161914ms)
+✔ two characters share authored room facts while retaining only their own goals (8.457959ms)
+✔ the content identity changes with a revision of authored scene content (5.423256ms)
+✔ results are detached deeply frozen data and inputs remain unchanged (5.6141ms)
+✔ unknown and malformed location grants fail rather than falling back to an NPC home (21.713602ms)
+✔ malformed query identities, scopes and cursors are refused before disclosure (10.527634ms)
+✔ accessor input is rejected without evaluating pack, query or grant getters (4.517229ms)
+✔ active and revoked proxies are refused without triggering proxy traps (7.559025ms)
+✔ cycles, symbol and hidden grant properties cannot bypass passive disclosure validation (5.10308ms)
+✔ actor disposition limits count Unicode characters and reject excess without truncation (16.758663ms)
+✔ long private disposition on another NPC does not enter or block the selected actor context (5.586151ms)
+✔ room prose honors the authored Unicode limit without leaking other room data (3.59355ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 149.46323

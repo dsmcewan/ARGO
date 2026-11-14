@@ -19,6 +19,8 @@ export interface RequestOptions {
   scope?:OpaqueItem;
   sessionId?:string;
   effort?:string;
+  /** Explicit mode requires and preserves a caller cap; defaults retain long-decode behavior. */
+  outputBudgetPolicy?:'long_decode'|'explicit';
   architecture?:boolean;
   contractHeader?:string;
   signal?:AbortSignal;
@@ -34,6 +36,7 @@ export interface PreparedRequest {
   continuity:'replay'|'server';
   history:OpaqueItem[];
   prompt:string;
+  outputBudgetPolicy?:'long_decode'|'explicit';
 }
 export type TokenCounter=(request:OpaqueItem)=>Promise<number>;
 export const COMPACTION_BETA:string;
@@ -44,6 +47,10 @@ export function cacheKey(options:{scope:OpaqueItem;sessionId:string;vendor:strin
 
 export interface TurnOptions extends RequestOptions {
   client:unknown;
+  /** Run after token counting and before generation; throw to prevent the request. */
+  beforeGenerate?:(options:{signal:AbortSignal})=>Promise<void>;
+  /** Refuse refusal blocks, tools and non-text output in presentation-only turns. */
+  responseMode?:'any'|'text_only';
   deadline?:number;
   compactAfterBytes?:number;
   countTokens?:TokenCounter;

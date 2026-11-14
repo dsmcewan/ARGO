@@ -1,0 +1,92 @@
+✔ public model agent generates provider speech from addressed context without a dialogue template (1396.210117ms)
+✔ deterministic silence avoids provider and supplement calls (12.204384ms)
+✔ model silence and private impressions use their existing command forms (13.322827ms)
+✔ same scene remains shared while actor goals and cache identities stay private (10.84242ms)
+✔ cross-actor and stale supplementary data fail before provider generation (6.043141ms)
+✔ supplement getters, proxies and extra fields cannot inject prompt data (3.913528ms)
+✔ changed view or scene after generation suppresses a previously valid reply (11.940508ms)
+✔ 429 failover uses another pool and rechecks disclosure before that attempt (12.497603ms)
+✔ malformed, incomplete, tool and oversized model responses never become speech (28.333847ms)
+✔ UTF-8 input and Unicode speech budgets are enforced before release (11.56784ms)
+✔ nature revision conflicts are rejected without replacing historical interpretation (2.931877ms)
+✔ historical nature is retained separately from the current personality revision (9.155136ms)
+✔ non-retryable provider failures cannot create a 400 retry loop (6.249837ms)
+✔ the total deadline also bounds optional cooldown bookkeeping (28.378996ms)
+✔ model-backed dialogue forwards bounded output and token counting across all four providers (20.991276ms)
+✖ disclosure is rechecked after token counting before generation can start (12.519394ms)
+✖ a late token count cannot invoke generation after the turn deadline (47.516554ms)
+✖ bounded dialogue refuses Google continuation instead of issuing another generation request (6.196779ms)
+✖ valid-looking prose mixed with refusal or built-in tool records is not dialogue (3.215339ms)
+✔ cancellation and deadlines bound unresponsive provider work (26.616668ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 16
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1685.931605
+
+✖ failing tests:
+
+test at TESTS/character-model.test.ts:145:1
+✖ disclosure is rechecked after token counting before generation can start (12.519394ms)
+  AssertionError [ERR_ASSERTION]: A token-count delay must not bypass renewed disclosure
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (file:///workspace/ARGO/.worktrees/npc-dialogue/TESTS/character-model.test.ts:149:9)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-model.test.ts:152:1
+✖ a late token count cannot invoke generation after the turn deadline (47.516554ms)
+  AssertionError [ERR_ASSERTION]: Expired async counting cannot start a provider side effect
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (file:///workspace/ARGO/.worktrees/npc-dialogue/TESTS/character-model.test.ts:157:9)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-model.test.ts:160:1
+✖ bounded dialogue refuses Google continuation instead of issuing another generation request (6.196779ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.worktrees/npc-dialogue/TESTS/character-model.test.ts:164:2)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'rejects',
+    diff: 'simple'
+  }
+
+test at TESTS/character-model.test.ts:168:1
+✖ valid-looking prose mixed with refusal or built-in tool records is not dialogue (3.215339ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.worktrees/npc-dialogue/TESTS/character-model.test.ts:171:65)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'rejects',
+    diff: 'simple'
+  }
