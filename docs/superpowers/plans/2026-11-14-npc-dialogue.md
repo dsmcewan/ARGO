@@ -23,33 +23,35 @@ Actor/cursor mismatch, stale disclosure between retries, active input objects, U
 
 Files: `packages/interventions/src/dialogue-types.ts`, `dialogue-context.ts`, `character-model.ts`, package entry/manifest; `TESTS/character-model.test.ts`; root lockfile and documentation.
 
-- [ ] Write failing tests for free-form provider output, exact addressed input, actor-private traits, impression provenance, normalized nature and silence gates.
-- [ ] Implement the fixed interface and bounded passive supplement/response validation. Use the existing agent for proposal construction and the existing router/client for providers.
-- [ ] Prove before/after refresh, cancellation, stale suppression, byte/Unicode bounds, no tools/history and per-pool failover with offline tests.
-- [ ] Commit the implementation; retain red/green evidence outside mutable source.
+- [x] Write failing tests for free-form provider output, exact addressed input, actor-private traits, impression provenance, normalized nature and silence gates.
+- [x] Implement the fixed interface and bounded passive supplement/response validation. Use the existing agent for proposal construction and the existing router/client for providers.
+- [x] Prove before/after refresh, cancellation, stale suppression, byte/Unicode bounds, no tools/history and per-pool failover with offline tests.
+- [x] Commit the implementation; retain red/green evidence outside mutable source.
 
 ### Task ND-200: Explicit provider output budget
 
 Files: `packages/model-client/request.mjs`, `index.d.mts`, `tests/request.test.mjs` (or a separately named output-budget test).
 
-- [ ] Write a failing test showing bounded Google dialogue output stays at the caller's explicit limit.
-- [ ] Add `outputBudgetPolicy?:'long_decode'|'explicit'`. Explicit mode requires a positive explicit output cap and preserves it; omitted/long_decode keeps legacy behavior. Reject unknown modes.
-- [ ] Test all provider surfaces and both policies; run the model-client suite and commit only owned files.
+- [x] Write a failing test showing bounded Google dialogue output stays at the caller's explicit limit.
+- [x] Add `outputBudgetPolicy?:'long_decode'|'explicit'`. Explicit mode requires a positive explicit output cap and preserves it; omitted/long_decode keeps legacy behavior. Reject unknown modes.
+- [x] Test all provider surfaces and both policies; run the model-client suite and commit only owned files.
 
 ### Task ND-300: Campaign projection and real authority integration
 
 Files: `scenarios/tempted-fates/campaign/dialogue.ts`, scenario entry; `TESTS/campaign-dialogue.test.ts`, `TESTS/character-model-integration.test.ts`.
 
-- [ ] Write failing tests for explicit room disclosure, own actor goals, null room/traveler behavior, and absent private/referee/variant/sample-speech content.
-- [ ] Implement the helper against the fixed supplement type; do not infer room visibility from initial occupancy.
-- [ ] Wire an injected model through the real signed character journal and bridge. Verify accepted generated speech and replay without a second generation call.
+- [x] Write failing tests for explicit room disclosure, own actor goals, null room/traveler behavior, and absent private/referee/variant/sample-speech content.
+- [x] Implement the helper against the fixed supplement type; do not infer room visibility from initial occupancy.
+- [x] Wire an injected model through the real signed character journal and bridge. Verify accepted generated speech and replay without a second generation call.
 
 ### Integration and release verification
 
 - [ ] Run typechecks, relevant suites and the full immutable offline application gate.
-- [ ] Obtain a separate review of the assembled change; fix reproduced material defects.
+- [x] Obtain a separate review of the assembled change; fix reproduced material defects.
 - [ ] Record exact code identities, evidence and Board dispositions honestly. Documentation distinguishes connected library functionality from deployed live services and measured dialogue quality.
 
 ## Progress
 
 The merged baseline has an identical tree to the prior release's ten-gate candidate. The two read-only scouts confirmed the fixed interface's compatibility and the Google cap issue. Implementation has not started when this plan is recorded.
+
+Implementation lanes are assembled and typechecked. Separate review found two important issues (post-count disclosure/deadline and Google continuation) and one mixed-response issue; all were fixed with failing-then-passing regressions. Native fixtures cover 47 targeted cases. The remaining full application gate runs on an immutable candidate; Board dispositions remain separate from application acceptance.

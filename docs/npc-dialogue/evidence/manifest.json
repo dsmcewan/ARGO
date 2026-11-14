@@ -1,0 +1,93 @@
+[
+  {
+    "report_relative_source": "nd100/red-direct.log",
+    "retained": "agent-red.log",
+    "original_sha256": "e627911d7754afe585e496bb92e278543977da86f80c5dd2b6a287b0c5115497",
+    "retained_sha256": "e627911d7754afe585e496bb92e278543977da86f80c5dd2b6a287b0c5115497",
+    "transformation": null
+  },
+  {
+    "report_relative_source": "review-fixes-red.log",
+    "retained": "review-fixes-red.log",
+    "original_sha256": "0e82c2372f9af6f203ad40a785f99f915caa78bf5f145aa113a8cadef02589ad",
+    "retained_sha256": "0e82c2372f9af6f203ad40a785f99f915caa78bf5f145aa113a8cadef02589ad",
+    "transformation": null
+  },
+  {
+    "report_relative_source": "review-fixes-green.log",
+    "retained": "agent-final.log",
+    "original_sha256": "103c94f5c4155c1b258f211c55f4659be44ebbb48790aaa589c0f02124cae661",
+    "retained_sha256": "103c94f5c4155c1b258f211c55f4659be44ebbb48790aaa589c0f02124cae661",
+    "transformation": null
+  },
+  {
+    "report_relative_source": "journal-final.log",
+    "retained": "journal-final.log",
+    "original_sha256": "75ca5230c017702cadf79cffb25ce7b39146a4ee1b53ab2ef9f65853c47a78a1",
+    "retained_sha256": "75ca5230c017702cadf79cffb25ce7b39146a4ee1b53ab2ef9f65853c47a78a1",
+    "transformation": null
+  },
+  {
+    "report_relative_source": "campaign-combined.log",
+    "retained": "campaign-final.log",
+    "original_sha256": "ca14b31c671cdde3210600d4105e4a945d98c63a6464e787d946ef7125c3d28d",
+    "retained_sha256": "ca14b31c671cdde3210600d4105e4a945d98c63a6464e787d946ef7125c3d28d",
+    "transformation": null
+  },
+  {
+    "report_relative_source": "nd300/red-direct.log",
+    "retained": "campaign-red.log",
+    "original_sha256": "83e988c126b3f09275ea7d92eab74566fc9bd8b5469624156e4bf0f4b94b3523",
+    "retained_sha256": "83e988c126b3f09275ea7d92eab74566fc9bd8b5469624156e4bf0f4b94b3523",
+    "transformation": null
+  },
+  {
+    "report_relative_source": "nd200/output-budget-red-direct.log",
+    "retained": "budget-red.log",
+    "original_sha256": "3f57fe87987f11f57ddd8d55121a0bca3ed22ee3f25fc9ac949160d9bf78466e",
+    "retained_sha256": "3f57fe87987f11f57ddd8d55121a0bca3ed22ee3f25fc9ac949160d9bf78466e",
+    "transformation": null
+  },
+  {
+    "report_relative_source": "nd200/output-budget-green-direct.log",
+    "retained": "budget-green.log",
+    "original_sha256": "ae403a59fed034fb852ae02944916c1f20852cb223bf73f8ca6d133663dcfd5e",
+    "retained_sha256": "ae403a59fed034fb852ae02944916c1f20852cb223bf73f8ca6d133663dcfd5e",
+    "transformation": null
+  },
+  {
+    "report_relative_source": "nd200/model-client-trusted-escalated.log",
+    "retained": "budget-native-suite.log",
+    "original_sha256": "0c1dd4bc692e259b80bf7f705936ca94469f6eec097e8d40498a9da50da5ce73",
+    "retained_sha256": "0c1dd4bc692e259b80bf7f705936ca94469f6eec097e8d40498a9da50da5ce73",
+    "transformation": null
+  },
+  {
+    "report_relative_source": "presentation-guards.log",
+    "retained": "presentation-guards.log",
+    "original_sha256": "cf48bad1b6b5824cd78acd354f0e5bcd6b4ae86216c5285f0732b16b9ed3d1b6",
+    "retained_sha256": "cf48bad1b6b5824cd78acd354f0e5bcd6b4ae86216c5285f0732b16b9ed3d1b6",
+    "transformation": null
+  },
+  {
+    "report_relative_source": "types-final.log",
+    "retained": "typecheck.log",
+    "original_sha256": "2cf20646d72113be26c6fbe14738bc101ebf909ab8a2374290f369e1d53c975c",
+    "retained_sha256": "2cf20646d72113be26c6fbe14738bc101ebf909ab8a2374290f369e1d53c975c",
+    "transformation": null
+  },
+  {
+    "report_relative_source": "review/review.md",
+    "retained": "review.md",
+    "original_sha256": "a3e6e13b9ff9578fd818e4ffad40612d5b7f50462da171c313900f045006fe0f",
+    "retained_sha256": "a3e6e13b9ff9578fd818e4ffad40612d5b7f50462da171c313900f045006fe0f",
+    "transformation": "Repository links made relative to retained evidence directory"
+  },
+  {
+    "report_relative_source": "review/probes.mts",
+    "retained": "review-probes.mts",
+    "original_sha256": "ef2ee935db8956ecf6138847412f9594a7bc711548986b6dafd3e725493fb342",
+    "retained_sha256": "962dbe49e36b37e28c456846141093d4827ea521597e93ee27d8f8fdceb94cf1",
+    "transformation": "Repository root supplied by first CLI argument; probe assertions unchanged"
+  }
+]

@@ -1,0 +1,71 @@
+{
+  "record_kind": "pre_release_targeted_verification",
+  "baseline": "6ff1218d4d77834b5c640909ad6da9efd87f688a",
+  "implementation_commit": "9296e9b80c6336d65aba79bb045c96486ce221c4",
+  "branch": "argo/npc-dialogue",
+  "profile": "character-dialogue/0.1.0",
+  "paid_model_calls": 0,
+  "targeted_passes": {
+    "character_adapter": 20,
+    "campaign_projection": 15,
+    "signed_journal_integration": 1,
+    "output_budget": 7,
+    "presentation_guards": 4
+  },
+  "typecheck": "passed",
+  "review": {
+    "kind": "separate native peer; not cross-vendor certification",
+    "reviewed_commit": "724485df8af12a625d4019c5003ed0cee54b4347",
+    "important_findings": 2,
+    "minor_findings": 1,
+    "addressed_findings": 3,
+    "fix_commit": "9296e9b80c6336d65aba79bb045c96486ce221c4",
+    "regressions": "Four new assertions failed before the fix and passed afterward; agent-final.log contains 20 passing tests",
+    "regrading": "Mixed refusal/tool output was also fixed because this adapter promises text-only responses"
+  },
+  "application_gate": "Required before delivery. This record captures earlier targeted checks; final exact-candidate gate and GitHub CI results belong to the release/PR records.",
+  "source_sha256": {
+    "TESTS/campaign-dialogue.test.ts": "f1b0beac018640b55c68510c69b5209ae57ac5ede66186b2afe592dc07fee7e1",
+    "TESTS/character-model-integration.test.ts": "b7eaf919c68ed19a9413cb29868764f243286b7bfbd52e9135a0eb1b92e8a8ab",
+    "TESTS/character-model.test.ts": "0bd0351220deac5bae363748b024c3a6b191ef8ffbc9ddeda61f3b3fe0f7cb6e",
+    "package-lock.json": "d15d132ac31a15a6a7eb24334b4c917028bd3e304bb013c8dfbd7e0e6cf2932c",
+    "packages/interventions/package.json": "2396f0aa7ead47d075f1b75ef09edd2309ad860105372b44446651db8b0f7c6f",
+    "packages/interventions/src/character-model.ts": "539c81b7c4a7cdc53a76cffaa2eece64ffb9002cdf7c65952f5e8fc04fbfd737",
+    "packages/interventions/src/dialogue-context.ts": "4844f0a0b095b2c0fba85b288d4b04e6e853c6180447b42bd28f2c70bcdf20e8",
+    "packages/interventions/src/dialogue-types.ts": "5517984308dfbfeb9e1545b7b6811ff7e08bfcea734d677a50433d5a727d476b",
+    "packages/interventions/src/index.ts": "051d5b79eb8484524b6be329bc53258b43f08080bffb67e152930d50cada255b",
+    "packages/model-client/client.mjs": "b2c75083519fe1f600398d83a53b107dfa1dbd26aabc41480e50547805a4143d",
+    "packages/model-client/index.d.mts": "64c5a4688584c83da0c31355a1aa1862982af7414ec002b73dd9e694d86d4c74",
+    "packages/model-client/request.mjs": "9c70406f2e2c3709ae1ef364428db5739b474d6f6bda1f4f9b325c4a25e2b516",
+    "packages/model-client/tests/output-budget.test.mjs": "90aed5f64c283a656e6858cb12138ab902a27732ad98d7e7c3a1d85185721254",
+    "packages/model-client/tests/presentation.test.mjs": "9cce592c24032ae894c2f8d608eb05c61373a1df6d89a4176dbc5b8184789867",
+    "packages/model-client/tests/public-types.test.mjs": "6517acb7ab5c42c5c89236c41e617c868247ca977761d3d6f22e63ff9c84a440",
+    "packages/model-client/wire.mjs": "b521cb9615963967edd72640978bca171fe74476c366dff3e6d3c2b36d21b56a",
+    "scenarios/tempted-fates/campaign/dialogue.ts": "fd734e27e9e6b846c2287f3ae5d0545675f2e3be96705f7f1a2b9eacb9798fcc",
+    "scenarios/tempted-fates/index.ts": "10a3b4993d4bf4f74b4c57b5e03ccc7ecc1d3f00aa1b3ff23cd124f8e2a987e5"
+  },
+  "board_snapshot": "board-snapshot.json",
+  "automatic_dispatch_enabled": false,
+  "operational_trust_promoted": false,
+  "source_to_integration_commits": {
+    "ND-100": {
+      "source": "603ab62c923c6eddbf673d93d1939219bee8d12d",
+      "integration": "911a9e9"
+    },
+    "ND-200": {
+      "source": "c3aa114828ac71f78e8f2c818f187b8a85800c38",
+      "integration": "7febcd5"
+    },
+    "ND-300": {
+      "source": "25144a99be1690aee9020c573747d6aac42f5938",
+      "integration": "724485d"
+    }
+  },
+  "limits": [
+    "Host authentication, SDK clients/token counters, scene disclosure and delivery remain injected services.",
+    "Mortal and character/Fate authority profiles are not joined.",
+    "No live-model coherence, latency or token savings measurement.",
+    "Reader supplies its latest 16 acquired experiences; older promises need future retrieval."
+  ],
+  "outer_sandbox_notes": "Some native child assertions, Python spawn and Bubblewrap tests failed under the outer sandbox. No test runner was weakened; full immutable offline gate uses approved outer-sandbox execution with its own network-isolated Bubblewrap."
+}
