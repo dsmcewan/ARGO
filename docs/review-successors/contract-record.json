@@ -5,19 +5,22 @@
     "DR-201": {
       "source": "800f36152b57183f0ad7d460355f513e8056941c",
       "manifest": "SYSTEMS/mortal-v3/FREEZE.json",
-      "native_review": "pending"
+      "native_review": "ready"
     },
     "DR-211": {
-      "source": null,
+      "source": "42ce113010fb3725fba04007af3f72e996d43555",
       "manifest": "SYSTEMS/dialogue-knowledge-v1/FREEZE.json",
       "native_review": "pending"
     },
     "DR-221": {
       "source": "d5f02ad419900050d59b32f521823cbca6ba513e",
       "manifest": "SYSTEMS/observation-admission-v1/FREEZE.json",
-      "native_review": "pending"
+      "native_review": "ready"
     }
   },
   "old_frozen_contracts_changed": false,
-  "paid_model_calls": 0
+  "paid_model_calls": 0,
+  "combined_contract_tests": 35,
+  "combined_typecheck": "passed",
+  "phase_a_source_commits_retained_in_history": true
 }
