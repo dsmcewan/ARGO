@@ -7,6 +7,7 @@ import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {canonical,CHARACTER_PROFILE} from '../packages/contracts/src/index.ts';
 import type {Principal,CharacterCommandBody,CharacterNarratorQuery} from '../packages/contracts/src/index.ts';
+import type {TabletopState} from '../docs/tempting-fates/phase2/tabletop-state.ts';
 import type {CampaignPack,CampaignSeedOptions} from '../scenarios/tempted-fates/campaign/types.ts';
 import {openLedger,replay,createCharacterAuthority,replayCharacters} from '../packages/ledger/src/index.ts';
 import {createCharacterViews} from '../packages/lexi-bridge/src/index.ts';
@@ -126,6 +127,13 @@ test('Phase 2 tabletop state grammar remains explicit, closed and non-authoritat
  const {exampleState}=await import('../docs/tempting-fates/phase2/example-state.ts');assert.equal(canonical(exampleState),canonical(example));
  const ajv=new Ajv2020({strict:true,allErrors:true});ajv.addSchema(legacy);const validate=ajv.compile(schema);
  assert.equal(validate(example),true,JSON.stringify(validate.errors));
+ const item:TabletopState['items'][number]={item_id:'compile_fixture',slots:1,destroyed:false,custodian_actor_id:'pc_a',location_id:null};
+ // @ts-expect-error An item cannot be held and grounded simultaneously.
+ const dualCustody:TabletopState['items'][number]={...item,location_id:'l_harbor'};
+ // @ts-expect-error An item cannot have neither a holder nor a location.
+ const absentCustody:TabletopState['items'][number]={...item,custodian_actor_id:null};
+ for(const invalid of [dualCustody,absentCustody]){const state=structuredClone(example);state.items=[invalid];assert.equal(validate(state),false);}
+ const grounded=structuredClone(example);grounded.items=[{...item,custodian_actor_id:null,location_id:'l_harbor'}];grounded.actors[0].equipped_item_ids=[];assert.equal(validate(grounded),true);
  const wrongAuthority=structuredClone(example);wrongAuthority.authoritative=true;assert.equal(validate(wrongAuthority),false);
  const negativeSupply=structuredClone(example);negativeSupply.actors[0].resources.rations=-1;assert.equal(validate(negativeSupply),false);
  const sourceOverride=structuredClone(example);sourceOverride.actors[0].fate_role='atropos';assert.equal(validate(sourceOverride),false);
