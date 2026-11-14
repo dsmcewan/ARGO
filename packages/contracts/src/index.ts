@@ -71,3 +71,7 @@ export type * from './projection-generated.ts';
 // Additive private character-memory profile; no frozen gameplay reinterpretation.
 export {CHARACTER_PROFILE,CHARACTER_CLAIM_PREFIX,characterSchema,assertCharacterContract,assertCharacterPrincipal,characterRequestHash,characterProposalId} from './characters.ts';
 export type * from './character-types.ts';
+
+// Separate versioned mortal authority; frozen v1 contracts retain their semantics.
+export * from './mortal-types.ts';
+export {assertMortalContract,assertMortalGenesis,assertMortalData,mortalSchema} from './mortal.ts';
