@@ -35,7 +35,7 @@ test('mortal actor view exposes own state and admitted encounter facts without h
  const own=api.viewMortalActor(g,state,mortalPrincipal(g));assertMortalContract('ActorView',own);
  assert.equal(own.self.id,'hero');assert.ok(own.items.every(i=>i.owner_id==='hero'));assert.ok(!canonical(own).includes(g.seed));
  assert.equal(Object.hasOwn(own,'variant'),false);assert.equal(Object.hasOwn(own.self,'controller_id'),false);
- assert.throws(()=>api.viewMortalActor(g,state,{...mortalPrincipal(g),actor_id:'companion'}));assert.throws(()=>api.viewMortalActor(g,state,mortalPrincipal(g,'host')));
+ assert.throws(()=>api.viewMortalActor(g,state,{...mortalPrincipal(g),role:'player',actor_id:'companion'}));assert.throws(()=>api.viewMortalActor(g,state,mortalPrincipal(g,'host')));
  assert.throws(()=>api.viewMortalActor(g,state,{...mortalPrincipal(g),scope:{...g.scope,world_id:'other'}}));
  const started=api.resolveMortal(g,state,mortalCommand(state,{type:'begin_encounter',encounter_id:'fight',side_a:['hero'],side_b:['raider'],escape_allowed:true},'host'),mortalPrincipal(g,'host')).state;
  const participating=api.viewMortalActor(g,started,mortalPrincipal(g));assert.ok(participating.encounter);assert.equal(participating.encounter.participants.length,2);
