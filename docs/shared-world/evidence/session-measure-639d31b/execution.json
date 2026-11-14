@@ -1,0 +1,13 @@
+{
+  "candidate": "639d31b1414c21fa7516dc9d363ad35bae148afd",
+  "command": "env -u NODE_TEST_CONTEXT node docs/shared-world/measure-runtime.mjs --output /workspace/reports/2026-11-14-argo-shared-world/session-measure-639d31b",
+  "cwd": "/workspace/ARGO/.worktrees/shared-world",
+  "exit_code": 0,
+  "exit_observation": "Coordinator observed tools.write_stdin completion for exec session41747; this record is not an independent rerun.",
+  "recorded_at": "2026-11-14T15:47:42.745407+00:00",
+  "files": {
+    "measurement.json": "2c059bc2b77e1093e74953f735c66bb62516a01b7b5d11d2f77f1f013379f6aa",
+    "run.log": "0a836d1d2f954effdbb3cd5a85a7edb2a94441f0bdeef8044c1a175f9510b1e3",
+    "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

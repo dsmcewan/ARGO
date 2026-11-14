@@ -1,0 +1,25 @@
+{
+  "candidate": "83bc6c154cd0879f481185eb159cded8fa1e507d",
+  "exit_code": 1,
+  "merge_ready": false,
+  "failed_group": "foundation",
+  "cause": "Per-group 300000ms timer killed the serial native test runner; cause.killed=true, signal=SIGKILL, no assertion failure emitted before termination. This is incomplete acceptance, not a passing suite.",
+  "passed_groups": [
+    "generated-types",
+    "schema",
+    "boundaries",
+    "types",
+    "board-and-dispatch",
+    "research-python",
+    "research-tests",
+    "research-package"
+  ],
+  "paid_calls": 0,
+  "logs": {
+    "application-gate.log": "5cad8ba3901c837e30c1cfe14a5e2bbc17e07cf32858c385a9d28452e0f598a2",
+    "checkout.log": "51e97a79cd2f20383b51d56cd0ea2d1daa8bcc84181c4f382d576e3211894e33",
+    "clone.log": "e2746ac7e68afda34c234a5197f97aef4542b1d117ffb70f4ee4489eda55fdab",
+    "pantheon-install.log": "178c8457015fa8fcd91650ef25c0d212e906ce8bfed7373fc2dfde9e57be1dfd",
+    "root-install.log": "85d66efc5af19832f7add7e3b176eeedee7a3ad92b9afb6f46993f9296355715"
+  }
+}

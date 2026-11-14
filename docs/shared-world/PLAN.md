@@ -96,5 +96,5 @@ Produces `createWorldSession({genesis,ledger,principal})`, a host capability wit
 
 - [x] Integrate all exact source commits, exports and manifests; run contracts/typecheck/boundaries and relevant tests.
 - [x] Obtain independent native reviews of authority/storage and context/host; fix and retest findings.
-- [ ] Run the complete unchanged ten-group application gate on an immutable candidate in read-only network isolation.
+- [ ] Run all ten application groups and named assertions on an immutable candidate in read-only network isolation. The first full run at83bc6c1 timed out; SW-520 separately reviews a foundation-only bounded timer adjustment before rerun.
 - [ ] Retain portable evidence and real Board states; push PR, require successful GitHub checks, merge under standing authorization and synchronize main.
