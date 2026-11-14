@@ -1,0 +1,1963 @@
+{
+  "candidate": "9fa800493a3c033b45bc3df7ab18a56e25bcd9a8",
+  "checked_at_utc": "2026-11-14T18:23:33.943092+00:00",
+  "head_before": "9fa800493a3c033b45bc3df7ab18a56e25bcd9a8",
+  "status_before": "",
+  "scope": "Committed evidence/docs/ancestry plus whitelisted read-only Board state; no runtime or acceptance rerun",
+  "source_checks": [
+    {
+      "record": "SC-610-source-record.json",
+      "revision": "c4654d52b1a08bdb4bfa18822d2cc74229d606b6",
+      "path": "TESTS/shared-world-cold.test.ts",
+      "expected": "6835f6c74db913796a33320d08e435d545f81812a29e303d464744687d4e74a0",
+      "actual": "6835f6c74db913796a33320d08e435d545f81812a29e303d464744687d4e74a0",
+      "matches": true,
+      "current_matches": true
+    },
+    {
+      "record": "SC-610-source-record.json",
+      "revision": "c4654d52b1a08bdb4bfa18822d2cc74229d606b6",
+      "path": "packages/ledger/src/world/rules/README.md",
+      "expected": "c83f073e2554b63c01b351085d1b5f547d41cd543220b79431e869a2e4100a74",
+      "actual": "c83f073e2554b63c01b351085d1b5f547d41cd543220b79431e869a2e4100a74",
+      "matches": true,
+      "current_matches": true
+    },
+    {
+      "record": "SC-610-source-record.json",
+      "revision": "c4654d52b1a08bdb4bfa18822d2cc74229d606b6",
+      "path": "packages/ledger/src/world/rules/engine.ts",
+      "expected": "76bef309f955b0a83fb6f52f20e0d9a26874c4b7aad244f46519ebfe88a79777",
+      "actual": "76bef309f955b0a83fb6f52f20e0d9a26874c4b7aad244f46519ebfe88a79777",
+      "matches": true,
+      "current_matches": true
+    },
+    {
+      "record": "SC-620-source-record.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "TESTS/shared-world-conversation.test.ts",
+      "expected": "0b3808770fe066fefc68ea73e94db95b898f7b3936102d67438520ede810ab95",
+      "actual": "0b3808770fe066fefc68ea73e94db95b898f7b3936102d67438520ede810ab95",
+      "matches": true,
+      "current_matches": true
+    },
+    {
+      "record": "SC-620-source-record.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "TESTS/shared-world-turn-store.test.ts",
+      "expected": "e726cb26a90e0c5638dad1ac1519e40631fcd2e536ccc6e72680733ea6cc7884",
+      "actual": "e726cb26a90e0c5638dad1ac1519e40631fcd2e536ccc6e72680733ea6cc7884",
+      "matches": true,
+      "current_matches": true
+    },
+    {
+      "record": "SC-620-source-record.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "packages/session/package.json",
+      "expected": "23d621e04345400aca781aee4448548f6e9a3f3726d67006b5a6e191eeb113a0",
+      "actual": "23d621e04345400aca781aee4448548f6e9a3f3726d67006b5a6e191eeb113a0",
+      "matches": true,
+      "current_matches": true
+    },
+    {
+      "record": "SC-620-source-record.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "packages/session/src/conversation-guards.ts",
+      "expected": "e276e14a1bf9af48079673f5a2b163b9751a0b857036eedf4c5311ebe293407d",
+      "actual": "e276e14a1bf9af48079673f5a2b163b9751a0b857036eedf4c5311ebe293407d",
+      "matches": true,
+      "current_matches": true
+    },
+    {
+      "record": "SC-620-source-record.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "packages/session/src/conversation-store-worker.ts",
+      "expected": "0885ac35c25cd0426a63b88fe22b696d1187edf9571a2d45390a2e29370a2bf1",
+      "actual": "0885ac35c25cd0426a63b88fe22b696d1187edf9571a2d45390a2e29370a2bf1",
+      "matches": true,
+      "current_matches": true
+    },
+    {
+      "record": "SC-620-source-record.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "packages/session/src/conversation-store.ts",
+      "expected": "9fe225478aa8847ed0cc6aa118850909007c60f96f1c198fc5e7e97b120269ef",
+      "actual": "9fe225478aa8847ed0cc6aa118850909007c60f96f1c198fc5e7e97b120269ef",
+      "matches": true,
+      "current_matches": true
+    },
+    {
+      "record": "SC-620-source-record.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "packages/session/src/conversation-types.ts",
+      "expected": "7007528fe9f72e3d4ee3d8091512b2065f1203bc52ecafd393dbdde78ddfaf38",
+      "actual": "7007528fe9f72e3d4ee3d8091512b2065f1203bc52ecafd393dbdde78ddfaf38",
+      "matches": true,
+      "current_matches": true
+    },
+    {
+      "record": "SC-620-source-record.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "packages/session/src/conversation.ts",
+      "expected": "1376bb3bee4a4d08919270d3b8092e22290b7a7eb75e56b7f3133b2d18481ba2",
+      "actual": "1376bb3bee4a4d08919270d3b8092e22290b7a7eb75e56b7f3133b2d18481ba2",
+      "matches": true,
+      "current_matches": true
+    },
+    {
+      "record": "SC-620-source-record.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "packages/session/src/index.ts",
+      "expected": "7fa0a76a1310cfbee097364e7476bbdff756de18e347f80483ccb9d29578120c",
+      "actual": "7fa0a76a1310cfbee097364e7476bbdff756de18e347f80483ccb9d29578120c",
+      "matches": true,
+      "current_matches": true
+    },
+    {
+      "record": "turn-author/verification-followup.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "TESTS/shared-world-conversation.test.ts",
+      "expected": "0b3808770fe066fefc68ea73e94db95b898f7b3936102d67438520ede810ab95",
+      "actual": "0b3808770fe066fefc68ea73e94db95b898f7b3936102d67438520ede810ab95",
+      "matches": true
+    },
+    {
+      "record": "turn-author/verification-followup.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "TESTS/shared-world-turn-store.test.ts",
+      "expected": "e726cb26a90e0c5638dad1ac1519e40631fcd2e536ccc6e72680733ea6cc7884",
+      "actual": "e726cb26a90e0c5638dad1ac1519e40631fcd2e536ccc6e72680733ea6cc7884",
+      "matches": true
+    },
+    {
+      "record": "turn-author/verification-followup.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "packages/session/package.json",
+      "expected": "23d621e04345400aca781aee4448548f6e9a3f3726d67006b5a6e191eeb113a0",
+      "actual": "23d621e04345400aca781aee4448548f6e9a3f3726d67006b5a6e191eeb113a0",
+      "matches": true
+    },
+    {
+      "record": "turn-author/verification-followup.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "packages/session/src/conversation-guards.ts",
+      "expected": "e276e14a1bf9af48079673f5a2b163b9751a0b857036eedf4c5311ebe293407d",
+      "actual": "e276e14a1bf9af48079673f5a2b163b9751a0b857036eedf4c5311ebe293407d",
+      "matches": true
+    },
+    {
+      "record": "turn-author/verification-followup.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "packages/session/src/conversation-store-worker.ts",
+      "expected": "0885ac35c25cd0426a63b88fe22b696d1187edf9571a2d45390a2e29370a2bf1",
+      "actual": "0885ac35c25cd0426a63b88fe22b696d1187edf9571a2d45390a2e29370a2bf1",
+      "matches": true
+    },
+    {
+      "record": "turn-author/verification-followup.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "packages/session/src/conversation-store.ts",
+      "expected": "9fe225478aa8847ed0cc6aa118850909007c60f96f1c198fc5e7e97b120269ef",
+      "actual": "9fe225478aa8847ed0cc6aa118850909007c60f96f1c198fc5e7e97b120269ef",
+      "matches": true
+    },
+    {
+      "record": "turn-author/verification-followup.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "packages/session/src/conversation-types.ts",
+      "expected": "7007528fe9f72e3d4ee3d8091512b2065f1203bc52ecafd393dbdde78ddfaf38",
+      "actual": "7007528fe9f72e3d4ee3d8091512b2065f1203bc52ecafd393dbdde78ddfaf38",
+      "matches": true
+    },
+    {
+      "record": "turn-author/verification-followup.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "packages/session/src/conversation.ts",
+      "expected": "1376bb3bee4a4d08919270d3b8092e22290b7a7eb75e56b7f3133b2d18481ba2",
+      "actual": "1376bb3bee4a4d08919270d3b8092e22290b7a7eb75e56b7f3133b2d18481ba2",
+      "matches": true
+    },
+    {
+      "record": "turn-author/verification-followup.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "packages/session/src/index.ts",
+      "expected": "7fa0a76a1310cfbee097364e7476bbdff756de18e347f80483ccb9d29578120c",
+      "actual": "7fa0a76a1310cfbee097364e7476bbdff756de18e347f80483ccb9d29578120c",
+      "matches": true
+    },
+    {
+      "record": "turn-author/verification.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "TESTS/shared-world-conversation.test.ts",
+      "expected": "9ced9b1e0a7bda4ee80ba229923d47176328902266352c39a0a2c31f1c8d17ba",
+      "actual": "9ced9b1e0a7bda4ee80ba229923d47176328902266352c39a0a2c31f1c8d17ba",
+      "matches": true
+    },
+    {
+      "record": "turn-author/verification.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "TESTS/shared-world-turn-store.test.ts",
+      "expected": "e726cb26a90e0c5638dad1ac1519e40631fcd2e536ccc6e72680733ea6cc7884",
+      "actual": "e726cb26a90e0c5638dad1ac1519e40631fcd2e536ccc6e72680733ea6cc7884",
+      "matches": true
+    },
+    {
+      "record": "turn-author/verification.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "packages/session/package.json",
+      "expected": "23d621e04345400aca781aee4448548f6e9a3f3726d67006b5a6e191eeb113a0",
+      "actual": "23d621e04345400aca781aee4448548f6e9a3f3726d67006b5a6e191eeb113a0",
+      "matches": true
+    },
+    {
+      "record": "turn-author/verification.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "packages/session/src/conversation-guards.ts",
+      "expected": "e276e14a1bf9af48079673f5a2b163b9751a0b857036eedf4c5311ebe293407d",
+      "actual": "e276e14a1bf9af48079673f5a2b163b9751a0b857036eedf4c5311ebe293407d",
+      "matches": true
+    },
+    {
+      "record": "turn-author/verification.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "packages/session/src/conversation-store-worker.ts",
+      "expected": "0885ac35c25cd0426a63b88fe22b696d1187edf9571a2d45390a2e29370a2bf1",
+      "actual": "0885ac35c25cd0426a63b88fe22b696d1187edf9571a2d45390a2e29370a2bf1",
+      "matches": true
+    },
+    {
+      "record": "turn-author/verification.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "packages/session/src/conversation-store.ts",
+      "expected": "9fe225478aa8847ed0cc6aa118850909007c60f96f1c198fc5e7e97b120269ef",
+      "actual": "9fe225478aa8847ed0cc6aa118850909007c60f96f1c198fc5e7e97b120269ef",
+      "matches": true
+    },
+    {
+      "record": "turn-author/verification.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "packages/session/src/conversation-types.ts",
+      "expected": "7007528fe9f72e3d4ee3d8091512b2065f1203bc52ecafd393dbdde78ddfaf38",
+      "actual": "7007528fe9f72e3d4ee3d8091512b2065f1203bc52ecafd393dbdde78ddfaf38",
+      "matches": true
+    },
+    {
+      "record": "turn-author/verification.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "packages/session/src/conversation.ts",
+      "expected": "ae146e23070c71d8400f91582c87067df0e156426a6e747fe9bfb20bfb477aa6",
+      "actual": "ae146e23070c71d8400f91582c87067df0e156426a6e747fe9bfb20bfb477aa6",
+      "matches": true
+    },
+    {
+      "record": "turn-author/verification.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "packages/session/src/index.ts",
+      "expected": "7fa0a76a1310cfbee097364e7476bbdff756de18e347f80483ccb9d29578120c",
+      "actual": "7fa0a76a1310cfbee097364e7476bbdff756de18e347f80483ccb9d29578120c",
+      "matches": true
+    },
+    {
+      "record": "turn-review-host/verification-0458268.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "TESTS/shared-world-conversation.test.ts",
+      "expected": "0b3808770fe066fefc68ea73e94db95b898f7b3936102d67438520ede810ab95",
+      "actual": "0b3808770fe066fefc68ea73e94db95b898f7b3936102d67438520ede810ab95",
+      "matches": true
+    },
+    {
+      "record": "turn-review-host/verification-0458268.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "TESTS/shared-world-turn-store.test.ts",
+      "expected": "e726cb26a90e0c5638dad1ac1519e40631fcd2e536ccc6e72680733ea6cc7884",
+      "actual": "e726cb26a90e0c5638dad1ac1519e40631fcd2e536ccc6e72680733ea6cc7884",
+      "matches": true
+    },
+    {
+      "record": "turn-review-host/verification-0458268.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "packages/session/package.json",
+      "expected": "23d621e04345400aca781aee4448548f6e9a3f3726d67006b5a6e191eeb113a0",
+      "actual": "23d621e04345400aca781aee4448548f6e9a3f3726d67006b5a6e191eeb113a0",
+      "matches": true
+    },
+    {
+      "record": "turn-review-host/verification-0458268.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "packages/session/src/conversation-guards.ts",
+      "expected": "e276e14a1bf9af48079673f5a2b163b9751a0b857036eedf4c5311ebe293407d",
+      "actual": "e276e14a1bf9af48079673f5a2b163b9751a0b857036eedf4c5311ebe293407d",
+      "matches": true
+    },
+    {
+      "record": "turn-review-host/verification-0458268.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "packages/session/src/conversation-store-worker.ts",
+      "expected": "0885ac35c25cd0426a63b88fe22b696d1187edf9571a2d45390a2e29370a2bf1",
+      "actual": "0885ac35c25cd0426a63b88fe22b696d1187edf9571a2d45390a2e29370a2bf1",
+      "matches": true
+    },
+    {
+      "record": "turn-review-host/verification-0458268.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "packages/session/src/conversation-store.ts",
+      "expected": "9fe225478aa8847ed0cc6aa118850909007c60f96f1c198fc5e7e97b120269ef",
+      "actual": "9fe225478aa8847ed0cc6aa118850909007c60f96f1c198fc5e7e97b120269ef",
+      "matches": true
+    },
+    {
+      "record": "turn-review-host/verification-0458268.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "packages/session/src/conversation-types.ts",
+      "expected": "7007528fe9f72e3d4ee3d8091512b2065f1203bc52ecafd393dbdde78ddfaf38",
+      "actual": "7007528fe9f72e3d4ee3d8091512b2065f1203bc52ecafd393dbdde78ddfaf38",
+      "matches": true
+    },
+    {
+      "record": "turn-review-host/verification-0458268.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "packages/session/src/conversation.ts",
+      "expected": "1376bb3bee4a4d08919270d3b8092e22290b7a7eb75e56b7f3133b2d18481ba2",
+      "actual": "1376bb3bee4a4d08919270d3b8092e22290b7a7eb75e56b7f3133b2d18481ba2",
+      "matches": true
+    },
+    {
+      "record": "turn-review-host/verification-0458268.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "packages/session/src/index.ts",
+      "expected": "7fa0a76a1310cfbee097364e7476bbdff756de18e347f80483ccb9d29578120c",
+      "actual": "7fa0a76a1310cfbee097364e7476bbdff756de18e347f80483ccb9d29578120c",
+      "matches": true
+    },
+    {
+      "record": "turn-review-host/verification-e096530.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "packages/session/src/conversation.ts",
+      "expected": "ae146e23070c71d8400f91582c87067df0e156426a6e747fe9bfb20bfb477aa6",
+      "actual": "ae146e23070c71d8400f91582c87067df0e156426a6e747fe9bfb20bfb477aa6",
+      "matches": true
+    },
+    {
+      "record": "turn-review-host/verification-e096530.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "packages/session/src/conversation-types.ts",
+      "expected": "7007528fe9f72e3d4ee3d8091512b2065f1203bc52ecafd393dbdde78ddfaf38",
+      "actual": "7007528fe9f72e3d4ee3d8091512b2065f1203bc52ecafd393dbdde78ddfaf38",
+      "matches": true
+    },
+    {
+      "record": "turn-review-host/verification-e096530.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "packages/session/src/conversation-guards.ts",
+      "expected": "e276e14a1bf9af48079673f5a2b163b9751a0b857036eedf4c5311ebe293407d",
+      "actual": "e276e14a1bf9af48079673f5a2b163b9751a0b857036eedf4c5311ebe293407d",
+      "matches": true
+    },
+    {
+      "record": "turn-review-host/verification-e096530.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "packages/session/src/conversation-store.ts",
+      "expected": "9fe225478aa8847ed0cc6aa118850909007c60f96f1c198fc5e7e97b120269ef",
+      "actual": "9fe225478aa8847ed0cc6aa118850909007c60f96f1c198fc5e7e97b120269ef",
+      "matches": true
+    },
+    {
+      "record": "turn-review-host/verification-e096530.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "packages/session/src/conversation-store-worker.ts",
+      "expected": "0885ac35c25cd0426a63b88fe22b696d1187edf9571a2d45390a2e29370a2bf1",
+      "actual": "0885ac35c25cd0426a63b88fe22b696d1187edf9571a2d45390a2e29370a2bf1",
+      "matches": true
+    },
+    {
+      "record": "turn-review-host/verification-e096530.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "packages/session/src/index.ts",
+      "expected": "7fa0a76a1310cfbee097364e7476bbdff756de18e347f80483ccb9d29578120c",
+      "actual": "7fa0a76a1310cfbee097364e7476bbdff756de18e347f80483ccb9d29578120c",
+      "matches": true
+    },
+    {
+      "record": "turn-review-host/verification-e096530.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "packages/session/package.json",
+      "expected": "23d621e04345400aca781aee4448548f6e9a3f3726d67006b5a6e191eeb113a0",
+      "actual": "23d621e04345400aca781aee4448548f6e9a3f3726d67006b5a6e191eeb113a0",
+      "matches": true
+    },
+    {
+      "record": "turn-review-host/verification-e096530.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "docs/session-continuation/TURN_CONTRACT.md",
+      "expected": "d4380e49c08d6b7f0435114bc2d50ab516aca6b56684ad6aec6fb3e4da80a2ee",
+      "actual": "d4380e49c08d6b7f0435114bc2d50ab516aca6b56684ad6aec6fb3e4da80a2ee",
+      "matches": true
+    },
+    {
+      "record": "turn-review-store/final-e096530/verification.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "packages/session/src/conversation-types.ts",
+      "expected": "7007528fe9f72e3d4ee3d8091512b2065f1203bc52ecafd393dbdde78ddfaf38",
+      "actual": "7007528fe9f72e3d4ee3d8091512b2065f1203bc52ecafd393dbdde78ddfaf38",
+      "matches": true
+    },
+    {
+      "record": "turn-review-store/final-e096530/verification.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "packages/session/src/conversation-guards.ts",
+      "expected": "e276e14a1bf9af48079673f5a2b163b9751a0b857036eedf4c5311ebe293407d",
+      "actual": "e276e14a1bf9af48079673f5a2b163b9751a0b857036eedf4c5311ebe293407d",
+      "matches": true
+    },
+    {
+      "record": "turn-review-store/final-e096530/verification.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "packages/session/src/conversation-store.ts",
+      "expected": "9fe225478aa8847ed0cc6aa118850909007c60f96f1c198fc5e7e97b120269ef",
+      "actual": "9fe225478aa8847ed0cc6aa118850909007c60f96f1c198fc5e7e97b120269ef",
+      "matches": true
+    },
+    {
+      "record": "turn-review-store/final-e096530/verification.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "packages/session/src/conversation-store-worker.ts",
+      "expected": "0885ac35c25cd0426a63b88fe22b696d1187edf9571a2d45390a2e29370a2bf1",
+      "actual": "0885ac35c25cd0426a63b88fe22b696d1187edf9571a2d45390a2e29370a2bf1",
+      "matches": true
+    },
+    {
+      "record": "turn-review-store/final-e096530/verification.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "packages/session/src/conversation.ts",
+      "expected": "ae146e23070c71d8400f91582c87067df0e156426a6e747fe9bfb20bfb477aa6",
+      "actual": "ae146e23070c71d8400f91582c87067df0e156426a6e747fe9bfb20bfb477aa6",
+      "matches": true
+    },
+    {
+      "record": "turn-review-store/final-e096530/verification.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "packages/session/src/index.ts",
+      "expected": "7fa0a76a1310cfbee097364e7476bbdff756de18e347f80483ccb9d29578120c",
+      "actual": "7fa0a76a1310cfbee097364e7476bbdff756de18e347f80483ccb9d29578120c",
+      "matches": true
+    },
+    {
+      "record": "turn-review-store/final-e096530/verification.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "packages/session/package.json",
+      "expected": "23d621e04345400aca781aee4448548f6e9a3f3726d67006b5a6e191eeb113a0",
+      "actual": "23d621e04345400aca781aee4448548f6e9a3f3726d67006b5a6e191eeb113a0",
+      "matches": true
+    },
+    {
+      "record": "turn-review-store/final-e096530/verification.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "TESTS/shared-world-turn-store.test.ts",
+      "expected": "e726cb26a90e0c5638dad1ac1519e40631fcd2e536ccc6e72680733ea6cc7884",
+      "actual": "e726cb26a90e0c5638dad1ac1519e40631fcd2e536ccc6e72680733ea6cc7884",
+      "matches": true
+    },
+    {
+      "record": "turn-review-store/final-e096530/verification.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "TESTS/shared-world-conversation.test.ts",
+      "expected": "9ced9b1e0a7bda4ee80ba229923d47176328902266352c39a0a2c31f1c8d17ba",
+      "actual": "9ced9b1e0a7bda4ee80ba229923d47176328902266352c39a0a2c31f1c8d17ba",
+      "matches": true
+    },
+    {
+      "record": "turn-review-store/checkpoint-review.json",
+      "revision": "3870f44b20d241e9ca855279ccf3fd703801a22d",
+      "path": "packages/session/src/conversation-types.ts",
+      "expected": "7007528fe9f72e3d4ee3d8091512b2065f1203bc52ecafd393dbdde78ddfaf38",
+      "actual": "7007528fe9f72e3d4ee3d8091512b2065f1203bc52ecafd393dbdde78ddfaf38",
+      "matches": true
+    },
+    {
+      "record": "turn-review-store/checkpoint-review.json",
+      "revision": "3870f44b20d241e9ca855279ccf3fd703801a22d",
+      "path": "packages/session/src/conversation-guards.ts",
+      "expected": "0f377523208ea91b47ecbce2865cddbbcc41712ee51761494c6625d093149bc1",
+      "actual": "0f377523208ea91b47ecbce2865cddbbcc41712ee51761494c6625d093149bc1",
+      "matches": true
+    },
+    {
+      "record": "turn-review-store/checkpoint-review.json",
+      "revision": "3870f44b20d241e9ca855279ccf3fd703801a22d",
+      "path": "packages/session/src/conversation-store.ts",
+      "expected": "240e07093032b145dc3ee4251b501e5d44be4feb2432707990b10ab7d6cd9194",
+      "actual": "240e07093032b145dc3ee4251b501e5d44be4feb2432707990b10ab7d6cd9194",
+      "matches": true
+    },
+    {
+      "record": "turn-review-store/checkpoint-review.json",
+      "revision": "3870f44b20d241e9ca855279ccf3fd703801a22d",
+      "path": "packages/session/src/conversation-store-worker.ts",
+      "expected": "ff921c04cf174ba37cb807c4acf5dcd549478cf6517b090796da0866a7235a23",
+      "actual": "ff921c04cf174ba37cb807c4acf5dcd549478cf6517b090796da0866a7235a23",
+      "matches": true
+    },
+    {
+      "record": "turn-review-store/checkpoint-review.json",
+      "revision": "3870f44b20d241e9ca855279ccf3fd703801a22d",
+      "path": "TESTS/shared-world-turn-store.test.ts",
+      "expected": "1365cc34edc813d99748a2f0dd29c45b92aad334cd3cb854e083460f38dffa47",
+      "actual": "1365cc34edc813d99748a2f0dd29c45b92aad334cd3cb854e083460f38dffa47",
+      "matches": true
+    },
+    {
+      "record": "cold-review/review.json",
+      "revision": "c4654d52b1a08bdb4bfa18822d2cc74229d606b6",
+      "path": "TESTS/shared-world-cold.test.ts",
+      "expected": "6835f6c74db913796a33320d08e435d545f81812a29e303d464744687d4e74a0",
+      "actual": "6835f6c74db913796a33320d08e435d545f81812a29e303d464744687d4e74a0",
+      "matches": true
+    },
+    {
+      "record": "cold-review/review.json",
+      "revision": "c4654d52b1a08bdb4bfa18822d2cc74229d606b6",
+      "path": "packages/ledger/src/world/rules/README.md",
+      "expected": "c83f073e2554b63c01b351085d1b5f547d41cd543220b79431e869a2e4100a74",
+      "actual": "c83f073e2554b63c01b351085d1b5f547d41cd543220b79431e869a2e4100a74",
+      "matches": true
+    },
+    {
+      "record": "cold-review/review.json",
+      "revision": "c4654d52b1a08bdb4bfa18822d2cc74229d606b6",
+      "path": "packages/ledger/src/world/rules/engine.ts",
+      "expected": "76bef309f955b0a83fb6f52f20e0d9a26874c4b7aad244f46519ebfe88a79777",
+      "actual": "76bef309f955b0a83fb6f52f20e0d9a26874c4b7aad244f46519ebfe88a79777",
+      "matches": true
+    },
+    {
+      "record": "design-review-source.json:initial",
+      "revision": "3a0996f9c5722d1687ab33ca4c38b6e6d9697b07",
+      "path": "docs/session-continuation/DESIGN.md",
+      "expected": "344d6927f37f7f75ac21114ea14381f535e09dcf2ef9bc3639e2ccba96ebb416",
+      "actual": "344d6927f37f7f75ac21114ea14381f535e09dcf2ef9bc3639e2ccba96ebb416",
+      "matches": true
+    },
+    {
+      "record": "design-review-source.json:initial",
+      "revision": "3a0996f9c5722d1687ab33ca4c38b6e6d9697b07",
+      "path": "docs/session-continuation/PLAN.md",
+      "expected": "004763e435b265588d3546f512ff040c6e0515a845edea9ef3995839899f3e88",
+      "actual": "004763e435b265588d3546f512ff040c6e0515a845edea9ef3995839899f3e88",
+      "matches": true
+    },
+    {
+      "record": "design-review-source.json:final",
+      "revision": "619f124a82cff818abff730248ac4d60acf421ed",
+      "path": "docs/session-continuation/DESIGN.md",
+      "expected": "2fe2b52671dbd0cf4d75aeb19cf3744315d62b225bc26ced7908becac01eb7e4",
+      "actual": "2fe2b52671dbd0cf4d75aeb19cf3744315d62b225bc26ced7908becac01eb7e4",
+      "matches": true
+    },
+    {
+      "record": "design-review-source.json:final",
+      "revision": "619f124a82cff818abff730248ac4d60acf421ed",
+      "path": "docs/session-continuation/PLAN.md",
+      "expected": "004763e435b265588d3546f512ff040c6e0515a845edea9ef3995839899f3e88",
+      "actual": "004763e435b265588d3546f512ff040c6e0515a845edea9ef3995839899f3e88",
+      "matches": true
+    },
+    {
+      "record": "turn-api-review.json",
+      "revision": "2d6203de1bf16870714a2f2f07facd1a3d559e5d",
+      "path": "docs/session-continuation/TURN_CONTRACT.md",
+      "expected": "d4380e49c08d6b7f0435114bc2d50ab516aca6b56684ad6aec6fb3e4da80a2ee",
+      "actual": "d4380e49c08d6b7f0435114bc2d50ab516aca6b56684ad6aec6fb3e4da80a2ee",
+      "matches": true,
+      "current_matches": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-0458268/verification.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "packages/session/src/conversation-types.ts",
+      "expected": "7007528fe9f72e3d4ee3d8091512b2065f1203bc52ecafd393dbdde78ddfaf38",
+      "actual": "7007528fe9f72e3d4ee3d8091512b2065f1203bc52ecafd393dbdde78ddfaf38",
+      "matches": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-0458268/verification.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "packages/session/src/conversation-types.ts",
+      "expected": "7007528fe9f72e3d4ee3d8091512b2065f1203bc52ecafd393dbdde78ddfaf38",
+      "actual": "7007528fe9f72e3d4ee3d8091512b2065f1203bc52ecafd393dbdde78ddfaf38",
+      "matches": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-0458268/verification.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "packages/session/src/conversation-guards.ts",
+      "expected": "e276e14a1bf9af48079673f5a2b163b9751a0b857036eedf4c5311ebe293407d",
+      "actual": "e276e14a1bf9af48079673f5a2b163b9751a0b857036eedf4c5311ebe293407d",
+      "matches": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-0458268/verification.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "packages/session/src/conversation-guards.ts",
+      "expected": "e276e14a1bf9af48079673f5a2b163b9751a0b857036eedf4c5311ebe293407d",
+      "actual": "e276e14a1bf9af48079673f5a2b163b9751a0b857036eedf4c5311ebe293407d",
+      "matches": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-0458268/verification.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "packages/session/src/conversation-store.ts",
+      "expected": "9fe225478aa8847ed0cc6aa118850909007c60f96f1c198fc5e7e97b120269ef",
+      "actual": "9fe225478aa8847ed0cc6aa118850909007c60f96f1c198fc5e7e97b120269ef",
+      "matches": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-0458268/verification.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "packages/session/src/conversation-store.ts",
+      "expected": "9fe225478aa8847ed0cc6aa118850909007c60f96f1c198fc5e7e97b120269ef",
+      "actual": "9fe225478aa8847ed0cc6aa118850909007c60f96f1c198fc5e7e97b120269ef",
+      "matches": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-0458268/verification.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "packages/session/src/conversation-store-worker.ts",
+      "expected": "0885ac35c25cd0426a63b88fe22b696d1187edf9571a2d45390a2e29370a2bf1",
+      "actual": "0885ac35c25cd0426a63b88fe22b696d1187edf9571a2d45390a2e29370a2bf1",
+      "matches": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-0458268/verification.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "packages/session/src/conversation-store-worker.ts",
+      "expected": "0885ac35c25cd0426a63b88fe22b696d1187edf9571a2d45390a2e29370a2bf1",
+      "actual": "0885ac35c25cd0426a63b88fe22b696d1187edf9571a2d45390a2e29370a2bf1",
+      "matches": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-0458268/verification.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "TESTS/shared-world-turn-store.test.ts",
+      "expected": "e726cb26a90e0c5638dad1ac1519e40631fcd2e536ccc6e72680733ea6cc7884",
+      "actual": "e726cb26a90e0c5638dad1ac1519e40631fcd2e536ccc6e72680733ea6cc7884",
+      "matches": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-0458268/verification.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "TESTS/shared-world-turn-store.test.ts",
+      "expected": "e726cb26a90e0c5638dad1ac1519e40631fcd2e536ccc6e72680733ea6cc7884",
+      "actual": "e726cb26a90e0c5638dad1ac1519e40631fcd2e536ccc6e72680733ea6cc7884",
+      "matches": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-0458268/verification.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "packages/session/src/index.ts",
+      "expected": "7fa0a76a1310cfbee097364e7476bbdff756de18e347f80483ccb9d29578120c",
+      "actual": "7fa0a76a1310cfbee097364e7476bbdff756de18e347f80483ccb9d29578120c",
+      "matches": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-0458268/verification.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "packages/session/src/index.ts",
+      "expected": "7fa0a76a1310cfbee097364e7476bbdff756de18e347f80483ccb9d29578120c",
+      "actual": "7fa0a76a1310cfbee097364e7476bbdff756de18e347f80483ccb9d29578120c",
+      "matches": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-0458268/verification.json",
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "path": "packages/session/package.json",
+      "expected": "23d621e04345400aca781aee4448548f6e9a3f3726d67006b5a6e191eeb113a0",
+      "actual": "23d621e04345400aca781aee4448548f6e9a3f3726d67006b5a6e191eeb113a0",
+      "matches": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-0458268/verification.json",
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "path": "packages/session/package.json",
+      "expected": "23d621e04345400aca781aee4448548f6e9a3f3726d67006b5a6e191eeb113a0",
+      "actual": "23d621e04345400aca781aee4448548f6e9a3f3726d67006b5a6e191eeb113a0",
+      "matches": true
+    }
+  ],
+  "artifact_checks": [
+    {
+      "record": "docs/session-continuation/evidence/cold-review/portable/verification.json",
+      "reference": "README.md",
+      "retained_path": "docs/session-continuation/evidence/cold-review/portable/README.md",
+      "expected": "d4cb2be0c67044e5b947b2dba724bb706933872e280b1e6dd22928a02bcae285",
+      "actual": "d4cb2be0c67044e5b947b2dba724bb706933872e280b1e6dd22928a02bcae285",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/cold-review/portable/verification.json",
+      "reference": "REPORT.md",
+      "retained_path": "docs/session-continuation/evidence/cold-review/portable/REPORT.md",
+      "expected": "fa26cca7d6ca20fb5413cae61186ab847d698a5b6b241f3dd84d55593e3987f7",
+      "actual": "fa26cca7d6ca20fb5413cae61186ab847d698a5b6b241f3dd84d55593e3987f7",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/cold-review/portable/verification.json",
+      "reference": "check-negative-manifests.py",
+      "retained_path": "docs/session-continuation/evidence/cold-review/portable/check-negative-manifests.py",
+      "expected": "3c7dda4455979f83cc453fe6cff129c6d72015d551858d19282e977e75cf5f5f",
+      "actual": "3c7dda4455979f83cc453fe6cff129c6d72015d551858d19282e977e75cf5f5f",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/cold-review/portable/verification.json",
+      "reference": "compatibility.mjs",
+      "retained_path": "docs/session-continuation/evidence/cold-review/portable/compatibility.mjs",
+      "expected": "938c885383b9e7e5d97b27b9870095b419eaa58c4458429e42c4f11d05ee204f",
+      "actual": "938c885383b9e7e5d97b27b9870095b419eaa58c4458429e42c4f11d05ee204f",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/cold-review/portable/verification.json",
+      "reference": "derivation.json",
+      "retained_path": "docs/session-continuation/evidence/cold-review/portable/derivation.json",
+      "expected": "fe8ce94f6a1a6d36909f81bc1c4b74d00324619203b0938e77a2f74d1b265611",
+      "actual": "fe8ce94f6a1a6d36909f81bc1c4b74d00324619203b0938e77a2f74d1b265611",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/cold-review/portable/verification.json",
+      "reference": "integration-docs-only.diff",
+      "retained_path": "docs/session-continuation/evidence/cold-review/portable/integration-docs-only.diff",
+      "expected": "4d1702c24d9ff3be7acd16954dc459f91fdee094ddc977b6e21f58cb5af4a52c",
+      "actual": "4d1702c24d9ff3be7acd16954dc459f91fdee094ddc977b6e21f58cb5af4a52c",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/cold-review/portable/verification.json",
+      "reference": "negative-manifests/fixture_sha256/manifest.json",
+      "retained_path": "docs/session-continuation/evidence/cold-review/portable/negative-manifests/fixture_sha256/manifest.json",
+      "expected": "d28f0062b38f169173171bba5b18c0034501af2ad26e0ffaf8a998ea6204fc2b",
+      "actual": "d28f0062b38f169173171bba5b18c0034501af2ad26e0ffaf8a998ea6204fc2b",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/cold-review/portable/verification.json",
+      "reference": "negative-manifests/fixture_sha256/refusal.log",
+      "retained_path": "docs/session-continuation/evidence/cold-review/portable/negative-manifests/fixture_sha256/refusal.log",
+      "expected": "d7c975501cdd31e36c53c8d43c233f240eab4e588498eb82dbc0614df1796c5a",
+      "actual": "d7c975501cdd31e36c53c8d43c233f240eab4e588498eb82dbc0614df1796c5a",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/cold-review/portable/verification.json",
+      "reference": "negative-manifests/genesis_hash/manifest.json",
+      "retained_path": "docs/session-continuation/evidence/cold-review/portable/negative-manifests/genesis_hash/manifest.json",
+      "expected": "a90b2912173d54d62d200a389054d33362ca6c939659d2b47aac33f8453a121d",
+      "actual": "a90b2912173d54d62d200a389054d33362ca6c939659d2b47aac33f8453a121d",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/cold-review/portable/verification.json",
+      "reference": "negative-manifests/genesis_hash/refusal.log",
+      "retained_path": "docs/session-continuation/evidence/cold-review/portable/negative-manifests/genesis_hash/refusal.log",
+      "expected": "b4ed623bdd406bb8f3c3215b1a6147a52401758462cb0a7a5093184fad0419c9",
+      "actual": "b4ed623bdd406bb8f3c3215b1a6147a52401758462cb0a7a5093184fad0419c9",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/cold-review/portable/verification.json",
+      "reference": "negative-manifests/results.json",
+      "retained_path": "docs/session-continuation/evidence/cold-review/portable/negative-manifests/results.json",
+      "expected": "087c8462139273ddbd266ab42cb23daf20a31985c15aaadd668c3fcb58a8589f",
+      "actual": "087c8462139273ddbd266ab42cb23daf20a31985c15aaadd668c3fcb58a8589f",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/cold-review/portable/verification.json",
+      "reference": "negative-manifests/source/manifest.json",
+      "retained_path": "docs/session-continuation/evidence/cold-review/portable/negative-manifests/source/manifest.json",
+      "expected": "17d7c9dfd1bdcad06dd7921b7a67bcb3263f29175d65a7ad5f1e3feeecfa20f0",
+      "actual": "17d7c9dfd1bdcad06dd7921b7a67bcb3263f29175d65a7ad5f1e3feeecfa20f0",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/cold-review/portable/verification.json",
+      "reference": "negative-manifests/source/refusal.log",
+      "retained_path": "docs/session-continuation/evidence/cold-review/portable/negative-manifests/source/refusal.log",
+      "expected": "d1ece2397799f9aef3697026e10fcc38ec090cf1e8f5c0ed4b5a462f6847288e",
+      "actual": "d1ece2397799f9aef3697026e10fcc38ec090cf1e8f5c0ed4b5a462f6847288e",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/cold-review/portable/verification.json",
+      "reference": "negative-manifests/terminal_event_hash/manifest.json",
+      "retained_path": "docs/session-continuation/evidence/cold-review/portable/negative-manifests/terminal_event_hash/manifest.json",
+      "expected": "43195acf704f8877061e0ce6c15088dc1be92c7bc96aae8cd51215d3cd7dd968",
+      "actual": "43195acf704f8877061e0ce6c15088dc1be92c7bc96aae8cd51215d3cd7dd968",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/cold-review/portable/verification.json",
+      "reference": "negative-manifests/terminal_event_hash/refusal.log",
+      "retained_path": "docs/session-continuation/evidence/cold-review/portable/negative-manifests/terminal_event_hash/refusal.log",
+      "expected": "28f045b0872b2360b0120ba2e3c8160a6eaafcb65e5b84c6bec6a62a21fc86be",
+      "actual": "28f045b0872b2360b0120ba2e3c8160a6eaafcb65e5b84c6bec6a62a21fc86be",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/cold-review/portable/verification.json",
+      "reference": "negative-manifests/terminal_state_hash/manifest.json",
+      "retained_path": "docs/session-continuation/evidence/cold-review/portable/negative-manifests/terminal_state_hash/manifest.json",
+      "expected": "4d4cfe8823279c9c069458c83b9bfa564df40720916271616247067f1672ef83",
+      "actual": "4d4cfe8823279c9c069458c83b9bfa564df40720916271616247067f1672ef83",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/cold-review/portable/verification.json",
+      "reference": "negative-manifests/terminal_state_hash/refusal.log",
+      "retained_path": "docs/session-continuation/evidence/cold-review/portable/negative-manifests/terminal_state_hash/refusal.log",
+      "expected": "5a618a63343a9fcdee09a6bfb5ce63c68c871a5f64d375ea4ae59494a01b65fe",
+      "actual": "5a618a63343a9fcdee09a6bfb5ce63c68c871a5f64d375ea4ae59494a01b65fe",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/cold-review/portable/verification.json",
+      "reference": "parameterization.diff",
+      "retained_path": "docs/session-continuation/evidence/cold-review/portable/parameterization.diff",
+      "expected": "c097abad72cc3c075716a1e96574101d6ca5f587a5252ac465fdfd4c26cefbd0",
+      "actual": "c097abad72cc3c075716a1e96574101d6ca5f587a5252ac465fdfd4c26cefbd0",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/cold-review/portable/verification.json",
+      "reference": "run-c4654d5/compatibility.log",
+      "retained_path": "docs/session-continuation/evidence/cold-review/portable/run-c4654d5/compatibility.log",
+      "expected": "69ed69560daf701903d0ad31c3465470ee7fefa7c5df2432f484ab4724149c65",
+      "actual": "69ed69560daf701903d0ad31c3465470ee7fefa7c5df2432f484ab4724149c65",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/cold-review/portable/verification.json",
+      "reference": "run-c4654d5/preflight.json",
+      "retained_path": "docs/session-continuation/evidence/cold-review/portable/run-c4654d5/preflight.json",
+      "expected": "ef7fe4cf635635559353e6de41b39782d5c6aae1ad2ca8b1d5dbc1a3c2aef4d3",
+      "actual": "ef7fe4cf635635559353e6de41b39782d5c6aae1ad2ca8b1d5dbc1a3c2aef4d3",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/cold-review/portable/verification.json",
+      "reference": "run-c4654d5/results.json",
+      "retained_path": "docs/session-continuation/evidence/cold-review/portable/run-c4654d5/results.json",
+      "expected": "354eef29be41869cbf76931006576ddc3e1f755b1a6932a69ae33aedca20d8e4",
+      "actual": "354eef29be41869cbf76931006576ddc3e1f755b1a6932a69ae33aedca20d8e4",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/cold-review/portable/verification.json",
+      "reference": "run-portable.py",
+      "retained_path": "docs/session-continuation/evidence/cold-review/portable/run-portable.py",
+      "expected": "333e9ee432c23ce5b5d2161b315822316f9db1049a1a1a9b828a8b6c545b8128",
+      "actual": "333e9ee432c23ce5b5d2161b315822316f9db1049a1a1a9b828a8b6c545b8128",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/cold-review/review.json",
+      "reference": "results.json",
+      "retained_path": "docs/session-continuation/evidence/cold-review/results.json",
+      "expected": "6d3defbe7046794da2ef45a180ba06478e7ecb8ea2e6937e83603e87af2fdfe8",
+      "actual": "6d3defbe7046794da2ef45a180ba06478e7ecb8ea2e6937e83603e87af2fdfe8",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/cold-review/review.json",
+      "reference": "compatibility.log",
+      "retained_path": "docs/session-continuation/evidence/cold-review/compatibility.log",
+      "expected": "69ed69560daf701903d0ad31c3465470ee7fefa7c5df2432f484ab4724149c65",
+      "actual": "69ed69560daf701903d0ad31c3465470ee7fefa7c5df2432f484ab4724149c65",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/cold-review/review.json",
+      "reference": "verification.json",
+      "retained_path": "docs/session-continuation/evidence/cold-review/verification.json",
+      "expected": "39102ce6183648675bb80651cfe0a816b53db95a5dc0ad5568b082e2abf69680",
+      "actual": "39102ce6183648675bb80651cfe0a816b53db95a5dc0ad5568b082e2abf69680",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/cold-review/review.json",
+      "reference": "preflight.json",
+      "retained_path": "docs/session-continuation/evidence/cold-review/preflight.json",
+      "expected": "e355986add39a01da92f1570d00f55ee8e609ef1ffb66f9f4e9f2b6165c170df",
+      "actual": "e355986add39a01da92f1570d00f55ee8e609ef1ffb66f9f4e9f2b6165c170df",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/cold-review/review.json",
+      "reference": "focused-source-tests.log",
+      "retained_path": "docs/session-continuation/evidence/cold-review/focused-source-tests.log",
+      "expected": "aa26175de01cb8f9c7f5897faa66e10751cef9f7fd57bf81e3cf82e190d51dfb",
+      "actual": "aa26175de01cb8f9c7f5897faa66e10751cef9f7fd57bf81e3cf82e190d51dfb",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/cold-review/review.json",
+      "reference": "candidate.diff",
+      "retained_path": "docs/session-continuation/evidence/cold-review/candidate.diff",
+      "expected": "81bc63dd0d03d2e6a2b37a097ed1cd308d97f20ce344cb6d81854ce3a2d28106",
+      "actual": "81bc63dd0d03d2e6a2b37a097ed1cd308d97f20ce344cb6d81854ce3a2d28106",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-author/verification-followup.json",
+      "reference": "host-review-red.log",
+      "retained_path": "docs/session-continuation/evidence/turn-author/host-review-red.log",
+      "expected": "fef804bf5239f529ec920f9b2a2b43c38df166b5852beb94679c1c24fa8feeaa",
+      "actual": "fef804bf5239f529ec920f9b2a2b43c38df166b5852beb94679c1c24fa8feeaa",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-author/verification-followup.json",
+      "reference": "host-review-green.log",
+      "retained_path": "docs/session-continuation/evidence/turn-author/host-review-green.log",
+      "expected": "ca03b550b26538e1950ab6318178cf9a1fcfe956b61849f39a2f6a6dfd6c9af6",
+      "actual": "ca03b550b26538e1950ab6318178cf9a1fcfe956b61849f39a2f6a6dfd6c9af6",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-author/verification-followup.json",
+      "reference": "host-final-review.log",
+      "retained_path": "docs/session-continuation/evidence/turn-author/host-final-review.log",
+      "expected": "bd7558ee92aa9f5e13ce4783ae6ded86b2af386ff60db0b9bf048efd91c4636a",
+      "actual": "bd7558ee92aa9f5e13ce4783ae6ded86b2af386ff60db0b9bf048efd91c4636a",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-author/verification-followup.json",
+      "reference": "typecheck-final-review.log",
+      "retained_path": "docs/session-continuation/evidence/turn-author/typecheck-final-review.log",
+      "expected": "2cf20646d72113be26c6fbe14738bc101ebf909ab8a2374290f369e1d53c975c",
+      "actual": "2cf20646d72113be26c6fbe14738bc101ebf909ab8a2374290f369e1d53c975c",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-author/verification-followup.json",
+      "reference": "contracts-final-correct.log",
+      "retained_path": "docs/session-continuation/evidence/turn-author/contracts-final-correct.log",
+      "expected": "2cd7874723b12ab43b0da644f0fa05f6af32153676d6e31de2c44c17c8e03428",
+      "actual": "2cd7874723b12ab43b0da644f0fa05f6af32153676d6e31de2c44c17c8e03428",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-author/verification-followup.json",
+      "reference": "boundaries-final-review.log",
+      "retained_path": "docs/session-continuation/evidence/turn-author/boundaries-final-review.log",
+      "expected": "e47c0afeea3c3b43502770ad5783bbf4ba351ce8b864d59d839f760923e09580",
+      "actual": "e47c0afeea3c3b43502770ad5783bbf4ba351ce8b864d59d839f760923e09580",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-author/verification-followup.json",
+      "reference": "contracts-final-review.log",
+      "retained_path": "docs/session-continuation/evidence/turn-author/contracts-final-review.log",
+      "expected": "7116346e32a4544cd0f575abd6d4ce5d24950136c2b099cd04e00e7553ea92da",
+      "actual": "7116346e32a4544cd0f575abd6d4ce5d24950136c2b099cd04e00e7553ea92da",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-0458268.json",
+      "reference": "REVIEW-0458268.md",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/REVIEW-0458268.md",
+      "expected": "dbe31ff090b6cf64f9224c869643efa2865df8dfa8c15e25d1a47c4eb52dc1cf",
+      "actual": "dbe31ff090b6cf64f9224c869643efa2865df8dfa8c15e25d1a47c4eb52dc1cf",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-0458268.json",
+      "reference": "late-await-probes.mjs",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/late-await-probes.mjs",
+      "expected": "fd0f700c6c63861c8356406de944c8898a17edb3002697062d9d1af5b2026c3a",
+      "actual": "fd0f700c6c63861c8356406de944c8898a17edb3002697062d9d1af5b2026c3a",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-0458268.json",
+      "reference": "late-await-results-0458268.json",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/late-await-results-0458268.json",
+      "expected": "c3e6ee127e0420e13ae42f6b921588564689613cb403be1b9201a1d78a33ea0b",
+      "actual": "c3e6ee127e0420e13ae42f6b921588564689613cb403be1b9201a1d78a33ea0b",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-0458268.json",
+      "reference": "late-await-run-0458268.log",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/late-await-run-0458268.log",
+      "expected": "b23e0d456824b9832fe47149d7bdd69353c6c3bff6cc131f39132fc2ead3b657",
+      "actual": "b23e0d456824b9832fe47149d7bdd69353c6c3bff6cc131f39132fc2ead3b657",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-0458268.json",
+      "reference": "late-await-stderr-0458268.log",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/late-await-stderr-0458268.log",
+      "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-0458268.json",
+      "reference": "page-container-data-access-probes.mjs",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/page-container-data-access-probes.mjs",
+      "expected": "21103224069a2332dfdf70651115354a74a947df4fa686758cd16f43d69de055",
+      "actual": "21103224069a2332dfdf70651115354a74a947df4fa686758cd16f43d69de055",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-0458268.json",
+      "reference": "page-data-results-0458268.json",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/page-data-results-0458268.json",
+      "expected": "895d37050ba5d7aa0ff324bd656290c507f024f8cd9a4f09c0e3cd615e935777",
+      "actual": "895d37050ba5d7aa0ff324bd656290c507f024f8cd9a4f09c0e3cd615e935777",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-0458268.json",
+      "reference": "page-data-results-e096530.json",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/page-data-results-e096530.json",
+      "expected": "9df80badc32ac7f9cf1270e8ba1c6f3b065f50b2d42222e105ebf2d8e40a6bbe",
+      "actual": "9df80badc32ac7f9cf1270e8ba1c6f3b065f50b2d42222e105ebf2d8e40a6bbe",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-0458268.json",
+      "reference": "page-data-run-0458268.log",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/page-data-run-0458268.log",
+      "expected": "9affc6e3172874071a0fc8f3f901d7e5a1ac7bde6b4e68226254c9b06c7dcec2",
+      "actual": "9affc6e3172874071a0fc8f3f901d7e5a1ac7bde6b4e68226254c9b06c7dcec2",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-0458268.json",
+      "reference": "page-data-run-e096530.log",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/page-data-run-e096530.log",
+      "expected": "de8c117e815bbb86eefcbfa4b2c90ebee14af34eab88eb7699207c1cd59a335d",
+      "actual": "de8c117e815bbb86eefcbfa4b2c90ebee14af34eab88eb7699207c1cd59a335d",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-0458268.json",
+      "reference": "page-data-stderr-0458268.log",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/page-data-stderr-0458268.log",
+      "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-0458268.json",
+      "reference": "page-data-stderr-e096530.log",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/page-data-stderr-e096530.log",
+      "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-0458268.json",
+      "reference": "repair-followup-probes.mjs",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/repair-followup-probes.mjs",
+      "expected": "16f74dea0c29a5e79ebcbc580cefd8b1507c6a62296454fa9d3c6aeaaeef004a",
+      "actual": "16f74dea0c29a5e79ebcbc580cefd8b1507c6a62296454fa9d3c6aeaaeef004a",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-0458268.json",
+      "reference": "repair-followup-results-0458268.json",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/repair-followup-results-0458268.json",
+      "expected": "157ca23a9af5d967b6ae91a1a113d22017374aea2b134d0793802caa213581a4",
+      "actual": "157ca23a9af5d967b6ae91a1a113d22017374aea2b134d0793802caa213581a4",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-0458268.json",
+      "reference": "repair-followup-run-0458268.log",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/repair-followup-run-0458268.log",
+      "expected": "5bf400cde39fd894352c84210c5b838eda53603685202a2162c60a1a961fc00c",
+      "actual": "5bf400cde39fd894352c84210c5b838eda53603685202a2162c60a1a961fc00c",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-0458268.json",
+      "reference": "repair-followup-stderr-0458268.log",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/repair-followup-stderr-0458268.log",
+      "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-e096530.json",
+      "reference": "README.md",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/README.md",
+      "expected": "a74cbdfd09cc8c5e21054f42605493c8d46b0047c709d52f5204ddce039fbaa1",
+      "actual": "a74cbdfd09cc8c5e21054f42605493c8d46b0047c709d52f5204ddce039fbaa1",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-e096530.json",
+      "reference": "REVIEW-e096530.md",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/REVIEW-e096530.md",
+      "expected": "41a5bd3a16b0f53b467fe7cfe1f4420e8cde29d1820e6303c11e797ae419b63f",
+      "actual": "41a5bd3a16b0f53b467fe7cfe1f4420e8cde29d1820e6303c11e797ae419b63f",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-e096530.json",
+      "reference": "child-diagnostic-results-e096530.json",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/child-diagnostic-results-e096530.json",
+      "expected": "7a82bf9ec56bc62cdfa5f40ef7ec6f2346e7431382350e41c43308521a6a1ba8",
+      "actual": "7a82bf9ec56bc62cdfa5f40ef7ec6f2346e7431382350e41c43308521a6a1ba8",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-e096530.json",
+      "reference": "child-diagnostic-run-e096530.log",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/child-diagnostic-run-e096530.log",
+      "expected": "0ac982d4bbea8ec3e19b118c56643d6e4d14168ad871b0f867f6906fa1609f36",
+      "actual": "0ac982d4bbea8ec3e19b118c56643d6e4d14168ad871b0f867f6906fa1609f36",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-e096530.json",
+      "reference": "child-diagnostic-stderr-e096530.log",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/child-diagnostic-stderr-e096530.log",
+      "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-e096530.json",
+      "reference": "child-fixed-results-e096530.json",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/child-fixed-results-e096530.json",
+      "expected": "d00c36b53d342da2612a54030590397200eedf7372ba044cbc1ad01a381b6866",
+      "actual": "d00c36b53d342da2612a54030590397200eedf7372ba044cbc1ad01a381b6866",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-e096530.json",
+      "reference": "child-fixed-run-e096530.log",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/child-fixed-run-e096530.log",
+      "expected": "86d12aff0a1f5679bf366205e5231efee5bdfefeb57e8bc1d0c0d1a9293c90e2",
+      "actual": "86d12aff0a1f5679bf366205e5231efee5bdfefeb57e8bc1d0c0d1a9293c90e2",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-e096530.json",
+      "reference": "child-fixed-stderr-e096530.log",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/child-fixed-stderr-e096530.log",
+      "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-e096530.json",
+      "reference": "late-await-probes.mjs",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/late-await-probes.mjs",
+      "expected": "fd0f700c6c63861c8356406de944c8898a17edb3002697062d9d1af5b2026c3a",
+      "actual": "fd0f700c6c63861c8356406de944c8898a17edb3002697062d9d1af5b2026c3a",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-e096530.json",
+      "reference": "late-await-results-e096530.json",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/late-await-results-e096530.json",
+      "expected": "ba118edabc40d879350255c38dd9886d1aa8bbafffaf6052ac33a13703ac71db",
+      "actual": "ba118edabc40d879350255c38dd9886d1aa8bbafffaf6052ac33a13703ac71db",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-e096530.json",
+      "reference": "late-await-run-e096530.log",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/late-await-run-e096530.log",
+      "expected": "2b2de570f1da2fdb2e8c4b1a4baa68c958ef49e85bccb94d92bb808e947a3a4b",
+      "actual": "2b2de570f1da2fdb2e8c4b1a4baa68c958ef49e85bccb94d92bb808e947a3a4b",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-e096530.json",
+      "reference": "late-await-stderr-e096530.log",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/late-await-stderr-e096530.log",
+      "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-e096530.json",
+      "reference": "page-container-probes.mjs",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/page-container-probes.mjs",
+      "expected": "1ead4e112f331f8876e28c7f35b692db4323b209af0d98fd274c96c3a27aef2c",
+      "actual": "1ead4e112f331f8876e28c7f35b692db4323b209af0d98fd274c96c3a27aef2c",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-e096530.json",
+      "reference": "page-container-results-e096530.json",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/page-container-results-e096530.json",
+      "expected": "1f19a94ea86c827473a7fc7b825b805399d0cfa8edbd2c0d699654960f38ead7",
+      "actual": "1f19a94ea86c827473a7fc7b825b805399d0cfa8edbd2c0d699654960f38ead7",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-e096530.json",
+      "reference": "page-container-run-e096530.log",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/page-container-run-e096530.log",
+      "expected": "f823793d5d09324673be61496324c7e51d5ae3cd0a6703c0d23e554b32c99f17",
+      "actual": "f823793d5d09324673be61496324c7e51d5ae3cd0a6703c0d23e554b32c99f17",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-e096530.json",
+      "reference": "page-container-stderr-e096530.log",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/page-container-stderr-e096530.log",
+      "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-e096530.json",
+      "reference": "prepared.json",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/prepared.json",
+      "expected": "21c802ed234bffd11dd08e52817b7eb12ddbdf9ad4827f1efb6bd24e8dd07a21",
+      "actual": "21c802ed234bffd11dd08e52817b7eb12ddbdf9ad4827f1efb6bd24e8dd07a21",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-e096530.json",
+      "reference": "probes-child-diagnostic.mjs",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/probes-child-diagnostic.mjs",
+      "expected": "6e7913e83711ee07bd4eb080765abf600352afcd5e179b98a8e276df2d4ee345",
+      "actual": "6e7913e83711ee07bd4eb080765abf600352afcd5e179b98a8e276df2d4ee345",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-e096530.json",
+      "reference": "probes-harness-fixed.mjs",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/probes-harness-fixed.mjs",
+      "expected": "0802f8d8f96f142c422759baa4b35cdde2f9320b67af0a963715860206bb1606",
+      "actual": "0802f8d8f96f142c422759baa4b35cdde2f9320b67af0a963715860206bb1606",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-e096530.json",
+      "reference": "probes.mjs",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/probes.mjs",
+      "expected": "5b1d5d1343f97d7caffce3b44ea5df48d97479692ee180d20f0045956eac8cbd",
+      "actual": "5b1d5d1343f97d7caffce3b44ea5df48d97479692ee180d20f0045956eac8cbd",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-e096530.json",
+      "reference": "results-e096530.json",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/results-e096530.json",
+      "expected": "26d8524f70c802745e564b84e4250e68d0dab501dbaed1fbf2047c29eda80ce9",
+      "actual": "26d8524f70c802745e564b84e4250e68d0dab501dbaed1fbf2047c29eda80ce9",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-e096530.json",
+      "reference": "run-e096530.log",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/run-e096530.log",
+      "expected": "9c23ef93817a7a06e79241540b9fd04149fb45f450c4e6671e9d48199f5490fd",
+      "actual": "9c23ef93817a7a06e79241540b9fd04149fb45f450c4e6671e9d48199f5490fd",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-host/verification-e096530.json",
+      "reference": "stderr-e096530.log",
+      "retained_path": "docs/session-continuation/evidence/turn-review-host/stderr-e096530.log",
+      "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/checkpoint-review.json",
+      "reference": "checkpoint-probes.mjs",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/checkpoint-probes.mjs",
+      "expected": "8196b61f10bcd02e2f3b3034603943ee1018f3fa17945fe580ff77c6e2d2a07c",
+      "actual": "8196b61f10bcd02e2f3b3034603943ee1018f3fa17945fe580ff77c6e2d2a07c",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/checkpoint-review.json",
+      "reference": "trace-json.mjs",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/trace-json.mjs",
+      "expected": "14421c1dd3911e556b9313503f12c8118442ce55833014ccfaac7ae0487457ec",
+      "actual": "14421c1dd3911e556b9313503f12c8118442ce55833014ccfaac7ae0487457ec",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/checkpoint-review.json",
+      "reference": "checkpoint-probes.log",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/checkpoint-probes.log",
+      "expected": "205d54b6867e29ec1268e66edbc16c18745f145170f58b2cc05d7fb099b170aa",
+      "actual": "205d54b6867e29ec1268e66edbc16c18745f145170f58b2cc05d7fb099b170aa",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/checkpoint-review.json",
+      "reference": "checkpoint-store-tests.log",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/checkpoint-store-tests.log",
+      "expected": "8f6335a67d695b87a68accb8bd313da0074eb1e372c3b63c2181a4b0d5b2b5ad",
+      "actual": "8f6335a67d695b87a68accb8bd313da0074eb1e372c3b63c2181a4b0d5b2b5ad",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-0458268/verification.json",
+      "reference": "../final-e096530/verification.json",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/final-e096530/verification.json",
+      "expected": "ce49dd9c7e434f84b2fa3510e549c9ddde3716b061242a60460523d9eebc6f19",
+      "actual": "ce49dd9c7e434f84b2fa3510e549c9ddde3716b061242a60460523d9eebc6f19",
+      "matches": true,
+      "relocated": false
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-0458268/verification.json",
+      "reference": "/workspace/reports/2026-11-14-argo-continuation/SC-620/HANDOFF-FOLLOWUP.md",
+      "retained_path": "docs/session-continuation/evidence/turn-author/HANDOFF-FOLLOWUP.md",
+      "expected": "af9cd8817d684b1fdcb4a3c8faeaa1d104189f6c72080b8666a046387f56f78a",
+      "actual": "af9cd8817d684b1fdcb4a3c8faeaa1d104189f6c72080b8666a046387f56f78a",
+      "matches": true,
+      "relocated": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-0458268/verification.json",
+      "reference": "/workspace/reports/2026-11-14-argo-continuation/SC-620/verification-followup.json",
+      "retained_path": "docs/session-continuation/evidence/turn-author/verification-followup.json",
+      "expected": "818c5fa5f8a4ef99ee3fb5411bb4fccc4f2003991b855d1eb526f712ad7343fe",
+      "actual": "818c5fa5f8a4ef99ee3fb5411bb4fccc4f2003991b855d1eb526f712ad7343fe",
+      "matches": true,
+      "relocated": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-e096530/verification.json",
+      "reference": "checkpoint-probes.mjs",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/checkpoint-probes.mjs",
+      "expected": "8196b61f10bcd02e2f3b3034603943ee1018f3fa17945fe580ff77c6e2d2a07c",
+      "actual": "8196b61f10bcd02e2f3b3034603943ee1018f3fa17945fe580ff77c6e2d2a07c",
+      "matches": true,
+      "relocated": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-e096530/verification.json",
+      "reference": "final-e096530/fix-controls.log",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/final-e096530/fix-controls.log",
+      "expected": "5eb9ae70bc3903c69685169f127ebad520857587988b09c4532d4032158e63e3",
+      "actual": "5eb9ae70bc3903c69685169f127ebad520857587988b09c4532d4032158e63e3",
+      "matches": true,
+      "relocated": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-e096530/verification.json",
+      "reference": "final-e096530/fix-controls/observations.json",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/final-e096530/fix-controls/observations.json",
+      "expected": "825d71d550e56b37f3d2624a448092dd61bacaf286230ea33df7b332b17409f0",
+      "actual": "825d71d550e56b37f3d2624a448092dd61bacaf286230ea33df7b332b17409f0",
+      "matches": true,
+      "relocated": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-e096530/verification.json",
+      "reference": "final-e096530/fix-controls/parse-trace.jsonl",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/final-e096530/fix-controls/parse-trace.jsonl",
+      "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "relocated": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-e096530/verification.json",
+      "reference": "final-e096530/fix-verification.json",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/final-e096530/fix-verification.json",
+      "expected": "eef1495f53512f62e85daf089a1d9746851f5febb0815072ba29591029882e26",
+      "actual": "eef1495f53512f62e85daf089a1d9746851f5febb0815072ba29591029882e26",
+      "matches": true,
+      "relocated": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-e096530/verification.json",
+      "reference": "final-e096530/initial-harness-syntax-error/README.md",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/final-e096530/initial-harness-syntax-error/README.md",
+      "expected": "540b0eb7f290695e18958023145899635da1586aa483edce01965ab6c9ece71f",
+      "actual": "540b0eb7f290695e18958023145899635da1586aa483edce01965ab6c9ece71f",
+      "matches": true,
+      "relocated": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-e096530/verification.json",
+      "reference": "final-e096530/initial-harness-syntax-error/probes.mjs",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/final-e096530/initial-harness-syntax-error/probes.mjs",
+      "expected": "140bfc201a8e6e45caf3b59d9891a5d1ced2c50615b094aa355c74cf2958acca",
+      "actual": "140bfc201a8e6e45caf3b59d9891a5d1ced2c50615b094aa355c74cf2958acca",
+      "matches": true,
+      "relocated": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-e096530/verification.json",
+      "reference": "final-e096530/initial-harness-syntax-error/process-racer.mjs",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/final-e096530/initial-harness-syntax-error/process-racer.mjs",
+      "expected": "725e8d2faefdce0bd4a20a36d2cc19cce730fcf9e2b37a5ccca969147aeb279b",
+      "actual": "725e8d2faefdce0bd4a20a36d2cc19cce730fcf9e2b37a5ccca969147aeb279b",
+      "matches": true,
+      "relocated": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-e096530/verification.json",
+      "reference": "final-e096530/initial-harness-syntax-error/public-probes.log",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/final-e096530/initial-harness-syntax-error/public-probes.log",
+      "expected": "44c4e400079970ac3a18fe8b2b50a7c56312e98972eb31f5ed1e4eb9d9698501",
+      "actual": "44c4e400079970ac3a18fe8b2b50a7c56312e98972eb31f5ed1e4eb9d9698501",
+      "matches": true,
+      "relocated": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-e096530/verification.json",
+      "reference": "final-e096530/initial-harness-syntax-error/public-probes.log",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/final-e096530/public-probes.log",
+      "expected": "44c4e400079970ac3a18fe8b2b50a7c56312e98972eb31f5ed1e4eb9d9698501",
+      "actual": "44c4e400079970ac3a18fe8b2b50a7c56312e98972eb31f5ed1e4eb9d9698501",
+      "matches": true,
+      "relocated": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-e096530/verification.json",
+      "reference": "final-e096530/initial-harness-syntax-error/results.json",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/final-e096530/initial-harness-syntax-error/results.json",
+      "expected": "d2796a2e0bffb11a6717ac5549d9f7d260846b7c8ccc0aa55bd7d71507e47f5d",
+      "actual": "d2796a2e0bffb11a6717ac5549d9f7d260846b7c8ccc0aa55bd7d71507e47f5d",
+      "matches": true,
+      "relocated": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-e096530/verification.json",
+      "reference": "final-e096530/initial-harness-syntax-error/results.json",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/final-e096530/public-probes/results.json",
+      "expected": "d2796a2e0bffb11a6717ac5549d9f7d260846b7c8ccc0aa55bd7d71507e47f5d",
+      "actual": "d2796a2e0bffb11a6717ac5549d9f7d260846b7c8ccc0aa55bd7d71507e47f5d",
+      "matches": true,
+      "relocated": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-e096530/verification.json",
+      "reference": "final-e096530/process-rerun.log",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/final-e096530/process-rerun.log",
+      "expected": "209dd827ef80cd40a27f308438152276fec7f9f1bdbd7aae5f485ee92350d499",
+      "actual": "209dd827ef80cd40a27f308438152276fec7f9f1bdbd7aae5f485ee92350d499",
+      "matches": true,
+      "relocated": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-e096530/verification.json",
+      "reference": "final-e096530/process-rerun/process-0.stderr",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/final-e096530/process-rerun/process-0.stderr",
+      "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "relocated": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-e096530/verification.json",
+      "reference": "final-e096530/process-rerun/process-1.stderr",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/final-e096530/process-rerun/process-1.stderr",
+      "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "relocated": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-e096530/verification.json",
+      "reference": "final-e096530/process-rerun/results.json",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/final-e096530/process-rerun/results.json",
+      "expected": "42a0a8e9e0368c997464c6ada96eb1cbac33b28506615b092378757b9674f4f5",
+      "actual": "42a0a8e9e0368c997464c6ada96eb1cbac33b28506615b092378757b9674f4f5",
+      "matches": true,
+      "relocated": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-e096530/verification.json",
+      "reference": "final-e096530/public-probes.log",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/final-e096530/initial-harness-syntax-error/public-probes.log",
+      "expected": "44c4e400079970ac3a18fe8b2b50a7c56312e98972eb31f5ed1e4eb9d9698501",
+      "actual": "44c4e400079970ac3a18fe8b2b50a7c56312e98972eb31f5ed1e4eb9d9698501",
+      "matches": true,
+      "relocated": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-e096530/verification.json",
+      "reference": "final-e096530/public-probes.log",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/final-e096530/public-probes.log",
+      "expected": "44c4e400079970ac3a18fe8b2b50a7c56312e98972eb31f5ed1e4eb9d9698501",
+      "actual": "44c4e400079970ac3a18fe8b2b50a7c56312e98972eb31f5ed1e4eb9d9698501",
+      "matches": true,
+      "relocated": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-e096530/verification.json",
+      "reference": "final-e096530/public-probes/results.json",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/final-e096530/initial-harness-syntax-error/results.json",
+      "expected": "d2796a2e0bffb11a6717ac5549d9f7d260846b7c8ccc0aa55bd7d71507e47f5d",
+      "actual": "d2796a2e0bffb11a6717ac5549d9f7d260846b7c8ccc0aa55bd7d71507e47f5d",
+      "matches": true,
+      "relocated": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-e096530/verification.json",
+      "reference": "final-e096530/public-probes/results.json",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/final-e096530/public-probes/results.json",
+      "expected": "d2796a2e0bffb11a6717ac5549d9f7d260846b7c8ccc0aa55bd7d71507e47f5d",
+      "actual": "d2796a2e0bffb11a6717ac5549d9f7d260846b7c8ccc0aa55bd7d71507e47f5d",
+      "matches": true,
+      "relocated": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-e096530/verification.json",
+      "reference": "final-e096530/worker-faults.log",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/final-e096530/worker-faults.log",
+      "expected": "815679c097a2fb702061af4a3b6f1c6b3481c2bb6ed2804c73134429d314c37c",
+      "actual": "815679c097a2fb702061af4a3b6f1c6b3481c2bb6ed2804c73134429d314c37c",
+      "matches": true,
+      "relocated": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-e096530/verification.json",
+      "reference": "final-e096530/worker-faults/fault-trace.jsonl",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/final-e096530/worker-faults/fault-trace.jsonl",
+      "expected": "097b2e776d2f13d49e18a1e70abb8b0be39daf00567160612ff265b3fc96b567",
+      "actual": "097b2e776d2f13d49e18a1e70abb8b0be39daf00567160612ff265b3fc96b567",
+      "matches": true,
+      "relocated": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-e096530/verification.json",
+      "reference": "final-e096530/worker-faults/results.json",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/final-e096530/worker-faults/results.json",
+      "expected": "9f7e8d31d872adf802c5258216aadfdd7f6cc88296b034b6e9896ca8327f84ec",
+      "actual": "9f7e8d31d872adf802c5258216aadfdd7f6cc88296b034b6e9896ca8327f84ec",
+      "matches": true,
+      "relocated": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-e096530/verification.json",
+      "reference": "probes.mjs",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/probes.mjs",
+      "expected": "e6340b7517be8eb00e63042b94d1c1db2e642dada89a33aef50be9b659aadd0b",
+      "actual": "e6340b7517be8eb00e63042b94d1c1db2e642dada89a33aef50be9b659aadd0b",
+      "matches": true,
+      "relocated": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-e096530/verification.json",
+      "reference": "process-racer.mjs",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/process-racer.mjs",
+      "expected": "2483cdbefa84dee7fef8fd6861969ca696d4163413cc7b15691bb334b3fe1a88",
+      "actual": "2483cdbefa84dee7fef8fd6861969ca696d4163413cc7b15691bb334b3fe1a88",
+      "matches": true,
+      "relocated": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-e096530/verification.json",
+      "reference": "trace-json.mjs",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/trace-json.mjs",
+      "expected": "14421c1dd3911e556b9313503f12c8118442ce55833014ccfaac7ae0487457ec",
+      "actual": "14421c1dd3911e556b9313503f12c8118442ce55833014ccfaac7ae0487457ec",
+      "matches": true,
+      "relocated": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-e096530/verification.json",
+      "reference": "worker-fault-hook.mjs",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/worker-fault-hook.mjs",
+      "expected": "ceb63b95dba926470412647fc253cee514491df6da94ec163ae31c501d77f59e",
+      "actual": "ceb63b95dba926470412647fc253cee514491df6da94ec163ae31c501d77f59e",
+      "matches": true,
+      "relocated": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/final-e096530/verification.json",
+      "reference": "worker-fault-probes.mjs",
+      "retained_path": "docs/session-continuation/evidence/turn-review-store/worker-fault-probes.mjs",
+      "expected": "3d86c7dfcafc8f765fa7cc138fd35274a73cbbb71bdd68751e900042d2e1d3a3",
+      "actual": "3d86c7dfcafc8f765fa7cc138fd35274a73cbbb71bdd68751e900042d2e1d3a3",
+      "matches": true,
+      "relocated": true
+    },
+    {
+      "record": "docs/session-continuation/evidence/cold-native-c4654d5.json",
+      "reference": "cold-native-c4654d5.log",
+      "retained_path": "docs/session-continuation/evidence/cold-native-c4654d5.log",
+      "expected": "1e778127fd8b926fe720cf0743c99635da59d55456977a2c900cca6a535743f3",
+      "actual": "1e778127fd8b926fe720cf0743c99635da59d55456977a2c900cca6a535743f3",
+      "matches": true,
+      "relocated": false
+    }
+  ],
+  "unresolved_artifact_references": [
+    {
+      "record": "docs/session-continuation/evidence/turn-api-review.json",
+      "path": "turn-api-proposal.md",
+      "expected": "1ff39873781719c1ab629f7f67de13f09476eeab2d8774c9a225dd1e5c6fb243"
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-api-review.json",
+      "path": "turn-api-contract.diff",
+      "expected": "5e39e461ed57386488c5eaaed28616ab52f380c73be50b4e01f87f8901dab516"
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/checkpoint-review.json",
+      "path": "checkpoint-observations/observations.json",
+      "expected": "f4fb6c350c0de084f3fb0ad21e1aa8ceaadcd2947277e045c155f56b26be1d6c"
+    },
+    {
+      "record": "docs/session-continuation/evidence/turn-review-store/checkpoint-review.json",
+      "path": "checkpoint-observations/parse-trace.jsonl",
+      "expected": "c3c11191e8162900754da69c316370c191ef465c49de2653e4895fdfdd7f1b66"
+    }
+  ],
+  "ancestry": [
+    {
+      "revision": "c4654d52b1a08bdb4bfa18822d2cc74229d606b6",
+      "is_ancestor": true
+    },
+    {
+      "revision": "3a0996f9c5722d1687ab33ca4c38b6e6d9697b07",
+      "is_ancestor": true
+    },
+    {
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "is_ancestor": true
+    },
+    {
+      "revision": "3a2fab7ab5a50dc7cd4f9eaa8732f027a1ce733d",
+      "is_ancestor": true
+    },
+    {
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "is_ancestor": true
+    },
+    {
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "is_ancestor": true
+    },
+    {
+      "revision": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+      "is_ancestor": true
+    },
+    {
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "is_ancestor": true
+    },
+    {
+      "revision": "e096530b2618119ab3dd545f3defe36b754021bd",
+      "is_ancestor": true
+    },
+    {
+      "revision": "3870f44b20d241e9ca855279ccf3fd703801a22d",
+      "is_ancestor": true
+    },
+    {
+      "revision": "3a0996f9c5722d1687ab33ca4c38b6e6d9697b07",
+      "is_ancestor": true
+    },
+    {
+      "revision": "619f124a82cff818abff730248ac4d60acf421ed",
+      "is_ancestor": true
+    },
+    {
+      "revision": "2d6203de1bf16870714a2f2f07facd1a3d559e5d",
+      "is_ancestor": true
+    },
+    {
+      "revision": "7c16c0d8709b0b53dba0ab36051c1fe0100bd35a",
+      "is_ancestor": true
+    },
+    {
+      "revision": "3c8ff55d872891014c89fe43515b3c28fd492626",
+      "is_ancestor": true
+    },
+    {
+      "revision": "de737c5db88042db2150f47d6dc4e0280e80ba96",
+      "is_ancestor": true
+    }
+  ],
+  "links": {
+    "checked": 160,
+    "broken": []
+  },
+  "boards": [
+    {
+      "board": "board-cold",
+      "rows": [
+        {
+          "id": "SC-610",
+          "status": "VERIFYING",
+          "attempt": 1,
+          "epoch": 1,
+          "base_commit": "3a0996f9c5722d1687ab33ca4c38b6e6d9697b07",
+          "commit_sha": "c4654d52b1a08bdb4bfa18822d2cc74229d606b6",
+          "merged_commit": null
+        }
+      ]
+    },
+    {
+      "board": "board-sc-620",
+      "rows": [
+        {
+          "id": "SC-620",
+          "status": "FAILED",
+          "attempt": 1,
+          "epoch": 1,
+          "base_commit": "3a2fab7ab5a50dc7cd4f9eaa8732f027a1ce733d",
+          "commit_sha": null,
+          "merged_commit": null
+        }
+      ]
+    },
+    {
+      "board": "board-sc-630",
+      "rows": [
+        {
+          "id": "SC-630",
+          "status": "CLAIMED",
+          "attempt": 1,
+          "epoch": 1,
+          "base_commit": "3c8ff55d872891014c89fe43515b3c28fd492626",
+          "commit_sha": null,
+          "merged_commit": null
+        }
+      ]
+    },
+    {
+      "board": "board-sc-640",
+      "rows": [
+        {
+          "id": "SC-640",
+          "status": "CLAIMED",
+          "attempt": 1,
+          "epoch": 1,
+          "base_commit": "9fa800493a3c033b45bc3df7ab18a56e25bcd9a8",
+          "commit_sha": null,
+          "merged_commit": null
+        }
+      ]
+    }
+  ],
+  "cas_checks": [
+    {
+      "board": "board-cold",
+      "path": "TESTS/shared-world-cold.test.ts",
+      "hash": "6835f6c74db913796a33320d08e435d545f81812a29e303d464744687d4e74a0",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "board": "board-cold",
+      "path": "packages/ledger/src/world/rules/README.md",
+      "hash": "c83f073e2554b63c01b351085d1b5f547d41cd543220b79431e869a2e4100a74",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "board": "board-cold",
+      "path": "packages/ledger/src/world/rules/engine.ts",
+      "hash": "76bef309f955b0a83fb6f52f20e0d9a26874c4b7aad244f46519ebfe88a79777",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "board": "board-sc-620",
+      "path": "TESTS/shared-world-conversation.test.ts",
+      "hash": "0b3808770fe066fefc68ea73e94db95b898f7b3936102d67438520ede810ab95",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "board": "board-sc-620",
+      "path": "TESTS/shared-world-turn-store.test.ts",
+      "hash": "e726cb26a90e0c5638dad1ac1519e40631fcd2e536ccc6e72680733ea6cc7884",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "board": "board-sc-620",
+      "path": "packages/session/package.json",
+      "hash": "23d621e04345400aca781aee4448548f6e9a3f3726d67006b5a6e191eeb113a0",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "board": "board-sc-620",
+      "path": "packages/session/src/conversation-guards.ts",
+      "hash": "e276e14a1bf9af48079673f5a2b163b9751a0b857036eedf4c5311ebe293407d",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "board": "board-sc-620",
+      "path": "packages/session/src/conversation-store-worker.ts",
+      "hash": "0885ac35c25cd0426a63b88fe22b696d1187edf9571a2d45390a2e29370a2bf1",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "board": "board-sc-620",
+      "path": "packages/session/src/conversation-store.ts",
+      "hash": "9fe225478aa8847ed0cc6aa118850909007c60f96f1c198fc5e7e97b120269ef",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "board": "board-sc-620",
+      "path": "packages/session/src/conversation-types.ts",
+      "hash": "7007528fe9f72e3d4ee3d8091512b2065f1203bc52ecafd393dbdde78ddfaf38",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "board": "board-sc-620",
+      "path": "packages/session/src/conversation.ts",
+      "hash": "1376bb3bee4a4d08919270d3b8092e22290b7a7eb75e56b7f3133b2d18481ba2",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "board": "board-sc-620",
+      "path": "packages/session/src/index.ts",
+      "hash": "7fa0a76a1310cfbee097364e7476bbdff756de18e347f80483ccb9d29578120c",
+      "exists": true,
+      "matches": true
+    }
+  ],
+  "private_artifact_checks": {
+    "scanned_changed_files": 196,
+    "suspects": [],
+    "limits": "Complete private PEM blocks, SQLite headers, private-file suffixes and nonempty sensitive JSON keys. Code references/absolute historical paths are not secret values; not a general credential scanner."
+  },
+  "native_gate_record": {
+    "candidate": "c4654d52b1a08bdb4bfa18822d2cc74229d606b6",
+    "scope": {
+      "summary": "Verified 114 named tests at trusted source locations; no failing tests.",
+      "files": [
+        "TESTS/shared-world-cold.test.ts",
+        "TESTS/shared-world-rules.test.ts",
+        "TESTS/shared-world-views.test.ts",
+        "TESTS/shared-world-journal.test.ts",
+        "TESTS/shared-world-storage.test.ts",
+        "TESTS/shared-world-contracts.test.ts",
+        "TESTS/shared-world-dialogue.test.ts",
+        "TESTS/shared-world-session.test.ts"
+      ],
+      "runner": "unchanged scripts/run-tests.mjs"
+    },
+    "log_hash_matches": true,
+    "current_harness_hash_matches": true,
+    "not_rerun": true
+  },
+  "measurement_record": {
+    "candidate": "7c16c0d8709b0b53dba0ab36051c1fe0100bd35a",
+    "checkout_clean_before_after": true,
+    "paid_calls": 0,
+    "final_sequence": 2002,
+    "replay_equals_snapshot": true,
+    "full_replay_ms": 10088.97782700001,
+    "runner_source_equal_to_prior": true,
+    "runner_sha256": "0c42b92bbab5bba5a000c934883dc9a498f7e29f449f02012de8cd7ce063b780"
+  },
+  "head_after": "9fa800493a3c033b45bc3df7ab18a56e25bcd9a8",
+  "status_after": "",
+  "summary": {
+    "source_checks": 83,
+    "source_mismatches": 0,
+    "current_source_mismatches": 0,
+    "artifact_checks": 110,
+    "artifact_mismatches": 0,
+    "unresolved_artifact_references": 4,
+    "ancestry_failures": 0,
+    "broken_links": 0,
+    "cas_mismatches": 0,
+    "private_artifact_suspects": 0
+  }
+}
