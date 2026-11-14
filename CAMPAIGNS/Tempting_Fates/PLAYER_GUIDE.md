@@ -1,8 +1,8 @@
 # A mortal's guide to Tempting Fates
 
-The gods still receive their offerings. The granaries are less reliable.
+At night, oars beat across the harbor. No boat disturbs the water.
 
-You are a mortal in an original Greek-myth archipelago where the institutions that once kept people fed, sheltered and remembered are coming apart. Priests disagree. Harbor officials charge for repairs that never arrive. Families keep promises the city has forgotten. A divine name can be an object of devotion, a political excuse, or both.
+You are a mortal in an original Greek-myth archipelago where broken oaths can leave wounds, the unburied make themselves heard, and divine punishment can outlast the person who invited it. Priests disagree about what the gods demand. Families inherit obligations they did not choose. Horror grows from recognizable duties pulled into conflict: keep an oath or shelter a stranger; preserve sacred grain or feed a hungry household. The choices are yours, and the costs must be made legible.
 
 You are not required to restore the world. Decide what your traveler wants, whom they care about, what work they know, and what they would rather not become. The game follows what you do with those answers.
 
@@ -45,6 +45,7 @@ Ask what a risky action could cost before committing. The referee can withhold a
 | Burial and remembrance | The dead leave possessions, claims and people behind. A funeral can concern transport, money, testimony and family conflict before it concerns a monster. |
 | Patronage | A sanctuary may offer shelter, work, training or a ritual under stated terms. Devotion does not give its officials ownership of a mortal's choices. |
 | Craft and scarcity | A bronze fitting, a sound boat or a winter store can matter more than a famous sword. Tools have owners and materials come from somewhere. |
+| Hubris and divine punishment | A particular god may answer a particular act, oath or taboo. Learn the signs and stated stakes. This is a concrete relationship and consequence, not a number measuring your worth; the Fates do not become judges of virtue. |
 | Glory | Stories spread through actual tellers. Reputation can be contradictory, local and wrong. A widely told story is still a claim. |
 | Mortality | Extra years, if possible, are not youth or fulfillment. Another person's life is never an automatic resource on your sheet. |
 

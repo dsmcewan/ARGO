@@ -24,8 +24,8 @@
 
 Files: `scenarios/tempted-fates/campaign/{types.ts,content.schema.json,CONTRACT.md,FREEZE.json}`, `TESTS/tempting-fates-contracts.test.ts`.
 
-- [ ] Define closed DTOs, stable IDs and exact public/tool interfaces; freeze before dependent dispatch.
-- [ ] Add failing schema/meta and reference fixture tests, implement source grammar, capture baseline and freeze hashes.
+- [x] Define closed DTOs, stable IDs and exact public/tool interfaces; freeze before dependent dispatch.
+- [x] Add failing schema/meta and reference fixture tests, implement source grammar, capture baseline and freeze hashes.
 
 ## TF-100 — campaign author
 
@@ -59,3 +59,7 @@ Files: `scenarios/tempted-fates/{index.ts,package.json}`, `package-lock.json`; `
 - [ ] Real-ledger integration tests: seed variants, configure characters, disclose rumor to one actor, preserve party secrecy, transfer actual item custody, replay, and unchanged history from rules previews.
 - [ ] Validate actual pack and all document references, review content for playability/canon, run full offline repository gate.
 - [ ] Retain source/test/review hashes and accurate blackboard submissions; no push/merge approval or paid runs implied.
+
+## Owner clarification and Phase2 boundary
+
+The owner selected dark tragic mythology (horror, hubris, divine punishment), and explicitly confirmed campaign kit, strict TypeScript/JSON schemas and deterministic tools only. No exploration/combat/resource writes enter the ledger or character authority. TF900 adds a separate non-authoritative tabletop state blueprint with a strict JSON grammar, matching TypeScript example, validation tests and documented future transaction invariants under docs/tempting-fates/phase2.

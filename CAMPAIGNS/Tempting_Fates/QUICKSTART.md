@@ -12,11 +12,13 @@
 
 ## Tell the travelers
 
-> Kymene's quay smells of wet rope and hot clay. A ferry is being unloaded. Across the harbor, a repair gang has stopped beside a broken span. A clerk has pinned a fresh notice over two older notices, neither of which has been removed.
+> Kymene's quay smells of wet rope and hot clay. A ferry is being unloaded. Across the harbor, a repair gang has stopped beside a broken span. A clerk has pinned a fresh notice over two older notices, neither of which has been removed. Beyond the ferry, the sound of rowing crosses a patch of empty water.
 >
 > At a potter's stall, Melia wipes a lamp clean, examines its wick, and sets it aside. “That one's promised for a funeral. The ordinary ones are on the shelf.” She returns to her work.
 
 Describe what the travelers can actually see. Melia is working, not waiting to recruit heroes. If they ask about the promised lamp, she can explain that it must reach the burial workers before they depart. She would prefer a named person to take responsibility for returning it. She can still arrange another carrier if everyone declines.
+
+**Loan terms:** the ordinary lamp costs5 obols to replace, but the loan is free. Name its return checkpoint explicitly (normally the next harbor return). The traveler supplies oil:1 obol burns for6 exploration turns. Record damage actually incurred; any repair agreement cannot silently exceed the stated5-obol replacement value. There is no advance deposit, compulsory service or hidden curse on this lamp.
 
 **Optional narrator aside:** *The city has a notice for everything. Repairs remain a largely oral tradition.* This is an external aside, not a fourth NPC or a voice anyone can interrogate.
 

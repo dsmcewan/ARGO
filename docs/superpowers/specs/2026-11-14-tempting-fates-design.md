@@ -1,12 +1,12 @@
 # Tempting Fates campaign design
 
-The owner requests an RPG built from existing RPG structures and Greek myths, with “degenercy.” This pass builds a playable campaign kit, structured referee content, deterministic rules tools, and an adapter to ARGO's existing custody/speech/consent substrate. It builds on character-runtime `9d0f0e7` in a separate branch. It does not claim a new authoritative combat/travel engine.
+The owner requests an RPG built from existing RPG structures and Greek myths, and clarified the tone as dark tragic mythology: horror, hubris and divine punishment. This pass builds a playable campaign kit, structured referee content, deterministic rules tools, and an adapter to ARGO's existing custody/speech/consent substrate. It builds on character-runtime `9d0f0e7` in a separate branch. It does not claim a new authoritative combat/travel engine.
 
 ## Intent and choices
 
-**Owner decisions:** build the RPG; Greek myth adaptation; all-campaign observer-owned characters and world-external narrator remain controlling. Preserve the supplied Tempted Fates scenario's voluntary choices, uncertain relics, separate Fate jurisdictions and hard anomaly boundary.
+**Owner decisions:** build the RPG; Greek myth adaptation; dark tragic mythology; prioritize the playable kit, strict TypeScript/JSON world schemas and deterministic tools; do not expand authoritative ledger or character authority for exploration/combat/resources in this pass; design clean state schemas for Phase2 promotion; all-campaign observer-owned characters and world-external narrator remain controlling. Preserve the supplied Tempted Fates scenario's voluntary choices, uncertain relics, separate Fate jurisdictions and hard anomaly boundary.
 
-**Working choices, not attributed to the owner:** display title Tempting Fates; a compact original archipelago in institutional decline; Knave1e-derived mortal rules; a harbor/pointcrawl open table; bounded faction projects. “Degeneracy” is provisionally read as divine excess, failed institutions and broken obligations, not a universal moral attribute. Two optional clarification questions were sent; work proceeds on the campaign-kit default while preserving these choices as revisable.
+**Working choices, not attributed to the owner:** display title Tempting Fates; a compact original tragic archipelago; Knave1e-derived mortal rules; a harbor/pointcrawl open table; bounded faction projects. The two clarification answers explicitly selected the tone and kit/tool scope. God-specific taboos and punishments remain attributed tabletop consequences, not a universal moral attribute.
 
 ## Approaches
 
@@ -24,6 +24,7 @@ The direct build request authorizes this content/tool implementation using the e
 - Pure rules tools for Knave-derived ability generation, strict d20 checks, capacity, damage/rest previews, morale and bounded project arithmetic. Explicit dice enter as inputs. The tools never draw secretly or mutate a ledger.
 - A host-only pack validator/seed builder producing valid v1 Genesis plus character profiles for the existing runtime. Separate a minimal public handout and rumor candidate cards from referee-only truth. A card is not knowledge delivery or consent.
 - Real-ledger integration proves private speech, custody/replay, stable variants, and no automatic gift/anomaly from preview calculations.
+- A separate typed/JSON tabletop state blueprint under docs/tempting-fates/phase2 remains explicitly non-authoritative and documents atomic state/action invariants required for future promotion.
 
 ## Rules and content boundaries
 

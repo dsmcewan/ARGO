@@ -117,3 +117,18 @@ test('playable book links and retained first-edition attribution inputs resolve'
  const pdf=await readFile(join(root,'docs/design/headless-2026-11-13/evidence/knave-1e/knave-1e.pdf'));
  assert.equal(createHash('sha256').update(pdf).digest('hex'),'fc2ff96175f6b60ddbbf02b6139a5da569752155948371613e201d21cf92bc78');
 });
+
+test('Phase 2 tabletop state grammar remains explicit, closed and non-authoritative',async()=>{
+ const {Ajv2020}=await import('ajv/dist/2020.js');
+ const schema=JSON.parse(await readFile(new URL('../docs/tempting-fates/phase2/tabletop-state.schema.json',import.meta.url),'utf8'));
+ const legacy=JSON.parse(await readFile(new URL('../SYSTEMS/argo-v1.schema.json',import.meta.url),'utf8'));
+ const example=JSON.parse(await readFile(new URL('../docs/tempting-fates/phase2/example-state.json',import.meta.url),'utf8'));
+ const {exampleState}=await import('../docs/tempting-fates/phase2/example-state.ts');assert.equal(canonical(exampleState),canonical(example));
+ const ajv=new Ajv2020({strict:true,allErrors:true});ajv.addSchema(legacy);const validate=ajv.compile(schema);
+ assert.equal(validate(example),true,JSON.stringify(validate.errors));
+ const wrongAuthority=structuredClone(example);wrongAuthority.authoritative=true;assert.equal(validate(wrongAuthority),false);
+ const negativeSupply=structuredClone(example);negativeSupply.actors[0].resources.rations=-1;assert.equal(validate(negativeSupply),false);
+ const sourceOverride=structuredClone(example);sourceOverride.actors[0].fate_role='atropos';assert.equal(validate(sourceOverride),false);
+ const noScope=structuredClone(example);delete noScope.scope;assert.equal(validate(noScope),false);
+ assert.equal(Object.hasOwn(example.actors[0],'alive'),false,'No duplicate alive flag competes with HP or frozen authoritative life');
+});

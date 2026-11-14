@@ -1,8 +1,8 @@
 # Tempting Fates
 
-*A Greek-myth sandbox about mortal lives in an age of divine excess and failing institutions.*
+*A dark Greek-myth sandbox of horror, hubris, divine punishment and mortal choices.*
 
-The harbor works, mostly. The city collects its dues, regularly. Between those two facts is enough room for an adventure.
+At night the harbor hears oars on empty water. The city still collects its dues. The dead have begun disputing the accounts.
 
 **Start here:** read [the player guide](PLAYER_GUIDE.md), make a traveler with [the rules](RULES.md) and [character sheet](CHARACTER_SHEET.md), then play [the opening situation](QUICKSTART.md). A referee also needs the [atlas](ATLAS.md), [encounters](ENCOUNTERS.md) and [referee guide](REFEREE_GUIDE.md).
 
@@ -25,6 +25,6 @@ This distinction matters: ordinary combat must not be implemented by giving an a
 
 **Tempting Fates** is the display title of this new campaign adaptation. The owner's archived [Tempted Fates](../../SCENARIOS/Tempted_Fates.md) remains unchanged and controlling for its encounter. The relic search is optional, the Fates' jurisdictions remain separate, gifts cannot be coerced, and no automatic anomaly or explanatory epilogue is added.
 
-The new archipelago, inhabitants, pressures and encounters are original campaign additions. The reading of “degeneracy” as institutional decline and divine excess is a provisional implementation choice, not a claim of a further owner decision. There is no universal morality score governing a character's worth.
+The new archipelago, inhabitants, pressures and encounters are original campaign additions. The owner selected dark tragic mythology: horror, hubris and divine punishment. There is no universal morality score governing a character's worth.
 
 For source credits, license boundaries and deliberate rules changes, read [Attribution](ATTRIBUTION.md). For the tested interface and engineering status, read [the build record](../../docs/tempting-fates/README.md). No live model service or production game deployment is implied by this kit.

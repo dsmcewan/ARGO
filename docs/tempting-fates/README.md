@@ -1,6 +1,6 @@
 # Tempting Fates campaign build
 
-The [campaign kit](../../CAMPAIGNS/Tempting_Fates/README.md) supplies human-refereed play, original Greek-myth content, validated host seed construction and pure rules previews. The source scenario and existing authoritative rules remain unchanged. The owner requested this build; provisional tone/scope choices and alternatives are recorded in [the design](../superpowers/specs/2026-11-14-tempting-fates-design.md), with implementation ownership in [the plan](../superpowers/plans/2026-11-14-tempting-fates.md).
+The [campaign kit](../../CAMPAIGNS/Tempting_Fates/README.md) supplies human-refereed play, original Greek-myth content, validated host seed construction and pure rules previews. The source scenario and existing authoritative rules remain unchanged. The owner requested this build; the owner's clarified dark-tragic tone, kit/tool scope and implementation choices are recorded in [the design](../superpowers/specs/2026-11-14-tempting-fates-design.md), with implementation ownership in [the plan](../superpowers/plans/2026-11-14-tempting-fates.md).
 
 ## Use the kit
 
@@ -15,6 +15,8 @@ import {
   resolveMorale, previewProject,
 } from '@argo/tempted-fates';
 ```
+
+The separate [Phase 2 state blueprint](phase2/README.md) supplies matching TypeScript and JSON state definitions without accepting them as authoritative saves.
 
 The exact [content and API contract](../../scenarios/tempted-fates/campaign/CONTRACT.md) and [freeze](../../scenarios/tempted-fates/campaign/FREEZE.json) describe the input bounds, semantics and outputs. `getPlayerHandout` returns a small author-approved introduction. `getRumorCandidate` returns a claim and speaker identity for possible use by an authenticated host; it neither authenticates that speaker nor delivers knowledge. Both intentionally omit referee assessments.
 
