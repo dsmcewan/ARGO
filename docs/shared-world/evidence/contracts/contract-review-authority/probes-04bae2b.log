@@ -1,0 +1,74 @@
+✖ genesis-bound Resolution rejects immutable controller mutation as State does (109.163515ms)
+✖ genesis-bound Resolution rejects a completely foreign genesis/scope (22.362984ms)
+✖ impressions cannot invent an earlier nature revision in an immutable-profile world (21.428992ms)
+✔ revoking owner knowledge preserves a prior live durable offer (13.773132ms)
+✔ an expired offer no longer blocks a new offer of the same item (12.200951ms)
+✔ recovered custody via pickup can atomically fulfill a dropped loan (15.183045ms)
+✔ request identity preserves same request ID while binding cursor and principal changes (22.431813ms)
+✔ a shape-valid event principal still must bind the immutable controller when genesis is supplied (34.208284ms)
+✔ referee grants and loan memory cannot leak through request IDs or foreign acquirers (36.536814ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 6
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2998.374135
+
+✖ failing tests:
+
+test at reports/2026-11-14-argo-shared-world/contract-review-authority/probes.mts:18:1
+✖ genesis-bound Resolution rejects immutable controller mutation as State does (109.163515ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at rejected (file:///workspace/reports/2026-11-14-argo-shared-world/contract-review-authority/probes.mts:8:41)
+      at TestContext.<anonymous> (file:///workspace/reports/2026-11-14-argo-shared-world/contract-review-authority/probes.mts:21:2)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: [Function (anonymous)],
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at reports/2026-11-14-argo-shared-world/contract-review-authority/probes.mts:23:1
+✖ genesis-bound Resolution rejects a completely foreign genesis/scope (22.362984ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at rejected (file:///workspace/reports/2026-11-14-argo-shared-world/contract-review-authority/probes.mts:8:41)
+      at TestContext.<anonymous> (file:///workspace/reports/2026-11-14-argo-shared-world/contract-review-authority/probes.mts:28:2)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: [Function (anonymous)],
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at reports/2026-11-14-argo-shared-world/contract-review-authority/probes.mts:30:1
+✖ impressions cannot invent an earlier nature revision in an immutable-profile world (21.428992ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at rejected (file:///workspace/reports/2026-11-14-argo-shared-world/contract-review-authority/probes.mts:8:41)
+      at TestContext.<anonymous> (file:///workspace/reports/2026-11-14-argo-shared-world/contract-review-authority/probes.mts:32:2)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: [Function (anonymous)],
+    operator: 'throws',
+    diff: 'simple'
+  }

@@ -11,6 +11,7 @@
       "owned_paths": [
         "packages/ledger/src/world/rules.ts",
         "packages/ledger/src/world/view.ts",
+        "packages/ledger/src/world/rules/",
         "TESTS/shared-world-rules.test.ts",
         "TESTS/shared-world-views.test.ts",
         "TESTS/shared-world-rules-helpers.ts"
