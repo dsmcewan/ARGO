@@ -76,14 +76,18 @@ try {
  }
  const allEvents=[];
  while (true) {const page=await writer.events({after:allEvents.length,limit:256});if(!page.length)break;allEvents.push(...page);}
+ await new Promise(resolve=>setImmediate(resolve));
+ eventLoop.disable();
+ const store_event_loop_delay_ms={mean:eventLoop.mean/1e6,max:eventLoop.max/1e6,p99:eventLoop.percentile(99)/1e6};
  const replay=await elapsed(()=>replayWorld(genesis,allEvents));
  const final=await writer.snapshot();
  assert.deepEqual(replay.value,final);
  const record={candidate:execFileSync('git',['rev-parse','HEAD'],{cwd:repo,encoding:'utf8'}).trim(),node:process.version,platform:process.platform,
   test_runner:false,paid_calls:0,genesis_hash:hash(genesis),targets,rows,final_sequence:final.cursor.sequence,full_replay_ms:replay.ms,
-  replay_equals_snapshot:true,final_state_hash:worldStateHash(final),event_loop_delay_ms:{mean:eventLoop.mean/1e6,max:eventLoop.max/1e6,p99:eventLoop.percentile(99)/1e6},
+  replay_equals_snapshot:true,final_state_hash:worldStateHash(final),store_event_loop_delay_ms,
   limits:['One machine; five warm read/retry samples, one append and one suffix refresh per checkpoint.',
    'History-bearing state hashes grow with history; cold replay is not claimed to be linear.',
+   'Parent event-loop samples cover store/view operations; the final standalone synchronous forensic replay is measured separately.',
    'Self-private speech workload and actual campaign seed; no provider latency, combat load or general graph-scale claim.']};
  await mkdir(output,{recursive:true});await writeFile(join(output,'measurement.json'),JSON.stringify(record,null,2)+'\n');
  process.stdout.write(`Saved ${join(output,'measurement.json')}\n`);
