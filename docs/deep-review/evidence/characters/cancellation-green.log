@@ -1,0 +1,17 @@
+✔ unchanged character reads do no repeated signature work and an append verifies only its suffix (470.965941ms)
+✔ a warm character authority rejects rollback and a signed divergent observed prefix (244.031718ms)
+✔ changed cached carrier bytes fail even when the stored event hash is unchanged (110.16477ms)
+✔ a bad later suffix cannot publish earlier carrier mutations or poison the cache (183.455483ms)
+✔ overlapping event loads cannot publish a later prefix ahead of an older in-flight read (192.856183ms)
+✔ a character read cancelled before enqueue settles before the preceding source is released (90.794638ms)
+✔ a character read cancelled while queued settles before the preceding source is released (90.203428ms)
+✔ witness freshness, cancellation and exact retries survive intervening cached reads (244.465445ms)
+✔ incremental prefixes match cold replay without backdating same-tick acquisitions or profile revisions (824.888385ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2503.166189

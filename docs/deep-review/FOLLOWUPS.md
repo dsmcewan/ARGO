@@ -1,6 +1,6 @@
 # Review intake and remaining dependencies
 
-Reviewed baseline: `0c24b32f947143c5b1095f702c878ed92888aa8d`. This records the four high findings and two limits pasted by the owner. The linked Claude artifact returned HTTP 403 on 2026-11-14; its other fourteen ranked findings have not been inspected.
+Reviewed baseline: `0c24b32f947143c5b1095f702c878ed92888aa8d`. This records the four high findings and two limits pasted by the owner. The linked Claude artifact initially returned HTTP 403. The owner requested a retry; the page shell then returned 200, but its actual content bootstrap returned 401 (sign-in required). Its other fourteen ranked findings have not been inspected; see evidence/external-review-access.md.
 
 | Item | Verified behavior | Dependency / next work |
 | --- | --- | --- |

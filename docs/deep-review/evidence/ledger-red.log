@@ -1,0 +1,80 @@
+✖ unchanged reads and retries do not reverify already accepted signatures (128.223364ms)
+✖ another writer is verified once and matches cold replay without exposing cached objects (86.851334ms)
+✔ same-size edits with restored mtime cannot hide behind a warm prefix (49.01567ms)
+✖ an observed prefix cannot roll back within the same open handle (31.661657ms)
+✔ a failed multi-event suffix cannot partially publish the verification cache (206.122479ms)
+✔ genesis and journal existence remain checked even when history is cached (68.236593ms)
+✔ snapshot files remain disposable and a post-append snapshot failure is retryable (49.548045ms)
+✖ blank or partial suffix records fail instead of becoming a trusted prefix (49.779264ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 4
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2276.402034
+
+✖ failing tests:
+
+test at TESTS/ledger-cache.test.ts:20:1
+✖ unchanged reads and retries do not reverify already accepted signatures (128.223364ms)
+  AssertionError [ERR_ASSERTION]: Unchanged history must not repeat signature work
+  
+  3 !== 0
+  
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/deep-review/worktrees/DR-100-1-98bae495fd/TESTS/ledger-cache.test.ts:30:9)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 3,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/ledger-cache.test.ts:33:1
+✖ another writer is verified once and matches cold replay without exposing cached objects (86.851334ms)
+  AssertionError [ERR_ASSERTION]: Only the other writer's suffix is new
+  
+  2 !== 1
+  
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/deep-review/worktrees/DR-100-1-98bae495fd/TESTS/ledger-cache.test.ts:40:9)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/ledger-cache.test.ts:58:1
+✖ an observed prefix cannot roll back within the same open handle (31.661657ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/deep-review/worktrees/DR-100-1-98bae495fd/TESTS/ledger-cache.test.ts:61:2)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /prefix|corrupt/i,
+    operator: 'rejects',
+    diff: 'simple'
+  }
+
+test at TESTS/ledger-cache.test.ts:98:1
+✖ blank or partial suffix records fail instead of becoming a trusted prefix (49.779264ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/deep-review/worktrees/DR-100-1-98bae495fd/TESTS/ledger-cache.test.ts:103:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /blank|partial|UTF-8|corrupt/i,
+    operator: 'rejects',
+    diff: 'simple'
+  }

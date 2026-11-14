@@ -1,0 +1,13 @@
+✔ TESTS/character-authority.test.ts (11414.137954ms)
+✔ TESTS/character-cache.test.ts (6641.885788ms)
+✔ TESTS/character-integration.test.ts (5520.662566ms)
+✔ TESTS/character-knowledge.test.ts (2269.766008ms)
+✔ TESTS/character-presentation.test.ts (2172.367817ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11434.685638
