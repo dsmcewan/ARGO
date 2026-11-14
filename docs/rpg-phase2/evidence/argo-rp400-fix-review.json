@@ -1,0 +1,67 @@
+{
+  "reviewer": "character_contract_scout",
+  "review_type": "Independent narrow corrective-method verification before retained outcome study",
+  "source_commit": "bb7c838252f320548d47c6c433b0eb429afd8e70",
+  "corrective_source_commit": "4a113c36535e9e598b2413be8f69f2a30b8669b4",
+  "source_sha256": {
+    "scenarios/tempted-fates/balance/runner.ts": "b22bc90e439ca731d185b8cd2e3e04daeba5ddc47b3010da9c40487ca3f8305d",
+    "scenarios/tempted-fates/balance/statistics.ts": "df967028fcc2c2258e7e71515bf7b28d3c4737914903bb7af6399d9149e26e82",
+    "scenarios/tempted-fates/balance/fixtures.ts": "51cac7b10b5217f6992140c9632478af1c1c727af3efe4ecec5519d1ea1a28e2",
+    "scenarios/tempted-fates/balance/protocol.json": "6fda0e10089e5be991983e08a3894f9d7abe734fed502b3f87f85e09048bdff5",
+    "scenarios/tempted-fates/balance/cli.ts": "ebe5c28f953f3c2710777aea92ff3e69f415f45703fd18606eac03fe5610ac3e",
+    "docs/rpg-phase2/balance/PREREGISTRATION.md": "763a066011db0c231b73273a79307be56b2908cbc8af1df3cea18258d35bef97",
+    "TESTS/mortal-balance.test.ts": "b3134443c359e8ddd7d362478d890934bee717bdc095e0adb9b06e75d188cd8a",
+    "packages/ledger/src/mortal/rules.ts": "fadca52771d69ef23ee4e37106ce366f9a8611f099f441d5d3613a032b87bdf5",
+    "packages/contracts/src/mortal.ts": "c51c63e6ae4c92ed4ce9b72f4fd0ae49fa4bbf9d74940e47bffb3e87ba753d75",
+    "packages/contracts/src/mortal-types.ts": "f798d4d9325b502006d871867d00805d95febc9ba8a8bdd7f79846808e31686f",
+    "SYSTEMS/mortal-v2/mortal.schema.json": "070be914286893c86598578dccabe152bbdece23ba859d162776243f2b0b21ff"
+  },
+  "outcome": "RP400-M01, RP400-M02 and RP400-M03 resolved; no new blocker in reviewed balance-method scope",
+  "resolutions": [
+    {
+      "finding": "RP400-M01",
+      "status": "resolved",
+      "evidence": "Paired interval is now difference of marginal Wilson bounds with explicit union-tail allocation; all-equal n500 descriptive interval [-.00994781895415442,.00994781895415442] and target interval [-.012323306573314543,.012323306573314543]. Independent closed-form Wilson boundary checks and NormalDist quantiles agree. Documentation labels nominal score coverage and excludes the extra upper/miss endpoint from the four-bound positive-confirmation family."
+    },
+    {
+      "finding": "RP400-M02",
+      "status": "resolved",
+      "evidence": "Shared compareCombatRows returns inconclusive and null terminal intervals for one censored pair in fight, escape or both (counting a shared pair only once). Synthetic private combatSummary probe confirms standing_at_stop1/terminal_standing0 and null cell intervals for a censored standing actor. Both partitions call the same comparison path."
+    },
+    {
+      "finding": "RP400-M03",
+      "status": "resolved",
+      "evidence": "Compact seed_rows retains all25 combat fields plus enclosing arm ID and26 resource fields plus enclosing scenario ID. Independent AST key comparison confirms complete return-field coverage. In-memory export of the actual private combatSummary, run on a synthetic record only, reconstructs the exact row and both integer_results_digest and replay_digest."
+    }
+  ],
+  "additional_review": {
+    "source_fingerprint": "CLI now includes contracts sources, all SYSTEMS JSON/TS files, real reducer, balance modules, lockfile and relevant package manifests plus preregistration prose; reviewed source coverage, not an executed study source manifest.",
+    "allocation": "Descriptive paired two-sided coverage splits .05 across four marginal tails=.0125. Positive confirmation has four primary one-sided bounds; paired lower splits its .0125 share into two .00625 tails. Marginal Wilson coverage remains nominal, not exact.",
+    "selection": "No change to frozen-decision/no-heldout-reselection flow found in corrective patch."
+  },
+  "checks": {
+    "math_censor_tests": {
+      "passed": 3,
+      "failed": 0
+    },
+    "synthetic_statistical_cases": "paired equal/improved/worsened descriptive and target; one-arm/both-arm censor; private summary reconstruction and censored-cell reporting",
+    "actual_combat_or_resource_trials_executed": 0,
+    "training_runs": 0,
+    "holdout_runs": 0,
+    "pilot_runs": 0,
+    "full_study_runs": 0
+  },
+  "evidence_sha256": {
+    "/tmp/argo-rp400-fix-math-tests.log": "5852d01a27423a164399c8e11164bcd1a61949d17ab465e0b524df16c216d799",
+    "/tmp/argo-rp400-fix-probes.log": "94076bc895f72ad0e2c675d46e5bf9fc5eed54dee5b5accff74d7eaef02aeaf4",
+    "/tmp/argo-rp400-fix-quantiles.log": "81d94e336c73ccfcf5c44fbd686c5da56b6626a349692bd34c0c25bbf7b45344"
+  },
+  "limits": [
+    "Method review is not a verdict on empirical balance, gameplay enjoyment, operational deployment or signed-journal verification.",
+    "The resource seed-row mapping was checked structurally against every returned field; no resource trial was executed.",
+    "In-memory TypeScript stripping used for private summary probing emitted the standard experimental Node warning; repository source remained unchanged."
+  ],
+  "source_writes": false,
+  "board_mutations": false,
+  "paid_calls": false
+}

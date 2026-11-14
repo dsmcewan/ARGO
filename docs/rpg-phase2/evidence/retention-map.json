@@ -204,6 +204,66 @@
       "retained_path": "argo-rp900-portable.log",
       "sha256": "b6299bee2674d654ca41c61fab76a57205ab1f93fcce30b5cfdfaa2b1e80c29e",
       "bytes": 652
+    },
+    {
+      "original_path": "/tmp/argo-rp400-fix-math-tests.log",
+      "retained_path": "argo-rp400-fix-math-tests.log",
+      "sha256": "5852d01a27423a164399c8e11164bcd1a61949d17ab465e0b524df16c216d799",
+      "bytes": 432
+    },
+    {
+      "original_path": "/tmp/argo-rp400-fix-probes.log",
+      "retained_path": "argo-rp400-fix-probes.log",
+      "sha256": "94076bc895f72ad0e2c675d46e5bf9fc5eed54dee5b5accff74d7eaef02aeaf4",
+      "bytes": 1015
+    },
+    {
+      "original_path": "/tmp/argo-rp400-fix-quantiles.log",
+      "retained_path": "argo-rp400-fix-quantiles.log",
+      "sha256": "81d94e336c73ccfcf5c44fbd686c5da56b6626a349692bd34c0c25bbf7b45344",
+      "bytes": 178
+    },
+    {
+      "original_path": "/tmp/argo-rp400-fix-review.json",
+      "retained_path": "argo-rp400-fix-review.json",
+      "sha256": "3564fff1df91e3479d23f19004b52c1f0b6d5c13f541f072aefe564b1dfa5e98",
+      "bytes": 5059
+    },
+    {
+      "original_path": "/tmp/argo-rp-full-gate/application-gate.log",
+      "retained_path": "full-gate/application-gate.log",
+      "sha256": "29521189a4270ebb403cdde140e63fb2bc6f3b00bdaf7fa6ffae088d07a23909",
+      "bytes": 1464
+    },
+    {
+      "original_path": "/tmp/argo-rp-full-gate/checkout.log",
+      "retained_path": "full-gate/checkout.log",
+      "sha256": "97ad1f384392208ca3e08a49e971308bca8f31ffe084f6fef26f10e36e973f9f",
+      "bytes": 88
+    },
+    {
+      "original_path": "/tmp/argo-rp-full-gate/clone.log",
+      "retained_path": "full-gate/clone.log",
+      "sha256": "e82a72be5705a95815fb401adf16824d07f5a1f70fa4ca83ff76d021a2b97fbe",
+      "bytes": 59
+    },
+    {
+      "original_path": "/tmp/argo-rp-full-gate/gate-result.json",
+      "retained_path": "full-gate/gate-result.json",
+      "sha256": "70e0f633048edefb1f94531c5dffa2b385c51b6a1ee19e7f6ff4d5689fa82aac",
+      "bytes": 2486
+    },
+    {
+      "original_path": "/tmp/argo-rp-full-gate/pantheon-install.log",
+      "retained_path": "full-gate/pantheon-install.log",
+      "sha256": "178c8457015fa8fcd91650ef25c0d212e906ce8bfed7373fc2dfde9e57be1dfd",
+      "bytes": 118
+    },
+    {
+      "original_path": "/tmp/argo-rp-full-gate/root-install.log",
+      "retained_path": "full-gate/root-install.log",
+      "sha256": "e845549e7a93d4cf20e361edea6827ade6a4c65ad077834ef7a603f44cae8720",
+      "bytes": 25
     }
   ]
 }
