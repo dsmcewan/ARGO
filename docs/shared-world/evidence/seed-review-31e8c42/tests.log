@@ -1,0 +1,45 @@
+✔ fresh shared seed binds one physical roster, exact owner profiles, authored rooms and pinned knowledge (133.956283ms)
+✔ the exact source manifest verifies bundled documents and source identity stays in safe metadata (38.799314ms)
+✔ all day/night, kit and variant choices are explicit and deterministic without changing old initialization (644.910264ms)
+✔ borrowed-lamp kits omit only each traveler personal lamp and grant no loan or possession (13.892057ms)
+✔ night initialization actually requires a held lamp and consumes oil under the unchanged mortal kernel (90.526158ms)
+✔ ordinary mortal roster excludes Fate identities, loom, lifespan authority and hidden campaign prose (10.057484ms)
+✔ empty initial grants withhold knowledge while unknown duplicate or foreign policies are refused (20.816851ms)
+✔ changed authored pack or mismatched supplied source identities never become shared genesis (21.078092ms)
+✔ one safe ID namespace refuses authored/generated actor-item collisions before output (66.562859ms)
+✔ closed host options require explicit supported configuration and complete player profiles (59.709349ms)
+✔ pack/options/owned profiles reject getters and active or revoked proxies without executing them (26.767932ms)
+✔ returned seed is detached/frozen and source factories, pack, options and old profiles are unchanged (31.152798ms)
+✔ shared genesis validates one mortal roster and rejects cross-profile or duplicated physical authority (26.214856ms)
+✔ commands require a complete current cursor and closed actor/audience fields (15.212947ms)
+✔ genesis rejects mismatched profiles, scenes, identities and unbound authored policies (25.147937ms)
+✔ every action has a closed structural grammar and referee actions cannot name an actor (38.730549ms)
+✔ speech distinguishes addressees from witnesses and rejects ambiguous or unbounded input (4.533774ms)
+✔ loan terms are free and immutable, hash-bound, timed and closed by explicit lifecycle (23.913915ms)
+✔ state has one cursor and rejects invented memory identities, recipients and future acquisitions (24.744972ms)
+✔ compound loan fulfillment uses only loan participants rather than room witness union (3.350888ms)
+✔ private impression and activity records cannot disclose to the subject or room (2.102889ms)
+✔ actor views bind one reader, own knowledge/inventory, explicit coverage and no raw authority (145.877047ms)
+✔ signed artifacts bind full request identity, one memory and the shared genesis cursor (20.701406ms)
+✔ passive boundaries reject active values without evaluating getters or proxy traps (4.018078ms)
+✔ persisted social records cannot become orphaned or contradict their current rows (20.582585ms)
+✔ travel hides both endpoints and third-party return holders receive only their custody facts (6.944751ms)
+✔ genesis-bound projections preserve physical and private authored identity (26.19069ms)
+✔ request identities use one closed domain and bind complete command and principal data (8.867605ms)
+✔ NPC replies consume addressed acquired inbound IDs across the full memory history (10.348401ms)
+✔ passive argument and projection budgets refuse excess without changing input (94.900976ms)
+✔ passive byte limits include JSON escaping, quotes, keys and container punctuation (306.971807ms)
+✔ genesis-bound resolutions preserve every nested State binding (44.802395ms)
+✔ immutable profile nature and revision bind impressions in state and visible projections (32.006675ms)
+✔ genesis-bound actor views pin all immutable definitions while allowing current mutable state (43.655209ms)
+✔ visible offer memories bind source, world, issued prefix and authored policy references (80.682456ms)
+✔ visible speech has a known direct source and genesis-origin grants require initial eligibility at every prefix (48.592692ms)
+✔ the freeze candidate pins exactly the new contract schema and type/guard bytes (16.129942ms)
+ℹ tests 37
+ℹ suites 0
+ℹ pass 37
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7353.223573
