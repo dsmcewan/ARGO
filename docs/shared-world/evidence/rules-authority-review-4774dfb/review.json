@@ -1,0 +1,125 @@
+{
+  "candidate": "4774dfb6d44145183f6c7760d032728aa6a84739",
+  "base": "8ff20160fcd949a64e5e11c356d5de57d769983e",
+  "verdict": "AUTHORITY LANE CLEAR; OVERALL CHANGES REQUIRED for peer-confirmed unconscious-lender fulfillment",
+  "authority_findings": [],
+  "known_cross_lane_blocker": {
+    "review": "../rules-privacy-review-4774dfb/REVIEW.md",
+    "location": "packages/ledger/src/world/rules/engine.ts:196",
+    "summary": "Ordinary transfer that fulfills a loan can acquire a return record for an already unconscious lender; coordinator chose atomic rejection of that narrow transition."
+  },
+  "validation": {
+    "authored_rules_views": {
+      "passed": 30,
+      "failed": 0,
+      "log": "authored-tests.log"
+    },
+    "independent_authority": {
+      "passed": 11,
+      "failed": 0,
+      "log": "probes-4774dfb.log",
+      "probe": "probes.mts"
+    },
+    "node": "v24.22.1",
+    "mode": "offline; node --test --test-isolation=none",
+    "source_identity": "Exact clean candidate checked before tests and again after probes and performance finished, before repair edits were released. File digests below are from immutable git show, not later working-tree bytes."
+  },
+  "source_files": [
+    {
+      "path": "TESTS/shared-world-rules-helpers.ts",
+      "git_blob": "d8f01704849ff27b6eec3ab8d50fcbb5acac1717",
+      "sha256": "c783c92c3c36a4a93497bb7908fd5ed6dacd7b93e58ff62ec78df24cf9874edf"
+    },
+    {
+      "path": "TESTS/shared-world-rules.test.ts",
+      "git_blob": "f20c49b104a88b06e06d177061711b950c0568ce",
+      "sha256": "e38ba372465f49c64af934a37b72f6ab983e8461b792f6620e67127046fd288d"
+    },
+    {
+      "path": "TESTS/shared-world-views.test.ts",
+      "git_blob": "ff23eb3922f0b6e1ede96d61713b8d00b3fef25b",
+      "sha256": "69a79c53d3dff1c3cf57cfcbf0b332e7fb91df42370260132f926aa68e925e12"
+    },
+    {
+      "path": "packages/ledger/src/world/rules.ts",
+      "git_blob": "0251a79d5058462118b1bf9da75eb289949cbdee",
+      "sha256": "aa8f60643039d819294c3936fa662fdbfcc42152780702950773c1d911c6c9ac"
+    },
+    {
+      "path": "packages/ledger/src/world/rules/README.md",
+      "git_blob": "681ee72df2731b10e8afee70fbf1278b4ddd830f",
+      "sha256": "3729e9d841681d41037b87fff5bdc96d416598b1cce408aac8f807e39be41dc0"
+    },
+    {
+      "path": "packages/ledger/src/world/rules/engine.ts",
+      "git_blob": "b12a45dcd240f2f5aa415f7ca055c8cd5a6e8842",
+      "sha256": "2c461c2756cfa97b6b872c8c0efb213d28e73ebd8e96d60b1fbe58a2f92205d5"
+    },
+    {
+      "path": "packages/ledger/src/world/rules/ownership.ts",
+      "git_blob": "2b76ddef3f31816442547bd725b4ac93f154f239",
+      "sha256": "9ccaf02a50871409ce7f60ab2566cf076588fff96eee4a5880a47eb6e38e16a3"
+    },
+    {
+      "path": "packages/ledger/src/world/view.ts",
+      "git_blob": "f79621f98a67ee180aa9cb45d798187e955a1439",
+      "sha256": "091a46c5549ad359466ca3dbb8f695b28c5a81bf087b290597b37d78b2838aea"
+    }
+  ],
+  "performance": [
+    {
+      "prefix": 128,
+      "bytes": 46332,
+      "elapsed_build_ms": 779.5108959999998,
+      "median": {
+        "cached_hash_ms": 0.0011520000007294584,
+        "view_ms": 5.824258999999984,
+        "resolve_ms": 2.568782000000283,
+        "new_hash_ms": 2.16895199999999
+      },
+      "max_combined_ms": 37.86835700000029,
+      "limitations": "real pure transitions and synthetic head finalization; no signed journal, storage, worker, event-loop, RPC or provider performance claim"
+    },
+    {
+      "prefix": 512,
+      "bytes": 170364,
+      "elapsed_build_ms": 5682.202925,
+      "median": {
+        "cached_hash_ms": 0.0021339999984775204,
+        "view_ms": 4.902190000000701,
+        "resolve_ms": 2.578089999999065,
+        "new_hash_ms": 11.21797400000105
+      },
+      "max_combined_ms": 22.2913750000007,
+      "limitations": "real pure transitions and synthetic head finalization; no signed journal, storage, worker, event-loop, RPC or provider performance claim"
+    },
+    {
+      "prefix": 1000,
+      "bytes": 327991,
+      "elapsed_build_ms": 19852.080555,
+      "median": {
+        "cached_hash_ms": 0.0026649999999790452,
+        "view_ms": 5.640357000000222,
+        "resolve_ms": 2.6505060000017693,
+        "new_hash_ms": 24.53398599999855
+      },
+      "max_combined_ms": 42.849451000001864,
+      "limitations": "real pure transitions and synthetic head finalization; no signed journal, storage, worker, event-loop, RPC or provider performance claim"
+    }
+  ],
+  "declined_to_judge": [
+    "SW300 signed event/receipt creation, replay signature trust, durable current-prefix selection, exact retry receipt and request binding",
+    "SQLite concurrent writers, lost acknowledgement, crash atomicity, worker cancellation and event-loop responsiveness",
+    "Production RPC envelope size, cache publication after COMMIT and storage rollback/tamper anchoring",
+    "Provider/model integration, external document authenticity and paid calls",
+    "General privacy adjudication beyond transition interactions covered by the parallel peer review"
+  ],
+  "artifacts": {
+    "probes-4774dfb.log": "356677d2c02751d6ec7b1bb6a1efa998a5946b540bc5850158e38d210c084147",
+    "performance-4774dfb.jsonl": "e1b24739cf9798ad65d83e7d126a1979abc827a261346f0a856c4b18ec4d6003",
+    "performance.mts": "eb7fe0ade38e13cb914b29c8c91509748b690d32427831e2d349f2d7e699950c",
+    "authored-tests.log": "3ad1426ae477370c0301ddfc6bcae6a0a447ced53c51612d41dfadf79d561946",
+    "probes.mts": "5b2ccea63f29def4efd61edbfa7ab0dbb05bc10fc92969a723adee104e3c98b6",
+    "performance-4774dfb.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

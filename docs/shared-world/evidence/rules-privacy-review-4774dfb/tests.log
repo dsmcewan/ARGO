@@ -1,0 +1,38 @@
+✔ initial shared identity is complete and owned; social-first actions use one clock and physical cursor (122.146327ms)
+✔ all direct actions bind controller, role, full scope and every cursor component (83.63675ms)
+✔ speech derives audience; remote, nonexistent and incapacitated addressees never acquire it (53.519048ms)
+✔ NPC replies require acquired addressed inbound, standing/nonbusy/open state and full-history uniqueness (536.177301ms)
+✔ impressions use previously acquired subject evidence and exact latest own predecessor (75.297812ms)
+✔ loan offer and borrower acceptance commit one exact transfer/obligation, retaining borrower provenance (37.996022ms)
+✔ failed acceptance leaves no promise, custody, time or RNG changes (46.631949ms)
+✔ offer lifecycle handles exact expiry, permanent IDs, withdrawal, knowledge revocation and custody loss (171.043619ms)
+✔ borrowed items cannot be reoffered; third-party and recovered custody complete only the original loan (68.846983ms)
+✔ encounter exclusions govern offer/acceptance and shared social events do not reset turn tokens (91.039983ms)
+✔ knowledge changes and monotone closure retain actual commit provenance without reopening (44.239224ms)
+✔ owned caches never trust caller freezing, aliases, claimed hashes or mutated/foreign genesis (22.906507ms)
+✔ lender becoming nonstanding permanently invalidates open offers without distant disclosure (42.089859ms)
+✔ prior immutable states and forks keep independent reply, acquired-memory and impression indexes (31.682224ms)
+✔ aggregate encoded-byte bounds reject a warm growth attempt atomically rather than truncating history (1041.421519ms)
+✔ one-record growth also respects the structural node budget on warm owned transitions (4316.369227ms)
+✔ an early return elsewhere and lender corpse recovery fulfill the same original obligation (136.105396ms)
+✔ view binds exact full cursor/scope/controller and projects one physical identity and scene (68.019158ms)
+✔ self-private and whispered knowledge never spreads through later arrival or room membership (61.828149ms)
+✔ latest 32 acquired memories retain complete counters and old NPC reply cannot be reset by pagination (228.902236ms)
+✔ owner-only current knowledge/source pins and private impressions use the same prefix (88.434268ms)
+✔ loan memory stays with parties; distant withdrawal does not reveal live global status (62.13297ms)
+✔ third-party return redacts loan/borrower identities and overrides room witness disclosure (85.79579ms)
+✔ travel records hide both endpoints from departure and arrival witnesses (65.778725ms)
+✔ closure clears all dialogue context/source definitions and reply markers but preserves physical view (60.05237ms)
+✔ scoped queries reject active inputs before getters execute and raw mutable snapshots cannot poison later views (24.823827ms)
+✔ legal attack after dialogue uses shared RNG and the same prefix exposes only safe HP conditions (48.571106ms)
+✔ already nonstanding occupants cannot acquire later mechanics while an immediately struck actor retains its transition (42.752988ms)
+✔ activation records actual acquisition while authored validity independently controls current disclosure (52.164349ms)
+✔ escaped roster members see their lock without the encounter and foreign private profiles remain absent (78.439436ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10435.600414
