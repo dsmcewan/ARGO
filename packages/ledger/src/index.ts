@@ -12,7 +12,7 @@ export interface LedgerOptions {
 }
 export interface CallOptions {signal?:AbortSignal}
 const missing=(e:unknown):boolean=>typeof e==='object'&&e!==null&&'code' in e&&e.code==='ENOENT';
-const decode=(bytes:Buffer):string=>{try{return new TextDecoder('utf-8',{fatal:true}).decode(bytes);}catch{fail('CORRUPT_LEDGER','Invalid UTF-8 ledger bytes');}};
+const decode=(bytes:Buffer,preserveBom=false):string=>{try{return new TextDecoder('utf-8',{fatal:true,ignoreBOM:preserveBom}).decode(bytes);}catch{fail('CORRUPT_LEDGER','Invalid UTF-8 ledger bytes');}};
 const syncDirectory=async(directory:string)=>{const h=await open(directory,'r');try{await h.sync();}finally{await h.close();}};
 async function atomicFile(directory:string,name:string,body:string):Promise<void>{
  const temporary=join(directory,`.${name}.${randomUUID()}.tmp`),target=join(directory,name);
@@ -50,7 +50,10 @@ export async function openLedger(options:LedgerOptions){
   let bytes:Buffer;try{bytes=await readFile(join(directory,'events.jsonl'));}catch(error){if(missing(error))fail('CORRUPT_LEDGER','Ledger event file missing');throw error;}
   if(bytes.length<cached.bytes.length||!bytes.subarray(0,cached.bytes.length).equals(cached.bytes))fail('CORRUPT_LEDGER','Previously verified ledger prefix changed or disappeared');
   if(bytes.length===cached.bytes.length)return cached;
-  const text=decode(bytes.subarray(cached.bytes.length));
+  // A BOM can only have the decoder's historical start-of-file meaning at
+  // offset zero. Stripping one at an append boundary would accept bytes that
+  // a cold replay rejects as an invalid interior record.
+  const text=decode(bytes.subarray(cached.bytes.length),cached.bytes.length>0);
   if(text&&!text.endsWith('\n'))fail('CORRUPT_LEDGER','Partial ledger tail');
   // Stage the complete suffix. A bad last record must not publish earlier rows
   // into the cache, and a derived snapshot file never supplies authority.
@@ -116,10 +119,13 @@ export async function openLedger(options:LedgerOptions){
      rng:a.type==='draw'?draw(genesis.seed,state.rng_counter,a.label,a.bound):null};
     event.authority.signature=sign(null,Buffer.from(canonical(unsigned(event))),options.privateKey).toString('base64');event.hash=eventHash(event);
     verifyEvent(state,event,parents);const next=apply(state,event);
-    const file=await open(join(directory,'events.jsonl'),'a',0o600);
-    try{await file.writeFile(canonical(event)+'\n');await file.sync();}finally{await file.close();}
-    // Leave the verified prefix at its previous position. The next read admits
-    // this durable suffix once, even if the following derived-cache write fails.
+    const record=Buffer.from(canonical(event)+'\n'),file=await open(join(directory,'events.jsonl'),'a',0o600);
+    try{await file.writeFile(record);await file.sync();}finally{await file.close();}
+    // An acknowledged durable append is already verified. Publish it now,
+    // before the disposable snapshot write, so a subsequent rollback cannot
+    // erase this handle's knowledge of its own just-committed event.
+    cached={bytes:Buffer.concat([cached.bytes,record]),state:next,events:[...cached.events,event],
+     parents:new Set([...parents,event.hash]),proposals:new Map([...proposals,[p.proposal_id,event]])};
     // This cache is derived, never authority. A crash before its write still recovers the append.
     await atomicFile(directory,'snapshot.json',canonical(next)+'\n');
     return outcome(event);

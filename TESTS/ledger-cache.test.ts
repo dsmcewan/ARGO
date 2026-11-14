@@ -62,6 +62,24 @@ test('an observed prefix cannot roll back within the same open handle',async t=>
  await writeFile(f.path,before);assert.equal((await f.ledger.snapshot()).sequence,1);
 });
 
+test('a successful append is protected before any subsequent read warms the cache',async t=>{
+ const f=await setup(t);
+ const p=proposal(await f.ledger.snapshot(),{type:'move_item',item_id:'lamp',to_actor_id:'traveler'});
+ const receipt=await f.ledger.submit(p,principal());assert.equal(receipt.sequence,1);
+ const good=await readFile(f.path);await writeFile(f.path,'');
+ await assert.rejects(f.ledger.submit(p,principal()),/prefix|corrupt/i);
+ await writeFile(f.path,good);assert.deepEqual(await f.ledger.submit(p,principal()),receipt);
+});
+
+test('a durable append stays protected when its derived snapshot write fails',async t=>{
+ const f=await setup(t);await mkdir(join(f.directory,'snapshot.json'));
+ const p=proposal(await f.ledger.snapshot(),{type:'move_item',item_id:'lamp',to_actor_id:'traveler'});
+ await assert.rejects(f.ledger.submit(p,principal()),/directory|EISDIR/i);
+ const good=await readFile(f.path);await writeFile(f.path,'');
+ await assert.rejects(f.ledger.snapshot(),/prefix|corrupt/i);
+ await writeFile(f.path,good);assert.equal((await f.ledger.snapshot()).sequence,1);
+});
+
 test('a failed multi-event suffix cannot partially publish the verification cache',async t=>{
  const f=await setup(t);await f.advance();await f.ledger.snapshot();
  const other=await openLedger({directory:f.directory,genesis:f.seed,privateKey:keys.privateKey});
@@ -103,4 +121,14 @@ test('blank or partial suffix records fail instead of becoming a trusted prefix'
   await assert.rejects(f.ledger.snapshot(),/blank|partial|UTF-8|corrupt/i);
  }
  await writeFile(f.path,good);assert.equal((await f.ledger.snapshot()).sequence,1);
+});
+
+test('a BOM at an append boundary is rejected identically by warm and cold readers',async t=>{
+ const f=await setup(t);await f.advance();const prefix=await readFile(f.path);
+ const other=await openLedger({directory:f.directory,genesis:f.seed,privateKey:keys.privateKey});
+ await f.advance(other);const good=await readFile(f.path);
+ await writeFile(f.path,Buffer.concat([prefix,Buffer.from([0xef,0xbb,0xbf]),good.subarray(prefix.length)]));
+ await assert.rejects(f.ledger.snapshot(),/corrupt|canonical/i);
+ await assert.rejects(openLedger({directory:f.directory,genesis:f.seed,privateKey:keys.privateKey}),/corrupt|canonical/i);
+ await writeFile(f.path,good);assert.equal((await f.ledger.snapshot()).sequence,2);
 });
