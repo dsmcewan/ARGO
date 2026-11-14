@@ -58,3 +58,28 @@ test('campaign real durable loop spends food and stock once, preserves private v
  const anchor={sequence:state.sequence,head:state.head};await ledger.close();ledger=await runtime.openMortalLedger({path,genesis:built.genesis,privateKey:keys.privateKey,expectedHead:anchor});assert.equal(canonical(await ledger.snapshot()),before);
  runtime.verifyMortalReceipt(bought.receipt,{scope:built.genesis.scope,genesis_hash:hash(built.genesis),authority_key_id:built.genesis.authority_key_id,authority_public_key:built.genesis.authority_public_key});
 });
+
+test('durable combat admits owned attacks and retreat without a second turn or hidden retaliation',async t=>{
+ const runtime=await engine(),g=mortalGenesis();
+ g.actors.find(a=>a.id==='hero')!.hp=8;g.actors.find(a=>a.id==='hero')!.max_hp=8;
+ g.actors.find(a=>a.id==='raider')!.hp=20;g.actors.find(a=>a.id==='raider')!.max_hp=20;
+ const weapon=g.items.find(i=>i.id==='club')!;if(weapon.kind==='weapon')weapon.damage_die=4;
+ const directory=await mkdtemp(join(tmpdir(),'argo-rpg-combat-'));t.after(()=>rm(directory,{recursive:true,force:true}));
+ const ledger=await runtime.openMortalLedger({path:join(directory,'world.sqlite'),genesis:g,privateKey:keys.privateKey});t.after(()=>ledger.close());
+ const submit=async(action:MortalAction,who:string)=>{const state=await ledger.snapshot();const cmd=mortalCommand(state,action,who);return {cmd,receipt:await ledger.submit(cmd,mortalPrincipal(g,who))};};
+ await submit({type:'begin_encounter',encounter_id:'retreat_trial',side_a:['hero'],side_b:['raider'],escape_allowed:true},'host');
+ let state=await ledger.snapshot();if(state.encounter!.order[state.encounter!.turn]==='raider')await submit({type:'pass'},'raider');
+ await submit({type:'attack',target_id:'raider',weapon_id:'spear'},'hero');
+ state=await ledger.snapshot();assert.equal(state.encounter!.order[state.encounter!.turn],'raider');
+ await submit({type:'attack',target_id:'hero',weapon_id:'club'},'raider');
+ const beforeRetreat=await ledger.snapshot(),retreat=await submit({type:'retreat'},'hero'),after=await ledger.snapshot();
+ assert.equal(after.encounter,null);assert.equal(after.actors.find(a=>a.id==='hero')!.hp,beforeRetreat.actors.find(a=>a.id==='hero')!.hp);
+ assert.equal(after.rng_counter,beforeRetreat.rng_counter,'A legal escape grants no hidden pursuer roll');
+ assert.equal(canonical(await ledger.submit(retreat.cmd,mortalPrincipal(g))),canonical(retreat.receipt));
+ assert.equal(canonical(await ledger.snapshot()),canonical(after));
+ const history=await ledger.events({after:0,limit:1000});assert.ok(history.some(e=>e.command.action.type==='attack'&&e.draws.some(d=>d.sides===20)));
+ assert.equal(canonical(runtime.replayMortal(g,history)),canonical(after));
+ assert.equal(runtime.viewMortalActor(g,after,mortalPrincipal(g)).encounter,null);
+ const illegal=mortalCommand(after,{type:'attack',target_id:'raider',weapon_id:'spear'},'hero','after_escape');await assert.rejects(ledger.submit(illegal,mortalPrincipal(g)));
+ assert.equal(canonical(await ledger.snapshot()),canonical(after));
+});
