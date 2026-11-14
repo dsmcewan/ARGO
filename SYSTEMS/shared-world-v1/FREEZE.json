@@ -1,0 +1,11 @@
+{
+  "profile_version": "shared-world/0.1.0",
+  "status": "candidate_pending_independent_review",
+  "files": {
+    "SYSTEMS/shared-world-v1/CONTRACT.md": "0232234c9dc3bba3dbacc2dea87bbbca94e93f1f7b78eab38e1c8508f4ded311",
+    "SYSTEMS/shared-world-v1/world.schema.json": "6918294342f48f8a3d4edf81b1be99b4b17d8294185d25b0f1965d1f1533b665",
+    "packages/contracts/src/shared-world-types.ts": "f1cc8f944b0847f14df17b048eee9ad1f25f185790fa8e8612d97331b4b67351",
+    "packages/contracts/src/shared-world.ts": "ab15168a41db710acd0a0e48f1b0c2a41eaaf5ed9c426df324f0546dbdada9b5"
+  },
+  "scope": "Contract-only fresh-world candidate; exact source awaits independent review before runtime release. Preserves historical profiles; does not authenticate callers or approve operational merge."
+}
