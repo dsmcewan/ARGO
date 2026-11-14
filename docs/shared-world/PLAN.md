@@ -75,14 +75,19 @@ Produces `worldDialoguePacket(view,recordId)` and `createWorldModelAgent(options
 - [ ] Test cancellation and changed/revoked context before and after generation, including token-count delay; no stale release or tools.
 - [ ] Verify and commit adapter source for independent review.
 
-## SW-500: campaign, session and CLI (after storage integration)
+## SW-500: fresh campaign seed (after contract freeze)
 
-Create `scenarios/tempted-fates/shared-world/{seed.ts,cli.ts,README.md}`, `packages/session/{package.json,src/index.ts}`, `TESTS/shared-world-{campaign,session}.test.ts`. Coordinator owns root workspace exports/lock and shared end-to-end fixture.
-
-Produces `buildSharedWorldCampaign(pack,options): {genesis:WorldGenesis,manifest}` and `createWorldSession({genesis,ledger,principal})`, a host capability with `query()`, `view(query)`, `prepare(action,requestId)` and `submit(command)`; the principal is bound once by authenticated host construction. The CLI uses those interfaces and explicit JSON actions; it does not parse prose into authority.
+Create `scenarios/tempted-fates/shared-world/{seed.ts,SEED.md}` and `TESTS/shared-world-campaign.test.ts`. Produces `buildSharedWorldCampaign(pack,options): {genesis:WorldGenesis,manifest}`.
 
 - [x] Test fresh seed source pins, identity collisions, selected owner knowledge, mortal-only roster and explicit day/night and starting-kit options.
 - [x] Build new seed from the pinned campaign and v3 factory without modifying original pack bytes. Loan demo uses a safe player ID and no personal starting lamp.
+
+## SW-510: session and CLI (after storage and seed integration)
+
+Create `scenarios/tempted-fates/shared-world/{cli.ts,README.md}`, `packages/session/{package.json,src/index.ts}` and `TESTS/shared-world-session.test.ts`. Coordinator owns root workspace exports/lock and shared end-to-end acceptance.
+
+Produces `createWorldSession({genesis,ledger,principal})`, a host capability with `query()`, `view(query)`, `prepare(action,requestId)` and `submit(command)`; the principal is bound once by authenticated host construction. The CLI uses those interfaces and explicit JSON actions; it does not parse prose into authority. Receipt verification binds the exact request and principal as well as the trusted key, genesis and scope.
+
 - [ ] Add the session host and trusted local JSON-line CLI with explicit initialization/resume, private local keys and refusal to overwrite a world.
 - [ ] Execute the full lamp conversation/offer/accept/travel/oil/return scenario using injected provider responses; retain actual requests/receipts and replay hash.
 - [ ] Test refusal, concurrent commands, private solo facts, closure and restart through public APIs; document exact run commands and host trust limits.
