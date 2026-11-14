@@ -3,6 +3,7 @@ import {types as nodeTypes} from 'node:util';
 import {assertCharacterContract,canonical,fail,freezeDto} from '@argo/contracts';
 import type {CharacterActorQuery,CharacterNature,CharacterView} from '@argo/contracts';
 import type {DialogueSupplement} from './dialogue-types.ts';
+import {assertAuthoredKnowledgeContract} from '../../contracts/src/dialogue-knowledge.ts';
 
 function invalid(message:string):never{return fail('INVALID_CONTRACT',message);}
 const id=/^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$/;
@@ -45,7 +46,13 @@ function identifier(value:unknown):asserts value is string{if(typeof value!=='st
 
 export function validateDialogueSupplement(input:unknown,query:CharacterActorQuery):DialogueSupplement|null{
  if(input===null)return null;
- passive(input);object(input,['version','query','source','actor','scene']);
+ passive(input);
+ if(typeof input==='object'&&input!==null&&'version'in input&&input.version==='character-dialogue/0.2.0'){
+  assertAuthoredKnowledgeContract('DialogueSupplementV2',input);assertCharacterContract('CharacterActorQuery',query);
+  if(canonical(input.query)!==canonical(query))fail('UNAUTHORIZED','Dialogue supplement must bind the complete actor query');
+  return freezeDto(structuredClone(input));
+ }
+ object(input,['version','query','source','actor','scene']);
  if(input.version!=='character-dialogue/0.1.0')invalid('Unsupported dialogue presentation version');
  assertCharacterContract('CharacterActorQuery',input.query);
  if(canonical(input.query)!==canonical(query))fail('UNAUTHORIZED','Dialogue supplement must bind the complete actor query');
@@ -78,11 +85,14 @@ export function dialoguePacket(view:CharacterView,supplement:DialogueSupplement|
  const impressions=selected.map(row=>({impression_id:row.impression_id,sequence:row.sequence,world_time:row.world_time,
   owner_actor_id:row.data.owner_actor_id,subject_actor_id:row.data.subject_actor_id,evidence_ids:row.data.evidence_ids,
   nature_ref:nature(row.data.owner_actor_id,row.data.nature_revision,row.data.nature),interpretation:row.data.interpretation,previous_impression_id:row.data.previous_impression_id}));
- return {version:'character-dialogue/0.1.0',task,query:view.query,
+ // The DTO is fully query-bound; the packet carries that identical query once.
+ const selectedKnowledge=supplement?.version==='character-dialogue/0.2.0'&&supplement.actor_knowledge!==null?
+  (({query:_,...value})=>value)(supplement.actor_knowledge):null;
+ return {version:supplement?.version??'character-dialogue/0.1.0',task,query:view.query,
   character:{actor_id:profile.actor_id,profile_revision:profile.revision,nature_ref:currentNature,activity:profile.activity,speech_policy:profile.speech_policy},
   nature_definitions:Object.fromEntries(definitions),experiences:view.experiences,impressions,
   subject_actor_id:subjectActorId,focus_record_ids:recordIds,communication_goal:communicationGoal,
-  supplement:supplement?{source:supplement.source,actor:supplement.actor,scene:supplement.scene}:null,
+  supplement:supplement?{source:supplement.source,actor:supplement.actor,scene:supplement.scene,...(supplement.version==='character-dialogue/0.2.0'?{actor_knowledge:selectedKnowledge}:{})}:null,
   coverage:{acquired_experiences_in_view:view.experiences.length,omitted_impressions:view.impressions.length-selected.length,archive_is_complete:false}};
 }
 
