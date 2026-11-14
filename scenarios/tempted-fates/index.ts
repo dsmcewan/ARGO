@@ -29,3 +29,6 @@ export * from './runtime.ts';
 
 // Explicit fresh-world successor; never silently upgrades a v2 journal.
 export * from './runtime-v3.ts';
+
+// Curated owner knowledge requires persisted activation and current disclosure.
+export * from './campaign/knowledge/index.ts';
