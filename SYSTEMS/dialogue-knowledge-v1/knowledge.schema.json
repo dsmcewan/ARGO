@@ -1,0 +1,663 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://argo.local/schemas/dialogue-knowledge/1.0.0",
+  "title": "Authored actor knowledge and dialogue 0.2; presentation only",
+  "$defs": {
+    "Id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 96,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$(?![\\s\\S])",
+      "not": {
+        "enum": [
+          "__proto__",
+          "constructor",
+          "prototype"
+        ]
+      }
+    },
+    "Hash": {
+      "type": "string",
+      "minLength": 64,
+      "maxLength": 64,
+      "pattern": "^[0-9a-f]{64}$(?![\\s\\S])"
+    },
+    "Scope": {
+      "$ref": "https://argo.local/contracts/1.0.0/argo.schema.json#/$defs/Scope"
+    },
+    "Query": {
+      "$ref": "https://argo.local/contracts/character-memory/1.0.0/characters.schema.json#/$defs/CharacterActorQuery"
+    },
+    "Cursor": {
+      "$ref": "https://argo.local/contracts/character-memory/1.0.0/characters.schema.json#/$defs/CharacterCursor"
+    },
+    "AuthoredKnowledgeSource": {
+      "type": "object",
+      "properties": {
+        "source_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "document_path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256,
+          "pattern": "^(?:[A-Za-z0-9][A-Za-z0-9_.-]*/)*[A-Za-z0-9][A-Za-z0-9_.-]*\\.md$(?![\\s\\S])"
+        },
+        "document_sha256": {
+          "$ref": "#/$defs/Hash"
+        },
+        "locator": {
+          "type": "object",
+          "properties": {
+            "start_line": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 1000000
+            },
+            "end_line": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 1000000
+            }
+          },
+          "required": [
+            "start_line",
+            "end_line"
+          ],
+          "additionalProperties": false
+        },
+        "excerpt_sha256": {
+          "$ref": "#/$defs/Hash"
+        }
+      },
+      "required": [
+        "source_id",
+        "document_path",
+        "document_sha256",
+        "locator",
+        "excerpt_sha256"
+      ],
+      "additionalProperties": false
+    },
+    "AuthoredSourceManifest": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "const": "authored-knowledge-sources/1.0.0"
+        },
+        "manifest_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "revision": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 96,
+          "pattern": "\\S"
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AuthoredKnowledgeSource"
+          },
+          "minItems": 1,
+          "maxItems": 32
+        }
+      },
+      "required": [
+        "version",
+        "manifest_id",
+        "revision",
+        "sources"
+      ],
+      "additionalProperties": false
+    },
+    "AuthoredLoanTerms": {
+      "type": "object",
+      "properties": {
+        "loan_fee_obols": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "advance_deposit_obols": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "replacement_value_obols": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "repair_basis": {
+          "const": "actual_damage_by_explicit_agreement"
+        },
+        "repair_cap_obols": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "oil_supplied_by": {
+          "const": "borrower"
+        },
+        "oil_price_obols": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "oil_duration_exploration_turns": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "return_checkpoint": {
+          "const": "explicit_agreement_normally_next_harbor_return"
+        },
+        "compulsory_service": {
+          "const": false
+        },
+        "oath_required": {
+          "const": false
+        }
+      },
+      "required": [
+        "loan_fee_obols",
+        "advance_deposit_obols",
+        "replacement_value_obols",
+        "repair_basis",
+        "repair_cap_obols",
+        "oil_supplied_by",
+        "oil_price_obols",
+        "oil_duration_exploration_turns",
+        "return_checkpoint",
+        "compulsory_service",
+        "oath_required"
+      ],
+      "additionalProperties": false
+    },
+    "AuthoredKnowledgeEntry": {
+      "type": "object",
+      "properties": {
+        "knowledge_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "owner_actor_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "kind": {
+          "const": "offer_policy"
+        },
+        "subject_item_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048,
+          "pattern": "\\S"
+        },
+        "terms": {
+          "$ref": "#/$defs/AuthoredLoanTerms"
+        },
+        "validity": {
+          "type": "object",
+          "properties": {
+            "from_tick": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "until_tick": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "from_tick",
+            "until_tick"
+          ],
+          "additionalProperties": false
+        },
+        "provenance": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "authored_actor_policy"
+            },
+            "source_ids": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Id"
+              },
+              "minItems": 1,
+              "maxItems": 8,
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "kind",
+            "source_ids"
+          ],
+          "additionalProperties": false
+        },
+        "disclosure": {
+          "const": "owner_context_may_express_in_addressed_speech"
+        }
+      },
+      "required": [
+        "knowledge_id",
+        "owner_actor_id",
+        "kind",
+        "subject_item_id",
+        "text",
+        "terms",
+        "validity",
+        "provenance",
+        "disclosure"
+      ],
+      "additionalProperties": false
+    },
+    "AuthoredKnowledgeCatalog": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "const": "authored-knowledge/1.0.0"
+        },
+        "catalog_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "revision": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 96,
+          "pattern": "\\S"
+        },
+        "pack_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "source_manifest_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AuthoredKnowledgeEntry"
+          },
+          "minItems": 1,
+          "maxItems": 64
+        }
+      },
+      "required": [
+        "version",
+        "catalog_id",
+        "revision",
+        "pack_hash",
+        "source_manifest_hash",
+        "entries"
+      ],
+      "additionalProperties": false
+    },
+    "TrustedKnowledgeIdentity": {
+      "type": "object",
+      "properties": {
+        "pack_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "catalog_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "source_manifest_hash": {
+          "$ref": "#/$defs/Hash"
+        }
+      },
+      "required": [
+        "pack_hash",
+        "catalog_hash",
+        "source_manifest_hash"
+      ],
+      "additionalProperties": false
+    },
+    "AuthoredKnowledgeActivation": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "const": "authored-knowledge-activation/1.0.0"
+        },
+        "activation_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "scope": {
+          "$ref": "#/$defs/Scope"
+        },
+        "owner_actor_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "catalog_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "source_manifest_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "acquired_at": {
+          "$ref": "#/$defs/Cursor"
+        },
+        "knowledge_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Id"
+          },
+          "minItems": 1,
+          "maxItems": 64,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "version",
+        "activation_id",
+        "scope",
+        "owner_actor_id",
+        "catalog_hash",
+        "source_manifest_hash",
+        "acquired_at",
+        "knowledge_ids"
+      ],
+      "additionalProperties": false
+    },
+    "AuthoredKnowledgeDisclosure": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "const": "authored-knowledge-disclosure/1.0.0"
+        },
+        "query": {
+          "$ref": "#/$defs/Query"
+        },
+        "catalog_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "source_manifest_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "activation_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "knowledge_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Id"
+          },
+          "minItems": 0,
+          "maxItems": 8,
+          "uniqueItems": true
+        },
+        "basis": {
+          "const": "host_current_entitlement_and_ancestor_membership"
+        }
+      },
+      "required": [
+        "version",
+        "query",
+        "catalog_hash",
+        "source_manifest_hash",
+        "activation_hash",
+        "knowledge_ids",
+        "basis"
+      ],
+      "additionalProperties": false
+    },
+    "AuthoredKnowledgeRead": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "const": "authored-knowledge-read/1.0.0"
+        },
+        "query": {
+          "$ref": "#/$defs/Query"
+        },
+        "activation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AuthoredKnowledgeActivation"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "disclosure": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AuthoredKnowledgeDisclosure"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "version",
+        "query",
+        "activation",
+        "disclosure"
+      ],
+      "additionalProperties": false
+    },
+    "AuthoredKnowledgeView": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "const": "authored-knowledge-view/1.0.0"
+        },
+        "query": {
+          "$ref": "#/$defs/Query"
+        },
+        "source": {
+          "$ref": "#/$defs/TrustedKnowledgeIdentity"
+        },
+        "activation": {
+          "type": "object",
+          "properties": {
+            "activation_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "activation_hash": {
+              "$ref": "#/$defs/Hash"
+            },
+            "acquired_at": {
+              "$ref": "#/$defs/Cursor"
+            }
+          },
+          "required": [
+            "activation_id",
+            "activation_hash",
+            "acquired_at"
+          ],
+          "additionalProperties": false
+        },
+        "claims": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AuthoredKnowledgeEntry"
+          },
+          "minItems": 1,
+          "maxItems": 8
+        },
+        "source_definitions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AuthoredKnowledgeSource"
+          },
+          "minItems": 1,
+          "maxItems": 32
+        }
+      },
+      "required": [
+        "version",
+        "query",
+        "source",
+        "activation",
+        "claims",
+        "source_definitions"
+      ],
+      "additionalProperties": false
+    },
+    "DialogueSupplementV2": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "const": "character-dialogue/0.2.0"
+        },
+        "query": {
+          "$ref": "#/$defs/Query"
+        },
+        "source": {
+          "type": "object",
+          "properties": {
+            "content_hash": {
+              "$ref": "#/$defs/Hash"
+            },
+            "revision": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 96,
+              "pattern": "\\S"
+            }
+          },
+          "required": [
+            "content_hash",
+            "revision"
+          ],
+          "additionalProperties": false
+        },
+        "actor": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "actor_id": {
+                  "$ref": "#/$defs/Id"
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 256,
+                  "pattern": "\\S"
+                },
+                "occupation": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 512,
+                  "pattern": "\\S"
+                },
+                "wants": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 2048,
+                  "pattern": "\\S"
+                },
+                "will_not": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 2048,
+                  "pattern": "\\S"
+                }
+              },
+              "required": [
+                "actor_id",
+                "name",
+                "occupation",
+                "wants",
+                "will_not"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "scene": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "location_id": {
+                  "$ref": "#/$defs/Id"
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 256,
+                  "pattern": "\\S"
+                },
+                "description": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 8192,
+                  "pattern": "\\S"
+                }
+              },
+              "required": [
+                "location_id",
+                "name",
+                "description"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "actor_knowledge": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AuthoredKnowledgeView"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "version",
+        "query",
+        "source",
+        "actor",
+        "scene",
+        "actor_knowledge"
+      ],
+      "additionalProperties": false
+    },
+    "AuthoredSourceDocument": {
+      "type": "object",
+      "properties": {
+        "document_path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256,
+          "pattern": "^(?:[A-Za-z0-9][A-Za-z0-9_.-]*/)*[A-Za-z0-9][A-Za-z0-9_.-]*\\.md$(?![\\s\\S])"
+        },
+        "content": {
+          "type": "string",
+          "maxLength": 131072
+        }
+      },
+      "required": [
+        "document_path",
+        "content"
+      ],
+      "additionalProperties": false
+    }
+  }
+}
