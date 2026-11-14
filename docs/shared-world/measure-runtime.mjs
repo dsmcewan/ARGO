@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/** Offline, ordinary-process measurement of the real signed shared store.
+/** Offline, ordinary-process measurement of sessions over the signed shared store.
  * Not a CI timing assertion. Requires the completed shared-world runtime.
  * Usage: node docs/shared-world/measure-runtime.mjs --output /tmp/argo-measure
  */
@@ -30,7 +30,8 @@ assert.equal(await git('status','--porcelain'),'','Measurement requires a clean 
 const targets = [128, 512, 1000, 2000];
 const mod = async path => import(pathToFileURL(join(repo, path)).href);
 const {hash, WORLD_PROFILE} = await mod('packages/contracts/src/index.ts');
-const {openWorldLedger, viewWorldActor, worldStateHash, replayWorld} = await mod('packages/ledger/src/index.ts');
+const {openWorldLedger, worldStateHash, replayWorld} = await mod('packages/ledger/src/index.ts');
+const {createWorldSession} = await mod('packages/session/src/index.ts');
 const {createWorldModelAgent} = await mod('packages/interventions/src/index.ts');
 const {buildSharedWorldCampaign} = await mod('scenarios/tempted-fates/shared-world/seed.ts');
 const pack = JSON.parse(await readFile(join(repo, 'scenarios/tempted-fates/campaign/world.json'), 'utf8'));
@@ -56,6 +57,8 @@ async function samples(operation) {const values=[];for(let n=0;n<5;n++) values.p
 try {
  const options = {path, genesis, privateKey:keys.privateKey};
  writer = await openWorldLedger(options);
+ const heroSession = createWorldSession({genesis,ledger:writer,principal});
+ const npcSession = createWorldSession({genesis,ledger:writer,principal:npcPrincipal});
  let cursor = (await writer.snapshot()).cursor;
  const command = () => ({version:WORLD_PROFILE, scope, request_id:`observation_${cursor.sequence+1}`, actor_id:'hero', expected:cursor, causation_id:cursor.head,
   action:{type:'speak', text:`Question ${cursor.sequence+1}: May I borrow the lamp without a deposit?`, audience:{kind:'whisper',addressed_actor_ids:['melia']}, in_reply_to:null}});
@@ -70,27 +73,27 @@ try {
   const snap = await writer.snapshot();
   const currentQuery = () => ({version:WORLD_PROFILE,scope,actor_id:'melia',cursor});
   const snapshot = await samples(() => writer.snapshot());
-  const scoped_view = await samples(async () => viewWorldActor(genesis,await writer.snapshot(),currentQuery(),npcPrincipal));
+  const scoped_view = await samples(() => npcSession.view(currentQuery()));
   const opening = await elapsed(() => openWorldLedger({...options,expectedHead:cursor}));
   sibling = opening.value;
   const reopened = await sibling.snapshot();
   assert.deepEqual(reopened.cursor,snap.cursor);
   assert.equal(worldStateHash(reopened),worldStateHash(snap));
   const pending = command();
-  const append = await elapsed(() => writer.submit(pending,principal));
+  const append = await elapsed(() => heroSession.submit(pending));
   cursor = append.value.cursor;
-  const retry = await samples(async () => assert.deepEqual(await writer.submit(pending,principal),append.value));
+  const retry = await samples(async () => assert.deepEqual(await heroSession.submit(pending),append.value));
   const refresh = await elapsed(() => sibling.snapshot());
   assert.deepEqual(refresh.value.cursor,cursor);
   assert.equal(worldStateHash(refresh.value),append.value.state_hash);
   let modelCalls=0,contextReads=0;
   const agent=createWorldModelAgent({scope,actorId:'melia',sessionId:'offline_measurement',candidates:[{vendor:'xai',model:'grok-4.7',pool:'injected'}],
    clientFor:()=>({responses:{create:async()=>{modelCalls++;return {id:'fixture',status:'completed',output:[{type:'message',content:[{type:'output_text',text:JSON.stringify({text:'It is a free loan. Bring it back and supply your own oil.'})}]}]};}}}),
-   refreshContext:async query=>{contextReads++;return viewWorldActor(genesis,await writer.snapshot(),query,npcPrincipal);},
+   refreshContext:async query=>{contextReads++;return npcSession.view(query);},
   });
   const dialogue=await elapsed(async()=>{
-   const proposal=await agent.respond(currentQuery(),memoryId(cursor.sequence),`observation_${cursor.sequence+1}`);
-   assert.ok(proposal);const receipt=await writer.submit(proposal,npcPrincipal);cursor=receipt.cursor;return receipt;
+   const proposal=await agent.respond(await npcSession.query(),memoryId(cursor.sequence),`observation_${cursor.sequence+1}`);
+   assert.ok(proposal);const receipt=await npcSession.submit(proposal);cursor=receipt.cursor;return receipt;
   });
   assert.equal(modelCalls,1);
   const expected = await writer.snapshot();
@@ -114,13 +117,14 @@ try {
  assert.equal(await git('rev-parse','HEAD'),candidate,'Measurement candidate changed');
  assert.equal(await git('status','--porcelain'),'','Measurement checkout changed');
  const record={candidate,checkout_clean_before_after:true,node:process.version,platform:process.platform,
-  test_runner:false,paid_calls:0,genesis_hash:hash(genesis),targets,rows,final_sequence:final.cursor.sequence,full_replay_ms:replay.ms,
+  test_runner:false,paid_calls:0,interface:'createWorldSession: query, view, submit',genesis_hash:hash(genesis),targets,rows,final_sequence:final.cursor.sequence,full_replay_ms:replay.ms,
   replay_equals_snapshot:true,final_state_hash:worldStateHash(final),host_workload_parent_event_loop_delay_ms,
   limits:['One machine; five warm read/retry samples, one append and one suffix refresh per checkpoint.',
    'History-bearing state hashes grow with history; cold replay is not claimed to be linear.',
    'Cold handle opening includes full verification but uses a warmed OS page cache; this is not a cold-disk measurement.',
    'Parent event-loop samples cover the whole host workload, including projection, hashes, JSON sizing and logging; they do not isolate store/worker blocking. The final standalone synchronous forensic replay is measured separately.',
    'Alternating addressed speech in the actual campaign; bulk turns use explicit fixtures and the measured contextual reply uses an injected provider.',
+   'Measured actor reads, appends, retries and dialogue use fixed-principal sessions; bulk history filling uses the underlying authority. Dialogue includes current-query acquisition, five refreshed views and signed-receipt verification.',
    'No provider latency, combat-load or general graph-scale claim.']};
  await mkdir(output,{recursive:true});await writeFile(join(output,'measurement.json'),JSON.stringify(record,null,2)+'\n');
  process.stdout.write(`Saved ${join(output,'measurement.json')}\n`);
