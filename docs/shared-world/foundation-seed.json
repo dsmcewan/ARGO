@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "tickets": [
+    {
+      "id": "SW-200",
+      "wave": 1,
+      "lane": "authority",
+      "title": "Pure shared authority and scoped views",
+      "seat_model": "gpt-6-astra",
+      "reviewer_model": null,
+      "owned_paths": [
+        "packages/ledger/src/world/rules.ts",
+        "packages/ledger/src/world/view.ts",
+        "TESTS/shared-world-rules.test.ts",
+        "TESTS/shared-world-views.test.ts",
+        "TESTS/shared-world-rules-helpers.ts"
+      ],
+      "gate_cmd": [
+        "python3",
+        "-c",
+        "raise SystemExit('Application acceptance remains external to the pinned data-only Board policy')"
+      ],
+      "spec_path": "docs/shared-world/tickets/SW-200.md",
+      "depends_on": [],
+      "max_attempts": 3
+    },
+    {
+      "id": "SW-400",
+      "wave": 1,
+      "lane": "dialogue",
+      "title": "Scoped shared-world dialogue proposals",
+      "seat_model": "gpt-6-astra",
+      "reviewer_model": null,
+      "owned_paths": [
+        "packages/interventions/src/world-context.ts",
+        "packages/interventions/src/world-model.ts",
+        "TESTS/shared-world-dialogue.test.ts"
+      ],
+      "gate_cmd": [
+        "python3",
+        "-c",
+        "raise SystemExit('Application acceptance remains external to the pinned data-only Board policy')"
+      ],
+      "spec_path": "docs/shared-world/tickets/SW-400.md",
+      "depends_on": [],
+      "max_attempts": 3
+    },
+    {
+      "id": "SW-500",
+      "wave": 1,
+      "lane": "campaign",
+      "title": "Fresh source-pinned shared campaign seed",
+      "seat_model": "gpt-6-astra",
+      "reviewer_model": null,
+      "owned_paths": [
+        "scenarios/tempted-fates/shared-world/seed.ts",
+        "scenarios/tempted-fates/shared-world/SEED.md",
+        "TESTS/shared-world-campaign.test.ts"
+      ],
+      "gate_cmd": [
+        "python3",
+        "-c",
+        "raise SystemExit('Application acceptance remains external to the pinned data-only Board policy')"
+      ],
+      "spec_path": "docs/shared-world/tickets/SW-500.md",
+      "depends_on": [],
+      "max_attempts": 3
+    }
+  ]
+}

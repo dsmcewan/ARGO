@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "tickets": [
+    {
+      "id": "SW-300",
+      "wave": 1,
+      "lane": "storage",
+      "title": "One signed atomic shared-world store",
+      "seat_model": "gpt-6-astra",
+      "reviewer_model": null,
+      "owned_paths": [
+        "packages/ledger/src/world/journal.ts",
+        "packages/ledger/src/world/storage.ts",
+        "packages/ledger/src/world/storage-worker.ts",
+        "packages/ledger/src/world/index.ts",
+        "TESTS/shared-world-journal.test.ts",
+        "TESTS/shared-world-storage.test.ts"
+      ],
+      "gate_cmd": [
+        "python3",
+        "-c",
+        "raise SystemExit('Application acceptance remains external to the pinned data-only Board policy')"
+      ],
+      "spec_path": "docs/shared-world/tickets/SW-300.md",
+      "depends_on": [],
+      "max_attempts": 3
+    }
+  ]
+}
