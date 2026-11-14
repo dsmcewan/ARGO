@@ -10,7 +10,8 @@ import {tmpdir} from 'node:os';
 import {resolve, join} from 'node:path';
 import {pathToFileURL} from 'node:url';
 import {performance, monitorEventLoopDelay} from 'node:perf_hooks';
-import {execFileSync} from 'node:child_process';
+import {execFile} from 'node:child_process';
+import {promisify} from 'node:util';
 
 const args = process.argv.slice(2);
 function option(name, fallback) {
@@ -22,9 +23,10 @@ function option(name, fallback) {
 if (Object.hasOwn(process.env, 'NODE_TEST_CONTEXT')) throw Error('Run outside the test runner');
 const repo = resolve(option('--repo', join(import.meta.dirname, '../..')));
 const output = resolve(option('--output', join(tmpdir(), 'argo-shared-world-measurement')));
-const git = (...args) => execFileSync('git',args,{cwd:repo,encoding:'utf8'}).trim();
-const candidate = git('rev-parse','HEAD');
-assert.equal(git('status','--porcelain'),'','Measurement requires a clean committed checkout');
+const execute = promisify(execFile);
+const git = async (...args) => (await execute('git',args,{cwd:repo,encoding:'utf8'})).stdout.trim();
+const candidate = await git('rev-parse','HEAD');
+assert.equal(await git('status','--porcelain'),'','Measurement requires a clean committed checkout');
 const targets = [128, 512, 1000, 2000];
 const mod = async path => import(pathToFileURL(join(repo, path)).href);
 const {hash, WORLD_PROFILE} = await mod('packages/contracts/src/index.ts');
@@ -109,8 +111,8 @@ try {
  const replay=await elapsed(()=>replayWorld(genesis,allEvents));
  const final=await writer.snapshot();
  assert.deepEqual(replay.value,final);
- assert.equal(git('rev-parse','HEAD'),candidate,'Measurement candidate changed');
- assert.equal(git('status','--porcelain'),'','Measurement checkout changed');
+ assert.equal(await git('rev-parse','HEAD'),candidate,'Measurement candidate changed');
+ assert.equal(await git('status','--porcelain'),'','Measurement checkout changed');
  const record={candidate,checkout_clean_before_after:true,node:process.version,platform:process.platform,
   test_runner:false,paid_calls:0,genesis_hash:hash(genesis),targets,rows,final_sequence:final.cursor.sequence,full_replay_ms:replay.ms,
   replay_equals_snapshot:true,final_state_hash:worldStateHash(final),host_workload_parent_event_loop_delay_ms,
