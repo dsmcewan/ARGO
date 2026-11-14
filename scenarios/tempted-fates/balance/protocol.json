@@ -5,19 +5,78 @@
   "first_retained_trials_per_partition_per_arm": 500,
   "library_default_trials": 2000,
   "maximum_trials": 10000,
-  "seed_domains": ["pilot", "train", "holdout"],
+  "seed_domains": [
+    "pilot",
+    "train",
+    "holdout"
+  ],
   "seed_derivation": "SHA256('mortal-balance/1.0.0|engine|' + phase + '|' + zero-based trial index)",
   "initial_hp_derivation": "1 + first digest byte modulo8 of SHA256('mortal-balance/1.0.0|initial-hp|' + phase + '|' + index); separate fixture domain, not action RNG",
   "combat_arms": 21,
-  "primary_matrix": {"hp": ["d8", "max(4,d8)"], "armor": [11, 12, 14], "policy": ["fight", "immediate retreat", "own-turn hp*2<=max_hp retreat"]},
-  "primary_foe": {"count": 1, "hp": 4, "strength": 1, "armor": 11, "damage_die": 4},
-  "player": {"strength": 2, "constitution": 2, "damage_die": 6, "rations": 1, "water": 1},
+  "primary_matrix": {
+    "hp": [
+      "d8",
+      "max(4,d8)"
+    ],
+    "armor": [
+      11,
+      12,
+      14
+    ],
+    "policy": [
+      "fight",
+      "immediate retreat",
+      "own-turn hp*2<=max_hp retreat"
+    ]
+  },
+  "primary_foe": {
+    "count": 1,
+    "hp": 4,
+    "strength": 1,
+    "armor": 11,
+    "damage_die": 4
+  },
+  "player": {
+    "strength": 2,
+    "constitution": 2,
+    "damage_die": 6,
+    "rations": 1,
+    "water": 1
+  },
   "secondary_stress": "Two identical foes, classic d8/armor11, all three policies; separate cells, never pooled into primary",
-  "limits": {"combat_actions_including_begin": 500, "completed_rounds": 100, "pilot_seeds": 10},
-  "primary_targets": {"fight_incapacitation_min": 0.20, "fight_incapacitation_max": 0.60, "immediate_escape_min": 0.85, "paired_standing_survival_gain_min": 0.15},
-  "analysis": {"descriptive_intervals": "95% Wilson binomial and paired asymptotic-normal differences", "confirmatory_intervals": "Four one-sided target bounds, Bonferroni alpha=.05/4; z=2.241402727604947", "sampling_unit": "paired seed, not an action/round", "canonical_game_events_use_floats": false},
+  "limits": {
+    "combat_actions_including_begin": 500,
+    "completed_rounds": 100,
+    "pilot_seeds": 10
+  },
+  "primary_targets": {
+    "fight_incapacitation_min": 0.2,
+    "fight_incapacitation_max": 0.6,
+    "immediate_escape_min": 0.85,
+    "paired_standing_survival_gain_min": 0.15
+  },
+  "analysis": {
+    "descriptive_intervals": "95% Wilson binomial; paired improved-minus-worsened from union-bounded Wilson marginals with four tails of .0125 (z2.241402727604947)",
+    "confirmatory_intervals": "Four one-sided target bounds at alpha=.05/4; danger/escape z2.241402727604947. Paired lower splits its .0125 budget over two marginal tails of .00625 each (z2.497705474412373); upper constructed analogously.",
+    "sampling_unit": "paired seed, not an action/round",
+    "canonical_game_events_use_floats": false,
+    "coverage_limit": "Conservative union construction without marginal independence; Wilson score coverage is nominal, not an exact finite-sample guarantee.",
+    "censored_comparison": "Any pair censored in either relevant arm forces target inconclusive in train and holdout; no paired terminal-survival interval is computed."
+  },
   "selection": "Training: retain classic if all adjusted target intervals match; otherwise floor4 only if all its intervals match; otherwise no-target-match. Any combat censorship prevents recommendation. Heldout never selects or retunes.",
-  "resource_scenarios": ["light_exact", "light_short", "search_forage", "needs_prepared", "needs_short", "rest_prepared", "rest_short", "clock_isolation"],
+  "resource_scenarios": [
+    "light_exact",
+    "light_short",
+    "search_forage",
+    "needs_prepared",
+    "needs_short",
+    "rest_prepared",
+    "rest_short",
+    "clock_isolation"
+  ],
   "exclusions": "No rows dropped, no seed replacement, no automatic repeat/pursuit, no live models, no state patches, no journal/signature assurance from pure replay",
-  "after_holdout_change": "Keep all results; a changed rule/configuration requires a newly preregistered protocol/seed domain. Do not call the exposed holdout fresh evidence."
+  "after_holdout_change": "Keep all results; a changed rule/configuration requires a newly preregistered protocol/seed domain. Do not call the exposed holdout fresh evidence.",
+  "method_revision": 2,
+  "method_revision_note": "Pre-study independent review M01/M02/M03: paired union-bounded score intervals, censored comparisons inconclusive, full compact seed rows. Seed domains and encounter matrix unchanged.",
+  "retention": "All combat and resource per-seed outcomes, counts, state/transition/replay hashes are retained as compact column arrays; full rows reconstruct integer_results_digest."
 }

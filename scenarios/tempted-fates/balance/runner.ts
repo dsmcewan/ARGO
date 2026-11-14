@@ -4,7 +4,7 @@ import type {MortalGenesis,MortalState,MortalAction,MortalCommand,MortalPrincipa
 import {initialMortalState,resolveMortal,mortalStateHash} from '../../../packages/ledger/src/mortal/rules.ts';
 import {PROTOCOL,actor,combatArms,combatGenesis,emptyGenesis,initialDie} from './fixtures.ts';
 import type {Arm,Phase} from './fixtures.ts';
-import {wilson,pairedDifference,assessTarget,TARGET_Z} from './statistics.ts';
+import {wilson,pairedDifference,assessTarget} from './statistics.ts';
 
 type Step={command:MortalCommand;principal:MortalPrincipal;refusal:string|null;digest:string};
 class Session{
@@ -121,16 +121,32 @@ export function runResourceTrial(phase:Phase,index:number,scenario:ResourceCase)
 }
 type CombatRow=ReturnType<typeof runCombatTrial>;
 function total(rows:readonly CombatRow[],key:'started_rounds'|'charged_rounds'|'actions'|'world_seconds'|'active_seconds'|'rng_counter'){return rows.reduce((s,r)=>s+r[key],0);}
+const COMBAT_COLUMNS=['trial','initial_die','max_hp','hp','standing','unconscious','dead','escaped','retreat_admitted','won','censored','started_rounds','charged_rounds','world_seconds','active_seconds','actions','sequence','rng_counter','player_attacks','location','resources','state_hash','transition_digest','replay_digest','replay_verified'] as const;
+const RESOURCE_COLUMNS=['trial','objective_completed','hp','standing','unconscious','dead','location','resources','initial_resources','world_seconds','active_seconds','fed_until','next_rest_at','discoveries','forage_remaining','stocks','rests','refusals','refusal_codes','actions','sequence','rng_counter','state_hash','transition_digest','replay_digest','replay_verified'] as const;
 function combatSummary(arm:Arm,rows:CombatRow[]){
- const endpoints={standing:0,unconscious:0,dead:0,escaped:0,won:0,censored:0};
- for(const r of rows)for(const k of Object.keys(endpoints) as (keyof typeof endpoints)[])if(r[k])endpoints[k]++;
+ const endpoints={standing_at_stop:0,terminal_standing:0,unconscious:0,dead:0,escaped:0,won:0,censored:0};
+ for(const r of rows){
+  if(r.standing)endpoints.standing_at_stop++;
+  if(r.standing&&!r.censored)endpoints.terminal_standing++;
+  for(const k of ['unconscious','dead','escaped','won','censored'] as const)if(r[k])endpoints[k]++;
+ }
  return {arm,count:rows.length,endpoints,totals:{started_rounds:total(rows,'started_rounds'),charged_rounds:total(rows,'charged_rounds'),actions:total(rows,'actions'),world_seconds:total(rows,'world_seconds'),active_seconds:total(rows,'active_seconds'),rng_counter:total(rows,'rng_counter')},
   means:{started_rounds:total(rows,'started_rounds')/rows.length,charged_rounds:total(rows,'charged_rounds')/rows.length},
-  intervals95:{incapacitated:wilson(endpoints.unconscious+endpoints.dead,rows.length),escaped:wilson(endpoints.escaped,rows.length),standing:wilson(endpoints.standing,rows.length)},
-  initial_hp_strata:Array.from({length:8},(_,i)=>{const group=rows.filter(r=>r.initial_die===i+1);return {die:i+1,count:group.length,standing:group.filter(r=>r.standing).length,escaped:group.filter(r=>r.escaped).length,unconscious:group.filter(r=>r.unconscious).length,dead:group.filter(r=>r.dead).length,censored:group.filter(r=>r.censored).length};}),
+  intervals95:endpoints.censored?null:{incapacitated:wilson(endpoints.unconscious+endpoints.dead,rows.length),escaped:wilson(endpoints.escaped,rows.length),terminal_standing:wilson(endpoints.terminal_standing,rows.length)},
+  initial_hp_strata:Array.from({length:8},(_,i)=>{const group=rows.filter(r=>r.initial_die===i+1);return {die:i+1,count:group.length,standing_at_stop:group.filter(r=>r.standing).length,terminal_standing:group.filter(r=>r.standing&&!r.censored).length,escaped:group.filter(r=>r.escaped).length,unconscious:group.filter(r=>r.unconscious).length,dead:group.filter(r=>r.dead).length,censored:group.filter(r=>r.censored).length};}),
   resource_totals:{rations_remaining:rows.reduce((s,r)=>s+r.resources.rations,0),water_remaining:rows.reduce((s,r)=>s+r.resources.water,0)},
+  seed_rows:{columns:COMBAT_COLUMNS,rows:rows.map(r=>COMBAT_COLUMNS.map(k=>r[k]))},
   replay_verified_trials:rows.length,replay_digest:hash(rows.map(r=>({trial:r.trial,digest:r.replay_digest}))),
   integer_results_digest:hash(rows)};
+}
+type ComparisonRow=Pick<CombatRow,'standing'|'unconscious'|'dead'|'escaped'|'censored'>;
+/** Shared by train and holdout; unresolved terminal pairs have no survival CI. */
+export function compareCombatRows(fight:readonly ComparisonRow[],escape:readonly ComparisonRow[]){
+ if(fight.length!==escape.length)throw Error('Comparison rows must pair by trial');
+ const censoredPairs=fight.filter((r,i)=>r.censored||escape[i]!.censored).length;
+ const a=escape.map(r=>Number(r.standing)),b=fight.map(r=>Number(r.standing));
+ return {censored_pairs:censoredPairs,paired95:censoredPairs?null:pairedDifference(a,b),
+  target:assessTarget({count:fight.length,incapacitated:fight.filter(r=>r.unconscious||r.dead).length,escaped:escape.filter(r=>r.escaped).length,censoredPairs,paired:censoredPairs?null:pairedDifference(a,b,'target')})};
 }
 export function runStudy(options:{phase:'train'|'holdout';trials?:number;smallTest?:boolean;onProgress?:(completed:number,total:number)=>void}){
  const n=options.trials??2000;
@@ -140,8 +156,7 @@ export function runStudy(options:{phase:'train'|'holdout';trials?:number;smallTe
  const combat=arms.map(arm=>combatSummary(arm,rowsByArm.get(arm.id)!));
  const comparisons=(['classic','floor4'] as const).map(hp=>{
   const fight=rowsByArm.get(`solo_${hp}_a11_fight`)!,escape=rowsByArm.get(`solo_${hp}_a11_immediate`)!;
-  const a=escape.map(r=>Number(r.standing&&!r.censored)),b=fight.map(r=>Number(r.standing&&!r.censored));
-  return {hp,paired95:pairedDifference(a,b),target:assessTarget({count:n,incapacitated:fight.filter(r=>r.unconscious||r.dead).length,escaped:escape.filter(r=>r.escaped).length,paired:pairedDifference(a,b,TARGET_Z)})};
+  return {hp,...compareCombatRows(fight,escape)};
  });
  const resources=RESOURCE_CASES.map(scenario=>{
   const rows:ReturnType<typeof runResourceTrial>[]=[];
@@ -151,7 +166,7 @@ export function runStudy(options:{phase:'train'|'holdout';trials?:number;smallTe
    stock_totals:(rows[0]?.stocks??[]).map(stock=>({id:stock.id,remaining:rows.reduce((sum,r)=>sum+r.stocks.find(s=>s.id===stock.id)!.remaining,0),treasury:rows.reduce((sum,r)=>sum+r.stocks.find(s=>s.id===stock.id)!.treasury,0)})),
    initial_resource_totals:Object.fromEntries((['rations','water','oil','obols','ammo'] as const).map(k=>[k,rows.reduce((sum,r)=>sum+r.initial_resources[k],0)])),
    resources_remaining:Object.fromEntries((['rations','water','oil','obols','ammo'] as const).map(k=>[k,rows.reduce((sum,r)=>sum+r.resources[k],0)])),
-   examples:rows.slice(0,3),objective_interval95:wilson(rows.filter(r=>r.objective_completed).length,n),replay_verified_trials:n,
+   seed_rows:{columns:RESOURCE_COLUMNS,rows:rows.map(r=>RESOURCE_COLUMNS.map(k=>r[k]))},objective_interval95:wilson(rows.filter(r=>r.objective_completed).length,n),replay_verified_trials:n,
    replay_digest:hash(rows.map(r=>({trial:r.trial,digest:r.replay_digest}))),integer_results_digest:hash(rows)};
  });
  const censored=combat.reduce((s,r)=>s+r.endpoints.censored,0),eligible=n>=500&&!options.smallTest;
@@ -159,5 +174,5 @@ export function runStudy(options:{phase:'train'|'holdout';trials?:number;smallTe
  return {protocol:PROTOCOL,phase:options.phase,trials_per_cell:n,study_eligible:eligible,total_combat_trials:n*arms.length,total_resource_trials:n*RESOURCE_CASES.length,combat,comparisons,resources,
   recommendation,selection_rule:'Retain classic if all preregistered adjusted target intervals match; otherwise floor4 only if its intervals match; otherwise no-target-match. Any censorship prevents recommendation.',
   replay_digest:hash({combat:combat.map(c=>c.replay_digest),resources:resources.map(r=>r.replay_digest)}),
-  analysis_note:'Floating means and confidence intervals are analysis only. Wilson binomial and asymptotic paired intervals assume these fixed pseudorandom seeds represent the declared encounter distribution; they do not prove fun, universal balance, physical dice fairness or deployment safety.'};
+  analysis_note:'Floating means and confidence intervals are analysis only. Wilson binomial and union-bounded paired score intervals assume these fixed pseudorandom seeds represent the declared encounter distribution; they do not prove fun, universal balance, physical dice fairness or deployment safety.'};
 }

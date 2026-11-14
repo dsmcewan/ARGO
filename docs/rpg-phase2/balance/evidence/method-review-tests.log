@@ -1,0 +1,21 @@
+(node:255626) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("/tmp/argo-rp400-overlay.mjs", pathToFileURL("./")); register("/tmp/argo-rp400-overlay.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ balance preregistration pairs HP/armor/policies without reusing held-out seeds (12.29512ms)
+✔ balance intervals preserve exact paired counts and do not invent certainty (2.3167ms)
+✔ balance uses genuine reducer transitions and replay for every combat endpoint (830.330255ms)
+✔ immediate retreat cannot win an encounter by secretly attacking (160.839758ms)
+✔ bounded trials report censorship rather than silently dropping hard seeds (6.974664ms)
+✔ resource stress executes legal light, discovery, forage, food and rest boundaries (713.702558ms)
+✔ study rejects undersized claims while small test studies retain every arm and seed (1226.226244ms)
+✔ paired score bounds retain uncertainty for all-equal, all-improved and all-worsened samples (1.316305ms)
+✔ shared train and heldout comparison suppresses terminal inference for a censored pair in either arm (1.726404ms)
+✔ retained compact seed rows reconstruct exact outcomes and aggregate commitments (1119.231503ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6380.237698
