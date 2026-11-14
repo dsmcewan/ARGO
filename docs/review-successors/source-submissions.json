@@ -1,0 +1,20 @@
+[
+  {
+    "ticket": "DR-201",
+    "source": "bc1d79e93ed7f3c1a3f287e49b7f0e4837378223",
+    "status": "VERIFYING",
+    "artifacts": 16
+  },
+  {
+    "ticket": "DR-211",
+    "source": "7d6613c18e84f6dc5bbb50c8c102c4981a3f38b3",
+    "status": "VERIFYING",
+    "artifacts": 15
+  },
+  {
+    "ticket": "DR-221",
+    "source": "4bb2a8a287e296b82c5c2429fceed890281a4e7f",
+    "status": "VERIFYING",
+    "artifacts": 7
+  }
+]

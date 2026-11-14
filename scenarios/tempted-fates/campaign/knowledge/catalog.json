@@ -1,0 +1,42 @@
+{
+  "version": "authored-knowledge/1.0.0",
+  "catalog_id": "tempting_fates_ordinary_loan_offers",
+  "revision": "1",
+  "pack_hash": "70adb204c3f5626957d69ff5c0107b4c2954714390f1e5cb37a97de61fea5161",
+  "source_manifest_hash": "c6ec5f0c7a8824d83939028a5660df8e8c24202bd6029660f150ef9b3de0391f",
+  "entries": [
+    {
+      "knowledge_id": "melia_lamp_loan_offer",
+      "owner_actor_id": "melia",
+      "kind": "offer_policy",
+      "subject_item_id": "traveler_lamp",
+      "text": "These are Melia's offered ordinary-lamp terms, not evidence of an accepted bargain or completed loan. A spoken promise alone does not transfer custody.",
+      "terms": {
+        "loan_fee_obols": 0,
+        "advance_deposit_obols": 0,
+        "replacement_value_obols": 5,
+        "repair_basis": "actual_damage_by_explicit_agreement",
+        "repair_cap_obols": 5,
+        "oil_supplied_by": "borrower",
+        "oil_price_obols": 1,
+        "oil_duration_exploration_turns": 6,
+        "return_checkpoint": "explicit_agreement_normally_next_harbor_return",
+        "compulsory_service": false,
+        "oath_required": false
+      },
+      "validity": {
+        "from_tick": 0,
+        "until_tick": null
+      },
+      "provenance": {
+        "kind": "authored_actor_policy",
+        "source_ids": [
+          "quickstart_lamp_terms",
+          "encounter_lamp_costs",
+          "encounter_lamp_exit"
+        ]
+      },
+      "disclosure": "owner_context_may_express_in_addressed_speech"
+    }
+  ]
+}

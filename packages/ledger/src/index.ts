@@ -4,11 +4,16 @@ import {setTimeout as delay} from 'node:timers/promises';
 import {assertContract,canonical,fail,hash,requireScope,safeAdd,own} from '@argo/contracts';
 import type {Genesis,Snapshot,LedgerEvent,IntentProposal,Principal,Consent,Outcome} from '@argo/contracts';
 import {initialSnapshot,verifyEvent,apply,validate,draw,unsigned,eventHash,outcome} from './mechanics.ts';
+import {assertObservationWitnessGrant,observationNeedsWitness} from '../../contracts/src/observation-admission.ts';
+import type {ObservationWitnessVerifier} from '../../contracts/src/observation-admission.ts';
+import {checkObservationLive,observationRemaining,requestObservationAuthorization} from './observation-admission.ts';
+import type {ObservationAuthorization} from './observation-admission.ts';
 export {replay,draw,initialSnapshot} from './mechanics.ts';
 
 export interface LedgerOptions {
  directory:string;genesis:Genesis;privateKey:KeyObject;lockTimeoutMs?:number;
  verifyReceipt?:(consent:Consent,principal:Principal,options:{signal:AbortSignal})=>Promise<boolean>;
+ authorizeObservationWitnesses?:ObservationWitnessVerifier;
 }
 export interface CallOptions {signal?:AbortSignal}
 const missing=(e:unknown):boolean=>typeof e==='object'&&e!==null&&'code' in e&&e.code==='ENOENT';
@@ -37,8 +42,9 @@ export async function openLedger(options:LedgerOptions){
  assertContract('Genesis',options.genesis);
  const genesis=structuredClone(options.genesis);initialSnapshot(genesis);
  if(options.privateKey.asymmetricKeyType!=='ed25519'||createPublicKey(options.privateKey).export({format:'pem',type:'spki'}).toString()!==genesis.authority_public_key)fail('UNAUTHORIZED','Signing key differs from pinned genesis');
- const directory=options.directory,timeout=options.lockTimeoutMs??5000;
+ const directory=options.directory,timeout=options.lockTimeoutMs??5000,authorizeWitnesses=options.authorizeObservationWitnesses;
  if(!Number.isFinite(timeout)||timeout<1||timeout>60000)fail('INVALID_CONTRACT','Invalid lock timeout');
+ if(authorizeWitnesses!==undefined&&typeof authorizeWitnesses!=='function')fail('INVALID_CONTRACT','Invalid observation witness verifier');
  await mkdir(directory,{recursive:true,mode:0o700});
  // This process-local cache is derived only from verified journal bytes. Every
  // call still reads and compares the entire prefix under the writer lock: file
@@ -83,15 +89,23 @@ export async function openLedger(options:LedgerOptions){
   snapshot:async(options:CallOptions={})=>locked(directory,timeout,options.signal,async()=>structuredClone((await readChecked()).state)),
   events:async(options:CallOptions={})=>locked(directory,timeout,options.signal,async()=>structuredClone((await readChecked()).events)),
   submit:async(input:IntentProposal,authenticated:Principal,call:CallOptions={}):Promise<Outcome>=>{
+   const startedAt=Date.now(),signal=call.signal;
    assertContract('IntentProposal',input);assertContract('Principal',authenticated);
    const p=structuredClone(input),principal=structuredClone(authenticated);
    requireScope(genesis.scope,p.scope);requireScope(genesis.scope,principal.scope);
-   return locked(directory,timeout,call.signal,async()=>{
-    const {state,parents,proposals}=await readChecked();const prior=proposals.get(p.proposal_id);
+   // Only potentially outward observations need the shared five-second budget;
+   // ordinary self-private carriers retain the original single-lock fast path.
+   const outward=p.action.type==='observe_claim'&&(p.action.observation.party_id!==null||p.action.observation.observers.length!==1||p.action.observation.observers[0]!==p.actor_id);
+   const deadline=safeAdd(startedAt,5000);
+   type Step={kind:'committed';value:Outcome}|{kind:'witness';state:Snapshot};
+   const attempt=(authorization?:ObservationAuthorization):Promise<Step>=>locked(directory,outward?Math.min(timeout,observationRemaining(deadline,signal)):timeout,signal,async()=>{
+    const {state,parents,proposals}=await readChecked();
+    if(signal?.aborted)fail('CANCELLED','Operation cancelled during ledger read');
+    const prior=proposals.get(p.proposal_id);
     if(prior){
      if(hash(p)!==hash(prior.proposal))fail('CONFLICT','Proposal idempotency conflict');
      if(principal.principal_id!==prior.authority.principal_id||principal.actor_id!==prior.authority.principal_actor_id||principal.role!==prior.authority.principal_role)fail('UNAUTHORIZED','Idempotent actor authentication differs');
-     return outcome(prior);
+     return {kind:'committed',value:outcome(prior)};
     }
     if(p.causal_parents.some(parent=>!parents.has(parent)))fail('INVALID_ACTION','Unknown causal parent');
     let receiptHash:string|null=null;
@@ -112,7 +126,14 @@ export async function openLedger(options:LedgerOptions){
      }finally{clearTimeout(timer);call.signal?.removeEventListener('abort',onAbort);}
     }
     validate(p,principal,state,receiptHash);
-    if(call.signal?.aborted)fail('CANCELLED','Operation cancelled before append');
+    if(p.action.type==='observe_claim'&&observationNeedsWitness(p,principal)){
+     if(!authorization){
+      if(!authorizeWitnesses)fail('UNAUTHORIZED','Trusted observation witness authorization required');
+      return {kind:'witness',state};
+     }
+     assertObservationWitnessGrant(authorization.grant,authorization.request,Date.now());
+    }
+    if(signal?.aborted)fail('CANCELLED','Operation cancelled before append');
     const sequence=safeAdd(state.sequence,1),a=p.action;
     const event:LedgerEvent={schema_version:'1.0.0',event_id:`event_${sequence}`,scope:structuredClone(genesis.scope),ruleset_version:genesis.ruleset_version,sequence,previous_hash:state.head,hash:'0'.repeat(64),kind:a.type==='observe_claim'?'epistemic':'causal',proposal:p,
      authority:{kind:'telos',principal_id:principal.principal_id,key_id:genesis.authority_key_id,signature:'AA==',principal_actor_id:principal.actor_id,principal_role:principal.role,receipt_hash:receiptHash},
@@ -121,6 +142,10 @@ export async function openLedger(options:LedgerOptions){
     verifyEvent(state,event,parents);const next=apply(state,event);
     const record=Buffer.from(canonical(event)+'\n'),file=await open(join(directory,'events.jsonl'),'a',0o600);
     try{
+     // Opening the journal is an await boundary. A previously valid host grant
+     // must still be live at the actual append, without a renewed deadline.
+     if(signal?.aborted)fail('CANCELLED','Operation cancelled before append');
+     if(authorization)checkObservationLive(authorization,signal);
      await file.writeFile(record);await file.sync();
      // A durable append is already verified. Remember it before close or the
      // disposable snapshot write can fail; neither failure erases the commit.
@@ -129,8 +154,13 @@ export async function openLedger(options:LedgerOptions){
     }finally{await file.close();}
     // This cache is derived, never authority. A crash before its write still recovers the append.
     await atomicFile(directory,'snapshot.json',canonical(next)+'\n');
-    return outcome(event);
+    return {kind:'committed',value:outcome(event)};
    });
+   const first=await attempt();if(first.kind==='committed')return first.value;
+   const authorization=await requestObservationAuthorization(p,principal,first.state,authorizeWitnesses,deadline,signal);
+   // A fresh lock/read checks exact retries before all new-admission policy and
+   // revalidates the original expected cursor, membership and bound grant.
+   const second=await attempt(authorization);if(second.kind!=='committed')fail('UNAUTHORIZED','Observation witness authorization missing');return second.value;
   },
  });
 }
@@ -147,3 +177,6 @@ export * from './characters.ts';
 
 // Separate versioned combat/exploration/resource journal for new worlds only.
 export * from './mortal/index.ts';
+
+// Explicit successor API; existing mortal-v2 entry points remain unchanged.
+export * from './mortal-v3/index.ts';

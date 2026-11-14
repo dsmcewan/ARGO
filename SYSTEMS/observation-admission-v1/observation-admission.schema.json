@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://argo.local/contracts/observation-admission/1.0.0/observation-admission.schema.json",
+  "title": "Transient host observation admission 1.0.0",
+  "$defs": {
+    "Id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"},
+    "Hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "Tick": {"type": "integer", "minimum": 0, "maximum": 9007199254740991},
+    "Observers": {"type": "array", "items": {"$ref": "#/$defs/Id"}, "minItems": 1, "maxItems": 64, "uniqueItems": true},
+    "Party": {"anyOf": [{"$ref": "#/$defs/Id"}, {"type": "null"}]},
+    "ObservationAdmissionCursor": {
+      "type": "object",
+      "properties": {"sequence": {"$ref": "#/$defs/Tick"}, "head": {"anyOf": [{"$ref": "#/$defs/Hash"}, {"type": "null"}]}, "world_time": {"$ref": "#/$defs/Tick"}},
+      "required": ["sequence", "head", "world_time"],
+      "additionalProperties": false
+    },
+    "ObservationAdmissionAttempt": {
+      "type": "object",
+      "properties": {"attempt_id": {"$ref": "#/$defs/Id"}, "issued_at_ms": {"$ref": "#/$defs/Tick"}, "deadline_ms": {"$ref": "#/$defs/Tick"}},
+      "required": ["attempt_id", "issued_at_ms", "deadline_ms"],
+      "additionalProperties": false
+    },
+    "ObservationProposal": {
+      "type": "object",
+      "allOf": [{"$ref": "https://argo.local/contracts/1.0.0/argo.schema.json#/$defs/IntentProposal"}],
+      "properties": {
+        "action": {
+          "type": "object",
+          "allOf": [{"$ref": "https://argo.local/contracts/1.0.0/argo.schema.json#/$defs/Action_observe_claim"}],
+          "properties": {"observation": {"type": "object", "properties": {"observers": {"$ref": "#/$defs/Observers"}}}}
+        }
+      }
+    },
+    "ObservationAdmissionRequest": {
+      "type": "object",
+      "properties": {
+        "version": {"const": "observation-admission/1.0.0"},
+        "proposal": {"$ref": "#/$defs/ObservationProposal"},
+        "principal": {"$ref": "https://argo.local/contracts/1.0.0/argo.schema.json#/$defs/Principal"},
+        "attempt": {"$ref": "#/$defs/ObservationAdmissionAttempt"},
+        "request_hash": {"$ref": "#/$defs/Hash"}
+      },
+      "required": ["version", "proposal", "principal", "attempt", "request_hash"],
+      "additionalProperties": false
+    },
+    "ObservationWitnessGrant": {
+      "type": "object",
+      "properties": {
+        "version": {"const": "observation-admission/1.0.0"},
+        "request_hash": {"$ref": "#/$defs/Hash"},
+        "attempt_id": {"$ref": "#/$defs/Id"},
+        "deadline_ms": {"$ref": "#/$defs/Tick"},
+        "scope": {"$ref": "https://argo.local/contracts/1.0.0/argo.schema.json#/$defs/Scope"},
+        "cursor": {"$ref": "#/$defs/ObservationAdmissionCursor"},
+        "source_id": {"$ref": "#/$defs/Id"},
+        "observers": {"$ref": "#/$defs/Observers"},
+        "party_id": {"$ref": "#/$defs/Party"}
+      },
+      "required": ["version", "request_hash", "attempt_id", "deadline_ms", "scope", "cursor", "source_id", "observers", "party_id"],
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "profile_version": "observation-admission/1.0.0",
+  "files": {
+    "SYSTEMS/observation-admission-v1/CONTRACT.md": "be3e8c8958d51da90dbcdf9572a25738aca0ddcf7edfb3fe85a99b4dad8f9053",
+    "SYSTEMS/observation-admission-v1/observation-admission.schema.json": "4b25665019544c8aa118f1421ab82f01b10c740aa85689b4de5ba09acbf8cfb7",
+    "packages/contracts/src/observation-admission.ts": "066ea4e430acfd9aeb7ac9f578a860aa6b47db4aa5eed7815d29cfe573c3cb02"
+  },
+  "scope": "Transient new-submission author and witness-grant contract; no persisted witness proof, historical v1 reinterpretation, legacy claim quarantine, caller authentication or operational merge approval"
+}

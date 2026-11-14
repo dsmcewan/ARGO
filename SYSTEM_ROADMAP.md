@@ -1,5 +1,7 @@
 # ARGO system roadmap: present, target and the path between
 
+For the newer character/mortal runtime and review repairs, start with [review successors](docs/review-successors/README.md) and [their remaining dependencies](docs/review-successors/NEXT.md). The baseline tables below retain the earlier foundation record.
+
 Baseline **`d32da3b16b9f463a9a094445ab92da9748ebc568`**, checked 2026-11-13. [Main CI passed](https://github.com/dsmcewan/ARGO/actions/runs/43479525034) for that exact commit. The additive PC-001 local contract profile passed all ten controller checks and main integration at `140b644`; its exact candidate/trust evidence is in [projection contracts](docs/projection-contracts/verification.json). The [repair evidence](REPAIRS/acceptance/verification.json) records the integrated code at `ff22632`; later documentation does not change its runtime. Twelve review findings are repaired; four remain explicit design decisions.
 
 **We have enough evidence to define the system and sequence the work. We do not yet have every decision, data asset or implemented service needed to deliver the target.** The current product is a verified offline foundation: signed authority, scoped knowledge mocks, deterministic rules and build tooling. The target is a persistent, multi-actor world with separate fact and belief projections, bounded off-screen activity, and reliable solo/party interaction.

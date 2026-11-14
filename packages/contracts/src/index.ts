@@ -75,3 +75,14 @@ export type * from './character-types.ts';
 // Separate versioned mortal authority; frozen v1 contracts retain their semantics.
 export * from './mortal-types.ts';
 export {assertMortalContract,assertMortalGenesis,assertMortalData,mortalSchema} from './mortal.ts';
+
+// Fresh-world encounter recovery; frozen mortal-v2 stays independently readable.
+export * from './mortal-v3-types.ts';
+export {assertMortalV3Contract,assertMortalV3Genesis,assertMortalV3Data,mortalV3Schema} from './mortal-v3.ts';
+
+// Admission-only policy for new v1 observations, not historic witness proof.
+export * from './observation-admission.ts';
+
+// Authored actor policy requires pinned sources and a scoped host disclosure.
+export type * from './dialogue-knowledge-types.ts';
+export * from './dialogue-knowledge.ts';

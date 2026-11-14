@@ -1,0 +1,89 @@
+{
+  "candidate": "ba72fe06fef3ebf5a4c14c942a5a1c35d4f116c9",
+  "files": [
+    {
+      "path": "SYSTEMS/mortal-v3/CONTRACT.md",
+      "sha256": "b8cb9fc2202cacba73eb26198f3a2a94f4c73a259f1120855476ef8eb35af591"
+    },
+    {
+      "path": "SYSTEMS/mortal-v3/FREEZE.json",
+      "sha256": "b6d1a54983666913fb0928f9f80c0d33f7cd6f802122f0f1ba0fec0bcdf87a04"
+    },
+    {
+      "path": "SYSTEMS/mortal-v3/mortal.schema.json",
+      "sha256": "8cc7d1b9f5894adf4c5f22e8efb8172d2f474ab6a944add8cbb7fc87def757e0"
+    },
+    {
+      "path": "TESTS/mortal-v3-campaign.test.ts",
+      "sha256": "dad930d309705a20b274cb58dd5dfa4b1341dbc085a15c3df02f908e8608b3fa"
+    },
+    {
+      "path": "TESTS/mortal-v3-contracts.test.ts",
+      "sha256": "2a50622d7cb73f28f28b63515bab7a195fd27473672bebf593e7fb6d408e33f1"
+    },
+    {
+      "path": "TESTS/mortal-v3-helpers.ts",
+      "sha256": "e9b54697eac89d57402d76f862d3ac18f1167ebcc44c683863651886b92b9d0b"
+    },
+    {
+      "path": "TESTS/mortal-v3-rules.test.ts",
+      "sha256": "bd1bdc52d179a4549ee88fe355146f713c2add092f1545c5ad277339cda38f09"
+    },
+    {
+      "path": "TESTS/mortal-v3-storage.test.ts",
+      "sha256": "8de95c70687cce2109467e3f888afe4505734909adb633177ab60d776026106a"
+    },
+    {
+      "path": "packages/contracts/src/index.ts",
+      "sha256": "698b3500a1642a2f8fc7f5049840b8158b7e1b293a4f0dfc13dadc873c8965ee"
+    },
+    {
+      "path": "packages/contracts/src/mortal-v3-types.ts",
+      "sha256": "9540819917dc0f58a92793c2dd69baee8c029f99099f681ca79e713e6d390699"
+    },
+    {
+      "path": "packages/contracts/src/mortal-v3.ts",
+      "sha256": "5e4c4dc2ffd220b30f4d3e4a93ec885e39fbd18a42b0845adb441bf962c5d3f7"
+    },
+    {
+      "path": "packages/ledger/src/index.ts",
+      "sha256": "bf8f1585f86688fb1da2f5961e1bb8a3d0c98cfc5348d29e9fe47a40dc6c6c43"
+    },
+    {
+      "path": "packages/ledger/src/mortal-v3/README.md",
+      "sha256": "d457eb00793d9c456b123fa0fbe464562ab532b421dc180589a358850bf35785"
+    },
+    {
+      "path": "packages/ledger/src/mortal-v3/index.ts",
+      "sha256": "ebce532d052296a8b96c0671f7cea8ffe00cfae4fc96caad8fb7fb74c979db40"
+    },
+    {
+      "path": "packages/ledger/src/mortal-v3/journal.ts",
+      "sha256": "975e9d3ab8ac9c301d7eac3c7ce0ec7718773828dd5265107cb468e7f21b4729"
+    },
+    {
+      "path": "packages/ledger/src/mortal-v3/rules.ts",
+      "sha256": "66f56b148765d3a44ccba96cf42a035f80fb9e881436b4aa6d1273f8faad3e8b"
+    },
+    {
+      "path": "packages/ledger/src/mortal-v3/storage-worker.ts",
+      "sha256": "90856179e9c29d0acee2b70219cb5b05bcdf8350795b0b0d2f1fb02247571042"
+    },
+    {
+      "path": "packages/ledger/src/mortal-v3/storage.ts",
+      "sha256": "a62079a916902cc18baa7c751e40656544a0eb2ac1ad421fd96ae6172e57a2db"
+    },
+    {
+      "path": "packages/ledger/src/mortal-v3/view.ts",
+      "sha256": "beadb03ad63fbae3df63d6a0b83cf414803d11947032ca3b02c4a4cd170fb020"
+    },
+    {
+      "path": "scenarios/tempted-fates/index.ts",
+      "sha256": "b786bce401483fdcb11d88a1a6bae969cf7b6b276d2390e223bd677d64b8f123"
+    },
+    {
+      "path": "scenarios/tempted-fates/runtime-v3.ts",
+      "sha256": "48c8c0966b1bd250c6901ff50a3f2f33ca3466fc1f71ff107bb6a4838be25730"
+    }
+  ]
+}

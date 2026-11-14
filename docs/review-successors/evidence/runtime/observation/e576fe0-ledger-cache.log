@@ -1,0 +1,20 @@
+✔ unchanged reads and retries do not reverify already accepted signatures (150.125469ms)
+✔ another writer is verified once and matches cold replay without exposing cached objects (145.373349ms)
+✔ same-size edits with restored mtime cannot hide behind a warm prefix (79.772123ms)
+✔ an observed prefix cannot roll back within the same open handle (33.436618ms)
+✔ a successful append is protected before any subsequent read warms the cache (32.222884ms)
+✔ a durable append stays protected when its derived snapshot write fails (46.696931ms)
+✔ a durable append stays protected if closing the synchronized event file fails (33.618216ms)
+✔ a failed multi-event suffix cannot partially publish the verification cache (82.815093ms)
+✔ genesis and journal existence remain checked even when history is cached (28.861916ms)
+✔ snapshot files remain disposable and a post-append snapshot failure is retryable (36.242556ms)
+✔ blank or partial suffix records fail instead of becoming a trusted prefix (59.226615ms)
+✔ a BOM at an append boundary is rejected identically by warm and cold readers (72.940257ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 817.952539

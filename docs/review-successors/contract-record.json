@@ -1,0 +1,37 @@
+{
+  "status": "reviewed_and_frozen",
+  "runtime_released": true,
+  "lanes": {
+    "DR-201": {
+      "source": "800f36152b57183f0ad7d460355f513e8056941c",
+      "manifest": "SYSTEMS/mortal-v3/FREEZE.json",
+      "native_review": "ready"
+    },
+    "DR-211": {
+      "source": "42ce113010fb3725fba04007af3f72e996d43555",
+      "manifest": "SYSTEMS/dialogue-knowledge-v1/FREEZE.json",
+      "native_review": "ready"
+    },
+    "DR-221": {
+      "source": "d5f02ad419900050d59b32f521823cbca6ba513e",
+      "manifest": "SYSTEMS/observation-admission-v1/FREEZE.json",
+      "native_review": "ready"
+    }
+  },
+  "old_frozen_contracts_changed": false,
+  "paid_model_calls": 0,
+  "combined_contract_tests": 35,
+  "combined_typecheck": "passed",
+  "phase_a_source_commits_retained_in_history": true,
+  "freeze_hashes": {
+    "SYSTEMS/mortal-v3/FREEZE.json": "b6d1a54983666913fb0928f9f80c0d33f7cd6f802122f0f1ba0fec0bcdf87a04",
+    "SYSTEMS/dialogue-knowledge-v1/FREEZE.json": "f3a3f18982fcb8986c94e6e158e03dd9ceef7aa7453fff2b0dc340f6d78aa13f",
+    "SYSTEMS/observation-admission-v1/FREEZE.json": "f35a2cf38cfe8f63f7e55ec173ece7159dc2d549ad185eba8ed6734321506209"
+  },
+  "native_review_reports": [
+    "docs/review-successors/evidence/contracts/mortal-review.md",
+    "docs/review-successors/evidence/contracts/observation-review.md",
+    "docs/review-successors/evidence/contracts/knowledge-review.md"
+  ],
+  "cross_vendor_review": false
+}
