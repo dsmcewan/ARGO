@@ -1,5 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {readFile} from 'node:fs/promises';
 import {canonical,hash} from '../packages/contracts/src/index.ts';
 import type {IntentProposal,Principal} from '../packages/contracts/src/index.ts';
 import {initialSnapshot} from '../packages/ledger/src/mechanics.ts';
@@ -122,4 +124,20 @@ test('created admission requests own frozen data without freezing caller objects
  assert.equal(Object.isFrozen(p),false);assert.equal(Object.isFrozen(auth),false);
  const g=grant(r),bytes=canonical(g);api.assertObservationWitnessGrant(g,r,1000);assert.equal(canonical(g),bytes);assert.equal(Object.isFrozen(g),false);
  assert.ok(Object.isFrozen(api.observationAdmissionSchema));
+});
+
+test('observation admission freeze pins the contract, schema and shared type/guard module',async()=>{
+ const text=await readFile(new URL('../SYSTEMS/observation-admission-v1/FREEZE.json',import.meta.url),'utf8').catch(error=>{if(error.code==='ENOENT')return null;throw error;});
+ assert.notEqual(text,null,'Observation admission requires its own explicit freeze manifest');
+ const freeze=JSON.parse(text!) as {profile_version:string;files:Record<string,string>};
+ assert.equal(freeze.profile_version,'observation-admission/1.0.0');
+ assert.deepEqual(Object.keys(freeze.files).sort(),[
+  'SYSTEMS/observation-admission-v1/CONTRACT.md',
+  'SYSTEMS/observation-admission-v1/observation-admission.schema.json',
+  'packages/contracts/src/observation-admission.ts',
+ ]);
+ for(const [path,digest] of Object.entries(freeze.files)){
+  assert.match(digest,/^[0-9a-f]{64}$/);
+  assert.equal(createHash('sha256').update(await readFile(new URL('../'+path,import.meta.url))).digest('hex'),digest,path);
+ }
 });
