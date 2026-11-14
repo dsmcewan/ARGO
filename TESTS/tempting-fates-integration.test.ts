@@ -23,7 +23,7 @@ function options(variant:CampaignSeedOptions['variant']='genuine'):CampaignSeedO
 };}
 
 test('authored Greek campaign is complete and public extracts exclude referee state',async()=>{
- const api=await components(),world=await pack();api.assertCampaignPack(world);
+ const api:typeof import('../scenarios/tempted-fates/index.ts')=await components(),world=await pack();api.assertCampaignPack(world);
  assert.equal(world.locations.length,8);assert.equal(world.npcs.length,11);assert.equal(world.factions.length,3);assert.equal(world.rumors.length,12);assert.equal(world.variants.length,3);
  assert.ok(world.encounters.length>=6);assert.ok(world.starting_hooks.length>=3);
  const before=canonical(world),handout=api.getPlayerHandout(world);
