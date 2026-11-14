@@ -82,3 +82,7 @@ export {assertMortalV3Contract,assertMortalV3Genesis,assertMortalV3Data,mortalV3
 
 // Admission-only policy for new v1 observations, not historic witness proof.
 export * from './observation-admission.ts';
+
+// Authored actor policy requires pinned sources and a scoped host disclosure.
+export type * from './dialogue-knowledge-types.ts';
+export * from './dialogue-knowledge.ts';
