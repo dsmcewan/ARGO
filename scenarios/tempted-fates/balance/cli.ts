@@ -23,8 +23,8 @@ function argumentsOf(argv:string[]){
 async function sources(){
  const paths:string[]=[];
  async function collect(dir:string){for(const e of await readdir(join(root,dir),{withFileTypes:true})){const p=join(dir,e.name);if(e.isDirectory())await collect(p);else if(e.isFile()&&/\.(ts|json)$/.test(e.name))paths.push(p);}}
- await collect('packages/contracts/src');await collect('SYSTEMS/mortal-v2');await collect('scenarios/tempted-fates/balance');
- paths.push('packages/ledger/src/mortal/rules.ts');paths.sort();
+ await collect('packages/contracts/src');await collect('SYSTEMS');await collect('scenarios/tempted-fates/balance');
+ paths.push('packages/ledger/src/mortal/rules.ts','package.json','package-lock.json','packages/contracts/package.json','packages/ledger/package.json','scenarios/tempted-fates/package.json');paths.sort();
  const files:Record<string,string>={};for(const p of paths){const bytes=await readFile(join(root,p));
   const committed=execFileSync('git',['show',`HEAD:${p}`],{cwd:root,maxBuffer:32*1024*1024});if(!bytes.equals(committed))throw Error(`Study source differs from committed HEAD: ${p}`);files[p]=sha(bytes);}
  const commit=execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim();

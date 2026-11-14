@@ -40,7 +40,7 @@ Record every refusal and resulting state, completed objectives, health, exact ti
 
 ## Running and retaining evidence
 
-Use Node24 with repository dependencies installed, after the real reducer is integrated and all relevant sources are committed. The CLI hashes the actual committed reducer, contracts, balance modules and protocol, and retains the repository commit and Node version. It refuses uncommitted study source. Output files are exclusive; a `.started.json` remains on failure rather than silently allowing an unrecorded rerun.
+Use Node24 with repository dependencies installed, after the real reducer is integrated and all relevant sources are committed. The CLI hashes the actual committed reducer, contracts, imported SYSTEMS schemas, dependency lock/manifests, balance modules and protocol, and retains the repository commit and Node version. It refuses uncommitted study source. Output files are exclusive; a `.started.json` remains on failure rather than silently allowing an unrecorded rerun.
 
 ```sh
 node scenarios/tempted-fates/balance/cli.ts --phase pilot --output /owned/evidence/pilot.json
