@@ -1,0 +1,11 @@
+{
+  "profile_version": "tempting-fates-pack/0.1.0",
+  "rules_tool_profile": "tempting-fates-rules/0.1.0",
+  "carrier_gameplay_version": "tempted-fates/1.0.0",
+  "files": {
+    "scenarios/tempted-fates/campaign/CONTRACT.md": "e7f80e826b3970b1588dbb5b7fe87e73dd912a00cb80d371e247dc1040cf3827",
+    "scenarios/tempted-fates/campaign/content.schema.json": "b52554b0e795f89c3fa204924eac68d2dbcb9e08590b40d972370f5d858ff69f",
+    "scenarios/tempted-fates/campaign/types.ts": "f047ef254bc420341b5a077a5d8c28da2113e524677467c493edd99dcde75642"
+  },
+  "scope": "Local campaign-kit interface freeze; no causal ruleset migration or operational merge approval"
+}

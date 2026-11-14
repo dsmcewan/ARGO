@@ -1,0 +1,830 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://argo.local/schemas/tempting-fates-pack/0.1.0",
+  "title": "Tempting Fates referee campaign pack",
+  "type": "object",
+  "properties": {
+    "version": {
+      "const": "tempting-fates-pack/0.1.0"
+    },
+    "title": {
+      "$ref": "#/$defs/Name"
+    },
+    "subtitle": {
+      "$ref": "#/$defs/Name"
+    },
+    "tone_note": {
+      "$ref": "#/$defs/Text"
+    },
+    "adaptation_note": {
+      "$ref": "#/$defs/Text"
+    },
+    "public_intro": {
+      "$ref": "#/$defs/Text"
+    },
+    "start_location_id": {
+      "$ref": "#/$defs/Id"
+    },
+    "calendar": {
+      "$ref": "#/$defs/Calendar"
+    },
+    "locations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Location"
+      },
+      "minItems": 1,
+      "maxItems": 256
+    },
+    "routes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Route"
+      },
+      "minItems": 0,
+      "maxItems": 1024
+    },
+    "npcs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Npc"
+      },
+      "minItems": 1,
+      "maxItems": 256
+    },
+    "factions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Faction"
+      },
+      "minItems": 0,
+      "maxItems": 64
+    },
+    "rumors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Rumor"
+      },
+      "minItems": 0,
+      "maxItems": 1024
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Item"
+      },
+      "minItems": 0,
+      "maxItems": 1024
+    },
+    "encounters": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Encounter"
+      },
+      "minItems": 0,
+      "maxItems": 256
+    },
+    "variants": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RelicVariant"
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "starting_hooks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Hook"
+      },
+      "minItems": 0,
+      "maxItems": 64
+    }
+  },
+  "required": [
+    "version",
+    "title",
+    "subtitle",
+    "tone_note",
+    "adaptation_note",
+    "public_intro",
+    "start_location_id",
+    "calendar",
+    "locations",
+    "routes",
+    "npcs",
+    "factions",
+    "rumors",
+    "items",
+    "encounters",
+    "variants",
+    "starting_hooks"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "Id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$",
+      "not": {
+        "enum": [
+          "__proto__",
+          "prototype",
+          "constructor"
+        ]
+      }
+    },
+    "Text": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8192
+    },
+    "Name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "Variant": {
+      "enum": [
+        "genuine",
+        "counterfeit",
+        "legend"
+      ]
+    },
+    "Assessment": {
+      "enum": [
+        "true",
+        "partial",
+        "outdated",
+        "false"
+      ]
+    },
+    "Nature": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "priorities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "minItems": 1,
+          "maxItems": 16,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "description",
+        "priorities"
+      ],
+      "additionalProperties": false
+    },
+    "Activity": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048
+        },
+        "busy_until": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "description",
+        "busy_until"
+      ],
+      "additionalProperties": false
+    },
+    "SpeechPolicy": {
+      "type": "object",
+      "properties": {
+        "max_characters": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8192
+        },
+        "minimum_interval": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "max_characters",
+        "minimum_interval"
+      ],
+      "additionalProperties": false
+    },
+    "Calendar": {
+      "type": "object",
+      "properties": {
+        "seconds_per_day": {
+          "const": 86400
+        },
+        "days_per_year": {
+          "const": 360
+        },
+        "exploration_turn_seconds": {
+          "const": 600
+        },
+        "combat_round_seconds": {
+          "const": 6
+        },
+        "watch_seconds": {
+          "const": 14400
+        }
+      },
+      "required": [
+        "seconds_per_day",
+        "days_per_year",
+        "exploration_turn_seconds",
+        "combat_round_seconds",
+        "watch_seconds"
+      ],
+      "additionalProperties": false
+    },
+    "Location": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/Id"
+        },
+        "name": {
+          "$ref": "#/$defs/Name"
+        },
+        "mythic_influence": {
+          "$ref": "#/$defs/Text"
+        },
+        "public_description": {
+          "$ref": "#/$defs/Text"
+        },
+        "referee_notes": {
+          "$ref": "#/$defs/Text"
+        },
+        "occupant_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Id"
+          },
+          "minItems": 0,
+          "maxItems": 256,
+          "uniqueItems": true
+        },
+        "route_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Id"
+          },
+          "minItems": 0,
+          "maxItems": 256,
+          "uniqueItems": true
+        },
+        "is_loom": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "mythic_influence",
+        "public_description",
+        "referee_notes",
+        "occupant_ids",
+        "route_ids",
+        "is_loom"
+      ],
+      "additionalProperties": false
+    },
+    "Route": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/Id"
+        },
+        "from": {
+          "$ref": "#/$defs/Id"
+        },
+        "to": {
+          "$ref": "#/$defs/Id"
+        },
+        "travel_turns": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "condition": {
+          "$ref": "#/$defs/Text"
+        },
+        "sign": {
+          "$ref": "#/$defs/Text"
+        },
+        "access": {
+          "enum": [
+            "ordinary",
+            "conditional"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "from",
+        "to",
+        "travel_turns",
+        "condition",
+        "sign",
+        "access"
+      ],
+      "additionalProperties": false
+    },
+    "Npc": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/Id"
+        },
+        "name": {
+          "$ref": "#/$defs/Name"
+        },
+        "occupation": {
+          "$ref": "#/$defs/Text"
+        },
+        "location_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "nature": {
+          "$ref": "#/$defs/Nature"
+        },
+        "activity": {
+          "$ref": "#/$defs/Activity"
+        },
+        "speech_policy": {
+          "$ref": "#/$defs/SpeechPolicy"
+        },
+        "age_years": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "remaining_years": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "fate_role": {
+          "enum": [
+            "clotho",
+            "lachesis",
+            "atropos",
+            null
+          ]
+        },
+        "public_description": {
+          "$ref": "#/$defs/Text"
+        },
+        "private_knowledge": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Text"
+          },
+          "minItems": 0,
+          "maxItems": 64,
+          "uniqueItems": true
+        },
+        "wants": {
+          "$ref": "#/$defs/Text"
+        },
+        "will_not": {
+          "$ref": "#/$defs/Text"
+        },
+        "speech_example": {
+          "$ref": "#/$defs/Text"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "occupation",
+        "location_id",
+        "nature",
+        "activity",
+        "speech_policy",
+        "age_years",
+        "remaining_years",
+        "fate_role",
+        "public_description",
+        "private_knowledge",
+        "wants",
+        "will_not",
+        "speech_example"
+      ],
+      "additionalProperties": false
+    },
+    "Clock": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/Name"
+        },
+        "segments": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "progress": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "advance_trigger": {
+          "$ref": "#/$defs/Text"
+        },
+        "completion": {
+          "$ref": "#/$defs/Text"
+        },
+        "visible_sign": {
+          "$ref": "#/$defs/Text"
+        },
+        "interruption": {
+          "$ref": "#/$defs/Text"
+        }
+      },
+      "required": [
+        "name",
+        "segments",
+        "progress",
+        "advance_trigger",
+        "completion",
+        "visible_sign",
+        "interruption"
+      ],
+      "additionalProperties": false
+    },
+    "Faction": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/Id"
+        },
+        "name": {
+          "$ref": "#/$defs/Name"
+        },
+        "members": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Id"
+          },
+          "minItems": 1,
+          "maxItems": 256,
+          "uniqueItems": true
+        },
+        "goal": {
+          "$ref": "#/$defs/Text"
+        },
+        "resources": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "clock": {
+          "$ref": "#/$defs/Clock"
+        },
+        "approaches": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Text"
+          },
+          "minItems": 1,
+          "maxItems": 64,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "members",
+        "goal",
+        "resources",
+        "clock",
+        "approaches"
+      ],
+      "additionalProperties": false
+    },
+    "Rumor": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/Id"
+        },
+        "speaker_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "location_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "text": {
+          "$ref": "#/$defs/Text"
+        },
+        "lead_location_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "assessment": {
+          "type": "object",
+          "properties": {
+            "genuine": {
+              "$ref": "#/$defs/Assessment"
+            },
+            "counterfeit": {
+              "$ref": "#/$defs/Assessment"
+            },
+            "legend": {
+              "$ref": "#/$defs/Assessment"
+            }
+          },
+          "required": [
+            "genuine",
+            "counterfeit",
+            "legend"
+          ],
+          "additionalProperties": false
+        },
+        "referee_basis": {
+          "$ref": "#/$defs/Text"
+        }
+      },
+      "required": [
+        "id",
+        "speaker_id",
+        "location_id",
+        "text",
+        "lead_location_id",
+        "assessment",
+        "referee_basis"
+      ],
+      "additionalProperties": false
+    },
+    "Item": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/Id"
+        },
+        "name": {
+          "$ref": "#/$defs/Name"
+        },
+        "description": {
+          "$ref": "#/$defs/Text"
+        },
+        "custodian_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "slots": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000
+        },
+        "variants": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Variant"
+          },
+          "minItems": 1,
+          "maxItems": 3,
+          "uniqueItems": true
+        },
+        "secret": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description",
+        "custodian_id",
+        "slots",
+        "variants",
+        "secret"
+      ],
+      "additionalProperties": false
+    },
+    "Encounter": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/Id"
+        },
+        "location_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "title": {
+          "$ref": "#/$defs/Name"
+        },
+        "visible_situation": {
+          "$ref": "#/$defs/Text"
+        },
+        "participants": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Id"
+          },
+          "minItems": 0,
+          "maxItems": 256,
+          "uniqueItems": true
+        },
+        "approaches": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Text"
+          },
+          "minItems": 1,
+          "maxItems": 64,
+          "uniqueItems": true
+        },
+        "if_ignored": {
+          "$ref": "#/$defs/Text"
+        },
+        "costs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Text"
+          },
+          "minItems": 0,
+          "maxItems": 64,
+          "uniqueItems": true
+        },
+        "clue": {
+          "$ref": "#/$defs/Text"
+        },
+        "exit": {
+          "$ref": "#/$defs/Text"
+        }
+      },
+      "required": [
+        "id",
+        "location_id",
+        "title",
+        "visible_situation",
+        "participants",
+        "approaches",
+        "if_ignored",
+        "costs",
+        "clue",
+        "exit"
+      ],
+      "additionalProperties": false
+    },
+    "RelicVariant": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/Variant"
+        },
+        "referee_truth": {
+          "$ref": "#/$defs/Text"
+        },
+        "artifact_item_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "referee_truth",
+        "artifact_item_id"
+      ],
+      "additionalProperties": false
+    },
+    "Hook": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/Id"
+        },
+        "title": {
+          "$ref": "#/$defs/Name"
+        },
+        "prompt": {
+          "$ref": "#/$defs/Text"
+        },
+        "location_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "possible_actions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Text"
+          },
+          "minItems": 1,
+          "maxItems": 64,
+          "uniqueItems": true
+        },
+        "decline_consequence": {
+          "$ref": "#/$defs/Text"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "prompt",
+        "location_id",
+        "possible_actions",
+        "decline_consequence"
+      ],
+      "additionalProperties": false
+    },
+    "PlayerHandout": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "const": "tempting-fates-pack/0.1.0"
+        },
+        "title": {
+          "$ref": "#/$defs/Name"
+        },
+        "subtitle": {
+          "$ref": "#/$defs/Name"
+        },
+        "introduction": {
+          "$ref": "#/$defs/Text"
+        },
+        "start": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "$ref": "#/$defs/Name"
+            },
+            "description": {
+              "$ref": "#/$defs/Text"
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "description"
+          ],
+          "additionalProperties": false
+        },
+        "rules_profile": {
+          "const": "tempting-fates-rules/0.1.0"
+        }
+      },
+      "required": [
+        "version",
+        "title",
+        "subtitle",
+        "introduction",
+        "start",
+        "rules_profile"
+      ],
+      "additionalProperties": false
+    },
+    "RumorCandidate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/Id"
+        },
+        "speaker_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "text": {
+          "$ref": "#/$defs/Text"
+        },
+        "lead_location_id": {
+          "$ref": "#/$defs/Id"
+        }
+      },
+      "required": [
+        "id",
+        "speaker_id",
+        "text",
+        "lead_location_id"
+      ],
+      "additionalProperties": false
+    }
+  }
+}
