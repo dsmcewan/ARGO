@@ -92,6 +92,14 @@ Produces `createWorldSession({genesis,ledger,principal})`, a host capability wit
 - [x] Execute the full lamp conversation/offer/accept/travel/oil/return scenario using injected provider responses; retain actual requests/receipts and replay hash.
 - [x] Test refusal, concurrent commands, private solo facts, closure and restart through public APIs; document exact run commands and host trust limits.
 
+## SW-520: foundation gate budget after actual integrated timeout
+
+The first immutable full gate at `83bc6c1` passed eight groups and then killed the expanded serial foundation suite at its 300000 ms cap. It emitted no assertion failure before termination, but did not complete. This is a failed acceptance result.
+
+- [x] Retain the failed run and open an isolated Board ticket with ownership of `scripts/gate.mjs` and the budget rationale only.
+- [ ] Independently review the minimal bounded 600000 ms foundation override; preserve every group/assertion/native completion check and all other resource/trust limits.
+- [ ] Rerun the complete immutable application gate; no completion claim until it passes.
+
 ## Final acceptance and delivery
 
 - [x] Integrate all exact source commits, exports and manifests; run contracts/typecheck/boundaries and relevant tests.

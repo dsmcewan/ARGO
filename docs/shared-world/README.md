@@ -45,9 +45,9 @@ The exact source histories are retained through integration merges, not replaced
 | SW-300 journal/store | `2a2f02f` | 18 source tests; two independent suites, 20 groups, including actual COMMIT failure, writer races, lost acknowledgment and signed replay. |
 | SW-510 session/CLI | `0d29515` | 10 source tests; two independent reviews, 16 probe groups, including ordinary-process CLI runs. |
 
-Here “independent” means a separate native Codex reviewer, not a person or another vendor. These checks exercise ordinary-process controls as well as test-runner paths; they are bounded evidence, not proof against arbitrary malicious code. [Evidence index](evidence/README.md) preserves probes, failures, repairs, commands and hashes. Full application-gate and GitHub delivery identities are recorded separately after acceptance.
+Here “independent” means a separate native Codex reviewer, not a person or another vendor. These checks exercise ordinary-process controls as well as test-runner paths; they are bounded evidence, not proof against arbitrary malicious code. [Evidence index](evidence/README.md) preserves probes, failures, repairs, commands and hashes. Full application-gate and GitHub delivery identities are recorded separately after acceptance. The first integrated run at `83bc6c1` passed eight groups but timed out in the foundation group; [the failed run](evidence/full-gate-83bc6c1/failure.json) remains incomplete acceptance. A separate SW-520 Board ticket reviews a bounded foundation-only timeout adjustment without removing tests.
 
-All six source tickets use the actual blackboard, leases, disjoint worktrees and CAS. They stop at **VERIFYING** because the existing Board accepts data validators, not application changes. The application gate and reviewed GitHub merge are separate acceptance records; no Board MERGED status is fabricated.
+All six runtime source tickets use the actual blackboard, leases, disjoint worktrees and CAS. They stop at **VERIFYING** because the existing Board accepts data validators, not application changes. The application gate and reviewed GitHub merge are separate acceptance records; no Board MERGED status is fabricated.
 
 ## Performance and limits
 
