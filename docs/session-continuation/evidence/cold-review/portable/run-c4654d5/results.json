@@ -1,0 +1,366 @@
+{
+  "candidate": "c4654d52b1a08bdb4bfa18822d2cc74229d606b6",
+  "fixture_source": "8e2104c6d466b8b2bee2d0b23d984d2e60a65e11",
+  "fixture_manifest_sha256": "942fe0ed3d5aded4740b54d37c833b558cb8178c6f9cbd1192c0fc74583ea974",
+  "fixture_sha256": "0253cd63832456400fae1ec8cd88ab0a1da22b3f61980b9c70727a839e32038c",
+  "ordinary_process": true,
+  "node": "v24.22.1",
+  "paid_calls": 0,
+  "checks": [
+    {
+      "name": "old 512-event signed fixture full replay exactly reproduces saved terminal state",
+      "status": "pass",
+      "elapsed_ms": 1931.645051,
+      "details": {
+        "fixture_sha256": "0253cd63832456400fae1ec8cd88ab0a1da22b3f61980b9c70727a839e32038c",
+        "events": 512,
+        "replay_ms": 1897.4647479999999,
+        "terminal_hash": "3f73fc4e26d33455cf3a4e4a4e93d4fc72be10da7d59a5b7f8302d23528d809a",
+        "limits": "One correctness replay timing, not a SQLite/provider or portable benchmark."
+      }
+    },
+    {
+      "name": "every fixture prefix equals detached generic canonical oracle; selected raw and reordered hashes agree",
+      "status": "pass",
+      "elapsed_ms": 7014.031332,
+      "details": {
+        "generic_prefixes": 513,
+        "selected_raw_prefixes": [
+          0,
+          1,
+          2,
+          3,
+          31,
+          32,
+          127,
+          128,
+          255,
+          256,
+          511,
+          512
+        ]
+      }
+    },
+    {
+      "name": "signature failures at first and last old prefixes remain fatal without changing retained states",
+      "status": "pass",
+      "elapsed_ms": 68.051829,
+      "details": {
+        "tampered_prefixes": [
+          1,
+          512
+        ]
+      }
+    },
+    {
+      "name": "old retained prefixes and divergent immutable forks never share mutable hash/index state",
+      "status": "pass",
+      "elapsed_ms": 190.07735800000046,
+      "details": {
+        "fork_prefixes": [
+          1,
+          32,
+          256,
+          512
+        ]
+      }
+    },
+    {
+      "name": "mixed signed Unicode, impression, loan, physical, encounter and closure trace preserves every digest",
+      "status": "pass",
+      "elapsed_ms": 342.63440600000104,
+      "details": {
+        "events": 16,
+        "all_prefix_hashes_match": true,
+        "unicode_includes_lone_surrogate": true
+      }
+    },
+    {
+      "name": "private command context binding matches every frozen contextual predicate and raw guard first",
+      "status": "pass",
+      "elapsed_ms": 110.65619599999991,
+      "details": {
+        "cases": 50,
+        "context_valid_reaches_stale_conflict": 28,
+        "raw_or_context_invalid": 22,
+        "outcomes": [
+          {
+            "name": "positive_speak",
+            "expected": "CONFLICT",
+            "actual": "CONFLICT"
+          },
+          {
+            "name": "positive_impress",
+            "expected": "CONFLICT",
+            "actual": "CONFLICT"
+          },
+          {
+            "name": "positive_set_activity",
+            "expected": "CONFLICT",
+            "actual": "CONFLICT"
+          },
+          {
+            "name": "positive_offer_loan",
+            "expected": "CONFLICT",
+            "actual": "CONFLICT"
+          },
+          {
+            "name": "positive_withdraw_loan_offer",
+            "expected": "CONFLICT",
+            "actual": "CONFLICT"
+          },
+          {
+            "name": "positive_accept_loan",
+            "expected": "CONFLICT",
+            "actual": "CONFLICT"
+          },
+          {
+            "name": "positive_return_loan",
+            "expected": "CONFLICT",
+            "actual": "CONFLICT"
+          },
+          {
+            "name": "positive_set_knowledge",
+            "expected": "CONFLICT",
+            "actual": "CONFLICT"
+          },
+          {
+            "name": "positive_close_mythic_engagement",
+            "expected": "CONFLICT",
+            "actual": "CONFLICT"
+          },
+          {
+            "name": "positive_travel",
+            "expected": "CONFLICT",
+            "actual": "CONFLICT"
+          },
+          {
+            "name": "positive_explore",
+            "expected": "CONFLICT",
+            "actual": "CONFLICT"
+          },
+          {
+            "name": "positive_rest",
+            "expected": "CONFLICT",
+            "actual": "CONFLICT"
+          },
+          {
+            "name": "positive_wait",
+            "expected": "CONFLICT",
+            "actual": "CONFLICT"
+          },
+          {
+            "name": "positive_equip",
+            "expected": "CONFLICT",
+            "actual": "CONFLICT"
+          },
+          {
+            "name": "positive_transfer_item",
+            "expected": "CONFLICT",
+            "actual": "CONFLICT"
+          },
+          {
+            "name": "positive_pickup",
+            "expected": "CONFLICT",
+            "actual": "CONFLICT"
+          },
+          {
+            "name": "positive_loot",
+            "expected": "CONFLICT",
+            "actual": "CONFLICT"
+          },
+          {
+            "name": "positive_give",
+            "expected": "CONFLICT",
+            "actual": "CONFLICT"
+          },
+          {
+            "name": "positive_buy",
+            "expected": "CONFLICT",
+            "actual": "CONFLICT"
+          },
+          {
+            "name": "positive_begin_encounter",
+            "expected": "CONFLICT",
+            "actual": "CONFLICT"
+          },
+          {
+            "name": "positive_attack",
+            "expected": "CONFLICT",
+            "actual": "CONFLICT"
+          },
+          {
+            "name": "positive_defend",
+            "expected": "CONFLICT",
+            "actual": "CONFLICT"
+          },
+          {
+            "name": "positive_retreat",
+            "expected": "CONFLICT",
+            "actual": "CONFLICT"
+          },
+          {
+            "name": "positive_pass",
+            "expected": "CONFLICT",
+            "actual": "CONFLICT"
+          },
+          {
+            "name": "positive_recover_encounter",
+            "expected": "CONFLICT",
+            "actual": "CONFLICT"
+          },
+          {
+            "name": "scope_branch_id",
+            "expected": "INVALID_CONTRACT",
+            "actual": "INVALID_CONTRACT"
+          },
+          {
+            "name": "scope_campaign_id",
+            "expected": "INVALID_CONTRACT",
+            "actual": "INVALID_CONTRACT"
+          },
+          {
+            "name": "scope_rights_lane",
+            "expected": "INVALID_CONTRACT",
+            "actual": "INVALID_CONTRACT"
+          },
+          {
+            "name": "scope_tenant_id",
+            "expected": "INVALID_CONTRACT",
+            "actual": "INVALID_CONTRACT"
+          },
+          {
+            "name": "scope_workspace_id",
+            "expected": "INVALID_CONTRACT",
+            "actual": "INVALID_CONTRACT"
+          },
+          {
+            "name": "scope_workspace_tenant_id",
+            "expected": "INVALID_CONTRACT",
+            "actual": "INVALID_CONTRACT"
+          },
+          {
+            "name": "scope_world_id",
+            "expected": "INVALID_CONTRACT",
+            "actual": "INVALID_CONTRACT"
+          },
+          {
+            "name": "unknown_actor",
+            "expected": "INVALID_CONTRACT",
+            "actual": "INVALID_CONTRACT"
+          },
+          {
+            "name": "unknown_speech_addressee",
+            "expected": "INVALID_CONTRACT",
+            "actual": "INVALID_CONTRACT"
+          },
+          {
+            "name": "unknown_impression_subject",
+            "expected": "INVALID_CONTRACT",
+            "actual": "INVALID_CONTRACT"
+          },
+          {
+            "name": "unknown_borrower",
+            "expected": "INVALID_CONTRACT",
+            "actual": "INVALID_CONTRACT"
+          },
+          {
+            "name": "unknown_item",
+            "expected": "INVALID_CONTRACT",
+            "actual": "INVALID_CONTRACT"
+          },
+          {
+            "name": "unknown_checkpoint",
+            "expected": "INVALID_CONTRACT",
+            "actual": "INVALID_CONTRACT"
+          },
+          {
+            "name": "unknown_policy",
+            "expected": "INVALID_CONTRACT",
+            "actual": "INVALID_CONTRACT"
+          },
+          {
+            "name": "wrong_policy_subject",
+            "expected": "INVALID_CONTRACT",
+            "actual": "INVALID_CONTRACT"
+          },
+          {
+            "name": "cap_above_policy",
+            "expected": "INVALID_CONTRACT",
+            "actual": "INVALID_CONTRACT"
+          },
+          {
+            "name": "wrong_policy_owner",
+            "expected": "INVALID_CONTRACT",
+            "actual": "INVALID_CONTRACT"
+          },
+          {
+            "name": "unknown_knowledge",
+            "expected": "INVALID_CONTRACT",
+            "actual": "INVALID_CONTRACT"
+          },
+          {
+            "name": "self_address",
+            "expected": "INVALID_CONTRACT",
+            "actual": "INVALID_CONTRACT"
+          },
+          {
+            "name": "self_impression",
+            "expected": "INVALID_CONTRACT",
+            "actual": "INVALID_CONTRACT"
+          },
+          {
+            "name": "self_borrower",
+            "expected": "INVALID_CONTRACT",
+            "actual": "INVALID_CONTRACT"
+          },
+          {
+            "name": "expired_offer",
+            "expected": "INVALID_CONTRACT",
+            "actual": "INVALID_CONTRACT"
+          },
+          {
+            "name": "mortal_dynamic_travel",
+            "expected": "CONFLICT",
+            "actual": "CONFLICT"
+          },
+          {
+            "name": "mortal_dynamic_attack",
+            "expected": "CONFLICT",
+            "actual": "CONFLICT"
+          },
+          {
+            "name": "mortal_dynamic_transfer_item",
+            "expected": "CONFLICT",
+            "actual": "CONFLICT"
+          }
+        ]
+      }
+    },
+    {
+      "name": "caller freezing, aliases, forged state flags and hostile values cannot enter owned caches",
+      "status": "pass",
+      "elapsed_ms": 25.727538999999524,
+      "details": {
+        "hostile_trap_calls": 0
+      }
+    },
+    {
+      "name": "aggregate byte refusal after tentative loan transfer leaves prior hash, custody and request reusable",
+      "status": "pass",
+      "elapsed_ms": 1962.569519999999,
+      "details": {
+        "synthetic_host_history": true,
+        "not_signed_fixture_history": true
+      }
+    }
+  ],
+  "passed": 8,
+  "failed": 0,
+  "limits": [
+    "Source/frozen-file identity is enforced by the external launcher.",
+    "Generic oracle uses detached raw state and unchanged canonical serializer.",
+    "Synthetic capacity input proves guard/cache behavior, not signed-prefix authentication.",
+    "No SQLite reopen or long-runtime performance claim follows from these pure compatibility checks."
+  ]
+}

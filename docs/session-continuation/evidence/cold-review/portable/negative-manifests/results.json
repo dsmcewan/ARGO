@@ -1,0 +1,36 @@
+{
+  "checks": [
+    {
+      "field": "source",
+      "exit_code": 1,
+      "rejected_before_checks": true,
+      "log": "source/refusal.log"
+    },
+    {
+      "field": "fixture_sha256",
+      "exit_code": 1,
+      "rejected_before_checks": true,
+      "log": "fixture_sha256/refusal.log"
+    },
+    {
+      "field": "genesis_hash",
+      "exit_code": 1,
+      "rejected_before_checks": true,
+      "log": "genesis_hash/refusal.log"
+    },
+    {
+      "field": "terminal_state_hash",
+      "exit_code": 1,
+      "rejected_before_checks": true,
+      "log": "terminal_state_hash/refusal.log"
+    },
+    {
+      "field": "terminal_event_hash",
+      "exit_code": 1,
+      "rejected_before_checks": true,
+      "log": "terminal_event_hash/refusal.log"
+    }
+  ],
+  "passed": 5,
+  "failed": 0
+}

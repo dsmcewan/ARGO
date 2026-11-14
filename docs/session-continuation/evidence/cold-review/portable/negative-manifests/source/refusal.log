@@ -1,0 +1,20 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Fixture manifest must identify the original baseline
++ actual - expected
+
++ '0000000000000000000000000000000000000000'
+- '8e2104c6d466b8b2bee2d0b23d984d2e60a65e11'
+
+    at file:///workspace/reports/2026-11-14-argo-continuation/cold-review/portable/compatibility.mjs:16:8 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: '0000000000000000000000000000000000000000',
+  expected: '8e2104c6d466b8b2bee2d0b23d984d2e60a65e11',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.1

@@ -1,0 +1,33 @@
+{
+  "source": "8e2104c6d466b8b2bee2d0b23d984d2e60a65e11",
+  "node": "v24.22.1",
+  "platform": "linux",
+  "test_runner": false,
+  "paid_calls": 0,
+  "fixture_events": 512,
+  "fixture_bytes": 1349611,
+  "fixture_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "genesis_hash": "c2ed1ef5296b45aa06bf28453ff92cf69d00110d14e05f64a6da55144b3b69a7",
+  "terminal_state_hash": "3f73fc4e26d33455cf3a4e4a4e93d4fc72be10da7d59a5b7f8302d23528d809a",
+  "terminal_event_hash": "cb66cd306d91477db1e932243c5cddcaac21c9b34a0ecf9c514792513815e71a",
+  "terminal_state_bytes": 215355,
+  "fixture_creation_ms": 6340.374368,
+  "fixture_creation_profiled": false,
+  "fixture_schema": [
+    "genesis",
+    "events",
+    "expected_state"
+  ],
+  "fixture_private_mode": "0700 directory / 0600 file; generated private key never persisted",
+  "source_sha256": {
+    "packages/ledger/src/world/journal.ts": "acc2f0b4c16eb7df4139b879b16bedbe7f6812dccd33fc4893f595c9cff709f9",
+    "packages/ledger/src/world/rules/engine.ts": "08af735d724e9bd205e11306a0fbc6462277b3934e08fb5499184577ead2d8f1",
+    "packages/ledger/src/world/rules/ownership.ts": "9ccaf02a50871409ce7f60ab2566cf076588fff96eee4a5880a47eb6e38e16a3",
+    "packages/contracts/src/shared-world.ts": "8edbb1eb833c0fb579d7bbd52b50b791d1cd43751cc690ee29e91995f56cc9c2",
+    "packages/contracts/src/index.ts": "9ecc6814ab29d9d64254562496ea925e06468850d916c8904179576d8c3e57c1",
+    "packages/contracts/src/mortal-v3.ts": "5e4c4dc2ffd220b30f4d3e4a93ec885e39fbd18a42b0845adb441bf962c5d3f7",
+    "packages/ledger/src/mortal-v3/rules.ts": "66f56b148765d3a44ccba96cf42a035f80fb9e881436b4aa6d1273f8faad3e8b",
+    "scenarios/tempted-fates/shared-world/seed.ts": "2f20b41b2079f09c77c70b61a3b0a1a013bbbe73f41bf7e60c7bbc5287a8ce6d"
+  },
+  "harness_sha256": "cba53e8a36fa3fc18d3d499c6fcfd304fb9bf47e9905e0e09158f2d235a49a62"
+}

@@ -19,7 +19,7 @@ Source commit `c4654d52b1a08bdb4bfa18822d2cc74229d606b6` is retained as an ances
 Evidence:
 
 - [Measurement](evidence/cold-measurement-7c16c0d.json), produced by the unchanged [runtime runner](../shared-world/measure-runtime.mjs).
-- [Independent source review](evidence/cold-review/REVIEW.md): eight ordinary-process groups, all 513 prefix hash oracles against the preserved baseline fixture, context/reference matrix, hostile inputs, forks and capacity refusal; no findings.
+- [Independent source review](evidence/cold-review/REVIEW.md): eight ordinary-process groups, all 513 prefix hash oracles against the preserved baseline fixture, context/reference matrix, hostile inputs, forks and capacity refusal; no findings. The [portable reproduction harness](evidence/cold-review/portable/README.md) accepts a separately created, source-pinned baseline fixture; it retains the same eight checks and generic oracle and passed five malformed-manifest controls.
 - [Native completion record](evidence/cold-native-c4654d5.json): the unchanged native runner verified **114 named tests** in a read-only, network-isolated disposable clone. Its [completion output](evidence/cold-native-c4654d5.log) is retained. The earlier normal-workspace run was refused for missing child completion events and remains recorded as a refusal, never a pass.
 - [Source Board/CAS record](evidence/SC-610-source-record.json): actual state VERIFYING. This is source submission, not a claim that the Board's data-only gate approved executable application changes. The final ten-group application gate remains a later integration step.
 
