@@ -17,6 +17,8 @@ import {keys} from './mortal-fixtures.ts';
 async function api(){const m=await import(new URL('../packages/session/src/conversation.ts',import.meta.url).href).catch(e=>{if(e.code==='ERR_MODULE_NOT_FOUND')return {};throw e;});assert.equal(typeof m.createWorldConversation,'function');return m as {createWorldConversation:typeof import('../packages/session/src/conversation.ts').createWorldConversation};}
 const policy=(timeout_ms=5000):ConversationPolicy=>({provider_policy_id:'test_v1',generation_mode:'offline_fixture',candidates:[{vendor:'xai',model:'grok-4.7',pool:'offline'}],effort:'low',timeout_ms,max_context_bytes:32768,max_output_tokens:800});
 const response=(text:string|null)=>({id:'fixture',status:'completed',output:[{type:'message',content:[{type:'output_text',text:JSON.stringify({text})}]}]});
+function latch(){let resolve!:()=>void;const promise=new Promise<void>(done=>{resolve=done;});return {promise,resolve};}
+async function bounded<T>(promise:Promise<T>,ms=10000):Promise<T>{let timer:ReturnType<typeof setTimeout>|undefined;try{return await Promise.race([promise,new Promise<never>((_resolve,reject)=>{timer=setTimeout(()=>reject(Error('Operation did not finish')),ms);})]);}finally{clearTimeout(timer);}}
 async function setup(t:TestContext,invoke?:(request:unknown,turn:ConversationCallContext)=>Promise<unknown>,timeout=5000){
  const m=await api();
  const dir=await mkdtemp(join(tmpdir(),'argo-conversation-')),g=genesis(),path=join(dir,'world.sqlite'),turnPath=join(dir,'turns.sqlite');const ledger=await openWorldLedger({path,genesis:g,privateKey:keys.privateKey});
@@ -115,4 +117,56 @@ test('busy NPCs and explicit provider null produce no-reply without invented exp
 test('host close drains a just-admitted insertion and never starts its generation afterward',async t=>{
  const f=await setup(t),h=f.host(),pending=h.turn({turn_id:'close_early',text:'Hello'});await h.close();await pending;
  assert.equal(f.requests.length,0);assert.equal((await f.ledger.snapshot()).cursor.sequence,0);await assert.rejects(h.resume({turn_id:'close_early'}));
+});
+
+test('cancellation during the last awaited NPC refresh prevents provider dispatch',async t=>{
+ const f=await setup(t),entered=latch(),release=latch();let refreshes=0;
+ const wrapped:WorldLedger={...f.ledger,snapshot:async()=>{const state=await f.ledger.snapshot(),row=await storeAccess(f.store).load('last_refresh');if(row?.phase==='generating'&&++refreshes===3){entered.resolve();await release.promise;}return state;}};
+ const second=await openWorldConversationStore({...f.options,mode:'open'});f.stores.push(second);const a=f.host(wrapped),b=f.host(f.ledger,second);
+ const running=a.turn({turn_id:'last_refresh',text:'Please listen.'});void running.catch(()=>{});
+ try{await bounded(entered.promise);assert.equal(f.requests.length,0);assert.equal((await b.cancel({turn_id:'last_refresh'})).cancel_requested,true);}
+ finally{release.resolve();}
+ assert.equal((await bounded(running)).delivery,null);assert.equal(f.requests.length,0);assert.equal((await f.ledger.snapshot()).cursor.sequence,1);
+});
+
+test('host close detaches committed ledger acknowledgments and fresh handles recover exact pending commands',async t=>{
+ for(const actor of ['hero','raider']){
+  const f=await setup(t),entered=latch(),release=latch();let callerCloses=0,externalCalls=0;
+  const wrapped:WorldLedger={snapshot:async()=>{externalCalls++;return f.ledger.snapshot();},events:async options=>{externalCalls++;return f.ledger.events(options);},close:async()=>{callerCloses++;},submit:async(c,p)=>{externalCalls++;const receipt=await f.ledger.submit(c,p);if(c.actor_id===actor){entered.resolve();await release.promise;}return receipt;}};
+  const h=f.host(wrapped),running=h.turn({turn_id:'close_ack',text:'Hello'}).then(value=>({value}),error=>({error}));
+  try{
+   await bounded(entered.promise);const before=await storeAccess(f.store).load('close_ack');assert.equal(before!.phase,actor==='hero'?'input_pending':'reply_pending');
+   let closed=false;const closing=h.close().then(()=>{closed=true;});await new Promise(resolve=>setTimeout(resolve,300));const closedBeforeAck=closed;
+   if(!closedBeforeAck){release.resolve();await bounded(closing);}
+   assert.equal(closedBeforeAck,true,'close waited for caller-owned acknowledgment');await bounded(closing);await bounded(running);
+   assert.equal(callerCloses,0);const callsAtClose=externalCalls,pending=await storeAccess(f.store).load('close_ack');assert.deepEqual(pending,before);
+   const second=await openWorldConversationStore({...f.options,mode:'open'});f.stores.push(second);const recovered=await f.host(f.ledger,second).resume({turn_id:'close_ack'});
+   assert.equal(recovered.outcome,'replied');assert.equal(recovered.cancel_requested,false);assert.equal(f.requests.length,1);assert.equal((await f.ledger.snapshot()).cursor.sequence,2);
+   const settled=await storeAccess(second).load('close_ack');assert.deepEqual(settled!.input_command,before!.input_command);if(actor==='raider')assert.deepEqual(settled!.reply_command,before!.reply_command);
+   release.resolve();await new Promise(resolve=>setTimeout(resolve,10));assert.deepEqual(await storeAccess(second).load('close_ack'),settled);assert.equal(externalCalls,callsAtClose);assert.equal(f.requests.length,1);assert.equal(callerCloses,0);
+  }finally{release.resolve();await bounded(running);}
+ }
+});
+
+test('receipt lookup rejects active page containers before inspecting their data',async t=>{
+ const f=await setup(t);await f.host().turn({turn_id:'page',text:'Hello'});
+ for(const shape of ['accessor','proxy','sparse']){
+  // The trusted async callback itself must assimilate `then` before returning
+  // a Proxy. The host must reject it without any further data/descriptor reads.
+  let reads=0,promiseReads=0;const wrapped:WorldLedger={...f.ledger,events:async options=>{const page=await f.ledger.events(options),event=page[0];if(shape==='accessor')Object.defineProperty(page,'0',{enumerable:true,get(){reads++;return event;}});if(shape==='sparse')delete page[0];return shape==='proxy'?new Proxy(page,{get(target,key,receiver){if(key==='then')promiseReads++;else reads++;return Reflect.get(target,key,receiver);},ownKeys(target){reads++;return Reflect.ownKeys(target);},getOwnPropertyDescriptor(target,key){reads++;return Reflect.getOwnPropertyDescriptor(target,key);}}):page;}};
+  const result=await f.host(wrapped).read({turn_id:'page'}).then(()=>null,error=>error);assert.equal(reads,0,shape+' ran active data behavior');assert.ok(promiseReads<=1,'host added Promise assimilation of a rejected Proxy');assert.ok(result instanceof ArgoError);assert.equal(result.code,'INVALID_CONTRACT');
+ }
+});
+
+test('host wrappers preserve original ledger passive capability validation',async t=>{
+ const f=await setup(t);let traps=0;const active=Object.defineProperty({...f.ledger},'submit',{get(){traps++;return f.ledger.submit;}});
+ assert.throws(()=>f.host(active));assert.equal(traps,0);
+ assert.throws(()=>f.host(new Proxy(f.ledger,{getOwnPropertyDescriptor(target,key){traps++;return Reflect.getOwnPropertyDescriptor(target,key);},get(target,key,receiver){traps++;return Reflect.get(target,key,receiver);}})));assert.equal(traps,0);
+});
+
+test('model cache identity is stable within a fixed conversation and isolated across policy bindings',async t=>{
+ const f=await setup(t),h=f.host();await h.turn({turn_id:'cache_one',text:'Hello'});await h.turn({turn_id:'cache_two',text:'Tell me more.'});
+ const requests=f.requests as {prompt_cache_key:string;previous_response_id?:string}[];assert.match(requests[0]!.prompt_cache_key,/^[a-f0-9]{64}$/);assert.equal(requests[1]!.prompt_cache_key,requests[0]!.prompt_cache_key);
+ const second=await openWorldConversationStore({...f.options,path:join(f.dir,'other-policy.sqlite'),policy:{...f.options.policy,provider_policy_id:'test_v2'}});f.stores.push(second);
+ await f.host(f.ledger,second).turn({turn_id:'cache_one',text:'A separate policy.'});assert.notEqual(requests[2]!.prompt_cache_key,requests[0]!.prompt_cache_key);assert.ok(requests.every(r=>r.previous_response_id===undefined));
 });

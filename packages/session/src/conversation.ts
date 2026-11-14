@@ -1,8 +1,8 @@
 /** Explicit one-question/one-reply orchestration; the world journal alone commits. */
 import {randomBytes,createPublicKey,verify} from 'node:crypto';
 import {types as nodeTypes} from 'node:util';
-import {ArgoError,assertWorldContract,canonical,hash,freezeDto,fail,worldRequestHash} from '@argo/contracts';
-import type {WorldCommand,WorldReceipt,WorldPrincipal,WorldEvent,WorldQuery} from '@argo/contracts';
+import {ArgoError,assertWorldData,assertWorldContract,canonical,hash,freezeDto,fail,worldRequestHash} from '@argo/contracts';
+import type {WorldCommand,WorldReceipt,WorldPrincipal,WorldEvent,WorldQuery,WorldLedger} from '@argo/contracts';
 import {createWorldModelAgent,worldDialoguePacket} from '@argo/interventions';
 import {createWorldSession} from './index.ts';
 import {storeAccess} from './conversation-store.ts';
@@ -20,18 +20,37 @@ function waitFor<T>(promise:Promise<T>,signal?:AbortSignal):Promise<T>{
  return new Promise((resolve,reject)=>{const abort=()=>reject(signal.reason);signal.addEventListener('abort',abort,{once:true});promise.then(resolve,reject).finally(()=>signal.removeEventListener('abort',abort));if(signal.aborted)abort();});
 }
 function terminal(outcome:Terminal['outcome'],reason:Terminal['reason'],proof:RejectionProof|null=null):Terminal{return {outcome,reason,rejection_proof:proof};}
+function ledgerMethods(input:unknown):WorldLedger{
+ if(!input||typeof input!=='object'||nodeTypes.isProxy(input))invalid('Conversation requires an injected ledger');
+ return Object.fromEntries(['snapshot','events','submit','close'].map(name=>{
+  const field=Object.getOwnPropertyDescriptor(input,name);if(!field||!('value'in field)||typeof field.value!=='function')invalid('Conversation ledger requires explicit methods');
+  return [name,field.value];
+ })) as unknown as WorldLedger;
+}
 export function createWorldConversation(input:CreateConversationOptions):WorldConversation{
  const raw=capabilityFields(input,['store','ledger','model']),access=storeAccess(raw.store as CreateConversationOptions['store']),b=access.binding,g=access.genesis;
  const clients=capabilityFields(raw.model,['clientFor'],['countTokensFor','cooldown']);if(typeof clients.clientFor!=='function'||clients.countTokensFor!==undefined&&typeof clients.countTokensFor!=='function')invalid('Conversation requires injected client factories');
  if(clients.cooldown!==undefined){const methods=capabilityFields(clients.cooldown,['get','success','refuse']);for(const method of Object.values(methods))if(typeof method!=='function')invalid('Invalid conversation cooldown');}
- const model=clients as ConversationModelInjection,ledger=raw.ledger as CreateConversationOptions['ledger'];
- const player=createWorldSession({genesis:g,ledger,principal:b.player}),npc=createWorldSession({genesis:g,ledger,principal:b.npc});
+ const model=clients as ConversationModelInjection,original=raw.ledger,methods=ledgerMethods(original);
  const publicKey=createPublicKey(b.authority_public_key),active=new Map<string,Promise<TurnResult>>(),controllers=new Map<string,AbortController>(),operations=new Set<Promise<unknown>>();let closing=false,closePromise:Promise<void>|undefined;
+ const externalWaiters=new Set<()=>void>();
+ function external<T>(call:()=>Promise<T>):Promise<T>{
+  // Closing detaches our wait, never the caller's possibly committed operation.
+  // Always consume late resolution/rejection without advancing the outbox.
+  return new Promise((resolve,reject)=>{
+   const stop=()=>{externalWaiters.delete(stop);reject(new ArgoError('UNAVAILABLE','Conversation host closed; dispatched command may have committed'));};
+   if(closing){stop();return;}externalWaiters.add(stop);
+   const accept=(value:T)=>{if(externalWaiters.delete(stop)){if(value!==null&&typeof value==='object'&&nodeTypes.isProxy(value))reject(new ArgoError('INVALID_CONTRACT','Ledger results require passive data'));else resolve(value);}},refuse=(error:unknown)=>{if(externalWaiters.delete(stop))reject(error);};
+   try{Promise.resolve(call()).then(accept,refuse);}catch(error){refuse(error);}
+  });
+ }
+ const ledger:WorldLedger={snapshot:()=>external(()=>methods.snapshot.call(original)),events:options=>external(()=>methods.events.call(original,options)),submit:(command,principal)=>external(()=>methods.submit.call(original,command,principal)),close:async()=>{fail('UNAUTHORIZED','Conversation does not own the ledger');}};
+ const player=createWorldSession({genesis:g,ledger,principal:b.player}),npc=createWorldSession({genesis:g,ledger,principal:b.npc});
  const maxSpeech=g.profiles.find(p=>p.actor_id===b.player.actor_id)!.max_speech_characters,maxReply=g.profiles.find(p=>p.actor_id===b.npc.actor_id)!.max_speech_characters;
  function track<T>(promise:Promise<T>):Promise<T>{operations.add(promise);void promise.finally(()=>operations.delete(promise)).catch(()=>{});return promise;}
  const requireOpen=()=>{if(closing)fail('UNAVAILABLE','Conversation host is closed');};
  async function eventAt(sequence:number):Promise<WorldEvent|null>{
-  const page=await ledger.events({after:sequence-1,limit:1});if(!Array.isArray(page)||page.length>1)corrupt('Invalid conversation prefix page');if(!page.length)return null;
+  const page=await ledger.events({after:sequence-1,limit:1});assertWorldData(page);if(!Array.isArray(page)||page.length>1)corrupt('Invalid conversation prefix page');if(!page.length)return null;
   const event=page[0]!;assertWorldContract('Event',event);const {hash:digest,...signed}=event,{signature,...body}=signed;
   if(event.sequence!==sequence||event.genesis_hash!==b.genesis_hash||canonical(event.scope)!==canonical(b.scope)||hash(signed)!==digest||!verify(null,Buffer.from(canonical({domain:'shared-world/0.1.0/event',event:body})),publicKey,Buffer.from(signature,'base64')))corrupt('Conversation prefix event does not verify');return event;
  }
@@ -72,9 +91,12 @@ export function createWorldConversation(input:CreateConversationOptions):WorldCo
   const remaining=attempt.deadline_at_ms-Date.now(),timer=setTimeout(()=>controller.abort(new Error('Generation deadline reached')),Math.max(0,remaining));
   const call=freezeDto({turn_id:row.turn_id,attempt_id:attempt.attempt_id,binding_hash:row.binding_hash});
   try{
-   const agent=createWorldModelAgent({scope:b.scope,actorId:b.npc.actor_id,sessionId:row.turn_key,candidates:b.policy.candidates,effort:b.policy.effort,timeoutMs:b.policy.timeout_ms,maxContextBytes:b.policy.max_context_bytes,maxOutputTokens:b.policy.max_output_tokens,
+   const agent=createWorldModelAgent({scope:b.scope,actorId:b.npc.actor_id,sessionId:hash({domain:CONVERSATION_VERSION+'/cache-session',binding_hash:row.binding_hash}),candidates:b.policy.candidates,effort:b.policy.effort,timeoutMs:b.policy.timeout_ms,maxContextBytes:b.policy.max_context_bytes,maxOutputTokens:b.policy.max_output_tokens,
     clientFor:candidate=>model.clientFor(candidate,call),...(model.countTokensFor?{countTokensFor:candidate=>model.countTokensFor!(candidate,call)}:{}),...(model.cooldown?{cooldown:model.cooldown}:{}),
-    refreshContext:async(query,options)=>{options.signal.throwIfAborted();const latest=await access.load(row.turn_id);if(!latest||latest.revision!==row.revision||latest.phase!=='generating'||latest.cancel_requested||Date.now()>=attempt.deadline_at_ms)fail('UNAVAILABLE','Generation attempt lost its claim');return npc.view(query);}});
+    refreshContext:async(query,options)=>{
+     const claim=async()=>{options.signal.throwIfAborted();const latest=await access.load(row.turn_id);options.signal.throwIfAborted();if(closing||!latest||latest.revision!==row.revision||latest.phase!=='generating'||latest.attempt?.attempt_id!==attempt.attempt_id||latest.cancel_requested||Date.now()>=attempt.deadline_at_ms)fail('UNAVAILABLE','Generation attempt lost its claim');};
+     await claim();const view=await npc.view(query);await claim();return view;
+    }});
    if(closing||remaining<=0)controller.abort();
    const proposal=await agent.respond(attempt.query,row.inbound_record_id!,requestIdFor(b,row.turn_id,'reply'),{signal:controller.signal});
    const current=await access.load(row.turn_id);if(!current)corrupt('Generation row disappeared');if(current.revision!==row.revision)return current;
@@ -135,6 +157,6 @@ export function createWorldConversation(input:CreateConversationOptions):WorldCo
    if(row.phase==='input_pending'||row.phase==='reply_pending')return drive(row);
    const result=await present(id);if(!result)corrupt('Cancelled turn disappeared');return result;
   })()),signal);},
-  close(){if(!closePromise){closing=true;for(const controller of controllers.values())controller.abort(new Error('Conversation host closing'));closePromise=(async()=>{await Promise.allSettled([...operations,...active.values()]);})();}return closePromise;},
+  close(){if(!closePromise){closing=true;for(const stop of externalWaiters)stop();for(const controller of controllers.values())controller.abort(new Error('Conversation host closing'));closePromise=(async()=>{await Promise.allSettled([...operations,...active.values()]);})();}return closePromise;},
  });
 }
