@@ -5,6 +5,7 @@
   "type": "module",
   "exports": "./src/index.ts",
   "dependencies": {
-    "@argo/contracts": "0.1.0"
+    "@argo/contracts": "0.1.0",
+    "@argo/model-client": "0.1.0"
   }
 }
