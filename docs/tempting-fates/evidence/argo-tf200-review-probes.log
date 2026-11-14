@@ -1,0 +1,14 @@
+{
+  "assertions": 40570,
+  "passive_side_effects": 0,
+  "rule_exports": [
+    "abilityFromDice",
+    "capacity",
+    "previewDamage",
+    "previewProject",
+    "previewRest",
+    "resolveCheck",
+    "resolveMorale"
+  ],
+  "status": "PASS"
+}

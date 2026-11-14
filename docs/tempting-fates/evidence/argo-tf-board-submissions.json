@@ -1,0 +1,17 @@
+[
+  {
+    "ticket": "TF-100",
+    "source_commit": "ab83d9fdb6c1334c20b5e6e43d41f09e5433c749",
+    "status": "VERIFYING",
+    "artifact_count": 4
+  },
+  {
+    "ticket": "TF-900",
+    "source_commit": "5a2f5718abf0cdc1ee87a104bf4a6ee1d387690b",
+    "submission_error": "Candidate changes pinned gate policy",
+    "status": "READY",
+    "artifact_count": 15,
+    "automatic_dispatch_running": false,
+    "reason": "Explicit scenario Ajv dependency and corresponding workspace lock entry change pinned manifests. No trust root update or bypass attempted."
+  }
+]

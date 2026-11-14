@@ -18,7 +18,7 @@
 
 Describe what the travelers can actually see. Melia is working, not waiting to recruit heroes. If they ask about the promised lamp, she can explain that it must reach the burial workers before they depart. She would prefer a named person to take responsibility for returning it. She can still arrange another carrier if everyone declines.
 
-**Loan terms:** the ordinary lamp costs5 obols to replace, but the loan is free. Name its return checkpoint explicitly (normally the next harbor return). The traveler supplies oil:1 obol burns for6 exploration turns. Record damage actually incurred; any repair agreement cannot silently exceed the stated5-obol replacement value. There is no advance deposit, compulsory service or hidden curse on this lamp.
+**Loan terms:** the ordinary lamp costs 5 obols to replace, but the loan is free. Name its return checkpoint explicitly (normally the next harbor return). The traveler supplies oil: 1 obol burns for 6 exploration turns. Record damage actually incurred; any repair agreement cannot silently exceed the stated 5-obol replacement value. There is no advance deposit, compulsory service or hidden curse on this lamp.
 
 **Optional narrator aside:** *The city has a notice for everything. Repairs remain a largely oral tradition.* This is an external aside, not a fourth NPC or a voice anyone can interrogate.
 
@@ -40,10 +40,10 @@ A successful visit can end with a borrowed lamp, a conversation, a fair purchase
 
 ### One worked adjudication
 
-A traveler notices that a jar is tipping toward the edge of Melia's table and tries to catch it before it falls. The referee establishes that there is still a chance to react, announces a Dexterity check against15, and explains that failure breaks the ordinary jar and draws Melia's attention. The traveler has Dexterity+2.
+A traveler notices that a jar is tipping toward the edge of Melia's table and tries to catch it before it falls. The referee establishes that there is still a chance to react, announces a Dexterity check against 15, and explains that failure breaks the ordinary jar and draws Melia's attention. The traveler has Dexterity+2.
 
-- A d20 result13 gives15: failure. The jar breaks; no retry can unbreak it.
-- A result14 gives16: success. The jar is caught. That does not automatically make Melia trust the traveler with everything she owns.
+- A d20 result 13 gives 15: failure. The jar breaks; no retry can unbreak it.
+- A result 14 gives 16: success. The jar is caught. That does not automatically make Melia trust the traveler with everything she owns.
 - If the traveler had already been holding the jar, no uncertainty would remain and no check would be needed.
 
 Melia can remember the event through her own nature. Another witness can form a different impression. Record neither as a world-wide reputation award. Nobody automatically knows what happened merely because they share a party with the traveler.

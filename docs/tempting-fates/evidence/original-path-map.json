@@ -1,0 +1,254 @@
+[
+  {
+    "original_path": "/tmp/argo-tf-custody-green-types.log",
+    "retained_path": "argo-tf-custody-green-types.log",
+    "sha256": "2cf20646d72113be26c6fbe14738bc101ebf909ab8a2374290f369e1d53c975c",
+    "bytes": 40
+  },
+  {
+    "original_path": "/tmp/argo-tf-custody-red.log",
+    "retained_path": "argo-tf-custody-red.log",
+    "sha256": "fc6732fabf583791440287c20d9f1d4661d8d1260dded67111fbee78e0ef07e3",
+    "bytes": 240
+  },
+  {
+    "original_path": "/tmp/argo-tf-integration-first.log",
+    "retained_path": "argo-tf-integration-first.log",
+    "sha256": "41f122132bdeb2a026b7edcf3529c1ba51ded92f57ffca6a7935ffde77aa6031",
+    "bytes": 620
+  },
+  {
+    "original_path": "/tmp/argo-tf-integration-green.log",
+    "retained_path": "argo-tf-integration-green.log",
+    "sha256": "d60783ae64ad411dd63b6b186cb0ea94ada948c18d3669432d10c22bc3d239bd",
+    "bytes": 621
+  },
+  {
+    "original_path": "/tmp/argo-tf-integration-red.log",
+    "retained_path": "argo-tf-integration-red.log",
+    "sha256": "cc026c48502c00824097e00649a6881c374efcb1cbe431317bef0fb417a049c2",
+    "bytes": 4017
+  },
+  {
+    "original_path": "/tmp/argo-tf-phase2-fix-negative-types.log",
+    "retained_path": "argo-tf-phase2-fix-negative-types.log",
+    "sha256": "b51ddf4142406fbaa3e0444465921518e36513c961b3f3ee1e3fd96514f4fa57",
+    "bytes": 640
+  },
+  {
+    "original_path": "/tmp/argo-tf-phase2-fix-review.json",
+    "retained_path": "argo-tf-phase2-fix-review.json",
+    "sha256": "98166199d9e339a724c76b8428cb95a3b8d23dbf53410cf294762620dd84071d",
+    "bytes": 2774
+  },
+  {
+    "original_path": "/tmp/argo-tf-phase2-fix-targeted.log",
+    "retained_path": "argo-tf-phase2-fix-targeted.log",
+    "sha256": "44b85974c95674647d61bf39256a1f74339beb0d48505abfeb5dac436415ec70",
+    "bytes": 213
+  },
+  {
+    "original_path": "/tmp/argo-tf-phase2-fix-typecheck.log",
+    "retained_path": "argo-tf-phase2-fix-typecheck.log",
+    "sha256": "2cf20646d72113be26c6fbe14738bc101ebf909ab8a2374290f369e1d53c975c",
+    "bytes": 40
+  },
+  {
+    "original_path": "/tmp/argo-tf-phase2-green.log",
+    "retained_path": "argo-tf-phase2-green.log",
+    "sha256": "78ab12787ec318a059e123989d41013e340b960e652416506e1b8771e3e65892",
+    "bytes": 212
+  },
+  {
+    "original_path": "/tmp/argo-tf-phase2-red.log",
+    "retained_path": "argo-tf-phase2-red.log",
+    "sha256": "8fa08bd2d0b7549aff8caca680e14281a95d81cd28259263a0e243545104a16b",
+    "bytes": 1177
+  },
+  {
+    "original_path": "/tmp/argo-tf-phase2-review.json",
+    "retained_path": "argo-tf-phase2-review.json",
+    "sha256": "8bff5c250f89f04ef60def3e01e93891eede9b482cfdaba25f6f6ad3444c4868",
+    "bytes": 4248
+  },
+  {
+    "original_path": "/tmp/argo-tf-phase2-schema-probe.log",
+    "retained_path": "argo-tf-phase2-schema-probe.log",
+    "sha256": "562a4cb3e6e078ded26aa7dd53bb73db0d369167c5b5ce004b1f61167009cf8c",
+    "bytes": 729
+  },
+  {
+    "original_path": "/tmp/argo-tf-phase2-targeted.log",
+    "retained_path": "argo-tf-phase2-targeted.log",
+    "sha256": "1eea632f1646ac40af55590bf8ac8c14be08209b90d3b36540cb15d48b2a2883",
+    "bytes": 212
+  },
+  {
+    "original_path": "/tmp/argo-tf-phase2-type-probe.log",
+    "retained_path": "argo-tf-phase2-type-probe.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "original_path": "/tmp/argo-tf-phase2-type-probe.mts",
+    "retained_path": "argo-tf-phase2-type-probe.mts",
+    "sha256": "e62e9e66c9981a193b21171f8e1ca55616332a57e42493c0fc101a8b13a38bd6",
+    "bytes": 415
+  },
+  {
+    "original_path": "/tmp/argo-tf000-existing-contracts.log",
+    "retained_path": "argo-tf000-existing-contracts.log",
+    "sha256": "2cd7874723b12ab43b0da644f0fa05f6af32153676d6e31de2c44c17c8e03428",
+    "bytes": 202
+  },
+  {
+    "original_path": "/tmp/argo-tf000-green.log",
+    "retained_path": "argo-tf000-green.log",
+    "sha256": "cc64ea504bd43ed8dc8fc990fe1160c543be3798b48c8fbfd5a00a5d00ac2ca8",
+    "bytes": 653
+  },
+  {
+    "original_path": "/tmp/argo-tf000-red.log",
+    "retained_path": "argo-tf000-red.log",
+    "sha256": "53b654de23d0f8bf9c31787ca098e9123e97ed455d88c19dc3a3244d56b24bb6",
+    "bytes": 5984
+  },
+  {
+    "original_path": "/tmp/argo-tf000-suite.log",
+    "retained_path": "argo-tf000-suite.log",
+    "sha256": "30e0d9da66bfb725fb6b3fe0261cffee26eb5f9eee8b167ebc58e938b1ec5be7",
+    "bytes": 16697
+  },
+  {
+    "original_path": "/tmp/argo-tf000-typecheck.log",
+    "retained_path": "argo-tf000-typecheck.log",
+    "sha256": "2cf20646d72113be26c6fbe14738bc101ebf909ab8a2374290f369e1d53c975c",
+    "bytes": 40
+  },
+  {
+    "original_path": "/tmp/argo-tf000-verification.json",
+    "retained_path": "argo-tf000-verification.json",
+    "sha256": "18f84d634adb29cec6fbc4b016adfedbfbf2db27a009323737668dcf9015f825",
+    "bytes": 1829
+  },
+  {
+    "original_path": "/tmp/argo-tf200-green.log",
+    "retained_path": "argo-tf200-green.log",
+    "sha256": "703402aec489554092e69ca964968f105774cb3e84af4256bcf2e173a90b9f68",
+    "bytes": 1274
+  },
+  {
+    "original_path": "/tmp/argo-tf200-red.log",
+    "retained_path": "argo-tf200-red.log",
+    "sha256": "d403e97adba389179617605ef385a51260d9c4913f4402089562c38c2102f9f2",
+    "bytes": 12843
+  },
+  {
+    "original_path": "/tmp/argo-tf200-review-knave-raw.txt",
+    "sha256": "865f528d984cac44dc071581a315c98f1596f489416148e221aae1d46893aa0f",
+    "retained": false,
+    "reproduce": "pdftotext -layout docs/design/headless-2026-11-13/evidence/knave-1e/knave-1e.pdf OUTPUT; original licensed PDF retained in source evidence; extractor versions may change whitespace"
+  },
+  {
+    "original_path": "/tmp/argo-tf200-review-probes.log",
+    "retained_path": "argo-tf200-review-probes.log",
+    "sha256": "a5a6782fdb8242708ffce63a752b790d8fe3098f63d30e5c7d1d99e57a1bc7c6",
+    "bytes": 241
+  },
+  {
+    "original_path": "/tmp/argo-tf200-review-probes.mjs",
+    "retained_path": "argo-tf200-review-probes.mjs",
+    "sha256": "b4ebad768f6447bb1958fa0b01358ce48592818d5607817da6a4babf71953793",
+    "bytes": 3179
+  },
+  {
+    "original_path": "/tmp/argo-tf200-review-tests.log",
+    "retained_path": "argo-tf200-review-tests.log",
+    "sha256": "0bbe7fe7196ecda57136d325fd15a24908830f21ef1dfbb610aef03379bbc9ca",
+    "bytes": 1273
+  },
+  {
+    "original_path": "/tmp/argo-tf200-review-types.log",
+    "retained_path": "argo-tf200-review-types.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "original_path": "/tmp/argo-tf200-review.json",
+    "retained_path": "argo-tf200-review.json",
+    "sha256": "8b14ac5094662e2c58761672dfb7af67e4915dc4b0f378f82b25f6115935df50",
+    "bytes": 8190
+  },
+  {
+    "original_path": "/tmp/argo-tf300-contracts.log",
+    "retained_path": "argo-tf300-contracts.log",
+    "sha256": "aa2d939f9432d043411c6fd67a018ce58c9df10cfd29b19e2c9770922b92d61d",
+    "bytes": 1365
+  },
+  {
+    "original_path": "/tmp/argo-tf300-green.log",
+    "retained_path": "argo-tf300-green.log",
+    "sha256": "9be95e197f078c9b78bf9a71883f6fc8557b68a23834c67ec4d189a62076e51d",
+    "bytes": 2078
+  },
+  {
+    "original_path": "/tmp/argo-tf300-probes.log",
+    "retained_path": "argo-tf300-probes.log",
+    "sha256": "91a025fd1237292bd420f127996c641530e62c677ce66cfe39249d31f70a9363",
+    "bytes": 461
+  },
+  {
+    "original_path": "/tmp/argo-tf300-probes.mjs",
+    "retained_path": "argo-tf300-probes.mjs",
+    "sha256": "81a0bc8d381fdf033f946caf73cfe306010c6f1fb767bb4bbe30275cbdee8eda",
+    "bytes": 7393
+  },
+  {
+    "original_path": "/tmp/argo-tf300-red.log",
+    "retained_path": "argo-tf300-red.log",
+    "sha256": "fefa07f3d4da9dc3cae5d234ba4e5c4ea5b8c1d1ae3fd95814a689c4ed05bd9c",
+    "bytes": 21261
+  },
+  {
+    "original_path": "/tmp/argo-tf300-review.json",
+    "retained_path": "argo-tf300-review.json",
+    "sha256": "239af2757fa833b5547f580db67d65c19719be0d631a3eabb5a7c0ce245ce3ee",
+    "bytes": 5565
+  },
+  {
+    "original_path": "/tmp/argo-tf300-tests.log",
+    "retained_path": "argo-tf300-tests.log",
+    "sha256": "6f5dd92e1968aba382e8b6ff92aeeac6c78435fec534b0bfa1c9f137a335b54f",
+    "bytes": 4674
+  },
+  {
+    "original_path": "/tmp/argo-tf300-typecheck.log",
+    "retained_path": "argo-tf300-typecheck.log",
+    "sha256": "2cf20646d72113be26c6fbe14738bc101ebf909ab8a2374290f369e1d53c975c",
+    "bytes": 40
+  },
+  {
+    "original_path": "/tmp/argo-tf-campaign-review.json",
+    "retained_path": "argo-tf-campaign-review.json",
+    "sha256": "7ee4a4bb0a0164abe88121351bd1d6308fd0dde7bea5073b356767a8b05fd319",
+    "bytes": 11065
+  },
+  {
+    "original_path": "/tmp/argo-tf-campaign-check.py",
+    "retained_path": "argo-tf-campaign-check.py",
+    "sha256": "4392716a854739b5c3e4d6e0ffee4b80b5b789ece725ea591ed0ef3a7a718141",
+    "bytes": 4124
+  },
+  {
+    "original_path": "/tmp/argo-tf-campaign-check.log",
+    "retained_path": "argo-tf-campaign-check.log",
+    "sha256": "0511103bb4748b9ac1d8112868071bfbb25e7d9f23653767e0f8afd70414bb51",
+    "bytes": 1080
+  },
+  {
+    "original_path": "/tmp/argo-tf-board-submissions.json",
+    "retained_path": "argo-tf-board-submissions.json",
+    "sha256": "d3b40db32ca6d3fb92465365f4f2eedec449e078cad702dfd02ca49429206788",
+    "bytes": 559
+  }
+]

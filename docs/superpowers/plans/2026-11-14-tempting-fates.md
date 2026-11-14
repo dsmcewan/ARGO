@@ -31,35 +31,39 @@ Files: `scenarios/tempted-fates/campaign/{types.ts,content.schema.json,CONTRACT.
 
 Files: `scenarios/tempted-fates/campaign/world.json`; `CAMPAIGNS/Tempting_Fates/{ATLAS.md,ENCOUNTERS.md,REFEREE_GUIDE.md}`.
 
-- [ ] Populate complete world data using frozen fields/IDs and write playable situations, clocks and consequences.
-- [ ] Keep GM truth separate, give all hooks refusal/exit outcomes, preserve optional relic/Fates.
-- [ ] Validate pack after runtime is available; commit owned paths for integration/content review.
+- [x] Populate complete world data using frozen fields/IDs and write playable situations, clocks and consequences.
+- [x] Keep GM truth separate, give all hooks refusal/exit outcomes, preserve optional relic/Fates.
+- [x] Validate pack after runtime is available; commit owned paths for integration/content review.
 
 ## TF-200 — rules tools and reference
 
 Files: `scenarios/tempted-fates/campaign/rules.ts`; `TESTS/tempting-fates-rules.test.ts`; `CAMPAIGNS/Tempting_Fates/{RULES.md,CHARACTER_SHEET.md,ATTRIBUTION.md}`.
 
-- [ ] RED: fixed ability dice, strict save ties, advantage/disadvantage, invalid dice/overflow, capacity, damage/rest/morale, exhausted project budget.
-- [ ] Implement frozen pure APIs; no RNG, I/O, model or world writes. Document exactly what tabletop procedures remain manual.
-- [ ] GREEN: literal expected results and nonmutation checks; typecheck and source attribution; commit owned paths.
+- [x] RED: fixed ability dice, strict save ties, advantage/disadvantage, invalid dice/overflow, capacity, damage/rest/morale, exhausted project budget.
+- [x] Implement frozen pure APIs; no RNG, I/O, model or world writes. Document exactly what tabletop procedures remain manual.
+- [x] GREEN: literal expected results and nonmutation checks; typecheck and source attribution; commit owned paths.
 
 ## TF-300 — catalog and seed adapter
 
 Files: `scenarios/tempted-fates/campaign/catalog.ts`; `TESTS/tempting-fates-catalog.test.ts`.
 
-- [ ] RED: malformed/passive data, duplicate/dangling IDs, broken routes/Fate roles, hidden truth in public outputs, invalid roster/scope/seed, stable variants.
-- [ ] Implement validator, public handout, rumor candidate and host-only seed builder as specified in the frozen contract.
-- [ ] GREEN using independent small fixtures; root runs actual authored pack and real-ledger tests. Commit owned paths.
+- [x] RED: malformed/passive data, duplicate/dangling IDs, broken routes/Fate roles, hidden truth in public outputs, invalid roster/scope/seed, stable variants.
+- [x] Implement validator, public handout, rumor candidate and host-only seed builder as specified in the frozen contract.
+- [x] GREEN using independent small fixtures; root runs actual authored pack and real-ledger tests. Commit owned paths.
 
 ## TF-900 — root integration and playable start
 
 Files: `scenarios/tempted-fates/{index.ts,package.json}`, `package-lock.json`; `TESTS/tempting-fates-integration.test.ts`; `CAMPAIGNS/Tempting_Fates/{README.md,PLAYER_GUIDE.md,QUICKSTART.md}`; `docs/tempting-fates/`; this plan and design spec.
 
-- [ ] Wire package exports and existing Ajv dependency; provide an immediately usable solo and party opening plus player orientation.
-- [ ] Real-ledger integration tests: seed variants, configure characters, disclose rumor to one actor, preserve party secrecy, transfer actual item custody, replay, and unchanged history from rules previews.
-- [ ] Validate actual pack and all document references, review content for playability/canon, run full offline repository gate.
-- [ ] Retain source/test/review hashes and accurate blackboard submissions; no push/merge approval or paid runs implied.
+- [x] Wire package exports and existing Ajv dependency; provide an immediately usable solo and party opening plus player orientation.
+- [x] Real-ledger integration tests: seed variants, configure characters, disclose rumor to one actor, preserve party secrecy, transfer actual item custody, replay, and unchanged history from rules previews.
+- [x] Validate actual pack and all document references, review content for playability/canon, run full offline repository gate.
+- [x] Retain source/test/review hashes and accurate blackboard submissions; no push/merge approval or paid runs implied.
 
 ## Owner clarification and Phase2 boundary
 
 The owner selected dark tragic mythology (horror, hubris, divine punishment), and explicitly confirmed campaign kit, strict TypeScript/JSON schemas and deterministic tools only. No exploration/combat/resource writes enter the ledger or character authority. TF900 adds a separate non-authoritative tabletop state blueprint with a strict JSON grammar, matching TypeScript example, validation tests and documented future transaction invariants under docs/tempting-fates/phase2.
+
+## Completion record
+
+All deliverables and offline checks are complete at the immutable candidate recorded in `docs/tempting-fates/verification.json`. Four lane submissions are VERIFYING. TF900 retains its artifacts but is READY after the pinned-manifest policy refused submission; no automatic dispatcher is running. This is a verified local candidate, not controller-approved integration or publication.

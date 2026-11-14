@@ -1,0 +1,132 @@
+{
+  "review_id": "tempting-fates-independent-campaign-content",
+  "reviewer": "foundation_review",
+  "reviewed_at_utc": "2026-11-14T06:40:42.047546+00:00",
+  "commit": "d4b8086559a2934c233892949055531b24ba3706",
+  "scope": "All nine campaign Markdown files and world.json, compared with archived source scenario, source requirements, frozen campaign contract, owner-approved design, and retained Knave first-edition evidence. Read-only; no repository/board/ref writes, subagents or paid calls.",
+  "verdict": "No material content defect confirmed. Suitable for the scoped human-refereed level-one kit, subject to the explicit limits below; not operational approval or an authoritative combat/travel implementation.",
+  "findings": [],
+  "evidence": [
+    {
+      "topic": "Rules and playable opening",
+      "paths": [
+        "CAMPAIGNS/Tempting_Fates/RULES.md:9",
+        "CAMPAIGNS/Tempting_Fates/RULES.md:42",
+        "CAMPAIGNS/Tempting_Fates/RULES.md:76",
+        "CAMPAIGNS/Tempting_Fates/RULES.md:90",
+        "CAMPAIGNS/Tempting_Fates/RULES.md:124",
+        "CAMPAIGNS/Tempting_Fates/QUICKSTART.md:13"
+      ],
+      "result": "Creation, finite starting allowance, equipment prices/slots, strict checks, damage/death, retreat, travel/consumption, ordinary healing and bounded projects are concretely stated. The opening offers several independently refusible activities; lamp/oil/repair prices are consistent. Starting-slot arithmetic independently matches 9/10."
+    },
+    {
+      "topic": "Catalog/prose consistency",
+      "paths": [
+        "CAMPAIGNS/Tempting_Fates/ATLAS.md:11",
+        "CAMPAIGNS/Tempting_Fates/ENCOUNTERS.md:199",
+        "CAMPAIGNS/Tempting_Fates/REFEREE_GUIDE.md:44",
+        "scenarios/tempted-fates/campaign/world.json"
+      ],
+      "result": "All nine route durations/access/signs and twelve rumor utterances/variant labels match. All three finite project triggers/completions match; remaining budgets equal unfinished stages. 159 narrative strings longer than 80 characters appear verbatim in campaign prose; the three standalone introductory/tone/adaptation paragraphs were separately read."
+    },
+    {
+      "topic": "Player versus referee material",
+      "paths": [
+        "CAMPAIGNS/Tempting_Fates/README.md:9",
+        "CAMPAIGNS/Tempting_Fates/PLAYER_GUIDE.md:62",
+        "CAMPAIGNS/Tempting_Fates/ATLAS.md:3",
+        "CAMPAIGNS/Tempting_Fates/QUICKSTART.md:3",
+        "scenarios/tempted-fates/campaign/CONTRACT.md:29"
+      ],
+      "result": "No hidden selected relic truth, private NPC knowledge, rumor assessment or anomaly explanation found in the designated player guide/rules/sheet or the catalog public-introduction/start-description fields. Quickstart is explicitly referee-only except marked read-aloud passages. Optional example taboos in public rules are labeled manual alternatives, not installed site rules."
+    },
+    {
+      "topic": "Source scenario boundaries",
+      "paths": [
+        "SCENARIOS/Tempted_Fates.md:320",
+        "SCENARIOS/Tempted_Fates.md:383",
+        "CAMPAIGNS/Tempting_Fates/REFEREE_GUIDE.md:118",
+        "CAMPAIGNS/Tempting_Fates/REFEREE_GUIDE.md:134",
+        "CAMPAIGNS/Tempting_Fates/REFEREE_GUIDE.md:147",
+        "CAMPAIGNS/Tempting_Fates/ATLAS.md:97"
+      ],
+      "result": "Relic variants are fixed privately, without moving the cup in response to a guide/search. Separate Fate roles, no guaranteed loom route, independent living informed donors, no persuasion/proxy consent, no rejuvenation/reward guarantee, no farmable anomaly, immediate ontology cutoff and post-naming disengagement remain explicit. Refusal never creates a forced quest/debt."
+    },
+    {
+      "topic": "Original/manual versus authority distinction",
+      "paths": [
+        "CAMPAIGNS/Tempting_Fates/README.md:17",
+        "CAMPAIGNS/Tempting_Fates/RULES.md:7",
+        "CAMPAIGNS/Tempting_Fates/REFEREE_GUIDE.md:145",
+        "CAMPAIGNS/Tempting_Fates/REFEREE_GUIDE.md:163",
+        "docs/tempting-fates/phase2/README.md:1"
+      ],
+      "result": "New geography, patrons, taboos, prices and clocks are identified as original campaign additions. HP, movement, resource spending and divine consequences remain human referee records. Ordinary death grants no Atropos permission. The missing artifact-method authority check and world-wide anomaly cutoff are explicitly disclosed, not presented as implemented isolation."
+    },
+    {
+      "topic": "Source and attribution",
+      "paths": [
+        "CAMPAIGNS/Tempting_Fates/ATTRIBUTION.md:3",
+        "CAMPAIGNS/Tempting_Fates/ATTRIBUTION.md:16",
+        "CAMPAIGNS/Tempting_Fates/ATTRIBUTION.md:18",
+        "CAMPAIGNS/Tempting_Fates/ATTRIBUTION.md:39"
+      ],
+      "result": "Names first-edition Knave, Ben Milton/Questing Beast and CC BY4.0; links source/license; identifies modifications and distinguishes corroborated mirror bytes from author-checksum authentication. Retained PDF and license hashes match. Direct PDF extraction confirms CC BY notice, lowest-3d6/defense, d8 HP, zero/unconscious versus negative/dead, d8+Con healing, capacity and morale basis. Omitted haven full healing/advancement and added timing/equipment/procedures are declared adaptations. No blanket ARGO/Knave2e/setting-rights grant is claimed."
+    }
+  ],
+  "independent_checks": {
+    "revision": "d4b8086559a2934c233892949055531b24ba3706",
+    "passed": true,
+    "checks": [
+      "Authored counts: eight locations, eleven NPCs (eight mortal/three Fates), three factions, twelve rumors, three variants.",
+      "All nine Atlas route times, minute conversions, access conditions and signs match world.json.",
+      "All twelve rumor utterances and per-variant assessment labels match the encounter table.",
+      "159 catalog narrative strings longer than 80 characters appear verbatim in campaign prose; only separately reviewed introductory/tone/adaptation paragraphs differ.",
+      "Fate roles remain separate and no route reaches the loom.",
+      "Three finite project budgets fund exactly the initially unfinished stages; triggers and completions match the guide.",
+      "Starting-kit slot totals recomputed from listed items: nine for one-slot weapon, ten for spear, including coin and oil bundles.",
+      "Frozen campaign contract/schema/types match their declared hashes.",
+      "Retained Knave first-edition PDF and license hashes exactly match ATTRIBUTION.md."
+    ]
+  },
+  "reproduction": {
+    "command": "python3 /tmp/argo-tf-campaign-check.py /path/to/checkout-containing-d4b8086559a2934c233892949055531b24ba3706",
+    "script": "/tmp/argo-tf-campaign-check.py",
+    "script_sha256": "4392716a854739b5c3e4d6e0ffee4b80b5b789ece725ea591ed0ef3a7a718141",
+    "log": "/tmp/argo-tf-campaign-check.log",
+    "log_sha256": "0511103bb4748b9ac1d8112868071bfbb25e7d9f23653767e0f8afd70414bb51",
+    "note": "Checker reads exact git blobs at the reviewed commit, imports no product code and performs no writes. Source PDF text was separately extracted only to /tmp/argo-tf-knave-source.txt."
+  },
+  "limits": [
+    "No live table playtest or empirical balance/tone assessment. Referee adjudication remains necessary for unspecified travel beyond keyed sites, NPC negotiation, detailed physical hazards and new supernatural circumstances; this is a level-one opening kit, not an exhaustive world simulator.",
+    "Code/API correctness, runtime input security, integration-suite execution and state-transition authority were assigned to other reviewers and are not independently certified by this content review.",
+    "The CC BY grant was checked against retained PDF/license and the previously captured source manifest/excerpts; upstream URLs were not re-fetched in this review. No comprehensive similarity/plagiarism search or legal opinion is claimed.",
+    "The ordinary v1 transfer API has no campaign artifact-method binding. The kit explicitly requires trusted human/host refusal of unsupported counterfeit/legend methods; this report does not certify that deployment policy exists.",
+    "The actual anomaly cutoff is world/branch-wide. Content correctly excludes automatic ordinary-campaign triggering; narrower shared-world encounters remain future work.",
+    "Public prose was inspected for the known hidden catalog truths. Publication access control, retrieval behavior, production identity/perception and narrator/model compliance were not exercised."
+  ],
+  "file_sha256": {
+    "CAMPAIGNS/Tempting_Fates/README.md": "c57f9c81a5cd5ba33ac49d9783a6962d2df13ccb6485d90970b47b4ce1e959b5",
+    "CAMPAIGNS/Tempting_Fates/PLAYER_GUIDE.md": "da7db8b118973e3141315a7e367bb4e5a32221461d7cd52647103759e59982c2",
+    "CAMPAIGNS/Tempting_Fates/RULES.md": "6ce8e82af1326fb0095826d5e66d0314dd01de3f6fcd3805b98daca9f4f110f1",
+    "CAMPAIGNS/Tempting_Fates/CHARACTER_SHEET.md": "b44098a1ca716e78dbddbb2960284408b43855a2d9ac2cc048ee4a46e6c8a770",
+    "CAMPAIGNS/Tempting_Fates/QUICKSTART.md": "f050c77c581b03430beed6574190ee4b0ed7e8fb02d7ad44dfcb02a82d80935c",
+    "CAMPAIGNS/Tempting_Fates/ATLAS.md": "94bfc685cd14b67a37660ec78db492ec999ae89d95a589dcf11e99030354cf64",
+    "CAMPAIGNS/Tempting_Fates/ENCOUNTERS.md": "191790032237d39012919f0b5da765aab0d39d0c7728b52350646ccc39767190",
+    "CAMPAIGNS/Tempting_Fates/REFEREE_GUIDE.md": "c96c13786122b3b8dd95be44052be8ec1572b500b07b8b5a0493720250f4086f",
+    "CAMPAIGNS/Tempting_Fates/ATTRIBUTION.md": "08215e74323a84a861eab7bdc0aaab05fc22ef0fcadcb05cff97d7cb1d40530b",
+    "scenarios/tempted-fates/campaign/world.json": "0cd93546979225b2566be756558bf9d3dc0c060cdeffe2dbc3c08fa7568ba363",
+    "scenarios/tempted-fates/campaign/CONTRACT.md": "e7f80e826b3970b1588dbb5b7fe87e73dd912a00cb80d371e247dc1040cf3827",
+    "scenarios/tempted-fates/campaign/FREEZE.json": "a6f19d93ce1b24b502a5f7068b8b5f105e3c38ffffa80e13a897c5d08fcae91f",
+    "scenarios/tempted-fates/campaign/content.schema.json": "b52554b0e795f89c3fa204924eac68d2dbcb9e08590b40d972370f5d858ff69f",
+    "scenarios/tempted-fates/campaign/types.ts": "f047ef254bc420341b5a077a5d8c28da2113e524677467c493edd99dcde75642",
+    "SCENARIOS/Tempted_Fates.md": "95a9159170ec2288dfcb2b2881f3c0026e4a168673e0d29887f1f0be83c22008",
+    "repo-audit/SCENARIO_REQUIREMENTS.md": "b043f78ac4060ea9f523e11ad408f8806af15c07dc271f7f556674da79a9b979",
+    "docs/superpowers/specs/2026-11-14-tempting-fates-design.md": "39b40f4824b13c09503a007e8ea3c594f5ff379f94a556385f62072b3e674e7b",
+    "docs/tempting-fates/phase2/README.md": "b6cda93981d4bf80e090a7156c5d1bcf550bc41cd98ac09424e7d3f4b7859504",
+    "docs/design/headless-2026-11-13/evidence/knave-1e/knave-1e.pdf": "fc2ff96175f6b60ddbbf02b6139a5da569752155948371613e201d21cf92bc78",
+    "docs/design/headless-2026-11-13/evidence/knave-1e/CC-BY-4.0.txt": "9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411",
+    "docs/design/headless-2026-11-13/evidence/knave-1e/manifest.json": "9db3cc1ca203cca8202025bd43859713012b85b7550ce863c59c9b963543c4c5",
+    "docs/design/headless-2026-11-13/evidence/knave-1e/SOURCE-GRANTS.md": "c12f2b2b48ef3cf8d24086989e4f6c137f30ce886251ab7a935b097f150bd069"
+  }
+}

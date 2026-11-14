@@ -1,0 +1,104 @@
+{
+  "reviewer": "character_contract_review",
+  "review_kind": "Independent read-only same-model advisory review",
+  "commit": "aeac8921f89f60b0ac43e77246a3349eaf381425",
+  "clean_tree": true,
+  "verdict": "No concrete defect found in catalog implementation against the frozen campaign-kit contract within reviewed scope",
+  "confirmed_defects": [],
+  "unconfirmed_defect_hypotheses": [],
+  "files": {
+    "scenarios/tempted-fates/campaign/catalog.ts": "59056e3b02e50d895d3f540dadf25ad2eb0c8424ea74e10fb6a6fc429c8d78f1",
+    "TESTS/tempting-fates-catalog.test.ts": "0ec51c00f5cb7f4e71572100603bac68ae16bea98a734f45f9e63ce6cc5bbef9"
+  },
+  "frozen_contract": {
+    "profile_version": "tempting-fates-pack/0.1.0",
+    "rules_tool_profile": "tempting-fates-rules/0.1.0",
+    "carrier_gameplay_version": "tempted-fates/1.0.0",
+    "files": {
+      "scenarios/tempted-fates/campaign/CONTRACT.md": "e7f80e826b3970b1588dbb5b7fe87e73dd912a00cb80d371e247dc1040cf3827",
+      "scenarios/tempted-fates/campaign/content.schema.json": "b52554b0e795f89c3fa204924eac68d2dbcb9e08590b40d972370f5d858ff69f",
+      "scenarios/tempted-fates/campaign/types.ts": "f047ef254bc420341b5a077a5d8c28da2113e524677467c493edd99dcde75642"
+    },
+    "scope": "Local campaign-kit interface freeze; no causal ruleset migration or operational merge approval"
+  },
+  "checks": {
+    "catalog_tests": {
+      "passed": 18,
+      "failed": 0,
+      "command": "node --test --test-isolation=none --test-reporter=tap TESTS/tempting-fates-catalog.test.ts"
+    },
+    "contract_tests": {
+      "passed": 5,
+      "failed": 0,
+      "command": "node --test --test-isolation=none --test-reporter=tap TESTS/tempting-fates-contracts.test.ts"
+    },
+    "strict_typecheck_exit": 0,
+    "ordinary_process_probes": {
+      "status": "pass",
+      "ordinary_process": true,
+      "checks": 64,
+      "proxy_or_getter_invocations": 0,
+      "cases": [
+        "closed DTO magic properties",
+        "nested and root proxy rejection before traps",
+        "option accessor rejection",
+        "private/mixed/wrong-algorithm key rejection",
+        "explicit variant exclusivity",
+        "deterministic scoped defaults with random/clock disabled",
+        "no referee-only fields in extract outputs",
+        "cross-output alias detachment",
+        "occupant conflict and artifact leak rejection"
+      ]
+    },
+    "ordinary_probe_command": "node /tmp/argo-tf300-probes.mjs /path/to/ARGO",
+    "frozen_files_hash_match": true,
+    "causal_and_character_schema_files_unchanged": true
+  },
+  "artifacts": {
+    "/tmp/argo-tf300-tests.log": "6f5dd92e1968aba382e8b6ff92aeeac6c78435fec534b0bfa1c9f137a335b54f",
+    "/tmp/argo-tf300-typecheck.log": "2cf20646d72113be26c6fbe14738bc101ebf909ab8a2374290f369e1d53c975c",
+    "/tmp/argo-tf300-contracts.log": "aa2d939f9432d043411c6fd67a018ce58c9df10cfd29b19e2c9770922b92d61d",
+    "/tmp/argo-tf300-probes.mjs": "81a0bc8d381fdf033f946caf73cfe306010c6f1fb767bb4bbe30275cbdee8eda",
+    "/tmp/argo-tf300-probes.log": "91a025fd1237292bd420f127996c641530e62c677ce66cfe39249d31f70a9363"
+  },
+  "coverage": [
+    "Passive descriptor inspection rejects root/nested/revoked proxies, getters, unsafe values and closed-DTO extra fields without invoking caller behavior",
+    "Semantic reference resolution, reciprocal ordinary routes, reachability, unique occupancy, fixed Fate identity/role/location and exact identifiers",
+    "Artifact selection prevents physical claimed artifacts leaking into other variants or legend",
+    "Public handout and rumor extractors use exact allowlists and detach output from private pack",
+    "Ed25519 public keys import; private PEM, concatenated public/private material and Ed448 public material refuse",
+    "Seed defaults preserve caller full scope/private seed/key/selected variant; travelers remain mortal null-Fate actors and alone form expedition",
+    "Deterministic seed construction succeeds with process randomness and wall clock disabled; output mutation does not alias pack/options or sibling profiles",
+    "No ledger/character writer imports or world mutation calls added; only additive content/tool files changed"
+  ],
+  "limits": [
+    {
+      "id": "public-prose",
+      "detail": "Allowlists prove which fields are copied, not whether author-selected public prose contains spoilers. Actual authored-pack privacy, tone, continuity, production counts and playability require separate content/integration review."
+    },
+    {
+      "id": "host-material",
+      "detail": "A syntactically valid Ed25519 public key and Scope do not authenticate the caller, establish key ownership, grant campaign rights or prove perception/consent. This pure host-only initialization API claims none of those."
+    },
+    {
+      "id": "seed-secrecy",
+      "detail": "CampaignSeed contains genesis privateSeed and host-only variant/manifest; it must remain host/referee data. Only whitelisted public extractors are appropriate for player delivery."
+    },
+    {
+      "id": "state-boundary",
+      "detail": "The catalog creates DTOs only. Tests do not establish runtime ledger adoption, character configuration or world behavior, and no new engine expansion was reviewed."
+    },
+    {
+      "id": "scope",
+      "detail": "Only the immutable catalog candidate and frozen interfaces were reviewed; actual content and rules calculator lanes remain separate."
+    }
+  ],
+  "actions": {
+    "production_edits": false,
+    "board_mutations": false,
+    "push": false,
+    "paid_calls": 0,
+    "nested_workers": 0,
+    "operational_approval": false
+  }
+}

@@ -1,0 +1,73 @@
+✖ authored Greek campaign is complete and public extracts exclude referee state (3.501513ms)
+✖ world variants remain fixed and seed scopes do not become public campaign truth (0.557285ms)
+✖ real ARGO campaign supports private rumors and causal custody while rules previews have no authority (0.639289ms)
+✖ playable book links and retained first-edition attribution inputs resolve (10.184339ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 0
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1133.216271
+
+✖ failing tests:
+
+test at TESTS/tempting-fates-integration.test.ts:25:1
+✖ authored Greek campaign is complete and public extracts exclude referee state (3.501513ms)
+  AssertionError [ERR_ASSERTION]: The campaign catalog and rules tools are not implemented yet
+      at components (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-900-1-545390c872/TESTS/tempting-fates-integration.test.ts:17:101)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-900-1-545390c872/TESTS/tempting-fates-integration.test.ts:26:12)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'fail',
+    diff: 'simple'
+  }
+
+test at TESTS/tempting-fates-integration.test.ts:47:1
+✖ world variants remain fixed and seed scopes do not become public campaign truth (0.557285ms)
+  AssertionError [ERR_ASSERTION]: The campaign catalog and rules tools are not implemented yet
+      at components (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-900-1-545390c872/TESTS/tempting-fates-integration.test.ts:17:101)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-900-1-545390c872/TESTS/tempting-fates-integration.test.ts:48:12)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'fail',
+    diff: 'simple'
+  }
+
+test at TESTS/tempting-fates-integration.test.ts:70:1
+✖ real ARGO campaign supports private rumors and causal custody while rules previews have no authority (0.639289ms)
+  AssertionError [ERR_ASSERTION]: The campaign catalog and rules tools are not implemented yet
+      at components (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-900-1-545390c872/TESTS/tempting-fates-integration.test.ts:17:101)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-900-1-545390c872/TESTS/tempting-fates-integration.test.ts:71:12)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'fail',
+    diff: 'simple'
+  }
+
+test at TESTS/tempting-fates-integration.test.ts:109:1
+✖ playable book links and retained first-edition attribution inputs resolve (10.184339ms)
+  Error: ENOENT: no such file or directory, open '/workspace/ARGO/.board/tempting-fates/worktrees/TF-900-1-545390c872/CAMPAIGNS/Tempting_Fates/RULES.md'
+      at async open (node:internal/fs/promises:1345:25)
+      at async readFile (node:internal/fs/promises:2003:14)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-900-1-545390c872/TESTS/tempting-fates-integration.test.ts:115:4)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/workspace/ARGO/.board/tempting-fates/worktrees/TF-900-1-545390c872/CAMPAIGNS/Tempting_Fates/RULES.md'
+  }

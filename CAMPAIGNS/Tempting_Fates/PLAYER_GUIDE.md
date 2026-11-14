@@ -8,7 +8,7 @@ You are not required to restore the world. Decide what your traveler wants, whom
 
 ## What you need
 
-One referee and one to six players; a d4, d6, d8, d10, d12 and d20 (or an agreed dice tool); a copy of the character sheet; and a way to record possessions, time and discoveries. Start with the [rules](RULES.md), then use [Quickstart](QUICKSTART.md). Solo means one player with a referee or an appropriately configured ARGO host—not an all-knowing player reading the referee's secrets.
+One referee and one to six players; a d4, d6, d8, d10, d12 and d20 (or an agreed dice tool); a copy of the character sheet; and a way to record possessions, time and discoveries. Start with the [rules](RULES.md). Your referee uses [Quickstart](QUICKSTART.md), which contains private preparation notes. Solo means one player with a referee or an appropriately configured ARGO host—not an all-knowing player reading the referee's secrets.
 
 The campaign uses a compact adaptation of Knave first edition. There are no mandatory classes. Equipment and choices matter more than a profession label. The campaign book supports human-refereed play now; its accompanying software calculates bounded rules results and seeds ARGO's existing world. Fully automated combat, travel and faction transactions require a later authority extension.
 

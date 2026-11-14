@@ -15,7 +15,7 @@ At night the harbor hears oars on empty water. The city still collects its dues.
 
 ## What is built
 
-This is a playable **human-refereed campaign kit** with structured content, deterministic rules calculators and an ARGO seed adapter. Its core uses a documented Knave1e adaptation. Open-table expeditions and finite faction projects organize an original Greek setting; it does not copy a published adventure or claim full D&D compatibility.
+This is a playable **human-refereed campaign kit** with structured content, deterministic rules calculators and an ARGO seed adapter. Its core uses a documented Knave first-edition adaptation. Open-table expeditions and finite faction projects organize an original Greek setting; it does not copy a published adventure or claim full D&D compatibility.
 
 The software can validate the pack, provide a minimal public handout and rumor candidate cards, produce a scoped initial ledger seed/character profiles, and calculate explicitly supplied dice and resource arithmetic. Existing ARGO authority handles custody, accepted speech, observer-owned impressions, donor consent and the original Fate-specific actions. The calculators do not commit HP, combat, journeys, food consumption or faction effects to the game ledger. Those remain referee records until a versioned authoritative rules adapter is built.
 

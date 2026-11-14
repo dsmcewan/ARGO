@@ -1,0 +1,38 @@
+{
+  "task": "TF-000",
+  "plan": "docs/superpowers/plans/2026-11-14-tempting-fates.md",
+  "commit": "d4020952d21bea8a87da3d0524fe50712f821bee",
+  "new_tests": {
+    "red": 5,
+    "green": 5
+  },
+  "suite": {
+    "passed": 163,
+    "failed": 0,
+    "note": "Full suite before final documentation-only artifact-exclusivity clarification; final freeze tests rerun afterward."
+  },
+  "typecheck": "pass",
+  "existing_contracts": "pass",
+  "logs": {
+    "/tmp/argo-tf000-red.log": "53b654de23d0f8bf9c31787ca098e9123e97ed455d88c19dc3a3244d56b24bb6",
+    "/tmp/argo-tf000-green.log": "cc64ea504bd43ed8dc8fc990fe1160c543be3798b48c8fbfd5a00a5d00ac2ca8",
+    "/tmp/argo-tf000-typecheck.log": "2cf20646d72113be26c6fbe14738bc101ebf909ab8a2374290f369e1d53c975c",
+    "/tmp/argo-tf000-existing-contracts.log": "2cd7874723b12ab43b0da644f0fa05f6af32153676d6e31de2c44c17c8e03428",
+    "/tmp/argo-tf000-suite.log": "30e0d9da66bfb725fb6b3fe0261cffee26eb5f9eee8b167ebc58e938b1ec5be7"
+  },
+  "freeze": {
+    "profile_version": "tempting-fates-pack/0.1.0",
+    "rules_tool_profile": "tempting-fates-rules/0.1.0",
+    "carrier_gameplay_version": "tempted-fates/1.0.0",
+    "files": {
+      "scenarios/tempted-fates/campaign/CONTRACT.md": "e7f80e826b3970b1588dbb5b7fe87e73dd912a00cb80d371e247dc1040cf3827",
+      "scenarios/tempted-fates/campaign/content.schema.json": "b52554b0e795f89c3fa204924eac68d2dbcb9e08590b40d972370f5d858ff69f",
+      "scenarios/tempted-fates/campaign/types.ts": "f047ef254bc420341b5a077a5d8c28da2113e524677467c493edd99dcde75642"
+    },
+    "scope": "Local campaign-kit interface freeze; no causal ruleset migration or operational merge approval"
+  },
+  "notes": [
+    "No runtime code, old frozen contracts, board mutation, paid model calls or publication.",
+    "Parent owns independent review and application approval."
+  ]
+}

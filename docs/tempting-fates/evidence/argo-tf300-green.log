@@ -1,0 +1,26 @@
+✔ catalog accepts a complete small pack and reversed ordinary-route endpoints without changing it (19.931341ms)
+✔ catalog validates closed grammar without coercing, removing fields, or supplying defaults (15.97969ms)
+✔ every collection rejects duplicate IDs and NPC/item reserved namespaces cannot collide (12.969833ms)
+✔ route, occupant, faction, encounter, rumor, hook and item references must actually resolve (14.96482ms)
+✔ ordinary atlas is connected, route memberships are reciprocal, and loom access stays conditional (6.860469ms)
+✔ occupants occur at their declared site exactly once and Fate identity/role/location are fixed (11.114498ms)
+✔ artifact selection excludes the other variant artifact and every physical claimed artifact from legend (8.381699ms)
+✔ clock, arithmetic, speech-codepoint and safe-number limits reject malformed content (4.361109ms)
+✔ passive guard rejects proxies and getters before invoking any caller behavior (2.545368ms)
+✔ passive guard rejects exotic, cyclic, decorated, sparse, symbolic, hidden and oversized structures (68.481417ms)
+✔ public handout and rumor candidate are exact minimal detached DTOs with no referee truth (6.640528ms)
+✔ seed has literal v1 defaults, exact caller scope, fixed Fate roles and traveler-only expedition (23.859389ms)
+✔ one roster produces explicit stable genuine, counterfeit and legend item selections (42.942081ms)
+✔ seed options reject unknown fields, invalid exact scope, seed, public key and unsupported variants (20.61398ms)
+✔ travelers are bounded safe unique mortal identities with campaign-valid nature (39.432987ms)
+✔ ASCII identifiers and private seed reject trailing line terminators without normalization (2.389746ms)
+✔ seed construction detaches nested inputs and never adds runtime knowledge, effects or display metadata (2.326958ms)
+✔ campaign construction leaves the existing causal and character schema freezes unchanged (2.164394ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1793.684392

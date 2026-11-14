@@ -1,0 +1,15 @@
+{
+  "revision": "d4b8086559a2934c233892949055531b24ba3706",
+  "passed": true,
+  "checks": [
+    "Authored counts: eight locations, eleven NPCs (eight mortal/three Fates), three factions, twelve rumors, three variants.",
+    "All nine Atlas route times, minute conversions, access conditions and signs match world.json.",
+    "All twelve rumor utterances and per-variant assessment labels match the encounter table.",
+    "159 catalog narrative strings longer than 80 characters appear verbatim in campaign prose; only separately reviewed introductory/tone/adaptation paragraphs differ.",
+    "Fate roles remain separate and no route reaches the loom.",
+    "Three finite project budgets fund exactly the initially unfinished stages; triggers and completions match the guide.",
+    "Starting-kit slot totals recomputed from listed items: nine for one-slot weapon, ten for spear, including coin and oil bundles.",
+    "Frozen campaign contract/schema/types match their declared hashes.",
+    "Retained Knave first-edition PDF and license hashes exactly match ATTRIBUTION.md."
+  ]
+}
