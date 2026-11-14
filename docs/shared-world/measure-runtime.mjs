@@ -88,7 +88,7 @@ try {
   const expected = await writer.snapshot();
   assert.equal(worldStateHash(await sibling.snapshot()),worldStateHash(expected));
   await sibling.close(); sibling = undefined;
-  const row={prefix_events:target,after_sample_events:cursor.sequence,fill_ms,cold_open_ms:opening.ms,warm_snapshot:snapshot,warm_scoped_view:scoped_view,
+  const row={prefix_events:target,after_sample_events:cursor.sequence,fill_ms,cold_handle_open_ms:opening.ms,warm_snapshot:snapshot,warm_scoped_view:scoped_view,
    warm_speech_append_ms:append.ms,warm_contextual_dialogue_and_commit_ms:dialogue.ms,dialogue_context_reads:contextReads,injected_model_calls:modelCalls,
    exact_retry:retry,two_handle_one_event_refresh_ms:refresh.ms,state_bytes:Buffer.byteLength(JSON.stringify(expected)),state_hash:worldStateHash(expected)};
   rows.push(row);process.stdout.write(JSON.stringify(row)+'\n');
@@ -97,16 +97,17 @@ try {
  while (true) {const page=await writer.events({after:allEvents.length,limit:256});if(!page.length)break;allEvents.push(...page);}
  await new Promise(resolve=>setImmediate(resolve));
  eventLoop.disable();
- const store_event_loop_delay_ms={mean:eventLoop.mean/1e6,max:eventLoop.max/1e6,p99:eventLoop.percentile(99)/1e6};
+ const host_workload_parent_event_loop_delay_ms={mean:eventLoop.mean/1e6,max:eventLoop.max/1e6,p99:eventLoop.percentile(99)/1e6};
  const replay=await elapsed(()=>replayWorld(genesis,allEvents));
  const final=await writer.snapshot();
  assert.deepEqual(replay.value,final);
  const record={candidate:execFileSync('git',['rev-parse','HEAD'],{cwd:repo,encoding:'utf8'}).trim(),node:process.version,platform:process.platform,
   test_runner:false,paid_calls:0,genesis_hash:hash(genesis),targets,rows,final_sequence:final.cursor.sequence,full_replay_ms:replay.ms,
-  replay_equals_snapshot:true,final_state_hash:worldStateHash(final),store_event_loop_delay_ms,
+  replay_equals_snapshot:true,final_state_hash:worldStateHash(final),host_workload_parent_event_loop_delay_ms,
   limits:['One machine; five warm read/retry samples, one append and one suffix refresh per checkpoint.',
    'History-bearing state hashes grow with history; cold replay is not claimed to be linear.',
-   'Parent event-loop samples cover store/view operations; the final standalone synchronous forensic replay is measured separately.',
+   'Cold handle opening includes full verification but uses a warmed OS page cache; this is not a cold-disk measurement.',
+   'Parent event-loop samples cover the whole host workload, including projection, hashes, JSON sizing and logging; they do not isolate store/worker blocking. The final standalone synchronous forensic replay is measured separately.',
    'Alternating addressed speech in the actual campaign; bulk turns use explicit fixtures and the measured contextual reply uses an injected provider.',
    'No provider latency, combat-load or general graph-scale claim.']};
  await mkdir(output,{recursive:true});await writeFile(join(output,'measurement.json'),JSON.stringify(record,null,2)+'\n');
