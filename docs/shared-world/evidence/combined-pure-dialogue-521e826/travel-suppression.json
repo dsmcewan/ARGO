@@ -1,0 +1,17 @@
+{
+  "request_seen": true,
+  "proposal_rejected_after_travel": true,
+  "inflight_suppressed": true,
+  "current_melia_scene": {
+    "description": "Empty boats knock at their moorings. Melia trims an ordinary clay lamp beside her kiln. A water basin is open to strangers; two notices offer grain work and crossing repairs.",
+    "location_id": "l_harbor",
+    "environment": "night",
+    "occupants": [
+      {
+        "actor_id": "melia",
+        "name": "Melia",
+        "condition": "standing"
+      }
+    ]
+  }
+}

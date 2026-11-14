@@ -1,0 +1,17 @@
+{
+  "ticket_id": "SW-300",
+  "source_commit": "2a2f02faf0c95e4095a8b5a43d022218cc15d0bc",
+  "base_commit": "521e826b9588a1293ed22c243a14b83924c275bd",
+  "board_status": "VERIFYING",
+  "attempt": 1,
+  "artifacts": {
+    "TESTS/shared-world-journal.test.ts": "51407ee8e6174150b8c0c94db9ae8066ec7b923a97a20a1c9816441276ede9e1",
+    "TESTS/shared-world-storage.test.ts": "147d99586d5948fe8a4c83169035983ced256332e2db9c2e39344926085bd29d",
+    "packages/ledger/src/world/index.ts": "42ba0f1ae4952d3f12592b702b2cd536e15b49ab1f3712fca117ab979ec46418",
+    "packages/ledger/src/world/journal.ts": "acc2f0b4c16eb7df4139b879b16bedbe7f6812dccd33fc4893f595c9cff709f9",
+    "packages/ledger/src/world/storage-worker.ts": "64e54a3630fa3943a1a923b8702597129ff4430c4257fe80093f78c4a0232f97",
+    "packages/ledger/src/world/storage.ts": "3d0ea4e164f0524946b263018a01e85583f107457b1510c17c80cd261e8e327e"
+  },
+  "application_acceptance": "Recorded separately; data-only Board gate not run",
+  "paid_calls": 0
+}

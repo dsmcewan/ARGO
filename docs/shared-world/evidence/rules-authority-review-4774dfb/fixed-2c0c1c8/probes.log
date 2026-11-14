@@ -1,0 +1,19 @@
+✔ independent physical oracle: physical-first and social-first share exact RNG, physical bytes, and time (355.26509ms)
+✔ complete command and principal binding, rejected IDs remain reusable, frozen bad inputs earn no trust (76.265224ms)
+✔ durable offer is narrowly lender-authorized; borrower cannot alter policy, item, terms, or role (89.542155ms)
+✔ actual post-offer capacity changes cause atomic refusal, same request can succeed after remedy (178.797185ms)
+✔ expiry and permanent invalidation follow shared time including another actor wait (238.58713ms)
+✔ third-party possession, drop and pickup fulfill once; a later fresh loan remains independent (257.078903ms)
+✔ social activity cannot reset combat token; stale and foreign recovery refuse without RNG/time changes (115.65962ms)
+✔ deterministic replay of mixed pure transitions agrees across cold clones and owned states (369.773926ms)
+✔ owned immutable fork caches retain independent requests, evidence, replies, and digest (108.571484ms)
+✔ full-history NPC reply dedup survives view windows, cold re-entry, and rejected attempts (791.875246ms)
+✔ late aggregate loan refusal cannot leak custody, obligations, or reserved request into owned indexes (4297.600142ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10071.954105

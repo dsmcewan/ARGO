@@ -1,0 +1,88 @@
+{
+  "candidate": "31e8c428472a0130fc75e46ce156dd5bddc0c534",
+  "before": {
+    "sha": "31e8c428472a0130fc75e46ce156dd5bddc0c534",
+    "status": ""
+  },
+  "after": {
+    "sha": "31e8c428472a0130fc75e46ce156dd5bddc0c534",
+    "status": ""
+  },
+  "checks": [
+    {
+      "name": "Exact source/freeze identity and three-file-only scope",
+      "status": "pass",
+      "details": {
+        "changed": [
+          "TESTS/shared-world-campaign.test.ts",
+          "scenarios/tempted-fates/shared-world/SEED.md",
+          "scenarios/tempted-fates/shared-world/seed.ts"
+        ],
+        "identity": {
+          "pack_hash": "70adb204c3f5626957d69ff5c0107b4c2954714390f1e5cb37a97de61fea5161",
+          "catalog_hash": "da7f45ff9a8d6874c98d4eba4e0c7e658c0259d139f032bf6e146f1872ebb2a0",
+          "source_manifest_hash": "c6ec5f0c7a8824d83939028a5660df8e8c24202bd6029660f150ef9b3de0391f"
+        }
+      }
+    },
+    {
+      "name": "Self-consistent changed pack cannot replace fixed source pins",
+      "status": "pass"
+    },
+    {
+      "name": "One identity namespace catches cross-kind, generated and boundary-length collisions",
+      "status": "pass",
+      "details": {
+        "maximum_traveler_id_with_generated_firekit": 56
+      }
+    },
+    {
+      "name": "All variants keep Fate actors/loom out of the mortal lifecycle graph",
+      "status": "pass"
+    },
+    {
+      "name": "Initial knowledge is explicit owner policy, never an accepted bargain",
+      "status": "pass"
+    },
+    {
+      "name": "Profiles and shared scenes are selected, not whole private campaign documents",
+      "status": "pass",
+      "details": {
+        "note": "Authored scene prose contains initial activity; runtime current occupants/custody must take precedence. Genesis and variant-bearing manifest are host metadata."
+      }
+    },
+    {
+      "name": "Kit/environment are the only changes to old mortal initialization across 24 choices",
+      "status": "pass",
+      "details": {
+        "combinations": 24
+      }
+    },
+    {
+      "name": "Six-traveler borrowed kits preserve all other resources and Melia custody",
+      "status": "pass"
+    },
+    {
+      "name": "Night resource rule works without granting a lamp by policy selection",
+      "status": "pass",
+      "details": {
+        "boundary": "Pure existing mortal reducer only; no shared transaction/loan claim"
+      }
+    },
+    {
+      "name": "Hostile option/pack objects cannot execute traps or inject live state",
+      "status": "pass",
+      "details": {
+        "traps": 0
+      }
+    },
+    {
+      "name": "Outputs are detached, deeply frozen and do not freeze caller data",
+      "status": "pass"
+    }
+  ],
+  "passed": 11,
+  "failed": 0,
+  "repository_edits": false,
+  "paid_calls": 0
+}

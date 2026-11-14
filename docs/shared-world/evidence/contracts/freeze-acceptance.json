@@ -1,0 +1,21 @@
+{
+  "ticket_id": "SW-100",
+  "board_status": "VERIFYING",
+  "source_commit": "15d49d3c1ca5615ecc195da8b99401071fd4bd55",
+  "reviewed_source_commit": "186e052a19de6466aedaf048ecb5d9c4fd4fc1eb",
+  "artifacts": {
+    "SYSTEMS/shared-world-v1/CONTRACT.md": "a7d3043105752495de744c21da30a90982e4a68cdddd06344ffe058a04d19606",
+    "SYSTEMS/shared-world-v1/FREEZE.json": "e6d12b9aae970406a8f0fa93ad879cb07d6c93e7be8a64f0adbc42b8af4a1ef7",
+    "SYSTEMS/shared-world-v1/world.schema.json": "6918294342f48f8a3d4edf81b1be99b4b17d8294185d25b0f1965d1f1533b665",
+    "TESTS/shared-world-contract-fixtures.ts": "62aad1bc18c22748d1a76c47f1cc451b7fabda6c59a506002e73505515e1750e",
+    "TESTS/shared-world-contracts.test.ts": "ecc7982beb426a4dc9bd3d7b542c9a30aed1fdf4bccf3d0697123e0db62cc747",
+    "packages/contracts/src/shared-world-types.ts": "f1cc8f944b0847f14df17b048eee9ad1f25f185790fa8e8612d97331b4b67351",
+    "packages/contracts/src/shared-world.ts": "8edbb1eb833c0fb579d7bbd52b50b791d1cd43751cc690ee29e91995f56cc9c2"
+  },
+  "review": "Two independent native peers; not cross-vendor",
+  "contract_tests_passed": 25,
+  "authority_probes_passed": 9,
+  "privacy_probes_passed": 20,
+  "runtime_acceptance": false,
+  "paid_calls": 0
+}

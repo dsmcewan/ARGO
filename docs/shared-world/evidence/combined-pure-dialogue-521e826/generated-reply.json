@@ -1,0 +1,31 @@
+{
+  "version": "shared-world/0.1.0",
+  "scope": {
+    "tenant_id": "tenant",
+    "rights_lane": "private_upload",
+    "workspace_id": "workspace",
+    "workspace_tenant_id": "tenant:private_upload:workspace",
+    "campaign_id": "campaign",
+    "world_id": "shared_probe_world",
+    "branch_id": "main"
+  },
+  "request_id": "generated_reply",
+  "actor_id": "melia",
+  "expected": {
+    "sequence": 1,
+    "head": "5b52d28cab8ef21f96d75b8e9c9888322c4fc69a2c4e854c0524debd696d06dc",
+    "world_time": 0
+  },
+  "causation_id": "5b52d28cab8ef21f96d75b8e9c9888322c4fc69a2c4e854c0524debd696d06dc",
+  "action": {
+    "type": "speak",
+    "text": "No fee or deposit. Bring the lamp back to the harbor as agreed; oil is yours to buy, and repairs only by agreement for actual damage.",
+    "audience": {
+      "kind": "whisper",
+      "addressed_actor_ids": [
+        "hero"
+      ]
+    },
+    "in_reply_to": "48d5b17702aa5e5c0181968d675f83de89f5d1175d236547bdc3153351d1958b"
+  }
+}

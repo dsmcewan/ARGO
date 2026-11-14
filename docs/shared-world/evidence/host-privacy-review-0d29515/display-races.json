@@ -1,0 +1,10 @@
+{
+  "query_read_race_spoken": null,
+  "closure_after_accept_spoken": null,
+  "post_cutoff_player_spoken": null,
+  "accepted_receipts": [
+    "reply_7",
+    "reply_11",
+    "post_cutoff"
+  ]
+}

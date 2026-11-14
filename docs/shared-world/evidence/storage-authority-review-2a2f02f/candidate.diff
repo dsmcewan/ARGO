@@ -1,0 +1,524 @@
+diff --git a/TESTS/shared-world-journal.test.ts b/TESTS/shared-world-journal.test.ts
+new file mode 100644
+index 0000000..9e1ef32
+--- /dev/null
++++ b/TESTS/shared-world-journal.test.ts
+@@ -0,0 +1,77 @@
++import {test} from 'node:test';
++import assert from 'node:assert/strict';
++import {sign,generateKeyPairSync} from 'node:crypto';
++import {canonical,hash,ArgoError} from '../packages/contracts/src/index.ts';
++import {worldRequestHash} from '../packages/contracts/src/shared-world.ts';
++import type {WorldEvent,WorldReceipt,WorldReceiptTrust} from '../packages/contracts/src/shared-world-types.ts';
++import {initialWorldState,worldStateHash} from '../packages/ledger/src/world/rules.ts';
++import {viewWorldActor} from '../packages/ledger/src/world/view.ts';
++import {genesis,principal,command,speak,offer,accept} from './shared-world-rules-helpers.ts';
++import {keys} from './mortal-fixtures.ts';
++
++const source='../packages/ledger/src/world/journal.ts';
++const loaded=await import(source).catch(error=>{if(error.code==='ERR_MODULE_NOT_FOUND')return {};throw error;});
++const api:typeof import('../packages/ledger/src/world/journal.ts')=loaded as typeof import('../packages/ledger/src/world/journal.ts');
++function available(){assert.equal(typeof api.createWorldEvent,'function','Shared journal must be implemented');}
++const code=(c:string)=>(e:unknown)=>e instanceof ArgoError&&e.code===c;
++function resign(event:WorldEvent):WorldEvent{
++ const {hash:_,signature:__,...body}=event;
++ const signed={...body,signature:sign(null,Buffer.from(canonical({domain:'shared-world/0.1.0/event',event:body})),keys.privateKey).toString('base64')};
++ return {...signed,hash:hash(signed)};
++}
++function trust(g=genesis()):WorldReceiptTrust{return {scope:g.mortal.scope,genesis_hash:hash(g),authority_key_id:g.mortal.authority_key_id,authority_public_key:g.mortal.authority_public_key};}
++
++test('signed compound transitions replay every prefix with one cursor and atomic loan knowledge',()=>{
++ available();const g=genesis(),events:WorldEvent[]=[];let state=initialWorldState(g);
++ for(const [action,id] of [[speak(),'hero'],[offer(),'hero']] as const){
++  const c=command(state,action,id),created=api.createWorldEvent(g,state,c,principal(g,id),keys.privateKey);events.push(created.event);state=created.state;
++  assert.equal(created.event.before_hash,worldStateHash(api.replayWorld(g,events.slice(0,-1))));
++  assert.equal(created.receipt.request_hash,worldRequestHash(c,principal(g,id)));api.verifyWorldReceipt(created.receipt,trust(g));assert.deepEqual(api.replayWorld(g,events),state);
++ }
++ const accepted=api.createWorldEvent(g,state,command(state,accept(state),'companion'),principal(g,'companion'),keys.privateKey);events.push(accepted.event);state=accepted.state;
++ assert.equal(state.physical.items.find(i=>i.id==='lamp')!.owner_id,'companion');assert.equal(state.loans.length,1);
++ assert.equal(accepted.event.memory.payload.type,'loan_accepted');assert.deepEqual(accepted.event.memory.acquired_by,['hero','companion']);assert.equal(state.cursor.head,accepted.event.hash);
++ assert.equal(accepted.receipt.state_hash,worldStateHash(state));assert.equal('effects'in accepted.receipt,false);assert.deepEqual(api.replayWorld(g,events),state);
++ const moved=api.createWorldEvent(g,state,command(state,{type:'mortal',action:{type:'travel',route_id:'road'}},'companion'),principal(g,'companion'),keys.privateKey);events.push(moved.event);
++ assert.equal(moved.state.cursor.world_time,600);assert.deepEqual(api.replayWorld(g,events),moved.state);
++ const view=viewWorldActor(g,moved.state,{version:g.version,scope:g.mortal.scope,actor_id:'hero',cursor:moved.state.cursor},principal(g));assert.equal(view.query.cursor.head,moved.event.hash);
++});
++
++test('replay rejects independently re-signed incorrect witnesses, effects, draws and state commitments',()=>{
++ available();const g=genesis(),state=initialWorldState(g),c=command(state,{type:'speak',text:'A public account',audience:{kind:'room',addressed_actor_ids:[]},in_reply_to:null});
++ const {event}=api.createWorldEvent(g,state,c,principal(g),keys.privateKey);
++ for(const change of [(e:WorldEvent)=>{e.memory.acquired_by=e.memory.acquired_by.filter(id=>id!=='companion');},(e:WorldEvent)=>{e.after_hash='f'.repeat(64);},(e:WorldEvent)=>{e.before_hash='f'.repeat(64);},(e:WorldEvent)=>{e.effects=[{kind:'world_time',actor_id:null,subject_id:null,amount:1}];},(e:WorldEvent)=>{e.draws=[{index:0,purpose:'forged',sides:6,value:1}];}]){
++  const altered=structuredClone(event);change(altered);assert.throws(()=>api.verifyWorldEvent(g,state,resign(altered)),code('CORRUPT_LEDGER'));
++ }
++ const broken=structuredClone(event);broken.signature=Buffer.alloc(64).toString('base64');broken.hash=hash((({hash:_,...signed})=>signed)(broken));assert.throws(()=>api.verifyWorldEvent(g,state,broken),code('CORRUPT_LEDGER'));
++});
++
++test('complete genesis, controller identity and request bytes are bound by journal and receipt signatures',()=>{
++ available();const g=genesis(),s=initialWorldState(g),c=command(s,speak()),p=principal(g),result=api.createWorldEvent(g,s,c,p,keys.privateKey);
++ for(const other of [{...g,environment:'day' as const},{...g,mortal:{...g.mortal,seed:'f'.repeat(64)}},{...g,mortal:{...g.mortal,scope:{...g.mortal.scope,branch_id:'other'}}}])assert.throws(()=>api.verifyWorldEvent(other,s,result.event));
++ assert.throws(()=>api.createWorldEvent(g,s,c,{...p,principal_id:'impostor'},keys.privateKey),code('UNAUTHORIZED'));
++ assert.throws(()=>api.createWorldEvent(g,s,c,p,generateKeyPairSync('ed25519').privateKey),code('UNAUTHORIZED'));
++ for(const key of ['request_id','request_hash','event_hash','state_hash','genesis_hash','authority_key_id'] as const){const receipt=structuredClone(result.receipt);receipt[key]=key.endsWith('hash')?'f'.repeat(64):'other';assert.throws(()=>api.verifyWorldReceipt(receipt,trust(g)));}
++ const wrong=structuredClone(result.receipt);wrong.scope.branch_id='other';assert.throws(()=>api.verifyWorldReceipt(wrong,trust(g)),code('UNAUTHORIZED'));
++ const time=structuredClone(result.receipt);time.cursor.world_time++;assert.throws(()=>api.verifyWorldReceipt(time,trust(g)),code('UNAUTHORIZED'));
++ for(const foreign of [{...trust(g),genesis_hash:'f'.repeat(64)},{...trust(g),authority_key_id:'other'},{...trust(g),scope:{...g.mortal.scope,world_id:'other'}}])assert.throws(()=>api.verifyWorldReceipt(result.receipt,foreign),code('UNAUTHORIZED'));
++ assert.equal(result.receipt.request_hash,worldRequestHash(c,p));
++});
++
++test('whole replay refuses duplicate requests, reordered prefixes and active history without evaluating traps',()=>{
++ available();const g=genesis(),s=initialWorldState(g),a=api.createWorldEvent(g,s,command(s,speak()),principal(g),keys.privateKey),b=api.createWorldEvent(g,a.state,command(a.state,speak()),principal(g),keys.privateKey);
++ assert.throws(()=>api.replayWorld(g,[b.event,a.event]),code('CORRUPT_LEDGER'));
++ const duplicate=structuredClone(b.event);duplicate.command.request_id=a.event.command.request_id;duplicate.memory.request_id=duplicate.command.request_id;duplicate.memory.record_id=hash({domain:'shared-world/0.1.0/memory',genesis_hash:hash(g),request_id:duplicate.command.request_id,sequence:2});
++ assert.throws(()=>api.replayWorld(g,[a.event,resign(duplicate)]),code('CORRUPT_LEDGER'));
++ let touched=0;const active=[a.event];Object.defineProperty(active,'0',{enumerable:true,get(){touched++;return a.event;}});assert.throws(()=>api.replayWorld(g,active),code('INVALID_CONTRACT'));
++ const proxy=new Proxy([a.event],{get(){touched++;throw Error('active');},getPrototypeOf(){touched++;throw Error('active');}});assert.throws(()=>api.replayWorld(g,proxy),code('INVALID_CONTRACT'));
++ const receipt=structuredClone(a.receipt);Object.defineProperty(receipt,'signature',{enumerable:true,get(){touched++;return a.receipt.signature;}});assert.throws(()=>api.verifyWorldReceipt(receipt,trust(g)),code('INVALID_CONTRACT'));assert.equal(touched,0);
++});
++
++test('journal owns inputs and finalizes the immutable state head without mutating prior states',()=>{
++ available();const g=genesis(),s=initialWorldState(g),c=command(s,speak()),p=principal(g),before=canonical({g,s,c,p}),created=api.createWorldEvent(g,s,c,p,keys.privateKey);
++ assert.equal(canonical({g,s,c,p}),before);assert.ok(Object.isFrozen(created.state.memories[0]!.payload));assert.equal(s.memories.length,0);
++ c.action={type:'speak',text:'Changed',audience:{kind:'self',addressed_actor_ids:[]},in_reply_to:null};p.principal_id='changed';assert.notEqual(canonical(created.event.command),canonical(c));
++ assert.deepEqual(api.verifyWorldEvent(g,s,created.event),created.state);assert.equal(worldStateHash(created.state),created.event.after_hash);
++ const malformed=structuredClone(created.state);malformed.memories[0]!.payload={type:'close_mythic_engagement'};assert.throws(()=>api.createWorldEvent(g,malformed,command(malformed,speak()),principal(g),keys.privateKey));
++});
+diff --git a/TESTS/shared-world-storage.test.ts b/TESTS/shared-world-storage.test.ts
+new file mode 100644
+index 0000000..f79d514
+--- /dev/null
++++ b/TESTS/shared-world-storage.test.ts
+@@ -0,0 +1,142 @@
++import {test} from 'node:test';
++import type {TestContext} from 'node:test';
++import assert from 'node:assert/strict';
++import {mkdtemp,rm,readFile,readdir} from 'node:fs/promises';
++import {join} from 'node:path';
++import {tmpdir} from 'node:os';
++import {Worker} from 'node:worker_threads';
++import {DatabaseSync} from 'node:sqlite';
++import {canonical,hash,ArgoError} from '../packages/contracts/src/index.ts';
++import type {WorldLedger,WorldReceipt,WorldLedgerOptions} from '../packages/contracts/src/shared-world-types.ts';
++import {replayWorld,createWorldEvent} from '../packages/ledger/src/world/journal.ts';
++import {viewWorldActor} from '../packages/ledger/src/world/view.ts';
++import {genesis,principal,command,speak,offer,accept} from './shared-world-rules-helpers.ts';
++import {keys} from './mortal-fixtures.ts';
++
++const source='../packages/ledger/src/world/storage.ts';
++const loaded=await import(source).catch(error=>{if(error.code==='ERR_MODULE_NOT_FOUND')return {};throw error;});
++const api:typeof import('../packages/ledger/src/world/storage.ts')=loaded as typeof import('../packages/ledger/src/world/storage.ts');
++const code=(c:string)=>(e:unknown)=>e instanceof ArgoError&&e.code===c;
++async function setup(t:TestContext){
++ assert.equal(typeof api.openWorldLedger,'function','Shared storage must be implemented');
++ const directory=await mkdtemp(join(tmpdir(),'argo-world-storage-')),path=join(directory,'world.sqlite'),g=genesis(),handles:WorldLedger[]=[];
++ t.after(async()=>{await Promise.all(handles.map(h=>h.close().catch(()=>{})));await rm(directory,{recursive:true,force:true});});
++ const connect=async(extra:Partial<WorldLedgerOptions>={})=>{const h=await api.openWorldLedger({path,genesis:g,privateKey:keys.privateKey,...extra});handles.push(h);return h;};
++ return {directory,path,g,connect,handles};
++}
++function rowCount(path:string){const db=new DatabaseSync(path);try{return Number(db.prepare('SELECT count(*) AS n FROM shared_world_v1_events').get()!.n);}finally{db.close();}}
++
++test('SQLite commits signed compound history and receipts together and resumes exact retries',async t=>{
++ const f=await setup(t),a=await f.connect(),s=await a.snapshot();assert.equal(s.cursor.head,hash(f.g));assert.deepEqual(await a.events(),[]);
++ const c=command(s,offer()),issued=await a.submit(c,principal(f.g));const offered=await a.snapshot();
++ const taken=command(offered,accept(offered),'companion'),receipt=await a.submit(taken,principal(f.g,'companion')),state=await a.snapshot();
++ assert.equal(state.physical.items.find(i=>i.id==='lamp')!.owner_id,'companion');assert.equal(state.loans.length,1);assert.equal(state.memories.at(-1)!.payload.type,'loan_accepted');assert.equal(rowCount(f.path),2);
++ assert.deepEqual(await a.submit(c,principal(f.g)),issued);assert.deepEqual(await a.submit(taken,principal(f.g,'companion')),receipt);
++ assert.deepEqual(replayWorld(f.g,await a.events()),state);assert.deepEqual((await a.events({after:1,limit:1})).map(e=>e.sequence),[2]);
++ await a.close();const b=await f.connect();assert.deepEqual(await b.snapshot(),state);assert.deepEqual(await b.submit(taken,principal(f.g,'companion')),receipt);
++ const db=new DatabaseSync(f.path);assert.equal(db.prepare('PRAGMA journal_mode').get()!.journal_mode,'wal');db.close();
++ for(const name of await readdir(f.directory))assert.equal((await readFile(join(f.directory,name))).includes(Buffer.from('PRIVATE KEY')),false);
++});
++
++test('two handles serialize stale writers and identical accepts never transfer or acquire twice',async t=>{
++ const f=await setup(t),a=await f.connect(),b=await f.connect();await a.submit(command(await a.snapshot(),offer()),principal(f.g));
++ const s=await a.snapshot(),c=command(s,accept(s),'companion'),p=principal(f.g,'companion');const [x,y]=await Promise.all([a.submit(c,p),b.submit(c,p)]);assert.deepEqual(x,y);assert.equal(rowCount(f.path),2);
++ const next=await b.snapshot(),outcomes=await Promise.allSettled([a.submit(command(next,speak(),'hero','left'),principal(f.g)),b.submit(command(next,speak(),'hero','right'),principal(f.g))]);
++ assert.equal(outcomes.filter(x=>x.status==='fulfilled').length,1);assert.equal(outcomes.filter(x=>x.status==='rejected'&&code('CONFLICT')(x.reason)).length,1);assert.equal(rowCount(f.path),3);
++ await assert.rejects(a.submit({...c,action:{...c.action,type:'accept_loan',offer_id:'lamp_offer',offer_hash:'f'.repeat(64)}},p),code('CONFLICT'));
++ await assert.rejects(a.submit(c,{...p,principal_id:'impostor'}),code('CONFLICT'));
++ assert.deepEqual(await a.snapshot(),await b.snapshot());
++});
++
++test('an append failure rolls back custody, obligation, memory and request identity as one unit',async t=>{
++ const f=await setup(t),a=await f.connect();await a.submit(command(await a.snapshot(),offer()),principal(f.g));const before=await a.snapshot(),c=command(before,accept(before),'companion');
++ const db=new DatabaseSync(f.path);t.after(()=>db.close());db.exec("CREATE TRIGGER reject_append BEFORE INSERT ON shared_world_v1_events BEGIN SELECT RAISE(ABORT,'injected append refusal'); END;");
++ await assert.rejects(a.submit(c,principal(f.g,'companion')),code('UNAVAILABLE'));assert.deepEqual(await a.snapshot(),before);assert.equal(rowCount(f.path),1);
++ db.exec('DROP TRIGGER reject_append');await a.submit(c,principal(f.g,'companion'));const after=await a.snapshot();assert.equal(after.loans.length,1);assert.equal(after.physical.items.find(i=>i.id==='lamp')!.owner_id,'companion');assert.equal(rowCount(f.path),2);
++});
++
++test('losing the worker after COMMIT before acknowledgment reconciles the same durable receipt',async t=>{
++ const f=await setup(t),a=await f.connect(),c=command(await a.snapshot(),speak());let captured:WorldReceipt|undefined,termination:Promise<number>|undefined;
++ const original=Worker.prototype.emit;
++ const spy=t.mock.method(Worker.prototype,'emit',function(this:Worker,event:string|symbol,...args:any[]){
++  const reply=args[0];if(event==='message'&&reply?.ok===true&&reply.value?.request_id===c.request_id&&reply.value?.signature){captured=structuredClone(reply.value);termination=this.terminate();return true;}
++  return Reflect.apply(original,this,[event,...args]);
++ });t.after(()=>spy.mock.restore());
++ await assert.rejects(a.submit(c,principal(f.g)),code('UNAVAILABLE'));await termination;spy.mock.restore();assert.ok(captured);assert.equal(rowCount(f.path),1);
++ const b=await f.connect();assert.deepEqual(await b.submit(c,principal(f.g)),captured);assert.equal((await b.snapshot()).memories.length,1);
++});
++
++test('unchanged verified worker prefixes reuse immutable owned snapshots and changed prefixes replace them',async t=>{
++ const f=await setup(t),a=await f.connect(),before=await a.snapshot();assert.strictEqual(await a.snapshot(),before);assert.ok(Object.isFrozen(before.physical.actors[0]!.resources));
++ assert.throws(()=>{before.memories.push({} as never);},TypeError);
++ const b=await f.connect();await b.submit(command(before,speak()),principal(f.g));const next=await a.snapshot();assert.notStrictEqual(next,before);assert.strictEqual(await a.snapshot(),next);assert.equal(before.memories.length,0);
++ const query={version:f.g.version,scope:f.g.mortal.scope,actor_id:'hero',cursor:next.cursor};assert.equal(viewWorldActor(f.g,next,query,principal(f.g)).memories.length,1);
++ const forged=structuredClone(next);forged.memories[0]!.record_id='f'.repeat(64);assert.throws(()=>viewWorldActor(f.g,forged,query,principal(f.g)),code('INVALID_CONTRACT'));
++});
++
++test('external checkpoints bind sequence, hash and world time while allowing a committed ancestor',async t=>{
++ const f=await setup(t),a=await f.connect();const first=await a.submit(command(await a.snapshot(),speak()),principal(f.g));
++ await a.submit(command(await a.snapshot(),{type:'mortal',action:{type:'wait',turns:1}}),principal(f.g));await a.close();
++ const b=await f.connect({expectedHead:first.cursor});assert.equal((await b.snapshot()).cursor.sequence,2);await b.close();
++ for(const expectedHead of [{...first.cursor,head:'f'.repeat(64)},{...first.cursor,world_time:1},{sequence:0,head:hash(f.g),world_time:1}])await assert.rejects(f.connect({expectedHead}),code('CORRUPT_LEDGER'));
++ const db=new DatabaseSync(f.path);db.exec('DROP TRIGGER shared_world_v1_events_no_delete; DELETE FROM shared_world_v1_events;');db.close();await assert.rejects(f.connect({expectedHead:first.cursor}),code('CORRUPT_LEDGER'));
++});
++
++test('warm prefix pages and retries rebind tampered bytes, while reopening replays every row',async t=>{
++ const f=await setup(t),a=await f.connect(),c=command(await a.snapshot(),speak());await a.submit(c,principal(f.g));
++ const db=new DatabaseSync(f.path),row=db.prepare('SELECT event_json FROM shared_world_v1_events WHERE sequence=1').get()!,event=JSON.parse(row.event_json as string);event.before_hash='f'.repeat(64);
++ db.exec('DROP TRIGGER shared_world_v1_events_no_update');db.prepare('UPDATE shared_world_v1_events SET event_json=? WHERE sequence=1').run(canonical(event));db.close();
++ await assert.rejects(a.events(),code('CORRUPT_LEDGER'));await assert.rejects(a.submit(c,principal(f.g)),code('CORRUPT_LEDGER'));await a.close();await assert.rejects(f.connect(),code('CORRUPT_LEDGER'));
++});
++
++test('cached handle refuses a removed acknowledged prefix and corrupt receipt or request-index bindings',async t=>{
++ for(const sql of ["UPDATE shared_world_v1_events SET request_hash=lower(hex(zeroblob(32))) WHERE sequence=1","UPDATE shared_world_v1_events SET receipt_json='{}' WHERE sequence=1",'DELETE FROM shared_world_v1_events']){
++  const f=await setup(t),a=await f.connect();await a.submit(command(await a.snapshot(),speak()),principal(f.g));
++  const db=new DatabaseSync(f.path);db.exec('DROP TRIGGER shared_world_v1_events_no_update; DROP TRIGGER shared_world_v1_events_no_delete; '+sql);db.close();
++  await assert.rejects(sql.startsWith('DELETE')?a.snapshot():a.events(),code('CORRUPT_LEDGER'));await a.close();await assert.rejects(f.connect({expectedHead:{sequence:1,head:'a'.repeat(64),world_time:0}}),code('CORRUPT_LEDGER'));
++ }
++});
++
++test('a failed multi-event suffix cannot publish partial state or poison the warm snapshot cache',async t=>{
++ const f=await setup(t),a=await f.connect();await a.submit(command(await a.snapshot(),speak()),principal(f.g));const before=await a.snapshot();
++ const good=createWorldEvent(f.g,before,command(before,speak(),'hero','suffix_good'),principal(f.g),keys.privateKey),bad=createWorldEvent(f.g,good.state,command(good.state,speak(),'hero','suffix_bad'),principal(f.g),keys.privateKey);
++ const db=new DatabaseSync(f.path);t.after(()=>db.close());const insert=db.prepare('INSERT INTO shared_world_v1_events(sequence,event_hash,request_id,request_hash,event_json,receipt_json) VALUES(?,?,?,?,?,?)');
++ for(const created of [good,bad])insert.run(created.event.sequence,created.event.hash,created.event.command.request_id,created.receipt.request_hash,created===bad?'{}':canonical(created.event),canonical(created.receipt));
++ await assert.rejects(a.snapshot(),code('CORRUPT_LEDGER'));db.exec('DROP TRIGGER shared_world_v1_events_no_delete; DELETE FROM shared_world_v1_events WHERE sequence>1;');
++ assert.strictEqual(await a.snapshot(),before);assert.equal((await a.events()).length,1);
++ await a.submit(command(before,speak(),'hero','after_failed_suffix'),principal(f.g));assert.equal((await a.snapshot()).cursor.sequence,2);
++});
++
++test('foreign databases and mismatched genesis are refused before changing existing database bytes',async t=>{
++ const f=await setup(t),db=new DatabaseSync(f.path);db.exec('PRAGMA journal_mode=DELETE; CREATE TABLE mortal_v3_meta(value TEXT); INSERT INTO mortal_v3_meta VALUES (\'foreign\');');db.close();const before=await readFile(f.path);
++ await assert.rejects(f.connect(),code('CORRUPT_LEDGER'));assert.deepEqual(await readFile(f.path),before);
++ const other=await setup(t),a=await other.connect();await a.close();const bytes=await readFile(other.path);await assert.rejects(other.connect({genesis:{...other.g,environment:'day'}}),code('CORRUPT_LEDGER'));assert.deepEqual(await readFile(other.path),bytes);
++});
++
++test('raw inputs are validated before cloning and queued caller mutations cannot rewrite work',async t=>{
++ const f=await setup(t),a=await f.connect(),s=await a.snapshot();let touched=0;
++ const c=command(s,speak());Object.defineProperty(c,'action',{enumerable:true,get(){touched++;return speak();}});await assert.rejects(a.submit(c,principal(f.g)),code('INVALID_CONTRACT'));
++ const page=new Proxy({after:0,limit:1},{get(){touched++;throw Error('proxy');}});await assert.rejects(a.events(page),code('INVALID_CONTRACT'));
++ for(const page of [{after:-1,limit:1},{after:0,limit:1001},{after:0,limit:0}])await assert.rejects(a.events(page),code('INVALID_CONTRACT'));
++ const active={path:f.path,genesis:f.g,privateKey:keys.privateKey};Object.defineProperty(active,'genesis',{enumerable:true,get(){touched++;return f.g;}});await assert.rejects(api.openWorldLedger(active),code('INVALID_CONTRACT'));assert.equal(touched,0);
++ const oversized=command(s,{type:'speak',text:'x'.repeat(16*1024*1024),audience:{kind:'self',addressed_actor_ids:[]},in_reply_to:null});await assert.rejects(a.submit(oversized,principal(f.g)),code('INVALID_CONTRACT'));assert.equal(rowCount(f.path),0);assert.strictEqual(await a.snapshot(),s);
++ const good=command(s,speak()),p=principal(f.g),pending=a.submit(good,p);good.action={type:'mortal',action:{type:'wait',turns:24}};p.principal_id='altered';await pending;assert.equal((await a.snapshot()).cursor.world_time,0);
++ await a.close();await a.close();await assert.rejects(a.snapshot(),code('UNAVAILABLE'));
++});
++
++test('complete reply bounds include RPC metadata and escaped UTF-8 bytes',()=>{
++ assert.equal(typeof api.assertWorldReplyFits,'function','Private transport budget helper must be implemented');
++ const limit=16*1024*1024,overhead=Buffer.byteLength(JSON.stringify({id:Number.MAX_SAFE_INTEGER,ok:true,value:''}));
++ api.assertWorldReplyFits('x'.repeat(limit-overhead));assert.throws(()=>api.assertWorldReplyFits('x'.repeat(limit-overhead+1)),code('INVALID_ACTION'));
++ assert.throws(()=>api.assertWorldReplyFits('\0'.repeat(Math.floor(limit/6))),code('INVALID_ACTION'));
++});
++
++test('SQLite lock waits leave the parent responsive, queued calls are bounded and close drains them',async t=>{
++ const f=await setup(t),a=await f.connect(),c=command(await a.snapshot(),speak());
++ const blocker=new Worker(`const {parentPort,workerData}=require('node:worker_threads');const {DatabaseSync}=require('node:sqlite');const db=new DatabaseSync(workerData);db.exec('BEGIN IMMEDIATE');parentPort.postMessage('locked');setInterval(()=>{},1000);`,{eval:true,workerData:f.path});t.after(()=>blocker.terminate());
++ await new Promise<void>((resolve,reject)=>{blocker.once('message',()=>resolve());blocker.once('error',reject);});
++ let beats=0;const timer=setInterval(()=>beats++,5);const admitted=Array.from({length:128},()=>a.submit(c,principal(f.g)));
++ await assert.rejects(a.submit(c,principal(f.g)),code('UNAVAILABLE'));const closing=a.close();await assert.rejects(a.snapshot(),code('UNAVAILABLE'));
++ await new Promise(resolve=>setTimeout(resolve,70));clearInterval(timer);assert.ok(beats>=3);await blocker.terminate();const receipts=await Promise.all(admitted);await closing;
++ assert.ok(receipts.every(r=>canonical(r)===canonical(receipts[0])));assert.equal(rowCount(f.path),1);
++});
+diff --git a/packages/ledger/src/world/index.ts b/packages/ledger/src/world/index.ts
+new file mode 100644
+index 0000000..70e6e7a
+--- /dev/null
++++ b/packages/ledger/src/world/index.ts
+@@ -0,0 +1,4 @@
++export {initialWorldState,resolveWorld,worldStateHash} from './rules.ts';
++export {viewWorldActor} from './view.ts';
++export {createWorldEvent,verifyWorldEvent,replayWorld,verifyWorldReceipt} from './journal.ts';
++export {openWorldLedger} from './storage.ts';
+diff --git a/packages/ledger/src/world/journal.ts b/packages/ledger/src/world/journal.ts
+new file mode 100644
+index 0000000..30f4b22
+--- /dev/null
++++ b/packages/ledger/src/world/journal.ts
+@@ -0,0 +1,77 @@
++import {KeyObject,createPublicKey,sign,verify} from 'node:crypto';
++import {types as nodeTypes} from 'node:util';
++import {canonical,hash,fail} from '../../../contracts/src/index.ts';
++import {assertWorldContract,worldRequestHash} from '../../../contracts/src/shared-world.ts';
++import type {WorldGenesis,WorldState,WorldCommand,WorldPrincipal,WorldEvent,WorldReceipt,WorldReceiptTrust} from '../../../contracts/src/shared-world-types.ts';
++import {initialWorldState,resolveWorld,worldStateHash} from './rules.ts';
++import {ownWorldGenesis,withWorldHead} from './rules/ownership.ts';
++import {readWorld} from './rules/engine.ts';
++
++const eventBytes=(event:Omit<WorldEvent,'signature'|'hash'>)=>Buffer.from(canonical({domain:'shared-world/0.1.0/event',event}));
++const receiptBytes=(receipt:Omit<WorldReceipt,'signature'>)=>Buffer.from(canonical({domain:'shared-world/0.1.0/receipt',receipt}));
++const corrupt=(message:string):never=>fail('CORRUPT_LEDGER',message);
++const genesisKeys=new WeakMap<WorldGenesis,KeyObject>();
++function keyFor(genesis:WorldGenesis):KeyObject{
++ let key=genesisKeys.get(genesis);if(!key){key=createPublicKey(genesis.mortal.authority_public_key);genesisKeys.set(genesis,key);}return key;
++}
++function signer(genesis:WorldGenesis,key:KeyObject):void{
++ if(nodeTypes.isProxy(key)||!(key instanceof KeyObject))fail('INVALID_CONTRACT','Shared signer requires a private KeyObject');
++ try{if(key.type!=='private'||key.asymmetricKeyType!=='ed25519'||!createPublicKey(key).equals(keyFor(genesis)))fail('UNAUTHORIZED','Shared signer differs from genesis');}
++ catch{fail('UNAUTHORIZED','Shared signer differs from genesis');}
++}
++
++/** Verify the acknowledgment against separately pinned public trust. It does
++ * not authorize disclosure or replace matching the caller's request identity. */
++export function verifyWorldReceipt(receipt:WorldReceipt,trust:WorldReceiptTrust):void{
++ assertWorldContract('Receipt',receipt);assertWorldContract('ReceiptTrust',trust);
++ if(canonical(receipt.scope)!==canonical(trust.scope)||receipt.genesis_hash!==trust.genesis_hash||receipt.authority_key_id!==trust.authority_key_id)fail('UNAUTHORIZED','Shared receipt differs from pinned trust');
++ const {signature,...body}=receipt;
++ if(!verify(null,receiptBytes(body),createPublicKey(trust.authority_public_key),Buffer.from(signature,'base64')))fail('UNAUTHORIZED','Shared receipt signature does not verify');
++}
++
++/** A verified prior prefix and the host signer are capabilities. Storage owns
++ * durable request uniqueness; pure resolution also refuses prior memory IDs. */
++export function createWorldEvent(inputGenesis:WorldGenesis,inputState:WorldState,command:WorldCommand,principal:WorldPrincipal,privateKey:KeyObject):{event:WorldEvent;state:WorldState;receipt:WorldReceipt}{
++ const genesis=ownWorldGenesis(inputGenesis),state=readWorld(genesis,inputState).state;
++ signer(genesis,privateKey);const requestHash=worldRequestHash(command,principal);
++ const resolution=resolveWorld(genesis,state,command,principal);
++ const body:Omit<WorldEvent,'signature'|'hash'>={
++  version:genesis.version,scope:structuredClone(genesis.mortal.scope),genesis_hash:state.genesis_hash,
++  sequence:resolution.state.cursor.sequence,previous_hash:state.cursor.head,world_time:resolution.state.cursor.world_time,
++  command:structuredClone(command),principal:structuredClone(principal),before_hash:worldStateHash(state),after_hash:worldStateHash(resolution.state),
++  draws:structuredClone(resolution.draws),effects:structuredClone(resolution.effects),memory:structuredClone(resolution.memory),
++ };
++ const signed={...body,signature:sign(null,eventBytes(body),privateKey).toString('base64')},event:WorldEvent={...signed,hash:hash(signed)};
++ const next=withWorldHead(resolution.state,event.hash);
++ const receiptBody:Omit<WorldReceipt,'signature'>={version:genesis.version,scope:structuredClone(genesis.mortal.scope),genesis_hash:state.genesis_hash,
++  authority_key_id:genesis.mortal.authority_key_id,request_id:command.request_id,request_hash:requestHash,event_hash:event.hash,cursor:{...next.cursor},state_hash:event.after_hash};
++ const receipt:WorldReceipt={...receiptBody,signature:sign(null,receiptBytes(receiptBody),privateKey).toString('base64')};
++ assertWorldContract('Event',event);assertWorldContract('Receipt',receipt);return {event,state:next,receipt};
++}
++
++export function verifyWorldEvent(inputGenesis:WorldGenesis,inputState:WorldState,event:WorldEvent):WorldState{
++ const genesis=ownWorldGenesis(inputGenesis),state=readWorld(genesis,inputState).state;assertWorldContract('Event',event);
++ if(event.genesis_hash!==state.genesis_hash||canonical(event.scope)!==canonical(genesis.mortal.scope)||event.sequence!==state.cursor.sequence+1||event.previous_hash!==state.cursor.head||event.before_hash!==worldStateHash(state))corrupt('Shared event does not extend its verified prefix');
++ const {hash:eventHash,...signed}=event,{signature,...body}=signed;
++ if(hash(signed)!==eventHash||!verify(null,eventBytes(body),keyFor(genesis),Buffer.from(signature,'base64')))corrupt('Shared event hash or signature does not verify');
++ let resolution;
++ try{resolution=resolveWorld(genesis,state,event.command,event.principal);}catch{return corrupt('Signed shared event violates action admission');}
++ if(resolution.state.cursor.sequence!==event.sequence||resolution.state.cursor.world_time!==event.world_time||canonical(resolution.draws)!==canonical(event.draws)||canonical(resolution.effects)!==canonical(event.effects)||canonical(resolution.memory)!==canonical(event.memory)||worldStateHash(resolution.state)!==event.after_hash)corrupt('Signed shared event differs from deterministic resolution');
++ return withWorldHead(resolution.state,event.hash);
++}
++
++/** Each event has its own bounded DTO. The history container is dense/passive
++ * and capped separately; no complete-array 16 MiB transport limit is implied. */
++export function replayWorld(inputGenesis:WorldGenesis,events:WorldEvent[]):WorldState{
++ const genesis=ownWorldGenesis(inputGenesis);
++ if(nodeTypes.isProxy(events)||!Array.isArray(events)||Object.getPrototypeOf(events)!==Array.prototype||events.length>1000000)fail('INVALID_CONTRACT','Invalid shared event history');
++ const keys=Reflect.ownKeys(events);if(keys.length!==events.length+1||keys.some(key=>typeof key!=='string'))fail('INVALID_CONTRACT','Shared history must be a dense undecorated array');
++ let state=initialWorldState(genesis);const requests=new Set<string>();
++ for(let index=0;index<events.length;index++){
++  const descriptor=Object.getOwnPropertyDescriptor(events,String(index));if(!descriptor?.enumerable||!('value'in descriptor))fail('INVALID_CONTRACT','Shared history contains an active or missing event');
++  const event:unknown=descriptor.value;assertWorldContract('Event',event);
++  if(requests.has(event.command.request_id))corrupt('Shared history repeats a request ID');requests.add(event.command.request_id);
++  state=verifyWorldEvent(genesis,state,event);
++ }
++ return state;
++}
+diff --git a/packages/ledger/src/world/storage-worker.ts b/packages/ledger/src/world/storage-worker.ts
+new file mode 100644
+index 0000000..a8c0edf
+--- /dev/null
++++ b/packages/ledger/src/world/storage-worker.ts
+@@ -0,0 +1,105 @@
++import {parentPort,workerData} from 'node:worker_threads';
++import {DatabaseSync} from 'node:sqlite';
++import {mkdirSync,openSync,closeSync,lstatSync} from 'node:fs';
++import {dirname} from 'node:path';
++import {createPrivateKey,createPublicKey} from 'node:crypto';
++import {ArgoError,canonical,hash,fail} from '../../../contracts/src/index.ts';
++import {assertWorldContract,assertWorldData,worldRequestHash} from '../../../contracts/src/shared-world.ts';
++import type {WorldGenesis,WorldCursor,WorldState,WorldEvent,WorldReceipt,WorldCommand,WorldPrincipal} from '../../../contracts/src/shared-world-types.ts';
++import {initialWorldState} from './rules.ts';
++import {ownWorldGenesis} from './rules/ownership.ts';
++import {createWorldEvent,verifyWorldEvent,verifyWorldReceipt} from './journal.ts';
++import {assertWorldReplyFits} from './storage.ts';
++
++const port=parentPort;if(!port)throw Error('Shared storage worker requires a parent');
++const config=workerData as {path:string;genesis:WorldGenesis;privatePem:string;expectedHead?:WorldCursor};
++let db:DatabaseSync|undefined,cached:WorldState;
++const MAX_REPLY=16777216;
++type Row={sequence:number;event_hash:string;request_id:string;request_hash:string;event_json:string;receipt_json:string};
++const corrupt=(message:string):never=>fail('CORRUPT_LEDGER',message);
++function reply(id:number,value:unknown):void{assertWorldReplyFits(value,id);port!.postMessage({id,ok:true,value});}
++function errorReply(id:number,error:unknown):void{port!.postMessage({id,ok:false,error:error instanceof ArgoError?{code:error.code,message:error.message.slice(0,1024)}:{code:'UNAVAILABLE',message:'Shared SQLite operation unavailable; a submitted action may have committed'}});}
++function decode(text:string):unknown{try{if(Buffer.byteLength(text)>MAX_REPLY)corrupt('Oversized shared database record');const value:unknown=JSON.parse(text);assertWorldData(value);if(canonical(value)!==text)corrupt('Noncanonical shared database record');return value;}catch{return corrupt('Invalid shared database JSON');}}
++
++try{
++ const genesis=ownWorldGenesis(config.genesis),identity=hash(genesis),genesisText=canonical(genesis),m=genesis.mortal;
++ const trust={scope:m.scope,genesis_hash:identity,authority_key_id:m.authority_key_id,authority_public_key:m.authority_public_key};
++ const privateKey=createPrivateKey(config.privatePem);config.privatePem='';
++ if(privateKey.type!=='private'||privateKey.asymmetricKeyType!=='ed25519'||!createPublicKey(privateKey).equals(createPublicKey(m.authority_public_key)))fail('UNAUTHORIZED','Shared worker signer differs from genesis');
++ function metadata():void{const row=db!.prepare('SELECT genesis_hash,genesis_json FROM shared_world_v1_meta WHERE singleton=1').get();if(!row||row.genesis_hash!==identity||row.genesis_json!==genesisText)corrupt('Immutable shared genesis differs');}
++ function rowValue(row:Row):{event:WorldEvent;receipt:WorldReceipt}{
++  try{
++   const event=decode(row.event_json),receipt=decode(row.receipt_json);assertWorldContract('Event',event);assertWorldContract('Receipt',receipt);
++   const {hash:eventHash,...signed}=event;if(hash(signed)!==eventHash)corrupt('Shared event bytes differ from their hash');verifyWorldReceipt(receipt,trust);
++   if(event.genesis_hash!==identity||canonical(event.scope)!==canonical(m.scope)||row.sequence!==event.sequence||row.event_hash!==event.hash||row.request_id!==event.command.request_id||row.request_hash!==worldRequestHash(event.command,event.principal)||receipt.request_id!==row.request_id||receipt.request_hash!==row.request_hash||receipt.event_hash!==event.hash||receipt.cursor.sequence!==event.sequence||receipt.cursor.head!==event.hash||receipt.cursor.world_time!==event.world_time||receipt.state_hash!==event.after_hash)corrupt('Shared event, request index or receipt binding differs');
++   return {event,receipt};
++  }catch{return corrupt('Shared stored event or receipt failed verification');}
++ }
++ function refresh(prior:WorldState):WorldState{
++  metadata();if(prior.cursor.sequence){const known=db!.prepare('SELECT event_hash FROM shared_world_v1_events WHERE sequence=?').get(prior.cursor.sequence);if(!known||known.event_hash!==prior.cursor.head)corrupt('Shared database lost or replaced the previously verified prefix');}
++  let state=prior;
++  for(const raw of db!.prepare('SELECT * FROM shared_world_v1_events WHERE sequence>? ORDER BY sequence').iterate(prior.cursor.sequence)){
++   const {event}=rowValue(raw as Row);try{state=verifyWorldEvent(genesis,state,event);}catch{corrupt('Shared history failed deterministic replay');}
++  }
++  return state;
++ }
++ function transaction<T>(write:boolean,operation:()=>{state:WorldState;result:T}):T{
++  db!.exec(write?'BEGIN IMMEDIATE':'BEGIN');
++  try{const {state,result}=operation();assertWorldReplyFits(result);db!.exec('COMMIT');cached=state;return result;}
++  catch(error){try{db!.exec('ROLLBACK');}catch{}throw error;}
++ }
++ mkdirSync(dirname(config.path),{recursive:true,mode:0o700});
++ try{closeSync(openSync(config.path,'wx',0o600));}catch(error){if(!(error&&typeof error==='object'&&'code'in error&&error.code==='EEXIST'))throw error;}
++ if(!lstatSync(config.path).isFile())fail('INVALID_CONTRACT','Shared SQLite path is not a regular file');
++ db=new DatabaseSync(config.path,{timeout:5000,enableForeignKeyConstraints:true,enableDoubleQuotedStringLiterals:false,allowExtension:false});
++ const schema=db.prepare("SELECT name,type FROM sqlite_master WHERE name NOT LIKE 'sqlite_%'").all(),allowed=new Set(['shared_world_v1_meta','shared_world_v1_events','shared_world_v1_events_no_update','shared_world_v1_events_no_delete','shared_world_v1_meta_no_update','shared_world_v1_meta_no_delete']);
++ if(schema.some(row=>typeof row.name!=='string'||!allowed.has(row.name)||!['table','trigger'].includes(String(row.type))))corrupt('SQLite file belongs to another application');
++ const tables=schema.filter(row=>row.type==='table');if(schema.length){if(tables.length!==2)corrupt('Incomplete shared world database');metadata();}
++ db.exec('PRAGMA journal_mode=WAL; PRAGMA synchronous=FULL; PRAGMA trusted_schema=OFF; BEGIN IMMEDIATE;');
++ try{
++  db.exec(`CREATE TABLE IF NOT EXISTS shared_world_v1_meta(singleton INTEGER PRIMARY KEY CHECK(singleton=1),genesis_hash TEXT NOT NULL,genesis_json TEXT NOT NULL) STRICT;
++CREATE TABLE IF NOT EXISTS shared_world_v1_events(sequence INTEGER PRIMARY KEY CHECK(sequence BETWEEN 1 AND 1000000),event_hash TEXT NOT NULL UNIQUE,request_id TEXT NOT NULL UNIQUE,request_hash TEXT NOT NULL,event_json TEXT NOT NULL,receipt_json TEXT NOT NULL) STRICT;
++CREATE TRIGGER IF NOT EXISTS shared_world_v1_events_no_update BEFORE UPDATE ON shared_world_v1_events BEGIN SELECT RAISE(ABORT,'Shared events are append-only'); END;
++CREATE TRIGGER IF NOT EXISTS shared_world_v1_events_no_delete BEFORE DELETE ON shared_world_v1_events BEGIN SELECT RAISE(ABORT,'Shared events are append-only'); END;
++CREATE TRIGGER IF NOT EXISTS shared_world_v1_meta_no_update BEFORE UPDATE ON shared_world_v1_meta BEGIN SELECT RAISE(ABORT,'Shared genesis is immutable'); END;
++CREATE TRIGGER IF NOT EXISTS shared_world_v1_meta_no_delete BEFORE DELETE ON shared_world_v1_meta BEGIN SELECT RAISE(ABORT,'Shared genesis is immutable'); END;`);
++  if(!db.prepare('SELECT singleton FROM shared_world_v1_meta').get()){if(db.prepare('SELECT sequence FROM shared_world_v1_events LIMIT 1').get())corrupt('Shared events exist without genesis');db.prepare('INSERT INTO shared_world_v1_meta(singleton,genesis_hash,genesis_json) VALUES(1,?,?)').run(identity,genesisText);}
++  metadata();db.exec('COMMIT');
++ }catch(error){try{db.exec('ROLLBACK');}catch{}throw error;}
++ cached=initialWorldState(genesis);
++ transaction(false,()=>{
++  const state=refresh(cached),expected=config.expectedHead;assertWorldReplyFits(state);
++  if(expected){assertWorldContract('Cursor',expected);let actual:WorldCursor={sequence:0,head:identity,world_time:0};
++   if(expected.sequence){const raw=db!.prepare('SELECT * FROM shared_world_v1_events WHERE sequence=?').get(expected.sequence);if(!raw)corrupt('Trusted shared checkpoint is missing');actual=rowValue(raw as Row).receipt.cursor;}
++   if(canonical(actual)!==canonical(expected)||expected.sequence>state.cursor.sequence)corrupt('Trusted shared checkpoint is not a committed prefix');
++  }
++  return {state,result:null};
++ });reply(0,null);
++ port.on('message',(message:{id:number;method:string;args:any})=>{
++  try{let result:unknown;
++   switch(message.method){
++   case 'snapshot':result=transaction(false,()=>{const state=refresh(cached),known=message.args as WorldCursor|null;if(known!==null)assertWorldContract('Cursor',known);return {state,result:known!==null&&canonical(known)===canonical(state.cursor)?null:state};});break;
++   case 'events':result=transaction(false,()=>{
++    const state=refresh(cached),{after,limit}=message.args as {after:number;limit:number};if(!Number.isSafeInteger(after)||after<0||!Number.isSafeInteger(limit)||limit<1||limit>1000)fail('INVALID_CONTRACT','Invalid shared event page');
++    const events:WorldEvent[]=[];let bytes=Buffer.byteLength(JSON.stringify({id:Number.MAX_SAFE_INTEGER,ok:true,value:[]}));
++    for(const raw of db!.prepare('SELECT * FROM shared_world_v1_events WHERE sequence>? ORDER BY sequence LIMIT ?').iterate(after,limit)){
++     const row=raw as Row;bytes+=Buffer.byteLength(row.event_json)+(events.length?1:0);if(bytes>MAX_REPLY)fail('UNAVAILABLE','Shared reply exceeds 16 MiB; request a smaller history page');events.push(rowValue(row).event);
++    }return {state,result:events};
++   });break;
++   case 'submit':result=transaction(true,()=>{
++    const {command,principal}=message.args as {command:WorldCommand;principal:WorldPrincipal},requestHash=worldRequestHash(command,principal),state=refresh(cached);
++    const prior=db!.prepare('SELECT * FROM shared_world_v1_events WHERE request_id=?').get(command.request_id);
++    if(prior){const {receipt}=rowValue(prior as Row);if(prior.request_hash!==requestHash)fail('CONFLICT','Shared request ID was reused with different content or identity');return {state,result:receipt};}
++    const created=createWorldEvent(genesis,state,command,principal,privateKey);
++    // Pure authority enforces complete State/Resolution DTO budgets. Reserve
++    // the full transport wrapper before any durable event/request insertion.
++    assertWorldReplyFits(created.state);assertWorldReplyFits(created.receipt);
++    db!.prepare('INSERT INTO shared_world_v1_events(sequence,event_hash,request_id,request_hash,event_json,receipt_json) VALUES(?,?,?,?,?,?)').run(created.event.sequence,created.event.hash,command.request_id,requestHash,canonical(created.event),canonical(created.receipt));
++    return {state:created.state,result:created.receipt};
++   });break;
++   case 'close':db!.close();db=undefined;reply(message.id,null);port!.close();return;
++   default:fail('INVALID_CONTRACT','Unknown shared worker operation');
++   }reply(message.id,result);
++  }catch(error){errorReply(message.id,error);}
++ });
++}catch(error){try{db?.close();}catch{}errorReply(0,error);port.close();}
+diff --git a/packages/ledger/src/world/storage.ts b/packages/ledger/src/world/storage.ts
+new file mode 100644
+index 0000000..6dc7267
+--- /dev/null
++++ b/packages/ledger/src/world/storage.ts
+@@ -0,0 +1,83 @@
++import {Worker} from 'node:worker_threads';
++import {KeyObject,createPublicKey} from 'node:crypto';
++import {types as nodeTypes} from 'node:util';
++import {resolve} from 'node:path';
++import {ArgoError,canonical,fail,hash} from '../../../contracts/src/index.ts';
++import {assertWorldContract,assertWorldData,worldRequestHash} from '../../../contracts/src/shared-world.ts';
++import type {WorldGenesis,WorldState,WorldCursor,WorldLedgerOptions,WorldLedger,WorldReceipt,WorldEvent,WorldCommand,WorldPrincipal} from '../../../contracts/src/shared-world-types.ts';
++import {ownWorldGenesis} from './rules/ownership.ts';
++import {readWorld} from './rules/engine.ts';
++import {verifyWorldReceipt} from './journal.ts';
++
++/** Private transport helper; values are validated/owned before serialization.
++ * Reserve the largest legal request ID so every admitted state stays readable. */
++export function assertWorldReplyFits(value:unknown,id=Number.MAX_SAFE_INTEGER):void{
++ if(Buffer.byteLength(JSON.stringify({id,ok:true,value}),'utf8')>16777216)fail('INVALID_ACTION','Shared reply capacity reached');
++}
++type Pending={resolve(value:unknown):void;reject(error:Error):void};
++
++/** Host-only storage. The worker owns SQLite, signing and replay. Snapshot
++ * returns deeply immutable owned state; unchanged verified prefixes reuse that
++ * exact identity. Raw state/events never substitute for an actor-scoped view.
++ *
++ * No per-call cancellation: after dispatch, lost acknowledgment is ambiguous
++ * and callers reconcile the identical request. Live caches trust old rows to
++ * remain append-only; cold replay and EXTERNAL ancestor checkpoints supply the
++ * separate restart checks. A checkpoint in the same database is not an anchor. */
++export async function openWorldLedger(options:WorldLedgerOptions):Promise<WorldLedger>{
++ if(!options||typeof options!=='object'||nodeTypes.isProxy(options)||![Object.prototype,null].includes(Object.getPrototypeOf(options)))fail('INVALID_CONTRACT','Invalid shared ledger options');
++ const fields=Reflect.ownKeys(options),descriptors=Object.getOwnPropertyDescriptors(options);
++ if(fields.some(k=>typeof k!=='string'||!['path','genesis','privateKey','expectedHead'].includes(k))||!['path','genesis','privateKey'].every(k=>Object.hasOwn(descriptors,k)))fail('INVALID_CONTRACT','Invalid shared ledger option fields');
++ for(const key of fields){const d=descriptors[key as keyof WorldLedgerOptions];if(!d?.enumerable||!('value'in d))fail('INVALID_CONTRACT','Active shared ledger option');}
++ const data={path:descriptors.path!.value as unknown,genesis:descriptors.genesis!.value as unknown,...(descriptors.expectedHead?{expectedHead:descriptors.expectedHead.value as unknown}:{})};assertWorldData(data);
++ const genesis=ownWorldGenesis(data.genesis as WorldGenesis),identity=hash(genesis);
++ if(typeof data.path!=='string'||!data.path||data.path.includes('\0')||data.path===':memory:'||data.path.startsWith('file:'))fail('INVALID_CONTRACT','Shared storage requires a SQLite filename');
++ if(data.expectedHead!==undefined)assertWorldContract('Cursor',data.expectedHead);
++ const privateKey:unknown=descriptors.privateKey!.value;
++ if(nodeTypes.isProxy(privateKey)||!(privateKey instanceof KeyObject))fail('INVALID_CONTRACT','Shared signer requires a private KeyObject');
++ let privatePem:string;
++ try{if(privateKey.type!=='private'||privateKey.asymmetricKeyType!=='ed25519'||!createPublicKey(privateKey).equals(createPublicKey(genesis.mortal.authority_public_key)))fail('UNAUTHORIZED','Shared signer differs from genesis');privatePem=privateKey.export({format:'pem',type:'pkcs8'}).toString();}
++ catch{return fail('UNAUTHORIZED','Shared signer differs from genesis');}
++ const worker=new Worker(new URL('./storage-worker.ts',import.meta.url),{workerData:{path:resolve(data.path),genesis:structuredClone(genesis),privatePem,...(data.expectedHead===undefined?{}:{expectedHead:structuredClone(data.expectedHead)})}});privatePem='';
++ const pending=new Map<number,Pending>(),idleWaiters=new Set<()=>void>();let nextId=1,closing=false,dead=false,closingPromise:Promise<void>|undefined,snapshotCache:WorldState|undefined;
++ const trust={scope:genesis.mortal.scope,genesis_hash:identity,authority_key_id:genesis.mortal.authority_key_id,authority_public_key:genesis.mortal.authority_public_key};
++ const unavailable=()=>new ArgoError('UNAVAILABLE','Shared storage worker unavailable; a submitted action may have committed');
++ const signalIdle=()=>{if(!pending.size){for(const done of idleWaiters)done();idleWaiters.clear();}};
++ const stop=(error:Error)=>{dead=true;for(const call of pending.values())call.reject(error);pending.clear();signalIdle();};
++ const ready=new Promise<unknown>((resolve,reject)=>pending.set(0,{resolve,reject}));
++ worker.on('message',(reply:{id:number;ok:boolean;value?:unknown;error?:{code:ArgoError['code'];message:string}})=>{
++  const call=pending.get(reply.id);if(!call)return;pending.delete(reply.id);
++  if(reply.ok)call.resolve(reply.value);else call.reject(new ArgoError(reply.error?.code??'UNAVAILABLE',reply.error?.message??'Shared storage operation failed'));signalIdle();
++ });
++ worker.on('error',()=>stop(unavailable()));worker.on('exit',()=>stop(unavailable()));
++ function rpc(method:string,args:unknown,allowClosing=false):Promise<unknown>{
++  if(dead||closing&&!allowClosing)return Promise.reject(unavailable());
++  if(pending.size>=128||nextId>=Number.MAX_SAFE_INTEGER)return Promise.reject(new ArgoError('UNAVAILABLE','Shared worker request capacity reached'));
++  const id=nextId++;return new Promise((resolve,reject)=>{pending.set(id,{resolve,reject});try{worker.postMessage({id,method,args});}catch{pending.delete(id);reject(unavailable());signalIdle();}});
++ }
++ try{await ready;}catch(error){await worker.terminate();throw error;}
++ return Object.freeze({
++  async snapshot():Promise<WorldState>{
++   const previous=snapshotCache,value=await rpc('snapshot',previous?.cursor??null);
++   // Only this private worker protocol can supply the unchanged marker; every
++   // request still refreshes SQLite and checks its verified prefix first.
++   if(value===null){if(!previous)fail('CORRUPT_LEDGER','Shared snapshot lacks its cached prefix');return previous;}
++   const state=readWorld(genesis,value as WorldState).state;
++   if(snapshotCache&&(state.cursor.sequence<snapshotCache.cursor.sequence||state.cursor.sequence===snapshotCache.cursor.sequence&&canonical(state.cursor)!==canonical(snapshotCache.cursor)))fail('CORRUPT_LEDGER','Shared snapshot regressed or diverged');
++   snapshotCache=state;return state;
++  },
++  async events(input={after:0,limit:256}):Promise<WorldEvent[]>{
++   assertWorldData(input);if(!input||typeof input!=='object'||Array.isArray(input)||Object.keys(input).sort().join(',')!=='after,limit'||!Number.isSafeInteger(input.after)||input.after<0||!Number.isSafeInteger(input.limit)||input.limit<1||input.limit>1000)fail('INVALID_CONTRACT','Invalid shared event page');
++   const page=structuredClone(input),value=await rpc('events',page);if(!Array.isArray(value)||value.length>page.limit)fail('CORRUPT_LEDGER','Invalid shared event page response');
++   for(const event of value)assertWorldContract('Event',event);return value;
++  },
++  async submit(command:WorldCommand,principal:WorldPrincipal):Promise<WorldReceipt>{
++   const requestHash=worldRequestHash(command,principal),id=command.request_id,value=await rpc('submit',{command:structuredClone(command),principal:structuredClone(principal)});
++   assertWorldContract('Receipt',value);verifyWorldReceipt(value,trust);
++   if(value.request_id!==id||value.request_hash!==requestHash)fail('CORRUPT_LEDGER','Shared acknowledgment differs from submitted request');return value;
++  },
++  close():Promise<void>{
++   if(!closingPromise){closing=true;closingPromise=(async()=>{if(pending.size&&!dead)await new Promise<void>(resolve=>idleWaiters.add(resolve));try{if(!dead)await rpc('close',null,true);}finally{await worker.terminate();dead=true;}})();}return closingPromise;
++  },
++ });
++}

@@ -1,0 +1,125 @@
+{
+  "candidate": "04bae2b1f5ccb5f570ee76231efe3104b1309243",
+  "checkout": "/workspace/ARGO/.board/shared-world-contract/worktrees/SW-100-2-a51b1a9778",
+  "before": {
+    "sha": "04bae2b1f5ccb5f570ee76231efe3104b1309243",
+    "status": ""
+  },
+  "after": {
+    "sha": "04bae2b1f5ccb5f570ee76231efe3104b1309243",
+    "status": ""
+  },
+  "checks": [
+    {
+      "name": "Clean candidate, freeze hashes and historical profile bytes",
+      "status": "pass",
+      "details": {
+        "files": {
+          "SYSTEMS/shared-world-v1/CONTRACT.md": "0232234c9dc3bba3dbacc2dea87bbbca94e93f1f7b78eab38e1c8508f4ded311",
+          "SYSTEMS/shared-world-v1/world.schema.json": "6918294342f48f8a3d4edf81b1be99b4b17d8294185d25b0f1965d1f1533b665",
+          "packages/contracts/src/shared-world-types.ts": "f1cc8f944b0847f14df17b048eee9ad1f25f185790fa8e8612d97331b4b67351",
+          "packages/contracts/src/shared-world.ts": "ab15168a41db710acd0a0e48f1b0c2a41eaaf5ed9c426df324f0546dbdada9b5"
+        },
+        "historical_changed": []
+      }
+    },
+    {
+      "name": "Valid controls do not mutate input or claim authentication",
+      "status": "pass"
+    },
+    {
+      "name": "Scope/rights mismatch and missing exact cursor fields are refused",
+      "status": "pass"
+    },
+    {
+      "name": "Caller identity binds request hash without pretending to authenticate controllers",
+      "status": "pass",
+      "details": {
+        "hash_domain": "shared-world/0.1.0/request"
+      }
+    },
+    {
+      "name": "Private request IDs/acquirer rosters and receipt effects are closed out",
+      "status": "pass"
+    },
+    {
+      "name": "Travel endpoints and third holder loan identity are suppressed structurally",
+      "status": "pass"
+    },
+    {
+      "name": "Foreign private memories and unrelated source metadata are refused",
+      "status": "pass"
+    },
+    {
+      "name": "Knowledge is owned, current, active and exactly genesis-pinned",
+      "status": "pass"
+    },
+    {
+      "name": "Closure cannot retain knowledge, speech, impressions, sources or replies",
+      "status": "pass"
+    },
+    {
+      "name": "Offer owner/item/cap, immutable hash and strict expiry are checked",
+      "status": "pass"
+    },
+    {
+      "name": "Open offers cannot survive lender incapacity or custody loss",
+      "status": "pass"
+    },
+    {
+      "name": "Passive arguments reject traps and exact UTF-8 JSON budget overflow",
+      "status": "pass",
+      "details": {
+        "traps": 0
+      }
+    },
+    {
+      "name": "Identifier grammar refuses reserved/newline/oversize IDs",
+      "status": "pass"
+    },
+    {
+      "name": "Reply dedup remains complete when inbound exceeds visible memory window",
+      "status": "pass"
+    },
+    {
+      "name": "Resolution with genesis recursively binds nested immutable state",
+      "status": "fail",
+      "error": "AssertionError [ERR_ASSERTION]: Missing expected exception.",
+      "stack": "AssertionError [ERR_ASSERTION]: Missing expected exception.\n    at reject (file:///workspace/reports/2026-11-14-argo-shared-world/contract-review-privacy/probes.mjs:16:28)\n    at file:///workspace/reports/2026-11-14-argo-shared-world/contract-review-privacy/probes.mjs:46:235\n    at check (file:///workspace/reports/2026-11-14-argo-shared-world/contract-review-privacy/probes.mjs:15:55)\n    at file:///workspace/reports/2026-11-14-argo-shared-world/contract-review-privacy/probes.mjs:46:7\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+    },
+    {
+      "name": "ActorView with genesis binds immutable item definitions, not only IDs",
+      "status": "fail",
+      "error": "AssertionError [ERR_ASSERTION]: Missing expected exception.",
+      "stack": "AssertionError [ERR_ASSERTION]: Missing expected exception.\n    at reject (file:///workspace/reports/2026-11-14-argo-shared-world/contract-review-privacy/probes.mjs:16:28)\n    at file:///workspace/reports/2026-11-14-argo-shared-world/contract-review-privacy/probes.mjs:47:255\n    at check (file:///workspace/reports/2026-11-14-argo-shared-world/contract-review-privacy/probes.mjs:15:55)\n    at file:///workspace/reports/2026-11-14-argo-shared-world/contract-review-privacy/probes.mjs:47:7\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+    },
+    {
+      "name": "Visible authored offers bind their complete genesis identity",
+      "status": "fail",
+      "error": "AssertionError [ERR_ASSERTION]: Missing expected exception.",
+      "stack": "AssertionError [ERR_ASSERTION]: Missing expected exception.\n    at reject (file:///workspace/reports/2026-11-14-argo-shared-world/contract-review-privacy/probes.mjs:16:28)\n    at file:///workspace/reports/2026-11-14-argo-shared-world/contract-review-privacy/probes.mjs:48:315\n    at check (file:///workspace/reports/2026-11-14-argo-shared-world/contract-review-privacy/probes.mjs:15:55)\n    at file:///workspace/reports/2026-11-14-argo-shared-world/contract-review-privacy/probes.mjs:48:7\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+    },
+    {
+      "name": "Visible speech cannot have null or unknown actor identity",
+      "status": "fail",
+      "error": "AssertionError [ERR_ASSERTION]: Missing expected exception.",
+      "stack": "AssertionError [ERR_ASSERTION]: Missing expected exception.\n    at reject (file:///workspace/reports/2026-11-14-argo-shared-world/contract-review-privacy/probes.mjs:16:28)\n    at file:///workspace/reports/2026-11-14-argo-shared-world/contract-review-privacy/probes.mjs:49:117\n    at check (file:///workspace/reports/2026-11-14-argo-shared-world/contract-review-privacy/probes.mjs:15:55)\n    at file:///workspace/reports/2026-11-14-argo-shared-world/contract-review-privacy/probes.mjs:49:7\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+    },
+    {
+      "name": "Immutable nature cannot be replaced by fabricated older revision",
+      "status": "fail",
+      "error": "AssertionError [ERR_ASSERTION]: Missing expected exception.",
+      "stack": "AssertionError [ERR_ASSERTION]: Missing expected exception.\n    at reject (file:///workspace/reports/2026-11-14-argo-shared-world/contract-review-privacy/probes.mjs:16:28)\n    at file:///workspace/reports/2026-11-14-argo-shared-world/contract-review-privacy/probes.mjs:50:665\n    at check (file:///workspace/reports/2026-11-14-argo-shared-world/contract-review-privacy/probes.mjs:15:55)\n    at file:///workspace/reports/2026-11-14-argo-shared-world/contract-review-privacy/probes.mjs:50:7\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+    },
+    {
+      "name": "Initial view acquisitions must belong to the genesis initial grant set",
+      "status": "fail",
+      "error": "AssertionError [ERR_ASSERTION]: Missing expected exception.",
+      "stack": "AssertionError [ERR_ASSERTION]: Missing expected exception.\n    at reject (file:///workspace/reports/2026-11-14-argo-shared-world/contract-review-privacy/probes.mjs:16:28)\n    at file:///workspace/reports/2026-11-14-argo-shared-world/contract-review-privacy/probes.mjs:51:223\n    at check (file:///workspace/reports/2026-11-14-argo-shared-world/contract-review-privacy/probes.mjs:15:55)\n    at file:///workspace/reports/2026-11-14-argo-shared-world/contract-review-privacy/probes.mjs:51:7\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+    }
+  ],
+  "passed": 14,
+  "failed": 6,
+  "paid_calls": 0,
+  "repository_edits": false
+}

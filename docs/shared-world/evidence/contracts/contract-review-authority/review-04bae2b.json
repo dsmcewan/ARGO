@@ -1,0 +1,62 @@
+{
+  "candidate": "04bae2b1f5ccb5f570ee76231efe3104b1309243",
+  "baseline": "5fc58af1dffe8a2a5c464366cc9836242026c80e",
+  "verdict": "NOT READY for contract freeze/runtime release until C1 and C2 are resolved and independently rerun",
+  "source_sha256": {
+    "SYSTEMS/shared-world-v1/CONTRACT.md": "0232234c9dc3bba3dbacc2dea87bbbca94e93f1f7b78eab38e1c8508f4ded311",
+    "SYSTEMS/shared-world-v1/FREEZE.json": "9f67a8e512d82c27eda7c2d531079e9e154429f0f275320aa99bdf2c793e4beb",
+    "SYSTEMS/shared-world-v1/world.schema.json": "6918294342f48f8a3d4edf81b1be99b4b17d8294185d25b0f1965d1f1533b665",
+    "TESTS/shared-world-contract-fixtures.ts": "bdcde13e6d9c6ba445fbd7c42e5f1e6ce7dff2171905d30d7f5e29342ff0c86e",
+    "TESTS/shared-world-contracts.test.ts": "1119c1e7fa55a2121665ac4df10e969a9b8ee062093966935c8166b8b4c0143a",
+    "packages/contracts/src/shared-world-types.ts": "f1cc8f944b0847f14df17b048eee9ad1f25f185790fa8e8612d97331b4b67351",
+    "packages/contracts/src/shared-world.ts": "ab15168a41db710acd0a0e48f1b0c2a41eaaf5ed9c426df324f0546dbdada9b5"
+  },
+  "freeze_hashes_match": true,
+  "authored_tests": {
+    "passed": 20,
+    "failed": 0,
+    "log": "contract-tests-04bae2b.log"
+  },
+  "independent_probes": {
+    "passed": 6,
+    "failed": 3,
+    "tests": 9,
+    "log": "probes-04bae2b.log",
+    "source": "probes.mts"
+  },
+  "findings": [
+    {
+      "id": "C1",
+      "priority": "P1 contract binding",
+      "file": "packages/contracts/src/shared-world.ts",
+      "line": 302,
+      "title": "Resolution ignores supplied genesis for its nested state",
+      "probe_tests": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "C2",
+      "priority": "P2 provenance binding",
+      "file": "packages/contracts/src/shared-world.ts",
+      "line": 144,
+      "related_line": 199,
+      "title": "Immutable-profile impressions accept invented earlier nature revisions",
+      "probe_tests": [
+        3
+      ]
+    }
+  ],
+  "before_after_candidate_checked": true,
+  "checkout_clean_after_test_run": true,
+  "source_modified_by_reviewer": false,
+  "runtime_tested": false,
+  "paid_provider_calls": 0,
+  "subagents": 0,
+  "evidence_sha256": {
+    "probes.mts": "38aa4c4febbf0caa93ef678349cbdc6c273a37a271d4a575f276ea3356fdc520",
+    "probes-04bae2b.log": "f0d47bdde83865ad76a6b92d0412f3def68b5c0c78918840af2fa823516a5a18",
+    "contract-tests-04bae2b.log": "d71550b79c5a7ca4074ad24258e52dd5381dba47efdb459f12acfe4a42468c27"
+  }
+}

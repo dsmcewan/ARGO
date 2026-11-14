@@ -1,0 +1,14 @@
+{
+  "base": "1ea79ef89c649f4930b18327071d4a5ef9f97ebd",
+  "verification": "PASS",
+  "checks": [
+    "node --check scripts/gate.mjs",
+    "git diff --check",
+    "byte-exact sole executable replacement: foundation tuple timeout 600000",
+    "ownership: only assigned gate and budget document",
+    "runner, controller policy, controller gate, external gate, and CI bytes unchanged"
+  ],
+  "gate_sha256_before": "f81dcb0b3f7d4d15e3d8c7218cdb1ebcc4719c1a487187eae692ef7871334bc0",
+  "gate_sha256_after": "2711c874af35eb93c3b67a566cf33413cbf2569c3e0328d13df0983d3d10e79b",
+  "full_gate": "Not run here; coordinator owns immutable complete gate and independent review."
+}

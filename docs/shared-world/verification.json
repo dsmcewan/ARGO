@@ -1,0 +1,32 @@
+{
+  "date": "2026-11-14",
+  "baseline": "3fd1e4d99eede6853f62b8078e5921183a9f048c",
+  "application_candidate": "dcfc4d9dd23bff699278a6fbbb9e0b04c95b7c12",
+  "application_gate": "evidence/full-gate-dcfc4d9/gate-result.json",
+  "application_gate_groups": 10,
+  "elapsed_seconds": 572.952,
+  "source_reviews": "evidence/README.md",
+  "session_measurement": "evidence/session-measure-639d31b/measurement.json",
+  "measured_candidate": "639d31b1414c21fa7516dc9d363ad35bae148afd",
+  "measured_runtime_unchanged_at_acceptance": true,
+  "paid_calls": 0,
+  "deployment": false,
+  "operational_controller_trust_promoted": false,
+  "source_board_statuses": {
+    "SW-100": "VERIFYING",
+    "SW-200": "VERIFYING",
+    "SW-300": "VERIFYING",
+    "SW-400": "VERIFYING",
+    "SW-500": "VERIFYING",
+    "SW-510": "VERIFYING",
+    "SW-520": "READY"
+  },
+  "policy_ticket": "SW-520 submission refused by pinned Board policy; claim released with fail_claim and batch operationally retired. Exact candidate and two CAS artifacts retained. No Board acceptance fabricated.",
+  "delivery_record": "GitHub pull request for head argo/shared-world and its exact-SHA checks/merge; remote delivery is subsequent to this local record.",
+  "limits": [
+    "Fresh ordinary mortal profile; no historical migration or Fate/lifespan/narrator port.",
+    "Injected provider results only; no live dialogue-quality or network-authentication claim.",
+    "At2000 events:358ms injected contextual reply+commit,74.4s cold opening; full2002 replay59.4s. Single-machine observations.",
+    "Trusted local private directory and external checkpoint custody required for rollback assurance."
+  ]
+}

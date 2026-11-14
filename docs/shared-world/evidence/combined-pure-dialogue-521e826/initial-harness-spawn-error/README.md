@@ -1,0 +1,1 @@
+Initial review harness stopped before loading product modules because sandbox spawnSync/git reported EPERM. Replaced only git identity probes with asynchronous execFile, which works in this environment. No product finding.

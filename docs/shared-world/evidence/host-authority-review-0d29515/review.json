@@ -1,0 +1,91 @@
+{
+  "candidate": "0d295152d7ee8a7e9a2a97a7f470e8108c2b26b2",
+  "base": "120119c81c4e4562e5078b30f58390d364be13cb",
+  "verdict": "READY for reviewed SW-510 owned authority/receipt/persistence scope; coordinator integration prerequisite remains",
+  "findings": [],
+  "source_worktree": "/workspace/ARGO/.board/shared-world-host/worktrees/SW-510-1-3f6965d414",
+  "head_before": "0d295152d7ee8a7e9a2a97a7f470e8108c2b26b2",
+  "head_after": "0d295152d7ee8a7e9a2a97a7f470e8108c2b26b2",
+  "status_before": "clean",
+  "status_after": "clean",
+  "source_files": [
+    {
+      "path": "TESTS/shared-world-session.test.ts",
+      "git_blob": "3c848cee1ff2a59ae9c4faed6658f6f36aa98dbf",
+      "sha256": "59a28c27a3ba24340236c2f9de1aa28047f55b8f8b53f495f3f2354ca7a8a06a"
+    },
+    {
+      "path": "packages/session/package.json",
+      "git_blob": "1291fb2f29fb932c671d38808c84eec79f95fddd",
+      "sha256": "8d6fb5d0b237fe7cc5c3a86462ff6a6b1b1e818e0c6ae925a18882bb8d8643a9"
+    },
+    {
+      "path": "packages/session/src/index.ts",
+      "git_blob": "8a02fb38bd4188e77b4171ba25007bd0cf3ee64f",
+      "sha256": "5ecf41b28dfd6679520fe79a38d85060b0eabf44676e31e951dd828b684535b2"
+    },
+    {
+      "path": "scenarios/tempted-fates/shared-world/README.md",
+      "git_blob": "3dee43a0191661884a0d96ac377129baeb1134fa",
+      "sha256": "79deac283c1df298d7b86f40a9f565f9c6a86a0288f797a2e88026804f35733e"
+    },
+    {
+      "path": "scenarios/tempted-fates/shared-world/cli.ts",
+      "git_blob": "dc25251b163069ed742e69f08281d1580bfd81e2",
+      "sha256": "1f40728429c4bc473f8c49905f7ea0a8770112adbf8839cc3cafbbd410e5423b"
+    }
+  ],
+  "author_source_hashes_verified": true,
+  "validation": {
+    "independent": {
+      "pass": 8,
+      "fail": 0,
+      "exit_code": 0,
+      "script": "probes.mts",
+      "log": "probes.log"
+    },
+    "ordinary_process_init": {
+      "passed": true,
+      "NODE_TEST_CONTEXT": "removed from child environment",
+      "stdio": "private regular-file descriptors for stdin, stdout, stderr",
+      "note": "Other persistence matrix cases call the exported main function without altering source or using a production test branch."
+    },
+    "peer_run_authored_suite": {
+      "pass": 10,
+      "fail": 0,
+      "log": "../host-privacy-review-0d29515/source-tests.log",
+      "ownership": "run by privacy reviewer; read/checked here, not rerun by this reviewer"
+    },
+    "peer_run_ordinary_demo": {
+      "log": "../host-privacy-review-0d29515/demo.stdout",
+      "events": 7,
+      "oil_spent": 2,
+      "elapsed_seconds": 1200,
+      "ownership": "independently captured by privacy reviewer; read/checked here"
+    },
+    "diff_check": {
+      "exit_code": 0
+    },
+    "frozen_profiles": "unchanged",
+    "production_test_flags": "none in owned source",
+    "known_boundary_gate_prerequisite": "Source author boundary check stops at scenarios/tempted-fates/shared-world/cli.ts undeclared @argo/session dependency. Coordinator explicitly owns integration wiring."
+  },
+  "declined_to_judge": [
+    "Coordinator-owned scenario manifest @argo/session declaration, root lock/ownership wiring, and final integrated application gate remain separate acceptance work",
+    "Final host benchmark, long-history actor/referee latency and sustained throughput; referee prepare explicitly performs full State validation",
+    "Remote authentication or authorization of local --actor/--referee selection; CLI is a trusted same-user operator harness",
+    "Concurrent malicious same-user filesystem replacement, OS privilege abuse and power-loss durability of initial private files",
+    "External rollback anchoring for ordinary CLI resume; a same-directory marker is not an independent checkpoint",
+    "Provider quality, paid models, general campaign balance and unrelated source profiles"
+  ],
+  "artifacts": {
+    "probes.mts": "b400d52cd4f2c3fb75b9e76d0fa62a9629bad5f36614f78378bd7b5996c2afef",
+    "probes.log": "ed5479a23443e63eae5b756e9e803c7aa6b64efb02409a6e508f045cd93f9350",
+    "candidate.diff": "35949de73c7a40276270cdaedcba54c6e4d39a51126c426c75baa146a1a51883"
+  },
+  "peer_evidence_sha256": {
+    "source-tests.log": "3baee399cf1e13ab9ae265cb8dc6d081857e9df0a6ca0d25a15ba1ae10cc1723",
+    "demo.stdout": "38e539e2624e71490b964daf0b9eb3ad635ccf1abfa07e5a0ba02a2e047be41b",
+    "demo.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "candidate": "4774dfb6d44145183f6c7760d032728aa6a84739",
+  "base": "8ff20160fcd949a64e5e11c356d5de57d769983e",
+  "checked_at_utc": "2026-11-14T14:44:26.531084+00:00",
+  "head_after": "4774dfb6d44145183f6c7760d032728aa6a84739",
+  "status_after": "",
+  "verdict": "CHANGES_REQUIRED",
+  "confirmed_findings": 1,
+  "author_named_tests": {
+    "passed": 30,
+    "failed": 0
+  },
+  "independent_probe_groups": {
+    "passed": 13,
+    "failed": 1
+  },
+  "source_hashes": {
+    "TESTS/shared-world-rules-helpers.ts": "c783c92c3c36a4a93497bb7908fd5ed6dacd7b93e58ff62ec78df24cf9874edf",
+    "TESTS/shared-world-rules.test.ts": "e38ba372465f49c64af934a37b72f6ab983e8461b792f6620e67127046fd288d",
+    "TESTS/shared-world-views.test.ts": "69a79c53d3dff1c3cf57cfcbf0b332e7fb91df42370260132f926aa68e925e12",
+    "packages/ledger/src/world/rules.ts": "aa8f60643039d819294c3936fa662fdbfcc42152780702950773c1d911c6c9ac",
+    "packages/ledger/src/world/rules/README.md": "3729e9d841681d41037b87fff5bdc96d416598b1cce408aac8f807e39be41dc0",
+    "packages/ledger/src/world/rules/engine.ts": "2c461c2756cfa97b6b872c8c0efb213d28e73ebd8e96d60b1fbe58a2f92205d5",
+    "packages/ledger/src/world/rules/ownership.ts": "9ccaf02a50871409ce7f60ab2566cf076588fff96eee4a5880a47eb6e38e16a3",
+    "packages/ledger/src/world/view.ts": "091a46c5549ad359466ca3dbb8f695b28c5a81bf087b290597b37d78b2838aea"
+  },
+  "frozen_contract_hashes": {
+    "SYSTEMS/shared-world-v1/CONTRACT.md": "a7d3043105752495de744c21da30a90982e4a68cdddd06344ffe058a04d19606",
+    "SYSTEMS/shared-world-v1/world.schema.json": "6918294342f48f8a3d4edf81b1be99b4b17d8294185d25b0f1965d1f1533b665",
+    "packages/contracts/src/shared-world-types.ts": "f1cc8f944b0847f14df17b048eee9ad1f25f185790fa8e8612d97331b4b67351",
+    "packages/contracts/src/shared-world.ts": "8edbb1eb833c0fb579d7bbd52b50b791d1cd43751cc690ee29e91995f56cc9c2"
+  },
+  "evidence_hashes": {
+    "third-holder-return.json": "0346c2d4b1f6816bdec3f85d11673f56361adeb64a7dc27dfb6e732cfbe6c5ce",
+    "REVIEW.md": "708f6ebe2555342cfb8a8c5dbaad93052249e23249a5a74d0dac082faec00c2b",
+    "unconscious-lender.json": "5909cf2874d1a7b560b6d41deed5a1997c327f147eaddec53ea01dccb9906304",
+    "probes.log": "5b27c04bab0897dc87e704d85935e67286ae00ee377aed8bac8e0161d952e5f9",
+    "tests.log": "e20e2d632c7f499c053895fc5bf702839859c5a94fde15d0e1c9fc20c35f1bbc",
+    "probes.mjs": "ac7adcd95a18d8fdf74c7557121171e4220a5ffc0979995ecac6fc1a36287544",
+    "probe-results.json": "5b27c04bab0897dc87e704d85935e67286ae00ee377aed8bac8e0161d952e5f9"
+  },
+  "repository_edits": false,
+  "paid_calls": 0,
+  "scope": "Pure rules and views; journal/model/host integration deferred"
+}

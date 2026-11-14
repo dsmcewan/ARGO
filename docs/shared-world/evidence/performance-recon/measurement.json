@@ -1,0 +1,226 @@
+{
+  "kind": "provisional_mutable_contract_microbenchmark",
+  "measured_at_utc": "2026-11-14T13:46:35.810Z",
+  "root": "/workspace/ARGO/.board/shared-world-contract/worktrees/SW-100-1-e257d63310",
+  "node_version": "v24.22.1",
+  "platform": "linux",
+  "architecture": "x64",
+  "git_head_contents_before": "3775f5b0fb9e50b31e364f3ab4b2aa748a56c1da",
+  "git_head_contents_after": "3775f5b0fb9e50b31e364f3ab4b2aa748a56c1da",
+  "source_sha256_before": {
+    "packages/contracts/src/shared-world.ts": "f49feb9d328d5ccc524fc2eed9fdc8b104358ff2920210d5cd342e434e007385",
+    "packages/contracts/src/shared-world-types.ts": "f1cc8f944b0847f14df17b048eee9ad1f25f185790fa8e8612d97331b4b67351",
+    "SYSTEMS/shared-world-v1/world.schema.json": "6918294342f48f8a3d4edf81b1be99b4b17d8294185d25b0f1965d1f1533b665",
+    "TESTS/shared-world-contract-fixtures.ts": "211aa8380b479570100331bb5eeca748fbf56aa5f8b5ac157d8e72e01ba8f5da",
+    "TESTS/mortal-fixtures.ts": "de4ae5876bb7f23b3ca3789e9c02762b22ad6285a65605f576126e0ee3f3d70a",
+    "packages/contracts/src/index.ts": "698b3500a1642a2f8fc7f5049840b8158b7e1b293a4f0dfc13dadc873c8965ee",
+    "packages/contracts/src/mortal-v3.ts": "5e4c4dc2ffd220b30f4d3e4a93ec885e39fbd18a42b0845adb441bf962c5d3f7",
+    "packages/contracts/src/mortal-v3-types.ts": "9540819917dc0f58a92793c2dd69baee8c029f99099f681ca79e713e6d390699",
+    "packages/contracts/src/dialogue-knowledge.ts": "acf09f258bcfbfb0647fe1ea143d48e00b487644f952651bf8a0b6416b31b267",
+    "packages/contracts/src/dialogue-knowledge-types.ts": "582becd45418f9909c5ddf725b4e8a3773096b70d56e7e6312d7f5e6bacef13b",
+    "packages/contracts/src/character-types.ts": "1d5b1233d358730651c3c57ee84d810a6bb18ae589faff68c737ef9102a7f405",
+    "SYSTEMS/argo-v1.schema.json": "8770f07efd24a47598d15171a3a10658d5f7b676d3fcc03362b1cac622b32a4e",
+    "SYSTEMS/characters-v1/characters.schema.json": "b1e62cc9fa5c3266da55d845b008d6d7c0a94255e1ce3cdd48744172dc43ec93",
+    "SYSTEMS/mortal-v3/mortal.schema.json": "8cc7d1b9f5894adf4c5f22e8efb8172d2f474ab6a944add8cbb7fc87def757e0",
+    "SYSTEMS/dialogue-knowledge-v1/knowledge.schema.json": "b336a195b7ec00e9ce78b980930262bbee91735ca228935ee2dfc79f6cb3cdf1",
+    "package.json": "072f0b182bb5d02df9c9b8cb6c01716e6dd2e0d081164b2450d5bbbdfedf3e9b",
+    "package-lock.json": "d15d132ac31a15a6a7eb24334b4c917028bd3e304bb013c8dfbd7e0e6cf2932c"
+  },
+  "source_sha256_after": {
+    "packages/contracts/src/shared-world.ts": "f49feb9d328d5ccc524fc2eed9fdc8b104358ff2920210d5cd342e434e007385",
+    "packages/contracts/src/shared-world-types.ts": "f1cc8f944b0847f14df17b048eee9ad1f25f185790fa8e8612d97331b4b67351",
+    "SYSTEMS/shared-world-v1/world.schema.json": "6918294342f48f8a3d4edf81b1be99b4b17d8294185d25b0f1965d1f1533b665",
+    "TESTS/shared-world-contract-fixtures.ts": "211aa8380b479570100331bb5eeca748fbf56aa5f8b5ac157d8e72e01ba8f5da",
+    "TESTS/mortal-fixtures.ts": "de4ae5876bb7f23b3ca3789e9c02762b22ad6285a65605f576126e0ee3f3d70a",
+    "packages/contracts/src/index.ts": "698b3500a1642a2f8fc7f5049840b8158b7e1b293a4f0dfc13dadc873c8965ee",
+    "packages/contracts/src/mortal-v3.ts": "5e4c4dc2ffd220b30f4d3e4a93ec885e39fbd18a42b0845adb441bf962c5d3f7",
+    "packages/contracts/src/mortal-v3-types.ts": "9540819917dc0f58a92793c2dd69baee8c029f99099f681ca79e713e6d390699",
+    "packages/contracts/src/dialogue-knowledge.ts": "acf09f258bcfbfb0647fe1ea143d48e00b487644f952651bf8a0b6416b31b267",
+    "packages/contracts/src/dialogue-knowledge-types.ts": "582becd45418f9909c5ddf725b4e8a3773096b70d56e7e6312d7f5e6bacef13b",
+    "packages/contracts/src/character-types.ts": "1d5b1233d358730651c3c57ee84d810a6bb18ae589faff68c737ef9102a7f405",
+    "SYSTEMS/argo-v1.schema.json": "8770f07efd24a47598d15171a3a10658d5f7b676d3fcc03362b1cac622b32a4e",
+    "SYSTEMS/characters-v1/characters.schema.json": "b1e62cc9fa5c3266da55d845b008d6d7c0a94255e1ce3cdd48744172dc43ec93",
+    "SYSTEMS/mortal-v3/mortal.schema.json": "8cc7d1b9f5894adf4c5f22e8efb8172d2f474ab6a944add8cbb7fc87def757e0",
+    "SYSTEMS/dialogue-knowledge-v1/knowledge.schema.json": "b336a195b7ec00e9ce78b980930262bbee91735ca228935ee2dfc79f6cb3cdf1",
+    "package.json": "072f0b182bb5d02df9c9b8cb6c01716e6dd2e0d081164b2450d5bbbdfedf3e9b",
+    "package-lock.json": "d15d132ac31a15a6a7eb24334b4c917028bd3e304bb013c8dfbd7e0e6cf2932c"
+  },
+  "observed_sources_unchanged": true,
+  "methodology": {
+    "samples": 7,
+    "reported_statistic": "median",
+    "memory_shape": "240-character self-addressed player speech; one row per sequence; no impressions or loans",
+    "fixture_setup_timed": false,
+    "schema_compilation_timed": false,
+    "guard": "assertWorldContract(State, state, genesis)",
+    "hash": "Existing canonical hash of aggregate state excluding cursor.head; not a production worldStateHash implementation",
+    "clone": "structuredClone(state)",
+    "signed_history": false,
+    "sqlite": false,
+    "provider_calls": 0,
+    "acceptance_verdict": false,
+    "caveat": "Single-process synthetic draft measurement, not session latency, cold replay, signed-journal throughput or unique acceptance evidence. Fixture keys are generated in memory and not exported."
+  },
+  "rows": [
+    {
+      "memories": 128,
+      "json_bytes": 71142,
+      "guard": {
+        "samples_ms": [
+          14.4169,
+          11.3961,
+          8.4759,
+          7.4634,
+          5.9899,
+          6.8041,
+          5.4738
+        ],
+        "median_ms": 7.4634
+      },
+      "hash": {
+        "samples_ms": [
+          2.1527,
+          2.1813,
+          2.0929,
+          1.9039,
+          2.4749,
+          1.86,
+          1.8379
+        ],
+        "median_ms": 2.0929
+      },
+      "clone": {
+        "samples_ms": [
+          0.4683,
+          0.3715,
+          0.7385,
+          0.4666,
+          0.3717,
+          0.355,
+          0.3797
+        ],
+        "median_ms": 0.3797
+      }
+    },
+    {
+      "memories": 512,
+      "json_bytes": 273510,
+      "guard": {
+        "samples_ms": [
+          14.198,
+          14.8442,
+          17.07,
+          13.2961,
+          13.2095,
+          12.8218,
+          13.8205
+        ],
+        "median_ms": 13.8205
+      },
+      "hash": {
+        "samples_ms": [
+          13.0153,
+          11.4661,
+          10.8598,
+          9.3772,
+          8.7294,
+          12.3091,
+          12.2027
+        ],
+        "median_ms": 11.4661
+      },
+      "clone": {
+        "samples_ms": [
+          2.212,
+          2.1161,
+          1.7455,
+          1.7293,
+          1.6438,
+          1.6432,
+          1.406
+        ],
+        "median_ms": 1.7293
+      }
+    },
+    {
+      "memories": 1000,
+      "json_bytes": 530689,
+      "guard": {
+        "samples_ms": [
+          36.3236,
+          30.0832,
+          40.2014,
+          44.7567,
+          25.3568,
+          26.119,
+          25.0703
+        ],
+        "median_ms": 30.0832
+      },
+      "hash": {
+        "samples_ms": [
+          15.15,
+          17.5428,
+          16.7976,
+          15.4386,
+          15.4768,
+          17.3756,
+          16.1003
+        ],
+        "median_ms": 16.1003
+      },
+      "clone": {
+        "samples_ms": [
+          4.9945,
+          3.5952,
+          3.7459,
+          3.3499,
+          3.6785,
+          3.3937,
+          3.4859
+        ],
+        "median_ms": 3.5952
+      }
+    },
+    {
+      "memories": 2000,
+      "json_bytes": 1059689,
+      "guard": {
+        "samples_ms": [
+          45.1499,
+          53.822,
+          42.3166,
+          48.0732,
+          49.4006,
+          52.1912,
+          57.2554
+        ],
+        "median_ms": 49.4006
+      },
+      "hash": {
+        "samples_ms": [
+          52.1472,
+          40.5961,
+          34.9651,
+          30.6244,
+          42.5095,
+          34.2508,
+          30.5743
+        ],
+        "median_ms": 34.9651
+      },
+      "clone": {
+        "samples_ms": [
+          7.2189,
+          6.2075,
+          6.8752,
+          5.5246,
+          6.7342,
+          7.5774,
+          6.4593
+        ],
+        "median_ms": 6.7342
+      }
+    }
+  ]
+}

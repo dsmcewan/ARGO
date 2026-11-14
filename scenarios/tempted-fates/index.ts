@@ -32,3 +32,6 @@ export * from './runtime-v3.ts';
 
 // Curated owner knowledge requires persisted activation and current disclosure.
 export * from './campaign/knowledge/index.ts';
+
+// One fresh shared identity for ordinary mortal dialogue and physical actions.
+export * from './shared-world/seed.ts';

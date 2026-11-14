@@ -1,0 +1,1831 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://argo.local/schemas/shared-world/0.1.0",
+  "title": "One shared physical and epistemic authority, new worlds only",
+  "$defs": {
+    "Id": {
+      "$ref": "https://argo.local/schemas/mortal-rules/0.3.0#/$defs/Id"
+    },
+    "Hash": {
+      "$ref": "https://argo.local/schemas/mortal-rules/0.3.0#/$defs/Hash"
+    },
+    "Scope": {
+      "$ref": "https://argo.local/schemas/mortal-rules/0.3.0#/$defs/Scope"
+    },
+    "Version": {
+      "const": "shared-world/0.1.0"
+    },
+    "Tick": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000000000
+    },
+    "Sequence": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000
+    },
+    "Principal": {
+      "$ref": "https://argo.local/schemas/mortal-rules/0.3.0#/$defs/Principal"
+    },
+    "Cursor": {
+      "type": "object",
+      "properties": {
+        "sequence": {
+          "$ref": "#/$defs/Sequence"
+        },
+        "head": {
+          "$ref": "#/$defs/Hash"
+        },
+        "world_time": {
+          "$ref": "#/$defs/Tick"
+        }
+      },
+      "required": [
+        "sequence",
+        "head",
+        "world_time"
+      ],
+      "additionalProperties": false
+    },
+    "Profile": {
+      "type": "object",
+      "properties": {
+        "actor_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "nature": {
+          "$ref": "https://argo.local/contracts/character-memory/1.0.0/characters.schema.json#/$defs/CharacterNature"
+        },
+        "activity": {
+          "$ref": "https://argo.local/contracts/character-memory/1.0.0/characters.schema.json#/$defs/CharacterActivity"
+        },
+        "max_speech_characters": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2048
+        },
+        "presentation": {
+          "type": "object",
+          "properties": {
+            "occupation": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 512,
+              "pattern": "\\S"
+            },
+            "wants": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048,
+              "pattern": "\\S"
+            },
+            "will_not": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048,
+              "pattern": "\\S"
+            }
+          },
+          "required": [
+            "occupation",
+            "wants",
+            "will_not"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "actor_id",
+        "revision",
+        "nature",
+        "activity",
+        "max_speech_characters",
+        "presentation"
+      ],
+      "additionalProperties": false
+    },
+    "Scene": {
+      "type": "object",
+      "properties": {
+        "location_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8192,
+          "pattern": "\\S"
+        }
+      },
+      "required": [
+        "location_id",
+        "description"
+      ],
+      "additionalProperties": false
+    },
+    "Genesis": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "$ref": "#/$defs/Version"
+        },
+        "mortal": {
+          "$ref": "https://argo.local/schemas/mortal-rules/0.3.0#/$defs/Genesis"
+        },
+        "environment": {
+          "enum": [
+            "day",
+            "night"
+          ]
+        },
+        "profiles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Profile"
+          },
+          "minItems": 1,
+          "maxItems": 128
+        },
+        "scenes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Scene"
+          },
+          "minItems": 1,
+          "maxItems": 256
+        },
+        "knowledge_catalog": {
+          "$ref": "https://argo.local/schemas/dialogue-knowledge/1.0.0#/$defs/AuthoredKnowledgeCatalog"
+        },
+        "source_manifest": {
+          "$ref": "https://argo.local/schemas/dialogue-knowledge/1.0.0#/$defs/AuthoredSourceManifest"
+        },
+        "initial_knowledge_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Id"
+          },
+          "minItems": 0,
+          "maxItems": 64,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "version",
+        "mortal",
+        "environment",
+        "profiles",
+        "scenes",
+        "knowledge_catalog",
+        "source_manifest",
+        "initial_knowledge_ids"
+      ],
+      "additionalProperties": false
+    },
+    "Physical": {
+      "type": "object",
+      "properties": {
+        "actors": {
+          "$ref": "https://argo.local/schemas/mortal-rules/0.3.0#/$defs/State/properties/actors"
+        },
+        "items": {
+          "$ref": "https://argo.local/schemas/mortal-rules/0.3.0#/$defs/State/properties/items"
+        },
+        "opportunities": {
+          "$ref": "https://argo.local/schemas/mortal-rules/0.3.0#/$defs/State/properties/opportunities"
+        },
+        "stocks": {
+          "$ref": "https://argo.local/schemas/mortal-rules/0.3.0#/$defs/State/properties/stocks"
+        },
+        "encounter": {
+          "$ref": "https://argo.local/schemas/mortal-rules/0.3.0#/$defs/State/properties/encounter"
+        },
+        "rng_counter": {
+          "$ref": "https://argo.local/schemas/mortal-rules/0.3.0#/$defs/State/properties/rng_counter"
+        }
+      },
+      "required": [
+        "actors",
+        "items",
+        "opportunities",
+        "stocks",
+        "encounter",
+        "rng_counter"
+      ],
+      "additionalProperties": false
+    },
+    "Audience": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "self"
+            },
+            "addressed_actor_ids": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Id"
+              },
+              "minItems": 0,
+              "maxItems": 0,
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "kind",
+            "addressed_actor_ids"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "whisper"
+            },
+            "addressed_actor_ids": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Id"
+              },
+              "minItems": 1,
+              "maxItems": 64,
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "kind",
+            "addressed_actor_ids"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "room"
+            },
+            "addressed_actor_ids": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Id"
+              },
+              "minItems": 0,
+              "maxItems": 64,
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "kind",
+            "addressed_actor_ids"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Action_mortal": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "mortal"
+        },
+        "action": {
+          "$ref": "https://argo.local/schemas/mortal-rules/0.3.0#/$defs/Action"
+        }
+      },
+      "required": [
+        "type",
+        "action"
+      ],
+      "additionalProperties": false
+    },
+    "Action_speak": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "speak"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048,
+          "pattern": "\\S"
+        },
+        "audience": {
+          "$ref": "#/$defs/Audience"
+        },
+        "in_reply_to": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hash"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "text",
+        "audience",
+        "in_reply_to"
+      ],
+      "additionalProperties": false
+    },
+    "Action_impress": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "impress"
+        },
+        "subject_actor_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Hash"
+          },
+          "minItems": 1,
+          "maxItems": 32,
+          "uniqueItems": true
+        },
+        "interpretation": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048,
+          "pattern": "\\S"
+        },
+        "previous_impression_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hash"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "subject_actor_id",
+        "evidence_ids",
+        "interpretation",
+        "previous_impression_id"
+      ],
+      "additionalProperties": false
+    },
+    "Action_set_activity": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "set_activity"
+        },
+        "activity": {
+          "$ref": "https://argo.local/contracts/character-memory/1.0.0/characters.schema.json#/$defs/CharacterActivity"
+        }
+      },
+      "required": [
+        "type",
+        "activity"
+      ],
+      "additionalProperties": false
+    },
+    "Action_offer_loan": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "offer_loan"
+        },
+        "offer_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "policy_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "item_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "borrower_actor_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "return_location_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "repair_cap_obols": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "expires_at": {
+          "$ref": "#/$defs/Tick"
+        }
+      },
+      "required": [
+        "type",
+        "offer_id",
+        "policy_id",
+        "item_id",
+        "borrower_actor_id",
+        "return_location_id",
+        "repair_cap_obols",
+        "expires_at"
+      ],
+      "additionalProperties": false
+    },
+    "Action_withdraw_loan_offer": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "withdraw_loan_offer"
+        },
+        "offer_id": {
+          "$ref": "#/$defs/Id"
+        }
+      },
+      "required": [
+        "type",
+        "offer_id"
+      ],
+      "additionalProperties": false
+    },
+    "Action_accept_loan": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "accept_loan"
+        },
+        "offer_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "offer_hash": {
+          "$ref": "#/$defs/Hash"
+        }
+      },
+      "required": [
+        "type",
+        "offer_id",
+        "offer_hash"
+      ],
+      "additionalProperties": false
+    },
+    "Action_return_loan": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "return_loan"
+        },
+        "loan_id": {
+          "$ref": "#/$defs/Id"
+        }
+      },
+      "required": [
+        "type",
+        "loan_id"
+      ],
+      "additionalProperties": false
+    },
+    "Action_set_knowledge": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "set_knowledge"
+        },
+        "knowledge_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "active": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "type",
+        "knowledge_id",
+        "active"
+      ],
+      "additionalProperties": false
+    },
+    "Action_close_mythic_engagement": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "close_mythic_engagement"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "Action": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Action_mortal"
+        },
+        {
+          "$ref": "#/$defs/Action_speak"
+        },
+        {
+          "$ref": "#/$defs/Action_impress"
+        },
+        {
+          "$ref": "#/$defs/Action_set_activity"
+        },
+        {
+          "$ref": "#/$defs/Action_offer_loan"
+        },
+        {
+          "$ref": "#/$defs/Action_withdraw_loan_offer"
+        },
+        {
+          "$ref": "#/$defs/Action_accept_loan"
+        },
+        {
+          "$ref": "#/$defs/Action_return_loan"
+        },
+        {
+          "$ref": "#/$defs/Action_set_knowledge"
+        },
+        {
+          "$ref": "#/$defs/Action_close_mythic_engagement"
+        }
+      ]
+    },
+    "Command": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "$ref": "#/$defs/Version"
+        },
+        "scope": {
+          "$ref": "#/$defs/Scope"
+        },
+        "request_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "actor_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "expected": {
+          "$ref": "#/$defs/Cursor"
+        },
+        "causation_id": {
+          "$ref": "#/$defs/Hash"
+        },
+        "action": {
+          "$ref": "#/$defs/Action"
+        }
+      },
+      "required": [
+        "version",
+        "scope",
+        "request_id",
+        "actor_id",
+        "expected",
+        "causation_id",
+        "action"
+      ],
+      "additionalProperties": false
+    },
+    "LoanTerms": {
+      "type": "object",
+      "properties": {
+        "genesis_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "offer_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "policy_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "item_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "lender_actor_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "borrower_actor_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "return_location_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "loan_fee_obols": {
+          "const": 0
+        },
+        "advance_deposit_obols": {
+          "const": 0
+        },
+        "repair_basis": {
+          "const": "actual_damage_by_explicit_agreement"
+        },
+        "repair_cap_obols": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "oil_supplied_by": {
+          "const": "borrower"
+        },
+        "expires_at": {
+          "$ref": "#/$defs/Tick"
+        },
+        "issued_sequence": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "issued_at": {
+          "$ref": "#/$defs/Tick"
+        }
+      },
+      "required": [
+        "genesis_hash",
+        "offer_id",
+        "policy_id",
+        "item_id",
+        "lender_actor_id",
+        "borrower_actor_id",
+        "return_location_id",
+        "loan_fee_obols",
+        "advance_deposit_obols",
+        "repair_basis",
+        "repair_cap_obols",
+        "oil_supplied_by",
+        "expires_at",
+        "issued_sequence",
+        "issued_at"
+      ],
+      "additionalProperties": false
+    },
+    "LoanOffer": {
+      "type": "object",
+      "properties": {
+        "terms": {
+          "$ref": "#/$defs/LoanTerms"
+        },
+        "offer_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "status": {
+          "enum": [
+            "open",
+            "withdrawn",
+            "accepted"
+          ]
+        },
+        "closed_sequence": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 1000000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "terms",
+        "offer_hash",
+        "status",
+        "closed_sequence"
+      ],
+      "additionalProperties": false
+    },
+    "Loan": {
+      "type": "object",
+      "properties": {
+        "loan_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "offer_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "offer_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "item_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "lender_actor_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "borrower_actor_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "accepted_sequence": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "accepted_at": {
+          "$ref": "#/$defs/Tick"
+        },
+        "status": {
+          "enum": [
+            "open",
+            "returned"
+          ]
+        },
+        "returned_sequence": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 1000000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "loan_id",
+        "offer_id",
+        "offer_hash",
+        "item_id",
+        "lender_actor_id",
+        "borrower_actor_id",
+        "accepted_sequence",
+        "accepted_at",
+        "status",
+        "returned_sequence"
+      ],
+      "additionalProperties": false
+    },
+    "KnowledgeAcquisition": {
+      "type": "object",
+      "properties": {
+        "knowledge_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "origin": {
+          "enum": [
+            "genesis",
+            "event"
+          ]
+        },
+        "sequence": {
+          "$ref": "#/$defs/Sequence"
+        },
+        "world_time": {
+          "$ref": "#/$defs/Tick"
+        },
+        "active": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "knowledge_id",
+        "origin",
+        "sequence",
+        "world_time",
+        "active"
+      ],
+      "additionalProperties": false
+    },
+    "Memory_speak": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "speak"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048,
+          "pattern": "\\S"
+        },
+        "audience": {
+          "$ref": "#/$defs/Audience"
+        },
+        "in_reply_to": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hash"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "text",
+        "audience",
+        "in_reply_to"
+      ],
+      "additionalProperties": false
+    },
+    "Memory_impress": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "impress"
+        },
+        "subject_actor_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "interpretation": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048,
+          "pattern": "\\S"
+        },
+        "impression_id": {
+          "$ref": "#/$defs/Hash"
+        }
+      },
+      "required": [
+        "type",
+        "subject_actor_id",
+        "interpretation",
+        "impression_id"
+      ],
+      "additionalProperties": false
+    },
+    "Memory_set_activity": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "set_activity"
+        },
+        "activity": {
+          "$ref": "https://argo.local/contracts/character-memory/1.0.0/characters.schema.json#/$defs/CharacterActivity"
+        }
+      },
+      "required": [
+        "type",
+        "activity"
+      ],
+      "additionalProperties": false
+    },
+    "Memory_loan_offered": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "loan_offered"
+        },
+        "terms": {
+          "$ref": "#/$defs/LoanTerms"
+        },
+        "offer_hash": {
+          "$ref": "#/$defs/Hash"
+        }
+      },
+      "required": [
+        "type",
+        "terms",
+        "offer_hash"
+      ],
+      "additionalProperties": false
+    },
+    "Memory_loan_withdrawn": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "loan_withdrawn"
+        },
+        "offer_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "lender_actor_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "borrower_actor_id": {
+          "$ref": "#/$defs/Id"
+        }
+      },
+      "required": [
+        "type",
+        "offer_id",
+        "lender_actor_id",
+        "borrower_actor_id"
+      ],
+      "additionalProperties": false
+    },
+    "Memory_loan_accepted": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "loan_accepted"
+        },
+        "loan_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "offer_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "offer_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "item_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "lender_actor_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "borrower_actor_id": {
+          "$ref": "#/$defs/Id"
+        }
+      },
+      "required": [
+        "type",
+        "loan_id",
+        "offer_id",
+        "offer_hash",
+        "item_id",
+        "lender_actor_id",
+        "borrower_actor_id"
+      ],
+      "additionalProperties": false
+    },
+    "Memory_loan_returned": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "loan_returned"
+        },
+        "loan_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "offer_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "item_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "lender_actor_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "borrower_actor_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "holder_actor_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "via_mortal": {
+          "enum": [
+            "transfer_item",
+            "pickup",
+            "loot",
+            null
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "loan_id",
+        "offer_id",
+        "item_id",
+        "lender_actor_id",
+        "borrower_actor_id",
+        "holder_actor_id",
+        "via_mortal"
+      ],
+      "additionalProperties": false
+    },
+    "Memory_mortal": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "mortal"
+        },
+        "action": {
+          "enum": [
+            "travel",
+            "explore",
+            "rest",
+            "wait",
+            "equip",
+            "transfer_item",
+            "pickup",
+            "loot",
+            "give",
+            "buy",
+            "begin_encounter",
+            "attack",
+            "defend",
+            "retreat",
+            "pass",
+            "recover_encounter"
+          ]
+        },
+        "actor_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Id"
+          },
+          "minItems": 0,
+          "maxItems": 128,
+          "uniqueItems": true
+        },
+        "item_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Id"
+          },
+          "minItems": 0,
+          "maxItems": 512,
+          "uniqueItems": true
+        },
+        "location_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Id"
+          },
+          "minItems": 0,
+          "maxItems": 256,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "type",
+        "action",
+        "actor_ids",
+        "item_ids",
+        "location_ids"
+      ],
+      "additionalProperties": false
+    },
+    "Memory_set_knowledge": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "set_knowledge"
+        },
+        "knowledge_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "owner_actor_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "active": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "type",
+        "knowledge_id",
+        "owner_actor_id",
+        "active"
+      ],
+      "additionalProperties": false
+    },
+    "Memory_close_mythic_engagement": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "close_mythic_engagement"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "MemoryPayload": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Memory_speak"
+        },
+        {
+          "$ref": "#/$defs/Memory_impress"
+        },
+        {
+          "$ref": "#/$defs/Memory_set_activity"
+        },
+        {
+          "$ref": "#/$defs/Memory_loan_offered"
+        },
+        {
+          "$ref": "#/$defs/Memory_loan_withdrawn"
+        },
+        {
+          "$ref": "#/$defs/Memory_loan_accepted"
+        },
+        {
+          "$ref": "#/$defs/Memory_loan_returned"
+        },
+        {
+          "$ref": "#/$defs/Memory_mortal"
+        },
+        {
+          "$ref": "#/$defs/Memory_set_knowledge"
+        },
+        {
+          "$ref": "#/$defs/Memory_close_mythic_engagement"
+        }
+      ]
+    },
+    "Memory": {
+      "type": "object",
+      "properties": {
+        "record_id": {
+          "$ref": "#/$defs/Hash"
+        },
+        "request_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "world_time": {
+          "$ref": "#/$defs/Tick"
+        },
+        "actor_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "payload": {
+          "$ref": "#/$defs/MemoryPayload"
+        },
+        "acquired_by": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Id"
+          },
+          "minItems": 0,
+          "maxItems": 128,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "record_id",
+        "request_id",
+        "sequence",
+        "world_time",
+        "actor_id",
+        "payload",
+        "acquired_by"
+      ],
+      "additionalProperties": false
+    },
+    "VisibleMemory": {
+      "type": "object",
+      "properties": {
+        "record_id": {
+          "$ref": "#/$defs/Hash"
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "world_time": {
+          "$ref": "#/$defs/Tick"
+        },
+        "actor_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "payload": {
+          "$ref": "#/$defs/VisibleMemoryPayload"
+        }
+      },
+      "required": [
+        "record_id",
+        "sequence",
+        "world_time",
+        "actor_id",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "Impression": {
+      "type": "object",
+      "properties": {
+        "impression_id": {
+          "$ref": "#/$defs/Hash"
+        },
+        "owner_actor_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "subject_actor_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Hash"
+          },
+          "minItems": 1,
+          "maxItems": 32,
+          "uniqueItems": true
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "world_time": {
+          "$ref": "#/$defs/Tick"
+        },
+        "nature_revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "nature": {
+          "$ref": "https://argo.local/contracts/character-memory/1.0.0/characters.schema.json#/$defs/CharacterNature"
+        },
+        "interpretation": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048,
+          "pattern": "\\S"
+        },
+        "previous_impression_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hash"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "impression_id",
+        "owner_actor_id",
+        "subject_actor_id",
+        "evidence_ids",
+        "sequence",
+        "world_time",
+        "nature_revision",
+        "nature",
+        "interpretation",
+        "previous_impression_id"
+      ],
+      "additionalProperties": false
+    },
+    "State": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "$ref": "#/$defs/Version"
+        },
+        "scope": {
+          "$ref": "#/$defs/Scope"
+        },
+        "genesis_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "cursor": {
+          "$ref": "#/$defs/Cursor"
+        },
+        "physical": {
+          "$ref": "#/$defs/Physical"
+        },
+        "profiles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Profile"
+          },
+          "minItems": 1,
+          "maxItems": 128
+        },
+        "memories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Memory"
+          },
+          "minItems": 0,
+          "maxItems": 1000000
+        },
+        "impressions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Impression"
+          },
+          "minItems": 0,
+          "maxItems": 65536
+        },
+        "knowledge": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/KnowledgeAcquisition"
+          },
+          "minItems": 0,
+          "maxItems": 64
+        },
+        "offers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LoanOffer"
+          },
+          "minItems": 0,
+          "maxItems": 4096
+        },
+        "loans": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Loan"
+          },
+          "minItems": 0,
+          "maxItems": 4096
+        },
+        "mythic_closed": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "version",
+        "scope",
+        "genesis_hash",
+        "cursor",
+        "physical",
+        "profiles",
+        "memories",
+        "impressions",
+        "knowledge",
+        "offers",
+        "loans",
+        "mythic_closed"
+      ],
+      "additionalProperties": false
+    },
+    "Query": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "$ref": "#/$defs/Version"
+        },
+        "scope": {
+          "$ref": "#/$defs/Scope"
+        },
+        "actor_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "cursor": {
+          "$ref": "#/$defs/Cursor"
+        }
+      },
+      "required": [
+        "version",
+        "scope",
+        "actor_id",
+        "cursor"
+      ],
+      "additionalProperties": false
+    },
+    "PhysicalView": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "$ref": "https://argo.local/schemas/mortal-rules/0.3.0#/$defs/ActorView/properties/self"
+        },
+        "items": {
+          "$ref": "https://argo.local/schemas/mortal-rules/0.3.0#/$defs/ActorView/properties/items"
+        },
+        "location": {
+          "$ref": "https://argo.local/schemas/mortal-rules/0.3.0#/$defs/ActorView/properties/location"
+        },
+        "routes": {
+          "$ref": "https://argo.local/schemas/mortal-rules/0.3.0#/$defs/ActorView/properties/routes"
+        },
+        "encounter": {
+          "$ref": "https://argo.local/schemas/mortal-rules/0.3.0#/$defs/ActorView/properties/encounter"
+        },
+        "activity_lock": {
+          "$ref": "https://argo.local/schemas/mortal-rules/0.3.0#/$defs/ActorView/properties/activity_lock"
+        }
+      },
+      "required": [
+        "self",
+        "items",
+        "location",
+        "routes",
+        "encounter",
+        "activity_lock"
+      ],
+      "additionalProperties": false
+    },
+    "ActorView": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "$ref": "#/$defs/Version"
+        },
+        "genesis_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "query": {
+          "$ref": "#/$defs/Query"
+        },
+        "profile": {
+          "$ref": "#/$defs/Profile"
+        },
+        "physical": {
+          "$ref": "#/$defs/PhysicalView"
+        },
+        "scene": {
+          "type": "object",
+          "properties": {
+            "location_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "description": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 8192,
+              "pattern": "\\S"
+            },
+            "environment": {
+              "enum": [
+                "day",
+                "night"
+              ]
+            },
+            "occupants": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "actor_id": {
+                    "$ref": "#/$defs/Id"
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 256,
+                    "pattern": "\\S"
+                  },
+                  "condition": {
+                    "enum": [
+                      "standing",
+                      "unconscious",
+                      "dead"
+                    ]
+                  }
+                },
+                "required": [
+                  "actor_id",
+                  "name",
+                  "condition"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 0,
+              "maxItems": 128
+            }
+          },
+          "required": [
+            "location_id",
+            "description",
+            "environment",
+            "occupants"
+          ],
+          "additionalProperties": false
+        },
+        "memories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/VisibleMemory"
+          },
+          "minItems": 0,
+          "maxItems": 32
+        },
+        "impressions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Impression"
+          },
+          "minItems": 0,
+          "maxItems": 32
+        },
+        "knowledge": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "entry": {
+                "$ref": "https://argo.local/schemas/dialogue-knowledge/1.0.0#/$defs/AuthoredKnowledgeEntry"
+              },
+              "acquisition": {
+                "$ref": "#/$defs/KnowledgeAcquisition"
+              }
+            },
+            "required": [
+              "entry",
+              "acquisition"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0,
+          "maxItems": 64
+        },
+        "knowledge_source": {
+          "$ref": "https://argo.local/schemas/dialogue-knowledge/1.0.0#/$defs/TrustedKnowledgeIdentity"
+        },
+        "source_definitions": {
+          "type": "array",
+          "items": {
+            "$ref": "https://argo.local/schemas/dialogue-knowledge/1.0.0#/$defs/AuthoredKnowledgeSource"
+          },
+          "minItems": 0,
+          "maxItems": 32
+        },
+        "replied_to": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Hash"
+          },
+          "minItems": 0,
+          "maxItems": 32,
+          "uniqueItems": true
+        },
+        "coverage": {
+          "type": "object",
+          "properties": {
+            "memory_total": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 1000000
+            },
+            "memory_returned": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 32
+            },
+            "impressions_total": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 65536
+            },
+            "impressions_returned": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 32
+            },
+            "complete": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "memory_total",
+            "memory_returned",
+            "impressions_total",
+            "impressions_returned",
+            "complete"
+          ],
+          "additionalProperties": false
+        },
+        "mythic_closed": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "version",
+        "genesis_hash",
+        "query",
+        "profile",
+        "physical",
+        "scene",
+        "memories",
+        "impressions",
+        "knowledge",
+        "knowledge_source",
+        "source_definitions",
+        "replied_to",
+        "coverage",
+        "mythic_closed"
+      ],
+      "additionalProperties": false
+    },
+    "Resolution": {
+      "type": "object",
+      "properties": {
+        "state": {
+          "$ref": "#/$defs/State"
+        },
+        "draws": {
+          "$ref": "https://argo.local/schemas/mortal-rules/0.3.0#/$defs/Event/properties/draws"
+        },
+        "effects": {
+          "$ref": "https://argo.local/schemas/mortal-rules/0.3.0#/$defs/Event/properties/effects"
+        },
+        "memory": {
+          "$ref": "#/$defs/Memory"
+        }
+      },
+      "required": [
+        "state",
+        "draws",
+        "effects",
+        "memory"
+      ],
+      "additionalProperties": false
+    },
+    "Event": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "$ref": "#/$defs/Version"
+        },
+        "scope": {
+          "$ref": "#/$defs/Scope"
+        },
+        "genesis_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "previous_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "world_time": {
+          "$ref": "#/$defs/Tick"
+        },
+        "command": {
+          "$ref": "#/$defs/Command"
+        },
+        "principal": {
+          "$ref": "#/$defs/Principal"
+        },
+        "before_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "after_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "draws": {
+          "$ref": "https://argo.local/schemas/mortal-rules/0.3.0#/$defs/Event/properties/draws"
+        },
+        "effects": {
+          "$ref": "https://argo.local/schemas/mortal-rules/0.3.0#/$defs/Event/properties/effects"
+        },
+        "memory": {
+          "$ref": "#/$defs/Memory"
+        },
+        "signature": {
+          "$ref": "https://argo.local/schemas/mortal-rules/0.3.0#/$defs/Signature"
+        },
+        "hash": {
+          "$ref": "#/$defs/Hash"
+        }
+      },
+      "required": [
+        "version",
+        "scope",
+        "genesis_hash",
+        "sequence",
+        "previous_hash",
+        "world_time",
+        "command",
+        "principal",
+        "before_hash",
+        "after_hash",
+        "draws",
+        "effects",
+        "memory",
+        "signature",
+        "hash"
+      ],
+      "additionalProperties": false
+    },
+    "Receipt": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "$ref": "#/$defs/Version"
+        },
+        "scope": {
+          "$ref": "#/$defs/Scope"
+        },
+        "genesis_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "authority_key_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "signature": {
+          "$ref": "https://argo.local/schemas/mortal-rules/0.3.0#/$defs/Signature"
+        },
+        "request_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "request_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "event_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "cursor": {
+          "$ref": "#/$defs/Cursor"
+        },
+        "state_hash": {
+          "$ref": "#/$defs/Hash"
+        }
+      },
+      "required": [
+        "version",
+        "scope",
+        "genesis_hash",
+        "authority_key_id",
+        "signature",
+        "request_id",
+        "request_hash",
+        "event_hash",
+        "cursor",
+        "state_hash"
+      ],
+      "additionalProperties": false
+    },
+    "ReceiptTrust": {
+      "type": "object",
+      "properties": {
+        "scope": {
+          "$ref": "#/$defs/Scope"
+        },
+        "genesis_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "authority_key_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "authority_public_key": {
+          "$ref": "https://argo.local/schemas/mortal-rules/0.3.0#/$defs/Genesis/properties/authority_public_key"
+        }
+      },
+      "required": [
+        "scope",
+        "genesis_hash",
+        "authority_key_id",
+        "authority_public_key"
+      ],
+      "additionalProperties": false
+    },
+    "VisibleMemoryPayload": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/MemoryPayload"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "custody_returned"
+            },
+            "item_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "from_actor_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "to_actor_id": {
+              "$ref": "#/$defs/Id"
+            }
+          },
+          "required": [
+            "type",
+            "item_id",
+            "from_actor_id",
+            "to_actor_id"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    }
+  }
+}

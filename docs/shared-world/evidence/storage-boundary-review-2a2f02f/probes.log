@@ -1,0 +1,112 @@
+{
+  "candidate": "2a2f02faf0c95e4095a8b5a43d022218cc15d0bc",
+  "before": {
+    "head": "2a2f02faf0c95e4095a8b5a43d022218cc15d0bc",
+    "status": ""
+  },
+  "after": {
+    "head": "2a2f02faf0c95e4095a8b5a43d022218cc15d0bc",
+    "status": ""
+  },
+  "checks": [
+    {
+      "name": "Exact immutable candidate and frozen profile identities",
+      "status": "pass"
+    },
+    {
+      "name": "Hostile option descriptors, proxies and key wrappers are refused without invoking caller code",
+      "status": "pass",
+      "details": {
+        "traps": 0,
+        "created_database": false
+      }
+    },
+    {
+      "name": "Submit/page passive input guards run before IPC and queued caller mutation cannot rewrite accepted work",
+      "status": "pass",
+      "details": {
+        "traps": 0,
+        "invalid_requests_dispatched": 0,
+        "queued_request_detached": true
+      }
+    },
+    {
+      "name": "Exact-parent immutable cache cannot be poisoned by caller cursor markers or mutable pages/receipts",
+      "status": "pass",
+      "details": {
+        "parent_cached_identity_reused": true,
+        "forged_cursor_sent": false,
+        "mutable_outputs_detached": true
+      }
+    },
+    {
+      "name": "Failure after a valid suffix cannot publish partial cache or acknowledge another pending request",
+      "status": "pass",
+      "details": {
+        "valid_suffix_before_bad_row": true,
+        "snapshot_events_submit_all_refused": true,
+        "previous_identity_restored": true,
+        "pending_request_not_poisoned": true
+      }
+    },
+    {
+      "name": "Full reply budget includes maximum RPC id, UTF-8 and JSON escaping",
+      "status": "pass",
+      "details": {
+        "limit_bytes": 16777216,
+        "max_id": 9007199254740991,
+        "payload_only_fit_refused": true,
+        "encodings": [
+          "ASCII",
+          "four-byte UTF-8",
+          "NUL escape",
+          "quote escape"
+        ]
+      }
+    },
+    {
+      "name": "Signed ledger to actual owner view to injected request preserves private acquisition and receipt binding",
+      "status": "pass",
+      "details": {
+        "real_sqlite_events": 3,
+        "provider_calls": 1,
+        "refresh_reads": 5,
+        "signed_receipt_verified": true
+      }
+    },
+    {
+      "name": "Cross-handle revocation during token count suppresses generation before a provider call",
+      "status": "pass",
+      "details": {
+        "counter_calls": 1,
+        "provider_calls": 0
+      }
+    },
+    {
+      "name": "Cross-handle travel during generation suppresses stale output and old commands cannot submit",
+      "status": "pass",
+      "details": {
+        "stale_generated_command_refused": true,
+        "inflight_response_suppressed": true,
+        "actual_cursor": {
+          "head": "adaf3a0341d697a96c96a64cf5876cfa6f10769e0985aac3e424c82f71111e55",
+          "sequence": 2,
+          "world_time": 600
+        }
+      }
+    },
+    {
+      "name": "Cross-handle closure during async cooldown suppresses release and stops later provider calls",
+      "status": "pass",
+      "details": {
+        "postprovider_closure_seen": true,
+        "later_provider_calls": 0
+      }
+    }
+  ],
+  "passed": 10,
+  "failed": 0,
+  "paid_calls": 0,
+  "outside_node_test_runner": true,
+  "scope": "Storage boundary and actual signed SQLite to view/model; host transport/session authorization and hostile same-process code excluded"
+}

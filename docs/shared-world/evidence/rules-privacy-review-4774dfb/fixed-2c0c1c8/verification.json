@@ -1,0 +1,58 @@
+{
+  "candidate": "2c0c1c8cc1f0aadedc7c94754ad917f9538b60a1",
+  "reviewed_parent": "4774dfb6d44145183f6c7760d032728aa6a84739",
+  "verified_at_utc": "2026-11-14T14:49:31.534966+00:00",
+  "head_after": "2c0c1c8cc1f0aadedc7c94754ad917f9538b60a1",
+  "status_after": "",
+  "verdict": "READY_SCOPED",
+  "author_named_tests": {
+    "passed": 31,
+    "failed": 0
+  },
+  "unchanged_independent_probe_groups": {
+    "passed": 14,
+    "failed": 0
+  },
+  "additional_controls": {
+    "outside_node_test_runner": true,
+    "rejected_transition_atomic": true,
+    "rejected_request_reusable": true,
+    "nonfulfilling_loan_transfer_allowed": true,
+    "ordinary_nonloan_transfer_unchanged": true
+  },
+  "delta_files": [
+    "TESTS/shared-world-rules.test.ts",
+    "packages/ledger/src/world/rules/engine.ts"
+  ],
+  "source_hashes": {
+    "TESTS/shared-world-rules-helpers.ts": "c783c92c3c36a4a93497bb7908fd5ed6dacd7b93e58ff62ec78df24cf9874edf",
+    "TESTS/shared-world-rules.test.ts": "144fdf27377b24862ca9a2acb2d1fe0d6bfb0057b3e64f6144fb331723d0a709",
+    "TESTS/shared-world-views.test.ts": "69a79c53d3dff1c3cf57cfcbf0b332e7fb91df42370260132f926aa68e925e12",
+    "packages/ledger/src/world/rules.ts": "aa8f60643039d819294c3936fa662fdbfcc42152780702950773c1d911c6c9ac",
+    "packages/ledger/src/world/rules/README.md": "3729e9d841681d41037b87fff5bdc96d416598b1cce408aac8f807e39be41dc0",
+    "packages/ledger/src/world/rules/engine.ts": "08af735d724e9bd205e11306a0fbc6462277b3934e08fb5499184577ead2d8f1",
+    "packages/ledger/src/world/rules/ownership.ts": "9ccaf02a50871409ce7f60ab2566cf076588fff96eee4a5880a47eb6e38e16a3",
+    "packages/ledger/src/world/view.ts": "091a46c5549ad359466ca3dbb8f695b28c5a81bf087b290597b37d78b2838aea"
+  },
+  "frozen_contract_hashes": {
+    "SYSTEMS/shared-world-v1/CONTRACT.md": "a7d3043105752495de744c21da30a90982e4a68cdddd06344ffe058a04d19606",
+    "SYSTEMS/shared-world-v1/world.schema.json": "6918294342f48f8a3d4edf81b1be99b4b17d8294185d25b0f1965d1f1533b665",
+    "packages/contracts/src/shared-world-types.ts": "f1cc8f944b0847f14df17b048eee9ad1f25f185790fa8e8612d97331b4b67351",
+    "packages/contracts/src/shared-world.ts": "8edbb1eb833c0fb579d7bbd52b50b791d1cd43751cc690ee29e91995f56cc9c2"
+  },
+  "probe_sha256": "ac7adcd95a18d8fdf74c7557121171e4220a5ffc0979995ecac6fc1a36287544",
+  "probe_copy_sha256": "ac7adcd95a18d8fdf74c7557121171e4220a5ffc0979995ecac6fc1a36287544",
+  "evidence_hashes": {
+    "third-holder-return.json": "75a9d58e3c8f013e1111b7398e1dadb179dd288ba5cbb43d5911e40ae46776e0",
+    "REVIEW.md": "5a126fb021b22c4a0904149a906d7a61e448a7a9bf84be3d0e3b31a35acdbb52",
+    "unconscious-lender.json": "be64f176d9904103daf65e4647bfedce41cb3ee5716bf96822cf5a9c0cd0388a",
+    "narrow-controls.log": "5f0d4818ef0d5c6df78d3fc1247ec262b63e2711b6a4f773639ee4ea12ed3acd",
+    "probes.log": "3f451cc2e440739c54db9e7131d1b98251697ec7124f4c993cc758673d6cc592",
+    "narrow-controls.mjs": "7511011e632112741159d1a48bba788d94d6e26c21a860981f16f590c2072aa3",
+    "tests.log": "f9182fe0521c3d1f97d49e6504cd64c55fd8c9b2650303b4b3ff067c5d4f4c59",
+    "probes.mjs": "ac7adcd95a18d8fdf74c7557121171e4220a5ffc0979995ecac6fc1a36287544",
+    "probe-results.json": "3f451cc2e440739c54db9e7131d1b98251697ec7124f4c993cc758673d6cc592"
+  },
+  "paid_calls": 0,
+  "repository_edits": false
+}

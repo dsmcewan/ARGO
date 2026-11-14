@@ -1,0 +1,36 @@
+PASS generated-types
+PASS schema
+PASS boundaries
+PASS types
+PASS board-and-dispatch
+PASS research-python
+PASS research-tests
+PASS research-package
+file:///workspace/scripts/gate.mjs:6
+const run=async(cmd,args,opts={})=>{try{return (await execute(cmd,args,{cwd:root,encoding:'utf8',timeout:300000,killSignal:'SIGKILL',maxBuffer:16*1024*1024,...opts})).stdout;}catch(error){throw new Error(`${cmd} ${args.join(' ')} failed\n${error.stdout??''}\n${error.stderr??''}`,{cause:error});}};
+                                                                                                                                                                                                  ^
+
+Error: /tools/node scripts/run-tests.mjs TESTS/authority.test.ts TESTS/autonomy.test.ts TESTS/boundary-repairs.test.ts TESTS/bridges.test.ts TESTS/campaign-dialogue.test.ts TESTS/campaign-knowledge.test.ts TESTS/character-authority.test.ts TESTS/character-cache.test.ts TESTS/character-contracts.test.ts TESTS/character-integration.test.ts TESTS/character-knowledge.test.ts TESTS/character-model-integration.test.ts TESTS/character-model.test.ts TESTS/character-presentation.test.ts TESTS/controller-policy.test.ts TESTS/controller-repair.test.ts TESTS/dialogue-knowledge.test.ts TESTS/ledger-cache.test.ts TESTS/ledger.test.ts TESTS/mortal-balance.test.ts TESTS/mortal-contracts.test.ts TESTS/mortal-integration.test.ts TESTS/mortal-journal.test.ts TESTS/mortal-rules.test.ts TESTS/mortal-storage.test.ts TESTS/mortal-v3-campaign.test.ts TESTS/mortal-v3-contracts.test.ts TESTS/mortal-v3-rules.test.ts TESTS/mortal-v3-storage.test.ts TESTS/narration.test.ts TESTS/observation-admission.test.ts TESTS/projection-contracts.test.ts TESTS/review-regressions.test.ts TESTS/shared-world-campaign.test.ts TESTS/shared-world-contracts.test.ts TESTS/shared-world-dialogue.test.ts TESTS/shared-world-journal.test.ts TESTS/shared-world-rules.test.ts TESTS/shared-world-session.test.ts TESTS/shared-world-storage.test.ts TESTS/shared-world-views.test.ts TESTS/tempted-fates.test.ts TESTS/tempting-fates-catalog.test.ts TESTS/tempting-fates-contracts.test.ts TESTS/tempting-fates-integration.test.ts TESTS/tempting-fates-rules.test.ts failed
+
+
+    at run (file:///workspace/scripts/gate.mjs:6:195)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async file:///workspace/scripts/gate.mjs:27:15 {
+  [cause]: Error: Command failed: /tools/node scripts/run-tests.mjs TESTS/authority.test.ts TESTS/autonomy.test.ts TESTS/boundary-repairs.test.ts TESTS/bridges.test.ts TESTS/campaign-dialogue.test.ts TESTS/campaign-knowledge.test.ts TESTS/character-authority.test.ts TESTS/character-cache.test.ts TESTS/character-contracts.test.ts TESTS/character-integration.test.ts TESTS/character-knowledge.test.ts TESTS/character-model-integration.test.ts TESTS/character-model.test.ts TESTS/character-presentation.test.ts TESTS/controller-policy.test.ts TESTS/controller-repair.test.ts TESTS/dialogue-knowledge.test.ts TESTS/ledger-cache.test.ts TESTS/ledger.test.ts TESTS/mortal-balance.test.ts TESTS/mortal-contracts.test.ts TESTS/mortal-integration.test.ts TESTS/mortal-journal.test.ts TESTS/mortal-rules.test.ts TESTS/mortal-storage.test.ts TESTS/mortal-v3-campaign.test.ts TESTS/mortal-v3-contracts.test.ts TESTS/mortal-v3-rules.test.ts TESTS/mortal-v3-storage.test.ts TESTS/narration.test.ts TESTS/observation-admission.test.ts TESTS/projection-contracts.test.ts TESTS/review-regressions.test.ts TESTS/shared-world-campaign.test.ts TESTS/shared-world-contracts.test.ts TESTS/shared-world-dialogue.test.ts TESTS/shared-world-journal.test.ts TESTS/shared-world-rules.test.ts TESTS/shared-world-session.test.ts TESTS/shared-world-storage.test.ts TESTS/shared-world-views.test.ts TESTS/tempted-fates.test.ts TESTS/tempting-fates-catalog.test.ts TESTS/tempting-fates-contracts.test.ts TESTS/tempting-fates-integration.test.ts TESTS/tempting-fates-rules.test.ts
+  
+      at genericNodeError (node:internal/errors:986:15)
+      at wrappedFn (node:internal/errors:540:14)
+      at ChildProcess.exithandler (node:child_process:417:12)
+      at ChildProcess.emit (node:events:514:28)
+      at maybeClose (node:internal/child_process:1172:16)
+      at ChildProcess._handle.onexit (node:internal/child_process:335:5) {
+    code: null,
+    killed: true,
+    signal: 'SIGKILL',
+    cmd: '/tools/node scripts/run-tests.mjs TESTS/authority.test.ts TESTS/autonomy.test.ts TESTS/boundary-repairs.test.ts TESTS/bridges.test.ts TESTS/campaign-dialogue.test.ts TESTS/campaign-knowledge.test.ts TESTS/character-authority.test.ts TESTS/character-cache.test.ts TESTS/character-contracts.test.ts TESTS/character-integration.test.ts TESTS/character-knowledge.test.ts TESTS/character-model-integration.test.ts TESTS/character-model.test.ts TESTS/character-presentation.test.ts TESTS/controller-policy.test.ts TESTS/controller-repair.test.ts TESTS/dialogue-knowledge.test.ts TESTS/ledger-cache.test.ts TESTS/ledger.test.ts TESTS/mortal-balance.test.ts TESTS/mortal-contracts.test.ts TESTS/mortal-integration.test.ts TESTS/mortal-journal.test.ts TESTS/mortal-rules.test.ts TESTS/mortal-storage.test.ts TESTS/mortal-v3-campaign.test.ts TESTS/mortal-v3-contracts.test.ts TESTS/mortal-v3-rules.test.ts TESTS/mortal-v3-storage.test.ts TESTS/narration.test.ts TESTS/observation-admission.test.ts TESTS/projection-contracts.test.ts TESTS/review-regressions.test.ts TESTS/shared-world-campaign.test.ts TESTS/shared-world-contracts.test.ts TESTS/shared-world-dialogue.test.ts TESTS/shared-world-journal.test.ts TESTS/shared-world-rules.test.ts TESTS/shared-world-session.test.ts TESTS/shared-world-storage.test.ts TESTS/shared-world-views.test.ts TESTS/tempted-fates.test.ts TESTS/tempting-fates-catalog.test.ts TESTS/tempting-fates-contracts.test.ts TESTS/tempting-fates-integration.test.ts TESTS/tempting-fates-rules.test.ts',
+    stdout: '',
+    stderr: ''
+  }
+}
+
+Node.js v24.22.1

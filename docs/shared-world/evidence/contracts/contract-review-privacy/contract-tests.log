@@ -1,0 +1,28 @@
+✔ shared genesis validates one mortal roster and rejects cross-profile or duplicated physical authority (551.687901ms)
+✔ commands require a complete current cursor and closed actor/audience fields (8.499541ms)
+✔ genesis rejects mismatched profiles, scenes, identities and unbound authored policies (23.294081ms)
+✔ every action has a closed structural grammar and referee actions cannot name an actor (36.007406ms)
+✔ speech distinguishes addressees from witnesses and rejects ambiguous or unbounded input (4.72895ms)
+✔ loan terms are free and immutable, hash-bound, timed and closed by explicit lifecycle (19.35898ms)
+✔ state has one cursor and rejects invented memory identities, recipients and future acquisitions (19.512349ms)
+✔ compound loan fulfillment uses only loan participants rather than room witness union (3.39604ms)
+✔ private impression and activity records cannot disclose to the subject or room (2.713539ms)
+✔ actor views bind one reader, own knowledge/inventory, explicit coverage and no raw authority (29.254541ms)
+✔ signed artifacts bind full request identity, one memory and the shared genesis cursor (20.603636ms)
+✔ passive boundaries reject active values without evaluating getters or proxy traps (4.798751ms)
+✔ persisted social records cannot become orphaned or contradict their current rows (16.586501ms)
+✔ travel hides both endpoints and third-party return holders receive only their custody facts (5.385532ms)
+✔ genesis-bound projections preserve physical and private authored identity (22.695168ms)
+✔ request identities use one closed domain and bind complete command and principal data (5.96018ms)
+✔ NPC replies consume addressed acquired inbound IDs across the full memory history (6.862462ms)
+✔ passive argument and projection budgets refuse excess without changing input (130.199498ms)
+✔ passive byte limits include JSON escaping, quotes, keys and container punctuation (248.898205ms)
+✔ the freeze candidate pins exactly the new contract schema and type/guard bytes (28.690763ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2744.461847

@@ -1,0 +1,69 @@
+{
+  "loan": {
+    "loan_id": "melia_offer",
+    "offer_id": "melia_offer",
+    "offer_hash": "23d95e57ce094e063a05ba4f7b5d935d52fa2ee89c56978a65724b62d9810110",
+    "item_id": "traveler_lamp",
+    "lender_actor_id": "melia",
+    "borrower_actor_id": "hero",
+    "accepted_sequence": 5,
+    "accepted_at": 0,
+    "status": "open",
+    "returned_sequence": null
+  },
+  "offer": {
+    "terms": {
+      "genesis_hash": "95d08158db6cb1d9f1202559301475013145046f89d82d163ec390fcddbf0ca2",
+      "offer_id": "melia_offer",
+      "policy_id": "melia_lamp_loan_offer",
+      "item_id": "traveler_lamp",
+      "lender_actor_id": "melia",
+      "borrower_actor_id": "hero",
+      "return_location_id": "l_harbor",
+      "loan_fee_obols": 0,
+      "advance_deposit_obols": 0,
+      "repair_basis": "actual_damage_by_explicit_agreement",
+      "repair_cap_obols": 5,
+      "oil_supplied_by": "borrower",
+      "expires_at": 100000,
+      "issued_sequence": 4,
+      "issued_at": 0
+    },
+    "offer_hash": "23d95e57ce094e063a05ba4f7b5d935d52fa2ee89c56978a65724b62d9810110",
+    "status": "accepted",
+    "closed_sequence": 5
+  },
+  "custody": {
+    "armor_defense": 0,
+    "attack_ability": null,
+    "damage_die": 0,
+    "equipped": false,
+    "id": "traveler_lamp",
+    "kind": "tool",
+    "location_id": null,
+    "name": "Melia’s clay traveling lamp",
+    "owner_id": "hero",
+    "slots": 1,
+    "tool": "lamp"
+  },
+  "memory": {
+    "record_id": "acf3d0329638ba9d8a4d4c7690d249f562e3d4ad3d9e55ac836c690092811e26",
+    "request_id": "probe_5",
+    "sequence": 5,
+    "world_time": 0,
+    "actor_id": "hero",
+    "acquired_by": [
+      "melia",
+      "hero"
+    ],
+    "payload": {
+      "type": "loan_accepted",
+      "loan_id": "melia_offer",
+      "offer_id": "melia_offer",
+      "offer_hash": "23d95e57ce094e063a05ba4f7b5d935d52fa2ee89c56978a65724b62d9810110",
+      "item_id": "traveler_lamp",
+      "lender_actor_id": "melia",
+      "borrower_actor_id": "hero"
+    }
+  }
+}

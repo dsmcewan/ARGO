@@ -86,3 +86,7 @@ export * from './observation-admission.ts';
 // Authored actor policy requires pinned sources and a scoped host disclosure.
 export type * from './dialogue-knowledge-types.ts';
 export * from './dialogue-knowledge.ts';
+
+// Fresh shared-world authority; historical profiles remain independently readable.
+export * from './shared-world-types.ts';
+export {worldSchema,assertWorldData,assertWorldContract,assertWorldGenesis,worldRequestHash} from './shared-world.ts';

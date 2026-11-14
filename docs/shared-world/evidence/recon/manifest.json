@@ -1,0 +1,10 @@
+{
+  "baseline": "3fd1e4d99eede6853f62b8078e5921183a9f048c",
+  "purpose": "Read-only recon and independent builder review; proposals superseded by frozen contract when published",
+  "files": {
+    "storage-recon.md": "6c39271e0ce594861bf0dd050a7ab43f85e4a1a7bf13cc89e739241abf846233",
+    "mortal-recon.md": "7a9d7804203b57c2b23b032fd8a606a1f5c4287fe3546c8ba141fac1b8b3e313",
+    "character-recon.md": "84f926fa0a419549400465b987de24af37cbc3e6b1ae8fefca88649a34889582",
+    "design-review.md": "5b5d63e6ecb7a989d2f9061aa4b875cb73ca127b243321bf27da7c320b3c2af9"
+  }
+}

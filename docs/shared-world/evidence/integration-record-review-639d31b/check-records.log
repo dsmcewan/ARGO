@@ -1,0 +1,117 @@
+{
+  "candidate": "639d31b1414c21fa7516dc9d363ad35bae148afd",
+  "links": {
+    "documents": [
+      "README.md",
+      "STATUS_AND_ARCHITECTURE.md",
+      "SYSTEM_ROADMAP.md",
+      "docs/shared-world/README.md",
+      "docs/shared-world/NEXT.md",
+      "docs/shared-world/PLAN.md",
+      "docs/shared-world/evidence/README.md",
+      "docs/shared-world/evidence/contracts/README.md",
+      "scenarios/tempted-fates/shared-world/README.md",
+      "scenarios/tempted-fates/shared-world/SEED.md"
+    ],
+    "relative_link_count": 130,
+    "broken": [],
+    "limitation": "Checks committed target paths, not HTTP availability or fragment anchor rendering"
+  },
+  "board_states": [
+    {
+      "id": "SW-100",
+      "status": "VERIFYING",
+      "attempt": 2,
+      "commit_sha": "15d49d3c1ca5615ecc195da8b99401071fd4bd55",
+      "merged_commit": null
+    },
+    {
+      "id": "SW-200",
+      "status": "VERIFYING",
+      "attempt": 1,
+      "commit_sha": "2c0c1c8cc1f0aadedc7c94754ad917f9538b60a1",
+      "merged_commit": null
+    },
+    {
+      "id": "SW-300",
+      "status": "VERIFYING",
+      "attempt": 1,
+      "commit_sha": "2a2f02faf0c95e4095a8b5a43d022218cc15d0bc",
+      "merged_commit": null
+    },
+    {
+      "id": "SW-400",
+      "status": "VERIFYING",
+      "attempt": 1,
+      "commit_sha": "dfed2b980e73dc65f54b65f7db2468442117e415",
+      "merged_commit": null
+    },
+    {
+      "id": "SW-500",
+      "status": "VERIFYING",
+      "attempt": 1,
+      "commit_sha": "31e8c428472a0130fc75e46ce156dd5bddc0c534",
+      "merged_commit": null
+    },
+    {
+      "id": "SW-510",
+      "status": "VERIFYING",
+      "attempt": 1,
+      "commit_sha": "0d295152d7ee8a7e9a2a97a7f470e8108c2b26b2",
+      "merged_commit": null
+    }
+  ],
+  "submission_failures": [],
+  "artifact_failures": [
+    {
+      "path": "scenarios/tempted-fates/shared-world/SEED.md",
+      "expected_sha256": "d146faa9744e969e5ef728562a2d9bf9978cfe172bce2299dc8035afdfa81acf",
+      "inside_ticket_ownership": true,
+      "source_matches": true,
+      "candidate_matches": false,
+      "board_artifact_matches": true,
+      "cas_matches": true,
+      "ticket": "SW-500"
+    }
+  ],
+  "review_differences": [
+    {
+      "record": "docs/shared-world/evidence/contracts/authority/review-186e052.json",
+      "candidate": "186e052a19de6466aedaf048ecb5d9c4fd4fc1eb",
+      "verdict": "READY for contract freeze within independent authority/implementability review scope",
+      "source_is_ancestor": true,
+      "hash_count": 7,
+      "historical_mismatches": [],
+      "current_differences": [
+        "SYSTEMS/shared-world-v1/FREEZE.json"
+      ]
+    },
+    {
+      "record": "docs/shared-world/evidence/contracts/privacy/fixed-186e052/verification.json",
+      "candidate": "186e052a19de6466aedaf048ecb5d9c4fd4fc1eb",
+      "verdict": "READY",
+      "source_is_ancestor": true,
+      "hash_count": 7,
+      "historical_mismatches": [],
+      "current_differences": [
+        "SYSTEMS/shared-world-v1/FREEZE.json"
+      ]
+    },
+    {
+      "record": "docs/shared-world/evidence/seed-review-31e8c42/verification.json",
+      "candidate": "31e8c428472a0130fc75e46ce156dd5bddc0c534",
+      "verdict": "READY",
+      "source_is_ancestor": true,
+      "hash_count": 11,
+      "historical_mismatches": [],
+      "current_differences": [
+        "scenarios/tempted-fates/shared-world/SEED.md"
+      ]
+    }
+  ],
+  "runner": {
+    "reviewed_source": "897a2e36caf82331a2f7816b3d781e95913ea4ba",
+    "sha256": "0c42b92bbab5bba5a000c934883dc9a498f7e29f449f02012de8cd7ce063b780",
+    "identical_to_reviewed_source": true
+  }
+}

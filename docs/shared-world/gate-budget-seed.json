@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "tickets": [
+    {
+      "id": "SW-520",
+      "wave": 1,
+      "lane": "controller-budget",
+      "title": "Bound the expanded foundation suite without skipping assertions",
+      "seat_model": "gpt-6-astra",
+      "reviewer_model": null,
+      "owned_paths": [
+        "scripts/gate.mjs",
+        "docs/shared-world/GATE_BUDGET.md"
+      ],
+      "gate_cmd": [
+        "python3",
+        "-c",
+        "raise SystemExit('Application acceptance remains external to the pinned data-only Board policy')"
+      ],
+      "spec_path": "docs/shared-world/tickets/SW-520.md",
+      "depends_on": [],
+      "max_attempts": 3
+    }
+  ]
+}

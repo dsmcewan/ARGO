@@ -1,0 +1,1 @@
+The initial external review harness used CommonJS require.resolve against the model client, whose public package is ESM-only. Switched to Node ESM import.meta.resolve with explicit checkout parent and --experimental-import-meta-resolve. No product failure: the package correctly refuses CommonJS resolution.

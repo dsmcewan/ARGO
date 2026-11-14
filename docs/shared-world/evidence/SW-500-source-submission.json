@@ -1,0 +1,14 @@
+{
+  "ticket_id": "SW-500",
+  "source_commit": "31e8c428472a0130fc75e46ce156dd5bddc0c534",
+  "base_commit": "8ff20160fcd949a64e5e11c356d5de57d769983e",
+  "board_status": "VERIFYING",
+  "attempt": 1,
+  "artifacts": {
+    "TESTS/shared-world-campaign.test.ts": "48c162c48717c865adfd7f70a427ad020634abebfbe5d2923608eb5c9cb7c561",
+    "scenarios/tempted-fates/shared-world/SEED.md": "d146faa9744e969e5ef728562a2d9bf9978cfe172bce2299dc8035afdfa81acf",
+    "scenarios/tempted-fates/shared-world/seed.ts": "2f20b41b2079f09c77c70b61a3b0a1a013bbbe73f41bf7e60c7bbc5287a8ce6d"
+  },
+  "application_acceptance": "Recorded separately; data-only Board gate not run",
+  "paid_calls": 0
+}

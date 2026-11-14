@@ -1,0 +1,13 @@
+# SW-510 candidate handoff
+
+Candidate `0d295152d7ee8a7e9a2a97a7f470e8108c2b26b2` on base `120119c81c4e4562e5078b30f58390d364be13cb`; five owned files only, clean worktree. No paid calls, nested agents, Board writes, merge or push.
+
+`@argo/session` exports `createWorldSession({genesis, ledger, principal})` and the `WorldSessionOptions`/`WorldSession` types. Methods: `query()`, `view(query)`, `prepare(action, requestId)`, `submit(command)`. It binds fixed authenticated identity and full genesis/signing trust, preserves exact old retries, verifies signed receipts against the exact command/principal request identity and next sequence, and returns receipt only. Actor reads reuse public scoped-view validation and private immutable snapshot fast paths; referee preparation performs full validation.
+
+The CLI exposes `init --dir PATH --config FILE`, `resume --dir PATH --actor ID` or `--referee`, and `demo --dir PATH`. Local operator capabilities are explicit, never remote authentication. Configuration/JSON-lines are closed; directories are new/outside source checkouts (including linked main checkout), resolved through existing symlink parents, with private 0700 directories/0600 files and no overwrite. No live SDK/client or provider credentials are loaded. `submitForDisplay` displays a proposal only after exact receipt acceptance and a fresh scoped record/cutoff check.
+
+The ordinary-process demo produced seven signed events, preserved zero loans/custody/resource changes from dialogue, accepted exact Melia terms separately, spent two oil turns and1200 seconds walking out/back, returned the lamp, retried acceptance, and reopened/replayed identically. Its captured model request is private in the temporary world; reports contain no seed/key/raw genesis or private model request. `demo.jsonl` holds safe receipts/results.
+
+Validation: ten tests pass in `tests-third.log`; typecheck, frozen contracts and diff check pass. First logs retain diagnosed failures. Child subprocess stdin/stdout pipes in this environment silently drop bytes (even node console.log); test harness therefore uses asynchronous spawn with private regular-file descriptors for stdin/stdout/stderr while running the actual ordinary-process entry point with NODE_TEST_CONTEXT removed. Nothing was skipped.
+
+Coordinator integration: add `@argo/session: 0.1.0` to the scenario dependency manifest and update root lock/ownership/exports as planned. CLI uses a direct relative session import until that wiring is in place. Boundary check currently fails solely on that missing declared dependency. Full isolated controller gate and independent candidate review remain coordinator duties. No frozen files changed.

@@ -2,6 +2,15 @@
 
 ARGO is a foundation for a living-world roleplaying system: signed deterministic action authority, actor-scoped knowledge, and stateless narration.
 
+The new [shared headless session](docs/shared-world/README.md) connects ordinary mortal dialogue, item custody, travel, combat and resources in one signed world. Run the offline Tempting Fates demonstration after installing the root workspace dependencies:
+
+```sh
+node scenarios/tempted-fates/shared-world/cli.ts demo --dir /tmp/my-new-argo-world
+node scenarios/tempted-fates/shared-world/cli.ts resume --dir /tmp/my-new-argo-world --actor hero
+```
+
+Choose a new private directory outside the checkout. The demo injects a model response and proves a conversation, explicit lamp loan, night journey, return and identical restart/replay. The [CLI guide](scenarios/tempted-fates/shared-world/README.md) describes JSON-line play and the trusted local operator boundary. This is a fresh ordinary mortal profile; the Fate/lifespan kernel remains separate, and live model quality has not been tested.
+
 All four foundation phases are complete: source audit, frozen contracts, repaired Pantheon model boundary, and the sequential ledger/bridge/Tempted Fates spine. The earlier foundation repairs passed their deterministic gates. Twelve subsequent structural-review findings are repaired and independently verified; four contract/storage decisions remain blocked in [the repair record](REPAIRS/RESOLUTIONS.md). Verification is recorded in [BUILD_PROGRESS.md](BUILD_PROGRESS.md), [AUDIT_STATUS.json](repo-audit/AUDIT_STATUS.json), and [the verification record](repo-audit/evidence/foundation-verification.json).
 
 ```sh
@@ -21,6 +30,7 @@ LEXI/TELOS transports are injected and default to unavailable. Their determinist
 
 ## Start here
 
+- [One shared headless world: run commands, evidence and next dependencies](docs/shared-world/README.md)
 - [Review repairs: scoped encounters, authored NPC knowledge and observation admission](docs/review-successors/README.md)
 
 - [Connected character dialogue and scoped scene context](docs/npc-dialogue/README.md)

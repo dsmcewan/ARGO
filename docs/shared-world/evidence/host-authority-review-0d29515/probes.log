@@ -1,0 +1,16 @@
+✔ session owns full genesis/principal and rejects identity overrides before any ledger call (226.848207ms)
+✔ prepare, view and submit detach caller inputs before crossing await and detach returned receipts (125.344964ms)
+✔ authentic but wrong-request or result-prefix receipts are refused; submit has no current-state precheck (221.616337ms)
+✔ referee remains actorless and forged role/action combinations refuse before storage (45.122601ms)
+✔ real compound acceptance retry survives return, closure, stale view and restart without another transfer (5117.040754ms)
+✔ ordinary CLI init creates private state once; saved principal/referee commands and exact retries work (16845.668616ms)
+✔ CLI resume refuses symlinks, unsafe private permissions, missing DB and wrong ready marker without replacement (7325.003912ms)
+✔ CLI incomplete/unknown/oversized inputs refuse while independent lines continue and no world is overwritten (8530.913285ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 40714.542533

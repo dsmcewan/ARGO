@@ -1,0 +1,59 @@
+{
+  "lender_hp_before": 0,
+  "direct_return_refused": true,
+  "standing_control_accepted": true,
+  "ordinary_return_accepted": true,
+  "lender_hp_after": 0,
+  "custody_after": "hero",
+  "loan_after": {
+    "loan_id": "unconscious_return",
+    "offer_id": "unconscious_return",
+    "offer_hash": "1e4dfac64567c3de7f5a14be008684b08f1d2bce8db91656711a4f1b6dbfd5a5",
+    "item_id": "lamp",
+    "lender_actor_id": "hero",
+    "borrower_actor_id": "companion",
+    "accepted_sequence": 2,
+    "accepted_at": 0,
+    "status": "returned",
+    "returned_sequence": 4
+  },
+  "raw_memory": {
+    "record_id": "17db94a8f21d3c3d0cb420d98028ab959dc1ebebaed7b445194551b60cfbd213",
+    "request_id": "request_4",
+    "sequence": 4,
+    "world_time": 600,
+    "actor_id": "companion",
+    "acquired_by": [
+      "hero",
+      "companion"
+    ],
+    "payload": {
+      "type": "loan_returned",
+      "loan_id": "unconscious_return",
+      "offer_id": "unconscious_return",
+      "item_id": "lamp",
+      "lender_actor_id": "hero",
+      "borrower_actor_id": "companion",
+      "holder_actor_id": "companion",
+      "via_mortal": "transfer_item"
+    }
+  },
+  "new_lender_memories": [
+    {
+      "record_id": "17db94a8f21d3c3d0cb420d98028ab959dc1ebebaed7b445194551b60cfbd213",
+      "sequence": 4,
+      "world_time": 600,
+      "actor_id": "companion",
+      "payload": {
+        "type": "loan_returned",
+        "loan_id": "unconscious_return",
+        "offer_id": "unconscious_return",
+        "item_id": "lamp",
+        "lender_actor_id": "hero",
+        "borrower_actor_id": "companion",
+        "holder_actor_id": "companion",
+        "via_mortal": "transfer_item"
+      }
+    }
+  ]
+}

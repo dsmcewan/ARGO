@@ -1,0 +1,17 @@
+✔ genesis-bound Resolution rejects immutable controller mutation as State does (149.767929ms)
+✔ genesis-bound Resolution rejects a completely foreign genesis/scope (19.477331ms)
+✔ impressions cannot invent an earlier nature revision in an immutable-profile world (15.408607ms)
+✔ revoking owner knowledge preserves a prior live durable offer (10.529582ms)
+✔ an expired offer no longer blocks a new offer of the same item (29.514516ms)
+✔ recovered custody via pickup can atomically fulfill a dropped loan (30.500514ms)
+✔ request identity preserves same request ID while binding cursor and principal changes (34.692075ms)
+✔ a shape-valid event principal still must bind the immutable controller when genesis is supplied (41.36029ms)
+✔ referee grants and loan memory cannot leak through request IDs or foreign acquirers (25.125576ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4902.626683

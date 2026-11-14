@@ -1,0 +1,48 @@
+{
+  "reviewed_correction": "83bc6c154cd0879f481185eb159cded8fa1e507d",
+  "measured_candidate": "639d31b1414c21fa7516dc9d363ad35bae148afd",
+  "scope": "Retained-record verification only; no re-execution",
+  "measurement_candidate_matches": true,
+  "checkout_clean_before_after_recorded": true,
+  "test_runner": false,
+  "paid_calls_recorded": 0,
+  "interface_recorded": "createWorldSession: query, view, submit",
+  "final_sequence": 2002,
+  "replay_equals_snapshot_recorded": true,
+  "state_hash_matches_last_row": true,
+  "rows_equal_run_log": true,
+  "all_five_refreshes_one_injected_call": true,
+  "final_run_line": "Saved /workspace/reports/2026-11-14-argo-shared-world/session-measure-639d31b/measurement.json",
+  "stderr_bytes": 0,
+  "explicit_exit_status_record_retained": false,
+  "exit_status_reported_by_coordinator": 0,
+  "runner_sha256": "0c42b92bbab5bba5a000c934883dc9a498f7e29f449f02012de8cd7ce063b780",
+  "runner_same_at_measured_and_correction": true,
+  "runner_same_at_prior_review": true,
+  "artifacts": {
+    "measurement.json": {
+      "sha256": "2c059bc2b77e1093e74953f735c66bb62516a01b7b5d11d2f77f1f013379f6aa",
+      "matches_original_external": true
+    },
+    "run.log": {
+      "sha256": "0a836d1d2f954effdbb3cd5a85a7edb2a94441f0bdeef8044c1a175f9510b1e3",
+      "matches_original_external": true
+    },
+    "stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches_original_external": true
+    }
+  },
+  "rounded_docs_numbers": {
+    "dialogue_ms": 358,
+    "append_ms": 119,
+    "cold_seconds": 74.4,
+    "replay_seconds": 59.4
+  },
+  "links": {
+    "NEXT.md": true,
+    "README.md": true
+  },
+  "head_at_record": "83bc6c154cd0879f481185eb159cded8fa1e507d",
+  "status_at_record": ""
+}

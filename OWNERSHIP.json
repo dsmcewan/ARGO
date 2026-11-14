@@ -50,6 +50,13 @@
       "writes_world_state": false
     },
     {
+      "lane": "session",
+      "paths": [
+        "packages/session/"
+      ],
+      "writes_world_state": false
+    },
+    {
       "lane": "scenario",
       "paths": [
         "scenarios/tempted-fates/"
