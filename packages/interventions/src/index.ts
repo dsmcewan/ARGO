@@ -38,3 +38,4 @@ export async function runSubscriber(options:{updates:AsyncIterable<DerivedContex
 }
 
 export * from './characters.ts';
+export type {DialogueSupplement} from './dialogue-types.ts';
