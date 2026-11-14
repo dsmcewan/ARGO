@@ -91,6 +91,13 @@ function acquisition(value:WorldKnowledgeAcquisition):void{
  if(value.origin==='genesis'?(value.sequence!==0||value.world_time!==0||!value.active):value.sequence===0)invalid('Knowledge origin differs from its acquisition prefix');
 }
 function impression(value:WorldImpression):void{if(value.owner_actor_id===value.subject_actor_id||value.impression_id===value.previous_impression_id)invalid('Impression identity or predecessor is invalid');}
+function impressionNature(value:WorldImpression,owner:WorldProfile):void{
+ if(value.owner_actor_id!==owner.actor_id||value.nature_revision!==owner.revision)invalid('Impression differs from its immutable owner revision');
+ same(value.nature,owner.nature,'Impression differs from its immutable owner nature');
+}
+function itemDefinition(value:WorldPhysical['items'][number],initial:WorldPhysical['items'][number]):void{
+ for(const key of ['name','slots','kind','damage_die','attack_ability','armor_defense','tool'] as const)same(value[key],initial[key],'Physical item immutable definition changed');
+}
 function memoryIdentity(value:WorldMemory,genesisHash:string):void{
  if(value.record_id!==hash({domain:'shared-world/0.1.0/memory',genesis_hash:genesisHash,request_id:value.request_id,sequence:value.sequence}))invalid('World memory identity differs from its genesis/request/sequence');
 }
@@ -141,7 +148,7 @@ function state(value:WorldState):void{
  unique(value.impressions.map(r=>r.impression_id),'impression');const impressions=new Map<string,WorldImpression>();
  for(const row of value.impressions){impression(row);within(row.sequence,row.world_time,value.cursor);known(actorIds,row.owner_actor_id,'impression owner');known(actorIds,row.subject_actor_id,'impression subject');
   const record=records.get(row.impression_id);if(!record||record.actor_id!==row.owner_actor_id||record.sequence!==row.sequence||record.world_time!==row.world_time||record.payload.type!=='impress'||record.payload.subject_actor_id!==row.subject_actor_id||record.payload.interpretation!==row.interpretation)invalid('Impression differs from its private memory');
-  const owner=value.profiles.find(p=>p.actor_id===row.owner_actor_id)!;if(row.nature_revision>owner.revision||row.nature_revision===owner.revision&&canonical(row.nature)!==canonical(owner.nature))invalid('Impression nature revision disagrees');
+  impressionNature(row,value.profiles.find(p=>p.actor_id===row.owner_actor_id)!);
   for(const id of row.evidence_ids){const evidence=records.get(id);if(!evidence||evidence.sequence>=row.sequence||evidence.actor_id!==row.subject_actor_id||!evidence.acquired_by.includes(row.owner_actor_id))invalid('Impression evidence is not previously acquired about its subject');}
   if(row.previous_impression_id!==null){const previous=impressions.get(row.previous_impression_id);if(!previous||previous.owner_actor_id!==row.owner_actor_id||previous.subject_actor_id!==row.subject_actor_id||previous.sequence>=row.sequence)invalid('Impression predecessor differs');}impressions.set(row.impression_id,row);
  }
@@ -177,9 +184,10 @@ function state(value:WorldState):void{
 }
 function visibleMemory(row:WorldVisibleMemory,owner:string):void{
  const p=row.payload;
+ if(p.type==='speak'&&(row.actor_id===null||(p.audience.addressed_actor_ids as readonly string[]).includes(row.actor_id)||p.in_reply_to===row.record_id))invalid('Visible speech source or addressing is invalid');
  if((p.type==='impress'||p.type==='set_activity'||p.type==='speak'&&p.audience.kind==='self')&&row.actor_id!==owner)invalid('Visible memory exposes another private owner');
  if(p.type==='speak'&&p.audience.kind==='whisper'&&row.actor_id!==owner&&!p.audience.addressed_actor_ids.includes(owner))invalid('Visible whisper does not include its reader');
- if(p.type==='loan_offered'){loanTerms(p.terms);if(![p.terms.lender_actor_id,p.terms.borrower_actor_id].includes(owner)||p.offer_hash!==hash({domain:'shared-world/0.1.0/loan-offer',terms:p.terms}))invalid('Visible loan offer exceeds its parties or identity');}
+ if(p.type==='loan_offered'){loanTerms(p.terms);if(row.actor_id!==p.terms.lender_actor_id||row.sequence!==p.terms.issued_sequence||row.world_time!==p.terms.issued_at||![p.terms.lender_actor_id,p.terms.borrower_actor_id].includes(owner)||p.offer_hash!==hash({domain:'shared-world/0.1.0/loan-offer',terms:p.terms}))invalid('Visible loan offer exceeds its source, parties or issued identity');}
  if(['loan_withdrawn','loan_accepted','loan_returned'].includes(p.type)&&'lender_actor_id'in p&&![p.lender_actor_id,p.borrower_actor_id].includes(owner))invalid('Visible loan identity exceeds its original parties');
  if(p.type==='custody_returned'&&(owner!==p.from_actor_id||row.actor_id!==p.from_actor_id||p.from_actor_id===p.to_actor_id))invalid('Redacted custody return does not bind its holder');
  if(p.type==='set_knowledge'&&p.owner_actor_id!==owner)invalid('Visible knowledge grant belongs to another actor');
@@ -194,9 +202,9 @@ function actorView(value:WorldActorView):void{
  const occupants=unique(value.scene.occupants.map(o=>o.actor_id),'visible occupant'),self=value.scene.occupants.find(o=>o.actor_id===actor);
  known(occupants,actor,'self occupant');if(self!.name!==value.physical.self.name||self!.condition!==(value.physical.self.hp>0?'standing':value.physical.self.hp===0?'unconscious':'dead'))invalid('Visible self condition differs from physical state');
  const ids=unique(value.memories.map(r=>r.record_id),'visible memory');let sequence=0,time=0;
- for(const row of value.memories){within(row.sequence,row.world_time,q.cursor);if(row.sequence<=sequence||row.world_time<time)invalid('Visible memories require ordered provenance');sequence=row.sequence;time=row.world_time;visibleMemory(row,actor);}
+ for(const row of value.memories){within(row.sequence,row.world_time,q.cursor);if(row.sequence<=sequence||row.world_time<time)invalid('Visible memories require ordered provenance');sequence=row.sequence;time=row.world_time;visibleMemory(row,actor);if(row.payload.type==='loan_offered'&&row.payload.terms.genesis_hash!==value.genesis_hash)invalid('Visible offer belongs to another world');}
  unique(value.impressions.map(r=>r.impression_id),'visible impression');unique(value.impressions.map(r=>r.subject_actor_id),'latest visible impression subject');
- for(const row of value.impressions){impression(row);within(row.sequence,row.world_time,q.cursor);if(row.owner_actor_id!==actor||row.nature_revision>value.profile.revision)invalid('Visible impression exposes another owner or future nature');if(row.nature_revision===value.profile.revision)same(row.nature,value.profile.nature,'Visible impression conflicts with its nature revision');}
+ for(const row of value.impressions){impression(row);within(row.sequence,row.world_time,q.cursor);impressionNature(row,value.profile);}
  for(const id of value.replied_to){known(ids,id,'consumed inbound record');const row=value.memories.find(r=>r.record_id===id)!;if(row.payload.type!=='speak'||row.actor_id===actor||!(row.payload.audience.addressed_actor_ids as readonly string[]).includes(actor))invalid('Reply marker is not returned addressed inbound speech');}
  unique(value.knowledge.map(row=>row.entry.knowledge_id),'visible knowledge');const sources=unique(value.source_definitions.map(s=>s.source_id),'visible source'),usedSources=new Set<string>();
  for(const source of value.source_definitions)assertAuthoredKnowledgeContract('AuthoredKnowledgeSource',source);
@@ -234,20 +242,26 @@ function event(value:WorldEvent):void{
 }
 /** Optional genesis establishes referential identity, not current-prefix authenticity. */
 function bindGenesis(name:keyof WorldContractMap,value:WorldContractMap[keyof WorldContractMap],g:WorldGenesis):void{
+ if(name==='Resolution'){bindGenesis('State',(value as WorldContractMap['Resolution']).state,g);return;}
  const identity=hash(g),m=g.mortal,actors=new Map(m.actors.map(a=>[a.id,a])),locations=new Set(m.locations.map(l=>l.id)),items=new Set(m.items.map(i=>i.id)),entries=new Map(g.knowledge_catalog.entries.map(e=>[e.knowledge_id,e]));
+ const offerPolicy=(terms:WorldLoanTerms)=>{
+  if(terms.genesis_hash!==identity||!actors.has(terms.lender_actor_id)||!actors.has(terms.borrower_actor_id))invalid('Offered terms contain a foreign world or actor');
+  known(items,terms.item_id,'offered item');known(locations,terms.return_location_id,'loan checkpoint');const policy=entries.get(terms.policy_id);
+  if(!policy||policy.owner_actor_id!==terms.lender_actor_id||policy.subject_item_id!==terms.item_id||terms.repair_cap_obols>policy.terms.repair_cap_obols)invalid('Offer exceeds its authored policy');
+ };
  if('scope'in value)same(value.scope,m.scope,'World data belongs to another genesis namespace');
  if('genesis_hash'in value&&value.genesis_hash!==identity)invalid('World data differs from complete genesis');
  if(name==='State'){
   const s=value as WorldState;const actual=new Set(s.physical.actors.map(a=>a.id));if(actual.size!==actors.size)invalid('Physical actor roster differs from genesis');
   for(const a of s.physical.actors){const original=actors.get(a.id);if(!original)invalid('State introduces an actor');for(const key of ['name','controller_id','kind','max_hp','abilities'] as const)same(a[key],original[key],'Physical actor identity changed');known(locations,a.location_id,'current actor location');}
-  if(s.physical.items.length!==m.items.length)invalid('Physical item roster differs from genesis');for(const item of s.physical.items){const original=m.items.find(i=>i.id===item.id);if(!original)invalid('State introduces an item');for(const key of ['name','slots','kind','damage_die','attack_ability','armor_defense','tool'] as const)same(item[key],original[key],'Physical item identity changed');if(item.location_id!==null)known(locations,item.location_id,'ground item location');}
+  if(s.physical.items.length!==m.items.length)invalid('Physical item roster differs from genesis');for(const item of s.physical.items){const original=m.items.find(i=>i.id===item.id);if(!original)invalid('State introduces an item');itemDefinition(item,original);if(item.location_id!==null)known(locations,item.location_id,'ground item location');}
   if(s.physical.opportunities.length!==m.opportunities.length||s.physical.stocks.length!==m.stocks.length)invalid('Physical opportunity or stock roster changed');
   for(const row of s.physical.opportunities){const original=m.opportunities.find(o=>o.id===row.id);if(!original)invalid('State introduces an opportunity');const {remaining:_,...actual}=row,{remaining:__,...initial}=original;same(actual,initial,'Opportunity immutable identity changed');if(row.remaining>original.remaining)invalid('Opportunity stock increased');}
   for(const row of s.physical.stocks){const original=m.stocks.find(o=>o.id===row.id);if(!original)invalid('State introduces stock');const {remaining:_,treasury:__,...actual}=row,{remaining:___,treasury:____,...initial}=original;same(actual,initial,'Stock immutable identity changed');if(row.remaining>original.remaining)invalid('Shop stock increased');}
   for(const row of s.profiles){const initial=g.profiles.find(p=>p.actor_id===row.actor_id)!;for(const key of ['revision','nature','max_speech_characters','presentation'] as const)same(row[key],initial[key],'World profile immutable content changed');}
   for(const row of s.knowledge){if(!entries.has(row.knowledge_id)||row.origin==='genesis'&&!g.initial_knowledge_ids.includes(row.knowledge_id))invalid('State introduces unknown authored knowledge or initial grant');}
   for(const id of g.initial_knowledge_ids)if(!s.knowledge.some(k=>k.knowledge_id===id))invalid('State omits an initial knowledge acquisition');
-  for(const o of s.offers){known(locations,o.terms.return_location_id,'loan checkpoint');const policy=entries.get(o.terms.policy_id);if(!policy||policy.owner_actor_id!==o.terms.lender_actor_id||policy.subject_item_id!==o.terms.item_id||o.terms.repair_cap_obols>policy.terms.repair_cap_obols)invalid('Offer exceeds its authored policy');}
+  for(const o of s.offers)offerPolicy(o.terms);
   for(const row of s.memories){const p=row.payload;if(p.type==='mortal')for(const id of p.location_ids)known(locations,id,'memory location');if(p.type==='set_knowledge'&&entries.get(p.knowledge_id)?.owner_actor_id!==p.owner_actor_id)invalid('Knowledge memory owner differs from genesis');}
   if(s.cursor.sequence===0){same(s.physical,{actors:m.actors,items:m.items,opportunities:m.opportunities,stocks:m.stocks,encounter:null,rng_counter:0},'Initial physical state differs from genesis');same(s.profiles,g.profiles,'Initial profiles differ from genesis');same(s.knowledge.map(k=>k.knowledge_id).sort(),[...g.initial_knowledge_ids].sort(),'Initial knowledge differs from genesis');}
  }
@@ -259,6 +273,9 @@ function bindGenesis(name:keyof WorldContractMap,value:WorldContractMap[keyof Wo
   if(a.type==='set_knowledge'&&!entries.has(a.knowledge_id))invalid('Unknown knowledge command');
  }
  if(name==='Query'){const q=value as WorldContractMap['Query'];if(!actors.has(q.actor_id))invalid('Unknown world reader');}
+ if(name==='Impression'){
+  const row=value as WorldImpression,owner=g.profiles.find(p=>p.actor_id===row.owner_actor_id);if(!owner||!actors.has(row.subject_actor_id))invalid('Unknown impression owner or subject');impressionNature(row,owner);
+ }
  if(name==='ActorView'){
   const v=value as WorldActorView;same(v.query.scope,m.scope,'Actor view scope differs from genesis');if(!actors.has(v.query.actor_id))invalid('Unknown world reader');known(locations,v.scene.location_id,'visible scene');
   const original=actors.get(v.query.actor_id)!;for(const key of ['name','max_hp','abilities'] as const)same(v.physical.self[key],original[key],'Visible physical identity changed');
@@ -268,9 +285,14 @@ function bindGenesis(name:keyof WorldContractMap,value:WorldContractMap[keyof Wo
   same(v.scene.description,g.scenes.find(s=>s.location_id===v.scene.location_id)!.description,'Scene description differs from authored genesis');if(v.scene.environment!==g.environment||v.physical.location.name!==m.locations.find(l=>l.id===v.scene.location_id)!.name)invalid('Scene public identity differs');
   for(const o of v.scene.occupants)if(actors.get(o.actor_id)?.name!==o.name)invalid('Visible occupant identity differs');
   same(v.knowledge_source,{pack_hash:m.pack_hash,catalog_hash:hash(g.knowledge_catalog),source_manifest_hash:hash(g.source_manifest)},'Knowledge source pins differ from genesis');
-  for(const row of v.knowledge){const entry=entries.get(row.entry.knowledge_id);if(!entry)invalid('Unknown visible policy');same(row.entry,entry,'Visible policy differs from authored catalog');}
+  for(const row of v.knowledge){const entry=entries.get(row.entry.knowledge_id);if(!entry)invalid('Unknown visible policy');same(row.entry,entry,'Visible policy differs from authored catalog');if(row.acquisition.origin==='genesis'&&!g.initial_knowledge_ids.includes(row.entry.knowledge_id))invalid('Visible initial knowledge was not granted by genesis');}
   for(const source of v.source_definitions){const original=g.source_manifest.sources.find(s=>s.source_id===source.source_id);if(!original)invalid('Unknown visible source');same(source,original,'Visible source differs from genesis');}
-  for(const item of v.physical.items)known(items,item.id,'visible owned item');
+  for(const item of v.physical.items){const original=m.items.find(i=>i.id===item.id);if(!original)invalid('Unknown visible owned item');itemDefinition(item,original);}
+  for(const row of v.impressions)if(!actors.has(row.subject_actor_id))invalid('Unknown visible impression subject');
+  for(const row of v.memories){if(row.actor_id!==null&&!actors.has(row.actor_id))invalid('Unknown visible memory source');const p=row.payload;
+   if(p.type==='speak')for(const id of p.audience.addressed_actor_ids)if(!actors.has(id))invalid('Unknown visible speech addressee');
+   if(p.type==='loan_offered')offerPolicy(p.terms);
+  }
  }
  if(name==='Event'){
   const e=value as WorldEvent,p=e.principal;if(p.role==='referee'){if(p.principal_id!==m.referee_id)invalid('Event referee differs from genesis');}else{const actor=actors.get(p.actor_id);if(!actor||actor.controller_id!==p.principal_id||actor.kind!==p.role)invalid('Event controller differs from genesis');}
