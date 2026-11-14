@@ -63,7 +63,7 @@ Produces `OBSERVATION_ADMISSION_PROFILE`, `ObservationAdmissionRequest`, `Observ
 
 ## Integration and acceptance
 
-- [ ] Review the contract commits before permitting runtime work; record hashes.
+- [x] Review the contract commits before permitting runtime work; record hashes (contract-record.json).
 - [ ] Cherry-pick immutable source commits, wire exports/fresh campaign helper and compatibility fixtures; run contracts, typecheck and affected tests.
 - [ ] Obtain independent native adversarial review; reproduce/fix reported gaps and retest affected paths.
 - [ ] Run the exact immutable candidate through all ten offline application groups without changing gate policy.
