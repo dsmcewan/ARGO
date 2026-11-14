@@ -175,3 +175,6 @@ export * from './characters.ts';
 
 // Separate versioned combat/exploration/resource journal for new worlds only.
 export * from './mortal/index.ts';
+
+// Explicit successor API; existing mortal-v2 entry points remain unchanged.
+export * from './mortal-v3/index.ts';
