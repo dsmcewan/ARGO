@@ -1,0 +1,102 @@
+{
+  "candidate": "dfed2b980e73dc65f54b65f7db2468442117e415",
+  "before": {
+    "sha": "dfed2b980e73dc65f54b65f7db2468442117e415",
+    "status": ""
+  },
+  "after": {
+    "sha": "dfed2b980e73dc65f54b65f7db2468442117e415",
+    "status": ""
+  },
+  "checks": [
+    {
+      "name": "Exact clean three-file candidate and frozen contract identity",
+      "status": "pass",
+      "details": {
+        "changed": [
+          "TESTS/shared-world-dialogue.test.ts",
+          "packages/interventions/src/world-context.ts",
+          "packages/interventions/src/world-model.ts"
+        ]
+      }
+    },
+    {
+      "name": "Actual request contains exact Melia policy, traits, incoming text and one shared definition",
+      "status": "pass",
+      "details": {
+        "generation_calls": 1,
+        "refresh_calls": 5
+      }
+    },
+    {
+      "name": "Unaddressed, consumed, absent, unconscious, busy or closed context generates nothing",
+      "status": "pass"
+    },
+    {
+      "name": "Foreign actor receives no Melia policy, goals or opinions; cache keys bind actor/genesis/scope/profile",
+      "status": "pass"
+    },
+    {
+      "name": "Owner context omits unrelated opinions and hidden transport metadata",
+      "status": "pass"
+    },
+    {
+      "name": "Third-holder return remains redacted in actual request",
+      "status": "pass"
+    },
+    {
+      "name": "Static backdrop does not establish current recipient; semantic instruction is explicit",
+      "status": "pass"
+    },
+    {
+      "name": "Post-count barrier blocks dispatch after revocation, closure, cursor movement or recipient departure",
+      "status": "pass"
+    },
+    {
+      "name": "Post-generation and post-cooldown barriers suppress movement/revocation/closure/consumption",
+      "status": "pass"
+    },
+    {
+      "name": "Cross-scope and stale current queries fail before dispatch",
+      "status": "pass"
+    },
+    {
+      "name": "Strict response text or silence cannot retarget identity or create tools/actions",
+      "status": "pass"
+    },
+    {
+      "name": "Google explicit cap and no continuation allocation",
+      "status": "pass"
+    },
+    {
+      "name": "Quota failure retries only configured alternate and rechecks context; 400 does not retry",
+      "status": "pass"
+    },
+    {
+      "name": "Cancellation while count is pending cannot later start generation",
+      "status": "pass"
+    },
+    {
+      "name": "Hostile view/query/call data are passive and context byte cap prevents dispatch",
+      "status": "pass",
+      "details": {
+        "traps": 0
+      }
+    },
+    {
+      "name": "Fresh calls contain no stored prior provider history and invalid injection is unavailable",
+      "status": "pass"
+    },
+    {
+      "name": "Direct packet malformed hash declines; model command boundary rejects it",
+      "status": "fail",
+      "error": "ArgoError: Invalid world inbound record identity",
+      "stack": "ArgoError: Invalid world inbound record identity\n    at fail (file:///workspace/ARGO/.board/shared-world-foundation/worktrees/SW-400-1-87a18bad3b/packages/contracts/src/index.ts:12:77)\n    at worldDialoguePacket (file:///workspace/ARGO/.board/shared-world-foundation/worktrees/SW-400-1-87a18bad3b/packages/interventions/src/world-context.ts:10:66)\n    at file:///workspace/reports/2026-11-14-argo-shared-world/dialogue-review-dfed2b9/probes.mjs:61:126\n    at check (file:///workspace/reports/2026-11-14-argo-shared-world/dialogue-review-dfed2b9/probes.mjs:29:97)\n    at file:///workspace/reports/2026-11-14-argo-shared-world/dialogue-review-dfed2b9/probes.mjs:61:7"
+    }
+  ],
+  "passed": 16,
+  "failed": 1,
+  "paid_calls": 0,
+  "repository_edits": false,
+  "fixture_boundary": "Host-injected scoped views; acquisition/receipt/persistence runtime not tested"
+}

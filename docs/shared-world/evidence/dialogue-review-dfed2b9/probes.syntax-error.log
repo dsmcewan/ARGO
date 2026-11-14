@@ -1,0 +1,17 @@
+file:///workspace/reports/2026-11-14-argo-shared-world/dialogue-review-dfed2b9/probes.mjs:47
+await check('Google explicit cap and no continuation allocation',async()=>{let request,calls=0;const r=rig({extra:{candidates:[{vendor:'agy_google',model:'gemini-4-carbon',pool:'google'}],maxOutputTokens:700,countTokensFor:()=>async()=>100,clientFor:()=>({models:{generateContent:async req=>{request=req;calls++;return{candidates:[{finishReason:'STOP',content:{parts:[{text:'{"text":"Brief reply"}'}]}}]}}})}});assert(await r.agent.respond(r.current.query,inbound,'google'));assert.equal(request.config.maxOutputTokens,700);assert.equal(request.config.tools,undefined);assert.equal(request.contents.length,1);assert.equal(calls,1);let hops=0;const c=rig({extra:{candidates:[{vendor:'agy_google',model:'gemini-4-carbon',pool:'google'}],countTokensFor:()=>async()=>100,clientFor:()=>({models:{generateContent:async()=>{hops++;return{candidates:[{finishReason:'CONTINUATION',continuationToken:'more',content:{parts:[]}}]}}})}});await reject(()=>c.agent.respond(c.current.query,inbound,'hop'));assert.equal(hops,1);});
+                                                                                                                                                                                                                                                                                                                                                                                                                      ^
+
+SyntaxError: Unexpected token ')'
+    at compileSourceTextModule (node:internal/modules/esm/utils:319:16)
+    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:89:18)
+    at #translate (node:internal/modules/esm/loader:438:20)
+    at afterLoad (node:internal/modules/esm/loader:506:29)
+    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:511:12)
+    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:564:36)
+    at afterResolve (node:internal/modules/esm/loader:611:52)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:617:12)
+    at node:internal/modules/esm/loader:636:32
+    at TracingChannel.tracePromise (node:diagnostics_channel:370:14)
+
+Node.js v24.22.1

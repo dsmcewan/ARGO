@@ -69,11 +69,11 @@ Create `packages/interventions/src/world-{context,model}.ts` and `TESTS/shared-w
 
 Produces `worldDialoguePacket(view,recordId)` and `createWorldModelAgent(options)` with `respond(query,recordId,requestId,call?): Promise<WorldCommand|null>`. Options include the fixed actor/full scope, authenticated refresh callback, injected clients/candidates and bounded model-client options. The adapter has no writer and emits only the new `speak` action.
 
-- [ ] Write failing injected-request tests proving selected policy/traits/received speech presence, no foreign secrets or duplicate shared definitions, and no templated response substitution.
-- [ ] Reuse existing model-client routing with explicit output limits, scoped cache identity and zero default live client.
-- [ ] Enforce addressed acquired inbound speech, standing/nonbusy state, one-response semantics, closed output shape and strict text limit.
-- [ ] Test cancellation and changed/revoked context before and after generation, including token-count delay; no stale release or tools.
-- [ ] Verify and commit adapter source for independent review.
+- [x] Write failing injected-request tests proving selected policy/traits/received speech presence, no foreign secrets or duplicate shared definitions, and no templated response substitution.
+- [x] Reuse existing model-client routing with explicit output limits, scoped cache identity and zero default live client.
+- [x] Enforce addressed acquired inbound speech, standing/nonbusy state, one-response semantics, closed output shape and strict text limit.
+- [x] Test cancellation and changed/revoked context before and after generation, including token-count delay; no stale release or tools.
+- [x] Verify and commit adapter source for independent review.
 
 ## SW-500: fresh campaign seed (after contract freeze)
 

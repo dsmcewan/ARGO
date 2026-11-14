@@ -1,0 +1,50 @@
+{
+  "candidate": "dfed2b980e73dc65f54b65f7db2468442117e415",
+  "scope": "Shared-world dialogue context and proposal-only model adapter",
+  "verdict": "READY",
+  "clean_before_and_after": true,
+  "named_tests": {
+    "dialogue_passed": 23,
+    "contract_passed": 25,
+    "failed": 0
+  },
+  "independent_checks": {
+    "passed": 17,
+    "failed": 0
+  },
+  "suspected_newline_issue": "not reproduced; LF CR U+2028 U+2029 rejected",
+  "paid_calls": 0,
+  "repository_edits": false,
+  "fixture_boundary": "Contract-valid host-injected scoped views and injected providers; real authority/session validation deferred",
+  "source_sha256": {
+    "packages/interventions/src/world-context.ts": "b0b22518563c70caeda1d2f9f453bf8e67f118d9bc4addef62099b24c3340761",
+    "packages/interventions/src/world-model.ts": "c7357a06551362c50090740e33e2dce5010c524d001d3d3412d1f727171fa405",
+    "TESTS/shared-world-dialogue.test.ts": "6186922648909ce30800a8ccb3cab3e3ddbac9422f7caf3d21de32301442db6e",
+    "packages/interventions/src/dialogue-context.ts": "cca79fa2d3a7973194e3473ff71f6425363a8e488aeee0ff2b22378cc1f45953",
+    "packages/model-client/request.mjs": "9c70406f2e2c3709ae1ef364428db5739b474d6f6bda1f4f9b325c4a25e2b516",
+    "packages/model-client/client.mjs": "b2c75083519fe1f600398d83a53b107dfa1dbd26aabc41480e50547805a4143d",
+    "packages/model-client/router.mjs": "bf1fee0ba6da30ed7ebfdd5cd11fa7caa971753103f0942ccdd90af85f161d0e",
+    "packages/model-client/wire.mjs": "b521cb9615963967edd72640978bca171fe74476c366dff3e6d3c2b36d21b56a",
+    "packages/contracts/src/shared-world.ts": "8edbb1eb833c0fb579d7bbd52b50b791d1cd43751cc690ee29e91995f56cc9c2",
+    "packages/contracts/src/transport.ts": "0cf3648bf053644174762d2059e861d34d37f871cb0637505066903506cdb6e4",
+    "SYSTEMS/shared-world-v1/FREEZE.json": "e6d12b9aae970406a8f0fa93ad879cb07d6c93e7be8a64f0adbc42b8af4a1ef7"
+  },
+  "artifacts_sha256": {
+    "probes.syntax-error.log": "6acbcbefdd9e9bbef4fbb25374c01d4b1aebe8ef3ec91dfb4266d0247231ff08",
+    "REVIEW.md": "cf128f12714f56933e9a68f476bc8d4fae0b07f186eeda688c13f6e1647dad1e",
+    "melia-packet.json": "da6798214fa49a1fe6329eee6bff61aab83245af673bd6baf4a4ae52e46863c5",
+    "melia-request.json": "534df869896e9e503ca28a9b4934558880bf8235325e5944a8ade9d7d4ff2f86",
+    "probe-results.before-newline-expectation.json": "b0955e86d6a1281ecda6fb97309b111a612d7353130c3743ff70ecf2249add93",
+    "probes.before-error-match.mjs": "8ec59600b513e8ec00dff0ff916614925cd41f1f6f5e9c26ca52485d1a821848",
+    "probes.syntax-error.mjs": "33bc4c4a1ce9db5830255d4cf1c20ca440a4dcde040472881722944bf85150a4",
+    "dion-request.json": "def64b566013de6a782738dd2dff3b47bc2d0ffc745e4da7754fbf4195fa5c9d",
+    "probe-results.before-error-match.json": "b8ccc059351121348883c90eb3f23d6803602a2408e113df4999da225653b05f",
+    "probes.log": "1ff0a6120578c8af0d65e1c8eefa2d8ba75667f9f90636780bd17836d3ab7227",
+    "tests.log": "e6a7f64a1e72a33cb061ac76a92b61d6dc015ea2b74bd3372800a836487ecf96",
+    "probes.before-newline-expectation.mjs": "35fab012063d29cfe97f55da7f35eb9233eeff50a3ba2ac0f969ba9516c04a18",
+    "probes.mjs": "a3964acc9712dfcc29479da62876527a59821b7485c78eb088c4737fefe8624e",
+    "probe-results.json": "1ff0a6120578c8af0d65e1c8eefa2d8ba75667f9f90636780bd17836d3ab7227",
+    "probes.before-newline-expectation.log": "b0955e86d6a1281ecda6fb97309b111a612d7353130c3743ff70ecf2249add93",
+    "probes.before-error-match.log": "b8ccc059351121348883c90eb3f23d6803602a2408e113df4999da225653b05f"
+  }
+}
