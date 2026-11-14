@@ -1,0 +1,44 @@
+{
+  "candidate": "2a2f02faf0c95e4095a8b5a43d022218cc15d0bc",
+  "base": "521e826b9588a1293ed22c243a14b83924c275bd",
+  "verified_at_utc": "2026-11-14T15:13:40.840500+00:00",
+  "head_after": "2a2f02faf0c95e4095a8b5a43d022218cc15d0bc",
+  "status_after": "",
+  "verdict": "READY_SCOPED",
+  "named_tests": {
+    "passed": 18,
+    "failed": 0
+  },
+  "independent_groups": {
+    "passed": 10,
+    "failed": 0
+  },
+  "source_hashes": {
+    "TESTS/shared-world-journal.test.ts": "51407ee8e6174150b8c0c94db9ae8066ec7b923a97a20a1c9816441276ede9e1",
+    "TESTS/shared-world-storage.test.ts": "147d99586d5948fe8a4c83169035983ced256332e2db9c2e39344926085bd29d",
+    "packages/ledger/src/world/index.ts": "42ba0f1ae4952d3f12592b702b2cd536e15b49ab1f3712fca117ab979ec46418",
+    "packages/ledger/src/world/journal.ts": "acc2f0b4c16eb7df4139b879b16bedbe7f6812dccd33fc4893f595c9cff709f9",
+    "packages/ledger/src/world/storage-worker.ts": "64e54a3630fa3943a1a923b8702597129ff4430c4257fe80093f78c4a0232f97",
+    "packages/ledger/src/world/storage.ts": "3d0ea4e164f0524946b263018a01e85583f107457b1510c17c80cd261e8e327e"
+  },
+  "frozen_contract_hashes": {
+    "SYSTEMS/shared-world-v1/CONTRACT.md": "a7d3043105752495de744c21da30a90982e4a68cdddd06344ffe058a04d19606",
+    "SYSTEMS/shared-world-v1/world.schema.json": "6918294342f48f8a3d4edf81b1be99b4b17d8294185d25b0f1965d1f1533b665",
+    "packages/contracts/src/shared-world-types.ts": "f1cc8f944b0847f14df17b048eee9ad1f25f185790fa8e8612d97331b4b67351",
+    "packages/contracts/src/shared-world.ts": "8edbb1eb833c0fb579d7bbd52b50b791d1cd43751cc690ee29e91995f56cc9c2"
+  },
+  "evidence_hashes": {
+    "results.json": "e3ad0a622bf7b9338d680ba5901880e849adb9d1f3db71646260c30e1441f2b9",
+    "REVIEW.md": "71765e24fcbbd986a7a28d44e825f5bc02a62fcbf1b1c19958daa90759fd0b54",
+    "actual-signed-evidence.json": "73439f25464cf7ba6f8e5da27dab094bd6c370381740c2ab6cf86720f24a0934",
+    "actual-signed-receipt.json": "904f2a9dfe849f6493639da6ec3f5c54e813cdd9544930c9fb8ba0905973fd14",
+    "probes.log": "e3ad0a622bf7b9338d680ba5901880e849adb9d1f3db71646260c30e1441f2b9",
+    "actual-signed-provider-request.json": "8355ed16f20eb2b158a14053da1506865148a3622a1d75f6ad80156d4597394f",
+    "probes.mjs": "1d5334cddf1a758bb1b1299b390ca508c9315fedaa74d7e3e3fb47bb0e84ced2",
+    "actual-signed-view.json": "3ccf45c1628c7cab522012bc1082b9e5a29b51ead57c06af11961ae88dceaa0a",
+    "source-tests.log": "cfcca9310e0fad1b1852c714a5ee42b7bbae04fd880ec5b96f7b81388c0c208d"
+  },
+  "repository_edits": false,
+  "paid_calls": 0,
+  "scope": "Storage IPC/cache/reply boundaries and real signed database to model; host/transport/CLI pending"
+}

@@ -1,0 +1,89 @@
+{
+  "candidate": "2a2f02faf0c95e4095a8b5a43d022218cc15d0bc",
+  "base": "521e826b9588a1293ed22c243a14b83924c275bd",
+  "verdict": "READY for reviewed SW-300 authority/storage scope",
+  "findings": [],
+  "source_worktree": "/workspace/ARGO/.board/shared-world-storage/worktrees/SW-300-1-054041f70a",
+  "head_before": "2a2f02faf0c95e4095a8b5a43d022218cc15d0bc",
+  "head_after": "2a2f02faf0c95e4095a8b5a43d022218cc15d0bc",
+  "status_before": "clean",
+  "status_after": "clean",
+  "runtime": {
+    "node": "v24.22.1",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41"
+  },
+  "source_files": [
+    {
+      "path": "TESTS/shared-world-journal.test.ts",
+      "git_blob": "9e1ef3285798157414d96da78768c7b3d0698ba0",
+      "sha256": "51407ee8e6174150b8c0c94db9ae8066ec7b923a97a20a1c9816441276ede9e1"
+    },
+    {
+      "path": "TESTS/shared-world-storage.test.ts",
+      "git_blob": "f79d514687c9882fb1ee0a14e4e934f2152ec847",
+      "sha256": "147d99586d5948fe8a4c83169035983ced256332e2db9c2e39344926085bd29d"
+    },
+    {
+      "path": "packages/ledger/src/world/index.ts",
+      "git_blob": "70e6e7ae23dba6e30fe9e72d8d020cd76ec9a85f",
+      "sha256": "42ba0f1ae4952d3f12592b702b2cd536e15b49ab1f3712fca117ab979ec46418"
+    },
+    {
+      "path": "packages/ledger/src/world/journal.ts",
+      "git_blob": "30f4b22863b2c031b7451f8a95da269b5052c8bd",
+      "sha256": "acc2f0b4c16eb7df4139b879b16bedbe7f6812dccd33fc4893f595c9cff709f9"
+    },
+    {
+      "path": "packages/ledger/src/world/storage-worker.ts",
+      "git_blob": "a8c0edf4a9674f85190239afaf4ce4c3040e9910",
+      "sha256": "64e54a3630fa3943a1a923b8702597129ff4430c4257fe80093f78c4a0232f97"
+    },
+    {
+      "path": "packages/ledger/src/world/storage.ts",
+      "git_blob": "6dc72671a439b74bf9c19e0ba9a3c5b03ad80c6e",
+      "sha256": "3d0ea4e164f0524946b263018a01e85583f107457b1510c17c80cd261e8e327e"
+    }
+  ],
+  "validation": {
+    "authored_journal_storage": {
+      "pass": 18,
+      "fail": 0,
+      "exit_code": 0,
+      "log": "authored-tests.log"
+    },
+    "independent_probes": {
+      "pass": 10,
+      "fail": 0,
+      "exit_code": 0,
+      "script": "probes.mts",
+      "log": "probes.log"
+    },
+    "commit_stage_control": {
+      "exit_code": 0,
+      "script": "commit-stage-control.mjs",
+      "log": "commit-stage-control.log"
+    },
+    "diff_check": {
+      "exit_code": 0
+    },
+    "production_fault_hooks": "none in the reviewed six-file diff",
+    "frozen_contracts_and_previous_rules": "unchanged by six-file candidate diff",
+    "mode": "offline; no source edits, delegated agents, provider calls or network operations. Node storage/test Workers are implementation/test mechanisms, not delegated agents."
+  },
+  "declined_to_judge": [
+    "End-to-end application gate and integration/public package re-export, which the coordinator owns",
+    "Long-history latency, cold replay scaling, sustained throughput and production deadline support; coordinator benchmark is separate",
+    "Power-loss/filesystem durability beyond configured SQLite WAL/FULL and real transactional/worker-loss tests",
+    "Arbitrary privileged replacement of already trusted SQLite rows or schema during a verified handle lifetime; frozen append-only trust applies",
+    "Operational external-checkpoint custody, key protection, transport authentication, deployment and provider/model quality",
+    "Complementary raw IPC/cache/model-view boundary coverage is independently adjudicated in the peer report, although its authored tests were also rerun here"
+  ],
+  "artifacts": {
+    "authored-tests.log": "65700a43bb05dcda9421f50fcedc543ecd75a923ae799934002fd29dedf85afa",
+    "probes.mts": "de052154c1c157b64b2f23756af4b5becbf66d095bc6436aef517d37646bec7c",
+    "probes.log": "e0a645677ba492561da61186f43baef8d4728048f7ef77aa0ce93203a6cea7c1",
+    "candidate.diff": "f918348819bc787a30e0d7f2c2070ba5ebb597d2eb205f7b671bfe72f241351c",
+    "commit-stage-control.mjs": "a819eb407d5bb6c13d001d934440488ea91c2274ccb67dd6bb3ccac15f4c24cc",
+    "commit-stage-control.log": "2339401dde61f2a1d73b10a807517e0c243bd37a6b6036a442c446df537d35e0"
+  }
+}

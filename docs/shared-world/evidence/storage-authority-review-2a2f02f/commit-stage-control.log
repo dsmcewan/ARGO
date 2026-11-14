@@ -1,0 +1,1 @@
+{"insert_succeeded":true,"trigger_succeeded":true,"commit_failed":"FOREIGN KEY constraint failed","rollback_rows":0,"qualification":"Independent SQLite control confirms the exact injected deferred-FK mechanism fails at COMMIT, using foreign_keys enabled and trusted_schema OFF as in the candidate worker."}

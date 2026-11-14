@@ -57,11 +57,11 @@ Create `packages/ledger/src/world/{journal.ts,storage.ts,storage-worker.ts,index
 
 Consumes SW-200 pure functions. Produces `createWorldEvent(genesis,state,command,principal,privateKey)`, returning `{event,state,receipt}`; `verifyWorldEvent(genesis,state,event): WorldState`; `replayWorld(genesis,events): WorldState`; `verifyWorldReceipt(receipt,trust): void`; and `openWorldLedger(options: WorldLedgerOptions): Promise<WorldLedger>`.
 
-- [ ] Write failing signed identity, tamper, duplicate-request, restart, stale-writer and prefix-checkpoint tests.
-- [ ] Implement new signing domains and whole-history replay, preserving exact command/principal and complete genesis binding.
-- [ ] Implement separate SQLite table identity and atomic event/receipt/request insert in a worker. Cache publishes after commit and refreshes only unseen suffixes.
-- [ ] Test competing accepts/mechanical commands across two handles, failed append/no partial state, lost acknowledgment/retry, bounded pages/replies and event-loop responsiveness.
-- [ ] Verify journal/storage tests; commit for review. No public receipt or event exposes host-private state without a separate view policy.
+- [x] Write failing signed identity, tamper, duplicate-request, restart, stale-writer and prefix-checkpoint tests.
+- [x] Implement new signing domains and whole-history replay, preserving exact command/principal and complete genesis binding.
+- [x] Implement separate SQLite table identity and atomic event/receipt/request insert in a worker. Cache publishes after commit and refreshes only unseen suffixes.
+- [x] Test competing accepts/mechanical commands across two handles, failed append/no partial state, lost acknowledgment/retry, bounded pages/replies and event-loop responsiveness.
+- [x] Verify journal/storage tests; commit for review. No public receipt or event exposes host-private state without a separate view policy.
 
 ## SW-400: scoped model adapter (after contract freeze)
 
