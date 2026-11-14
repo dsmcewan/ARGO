@@ -1,0 +1,13 @@
+{
+  "design_source": "a366d8e88ac2ea48abf493ac792c1ebe3bb3faa9",
+  "integrated_design": "54cc020",
+  "review": "review.md",
+  "review_sha256": "02b334682ca027496addfbb7caed3b5ee26158afd473396c47312ad9141289b4",
+  "verdict": "ready_for_contract_drafting",
+  "runtime_gate": "pending_concrete_contract_review",
+  "native_same_model_peer": true,
+  "cross_vendor": false,
+  "paid_calls": 0,
+  "DR-190_board_status": "VERIFYING",
+  "intake_dag_unlocked": false
+}
