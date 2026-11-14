@@ -1,0 +1,113 @@
+{
+  "candidate": "186e052a19de6466aedaf048ecb5d9c4fd4fc1eb",
+  "checkout": "/workspace/ARGO/.board/shared-world-contract/worktrees/SW-100-2-a51b1a9778",
+  "before": {
+    "sha": "186e052a19de6466aedaf048ecb5d9c4fd4fc1eb",
+    "status": ""
+  },
+  "after": {
+    "sha": "186e052a19de6466aedaf048ecb5d9c4fd4fc1eb",
+    "status": ""
+  },
+  "checks": [
+    {
+      "name": "Clean candidate, freeze hashes and historical profile bytes",
+      "status": "pass",
+      "details": {
+        "files": {
+          "SYSTEMS/shared-world-v1/CONTRACT.md": "a7d3043105752495de744c21da30a90982e4a68cdddd06344ffe058a04d19606",
+          "SYSTEMS/shared-world-v1/world.schema.json": "6918294342f48f8a3d4edf81b1be99b4b17d8294185d25b0f1965d1f1533b665",
+          "packages/contracts/src/shared-world-types.ts": "f1cc8f944b0847f14df17b048eee9ad1f25f185790fa8e8612d97331b4b67351",
+          "packages/contracts/src/shared-world.ts": "8edbb1eb833c0fb579d7bbd52b50b791d1cd43751cc690ee29e91995f56cc9c2"
+        },
+        "historical_changed": []
+      }
+    },
+    {
+      "name": "Valid controls do not mutate input or claim authentication",
+      "status": "pass"
+    },
+    {
+      "name": "Scope/rights mismatch and missing exact cursor fields are refused",
+      "status": "pass"
+    },
+    {
+      "name": "Caller identity binds request hash without pretending to authenticate controllers",
+      "status": "pass",
+      "details": {
+        "hash_domain": "shared-world/0.1.0/request"
+      }
+    },
+    {
+      "name": "Private request IDs/acquirer rosters and receipt effects are closed out",
+      "status": "pass"
+    },
+    {
+      "name": "Travel endpoints and third holder loan identity are suppressed structurally",
+      "status": "pass"
+    },
+    {
+      "name": "Foreign private memories and unrelated source metadata are refused",
+      "status": "pass"
+    },
+    {
+      "name": "Knowledge is owned, current, active and exactly genesis-pinned",
+      "status": "pass"
+    },
+    {
+      "name": "Closure cannot retain knowledge, speech, impressions, sources or replies",
+      "status": "pass"
+    },
+    {
+      "name": "Offer owner/item/cap, immutable hash and strict expiry are checked",
+      "status": "pass"
+    },
+    {
+      "name": "Open offers cannot survive lender incapacity or custody loss",
+      "status": "pass"
+    },
+    {
+      "name": "Passive arguments reject traps and exact UTF-8 JSON budget overflow",
+      "status": "pass",
+      "details": {
+        "traps": 0
+      }
+    },
+    {
+      "name": "Identifier grammar refuses reserved/newline/oversize IDs",
+      "status": "pass"
+    },
+    {
+      "name": "Reply dedup remains complete when inbound exceeds visible memory window",
+      "status": "pass"
+    },
+    {
+      "name": "Resolution with genesis recursively binds nested immutable state",
+      "status": "pass"
+    },
+    {
+      "name": "ActorView with genesis binds immutable item definitions, not only IDs",
+      "status": "pass"
+    },
+    {
+      "name": "Visible authored offers bind their complete genesis identity",
+      "status": "pass"
+    },
+    {
+      "name": "Visible speech cannot have null or unknown actor identity",
+      "status": "pass"
+    },
+    {
+      "name": "Immutable nature cannot be replaced by fabricated older revision",
+      "status": "pass"
+    },
+    {
+      "name": "Initial view acquisitions must belong to the genesis initial grant set",
+      "status": "pass"
+    }
+  ],
+  "passed": 20,
+  "failed": 0,
+  "paid_calls": 0,
+  "repository_edits": false
+}

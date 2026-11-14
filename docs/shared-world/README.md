@@ -4,6 +4,8 @@ Implementation in progress from baseline `3fd1e4d`. The owner approved a single 
 
 [Design](DESIGN.md) · [Implementation plan](PLAN.md) · [Independent design review](evidence/recon/design-review.md)
 
+Contract source `186e052` passed 25 author tests and 29 unchanged independent probes across two native reviewers. Metadata-only commit `15d49d3` freezes the four source hashes. SW-100 is submitted as VERIFYING on the source Board; application/runtime acceptance remains separate.
+
 The shared authority will use one signed journal and actor namespace, reusing the pure mortal-v3 reducer. Historical profiles remain unchanged. The first session covers ordinary mortal play; Fate jurisdictions and lifespan transactions need a later explicit shared-world port.
 
 | Stage | Ticket | Release condition |

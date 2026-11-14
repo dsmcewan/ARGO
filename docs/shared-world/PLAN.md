@@ -33,10 +33,10 @@ Create `SYSTEMS/shared-world-v1/{CONTRACT.md,world.schema.json,FREEZE.json}`, `p
 
 Produces `WORLD_PROFILE`, `WorldGenesis`, `WorldPhysical`, `WorldState`, `WorldProfile`, `WorldCommand`, `WorldAction`, `WorldPrincipal`, `WorldCursor`, `WorldQuery`, `WorldActorView`, `WorldMemory`, `WorldImpression`, `WorldLoanOffer`, `WorldLoan`, `WorldResolution`, `WorldEvent`, `WorldReceipt`, `WorldReceiptTrust`, `WorldLedger`, `WorldLedgerOptions`, and `assertWorldData`, `assertWorldContract`, `assertWorldGenesis`, `worldSchema`. Public helper names are fixed; final exact fields are recorded in the freeze before runtime.
 
-- [ ] Write failing tests for closure, passive data, full scope/cursor, all action variants, semantic referential integrity, source/knowledge identity and cross-profile rejection.
-- [ ] Implement bounded schema/type/semantic validators, including standing/living distinctions and duplicate actor/item/generated-ID detection.
-- [ ] Run dedicated contract tests, typecheck and schema checks; commit immutable contract candidate.
-- [ ] Obtain independent adversarial contract review, repair defects, freeze hashes and integrate source ancestry. Runtime remains stopped until then.
+- [x] Write failing tests for closure, passive data, full scope/cursor, all action variants, semantic referential integrity, source/knowledge identity and cross-profile rejection.
+- [x] Implement bounded schema/type/semantic validators, including standing/living distinctions and duplicate actor/item/generated-ID detection.
+- [x] Run dedicated contract tests, typecheck and schema checks; commit immutable contract candidate.
+- [x] Obtain independent adversarial contract review, repair defects, freeze hashes and integrate source ancestry. Runtime remains stopped until then.
 
 ## SW-200: pure authority and scoped projection
 
