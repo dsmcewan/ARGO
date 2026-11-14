@@ -8,6 +8,9 @@
   "native_same_model_peer": true,
   "cross_vendor": false,
   "paid_calls": 0,
-  "DR-190_board_status": "VERIFYING",
-  "intake_dag_unlocked": false
+  "DR-190_board_status": "CLAIMED",
+  "intake_dag_unlocked": false,
+  "board_submit": "refused: pinned historical character-cache and ledger-cache test blobs differ from already merged main; policy was initialized before those final repairs",
+  "intake_source_artifact_stored": true,
+  "operational_trust_promoted": false
 }
