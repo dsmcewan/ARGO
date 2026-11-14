@@ -206,8 +206,8 @@ test('closed bounded contracts reject unsafe identities, cycles, malformed lists
  const f=fixture();f.entry.text='𐀀'.repeat(2048);api().assertAuthoredKnowledgeContract('AuthoredKnowledgeCatalog',f.catalog);
 });
 
-test('historical campaign and character contract bytes remain frozen',()=>{
- for(const manifestPath of ['scenarios/tempted-fates/campaign/FREEZE.json','SYSTEMS/characters-v1/FREEZE.json']){
+test('historical campaign, character and authored knowledge contract bytes remain frozen',()=>{
+ for(const manifestPath of ['scenarios/tempted-fates/campaign/FREEZE.json','SYSTEMS/characters-v1/FREEZE.json','SYSTEMS/dialogue-knowledge-v1/FREEZE.json']){
   const record=JSON.parse(readFileSync(new URL('../'+manifestPath,import.meta.url),'utf8')) as {files:Record<string,string>};
   for(const [path,wanted] of Object.entries(record.files))assert.equal(bytesHash(readFileSync(new URL('../'+path,import.meta.url))),wanted,path);
  }
