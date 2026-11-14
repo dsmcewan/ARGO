@@ -1,0 +1,111 @@
+{
+  "candidate": "c4654d52b1a08bdb4bfa18822d2cc74229d606b6",
+  "implementation_parent": "3a0996f9c5722d1687ab33ca4c38b6e6d9697b07",
+  "baseline": "8e2104c6d466b8b2bee2d0b23d984d2e60a65e11",
+  "verdict": "READY for SC-610 source compatibility; immutable application gate and 2000-event measurement remain required",
+  "findings": [],
+  "source_files": {
+    "TESTS/shared-world-cold.test.ts": {
+      "sha256": "6835f6c74db913796a33320d08e435d545f81812a29e303d464744687d4e74a0",
+      "git_blob": "b58ab7477b93df54199caeb4d9a65fd65580e15a"
+    },
+    "packages/ledger/src/world/rules/README.md": {
+      "sha256": "c83f073e2554b63c01b351085d1b5f547d41cd543220b79431e869a2e4100a74",
+      "git_blob": "906cdd792111f0eeb30a8c458cdb2197ee7f19dd"
+    },
+    "packages/ledger/src/world/rules/engine.ts": {
+      "sha256": "76bef309f955b0a83fb6f52f20e0d9a26874c4b7aad244f46519ebfe88a79777",
+      "git_blob": "b9094c5ee9706cc2fd12b8eff54ea51b1f9e5ec1"
+    }
+  },
+  "worktree_clean_before_after": true,
+  "independent_ordinary_process_groups": {
+    "pass": 8,
+    "fail": 0,
+    "exit_code": 0,
+    "runtime_seconds": 14.456207258990617,
+    "results": "results.json"
+  },
+  "independently_rerun_focused_source_tests": {
+    "pass": 7,
+    "fail": 0,
+    "exit_code": 0,
+    "log": "focused-source-tests.log",
+    "mode": "ordinary node file entry; no claim of trusted native child completion"
+  },
+  "fixture": {
+    "sha256": "0253cd63832456400fae1ec8cd88ab0a1da22b3f61980b9c70727a839e32038c",
+    "events": 512,
+    "exact_saved_state": true,
+    "generic_prefix_oracles": 513,
+    "replay_ms": 1527.3480060000002
+  },
+  "context_matrix": {
+    "cases": 50,
+    "context_valid_reaches_conflict": 28,
+    "invalid_before_stale_conflict": 22
+  },
+  "preserved_control_groups": {
+    "SYSTEMS": {
+      "tree_listing_sha256": "8574e8dcc3374adf4bad79b8ead780e3f5f57d677272bc58214d4560c06a98f6",
+      "tracked_files": 27
+    },
+    "packages/contracts": {
+      "tree_listing_sha256": "6a01eac7f3779a18c5f8921d9e7a38442df05452f27d237678950e36c2ecb637",
+      "tracked_files": 17
+    },
+    "packages/ledger/src/world/journal.ts": {
+      "tree_listing_sha256": "bcd305f5f9d86440d20dfabb09de3a2892e2601e0a4199c9832ca61557f6643e",
+      "tracked_files": 1
+    },
+    "packages/ledger/src/world/storage.ts": {
+      "tree_listing_sha256": "97ad11485c0599ab0d6cb954d803a86487c12f0432726cb8016d97675a75bbea",
+      "tracked_files": 1
+    },
+    "packages/ledger/src/world/storage-worker.ts": {
+      "tree_listing_sha256": "2bed20d4edc25a132ca3ba78befec7f9e2ba2c65429d9d1a5edfbf83be87eefa",
+      "tracked_files": 1
+    },
+    "packages/ledger/src/world/rules.ts": {
+      "tree_listing_sha256": "616c4640099556a9745cfbe576265b979cd0e9bde370e0b3b256d2c5b2c99e44",
+      "tracked_files": 1
+    },
+    "packages/ledger/src/world/view.ts": {
+      "tree_listing_sha256": "cdcca3b7836cf4d1bbd48ce88e256ac41fefae628c4e884697192485c282dcc0",
+      "tracked_files": 1
+    },
+    "packages/ledger/src/world/index.ts": {
+      "tree_listing_sha256": "52984c6c7b716c832dfe8df5fe1614668b107ba68536bf4a78185fbe4c62f4f0",
+      "tracked_files": 1
+    },
+    "packages/ledger/src/mortal-v3": {
+      "tree_listing_sha256": "9040813c3dcd09d1fc024504938685ffb822e65606a34e08ed9c4ab56d863161",
+      "tracked_files": 7
+    },
+    "scripts": {
+      "tree_listing_sha256": "946ed263e48928fd382c58646b607fc6f03574443027527bf70d01c9d11ea478",
+      "tracked_files": 7
+    }
+  },
+  "author_broad_native_attempt": {
+    "status": "FAILED / INCOMPLETE; missing named assertions and native file completion despite zero reported test failures",
+    "log": "/workspace/reports/2026-11-14-argo-continuation/SC-610/targeted-regressions.log",
+    "log_sha256": "42909ec50062c7cc83f751e052b47d05e65b67655bafb6098a9f2d92db2e3e9e",
+    "counted_as_pass": false
+  },
+  "declined_to_judge": [
+    "Final immutable native-completion/application gate remains the coordinator acceptance step; failed source native attempt is not a pass",
+    "The 2000-event target, SQLite verified open/snapshot latency, retained-process memory/GC and sustained throughput are separate measurements",
+    "No asymptotic improvement to SHA-256 full-history bytes is claimed; repeated cold replay remains quadratic in hashed bytes",
+    "No weakened raw DTO, signature, receipt, request, transaction or rollback trust is authorized; those modules remain unchanged",
+    "Independent external checkpoint custody, deployment and provider/model quality are outside this source compatibility verdict"
+  ],
+  "artifacts": {
+    "results.json": "6d3defbe7046794da2ef45a180ba06478e7ecb8ea2e6937e83603e87af2fdfe8",
+    "compatibility.log": "69ed69560daf701903d0ad31c3465470ee7fefa7c5df2432f484ab4724149c65",
+    "verification.json": "39102ce6183648675bb80651cfe0a816b53db95a5dc0ad5568b082e2abf69680",
+    "preflight.json": "e355986add39a01da92f1570d00f55ee8e609ef1ffb66f9f4e9f2b6165c170df",
+    "focused-source-tests.log": "aa26175de01cb8f9c7f5897faa66e10751cef9f7fd57bf81e3cf82e190d51dfb",
+    "candidate.diff": "81bc63dd0d03d2e6a2b37a097ed1cd308d97f20ce344cb6d81854ce3a2d28106"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "candidate": "f2641d92f5f07bc69b672ee6f6c3a189ee5f46cc",
+  "ordinary_process": true,
+  "paid_calls": 0,
+  "checks": [
+    {
+      "id": "C04",
+      "name": "known-ID exact-input preflight refuses without any dispatch",
+      "status": "pass",
+      "elapsed_ms": 16028.511692,
+      "details": {
+        "refusals": 8,
+        "known_absent_read": null,
+        "world_and_outbox_unchanged": true
+      }
+    }
+  ],
+  "passed": 1,
+  "failed": 0
+}

@@ -1,0 +1,10 @@
+{
+  "group": "C03",
+  "candidate": "f2641d92f5f07bc69b672ee6f6c3a189ee5f46cc",
+  "exit_code": 0,
+  "timed_out": false,
+  "elapsed_seconds": 47.40657884000393,
+  "ordinary_process": true,
+  "deadline_seconds": 180,
+  "source_after": "clean unchanged"
+}

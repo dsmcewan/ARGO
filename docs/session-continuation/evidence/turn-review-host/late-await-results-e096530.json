@@ -1,0 +1,28 @@
+{
+  "candidate": "e096530b2618119ab3dd545f3defe36b754021bd",
+  "node": "v24.22.1",
+  "ordinary_process": true,
+  "test_runner": false,
+  "paid_calls": 0,
+  "probe_sha256": "fd0f700c6c63861c8356406de944c8898a17edb3002697062d9d1af5b2026c3a",
+  "results": [
+    {
+      "name": "A_cancel_during_final_npc_refresh_prevents_actual_provider_dispatch",
+      "passed": false,
+      "elapsed_ms": 13404,
+      "error": "AssertionError [ERR_ASSERTION]: Provider was dispatched after the other handle completed durable cancellation\n\n1 !== 0\n\n    at fixture.policy.timeout_ms (file:///workspace/reports/2026-11-14-argo-continuation/turn-review-host/late-await-probes.mjs:152:9)\n    at async fixture (file:///workspace/reports/2026-11-14-argo-continuation/turn-review-host/late-await-probes.mjs:90:77)\n    at async file:///workspace/reports/2026-11-14-argo-continuation/turn-review-host/late-await-probes.mjs:171:32"
+    },
+    {
+      "name": "B_host_close_does_not_wait_for_unresolved_caller_ledger_ack",
+      "passed": false,
+      "elapsed_ms": 5061,
+      "error": "AssertionError [ERR_ASSERTION]: host.close() is coupled to the unresolved caller-owned ledger submit; it cannot finish until acknowledgment arrives\n    at file:///workspace/reports/2026-11-14-argo-continuation/turn-review-host/late-await-probes.mjs:165:2\n    at async fixture (file:///workspace/reports/2026-11-14-argo-continuation/turn-review-host/late-await-probes.mjs:90:77)\n    at async file:///workspace/reports/2026-11-14-argo-continuation/turn-review-host/late-await-probes.mjs:171:32"
+    }
+  ],
+  "passed": 0,
+  "failed": 2,
+  "limits": [
+    "Injected offline clients only. Not the full native application gate.",
+    "Private temporary worlds/keys are removed; evidence contains no signing keys."
+  ]
+}

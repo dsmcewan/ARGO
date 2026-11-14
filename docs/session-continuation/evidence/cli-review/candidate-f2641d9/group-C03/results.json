@@ -1,0 +1,21 @@
+{
+  "candidate": "f2641d92f5f07bc69b672ee6f6c3a189ee5f46cc",
+  "ordinary_process": true,
+  "paid_calls": 0,
+  "checks": [
+    {
+      "id": "C03",
+      "name": "closed fixture caps and malformed bytes reject before outbox creation",
+      "status": "pass",
+      "elapsed_ms": 44345.672051,
+      "details": {
+        "negative_fixtures": 16,
+        "top_level_error_labeled": true,
+        "legal_256_turn_cap": true,
+        "actor_caps_exact": true
+      }
+    }
+  ],
+  "passed": 1,
+  "failed": 0
+}

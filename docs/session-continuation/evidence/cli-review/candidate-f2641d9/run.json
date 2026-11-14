@@ -1,0 +1,10 @@
+{
+  "candidate": "f2641d92f5f07bc69b672ee6f6c3a189ee5f46cc",
+  "exit_code": null,
+  "deadline_seconds": 180,
+  "timed_out": true,
+  "elapsed_seconds": 180.02941408500192,
+  "ordinary_process": true,
+  "node_test_context_absent": true,
+  "probe_sha256": "93096da8b2e51e759d8d7187ca4cb5a6ceec92e5fb8d22377a9bce7b59558140"
+}

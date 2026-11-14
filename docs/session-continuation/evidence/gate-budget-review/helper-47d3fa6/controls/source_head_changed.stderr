@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/workspace/reports/2026-11-14-argo-continuation/gate-budget-review/helper-faults.py", line 43, in <module>
+    fixture_child(*sys.argv[2:]);raise SystemExit(0)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/reports/2026-11-14-argo-continuation/gate-budget-review/helper-faults.py", line 38, in fixture_child
+    exec(compile(source,helper,'exec'),{'__name__':'__main__','__file__':helper})
+  File "/workspace/reports/2026-11-14-argo-continuation/board-sc-640/worktrees/SC-640-1-aa7fa621ff/docs/characters-runtime/evidence/run-candidate-gate.py", line 72, in <module>
+    assert before == after
+           ^^^^^^^^^^^^^^^
+AssertionError

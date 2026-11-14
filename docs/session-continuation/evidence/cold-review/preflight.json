@@ -1,0 +1,77 @@
+{
+  "baseline": "8e2104c6d466b8b2bee2d0b23d984d2e60a65e11",
+  "fixture_sha256": "0253cd63832456400fae1ec8cd88ab0a1da22b3f61980b9c70727a839e32038c",
+  "fixture_events": 512,
+  "fixture_bytes": 1349611,
+  "fixture_private_mode": "0700/0600",
+  "generic_oracle_sha256": "9ecc6814ab29d9d64254562496ea925e06468850d916c8904179576d8c3e57c1",
+  "frozen_context_guard_sha256": "8edbb1eb833c0fb579d7bbd52b50b791d1cd43751cc690ee29e91995f56cc9c2",
+  "harness_sha256": "5aa2ae736e6df6d932e969f42fe656321695691c069751875ff5140c3602f886",
+  "launcher_sha256": "984d74f355e229cd8da98e49c1a910bc12c2b75701cdbb655c3179b420aebff7",
+  "syntax_check": "pass",
+  "heavy_execution": true,
+  "candidate": "c4654d52b1a08bdb4bfa18822d2cc74229d606b6",
+  "changed_files": [
+    "TESTS/shared-world-cold.test.ts",
+    "docs/session-continuation/DESIGN.md",
+    "docs/session-continuation/PLAN.md",
+    "docs/session-continuation/cold-seed.json",
+    "docs/session-continuation/tickets/SC-610.md",
+    "packages/ledger/src/world/rules/README.md",
+    "packages/ledger/src/world/rules/engine.ts"
+  ],
+  "source_sha256": {
+    "TESTS/shared-world-cold.test.ts": "6835f6c74db913796a33320d08e435d545f81812a29e303d464744687d4e74a0",
+    "docs/session-continuation/DESIGN.md": "344d6927f37f7f75ac21114ea14381f535e09dcf2ef9bc3639e2ccba96ebb416",
+    "docs/session-continuation/PLAN.md": "004763e435b265588d3546f512ff040c6e0515a845edea9ef3995839899f3e88",
+    "docs/session-continuation/cold-seed.json": "e8c165109ecca53f7df241855858872e5e8cb548cf6712c3f9c7bad1f46b3a53",
+    "docs/session-continuation/tickets/SC-610.md": "ae7a2027fc544b2a73ebd99074ffac402b4757024b3253196a8cf42f0625f788",
+    "packages/ledger/src/world/rules/README.md": "c83f073e2554b63c01b351085d1b5f547d41cd543220b79431e869a2e4100a74",
+    "packages/ledger/src/world/rules/engine.ts": "76bef309f955b0a83fb6f52f20e0d9a26874c4b7aad244f46519ebfe88a79777"
+  },
+  "unchanged_controls": {
+    "SYSTEMS": {
+      "tree_listing_sha256": "8574e8dcc3374adf4bad79b8ead780e3f5f57d677272bc58214d4560c06a98f6",
+      "tracked_files": 27
+    },
+    "packages/contracts": {
+      "tree_listing_sha256": "6a01eac7f3779a18c5f8921d9e7a38442df05452f27d237678950e36c2ecb637",
+      "tracked_files": 17
+    },
+    "packages/ledger/src/world/journal.ts": {
+      "tree_listing_sha256": "bcd305f5f9d86440d20dfabb09de3a2892e2601e0a4199c9832ca61557f6643e",
+      "tracked_files": 1
+    },
+    "packages/ledger/src/world/storage.ts": {
+      "tree_listing_sha256": "97ad11485c0599ab0d6cb954d803a86487c12f0432726cb8016d97675a75bbea",
+      "tracked_files": 1
+    },
+    "packages/ledger/src/world/storage-worker.ts": {
+      "tree_listing_sha256": "2bed20d4edc25a132ca3ba78befec7f9e2ba2c65429d9d1a5edfbf83be87eefa",
+      "tracked_files": 1
+    },
+    "packages/ledger/src/world/rules.ts": {
+      "tree_listing_sha256": "616c4640099556a9745cfbe576265b979cd0e9bde370e0b3b256d2c5b2c99e44",
+      "tracked_files": 1
+    },
+    "packages/ledger/src/world/view.ts": {
+      "tree_listing_sha256": "cdcca3b7836cf4d1bbd48ce88e256ac41fefae628c4e884697192485c282dcc0",
+      "tracked_files": 1
+    },
+    "packages/ledger/src/world/index.ts": {
+      "tree_listing_sha256": "52984c6c7b716c832dfe8df5fe1614668b107ba68536bf4a78185fbe4c62f4f0",
+      "tracked_files": 1
+    },
+    "packages/ledger/src/mortal-v3": {
+      "tree_listing_sha256": "9040813c3dcd09d1fc024504938685ffb822e65606a34e08ed9c4ab56d863161",
+      "tracked_files": 7
+    },
+    "scripts": {
+      "tree_listing_sha256": "946ed263e48928fd382c58646b607fc6f03574443027527bf70d01c9d11ea478",
+      "tracked_files": 7
+    }
+  },
+  "status_before": "clean",
+  "ordinary_process": true,
+  "deadline_seconds": 120
+}

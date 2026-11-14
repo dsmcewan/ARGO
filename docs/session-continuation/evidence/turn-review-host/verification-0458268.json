@@ -1,0 +1,95 @@
+{
+  "candidate": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+  "previous_candidate": "e096530b2618119ab3dd545f3defe36b754021bd",
+  "verdict": "READY_SCOPED",
+  "scope": "Independent host/driver repair verification; ordinary process only",
+  "remaining_findings": [],
+  "resolved_findings": [
+    "H1 post-await generation cancellation/ownership recheck",
+    "H2 bounded host close with exact pending input/reply recovery and late-result fencing",
+    "H3 passive outer event-page guard; corrected Promise-then interpretation"
+  ],
+  "delta_files": [
+    "TESTS/shared-world-conversation.test.ts",
+    "packages/session/src/conversation.ts"
+  ],
+  "source_sha256": {
+    "TESTS/shared-world-conversation.test.ts": "0b3808770fe066fefc68ea73e94db95b898f7b3936102d67438520ede810ab95",
+    "TESTS/shared-world-turn-store.test.ts": "e726cb26a90e0c5638dad1ac1519e40631fcd2e536ccc6e72680733ea6cc7884",
+    "packages/session/package.json": "23d621e04345400aca781aee4448548f6e9a3f3726d67006b5a6e191eeb113a0",
+    "packages/session/src/conversation-guards.ts": "e276e14a1bf9af48079673f5a2b163b9751a0b857036eedf4c5311ebe293407d",
+    "packages/session/src/conversation-store-worker.ts": "0885ac35c25cd0426a63b88fe22b696d1187edf9571a2d45390a2e29370a2bf1",
+    "packages/session/src/conversation-store.ts": "9fe225478aa8847ed0cc6aa118850909007c60f96f1c198fc5e7e97b120269ef",
+    "packages/session/src/conversation-types.ts": "7007528fe9f72e3d4ee3d8091512b2065f1203bc52ecafd393dbdde78ddfaf38",
+    "packages/session/src/conversation.ts": "1376bb3bee4a4d08919270d3b8092e22290b7a7eb75e56b7f3133b2d18481ba2",
+    "packages/session/src/index.ts": "7fa0a76a1310cfbee097364e7476bbdff756de18e347f80483ccb9d29578120c"
+  },
+  "author_handoff_source_hashes_match": true,
+  "unchanged_prior_source_hashes": {
+    "packages/session/src/conversation-types.ts": true,
+    "packages/session/src/conversation-guards.ts": true,
+    "packages/session/src/conversation-store.ts": true,
+    "packages/session/src/conversation-store-worker.ts": true,
+    "packages/session/src/index.ts": true,
+    "packages/session/package.json": true,
+    "docs/session-continuation/TURN_CONTRACT.md": true
+  },
+  "checks": [
+    {
+      "record": "late-await-results-0458268.json",
+      "passed": 2,
+      "failed": 0,
+      "exit_code": 0
+    },
+    {
+      "record": "page-data-results-0458268.json",
+      "passed": 1,
+      "failed": 0,
+      "exit_code": 0
+    },
+    {
+      "record": "repair-followup-results-0458268.json",
+      "passed": 7,
+      "failed": 0,
+      "exit_code": 0
+    }
+  ],
+  "focused_groups_passed": 10,
+  "prior_19_groups": "Baseline coverage at e096530 only, not relabeled as final-candidate execution",
+  "h3_refined_red_control": {
+    "candidate": "e096530b2618119ab3dd545f3defe36b754021bd",
+    "record": "page-data-results-e096530.json",
+    "exit_code": 1,
+    "accessor_reads": 1,
+    "proxy_data_reads": 6,
+    "promise_then_reads": 2
+  },
+  "h3_final_control": {
+    "accessor_reads": 0,
+    "proxy_data_reads": 0,
+    "promise_then_reads": 1
+  },
+  "head_after": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+  "status_after": "",
+  "repository_edits": false,
+  "paid_calls": 0,
+  "full_native_gate_run": false,
+  "evidence_sha256": {
+    "REVIEW-0458268.md": "dbe31ff090b6cf64f9224c869643efa2865df8dfa8c15e25d1a47c4eb52dc1cf",
+    "late-await-probes.mjs": "fd0f700c6c63861c8356406de944c8898a17edb3002697062d9d1af5b2026c3a",
+    "late-await-results-0458268.json": "c3e6ee127e0420e13ae42f6b921588564689613cb403be1b9201a1d78a33ea0b",
+    "late-await-run-0458268.log": "b23e0d456824b9832fe47149d7bdd69353c6c3bff6cc131f39132fc2ead3b657",
+    "late-await-stderr-0458268.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "page-container-data-access-probes.mjs": "21103224069a2332dfdf70651115354a74a947df4fa686758cd16f43d69de055",
+    "page-data-results-0458268.json": "895d37050ba5d7aa0ff324bd656290c507f024f8cd9a4f09c0e3cd615e935777",
+    "page-data-results-e096530.json": "9df80badc32ac7f9cf1270e8ba1c6f3b065f50b2d42222e105ebf2d8e40a6bbe",
+    "page-data-run-0458268.log": "9affc6e3172874071a0fc8f3f901d7e5a1ac7bde6b4e68226254c9b06c7dcec2",
+    "page-data-run-e096530.log": "de8c117e815bbb86eefcbfa4b2c90ebee14af34eab88eb7699207c1cd59a335d",
+    "page-data-stderr-0458268.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "page-data-stderr-e096530.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "repair-followup-probes.mjs": "16f74dea0c29a5e79ebcbc580cefd8b1507c6a62296454fa9d3c6aeaaeef004a",
+    "repair-followup-results-0458268.json": "157ca23a9af5d967b6ae91a1a113d22017374aea2b134d0793802caa213581a4",
+    "repair-followup-run-0458268.log": "5bf400cde39fd894352c84210c5b838eda53603685202a2162c60a1a961fc00c",
+    "repair-followup-stderr-0458268.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

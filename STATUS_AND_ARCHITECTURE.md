@@ -1,12 +1,12 @@
 # ARGO status and architecture reference
 
-**Latest implementation, 2026-11-14:** [the shared-world milestone](docs/shared-world/README.md) adds a runnable local session with one actor registry, clock and signed SQLite history for ordinary mortal speech, knowledge, custody, travel, combat and resources. It includes fixed-principal sessions, a private JSON-line CLI and an injected offline demonstration. Its evidence and limits supersede the older tables for this new profile; historical file-ledger and Fate profiles remain separate. [Next dependencies](docs/shared-world/NEXT.md) cover performance, model evaluation and later ports.
+**Latest work, 2026-11-14:** the accepted [shared-world milestone](docs/shared-world/README.md) supplies a local ordinary mortal session with one actor registry, clock and signed SQLite history. The accepted [cold-reconstruction improvement](docs/session-continuation/COLD_RESULTS.md) preserves existing signed hashes and replay checks while reducing the measured 2,000-event open to 13.88 seconds; its under-ten-second goal remains unmet. The [durable conversation host/store and explicit offline CLI](docs/session-continuation/README.md) passed the [complete ten-group local gate](docs/session-continuation/evidence/full-gate-fe17291/gate-result.json). `world.sqlite` remains canonical; the private `turns.sqlite` sidecar holds operational recovery state and supplies no independent rollback anchor. Exact-head CI and delivery are recorded in [PR #6](https://github.com/dsmcewan/ARGO/pull/6). Historical file-ledger and Fate profiles stay separate, and the [checkpoint proposal](docs/session-continuation/CHECKPOINT_BOOT_PROPOSAL.md) is not enabled.
 
 Visibility rechecked on **2026-11-14**: `dsmcewan/ARGO` is **public**. The owner authorized public pushes in this conversation. The CI/source timeline below is historical; newer review repairs and their exact verification identities are in [review successors](docs/review-successors/README.md).
 
 Checked **2026-11-13** against Git history, GitHub Actions job logs and the implementation sources. The verified implementation baseline is [`e2f4d7efa2b6db8826bcc870e0f709f85e97079a`](https://github.com/dsmcewan/ARGO/commit/e2f4d7efa2b6db8826bcc870e0f709f85e97079a), which passed on both the research branch and `main`. This reference adds documentation; it does not change runtime behavior or frozen contracts.
 
-**Current state:** the four-phase foundation and the offline build board are implemented and verified. Five starter research reports and an 11-ticket headless planning seed are saved. Paid vendor runs and live gameplay service deployment have not been performed or verified in this work. The proposed two-plane graph stores and general component bus remain unimplemented in this repository.
+**Historical foundation baseline:** the four-phase foundation and the offline build board are implemented and verified. Five starter research reports and an 11-ticket headless planning seed are saved. Paid vendor runs and live gameplay service deployment have not been performed or verified in this work. The proposed two-plane graph stores and general component bus remain unimplemented in this repository.
 
 For the consolidated present/target/data/build-dependency guide, read [SYSTEM_ROADMAP.md](SYSTEM_ROADMAP.md). It is planning documentation; the frozen contracts and historical evidence below retain their scope.
 
@@ -55,6 +55,8 @@ Thus `9ba82dc` and `401b5e3` are documentation checkpoints associated with the o
 | [`e2f4d7e`](https://github.com/dsmcewan/ARGO/commit/e2f4d7e) | Repair record; combined candidate verified on research and `main`. |
 
 ## Implemented architecture
+
+The following component table and gameplay diagram describe the historical foundation profile. Current ordinary mortal SQLite/session behavior and continuation status are linked above; these older rows are not a complete inventory of the newer profile.
 
 The [System Bible](ARGO_SYSTEM_BIBLE.md) explains the design. [Frozen v1 contracts](SYSTEMS/CONTRACT_FREEZE.json) remain normative: 36 JSON Schema definitions, contract version `1.0.0`, ruleset `tempted-fates/1.0.0`. Normative service responsibilities must be distinguished from deployed services; current bridges use injected transports and explicit in-process mocks.
 

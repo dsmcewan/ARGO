@@ -1,0 +1,9 @@
+PASS old 512-event signed fixture full replay exactly reproduces saved terminal state
+PASS every fixture prefix equals detached generic canonical oracle; selected raw and reordered hashes agree
+PASS signature failures at first and last old prefixes remain fatal without changing retained states
+PASS old retained prefixes and divergent immutable forks never share mutable hash/index state
+PASS mixed signed Unicode, impression, loan, physical, encounter and closure trace preserves every digest
+PASS private command context binding matches every frozen contextual predicate and raw guard first
+PASS caller freezing, aliases, forged state flags and hostile values cannot enter owned caches
+PASS aggregate byte refusal after tentative loan transfer leaves prior hash, custody and request reusable
+{"passed":8,"failed":0}

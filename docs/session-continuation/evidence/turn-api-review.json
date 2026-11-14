@@ -1,0 +1,22 @@
+{
+  "proposal": "turn-api-proposal.md",
+  "proposal_sha256": "1ff39873781719c1ab629f7f67de13f09476eeab2d8774c9a225dd1e5c6fb243",
+  "verdict": "READY_COMMITTED_CONTRACT",
+  "blockers": [],
+  "observed_head": "ab9ec6e300eaec9fc55d542170a74597c1129be1",
+  "worktree_status": "",
+  "scope": "Static API review; no implementation tests or product writes",
+  "review_sha256": "71635dac99cb779096efcfb3a38d5f858f5c982fa87e0890a8eee7567de655ac",
+  "committed_contract": {
+    "commit": "2d6203de1bf16870714a2f2f07facd1a3d559e5d",
+    "path": "docs/session-continuation/TURN_CONTRACT.md",
+    "sha256": "d4380e49c08d6b7f0435114bc2d50ab516aca6b56684ad6aec6fb3e4da80a2ee",
+    "body_identical_from": "## Public TypeScript surface",
+    "body_identical": true,
+    "differences": "title and status paragraph only; API/bounds selected, implementation/acceptance still separate",
+    "diff": "turn-api-contract.diff",
+    "diff_sha256": "5e39e461ed57386488c5eaaed28616ab52f380c73be50b4e01f87f8901dab516"
+  },
+  "binding_check_head": "2d6203de1bf16870714a2f2f07facd1a3d559e5d",
+  "binding_check_status": ""
+}

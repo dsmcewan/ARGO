@@ -1,0 +1,35 @@
+✔ multiple contextual exchanges commit only speech and restart without regeneration (10124.895975ms)
+✔ two handles race one canonical outbox and invoke one model turn (11720.669231ms)
+✔ commit followed by a bad receipt stays pending and exact retry recovers both speech stages (10585.498455ms)
+✔ waiter abort is separate from durable cancellation and late provider output is fenced (5069.562351ms)
+✔ a consumed generation marker never restarts and expires as uncertain (4978.533913ms)
+✔ current player disclosure suppresses closure and eviction instead of replaying cached prose (5255.600569ms)
+✔ journal prefix rollback refuses a signed outbox receipt (3868.236706ms)
+✔ a held callback leaves unrelated world writes available and stale text never commits (4108.152415ms)
+✖ malformed/tool replies settle without a physical action, and opaque/config accessors cannot run (4305.864598ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 8
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 60039.548242
+
+✖ failing tests:
+
+test at TESTS/shared-world-conversation.test.ts:87:1
+✖ malformed/tool replies settle without a physical action, and opaque/config accessors cannot run (4305.864598ms)
+  ArgoError: World data contains an unsafe property
+      at fail (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/packages/contracts/src/index.ts:12:77)
+      at invalid (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/packages/contracts/src/shared-world.ts:17:47)
+      at visit (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/packages/contracts/src/shared-world.ts:42:217)
+      at assertWorldData (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/packages/contracts/src/shared-world.ts:44:4)
+      at fields (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/packages/session/src/conversation-guards.ts:17:93)
+      at assertInput (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/packages/session/src/conversation-guards.ts:22:90)
+      at Object.turn (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/packages/session/src/conversation.ts:128:40)
+      at TestContext.<anonymous> (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:91:25)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'INVALID_CONTRACT'
+  }

@@ -1,0 +1,24 @@
+{
+  "candidate": "f2641d92f5f07bc69b672ee6f6c3a189ee5f46cc",
+  "ordinary_process": true,
+  "paid_calls": 0,
+  "checks": [
+    {
+      "id": "C07",
+      "name": "actual signed replay confirms speak-only effects and fixed context success",
+      "status": "pass",
+      "elapsed_ms": 3816.940503,
+      "details": {
+        "signed_events": 7,
+        "full_replay_equal": true,
+        "physical_unchanged": true,
+        "offers": 0,
+        "loans": 0,
+        "draws": 0,
+        "context_validation": "actual fixed adapter succeeded; hostile packet paths inspected statically because fixtureReply is private"
+      }
+    }
+  ],
+  "passed": 1,
+  "failed": 0
+}

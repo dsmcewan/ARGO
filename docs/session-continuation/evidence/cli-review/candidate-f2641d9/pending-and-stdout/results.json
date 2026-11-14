@@ -1,0 +1,26 @@
+{
+  "candidate": "f2641d92f5f07bc69b672ee6f6c3a189ee5f46cc",
+  "ordinary_process": true,
+  "checks": [
+    {
+      "name": "C06P actual accepted-row status stays non-driving and cancellation wins before dispatch",
+      "status": "pass",
+      "details": {
+        "status_phase": "accepted",
+        "status_revision": 0,
+        "unchanged_row": true,
+        "committed_events": 0,
+        "provider_calls": 0,
+        "cancel_prevents_saved_input": true
+      }
+    },
+    {
+      "name": "C10P actual executable stops after first output failure without recursive stdout write",
+      "status": "fail",
+      "message": "The expression evaluated to a falsy value:\n\n  assert(stderr.includes('OutputFailure: CLI output failed'))\n",
+      "stack": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(stderr.includes('OutputFailure: CLI output failed'))\n\n    at file:///workspace/reports/2026-11-14-argo-continuation/cli-review/pending-and-stdout.mjs:14:472\n    at async check (file:///workspace/reports/2026-11-14-argo-continuation/cli-review/pending-and-stdout.mjs:10:75)\n    at async file:///workspace/reports/2026-11-14-argo-continuation/cli-review/pending-and-stdout.mjs:13:1"
+    }
+  ],
+  "passed": 1,
+  "failed": 1
+}

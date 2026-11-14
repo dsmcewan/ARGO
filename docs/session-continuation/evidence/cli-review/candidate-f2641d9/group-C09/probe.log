@@ -1,0 +1,2 @@
+PASS C09 held/rejected/numeric sinks stop further admission and close real resources
+{"passed":1,"failed":0}

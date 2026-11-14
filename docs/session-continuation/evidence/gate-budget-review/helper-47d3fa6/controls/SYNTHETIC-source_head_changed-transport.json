@@ -1,0 +1,128 @@
+{
+  "synthetic": true,
+  "application_tests_executed": false,
+  "mode": "source_head_changed",
+  "calls": [
+    {
+      "argv": [
+        "git",
+        "clone",
+        "--no-local",
+        "--no-checkout",
+        "/workspace/reports/2026-11-14-argo-continuation/gate-budget-review/helper-47d3fa6/controls/synthetic-repo",
+        "/tmp/argo-review-gate-af9af46o/candidate"
+      ],
+      "timeout": 300,
+      "stderr_merged": true,
+      "captures_stdout": true
+    },
+    {
+      "argv": [
+        "git",
+        "checkout",
+        "--detach",
+        "47d3fa6a3b247986a0a6bb9aaad1f65cfff25273"
+      ],
+      "timeout": 300,
+      "stderr_merged": true,
+      "captures_stdout": true
+    },
+    {
+      "argv": [
+        "npm",
+        "ci",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund",
+        "--offline",
+        "--cache",
+        "/workspace/reports/2026-11-14-argo-continuation/gate-budget-review/helper-47d3fa6/controls/synthetic-cache",
+        "--userconfig",
+        "/tmp/argo-review-gate-af9af46o/user.npmrc",
+        "--globalconfig",
+        "/tmp/argo-review-gate-af9af46o/global.npmrc"
+      ],
+      "timeout": 300,
+      "stderr_merged": true,
+      "captures_stdout": true
+    },
+    {
+      "argv": [
+        "npm",
+        "ci",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund",
+        "--offline",
+        "--cache",
+        "/workspace/reports/2026-11-14-argo-continuation/gate-budget-review/helper-47d3fa6/controls/synthetic-cache",
+        "--userconfig",
+        "/tmp/argo-review-gate-af9af46o/user.npmrc",
+        "--globalconfig",
+        "/tmp/argo-review-gate-af9af46o/global.npmrc"
+      ],
+      "timeout": 300,
+      "stderr_merged": true,
+      "captures_stdout": true
+    },
+    {
+      "argv": [
+        "/usr/bin/bwrap",
+        "--unshare-all",
+        "--cap-drop",
+        "ALL",
+        "--die-with-parent",
+        "--new-session",
+        "--ro-bind",
+        "/usr",
+        "/usr",
+        "--symlink",
+        "usr/bin",
+        "/bin",
+        "--symlink",
+        "usr/sbin",
+        "/sbin",
+        "--symlink",
+        "usr/lib",
+        "/lib",
+        "--symlink",
+        "usr/lib64",
+        "/lib64",
+        "--dir",
+        "/tools",
+        "--ro-bind",
+        "/SYNTHETIC/node",
+        "/tools/node",
+        "--proc",
+        "/proc",
+        "--dev",
+        "/dev",
+        "--tmpfs",
+        "/tmp",
+        "--ro-bind",
+        "/tmp/argo-review-gate-af9af46o/candidate",
+        "/workspace",
+        "--chdir",
+        "/workspace",
+        "--clearenv",
+        "--setenv",
+        "PATH",
+        "/tools:/usr/bin:/bin",
+        "--setenv",
+        "HOME",
+        "/tmp",
+        "--setenv",
+        "LANG",
+        "C.UTF-8",
+        "--",
+        "/tools/node",
+        "scripts/gate.mjs",
+        "--merge-ready"
+      ],
+      "timeout": 600,
+      "stderr_merged": true,
+      "captures_stdout": true
+    }
+  ],
+  "head_reads": 3
+}

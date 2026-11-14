@@ -1,0 +1,2 @@
+PASS A_cancel_during_final_npc_refresh_prevents_actual_provider_dispatch
+PASS B_host_close_does_not_wait_for_unresolved_caller_ledger_ack

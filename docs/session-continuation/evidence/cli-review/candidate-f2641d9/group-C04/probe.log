@@ -1,0 +1,2 @@
+PASS C04 known-ID exact-input preflight refuses without any dispatch
+{"passed":1,"failed":0}

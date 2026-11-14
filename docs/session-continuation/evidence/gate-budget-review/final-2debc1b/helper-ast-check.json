@@ -1,0 +1,9 @@
+{
+  "candidate": "2debc1b6e1848c481abe6eeeef2271d207b07081",
+  "sandbox_arguments_ast_identical": true,
+  "offline_install_ast_identical": true,
+  "original_identity_and_ten_group_assertions_preserved": true,
+  "outer_seconds": 1200,
+  "helper_sha256": "d857978e98726748b38b4ba9fc85a9171233fecf1c94b3c416bdf3de4d1bf713",
+  "execution": "AST parsing only. Failure controls and exact final source review remain separate."
+}

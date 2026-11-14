@@ -1,14 +1,16 @@
 # ARGO system roadmap: present, target and the path between
 
-For the current runnable ordinary mortal session, start with [shared-world implementation and evidence](docs/shared-world/README.md) and [its next dependencies](docs/shared-world/NEXT.md). Dialogue and physical play now share one signed journal in that fresh profile. The [review successors](docs/review-successors/README.md) retain earlier repairs and limitations. The baseline tables below retain the original foundation record; they do not describe every later package.
+For the current ordinary mortal session, start with [shared-world implementation and evidence](docs/shared-world/README.md). Its accepted [startup improvement](docs/session-continuation/COLD_RESULTS.md) preserves full history verification; the measured 13.88-second open at 2,000 events still exceeds the ten-second target. The accepted [durable host/store and offline conversation CLI](docs/session-continuation/README.md) support explicitly invoked turns for one fixed player/NPC pair; [verification](docs/session-continuation/verification.json) separates source, application and delivery evidence. This does not complete the global graph, bus or autonomous NPC tracks below. [Crystallization checkpoint boot](docs/session-continuation/CHECKPOINT_BOOT_PROPOSAL.md) is a requested proposal, not an implemented startup path. The [review successors](docs/review-successors/README.md) and baseline sections below retain their historical evidence and unresolved limits.
 
 Baseline **`d32da3b16b9f463a9a094445ab92da9748ebc568`**, checked 2026-11-13. [Main CI passed](https://github.com/dsmcewan/ARGO/actions/runs/43479525034) for that exact commit. The additive PC-001 local contract profile passed all ten controller checks and main integration at `140b644`; its exact candidate/trust evidence is in [projection contracts](docs/projection-contracts/verification.json). The [repair evidence](REPAIRS/acceptance/verification.json) records the integrated code at `ff22632`; later documentation does not change its runtime. Twelve review findings are repaired; four remain explicit design decisions.
 
-**We have enough evidence to define the system and sequence the work. We do not yet have every decision, data asset or implemented service needed to deliver the target.** The current product is a verified offline foundation: signed authority, scoped knowledge mocks, deterministic rules and build tooling. The target is a persistent, multi-actor world with separate fact and belief projections, bounded off-screen activity, and reliable solo/party interaction.
+**We have enough evidence to define the system and sequence the work. We do not yet have every decision, data asset or implemented service needed to deliver the target.** That verified baseline supplies an offline foundation: signed authority, scoped knowledge mocks, deterministic rules and build tooling. The target is a persistent, multi-actor world with separate fact and belief projections, bounded off-screen activity, and reliable solo/party interaction.
 
 Read this document for the system and build order; use [the JSON dependency map](docs/roadmap/system.json) for IDs, dependencies, proposed paths, owners and acceptance criteria. The JSON is explicitly **non-executable**. It is not a new board seed, a schema freeze, a storage-engine choice or approval for paid runs. [The Bible](ARGO_SYSTEM_BIBLE.md) and [frozen v1 contracts](SYSTEMS/CONTRACT_FREEZE.json) remain normative; [the inventory](REPO_INVENTORY.md) and [research](RESEARCH/README.md) retain their evidence and limits.
 
 ## What exists now
+
+The table below describes the historical foundation profile; current shared-world SQLite/session additions are documented above.
 
 The original audit → contract freeze → harness repair → sequential foundation spine is complete within its offline scope. This does not mean the full persistent-world product is complete.
 
@@ -28,9 +30,11 @@ The original audit → contract freeze → harness repair → sequential foundat
 | **legacy-platforms** — [REPO_INVENTORY.md](REPO_INVENTORY.md) | Pinned LEXI forensic and TELOS build-platform catalogs | Source catalogs are retained; source copies and private live databases are not included. |
 | **two-plane-graphs-and-bus** — [RESEARCH/HEADLESS_FOUNDATION.md](RESEARCH/HEADLESS_FOUNDATION.md) | Canonical/epistemic stores, common projection checkpoints and bounded component bus are target capabilities | The local projection/query profile now has concrete schemas and selectors; durable storage, delivery and migration remain unimplemented. |
 
-The public local authority surface is `openLedger(...).submit/snapshot/events`, with `replay`, `draw`, `initialSnapshot` and `makeCheckpoint`. Raw snapshots, complete events, seeds and hidden rolls are authority-only surfaces. LEXI exposes `createLexiBridge`/`projectKnowledge`/`createLexiMock`; TELOS exposes `createTelosBridge`/`createTelosMock`. These are TypeScript/in-process interfaces, not discovered HTTP gameplay routes. `proposalFromAction` is a typed action builder, not a finished natural-language parser.
+In the historical v1 profile, the public local authority surface is `openLedger(...).submit/snapshot/events`, with `replay`, `draw`, `initialSnapshot` and `makeCheckpoint`. Raw snapshots, complete events, seeds and hidden rolls are authority-only surfaces. LEXI exposes `createLexiBridge`/`projectKnowledge`/`createLexiMock`; TELOS exposes `createTelosBridge`/`createTelosMock`. These are TypeScript/in-process interfaces, not discovered HTTP gameplay routes. `proposalFromAction` is a typed action builder, not a finished natural-language parser.
 
-The current gameplay path is:
+The newer [shared-world APIs](SYSTEMS/shared-world-v1/CONTRACT.md) separately expose `openWorldLedger` and fixed-principal sessions.
+
+The historical foundation gameplay path is:
 
 ```mermaid
 flowchart LR
@@ -45,9 +49,9 @@ flowchart LR
   O --> DM
 ```
 
-### Current storage and tables
+### Foundation storage and tables
 
-These stores belong to different domains. They must not be joined into one mutable database just because several use hashes, graphs or the word “campaign.”
+The newer shared-world profile uses its separate SQLite world journal; see the shared-world implementation above. These stores belong to different domains. They must not be joined into one mutable database just because several use hashes, graphs or the word “campaign.”
 
 | Store | Exact artifacts | Authority and current behavior |
 | --- | --- | --- |
@@ -89,7 +93,7 @@ A player observes only what their actor can know, declares intent, receives a de
 | Gateway and narration | Ephemeral transport/session state | Authorized views and authenticated ruling receipts | Real identity/rights/consent binding, intent parsing and player interaction. Text first; voice after turn and disclosure semantics pass. |
 | Build control plane | Ticket state, artifacts and verified Git integration | Immutable task inputs and trusted gate policy | Reviewed application-gate adapter plus semantic research/audit oracles before multiplied autonomous code lanes. |
 
-The intended graph architecture has separate canonical and epistemic planes. **The gameplay storage engine is not selected.** SQLite/adjacency tables are a proposed starting option, not a conclusion forced by LEXI or the build board; PostgreSQL or a graph database must be assessed against actual requirements, not assumed. The core remains TypeScript/Node unless a reviewed change says otherwise.
+The intended graph architecture has separate canonical and epistemic planes. **The future two-plane graph storage engine is not selected.** The fresh shared-world profile already uses SQLite for its signed journal; that choice does not settle the general graph architecture. SQLite/adjacency tables are a proposed starting option, not a conclusion forced by LEXI or the build board; PostgreSQL or a graph database must be assessed against actual requirements, not assumed. The core remains TypeScript/Node unless a reviewed change says otherwise.
 
 The immutable genesis, authoritative events, derived physical state, actor beliefs and narrative surfaces remain separate layers. External accounts stay attributed claims rather than automatic world truth. V1 observations already distinguish `belief`, `rumor` and `external_account`; future graph nodes for promises or richer observations require a reviewed representation. A promise proves neither fulfillment nor informed consent. Rumor truth assessments must be separately authorized and time-relative: outdated is not automatically false.
 
@@ -102,7 +106,7 @@ Four notions of time must stay distinct:
 
 A future scoped graph query must require full tenant/rights/workspace/campaign/world/branch scope, an authenticated viewer, appropriate time/prefix cutoffs and a consistent projection checkpoint. Required fields prevent omitted context; runtime authentication/authorization still has to reject forged context. Both projectors must expose a common confirmed prefix or refuse a mixed-prefix view.
 
-World time currently advances only through authorized `advance_time`; one v1 tick is one second. There is no implicit real-time catch-up, aging debit or off-screen simulation. `serialize`/`reject` are supported; queue/fork are reserved and refused. Their scheduling and any branch-return semantics need explicit decisions. Speech becoming knowledge needs a committed observation protocol: generated words alone do not establish who heard them.
+In the historical v1 profile, world time advances only through authorized `advance_time`; one v1 tick is one second. Shared-world mortal actions derive elapsed time through their rules; social commands do not advance it. There is no implicit real-time catch-up, aging debit or off-screen simulation. `serialize`/`reject` are supported; queue/fork are reserved and refused. Their scheduling and any branch-return semantics need explicit decisions. Speech becoming knowledge needs a committed observation protocol: generated words alone do not establish who heard them.
 
 ## Data and evidence available
 
@@ -316,7 +320,7 @@ The [headless evidence packet](docs/design/headless-2026-11-13/README.md) is ret
 
 The bounded contract establishes full scope binding, explicit actor/party acquisition filters, common-prefix checks, bitemporal relation revision selection, current-cutoff withholding and safe identifier entry arrays. It preserves v1 bytes and query meanings. This resolves the local encoding/query portion of D02/D05; it does not repair v1 map handling, authenticate imported history or choose a persistent store.
 
-PC-001 has passed the full application controller. The next build is **shared projector storage and cursor scaffolding**, followed by W05/W06 under disjoint path leases. First settle the local storage choice, two physical planes, transactional row/cursor publication, source-event verification and retained read transactions. Then implement canonical and epistemic projections over verified existing histories. W07 follows with common-checkpoint recovery and the seeded 10,000-event rebuild/incremental proof. The existing Tempted Fates kernel is sufficient for these tests.
+PC-001 has passed the full application controller. The next build within that graph/projection track is **shared projector storage and cursor scaffolding**, followed by W05/W06 under disjoint path leases. First settle the local storage choice, two physical planes, transactional row/cursor publication, source-event verification and retained read transactions. Then implement canonical and epistemic projections over verified existing histories. W07 follows with common-checkpoint recovery and the seeded 10,000-event rebuild/incremental proof. The existing Tempted Fates kernel is sufficient for these tests.
 
 The independent authority/history work remains D01/D03/D04 and the v1 migration portion of D02. D06/D07 still own delivery ordering and authenticated current policy. A shape-valid context is not proof of identity, entitlement, freshness or rollback resistance. W11–W13/W16 retain their later operational/content prerequisites.
 

@@ -1,0 +1,18 @@
+✔ session binds one direct principal and latest query while exact old retries survive restart (6150.748681ms)
+✔ session rejects authentic receipts for another exact request or principal (2013.034503ms)
+✔ session refuses forged identity, foreign genesis and active inputs before touching data (1961.565591ms)
+✔ referee capability stays actorless and current closure suppresses old memories (1906.050919ms)
+✔ stale racing session commands and unauthorized combat never partially apply (2065.392479ms)
+✔ generated dialogue is pending until acceptance and a closure race suppresses committed display (2480.193899ms)
+✔ revoked knowledge cannot be recovered through a stale session view and lost acknowledgments retry exactly (2207.023639ms)
+✔ ordinary-process offline CLI demo commits exact terms, night travel, return and signed restart privately (18143.671311ms)
+✔ CLI requires explicit private path and refuses symlink aliases into its source checkout (6688.499583ms)
+✔ ordinary CLI init uses closed explicit configuration and fixed referee/player capabilities (32130.164168ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 75768.078777

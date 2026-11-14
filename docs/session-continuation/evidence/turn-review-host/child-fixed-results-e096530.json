@@ -1,0 +1,21 @@
+{
+  "candidate": "e096530b2618119ab3dd545f3defe36b754021bd",
+  "node": "v24.22.1",
+  "ordinary_process": true,
+  "test_runner": false,
+  "paid_calls": 0,
+  "probe_sha256": "0802f8d8f96f142c422759baa4b35cdde2f9320b67af0a963715860206bb1606",
+  "results": [
+    {
+      "name": "15_crashed_process_permanent_attempt_never_regenerates",
+      "passed": true,
+      "elapsed_ms": 19417
+    }
+  ],
+  "passed": 1,
+  "failed": 0,
+  "limits": [
+    "Injected offline clients only. Not the full native application gate.",
+    "Private temporary worlds/keys are removed; evidence contains no signing keys."
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "candidate": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+  "node": "v24.22.1",
+  "ordinary_process": true,
+  "test_runner": false,
+  "paid_calls": 0,
+  "probe_sha256": "16f74dea0c29a5e79ebcbc580cefd8b1507c6a62296454fa9d3c6aeaaeef004a",
+  "results": [
+    {
+      "name": "D_close_hero_pending_ack_fulfill_fresh_recovery",
+      "passed": true,
+      "elapsed_ms": 12732
+    },
+    {
+      "name": "D_close_hero_pending_ack_reject_fresh_recovery",
+      "passed": true,
+      "elapsed_ms": 9382
+    },
+    {
+      "name": "D_close_raider_pending_ack_fulfill_fresh_recovery",
+      "passed": true,
+      "elapsed_ms": 8809
+    },
+    {
+      "name": "D_close_raider_pending_ack_reject_fresh_recovery",
+      "passed": true,
+      "elapsed_ms": 8544
+    },
+    {
+      "name": "E_original_ledger_descriptor_validation_and_receiver_binding",
+      "passed": true,
+      "elapsed_ms": 4087
+    },
+    {
+      "name": "F_cache_identity_stable_across_turns_restart_and_partitions",
+      "passed": true,
+      "elapsed_ms": 12215
+    },
+    {
+      "name": "G_close_during_held_prefix_read_detaches_and_consumes_late_failure",
+      "passed": true,
+      "elapsed_ms": 9094
+    }
+  ],
+  "passed": 7,
+  "failed": 0,
+  "limits": [
+    "Injected offline clients only. Not the full native application gate.",
+    "Private temporary worlds/keys are removed; evidence contains no signing keys."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "tickets": [{
+    "id": "SC-610", "wave": 1, "lane": "cold-reconstruction",
+    "title": "Byte-compatible verified cold reconstruction",
+    "seat_model": "gpt-6-astra", "reviewer_model": null,
+    "owned_paths": ["packages/ledger/src/world/rules/", "TESTS/shared-world-cold.test.ts"],
+    "gate_cmd": ["python3", "-c", "raise SystemExit('Executable application acceptance is recorded separately from this data-only Board policy')"],
+    "spec_path": "docs/session-continuation/tickets/SC-610.md",
+    "depends_on": [], "max_attempts": 1
+  }]
+}

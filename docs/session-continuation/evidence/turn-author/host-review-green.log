@@ -1,0 +1,32 @@
+✔ cancellation during the last awaited NPC refresh prevents provider dispatch (6985.40959ms)
+✔ host close detaches committed ledger acknowledgments and fresh handles recover exact pending commands (15644.373376ms)
+✖ receipt lookup rejects active page containers without invoking their traps (4213.455577ms)
+✔ host wrappers preserve original ledger passive capability validation (4012.265989ms)
+✔ model cache identity is stable within a fixed conversation and isolated across policy bindings (7505.076426ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 4
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 38373.135575
+
+✖ failing tests:
+
+test at TESTS/shared-world-conversation.test.ts:151:1
+✖ receipt lookup rejects active page containers without invoking their traps (4213.455577ms)
+  AssertionError [ERR_ASSERTION]: proxy ran active behavior
+  
+  2 !== 0
+  
+      at TestContext.<anonymous> (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:155:96)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

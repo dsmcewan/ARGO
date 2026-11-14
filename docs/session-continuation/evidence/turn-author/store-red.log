@@ -1,0 +1,98 @@
+✖ private outbox explicitly creates, binds, reopens and refuses replacements or wrong policy (8.397706ms)
+✖ two handles CAS one input and cannot mutate immutable text or replace a saved command (1.582185ms)
+✖ stored row corruption, foreign tables and unsafe filesystem capabilities fail closed (1.358585ms)
+✖ active inputs and forged opaque capabilities are refused without executing getters (1.357404ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 0
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 20.168672
+
+✖ failing tests:
+
+test at TESTS/shared-world-turn-store.test.ts:19:1
+✖ private outbox explicitly creates, binds, reopens and refuses replacements or wrong policy (8.397706ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at api (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-turn-store.test.ts:11:132)
+      at async setup (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-turn-store.test.ts:14:105)
+      at async TestContext.<anonymous> (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-turn-store.test.ts:20:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/shared-world-turn-store.test.ts:24:1
+✖ two handles CAS one input and cannot mutate immutable text or replace a saved command (1.582185ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at api (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-turn-store.test.ts:11:132)
+      at async setup (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-turn-store.test.ts:14:105)
+      at async TestContext.<anonymous> (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-turn-store.test.ts:25:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/shared-world-turn-store.test.ts:34:1
+✖ stored row corruption, foreign tables and unsafe filesystem capabilities fail closed (1.358585ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at api (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-turn-store.test.ts:11:132)
+      at async setup (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-turn-store.test.ts:14:105)
+      at async TestContext.<anonymous> (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-turn-store.test.ts:35:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/shared-world-turn-store.test.ts:40:1
+✖ active inputs and forged opaque capabilities are refused without executing getters (1.357404ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at api (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-turn-store.test.ts:11:132)
+      at async setup (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-turn-store.test.ts:14:105)
+      at async TestContext.<anonymous> (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-turn-store.test.ts:41:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

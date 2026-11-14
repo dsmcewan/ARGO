@@ -1,0 +1,107 @@
+{
+  "candidate": "47d3fa6a3b247986a0a6bb9aaad1f65cfff25273",
+  "helper_sha256": "bf43fad5090495c01bb6ebcf02818fa6838c6f74b47a22ce9a8142cb907b2d84",
+  "scope": "Independent synthetic transport controls for exact real helper source. No clone/npm/gate/test/controller/merge command actually ran.",
+  "passed": 16,
+  "failed": 0,
+  "checks": [
+    {
+      "mode": "timeout_bytes",
+      "passed": true,
+      "child_exit_code": 1,
+      "application_tests_executed": false
+    },
+    {
+      "mode": "timeout_text",
+      "passed": true,
+      "child_exit_code": 1,
+      "application_tests_executed": false
+    },
+    {
+      "mode": "timeout_empty",
+      "passed": true,
+      "child_exit_code": 1,
+      "application_tests_executed": false
+    },
+    {
+      "mode": "nonzero_with_complete_summary",
+      "passed": true,
+      "child_exit_code": 1,
+      "application_tests_executed": false
+    },
+    {
+      "mode": "killed_after_partial",
+      "passed": true,
+      "child_exit_code": 1,
+      "application_tests_executed": false
+    },
+    {
+      "mode": "invalid_json",
+      "passed": true,
+      "child_exit_code": 1,
+      "application_tests_executed": false
+    },
+    {
+      "mode": "wrong_commit",
+      "passed": true,
+      "child_exit_code": 1,
+      "application_tests_executed": false
+    },
+    {
+      "mode": "not_merge_ready",
+      "passed": true,
+      "child_exit_code": 1,
+      "application_tests_executed": false
+    },
+    {
+      "mode": "missing_group",
+      "passed": true,
+      "child_exit_code": 1,
+      "application_tests_executed": false
+    },
+    {
+      "mode": "source_head_changed",
+      "passed": true,
+      "child_exit_code": 1,
+      "application_tests_executed": false
+    },
+    {
+      "mode": "clone_nonzero",
+      "passed": true,
+      "child_exit_code": 1,
+      "application_tests_executed": false
+    },
+    {
+      "mode": "missing_node",
+      "passed": true,
+      "child_exit_code": 1,
+      "application_tests_executed": false
+    },
+    {
+      "mode": "missing_executable",
+      "passed": true,
+      "child_exit_code": 1,
+      "application_tests_executed": false
+    },
+    {
+      "mode": "synthetic_success",
+      "passed": true,
+      "child_exit_code": 0,
+      "application_tests_executed": false
+    },
+    {
+      "mode": "reuse_success",
+      "passed": true,
+      "child_exit_code": 1,
+      "application_tests_executed": false
+    },
+    {
+      "mode": "reuse_partial",
+      "passed": true,
+      "child_exit_code": 1,
+      "application_tests_executed": false
+    }
+  ],
+  "source_clean": true,
+  "new_deadline_approval": false
+}

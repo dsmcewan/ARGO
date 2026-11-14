@@ -1,0 +1,85 @@
+✖ cancellation during the last awaited NPC refresh prevents provider dispatch (7555.182272ms)
+✖ host close detaches committed ledger acknowledgments and fresh handles recover exact pending commands (3931.205736ms)
+✖ receipt lookup rejects active page containers without invoking their traps (4802.071598ms)
+✔ host wrappers preserve original ledger passive capability validation (4843.445984ms)
+✖ model cache identity is stable within a fixed conversation and isolated across policy bindings (5363.132772ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 1
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 26509.804273
+
+✖ failing tests:
+
+test at TESTS/shared-world-conversation.test.ts:122:1
+✖ cancellation during the last awaited NPC refresh prevents provider dispatch (7555.182272ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:129:62)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/shared-world-conversation.test.ts:132:1
+✖ host close detaches committed ledger acknowledgments and fresh handles recover exact pending commands (3931.205736ms)
+  AssertionError [ERR_ASSERTION]: close waited for caller-owned acknowledgment
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:141:11)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/shared-world-conversation.test.ts:151:1
+✖ receipt lookup rejects active page containers without invoking their traps (4802.071598ms)
+  AssertionError [ERR_ASSERTION]: accessor ran active behavior
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:155:96)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/shared-world-conversation.test.ts:165:1
+✖ model cache identity is stable within a fixed conversation and isolated across policy bindings (5363.132772ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'd2809186dd99a70b0d94577b85ab5eb370e3e7e1af9637a20b86c04075a4c4b9'
+  - 'f72483cd5395532d8313a0a90895b4d4c076c94390a50c1bb506d75117dff8e8'
+  
+      at TestContext.<anonymous> (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:167:156)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'd2809186dd99a70b0d94577b85ab5eb370e3e7e1af9637a20b86c04075a4c4b9',
+    expected: 'f72483cd5395532d8313a0a90895b4d4c076c94390a50c1bb506d75117dff8e8',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

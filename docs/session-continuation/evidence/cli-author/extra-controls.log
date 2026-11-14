@@ -1,0 +1,11 @@
+✔ invalid fixture shapes, actor limits and mode identities refuse before store creation (48443.819621ms)
+✔ status suppresses aged-out player delivery without replaying an accepted turn (18959.896325ms)
+✔ one-MiB line cap prevents dispatch and init awaits numeric-compatible async sinks (12168.962157ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 82930.826494

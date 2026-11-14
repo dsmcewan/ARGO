@@ -1,0 +1,26 @@
+{
+  "candidate": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+  "node": "v24.22.1",
+  "ordinary_process": true,
+  "test_runner": false,
+  "paid_calls": 0,
+  "probe_sha256": "fd0f700c6c63861c8356406de944c8898a17edb3002697062d9d1af5b2026c3a",
+  "results": [
+    {
+      "name": "A_cancel_during_final_npc_refresh_prevents_actual_provider_dispatch",
+      "passed": true,
+      "elapsed_ms": 15536
+    },
+    {
+      "name": "B_host_close_does_not_wait_for_unresolved_caller_ledger_ack",
+      "passed": true,
+      "elapsed_ms": 6156
+    }
+  ],
+  "passed": 2,
+  "failed": 0,
+  "limits": [
+    "Injected offline clients only. Not the full native application gate.",
+    "Private temporary worlds/keys are removed; evidence contains no signing keys."
+  ]
+}

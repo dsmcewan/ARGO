@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "tickets": [{
+    "id": "SC-620", "wave": 2, "lane": "durable-conversation",
+    "title": "Private durable conversation store and fixed-principal turn host",
+    "seat_model": "gpt-6-astra", "reviewer_model": null,
+    "owned_paths": ["packages/session/", "TESTS/shared-world-conversation.test.ts", "TESTS/shared-world-turn-store.test.ts"],
+    "gate_cmd": ["python3", "-c", "raise SystemExit('Executable application acceptance is recorded separately from this data-only Board policy')"],
+    "spec_path": "docs/session-continuation/tickets/SC-620.md",
+    "depends_on": [], "max_attempts": 1
+  }]
+}

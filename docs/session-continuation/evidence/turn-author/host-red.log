@@ -1,0 +1,206 @@
+✖ multiple contextual exchanges commit only speech and restart without regeneration (3.126729ms)
+✖ two handles race one canonical outbox and invoke one model turn (0.766767ms)
+✖ commit followed by a bad receipt stays pending and exact retry recovers both speech stages (0.678592ms)
+✖ waiter abort is separate from durable cancellation and late provider output is fenced (0.722163ms)
+✖ a consum✖ a consumed generation marker never restarts and expires as uncertain (4272.979121ms)
+✖ current player disclosure suppresses closure and eviction instead of replaying cached prose (4052.566793ms)
+✖ journal prefix rollback refuses a signed outbox receipt (4015.875448ms)
+✖ a held callback leaves unrelated world writes available and stale text never commits (4437.887075ms)
+✖ malformed/tool replies settle without a physical action, and opaque/config accessors cannot run (3604.322396ms)
+� pass 0
+ℹ fail 9
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 30.154376
+
+✖ failing tests:
+
+test at TESTS/shared-world-conversation.test.ts:31:1
+✖ multiple contextual exchanges commit only speech and restart without regeneration (3.126729ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at api (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:17:189)
+      at async setup (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:21:10)
+      at async TestContext.<anonymous> (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:32:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/shared-world-conversation.test.ts:40:1
+✖ two handles race one canonical outbox and invoke one model turn (0.766767ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at api (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:17:189)
+      at async setup (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:21:10)
+      at async TestContext.<anonymous> (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:41:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/shared-world-conversation.test.ts:45:1
+✖ commit followed by a bad receipt stays pending and exact retry recovers both speech stages (0.678592ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at api (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:17:189)
+      at async setup (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:21:10)
+      at async TestContext.<anonymous> (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:47:11)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/shared-world-conversation.test.ts:54:1
+✖ waiter abort is separate from durable cancellation and late provider output is fenced (0.722163ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at api (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:17:189)
+      at async setup (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:21:10)
+      at async TestContext.<anonymous> (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:55:55)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/shared-world-conversation.test.ts:61:1
+✖ a consumed generation marker never restarts and expires as uncertain (1.221228ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at api (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:17:189)
+      at async setup (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:21:10)
+      at async TestContext.<anonymous> (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:62:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/shared-world-conversation.test.ts:69:1
+✖ current player disclosure suppresses closure and eviction instead of replaying cached prose (0.543549ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at api (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:17:189)
+      at async setup (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:21:10)
+      at async TestContext.<anonymous> (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:70:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/shared-world-conversation.test.ts:77:1
+✖ journal prefix rollback refuses a signed outbox receipt (0.546324ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at api (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:17:189)
+      at async setup (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:21:10)
+      at async TestContext.<anonymous> (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:78:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/shared-world-conversation.test.ts:81:1
+✖ a held callback leaves unrelated world writes available and stale text never commits (0.601647ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at api (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:17:189)
+      at async setup (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:21:10)
+      at async TestContext.<anonymous> (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:82:51)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/shared-world-conversation.test.ts:87:1
+✖ malformed/tool replies settle without a physical action, and opaque/config accessors cannot run (1.052412ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at api (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:17:189)
+      at async setup (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:21:10)
+      at async TestContext.<anonymous> (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-conversation.test.ts:88:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

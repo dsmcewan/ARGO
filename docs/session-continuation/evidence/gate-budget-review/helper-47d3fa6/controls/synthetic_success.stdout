@@ -1,0 +1,65 @@
+{
+  "candidate": "47d3fa6a3b247986a0a6bb9aaad1f65cfff25273",
+  "gate": {
+    "controller": "SYNTHETIC_REVIEW_FIXTURE_NOT_A_GATE_RUN",
+    "commit": "47d3fa6a3b247986a0a6bb9aaad1f65cfff25273",
+    "merge_ready": true,
+    "workspace_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "checks": [
+      {
+        "name": "generated-types",
+        "output_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      {
+        "name": "schema",
+        "output_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      {
+        "name": "boundaries",
+        "output_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      {
+        "name": "types",
+        "output_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      {
+        "name": "board-and-dispatch",
+        "output_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      {
+        "name": "research-python",
+        "output_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      {
+        "name": "research-tests",
+        "output_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      {
+        "name": "research-package",
+        "output_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      {
+        "name": "foundation",
+        "output_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      {
+        "name": "model-and-process",
+        "output_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      }
+    ]
+  },
+  "elapsed_seconds": 0.004,
+  "execution": "Disposable clone; full candidate read-only; network-unshared Bubblewrap; offline dependencies",
+  "source_head_unchanged": true,
+  "merged": false,
+  "operational_trust_promoted": false,
+  "paid_model_calls": 0,
+  "remote_writes": false,
+  "logs": {
+    "application-gate.log": "f12d21734a49426e806a8ad28ce447b57d12112ef55906649222347cff2412fd",
+    "checkout.log": "891c28555b4c75505f2bf15efc17e033d64c7bc212eb311474ad570834f604f6",
+    "clone.log": "891c28555b4c75505f2bf15efc17e033d64c7bc212eb311474ad570834f604f6",
+    "pantheon-install.log": "891c28555b4c75505f2bf15efc17e033d64c7bc212eb311474ad570834f604f6",
+    "root-install.log": "891c28555b4c75505f2bf15efc17e033d64c7bc212eb311474ad570834f604f6"
+  }
+}

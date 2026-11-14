@@ -1,0 +1,37 @@
+{
+  "kind": "synthetic controls; not application acceptance",
+  "results": [
+    {
+      "case": "timeout",
+      "passed": true
+    },
+    {
+      "case": "nonzero",
+      "passed": true
+    },
+    {
+      "case": "malformed",
+      "passed": true
+    },
+    {
+      "case": "wrong-candidate",
+      "passed": true
+    },
+    {
+      "case": "missing-check",
+      "passed": true
+    },
+    {
+      "case": "head-moved",
+      "passed": true
+    },
+    {
+      "case": "success",
+      "passed": true
+    },
+    {
+      "case": "existing-output",
+      "passed": true
+    }
+  ]
+}

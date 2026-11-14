@@ -1,0 +1,30 @@
+✔ private outbox explicitly creates, binds, reopens and refuses replacements or wrong policy (6494.007756ms)
+✔ two handles CAS one input and cannot mutate immutable text or replace a saved command (4051.015517ms)
+✔ stored row corruption, foreign tables and unsafe filesystem capabilities fail closed (10129.806065ms)
+✔ active inputs and forged opaque capabilities are refused without executing getters (2874.423397ms)
+✔ open mode is captured before awaits and directory symlink aliases are refused (2006.343089ms)
+✔ literal sqlite_ internal names do not hide a foreign sqliteX table (8777.776015ms)
+✔ close drains all 64 accepted RPCs before terminating its worker (6052.625508ms)
+✔ oversized stored JSON is refused and a consumed attempt cannot publish silence after deadline (3367.629714ms)
+✔ worker loss after an outbox COMMIT reopens the identical durable input (5726.396138ms)
+✔ the record limit refuses a new turn without deleting old tombstones (6113.511001ms)
+✖ separate ordinary processes share one revision fence in the same outbox (5056.176718ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 10
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 60730.173696
+
+✖ failing tests:
+
+test at TESTS/shared-world-turn-store.test.ts:99:1
+✖ separate ordinary processes share one revision fence in the same outbox (5056.176718ms)
+  Error: Outbox child failed
+      at ChildProcess.<anonymous> (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-620/worktrees/SC-620-1-20b9b3558c/TESTS/shared-world-turn-store.test.ts:103:405)
+      at ChildProcess.wrapper (node:events:639:12)
+      at ChildProcess.emit (node:events:514:28)
+      at maybeClose (node:internal/child_process:1172:16)
+      at ChildProcess._handle.onexit (node:internal/child_process:335:5)

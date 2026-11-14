@@ -1,0 +1,25 @@
+✖ default writer waits for its callback and bounds complete UTF-8 output before writing (345.998999ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3924.905462
+
+✖ failing tests:
+
+test at TESTS/shared-world-conversation-cli.test.ts:31:1
+✖ default writer waits for its callback and bounds complete UTF-8 output before writing (345.998999ms)
+  Error: broken output
+      at Writable.write [as _write] (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/TESTS/shared-world-conversation-cli.test.ts:31:771)
+      at writeOrBuffer (node:internal/streams/writable:574:12)
+      at _write (node:internal/streams/writable:503:10)
+      at Writable.write (node:internal/streams/writable:512:10)
+      at file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/scenarios/tempted-fates/shared-world/cli.ts:269:19
+      at new Promise (<anonymous>)
+      at writeJsonLine (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/scenarios/tempted-fates/shared-world/cli.ts:264:8)
+      at TestContext.<anonymous> (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/TESTS/shared-world-conversation-cli.test.ts:31:820)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)

@@ -1,0 +1,64 @@
+{
+  "candidate": "2debc1b6e1848c481abe6eeeef2271d207b07081",
+  "base": "9fa800493a3c033b45bc3df7ab18a56e25bcd9a8",
+  "helper_checkpoint": "47d3fa6a3b247986a0a6bb9aaad1f65cfff25273",
+  "clean": true,
+  "source_sha256": {
+    "controller/merge.mjs": "d5e6235a6ac96035895ec03aad41c0bf637c064f842bcd898e4c25e4e4a7262c",
+    "docs/characters-runtime/evidence/run-candidate-gate.py": "d857978e98726748b38b4ba9fc85a9171233fecf1c94b3c416bdf3de4d1bf713",
+    "docs/session-continuation/GATE_BUDGET.md": "8e29ac36d79fceff4a1a55f81998f322f0cb08729426c39c767134b3d71ad06d",
+    "scripts/gate.mjs": "5868f56b76ad14a675d6e579dd4346b0899230483d60a8e5e2415de5c8becbdc"
+  },
+  "budgets": {
+    "foundation_ms": 1080000,
+    "controller_gate_ms": 1200000,
+    "helper_gate_seconds": 1200,
+    "other_gate_groups_ms": 300000,
+    "ci_total_minutes_unchanged": 20
+  },
+  "diagnostic": {
+    "candidate": "3c8ff55d872891014c89fe43515b3c28fd492626",
+    "elapsed_seconds": 895.626,
+    "elapsed_includes_clone_install": true,
+    "foundation_files": 49,
+    "summary": "Verified 567 named tests at trusted source locations; no failing tests.",
+    "source_head_unchanged": true,
+    "full_ten_group_acceptance": false,
+    "concurrent_load": true,
+    "new_cli_included": false,
+    "gate_result_sha256": "a05ee0cc0660d1966da653a19822964f7798199a336fdd37f49e66ab6b8e5bbe",
+    "application_gate_log_sha256": "71844c76b286ca54ced5e5d6404ebb04bbed5bbde260a1ab7e84b023b5db01c9"
+  },
+  "author_checks": {
+    "external_synthetic_controls": {
+      "passed": 8,
+      "failed": 0,
+      "exit": 0,
+      "result": "helper-budget-final.json",
+      "not_application_acceptance": true
+    },
+    "javascript_syntax": "node --check scripts/gate.mjs and controller/merge.mjs passed",
+    "python_syntax": "ast.parse helper passed",
+    "narrow_policy_check": "narrow-policy-check.json all5 true",
+    "diff_check": "passed"
+  },
+  "evidence_sha256": {
+    "helper-controls.py": "f4cd7c040df004fffe65962aa7cca6a99d5ce548fe7f86f94e875f5fb44c1dcb",
+    "helper-budget-final.json": "2165e65ea072bec18127e5e45d24b66d56238e0acb25a8b7d13fd938a48cec96",
+    "narrow-policy-check.json": "94fe8c1a45541acdd9c7932f644ee37a51edd7c0a232dfea1722eeae72a9999b",
+    "helper-checkpoint-green.json": "3a785a6752fca0e63c1160cf52f102e2cf75520b0b3ce12735a7f8368f52c96b",
+    "helper-checkpoint-final.json": "2165e65ea072bec18127e5e45d24b66d56238e0acb25a8b7d13fd938a48cec96",
+    "helper-eight-red.json": "99096486e7c40f2d90315f224b69557166ed8307df2d284edb686c93890e8c21"
+  },
+  "limits": [
+    "Final integrated candidate including CLI requires independent review and full ten-group gate within bounds.",
+    "20-minute CI job cap includes setup and can expire earlier than the local external whole-gate allowance.",
+    "Loaded diagnostic is not portable service performance.",
+    "Intermediate100ms synthetic timeout-before-output failure retained; only external harness allowance changed to1s."
+  ],
+  "paid_calls": 0,
+  "board_submit": false,
+  "merged": false,
+  "pushed": false,
+  "trust_pins_changed": false
+}

@@ -1,0 +1,22 @@
+{
+  "status": "failed",
+  "candidate": "47d3fa6a3b247986a0a6bb9aaad1f65cfff25273",
+  "failure": {
+    "stage": "preflight",
+    "type": "AssertionError",
+    "message": "",
+    "timed_out": false,
+    "timeout_seconds": null,
+    "returncode": null
+  },
+  "elapsed_seconds": 0.0,
+  "source_head_before": null,
+  "source_head_after": "47d3fa6a3b247986a0a6bb9aaad1f65cfff25273",
+  "source_head_unchanged": null,
+  "source_head_check_error": null,
+  "merged": false,
+  "operational_trust_promoted": false,
+  "paid_model_calls": 0,
+  "remote_writes": false,
+  "logs": {}
+}

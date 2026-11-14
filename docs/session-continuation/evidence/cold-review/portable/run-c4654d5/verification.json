@@ -1,0 +1,11 @@
+{
+  "candidate": "c4654d52b1a08bdb4bfa18822d2cc74229d606b6",
+  "exit_code": 0,
+  "elapsed_seconds": 14.55302216000564,
+  "status_before_after": "clean",
+  "source_unchanged": true,
+  "fixture_unchanged": true,
+  "manifest_unchanged": true,
+  "harness_sha256": "938c885383b9e7e5d97b27b9870095b419eaa58c4458429e42c4f11d05ee204f",
+  "log_sha256": "69ed69560daf701903d0ad31c3465470ee7fefa7c5df2432f484ab4724149c65"
+}

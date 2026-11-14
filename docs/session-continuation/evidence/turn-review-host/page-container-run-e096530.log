@@ -1,0 +1,10 @@
+FAIL C_prefix_page_containers_reject_accessors_and_proxies_without_traps Prefix page DTO container executed active code before rejecting it
++ actual - expected
+
+  {
++   accessorTraps: 1,
++   proxyTraps: 8
+-   accessorTraps: 0,
+-   proxyTraps: 0
+  }
+

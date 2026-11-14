@@ -1,0 +1,45 @@
+{
+  "candidate": "2debc1b6e1848c481abe6eeeef2271d207b07081",
+  "base": "9fa800493a3c033b45bc3df7ab18a56e25bcd9a8",
+  "changed": [
+    "controller/merge.mjs",
+    "docs/characters-runtime/evidence/run-candidate-gate.py",
+    "docs/session-continuation/GATE_BUDGET.md",
+    "scripts/gate.mjs"
+  ],
+  "groups": [
+    "generated-types",
+    "schema",
+    "boundaries",
+    "types",
+    "board-and-dispatch",
+    "research-python",
+    "research-tests",
+    "research-package",
+    "foundation",
+    "model-and-process"
+  ],
+  "typescript_parser": {
+    "path": "/workspace/ARGO/node_modules/typescript/lib/typescript.js",
+    "version": "5.9.3",
+    "sha256": "3ae902c92cc44dace175c0e69e13a4b0899f6983c6121d76b9ab8dd5795e7675"
+  },
+  "foundation_ms": 1080000,
+  "outer_ms": 1200000,
+  "preserved_sha256": {
+    "scripts/run-tests.mjs": "365438eded7e911a93b39279fd9ec63def4ba01e9d6b8b8b8eb1c08f27f78d6a",
+    "scripts/run-python-tests.py": "e5ba1bdb2eecbb192bd9a0a31530cc70269d83a28ef2edde8f3c0afe70c8f020",
+    "controller/acceptance-policy.mjs": "d52d7021dac0019c3876d083e2fcd29ef2005b1ca6fb445dc5b4cc2e8cc6e531",
+    "controller/policy.ts": "beeca198fc7df1048f2559af4368c296e3ea626166a1a83659dec6b5ac8c66da",
+    ".github/workflows/deterministic-gate.yml": "849fc7aa40a7b8e66f7d3966a7d50cc14ff49f59a88b70a4396530c067853fca",
+    "package.json": "072f0b182bb5d02df9c9b8cb6c01716e6dd2e0d081164b2450d5bbbdfedf3e9b",
+    "package-lock.json": "3b54aec2262b30c02b7c8e5ee899e964cd8c2123e4bc06974b8a35dfd1edfa94",
+    "SYSTEMS/CONTRACT_FREEZE.json": "4b0771886e0d7fb8b8c1bd8aaf1d96f3634cc5bf8411ff0c37ebe2a31e53663f"
+  },
+  "gate_ast": "Only reviewed foundation timeout differs",
+  "controller_ast": "Only reviewed whole-gate timeout differs",
+  "ci_cap_minutes": 20,
+  "ci_budget_note": "CI setup plus full execution must still fit its unchanged 20-minute cap.",
+  "source_clean": true,
+  "execution": "Static parsing only; no gate/controller/test invocation, trust promotion or merge."
+}

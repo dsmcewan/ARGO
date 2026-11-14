@@ -1,0 +1,17 @@
+# Concrete turn API review
+
+**READY to freeze the proposed API and invariants; no blockers found.** Reviewed `turn-api-proposal.md` against the accepted continuation design and current session/ledger/model interfaces. This is a static API review, not implementation or test acceptance. No product writes, runtime tests, providers, Board actions or subagents.
+
+**Committed contract binding: READY** at `2d6203de1bf16870714a2f2f07facd1a3d559e5d`, file `docs/session-continuation/TURN_CONTRACT.md`, SHA-256 `d4380e49c08d6b7f0435114bc2d50ab516aca6b56684ad6aec6fb3e4da80a2ee`. Comparison with the exact reviewed proposal changes only the title and status paragraph: it selects the documented API and bounds while retaining separate implementation/acceptance requirements. The body from `## Public TypeScript surface` onward is byte-identical. No further API changes or tests are implied by this binding check.
+
+The opaque, privately registered store capability retains the independently supplied genesis, authenticated principals and resolved policy. The conversation constructor can create fixed sessions and the existing model agent without accepting authentication from stored rows. The fixed whisper audience, exact input binding and frozen memory-ID grammar are consistent. Immutable `{turn_id,attempt_id,binding_hash}` callback metadata permits deterministic offline fixture selection without a shared mutable current-turn variable. The proposal accurately limits the policy hash to serializable declarations rather than claiming it authenticates callback code.
+
+The six-phase recovery rules preserve exact pending commands after every ambiguous submit failure, including post-commit receipt-validation errors. A verified different request occupying the expected next slot provides a concrete rejection proof; a missing slot or error code does not. Saved receipts require both exact request/signature checks and the verified journal prefix. Generic adapter null remains `no_reply`, and the permanent marker cannot authorize another invocation after failure, close or expiry.
+
+The remaining absolute-deadline owner signal, final worker deadline/ownership checks and cancellation fencing are compatible with the existing adapter's relative timeout. Waiter abort is separate from durable cancellation. Host close stops local admission and aborts/fences local generation; it neither closes the caller-owned ledger nor cancels another handle's turn. Store close is separate. Pending dispatch intent remains recoverable after closing; closing must never settle an unresolved submit as rejected or remove its saved command. These are implementation obligations already expressed by the proposal, not requests for another API.
+
+Delivery remains a current player projection, including repeat reads. Cancellation, closure, memory eviction and query/view races cannot fall back to cached text. The stable delivery ID does not overclaim exactly-once printing. Private row bounds, immutable attempt fields, worker-only SQLite ownership and short CAS transactions are appropriately limited to this host.
+
+Freeze with the existing acceptance map: in particular close during unresolved submit/ignored model abort, deadline expiry while saving a proposal, duplicate-handle cancellation, commit-then-bad-receipt recovery, and player projection after commit. Public API names may be finalized without changing these invariants. No new permission flow is needed.
+
+Exact proposal SHA-256 and observed repository identity are retained in `turn-api-review.json`.

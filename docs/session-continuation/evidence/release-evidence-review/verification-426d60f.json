@@ -1,0 +1,56 @@
+{
+  "candidate": "426d60f3ba975bb1ba8c487360d879c925091ff0",
+  "previous_reviewed_candidate": "9fa800493a3c033b45bc3df7ab18a56e25bcd9a8",
+  "verdict": "READY_EVIDENCE_CLAIMS_SCOPE",
+  "checked_at_utc": "2026-11-14T18:24:38.057108+00:00",
+  "resolved_findings": [
+    "E1 four missing retained evidence artifacts"
+  ],
+  "remaining_findings": [],
+  "repair_is_direct_child": true,
+  "changed_files": [
+    "A\tdocs/session-continuation/evidence/turn-api-contract.diff",
+    "A\tdocs/session-continuation/evidence/turn-api-proposal.md",
+    "A\tdocs/session-continuation/evidence/turn-review-store/checkpoint-observations/observations.json",
+    "A\tdocs/session-continuation/evidence/turn-review-store/checkpoint-observations/parse-trace.jsonl"
+  ],
+  "added_artifacts": [
+    {
+      "path": "docs/session-continuation/evidence/turn-api-proposal.md",
+      "sha256": "1ff39873781719c1ab629f7f67de13f09476eeab2d8774c9a225dd1e5c6fb243",
+      "bytes": 20412,
+      "matches_recorded_hash": true
+    },
+    {
+      "path": "docs/session-continuation/evidence/turn-api-contract.diff",
+      "sha256": "5e39e461ed57386488c5eaaed28616ab52f380c73be50b4e01f87f8901dab516",
+      "bytes": 948,
+      "matches_recorded_hash": true
+    },
+    {
+      "path": "docs/session-continuation/evidence/turn-review-store/checkpoint-observations/observations.json",
+      "sha256": "f4fb6c350c0de084f3fb0ad21e1aa8ceaadcd2947277e045c155f56b26be1d6c",
+      "bytes": 1493,
+      "matches_recorded_hash": true
+    },
+    {
+      "path": "docs/session-continuation/evidence/turn-review-store/checkpoint-observations/parse-trace.jsonl",
+      "sha256": "c3c11191e8162900754da69c316370c191ef465c49de2653e4895fdfdd7f1b66",
+      "bytes": 51,
+      "matches_recorded_hash": true
+    }
+  ],
+  "existing_source_and_records_unchanged": true,
+  "head_after": "426d60f3ba975bb1ba8c487360d879c925091ff0",
+  "status_after": "",
+  "prior_observations_reused_without_reexecution": true,
+  "runtime_tests_run": false,
+  "paid_calls": 0,
+  "repository_edits": false,
+  "board_mutations": false,
+  "final_application_acceptance": false,
+  "report_sha256": "9dd82fea7fb79b2cb80d772dc842b559ed533ba2c094d71e645f3c9d72739a03",
+  "prior_report_sha256": "04af8e43a9c3b08f918147d2a3bc0bead72b99c2edb206205d13441c45f6f752",
+  "prior_checks_sha256": "5b59172fff9ab000b1140fca960a3189e091d894d948b65a033e7d8e3787afcf",
+  "checker_sha256": "85a393e7823b6d0e5a1a9036a817bad7f1860e66f22ac53dc6d18642e98397bb"
+}

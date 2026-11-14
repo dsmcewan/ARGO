@@ -4,6 +4,8 @@ The new `shared-world/0.1.0` profile connects ordinary mortal dialogue, knowledg
 
 **Local acceptance:** all ten groups passed at `dcfc4d9` in a read-only, network-isolated clone. [Verification record](verification.json) · [Complete gate](evidence/full-gate-dcfc4d9/gate-result.json) · [GitHub delivery](https://github.com/dsmcewan/ARGO/pulls?q=is%3Apr+head%3Aargo%2Fshared-world)
 
+The later [startup and durable conversation continuation](../session-continuation/README.md) has its own source reviews and complete application-gate record; the original milestone evidence below is preserved.
+
 [Run the CLI](../../scenarios/tempted-fates/shared-world/README.md) · [Design](DESIGN.md) · [Frozen contract](../../SYSTEMS/shared-world-v1/CONTRACT.md) · [Plan](PLAN.md) · [Next dependencies](NEXT.md)
 
 ## Run a session
@@ -52,6 +54,8 @@ Here “independent” means a separate native Codex reviewer, not a person or a
 All six runtime source tickets use the actual blackboard, leases, disjoint worktrees and CAS. They stop at **VERIFYING** because the existing Board accepts data validators, not application changes. The application gate and reviewed GitHub merge are separate acceptance records; no Board MERGED status is fabricated.
 
 ## Performance and limits
+
+Later accepted [cold-reconstruction results](../session-continuation/COLD_RESULTS.md) record 13.88-second verified opening at 2,000 events and 10.09-second replay at 2,002 events. The ten-second cold-open target remains unmet; the earlier measurements below retain their original source identities.
 
 The [first ordinary-process measurement](evidence/runtime-measure-120119c/measurement.json), at clean commit `120119c`, measured the signed store plus actual campaign model context before the session wrapper. At 2000 events the injected contextual reply and commit took **551 ms**, a single append **80 ms**, and a fresh verified handle **74.1 s**. Full replay of 2002 events took **69.5 s**. Those are one-machine observations, not service guarantees or provider latency. The [completed session measurement](evidence/session-measure-639d31b/measurement.json) at clean `639d31b` includes fixed-principal query/view/submit, five refreshed context reads and exact signed-receipt verification. At 2000 events its injected reply and commit took **358 ms**, a single append **119 ms**, and cold opening **74.4 s**. Full replay of 2002 events took **59.4 s** and exactly matched the saved state. Each checkpoint has one dialogue sample; variation between these runs does not isolate a performance effect of the wrapper.
 

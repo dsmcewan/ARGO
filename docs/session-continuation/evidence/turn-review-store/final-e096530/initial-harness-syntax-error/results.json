@@ -1,0 +1,64 @@
+{
+  "candidate": "e096530b2618119ab3dd545f3defe36b754021bd",
+  "before": {
+    "sha": "e096530b2618119ab3dd545f3defe36b754021bd",
+    "status": ""
+  },
+  "after": {
+    "sha": "e096530b2618119ab3dd545f3defe36b754021bd",
+    "status": ""
+  },
+  "ordinary_process": true,
+  "paid_calls": 0,
+  "checks": [
+    {
+      "name": "private explicit create/open and no replacement on existing or missing stores",
+      "status": "pass",
+      "details": {
+        "mode": 384,
+        "binding": "b8e6798678fdc5d35381193aaba787f699ded86affcf5483360a43c3331f9bc4"
+      }
+    },
+    {
+      "name": "path grammar, unsafe permissions, symlinks and unsafe sidecars refuse before use",
+      "status": "pass"
+    },
+    {
+      "name": "foreign SQLite file and every full world/player/policy binding mismatch refuse",
+      "status": "pass"
+    },
+    {
+      "name": "opaque registration and passive constructor/input data never execute traps",
+      "status": "pass"
+    },
+    {
+      "name": "same-file two-handle CAS preserves one attempt and cancelled tombstone",
+      "status": "pass",
+      "details": {
+        "calls": 1,
+        "revision_before": 3,
+        "revision_after": 4
+      }
+    },
+    {
+      "name": "same canonical outbox across two ordinary processes consumes one generation",
+      "status": "fail",
+      "error": "Error: Child exited 1",
+      "stack": "Error: Child exited 1\n    at ChildProcess.<anonymous> (file:///workspace/reports/2026-11-14-argo-continuation/turn-review-store/probes.mjs:45:351)\n    at ChildProcess.wrapper (node:events:639:12)\n    at ChildProcess.emit (node:events:514:28)\n    at ChildProcess._handle.onexit (node:internal/child_process:324:12)"
+    },
+    {
+      "name": "silence tombstone survives close/reopen and read/resume never regenerate it",
+      "status": "pass"
+    },
+    {
+      "name": "external local corruption controls: closed row JSON, duplicate columns/hash and binding are checked on open/read",
+      "status": "pass",
+      "details": {
+        "classification": "Trusted-local corruption detection; not malicious-storage or rollback authentication"
+      }
+    }
+  ],
+  "passed": 7,
+  "failed": 1,
+  "scope": "Independent public host/store tests; external SQL controls assume trusted local storage. Crash/COMMIT and private RPC source review are separate."
+}

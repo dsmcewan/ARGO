@@ -1,0 +1,20 @@
+{
+  "args": [
+    "talk",
+    "--dir",
+    "/workspace/reports/2026-11-14-argo-continuation/cli-review/candidate-f2641d9/group-C11/private-concurrent/world",
+    "--actor",
+    "hero",
+    "--npc",
+    "melia",
+    "--fixture",
+    "/workspace/reports/2026-11-14-argo-continuation/cli-review/candidate-f2641d9/group-C11/private-concurrent/fixture.json"
+  ],
+  "code": 0,
+  "timedOut": false,
+  "elapsed_ms": 9393.57387,
+  "stdout_sha256": "e3c8f977b47092697575a14f8773748bbfff5c05231fbfa5347ec2bcee1ac12f",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdio": "private regular files",
+  "node_test_context_absent": true
+}

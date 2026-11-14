@@ -43,7 +43,7 @@ try{
   '--ro-bind',source,'/workspace','--chdir','/workspace','--clearenv','--setenv','PATH','/tools:/usr/bin:/bin','--setenv','HOME','/tmp','--setenv','LANG','C.UTF-8'];
  for(const path of protectedPaths)args.push('--ro-bind',join(source,path),'/workspace/'+path);
  args.push('--','/tools/node','scripts/gate.mjs','--merge-ready');
- process.stdout.write(await run('/usr/bin/bwrap',args,source,false,600000));
+ process.stdout.write(await run('/usr/bin/bwrap',args,source,false,1200000));
  if((await git(['rev-parse','HEAD'])).trim()!==target||(await git(['status','--porcelain'])).trim())throw new Error('Target changed while candidate was being checked');
  await git(['merge','--ff-only','--no-overwrite-ignore',candidate]);
  console.log(`Merged tested candidate ${candidate} using trusted policy ${trusted}`);

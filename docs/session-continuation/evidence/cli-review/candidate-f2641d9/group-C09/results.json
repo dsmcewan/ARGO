@@ -1,0 +1,23 @@
+{
+  "candidate": "f2641d92f5f07bc69b672ee6f6c3a189ee5f46cc",
+  "ordinary_process": true,
+  "paid_calls": 0,
+  "checks": [
+    {
+      "id": "C09",
+      "name": "held/rejected/numeric sinks stop further admission and close real resources",
+      "status": "pass",
+      "elapsed_ms": 48497.692299,
+      "details": {
+        "held_input_not_advanced": true,
+        "failed_sink_cases": 8,
+        "recursive_sink_calls": 0,
+        "numeric_sink": true,
+        "init_awaited": true,
+        "reopen_after_failure": true
+      }
+    }
+  ],
+  "passed": 1,
+  "failed": 0
+}

@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "tickets": [{
+    "id": "SC-630", "wave": 3, "lane": "offline-conversation-cli",
+    "title": "Explicit private offline conversation CLI and restart verification",
+    "seat_model": "gpt-6-astra", "reviewer_model": null,
+    "owned_paths": ["scenarios/tempted-fates/shared-world/cli.ts", "scenarios/tempted-fates/shared-world/README.md", "TESTS/shared-world-conversation-cli.test.ts"],
+    "gate_cmd": ["python3", "-c", "raise SystemExit('Executable application acceptance is recorded separately from this data-only Board policy')"],
+    "spec_path": "docs/session-continuation/tickets/SC-630.md",
+    "depends_on": [], "max_attempts": 1
+  }]
+}

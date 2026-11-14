@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "tickets": [
+    {
+      "id": "SC-640",
+      "wave": 4,
+      "lane": "gate-budget",
+      "title": "Retain timeout failures and bound expanded complete-gate execution",
+      "seat_model": "gpt-6-astra",
+      "reviewer_model": null,
+      "owned_paths": [
+        "scripts/gate.mjs",
+        "controller/merge.mjs",
+        "docs/characters-runtime/evidence/run-candidate-gate.py",
+        "docs/session-continuation/GATE_BUDGET.md"
+      ],
+      "gate_cmd": [
+        "python3",
+        "-c",
+        "raise SystemExit('Protected policy changes require separately recorded independent acceptance')"
+      ],
+      "spec_path": "docs/session-continuation/tickets/SC-640.md",
+      "depends_on": [],
+      "max_attempts": 1
+    }
+  ]
+}

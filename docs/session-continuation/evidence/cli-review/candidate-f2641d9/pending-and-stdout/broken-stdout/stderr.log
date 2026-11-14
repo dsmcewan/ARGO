@@ -1,0 +1,26 @@
+file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/scenarios/tempted-fates/shared-world/cli.ts:272
+   if(error){reject(new OutputFailure(error));return;}cleanup();resolve();
+                    ^
+
+OutputFailure [Error]: CLI output failed
+    at file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/scenarios/tempted-fates/shared-world/cli.ts:272:21
+    at onwriteError (node:internal/streams/writable:607:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:92:21) {
+  [cause]: Error: EBADF: bad file descriptor, write
+      at writeSync (node:fs:977:3)
+      at SyncWriteStream._write (node:internal/fs/sync_write_stream:27:5)
+      at writeOrBuffer (node:internal/streams/writable:574:12)
+      at _write (node:internal/streams/writable:503:10)
+      at Writable.write (node:internal/streams/writable:512:10)
+      at file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/scenarios/tempted-fates/shared-world/cli.ts:269:19
+      at new Promise (<anonymous>)
+      at writeJsonLine (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/scenarios/tempted-fates/shared-world/cli.ts:264:8)
+      at emit (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/scenarios/tempted-fates/shared-world/cli.ts:277:56)
+      at conversation (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/scenarios/tempted-fates/shared-world/cli.ts:214:10) {
+    errno: -9,
+    syscall: 'write',
+    code: 'EBADF'
+  }
+}
+
+Node.js v24.22.1

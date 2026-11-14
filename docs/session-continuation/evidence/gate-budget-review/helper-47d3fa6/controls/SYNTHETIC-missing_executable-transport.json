@@ -1,0 +1,21 @@
+{
+  "synthetic": true,
+  "application_tests_executed": false,
+  "mode": "missing_executable",
+  "calls": [
+    {
+      "argv": [
+        "git",
+        "clone",
+        "--no-local",
+        "--no-checkout",
+        "/workspace/reports/2026-11-14-argo-continuation/gate-budget-review/helper-47d3fa6/controls/synthetic-repo",
+        "/tmp/argo-review-gate-5hkrw75t/candidate"
+      ],
+      "timeout": 300,
+      "stderr_merged": true,
+      "captures_stdout": true
+    }
+  ],
+  "head_reads": 2
+}

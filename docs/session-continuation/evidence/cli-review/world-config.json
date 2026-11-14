@@ -1,0 +1,41 @@
+{
+  "scope": {
+    "tenant_id": "independent",
+    "rights_lane": "homebrew",
+    "workspace_id": "offline",
+    "workspace_tenant_id": "independent:homebrew:offline",
+    "campaign_id": "tempting_fates",
+    "world_id": "cli_review",
+    "branch_id": "main"
+  },
+  "authority_key_id": "cli_review_key",
+  "referee_id": "referee",
+  "npc_controller_id": "npc_host",
+  "variant": "legend",
+  "hp_mode": "floor4",
+  "environment": "day",
+  "starting_kit": "borrowed_lamp",
+  "initial_knowledge_ids": [
+    "melia_lamp_loan_offer"
+  ],
+  "travelers": [
+    {
+      "id": "hero",
+      "name": "Review traveler",
+      "controller_id": "auth_hero",
+      "weapon": "spear",
+      "nature": {
+        "description": "Patient, careful, curious.",
+        "priorities": [
+          "keep promises"
+        ]
+      },
+      "presentation": {
+        "occupation": "Traveler",
+        "wants": "Understand the offer.",
+        "will_not": "Accept an undisclosed obligation."
+      },
+      "max_speech_characters": 1024
+    }
+  ]
+}

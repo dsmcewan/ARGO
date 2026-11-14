@@ -1,0 +1,26 @@
+✔ multiple contextual exchanges commit only speech and restart without regeneration (8713.039137ms)
+✔ two handles race one canonical outbox and invoke one model turn (6644.580888ms)
+✔ commit followed by a bad receipt stays pending and exact retry recovers both speech stages (7668.363871ms)
+✔ waiter abort is separate from durable cancellation and late provider output is fenced (3859.297812ms)
+✔ a consumed generation marker never restarts and expires as uncertain (4612.898959ms)
+✔ current player disclosure suppresses closure and eviction instead of replaying cached prose (6720.62966ms)
+✔ journal prefix rollback refuses a signed outbox receipt (4305.419853ms)
+✔ a held callback leaves unrelated world writes available and stale text never commits (4929.55535ms)
+✔ malformed/tool replies settle without a physical action, and opaque/config accessors cannot run (4879.630005ms)
+✔ cancel reconciles an uncertain dispatched reply without delivering or regenerating it (4656.073263ms)
+✔ a verified different request at the expected next slot proves rejection without rebasing (3865.392595ms)
+✔ busy NPCs and explicit provider null produce no-reply without invented explanations (4218.401692ms)
+✔ host close drains a just-admitted insertion and never starts its generation afterward (3283.957668ms)
+✔ cancellation during the last awaited NPC refresh prevents provider dispatch (6346.009441ms)
+✔ host close detaches committed ledger acknowledgments and fresh handles recover exact pending commands (14378.240399ms)
+✔ receipt lookup rejects active page containers before inspecting their data (4547.24528ms)
+✔ host wrappers preserve original ledger passive capability validation (4544.270572ms)
+✔ model cache identity is stable within a fixed conversation and isolated across policy bindings (7682.520864ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 105876.458358

@@ -1,0 +1,77 @@
+{
+  "candidate": "e096530b2618119ab3dd545f3defe36b754021bd",
+  "store_checkpoint": "3870f44b20d241e9ca855279ccf3fd703801a22d",
+  "base": "3a2fab7ab5a50dc7cd4f9eaa8732f027a1ce733d",
+  "source_sha256": {
+    "TESTS/shared-world-conversation.test.ts": "9ced9b1e0a7bda4ee80ba229923d47176328902266352c39a0a2c31f1c8d17ba",
+    "TESTS/shared-world-turn-store.test.ts": "e726cb26a90e0c5638dad1ac1519e40631fcd2e536ccc6e72680733ea6cc7884",
+    "packages/session/package.json": "23d621e04345400aca781aee4448548f6e9a3f3726d67006b5a6e191eeb113a0",
+    "packages/session/src/conversation-guards.ts": "e276e14a1bf9af48079673f5a2b163b9751a0b857036eedf4c5311ebe293407d",
+    "packages/session/src/conversation-store-worker.ts": "0885ac35c25cd0426a63b88fe22b696d1187edf9571a2d45390a2e29370a2bf1",
+    "packages/session/src/conversation-store.ts": "9fe225478aa8847ed0cc6aa118850909007c60f96f1c198fc5e7e97b120269ef",
+    "packages/session/src/conversation-types.ts": "7007528fe9f72e3d4ee3d8091512b2065f1203bc52ecafd393dbdde78ddfaf38",
+    "packages/session/src/conversation.ts": "ae146e23070c71d8400f91582c87067df0e156426a6e747fe9bfb20bfb477aa6",
+    "packages/session/src/index.ts": "7fa0a76a1310cfbee097364e7476bbdff756de18e347f80483ccb9d29578120c"
+  },
+  "paid_calls": 0,
+  "new_checks": {
+    "host": {
+      "tests": 13,
+      "passed": 13,
+      "log": "host-green.log",
+      "strengthened_exact_retry_after_later_appends": {
+        "passed": 1,
+        "log": "exact-retry-after-append.log"
+      }
+    },
+    "store": {
+      "tests": 11,
+      "combined_run_passed": 10,
+      "combined_run_failed": 1,
+      "log": "store-final.log",
+      "corrected_child_harness": {
+        "passed": 1,
+        "log": "store-process-cas.log",
+        "reason": "Inline child --input-type inherited into a filename Worker. Replaced with an actual private .mjs child file; separate-process CAS then passed."
+      }
+    }
+  },
+  "regressions": {
+    "dialogue": {
+      "passed": 23,
+      "log": "regression-dialogue.log"
+    },
+    "views": {
+      "passed": 13,
+      "log": "regression-views.log"
+    },
+    "session": {
+      "passed": 10,
+      "log": "regression-session.log"
+    },
+    "storage": {
+      "passed": 13,
+      "log": "regression-storage.log"
+    }
+  },
+  "checks": {
+    "typecheck": "typecheck-final.log",
+    "contracts": "contracts.log",
+    "boundaries": "boundaries.log",
+    "diff_check": "git diff --cached --check passed at commit"
+  },
+  "review_fixes": [
+    "Capture mode/path before first await",
+    "Literal SQLite internal-name prefix",
+    "Drain 64 pending RPCs before close",
+    "Bound raw row bytes before JSON.parse",
+    "Fence late generation null/failure settlement after deadline",
+    "Refuse parent-directory symlink aliases"
+  ],
+  "not_claimed": [
+    "No paid/live model inference or semantic quality measurement",
+    "No full immutable application gate by this author",
+    "No Board source approval, merge, push, or trust-pin change",
+    "No independent anti-rollback anchor for both world/outbox restored together"
+  ]
+}
