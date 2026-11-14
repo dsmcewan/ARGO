@@ -1,5 +1,6 @@
 /** Pure shared authority. Only owned immutable identities enter the private caches. */
 import {Buffer} from 'node:buffer';
+import {createHash} from 'node:crypto';
 import {assertWorldContract,assertWorldGenesis} from '../../../../contracts/src/shared-world.ts';
 import {canonical,hash,fail} from '../../../../contracts/src/index.ts';
 import {WORLD_PROFILE} from '../../../../contracts/src/shared-world-types.ts';
@@ -9,12 +10,16 @@ import {initialMortalV3State,resolveMortalV3} from '../../mortal-v3/rules.ts';
 
 const MAX_BYTES=16777216,MAX_NODES=500000,MAX_DEPTH=32;
 type Size={bytes:number;nodes:number;depth:number};
-type GenesisMeta={identity:string;mortalHash:string};
+type CommandContext={scope:string;actors:Set<string>;items:Set<string>;locations:Set<string>;policies:Map<string,WorldGenesis['knowledge_catalog']['entries'][number]>};
+type GenesisMeta={identity:string;mortalHash:string;command:CommandContext};
 type LoanIndex={offers:Map<string,WorldLoanOffer>;openOffers:Map<string,WorldLoanOffer[]>;loans:Map<string,WorldLoan>;openLoans:Map<string,WorldLoan>};
 type Index=LoanIndex&{records:Map<string,WorldMemory>;requests:Set<string>;replies:Set<string>;acquired:Map<string,readonly WorldMemory[]>;latest:Map<string,ReadonlyMap<string,WorldImpression>>};
 type StateMeta={genesis:WorldGenesis;identity:string;index:Index;hash?:string};
 const genesisCache=new WeakMap<WorldGenesis,GenesisMeta>(),stateCache=new WeakMap<WorldState,StateMeta>();
 const sizes=new WeakMap<object,Size>();
+const encodings=new WeakMap<object,string>();
+type HistoryKey='memories'|'impressions'|'offers'|'loans';
+const histories=new Set(['memories','impressions','offers','loans']);
 const copy=<T>(value:T):T=>JSON.parse(canonical(value)) as T;
 const encoded=(value:unknown)=>Buffer.byteLength(JSON.stringify(value));
 /** Called only on detached validated DTOs or locally constructed data. Reuses
@@ -35,7 +40,25 @@ function measure(value:unknown):Size{
 function budget(value:unknown,reserve=0):void{const size=measure(value);if(size.bytes+reserve>MAX_BYTES||size.nodes>MAX_NODES||size.depth>MAX_DEPTH)fail('INVALID_ACTION','Shared world aggregate capacity reached');}
 export function ownWorldGenesis(input:WorldGenesis):WorldGenesis{
  if(genesisCache.has(input))return input;
- assertWorldGenesis(input);const genesis=own(copy(input));genesisCache.set(genesis,{identity:hash(genesis),mortalHash:hash(genesis.mortal)});return genesis;
+ assertWorldGenesis(input);const genesis=own(copy(input)),m=genesis.mortal;
+ genesisCache.set(genesis,{identity:hash(genesis),mortalHash:hash(m),command:{scope:canonical(m.scope),actors:new Set(m.actors.map(a=>a.id)),items:new Set(m.items.map(i=>i.id)),locations:new Set(m.locations.map(l=>l.id)),policies:new Map(genesis.knowledge_catalog.entries.map(e=>[e.knowledge_id,e]))}});return genesis;
+}
+/** Equivalent to the frozen Command-only genesis binding, after the unchanged
+ * raw Command guard. Only validated/detached genesis metadata reaches this
+ * private path; State/Event/Receipt/context guards remain full raw boundaries. */
+function bindCommand(g:WorldGenesis,c:WorldCommand):void{
+ const b=genesisCache.get(g)!.command,a=c.action;
+ const invalid=(message:string):never=>fail('INVALID_CONTRACT',message);
+ const known=(ids:Set<string>,id:string,label:string)=>{if(!ids.has(id))invalid('Unknown world '+label);};
+ if(canonical(c.scope)!==b.scope)invalid('World data belongs to another genesis namespace');
+ if(c.actor_id!==null&&!b.actors.has(c.actor_id))invalid('Unknown command actor');
+ if(a.type==='speak')for(const id of a.audience.addressed_actor_ids)if(!b.actors.has(id))invalid('Unknown speech addressee');
+ if(a.type==='impress'&&!b.actors.has(a.subject_actor_id))invalid('Unknown impression subject');
+ if(a.type==='offer_loan'){
+  if(!b.actors.has(a.borrower_actor_id))invalid('Unknown offer borrower');known(b.items,a.item_id,'offered item');known(b.locations,a.return_location_id,'loan checkpoint');
+  const policy=b.policies.get(a.policy_id);if(!policy||policy.owner_actor_id!==c.actor_id||policy.subject_item_id!==a.item_id||a.repair_cap_obols>policy.terms.repair_cap_obols)invalid('Offer command exceeds authored policy');
+ }
+ if(a.type==='set_knowledge'&&!b.policies.has(a.knowledge_id))invalid('Unknown knowledge command');
 }
 function loanIndexes(state:WorldState):LoanIndex{
  const offers=new Map(state.offers.map(o=>[o.terms.offer_id,o])),loans=new Map(state.loans.map(l=>[l.loan_id,l])),openLoans=new Map(state.loans.filter(l=>l.status==='open').map(l=>[l.item_id,l])),openOffers=new Map<string,WorldLoanOffer[]>();
@@ -67,9 +90,28 @@ export function initialWorldState(input:WorldGenesis):WorldState{
  const state:WorldState={version:WORLD_PROFILE,scope:copy(g.mortal.scope),genesis_hash:identity,cursor:{sequence:0,head:identity,world_time:0},physical:physicalPayload(m),profiles:copy(g.profiles),memories:[],impressions:[],knowledge:g.initial_knowledge_ids.map(knowledge_id=>({knowledge_id,origin:'genesis',sequence:0,world_time:0,active:true})),offers:[],loans:[],mythic_closed:false};
  assertWorldContract('State',state,g);own(state);budget(state,64);stateCache.set(state,{genesis:g,identity,index:indexes(state)});return state;
 }
+/** Only called beneath an exact registered State. Cache immutable records and
+ * bounded subtrees, never a complete growing history array or State encoding:
+ * retained old prefixes/forks must not retain quadratic encoded history bytes. */
+function fragment(value:unknown):string{
+ if(value===null||typeof value!=='object')return canonical(value);
+ let bytes=encodings.get(value);if(bytes===undefined){bytes=canonical(value);encodings.set(value,bytes);}return bytes;
+}
+function ownedStateBytes(state:WorldState):string{
+ const entries=Object.keys(state).sort().map(key=>{
+  let value:string;
+  if(key==='cursor'){const {head:_,...cursor}=state.cursor;value=canonical(cursor);}
+  else if(histories.has(key))value='['+state[key as HistoryKey].map(fragment).join(',')+']';
+  else value=fragment(state[key as keyof WorldState]);
+  return JSON.stringify(key)+':'+value;
+ });
+ return '{"domain":"shared-world/0.1.0/state","state":{'+entries.join(',')+'}}';
+}
 export function worldStateHash(state:WorldState):string{
- const cached=stateCache.get(state);if(cached?.hash)return cached.hash;if(!cached)assertWorldContract('State',state);
- const {head:_,...cursor}=state.cursor;const digest=hash({domain:'shared-world/0.1.0/state',state:{...state,cursor}});if(cached)cached.hash=digest;return digest;
+ const cached=stateCache.get(state);if(cached?.hash)return cached.hash;
+ if(cached){const digest=createHash('sha256').update(ownedStateBytes(state),'utf8').digest('hex');cached.hash=digest;return digest;}
+ assertWorldContract('State',state);const {head:_,...cursor}=state.cursor;
+ return hash({domain:'shared-world/0.1.0/state',state:{...state,cursor}});
 }
 /** Journal-only head finalization; unregistered objects cannot confer trust. */
 export function withWorldHead(state:WorldState,head:string):WorldState{
@@ -137,7 +179,7 @@ function loanReturn(s:WorldState,loan:WorldLoan,holder:string,via:'transfer_item
 }
 export function resolveWorld(inputGenesis:WorldGenesis,inputState:WorldState,inputCommand:WorldCommand,inputPrincipal:WorldPrincipal):WorldResolution{
  const g=ownWorldGenesis(inputGenesis),s=boundState(g,inputState),meta=stateCache.get(s)!;
- assertWorldContract('Command',inputCommand,g);assertWorldContract('Principal',inputPrincipal);const command=copy(inputCommand),principal=copy(inputPrincipal);
+ assertWorldContract('Command',inputCommand);bindCommand(g,inputCommand);assertWorldContract('Principal',inputPrincipal);const command=copy(inputCommand),principal=copy(inputPrincipal);
  authorize(g,s,command,principal);if(meta.index.requests.has(command.request_id))fail('CONFLICT','World request ID already exists');
  if(s.cursor.sequence>=1000000)fail('INVALID_ACTION','Shared history limit reached');
  const action=command.action,id=command.actor_id,sequence=s.cursor.sequence+1,recordId=hash({domain:'shared-world/0.1.0/memory',genesis_hash:s.genesis_hash,request_id:command.request_id,sequence});
