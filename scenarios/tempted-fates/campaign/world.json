@@ -1,0 +1,1143 @@
+{
+  "version": "tempting-fates-pack/0.1.0",
+  "title": "Tempting Fates",
+  "subtitle": "Kymene: the gods remember what the living would forget",
+  "tone_note": "Dark tragic mythology: horror, hubris and divine punishment. The sea returns empty boats; sacred obligations conflict with hunger, hospitality and mourning. Hubris is a particular choice made against a known limit, never a universal moral score. State patron-specific taboos and material risks before commitment. Refusal of a hook is not sacrilege. Agree table boundaries; this book does not reconstruct missing abuse material.",
+  "adaptation_note": "An original Greek-myth continuity, not a declaration that every ancient tradition agrees. Named gods have distinct local cults and announced taboos; they are not mandatory combat bosses. Knave first-edition mortal structures are adapted with attribution in RULES.md and ATTRIBUTION.md; the pointcrawl and bounded projects are original procedures. No modern myth translation, commercial adventure, art or bestiary text is copied. The human referee records travel, HP, faction work and divine consequences; loading this pack installs no new authoritative ARGO actions.",
+  "public_intro": "At Kymene, oars knock against boats that came home empty. Sacred grain waits behind blue doors while a feast is prepared above a burial road. The harbor still offers water to strangers, and people still argue whether hospitality can survive another season of promises to the gods. You arrive owing no faction service. You can work, investigate, bargain, rest or leave. Ask what an oath costs before you swear it. The people watching you have lives of their own.",
+  "start_location_id": "l_harbor",
+  "calendar": {
+    "seconds_per_day": 86400,
+    "days_per_year": 360,
+    "exploration_turn_seconds": 600,
+    "combat_round_seconds": 6,
+    "watch_seconds": 14400
+  },
+  "locations": [
+    {
+      "id": "l_harbor",
+      "name": "Kymene harbor",
+      "mythic_influence": "Xenia and Poseidon: welcome offered beside a sea that keeps its own accounts.",
+      "public_description": "Empty boats knock at their moorings. Melia trims an ordinary clay lamp beside her kiln. A water basin is open to strangers; two notices offer grain work and crossing repairs.",
+      "referee_notes": "Start at world tick 0. Empty-oar sounds are a real, harmless omen in this continuity, not proof that a particular drowned person speaks. Melia owns traveler_lamp; seeing it or accepting hospitality gives no custody or debt. The two jobs are independent of the relic. The ordinary routes remain open.",
+      "occupant_ids": [
+        "melia"
+      ],
+      "route_ids": [
+        "r_harbor_market",
+        "r_harbor_causeway"
+      ],
+      "is_loom": false
+    },
+    {
+      "id": "l_granary",
+      "name": "Demeter’s granary",
+      "mythic_influence": "Demeter: seed, hunger, and a sacred future competing with living mouths.",
+      "public_description": "Households queue beside blue-marked seed doors. In lamplight the seed sacks cast thin root-shaped shadows. Thaleia examines grain while Philon separates a feast requisition from the stock list.",
+      "referee_notes": "The household grain is sound; the shadows are a genuine local sign, not spoiled food. No famine appears merely because travelers refuse to help. The seed taboo is posted: knowingly burn blue-marked planting grain for display and the handful you burn turns to biting black husks, causing 1d4 manual damage to the burner; household stocks are not cursed. Ordinary eating is not this taboo. Philon has an unsigned feast request; three distribution work lots remain after the initial count.",
+      "occupant_ids": [
+        "philon",
+        "thaleia"
+      ],
+      "route_ids": [
+        "r_market_granary",
+        "r_granary_causeway",
+        "r_granary_palace"
+      ],
+      "is_loom": false
+    },
+    {
+      "id": "l_causeway",
+      "name": "Poseidon’s broken crossing",
+      "mythic_influence": "Poseidon: peril, sworn passage and the difference between reverence and concealed danger.",
+      "public_description": "A loose handrail hangs above black water. Dion has stopped a loaded cart; his ferry waits on the safe bank. Wet footprints appear on the empty landing and end at a painted oath stone.",
+      "referee_notes": "A failed pin explains the structural danger. The wet footprints are a real omen but identify no soul. The optional oath reads: declare the load entrusted to this passage. Dion states the consequence before accepting a sworn manifest: a knowingly false sworn load makes that boat take brine, forcing an immediate return or unloading at the near bank. An unsworn safe passage is available; no one must swear. No drowning or arbitrary sacrifice is guaranteed.",
+      "occupant_ids": [
+        "dion"
+      ],
+      "route_ids": [
+        "r_harbor_causeway",
+        "r_granary_causeway"
+      ],
+      "is_loom": false
+    },
+    {
+      "id": "l_market",
+      "name": "Hermes' market of witnesses",
+      "mythic_influence": "Hermes: trade, cleverness and the terrible usefulness of an exact witness.",
+      "public_description": "Weights turn without a breeze beneath a painted traveler’s hat. Ione checks a delivery line while a bronze witness tablet repeats the last public sworn bargain in a thin voice.",
+      "referee_notes": "The tablet is a local supernatural witness, not omniscient truth. Its announced rule: knowingly sign a false statement on it and it repeats that signer and statement in their own voice until they publicly correct that statement; it does not discover unrelated secrets. Using it is optional. Ione has measure_cup only in genuine/counterfeit; in legend her case holds correspondence only. Her sender’s palace seal does not authenticate divine authority.",
+      "occupant_ids": [
+        "ione"
+      ],
+      "route_ids": [
+        "r_harbor_market",
+        "r_market_granary",
+        "r_market_palace",
+        "r_necropolis_market"
+      ],
+      "is_loom": false
+    },
+    {
+      "id": "l_palace",
+      "name": "Palace of the borrowed feast",
+      "mythic_influence": "Dionysus: liberation offered as hospitality, corrupted when a host makes enjoyment compulsory.",
+      "public_description": "Grape-painted plaster peels above scrubbed benches. Xanthe lifts a bronze mask; its shadow keeps smiling when she sets it down. The eastern roof rope hangs slack.",
+      "referee_notes": "The mask’s wrong shadow is real but grants no command. The feast’s posted taboo is explicit: after accepting the role of sacred host, knowingly bar a guest’s departure and the host’s own chair roots to the floor with vine, restraining the host until the exit is opened. Guests owe no intoxication, oath, intimacy or life gift. The eastern aisle must be unloaded or closed. The mural records a vessel leaving the quarry, not its present location or power.",
+      "occupant_ids": [
+        "xanthe"
+      ],
+      "route_ids": [
+        "r_market_palace",
+        "r_palace_quarry",
+        "r_granary_palace"
+      ],
+      "is_loom": false
+    },
+    {
+      "id": "l_quarry",
+      "name": "The statue and bronze works",
+      "mythic_influence": "Hephaestus: craft, dangerous pride and care for hands that gods do not replace.",
+      "public_description": "An empty recess gapes below a headless statue. Makar braces a bronze lifting arm; when the furnace cools, hammering continues once from inside the stone.",
+      "referee_notes": "The statue recess is empty in every variant. The single answering hammerstroke is a real omen, not an instruction or hidden worker. The lifting arm has a visibly worn pawl. Hephaestus’s locally stated workshop vow is optional: someone who swears the brace safe while knowingly releasing it under another worker’s load has the release handle sear their hand for 1d4 manual damage; this adds no shame or disability score. Do not force a vow to buy a repair.",
+      "occupant_ids": [
+        "makar"
+      ],
+      "route_ids": [
+        "r_palace_quarry",
+        "r_quarry_necropolis"
+      ],
+      "is_loom": false
+    },
+    {
+      "id": "l_nekropolis",
+      "name": "The road of uncounted names",
+      "mythic_influence": "Burial, Hades and Persephone: duties to the dead without claiming to know their judgment.",
+      "public_description": "Names hang from a cord above the blocked gate. Leon clears a white-stone path. At dusk the stones softly repeat only names families chose to speak there.",
+      "referee_notes": "The unburied fellowship comprises living families and burial workers, not seeded undead. The echo reveals no undisclosed names or afterlife verdict. The painted gate’s prohibition warns: knowingly erase another family’s memorial name to sell the place and the offender’s own newly written public name washes away until the inscription is restored or the family accepts a repair. Memory and identity are not erased. Refusing burial work invokes nothing.",
+      "occupant_ids": [
+        "leon"
+      ],
+      "route_ids": [
+        "r_quarry_necropolis",
+        "r_necropolis_market"
+      ],
+      "is_loom": false
+    },
+    {
+      "id": "l_loom",
+      "name": "The loom, if encountered",
+      "mythic_influence": "Three jurisdictions: beginnings, measure and endings; none is a court of virtue.",
+      "public_description": "Wood sounds before it can be seen. Three women attend different tasks. None announces that a traveler has been expected.",
+      "referee_notes": "Off-map and optional. No ordinary route, die roll, purchase or ritual guarantees access. A separately established encounter must include a way to leave. Clotho does not grant years; Lachesis does not choose donors; Atropos does not judge deservingness. No shared omniscient view, forced gift, production anomaly trigger or explanatory epilogue is supplied.",
+      "occupant_ids": [
+        "clotho",
+        "lachesis",
+        "atropos"
+      ],
+      "route_ids": [],
+      "is_loom": true
+    }
+  ],
+  "routes": [
+    {
+      "id": "r_harbor_market",
+      "from": "l_harbor",
+      "to": "l_market",
+      "travel_turns": 1,
+      "condition": "Open street; no check for ordinary walking.",
+      "sign": "Painted sandals point inland.",
+      "access": "ordinary"
+    },
+    {
+      "id": "r_harbor_causeway",
+      "from": "l_harbor",
+      "to": "l_causeway",
+      "travel_turns": 3,
+      "condition": "Ends at the safe staging ground; arriving is not crossing.",
+      "sign": "A warning cloth hangs from the loose rail.",
+      "access": "ordinary"
+    },
+    {
+      "id": "r_market_granary",
+      "from": "l_market",
+      "to": "l_granary",
+      "travel_turns": 2,
+      "condition": "Public paved lane; the queue leaves room for walkers.",
+      "sign": "A blue sheaf marks the water trough.",
+      "access": "ordinary"
+    },
+    {
+      "id": "r_granary_causeway",
+      "from": "l_granary",
+      "to": "l_causeway",
+      "travel_turns": 3,
+      "condition": "Farm track to the same safe bank; no span crossing required.",
+      "sign": "Cart ruts end beside unloaded sacks.",
+      "access": "ordinary"
+    },
+    {
+      "id": "r_market_palace",
+      "from": "l_market",
+      "to": "l_palace",
+      "travel_turns": 5,
+      "condition": "Public uphill stair; closed rooms require permission.",
+      "sign": "Faded grape leaves lead toward dragging benches.",
+      "access": "ordinary"
+    },
+    {
+      "id": "r_palace_quarry",
+      "from": "l_palace",
+      "to": "l_quarry",
+      "travel_turns": 4,
+      "condition": "Old processional road; a level verge bypasses cracked paving.",
+      "sign": "Stone rollers lie beside chisel marks.",
+      "access": "ordinary"
+    },
+    {
+      "id": "r_quarry_necropolis",
+      "from": "l_quarry",
+      "to": "l_nekropolis",
+      "travel_turns": 3,
+      "condition": "Dry workers path above the ditch; no toll.",
+      "sign": "White stones lead away from the lifting yard.",
+      "access": "ordinary"
+    },
+    {
+      "id": "r_necropolis_market",
+      "from": "l_nekropolis",
+      "to": "l_market",
+      "travel_turns": 4,
+      "condition": "Public road reaches the gate; its dispute does not block return travel.",
+      "sign": "Name cords hang from olive branches.",
+      "access": "ordinary"
+    },
+    {
+      "id": "r_granary_palace",
+      "from": "l_granary",
+      "to": "l_palace",
+      "travel_turns": 4,
+      "condition": "Service lane open to pedestrians without taking grain or accepting work.",
+      "sign": "Empty wine jars mark the ascending lane.",
+      "access": "ordinary"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "melia",
+      "name": "Melia",
+      "occupation": "Potter and harbor host",
+      "location_id": "l_harbor",
+      "nature": {
+        "description": "Warm but exact about borrowed things. She reads care in small acts, distrusts theatrical promises and does not make guests responsible for her grief.",
+        "priorities": [
+          "Keep the household and kiln supplied",
+          "Offer welcome without bondage",
+          "Recover tools by agreed terms"
+        ]
+      },
+      "activity": {
+        "description": "Trimming traveler_lamp while empty oars sound offshore.",
+        "busy_until": 0
+      },
+      "speech_policy": {
+        "max_characters": 240,
+        "minimum_interval": 60
+      },
+      "age_years": 39,
+      "remaining_years": 37,
+      "fate_role": null,
+      "public_description": "Clay dust reaches her elbows; she has left a clear seat beside the kiln.",
+      "private_knowledge": [
+        "She made traveler_lamp: it is ordinary.",
+        "She watched new toll lettering arrive before a replacement crossing pin.",
+        "Her own brother’s boat returned empty; the oar sounds have never answered a question."
+      ],
+      "wants": "Loan a useful lamp on clear terms and see a safe crossing restored.",
+      "will_not": "She will not call a declined favor a debt, pledge a guest to a god or lend another person’s possessions.",
+      "speech_example": "Borrow it if you need it. Tell me when it comes back; the lamp cannot arrange that."
+    },
+    {
+      "id": "dion",
+      "name": "Dion",
+      "occupation": "Ferryman and sounding-pole keeper",
+      "location_id": "l_causeway",
+      "nature": {
+        "description": "Cautious, dry and unwilling to confuse urgency with a safe load. He keeps promises literally and knows that fear can make an oath less than a choice.",
+        "priorities": [
+          "Return passengers safely",
+          "Keep the boat within its load",
+          "Attend a family burial freely"
+        ]
+      },
+      "activity": {
+        "description": "Sounding the channel and unloading the stopped cart.",
+        "busy_until": 600
+      },
+      "speech_policy": {
+        "max_characters": 240,
+        "minimum_interval": 60
+      },
+      "age_years": 52,
+      "remaining_years": 26,
+      "fate_role": null,
+      "public_description": "He checks the water before answering a demand for speed.",
+      "private_knowledge": [
+        "One failed pin is visible; the entire road is not swallowed.",
+        "He holds funeral_coin for a family contribution, not a universal toll to the dead.",
+        "He has seen brine enter after a knowingly false sworn load; unsworn safe passage is possible."
+      ],
+      "wants": "Repair the crossing and find a freely agreed time for his family obligation.",
+      "will_not": "He will not overload the ferry, require an oath or treat fear as consent.",
+      "speech_example": "The sea has heard your urgency. The boat still has a limit."
+    },
+    {
+      "id": "philon",
+      "name": "Philon",
+      "occupation": "Accountant of the granary temple",
+      "location_id": "l_granary",
+      "nature": {
+        "description": "Anxiously precise. He separates requests from grants, but fears exposing the compromises that once kept his position secure.",
+        "priorities": [
+          "Preserve traceable records",
+          "Prevent unauthorized allocations",
+          "Correct his own evasions without inventing excuses"
+        ]
+      },
+      "activity": {
+        "description": "Reconciling the unsigned feast demand against household shares.",
+        "busy_until": 600
+      },
+      "speech_policy": {
+        "max_characters": 240,
+        "minimum_interval": 60
+      },
+      "age_years": 31,
+      "remaining_years": 48,
+      "fate_role": null,
+      "public_description": "Ink stains his thumb; he asks which document the accusation names.",
+      "private_knowledge": [
+        "The feast request is unsigned; Xanthe requested supplies without claiming authority to take them.",
+        "Seed and household grain have separate marks.",
+        "He copied a prior promise twice to postpone an argument; the copy made no second lawful grant."
+      ],
+      "wants": "A witnessed decision on allocation and permission to correct the misleading copy.",
+      "will_not": "He will not forge a signature or certify a rumor as a receipt.",
+      "speech_example": "A request is not permission. I have columns for both, which is apparently provocative."
+    },
+    {
+      "id": "ione",
+      "name": "Ione",
+      "occupation": "Independent courier",
+      "location_id": "l_market",
+      "nature": {
+        "description": "Alert and private. She resists being turned into a prop in a stranger’s heroic account and distinguishes custody from entitlement.",
+        "priorities": [
+          "Deliver only to an agreed recipient",
+          "Keep messages private",
+          "Refuse changed work on unacceptable terms"
+        ]
+      },
+      "activity": {
+        "description": "Checking the permitted delivery line.",
+        "busy_until": 0
+      },
+      "speech_policy": {
+        "max_characters": 240,
+        "minimum_interval": 60
+      },
+      "age_years": 27,
+      "remaining_years": 51,
+      "fate_role": null,
+      "public_description": "Her traveling case stays within reach while she gives directions.",
+      "private_knowledge": [
+        "In genuine/counterfeit she received a sealed cup; in legend only correspondence about the story.",
+        "The palace-marked letter claims freely given years can be held; she has never witnessed that capability.",
+        "Leon can identify the old office mark if she chooses to show it."
+      ],
+      "wants": "Resolve delivery with a willing recipient and retain her own choices.",
+      "will_not": "She will not surrender cargo to claimed destiny or put a private letter on the public oath tablet.",
+      "speech_example": "You may ask who sent me. You may not turn that question into ownership."
+    },
+    {
+      "id": "thaleia",
+      "name": "Thaleia",
+      "occupation": "Keeper of seed and household grain",
+      "location_id": "l_granary",
+      "nature": {
+        "description": "Patient with need, hard on performative generosity that spends somebody else future. She notices who carries a sack and who only names a virtue.",
+        "priorities": [
+          "Preserve viable seed",
+          "Feed households through an explained allocation",
+          "Protect workers from compulsory vows"
+        ]
+      },
+      "activity": {
+        "description": "Testing grain and preparing portions under the rootlike shadows.",
+        "busy_until": 0
+      },
+      "speech_policy": {
+        "max_characters": 240,
+        "minimum_interval": 60
+      },
+      "age_years": 46,
+      "remaining_years": 34,
+      "fate_role": null,
+      "public_description": "A separate blue bowl holds viable seed.",
+      "private_knowledge": [
+        "Household grain is sound; requests conflict.",
+        "Three distribution work lots remain after the initial stock count.",
+        "Burning marked seed for display is the announced taboo; eating an ordinary meal is not."
+      ],
+      "wants": "An allocation people can inspect and enough seed for another season.",
+      "will_not": "She will not accept a sacred title as authority to empty the seed bay.",
+      "speech_example": "Eat the seed if you choose. You will have to explain spring to the children."
+    },
+    {
+      "id": "makar",
+      "name": "Makar",
+      "occupation": "Bronze smith and repairer",
+      "location_id": "l_quarry",
+      "nature": {
+        "description": "Proud of work that holds, suspicious of praise that replaces payment. Injury is a practical danger, never evidence that a person deserves less dignity.",
+        "priorities": [
+          "Protect helpers",
+          "Complete sound repairs",
+          "Receive agreed payment and credit"
+        ]
+      },
+      "activity": {
+        "description": "Testing the lifting pawl before casting the crossing pin.",
+        "busy_until": 600
+      },
+      "speech_policy": {
+        "max_characters": 240,
+        "minimum_interval": 60
+      },
+      "age_years": 43,
+      "remaining_years": 39,
+      "fate_role": null,
+      "public_description": "His patched measuring string has deliberate knots.",
+      "private_knowledge": [
+        "The statue recess was opened long before these travelers arrived.",
+        "The worn pawl can be safely demonstrated.",
+        "The harbor four work lots include stock, fitting and transport; a forge vow is not required to buy work."
+      ],
+      "wants": "Safe access to the casting area and a clear account of repair stock.",
+      "will_not": "He will not call an unsafe brace divine will or compel a helper to swear.",
+      "speech_example": "The god may admire your courage. I would prefer you stood outside the chalk."
+    },
+    {
+      "id": "xanthe",
+      "name": "Xanthe",
+      "occupation": "Steward of the borrowed feast",
+      "location_id": "l_palace",
+      "nature": {
+        "description": "Generous and theatrical, defensive before guests. She loves pleasure but recognizes the cruelty of demanding that another person display it.",
+        "priorities": [
+          "Feed without humiliation",
+          "Keep exits open",
+          "Keep workers and guests safe"
+        ]
+      },
+      "activity": {
+        "description": "Moving benches away from the unsafe eastern aisle.",
+        "busy_until": 0
+      },
+      "speech_policy": {
+        "max_characters": 240,
+        "minimum_interval": 60
+      },
+      "age_years": 34,
+      "remaining_years": 42,
+      "fate_role": null,
+      "public_description": "She checks servants’ seating before the high table.",
+      "private_knowledge": [
+        "The roof rope needs unloading before guests enter.",
+        "bronze_mask is a stage object with a strange shadow, not a power of command.",
+        "The grain request is unsigned. Accepting sacred hosting means knowingly barred exits carry the stated vine consequence."
+      ],
+      "wants": "A smaller affordable feast with genuinely open seats and exits.",
+      "will_not": "She will not demand intoxication, intimacy, an oath or life-years as a price of hospitality.",
+      "speech_example": "A feast ought to leave room for people. That includes the ones who say no."
+    },
+    {
+      "id": "leon",
+      "name": "Leon",
+      "occupation": "Exile, name-keeper and burial worker",
+      "location_id": "l_nekropolis",
+      "nature": {
+        "description": "Reserved and exact about names. He distrusts speeches that erase the dead person they claim to honor, and gives mourners time to choose silence.",
+        "priorities": [
+          "Open a safe burial route",
+          "Record only permitted names",
+          "Keep private grief out of bargaining"
+        ]
+      },
+      "activity": {
+        "description": "Clearing the gate and copying names with permission.",
+        "busy_until": 0
+      },
+      "speech_policy": {
+        "max_characters": 240,
+        "minimum_interval": 60
+      },
+      "age_years": 58,
+      "remaining_years": 20,
+      "fate_role": null,
+      "public_description": "He lets a mourner finish before repeating a name.",
+      "private_knowledge": [
+        "The old boundary stone places the public verge outside the palace claim.",
+        "The described seal is a palace office mark, not a divine signature.",
+        "The stones echo only names freely spoken there; they cannot reveal private identities or verdicts."
+      ],
+      "wants": "A usable path and family control over disclosure.",
+      "will_not": "He will not conscript mourners, sell names as gossip or require a stranger funeral contribution.",
+      "speech_example": "Tell me the name they used, if you want it written. Silence is an answer too."
+    },
+    {
+      "id": "clotho",
+      "name": "Clotho",
+      "occupation": "Spinner",
+      "location_id": "l_loom",
+      "nature": {
+        "description": "Curious, amused and occasionally giddy; concerned with beginnings rather than a bearer’s virtue.",
+        "priorities": [
+          "Attend beginnings",
+          "Remain within her jurisdiction"
+        ]
+      },
+      "activity": {
+        "description": "Attending the appearance of another thread.",
+        "busy_until": 0
+      },
+      "speech_policy": {
+        "max_characters": 240,
+        "minimum_interval": 60
+      },
+      "age_years": 0,
+      "remaining_years": 1000,
+      "fate_role": "clotho",
+      "public_description": "Her attention follows a strand just appearing.",
+      "private_knowledge": [
+        "Beginnings are hers; duration and a bearer’s choices are not.",
+        "Rumor does not establish the existence of a relic."
+      ],
+      "wants": "Continue her work and address only what belongs to beginnings.",
+      "will_not": "She will not promise an ending, choose a donor or reopen engagement after anomaly naming.",
+      "speech_example": "A beginning, yes. What you do after it is still unwritten."
+    },
+    {
+      "id": "lachesis",
+      "name": "Lachesis",
+      "occupation": "Measurer",
+      "location_id": "l_loom",
+      "nature": {
+        "description": "Precise, dry and impatient with repetition; measure gives her no moral jurisdiction.",
+        "priorities": [
+          "Account for measure",
+          "Reject invented entitlement"
+        ]
+      },
+      "activity": {
+        "description": "Measuring a different thread.",
+        "busy_until": 0
+      },
+      "speech_policy": {
+        "max_characters": 240,
+        "minimum_interval": 60
+      },
+      "age_years": 0,
+      "remaining_years": 1000,
+      "fate_role": "lachesis",
+      "public_description": "She works without looking for approval.",
+      "private_knowledge": [
+        "Allotment is hers; fulfillment and deservingness are not.",
+        "A recipient’s assertion cannot establish an honest gift."
+      ],
+      "wants": "Continue accurate measurement within her role.",
+      "will_not": "She will not decide who should donate or promise happiness.",
+      "speech_example": "An amount is a measure. It is not a promise that you will enjoy it."
+    },
+    {
+      "id": "atropos",
+      "name": "Atropos",
+      "occupation": "Cutter",
+      "location_id": "l_loom",
+      "nature": {
+        "description": "Spare and unhurried; concerned with endings, not the worth of the life before them.",
+        "priorities": [
+          "Attend endings",
+          "Decline judgments outside her role"
+        ]
+      },
+      "activity": {
+        "description": "Finishing the thread already before her.",
+        "busy_until": 0
+      },
+      "speech_policy": {
+        "max_characters": 240,
+        "minimum_interval": 60
+      },
+      "age_years": 0,
+      "remaining_years": 1000,
+      "fate_role": "atropos",
+      "public_description": "The shears are tools in use, not a theatrical threat.",
+      "private_knowledge": [
+        "The end is hers; the preceding story is not.",
+        "An absent thread offers no object for her work."
+      ],
+      "wants": "Continue the work of endings.",
+      "will_not": "She will not punish refusal, declare virtue or borrow another Fate’s authority.",
+      "speech_example": "The ending is my concern. You have brought several other questions."
+    }
+  ],
+  "factions": [
+    {
+      "id": "harbor_council",
+      "name": "The harbor council",
+      "members": [
+        "melia",
+        "dion",
+        "makar"
+      ],
+      "goal": "Restore safe passage while old toll promises and memorial duties compete for labor.",
+      "resources": 4,
+      "clock": {
+        "name": "A crossing that holds",
+        "segments": 4,
+        "progress": 0,
+        "advance_trigger": "At an agreed review with willing workers, stock and safe access, spend one repair work lot for each actual completed stage: guide lines; cast pin; fit pin; load inspection. Complete stages in order. No real-time absence advances work.",
+        "completion": "Normal carts may use the inspected crossing. Repair does not settle toll claims, bind an oath or restore the drowned.",
+        "visible_sign": "Guide lines, a new pin, fitting work, then a posted load-test result.",
+        "interruption": "Unsafe water, withdrawn labor or denied stock pauses the next stage. Resources never regenerate."
+      },
+      "approaches": [
+        "Negotiate a public labor and stock account.",
+        "Help a stage for agreed payment or a voluntary favor.",
+        "Contest tolls while supporting repair; no vote transfers private property."
+      ]
+    },
+    {
+      "id": "grain_house",
+      "name": "The house of the sheaf",
+      "members": [
+        "thaleia",
+        "philon",
+        "xanthe"
+      ],
+      "goal": "Feed living households, preserve seed and choose a feast that does not consume either obligation.",
+      "resources": 3,
+      "clock": {
+        "name": "An allocation people can inspect",
+        "segments": 4,
+        "progress": 1,
+        "advance_trigger": "The initial count is complete. At an agreed review, with keeper permission and workers, spend one distribution work lot for each remaining actual stage: publish proposed shares; hear households and revise; issue authorized portions. Objection is evidence, not a penalty.",
+        "completion": "Agreed portions are issued and the seed reserve remains unless its custodians separately authorize another lawful use. No divine favor is promised.",
+        "visible_sign": "A tally, proposed shares, visible corrections, actual issue receipts.",
+        "interruption": "Missing households, disputed authority or withdrawn permission pauses that stage. Food never appears when a clock fills."
+      },
+      "approaches": [
+        "Inspect with permission and copy the list.",
+        "Agree a smaller feast without shaming hunger.",
+        "Work a paid distribution shift without a compelled vow."
+      ]
+    },
+    {
+      "id": "unburied",
+      "name": "The unburied road fellowship",
+      "members": [
+        "leon",
+        "ione"
+      ],
+      "goal": "Reopen burial access without selling names, conscripting grief or abandoning the living.",
+      "resources": 4,
+      "clock": {
+        "name": "A road with room for mourners",
+        "segments": 4,
+        "progress": 0,
+        "advance_trigger": "At an agreed review with family permission and safe access, spend one road work lot per actual stage: locate boundary; agree public-verge access; clear and brace gate; escort a willing procession. The fellowship is living, not undead.",
+        "completion": "A usable route and access agreement exist. No soul is judged, no dead person returns and no unwilling family is named.",
+        "visible_sign": "Boundary cords, access notice, braced gate, offered passage schedule.",
+        "interruption": "Refusal to participate has no penalty. Unsafe excavation or unresolved access pauses the relevant stage."
+      },
+      "approaches": [
+        "Inspect the boundary with a willing witness.",
+        "Offer labor, a cart or a safe alternative route.",
+        "Help privately without publishing a name or joining the faction."
+      ]
+    }
+  ],
+  "rumors": [
+    {
+      "id": "rumor_01",
+      "speaker_id": "melia",
+      "location_id": "l_harbor",
+      "text": "The council bought new toll letters before a new pin. Ask the smith what holds the crossing.",
+      "lead_location_id": "l_quarry",
+      "assessment": {
+        "genuine": "true",
+        "counterfeit": "true",
+        "legend": "true"
+      },
+      "referee_basis": "Melia saw that delivery. It establishes an order of purchases, not every council member’s motive."
+    },
+    {
+      "id": "rumor_02",
+      "speaker_id": "dion",
+      "location_id": "l_causeway",
+      "text": "A passenger said Poseidon demands a life for every cart. I found a broken pin.",
+      "lead_location_id": "l_causeway",
+      "assessment": {
+        "genuine": "partial",
+        "counterfeit": "partial",
+        "legend": "partial"
+      },
+      "referee_basis": "The quoted demand is false; the pin and attribution are real. The optional sworn-manifest taboo is separate and never demands life."
+    },
+    {
+      "id": "rumor_03",
+      "speaker_id": "thaleia",
+      "location_id": "l_granary",
+      "text": "The blue marks are seed. Burn it for a fine show and black husks bite the burner.",
+      "lead_location_id": "l_granary",
+      "assessment": {
+        "genuine": "true",
+        "counterfeit": "true",
+        "legend": "true"
+      },
+      "referee_basis": "Thaleia knows the local posted taboo. It applies to knowingly burning marked planting grain for display, not ordinary meals or refusal of work."
+    },
+    {
+      "id": "rumor_04",
+      "speaker_id": "philon",
+      "location_id": "l_granary",
+      "text": "They call this a cursed harvest. My tally says the grain has been promised twice.",
+      "lead_location_id": "l_palace",
+      "assessment": {
+        "genuine": "partial",
+        "counterfeit": "partial",
+        "legend": "partial"
+      },
+      "referee_basis": "Grain is sound. He copied a promise to postpone conflict; competing requests are not two lawful grants. The real root-shadows do not prove the curse claim."
+    },
+    {
+      "id": "rumor_05",
+      "speaker_id": "ione",
+      "location_id": "l_market",
+      "text": "A palace letter says a cup can hold freely given years. I have never seen it do so.",
+      "lead_location_id": "l_palace",
+      "assessment": {
+        "genuine": "true",
+        "counterfeit": "partial",
+        "legend": "partial"
+      },
+      "referee_basis": "The letter exists in all variants. Only genuine establishes its capability claim. Ione’s lack of personal demonstration is accurate in all."
+    },
+    {
+      "id": "rumor_06",
+      "speaker_id": "makar",
+      "location_id": "l_quarry",
+      "text": "An old sketch says a vessel waits beneath the statue. Look at the recess before trusting the sketch.",
+      "lead_location_id": "l_quarry",
+      "assessment": {
+        "genuine": "outdated",
+        "counterfeit": "outdated",
+        "legend": "false"
+      },
+      "referee_basis": "The quoted location claim is outdated after removal in genuine/counterfeit, fictional in legend. The present recess is empty in all three."
+    },
+    {
+      "id": "rumor_07",
+      "speaker_id": "xanthe",
+      "location_id": "l_palace",
+      "text": "A patron says this mask makes guests obey. It makes a shadow. That is different.",
+      "lead_location_id": "l_palace",
+      "assessment": {
+        "genuine": "partial",
+        "counterfeit": "partial",
+        "legend": "partial"
+      },
+      "referee_basis": "The claim of compulsion is false; the wrong shadow is real. The host exit taboo grants no command over guests."
+    },
+    {
+      "id": "rumor_08",
+      "speaker_id": "leon",
+      "location_id": "l_nekropolis",
+      "text": "The palace claims the gate. Its own old stone leaves the public path outside.",
+      "lead_location_id": "l_nekropolis",
+      "assessment": {
+        "genuine": "true",
+        "counterfeit": "true",
+        "legend": "true"
+      },
+      "referee_basis": "Leon found the stone and can show it. Access still requires safe practical work, not a narrated teleport through stone."
+    },
+    {
+      "id": "rumor_09",
+      "speaker_id": "makar",
+      "location_id": "l_quarry",
+      "text": "They say the bronze arm took a hand for mocking its maker. The pawl was worn.",
+      "lead_location_id": "l_quarry",
+      "assessment": {
+        "genuine": "partial",
+        "counterfeit": "partial",
+        "legend": "partial"
+      },
+      "referee_basis": "The past injury had a mechanical cause, not mockery punishment. A separately announced knowingly false safety vow can incur the distinct searing-handle consequence."
+    },
+    {
+      "id": "rumor_10",
+      "speaker_id": "dion",
+      "location_id": "l_causeway",
+      "text": "One family wants a quiet road. They do not want another speaker telling them what their dead deserve.",
+      "lead_location_id": "l_nekropolis",
+      "assessment": {
+        "genuine": "true",
+        "counterfeit": "true",
+        "legend": "true"
+      },
+      "referee_basis": "Dion heard this from one family only. It establishes no preference for every mourner and no knowledge of an afterlife verdict."
+    },
+    {
+      "id": "rumor_11",
+      "speaker_id": "ione",
+      "location_id": "l_market",
+      "text": "Somewhere three women work on threads. None of my informants agreed about the road.",
+      "lead_location_id": "l_loom",
+      "assessment": {
+        "genuine": "partial",
+        "counterfeit": "partial",
+        "legend": "partial"
+      },
+      "referee_basis": "The Fates belong to this continuity; Ione has conflicting accounts of access. A successful rumor check cannot manufacture a route."
+    },
+    {
+      "id": "rumor_12",
+      "speaker_id": "xanthe",
+      "location_id": "l_palace",
+      "text": "Cup sellers promise youth with every borrowed year. That is a comfortable thing to sell.",
+      "lead_location_id": "l_market",
+      "assessment": {
+        "genuine": "false",
+        "counterfeit": "false",
+        "legend": "false"
+      },
+      "referee_basis": "The quoted youth promise is false even in genuine. No seeded seller, offer or rumor creates custody, a donor or an effective method."
+    }
+  ],
+  "items": [
+    {
+      "id": "traveler_lamp",
+      "name": "Melia’s clay traveling lamp",
+      "description": "An ordinary lamp. Its name assigns it to no traveler. Oil and custody require separate agreements.",
+      "custodian_id": "melia",
+      "slots": 1,
+      "variants": [
+        "genuine",
+        "counterfeit",
+        "legend"
+      ],
+      "secret": false
+    },
+    {
+      "id": "grain_seal",
+      "name": "Seal of the grain keeper",
+      "description": "Thaleia’s working seal; possession alone does not authorize grain distribution or forge agreement.",
+      "custodian_id": "thaleia",
+      "slots": 1,
+      "variants": [
+        "genuine",
+        "counterfeit",
+        "legend"
+      ],
+      "secret": false
+    },
+    {
+      "id": "bronze_mask",
+      "name": "The borrowed feast mask",
+      "description": "A performance mask whose shadow smiles too long. It confers no command, charm or right over a guest.",
+      "custodian_id": "xanthe",
+      "slots": 1,
+      "variants": [
+        "genuine",
+        "counterfeit",
+        "legend"
+      ],
+      "secret": false
+    },
+    {
+      "id": "funeral_coin",
+      "name": "Dion’s saved funeral coin",
+      "description": "One ordinary coin saved for a family contribution. A unique custody token, not an automatic toll demanded by the dead.",
+      "custodian_id": "dion",
+      "slots": 1,
+      "variants": [
+        "genuine",
+        "counterfeit",
+        "legend"
+      ],
+      "secret": false
+    },
+    {
+      "id": "measure_cup",
+      "name": "The alleged cup of measure",
+      "description": "A sealed vessel in Ione’s custody. Appearance does not reveal genuine versus counterfeit; the host’s fixed variant establishes that private truth.",
+      "custodian_id": "ione",
+      "slots": 1,
+      "variants": [
+        "genuine",
+        "counterfeit"
+      ],
+      "secret": true
+    }
+  ],
+  "encounters": [
+    {
+      "id": "e_lamp",
+      "location_id": "l_harbor",
+      "title": "A light, with ordinary terms",
+      "visible_situation": "Melia fits a replacement wick while oars knock from an empty boat. The grain and crossing notices are visible beside her.",
+      "participants": [
+        "melia"
+      ],
+      "approaches": [
+        "Borrow the lamp on an exact return checkpoint and damage agreement; supply your own oil.",
+        "Ask directions, buy ordinary equipment if offered, or look for unrelated work.",
+        "Listen to the oars without assuming they are a conversation or a command."
+      ],
+      "if_ignored": "Melia keeps the lamp unless a real transfer occurs. She may carry it herself or seek another willing carrier; no curse, hidden debt or missed ending follows refusal.",
+      "costs": [
+        "No advance deposit. Oil costs 1 obol and burns for six exploration turns under RULES.md.",
+        "Name a mutually accepted return checkpoint, defaulting to the next agreed harbor return; neither side silently changes it. Actual damage must be disclosed; any agreed repair is capped at ordinary 5-obol replacement.",
+        "Discussing the terms takes one turn if the table advances time for it. A spoken promise alone does not transfer custody."
+      ],
+      "clue": "Melia saw repair money represented by toll lettering while the pin remained broken. Her observation is a lead, not an obligation.",
+      "exit": "Take either harbor route; leave the lamp unless Melia actually hands it over. No funeral service or oath is a loan condition."
+    },
+    {
+      "id": "e_grain",
+      "location_id": "l_granary",
+      "title": "The seed and the feast",
+      "visible_situation": "Root-shaped shadows reach beneath the sacks. Philon holds an unsigned request; Thaleia has posted the seed taboo beside the blue door.",
+      "participants": [
+        "philon",
+        "thaleia"
+      ],
+      "approaches": [
+        "Inspect the list and grain with permission; a safe one-turn count reveals the unsigned demand without a roll.",
+        "Carry an authorized copy to Xanthe and negotiate a smaller feast or willing contributions.",
+        "Help an agreed distribution stage, or leave the keepers to their own decisions."
+      ],
+      "if_ignored": "No instant famine is invented. At the next agreed project review, funded work proceeds only if its prerequisites hold; unresolved allocation can pause it.",
+      "costs": [
+        "An inspection costs one turn; carrying a copy uses printed route times.",
+        "An actual distribution stage spends one finite grain-house work lot.",
+        "Knowingly burning blue-marked seed for display, after the posted warning is understood, makes the burned handful become biting husks for 1d4 manual damage to the burner. Ordinary eating or refusing this scene is not that taboo."
+      ],
+      "clue": "The demand and grant are different documents. The root-shadows are real, but do not prove the grain is spoiled or identify a guilty person.",
+      "exit": "Use any granary route without taking sacks or swearing an oath; refusal assigns no blame score."
+    },
+    {
+      "id": "e_crossing",
+      "location_id": "l_causeway",
+      "title": "What the boat has been told",
+      "visible_situation": "Dion stops a handcart by a loose rail. Wet footprints end at an oath stone whose words can be read before anyone approaches.",
+      "participants": [
+        "dion"
+      ],
+      "approaches": [
+        "Inspect safely, then arrange a repair stage or an unsworn safe ferry passage.",
+        "Split a load or leave cargo behind by explicit agreement.",
+        "Choose to swear an accurate manifest only if you want that obligation, knowing its cost."
+      ],
+      "if_ignored": "Dion keeps heavy carts off the span. The repair project advances only through actual funded stages at an agreed review.",
+      "costs": [
+        "Inspection takes one turn. Agreed ordinary ferry passage costs 1 obol per person with carried kit; bulky loads need a separately accepted price.",
+        "Knowingly false sworn cargo causes that boat to take brine; an immediate return or unloading at the near bank is possible. No one must take the oath.",
+        "A forced loaded crossing risks falling and cargo loss; state the danger before a manual Dexterity check against 15. No automatic drowning follows a refusal."
+      ],
+      "clue": "The broken pin and optional oath are distinct hazards. Repair evidence leads to Makar, not to a required sacrifice.",
+      "exit": "Both approaching routes reach the safe bank without crossing. Back away freely or return inland."
+    },
+    {
+      "id": "e_courier",
+      "location_id": "l_market",
+      "title": "The witness with a borrowed voice",
+      "visible_situation": "Ione offers one delivery line for inspection while the bronze tablet repeats a completed public bargain.",
+      "participants": [
+        "ione"
+      ],
+      "approaches": [
+        "Read only the permitted line; identify the office mark with a willing source.",
+        "Negotiate lawful inspection or a changed delivery in genuine/counterfeit; in legend investigate the letter without inventing a cup.",
+        "Witness informally or decline; use of the supernatural tablet is optional."
+      ],
+      "if_ignored": "Ione retains custody and seeks another willing witness. No off-screen theft is generated merely to force pursuit.",
+      "costs": [
+        "Reading the offered line takes one turn and grants no access to the rest.",
+        "Any carriage price, recipient or return term must be accepted before handover.",
+        "The tablet warns: knowingly sign a false claim and it publicly repeats that signer and statement until publicly corrected. It reveals no unrelated secrets or private history."
+      ],
+      "clue": "The palace mark identifies an office. Neither it nor the tablet proves the letter’s claims about years.",
+      "exit": "Every ordinary market route stays open. Declining to witness creates no magical obligation."
+    },
+    {
+      "id": "e_feast",
+      "location_id": "l_palace",
+      "title": "The host who cannot leave",
+      "visible_situation": "The mask shadow smiles after it has been put down. Xanthe moves benches out of the marked eastern aisle and props the doors open.",
+      "participants": [
+        "xanthe"
+      ],
+      "approaches": [
+        "Move the meal outdoors or reduce its scale, preserving welcome without forced display.",
+        "Negotiate an affordable share with the granary, or attend without intoxication or vows.",
+        "Inspect the mural with permission; it shows past movement, not a current inventory."
+      ],
+      "if_ignored": "Xanthe keeps the unsafe aisle closed and can postpone or shrink the feast. Party absence does not force a collapse, sacrifice or supernatural offense.",
+      "costs": [
+        "Moving agreed benches takes two turns. A plain meal is 1 obol; an offered free portion has no retroactive price.",
+        "Knowingly loading the marked unsafe aisle risks timber failure; state danger before any uncertain manual check.",
+        "An announced sacred-host obligation has a precise cost: knowingly bar a guest’s departure after accepting that role and vines root the host’s own chair until the exit is opened. Nobody is forced to accept hosting."
+      ],
+      "clue": "The damaged mural depicts a vessel leaving the quarry. The shadow confers no power to make anyone agree.",
+      "exit": "Leave by any palace route or depart the feast early. No intoxication, intimacy, oath or gift is owed."
+    },
+    {
+      "id": "e_bronze",
+      "location_id": "l_quarry",
+      "title": "The maker’s chalk line",
+      "visible_situation": "Makar braces a lifting arm beside an empty statue recess. One hammerstroke answers from the cold stone.",
+      "participants": [
+        "makar"
+      ],
+      "approaches": [
+        "Wait for the brace, inspect the pawl safely and offer agreed assistance.",
+        "Compare the old sketch with current removal marks instead of searching until a relic appears.",
+        "Arrange an ordinary paid repair or carry a message without taking a forge vow."
+      ],
+      "if_ignored": "The arm remains braced if work is unsafe. The recess remains empty in every variant; the world does not reward persistence by moving a cup there.",
+      "costs": [
+        "Safe inspection takes one turn; agreed assistance takes two turns before a project review.",
+        "Harbor work stock is already budgeted; a private commission needs its own accepted price.",
+        "Releasing a loaded worn pawl risks crushing. In addition, one who knowingly breaks an optional sworn safety statement by releasing it under another worker’s load suffers the announced searing handle for 1d4 manual damage. Do not demand a vow to obtain service."
+      ],
+      "clue": "The removal marks predate this party. An old drawing can be outdated or invented according to the fixed variant.",
+      "exit": "Use either ordinary route. No blood offering, battle or proof of worth is necessary to depart."
+    },
+    {
+      "id": "e_names",
+      "location_id": "l_nekropolis",
+      "title": "Names that will not stay",
+      "visible_situation": "At dusk the stones repeat only names willingly spoken there. Leon has found a boundary stone beside the disputed gate.",
+      "participants": [
+        "leon"
+      ],
+      "approaches": [
+        "Inspect the boundary with permission and negotiate the safe public verge.",
+        "Help clear a funded section, offer private company, or ask what the family wants recorded.",
+        "Decline public naming or burial work without penalty."
+      ],
+      "if_ignored": "Families decide their own next step. No undead attack appears because strangers refuse assistance. The finite project can proceed at agreed reviews.",
+      "costs": [
+        "Inspecting the stone takes one turn; a staged clearance takes two turns and one authorized work lot.",
+        "Dion’s funeral_coin remains his. Any contribution is separately chosen; no visitor owes a mandatory coin.",
+        "The posted taboo concerns knowingly erasing another family’s memorial name for profit: the offender’s newly written public name washes away until repair is made or accepted. It erases neither memory nor identity."
+      ],
+      "clue": "The boundary supports a public path. The echoes give no private identity, soul judgment or answer about immortality.",
+      "exit": "Take either route away. Silence is valid, and no family preference is assumed for every mourner."
+    },
+    {
+      "id": "e_loom",
+      "location_id": "l_loom",
+      "title": "Work already in progress",
+      "visible_situation": "If an encounter has independently been established, three women continue three distinct tasks. No throne, merchant stall or quest board awaits.",
+      "participants": [
+        "clotho",
+        "lachesis",
+        "atropos"
+      ],
+      "approaches": [
+        "Ask a question within one sister jurisdiction and accept bounded speech or silence.",
+        "Listen, decline or leave. The encounter owes no solution.",
+        "Discuss possible gifts only with the actual living donors, elsewhere and freely; no sister selects them."
+      ],
+      "if_ignored": "The Fates continue their work. Departure creates no unfinished quest, missed reward or punishment.",
+      "costs": [
+        "No entrance payment or route roll guarantees arrival.",
+        "Time actually spent is a manual record, not an automatic age debit.",
+        "Questions do not purchase private history, future choices or another sister’s authority."
+      ],
+      "clue": "Jurisdiction limits authority; it is not a puzzle whose solution combines the sisters into omniscience.",
+      "exit": "Leave immediately by the departure established for this particular encounter. No ordinary route promises a return."
+    }
+  ],
+  "variants": [
+    {
+      "id": "genuine",
+      "artifact_item_id": "measure_cup",
+      "referee_truth": "The cup initially held by Ione genuinely mediates measured time freely and knowingly given by another living thread-bearer in this original continuity. It creates no years. A vessel was removed from the statue; old art is partial history, not present location authority. Use requires exact informed donor/recipient/amount/unit/knowledge/terms and, for ARGO, an authenticated host-verified receipt. Possession, wine, persuasion or an oath cannot substitute for consent. Measure changes neither age nor virtue, joy or anomaly probability. Selecting this variant discloses nothing to actors."
+    },
+    {
+      "id": "counterfeit",
+      "artifact_item_id": "measure_cup",
+      "referee_truth": "Ione holds an inert ceremonial copy. A vessel once left the recess; sellers later attached a life-extension story to its likeness. A touching vow or high roll cannot give it powers. A sincere consent offer does not make a failed method effective: debit no life for a demonstration. The old v1 transfer endpoint does not itself enforce campaign artifact identity; the host must deny unsupported method authorization."
+    },
+    {
+      "id": "legend",
+      "artifact_item_id": null,
+      "referee_truth": "No measure_cup item exists. Ione carries correspondence about a vessel story, not a hidden substitute. The statue drawing was imaginative; its empty recess and ceremonial mural prove no life-extension artifact. Investigation can yield history and help living people without a consolation relic, compulsory route or promised immortality. The host does not authorize cup-mediated transfers here."
+    }
+  ],
+  "starting_hooks": [
+    {
+      "id": "hook_lamp",
+      "title": "Borrow a light, choose a direction",
+      "prompt": "Melia offers ordinary lamp terms while independent grain and crossing notices remain visible.",
+      "location_id": "l_harbor",
+      "possible_actions": [
+        "Agree an exact return checkpoint and actual custody.",
+        "Ask directions or buy ordinary equipment.",
+        "Decline and leave Melia free to carry it herself or seek another willing carrier."
+      ],
+      "decline_consequence": "No debt, curse or locked opportunity. The lamp remains hers unless explicitly transferred."
+    },
+    {
+      "id": "hook_grain",
+      "title": "A list that can be read",
+      "prompt": "The granary seeks a willing witness or carrier; its notice promises no relic reward.",
+      "location_id": "l_granary",
+      "possible_actions": [
+        "Read the permitted allocation documents.",
+        "Negotiate paid work.",
+        "Watch the public process or refuse."
+      ],
+      "decline_consequence": "The grain house retains its finite problem and project; the traveler is not assigned responsibility for every hungry person."
+    },
+    {
+      "id": "hook_crossing",
+      "title": "Work that should have been done",
+      "prompt": "Dion refuses heavy carts on damaged stone; the harbor needs a safe pin and honest repair accounts.",
+      "location_id": "l_causeway",
+      "possible_actions": [
+        "Help on accepted terms.",
+        "Arrange safe unsworn ferry passage.",
+        "Travel inland or seek other work."
+      ],
+      "decline_consequence": "The safety stop remains. No forced fall, oath or personal punishment follows refusal."
+    },
+    {
+      "id": "hook_letter",
+      "title": "A promise without a witness",
+      "prompt": "Ione wants one allowed line read without surrendering her case.",
+      "location_id": "l_market",
+      "possible_actions": [
+        "Witness only the offered line.",
+        "Ask who recognizes its office mark.",
+        "Decline and explore elsewhere."
+      ],
+      "decline_consequence": "Ione keeps custody and seeks another witness. No hidden hand redirects the party to the cup or loom."
+    }
+  ]
+}

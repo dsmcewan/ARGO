@@ -1,0 +1,12 @@
+✔ legacy persona entry point carries the common world-external onlooker policy (73.943491ms)
+✔ real journal preserves two private interpretations of one witnessed action and replays every prefix (1777.967667ms)
+✔ quiet characters and audience-safe narration use real stored speech without giving prose a writer (513.715292ms)
+✔ a real post-anomaly commit during generation suppresses retained-history narration (315.824396ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3907.169401

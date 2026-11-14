@@ -1,0 +1,433 @@
+✖ catalog accepts a complete small pack and reversed ordinary-route endpoints without changing it (3.541529ms)
+✖ catalog validates closed grammar without coercing, removing fields, or supplying defaults (0.402594ms)
+✖ every collection rejects duplicate IDs and NPC/item reserved namespaces cannot collide (0.312465ms)
+✖ route, occupant, faction, encounter, rumor, hook and item references must actually resolve (0.316472ms)
+✖ ordinary atlas is connected, route memberships are reciprocal, and loom access stays conditional (0.691942ms)
+✖ occupants occur at their declared site exactly once and Fate identity/role/location are fixed (0.344705ms)
+✖ artifact selection excludes the other variant artifact and every physical claimed artifact from legend (0.408945ms)
+✖ clock, arithmetic, speech-codepoint and safe-number limits reject malformed content (0.302316ms)
+✖ passive guard rejects proxies and getters before invoking any caller behavior (0.620622ms)
+✖ passive guard rejects exotic, cyclic, decorated, sparse, symbolic, hidden and oversized structures (0.732351ms)
+✖ public handout and rumor candidate are exact minimal detached DTOs with no referee truth (0.324728ms)
+✖ seed has literal v1 defaults, exact caller scope, fixed Fate roles and traveler-only expedition (0.40589ms)
+✖ one roster produces explicit stable genuine, counterfeit and legend item selections (0.310802ms)
+✖ seed options reject unknown fields, invalid exact scope, seed, public key and unsupported variants (0.399518ms)
+✖ travelers are bounded safe unique mortal identities with campaign-valid nature (0.349574ms)
+✖ seed construction detaches nested inputs and never adds runtime knowledge, effects or display metadata (0.334486ms)
+✖ campaign construction leaves the existing causal and character schema freezes unchanged (0.403756ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 0
+ℹ fail 17
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1291.023929
+
+✖ failing tests:
+
+test at TESTS/tempting-fates-catalog.test.ts:66:1
+✖ catalog accepts a complete small pack and reversed ordinary-route endpoints without changing it (3.541529ms)
+  AssertionError [ERR_ASSERTION]: missing catalog API: assertCampaignPack
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at catalog (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:13:114)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:67:31)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/tempting-fates-catalog.test.ts:75:1
+✖ catalog validates closed grammar without coercing, removing fields, or supplying defaults (0.402594ms)
+  AssertionError [ERR_ASSERTION]: missing catalog API: assertCampaignPack
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at catalog (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:13:114)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:76:31)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/tempting-fates-catalog.test.ts:90:1
+✖ every collection rejects duplicate IDs and NPC/item reserved namespaces cannot collide (0.312465ms)
+  AssertionError [ERR_ASSERTION]: missing catalog API: assertCampaignPack
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at catalog (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:13:114)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:91:31)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/tempting-fates-catalog.test.ts:103:1
+✖ route, occupant, faction, encounter, rumor, hook and item references must actually resolve (0.316472ms)
+  AssertionError [ERR_ASSERTION]: missing catalog API: assertCampaignPack
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at catalog (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:13:114)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:104:31)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/tempting-fates-catalog.test.ts:123:1
+✖ ordinary atlas is connected, route memberships are reciprocal, and loom access stays conditional (0.691942ms)
+  AssertionError [ERR_ASSERTION]: missing catalog API: assertCampaignPack
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at catalog (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:13:114)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:124:31)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/tempting-fates-catalog.test.ts:137:1
+✖ occupants occur at their declared site exactly once and Fate identity/role/location are fixed (0.344705ms)
+  AssertionError [ERR_ASSERTION]: missing catalog API: assertCampaignPack
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at catalog (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:13:114)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:138:31)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/tempting-fates-catalog.test.ts:152:1
+✖ artifact selection excludes the other variant artifact and every physical claimed artifact from legend (0.408945ms)
+  AssertionError [ERR_ASSERTION]: missing catalog API: assertCampaignPack
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at catalog (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:13:114)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:153:31)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/tempting-fates-catalog.test.ts:167:1
+✖ clock, arithmetic, speech-codepoint and safe-number limits reject malformed content (0.302316ms)
+  AssertionError [ERR_ASSERTION]: missing catalog API: assertCampaignPack
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at catalog (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:13:114)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:168:31)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/tempting-fates-catalog.test.ts:180:1
+✖ passive guard rejects proxies and getters before invoking any caller behavior (0.620622ms)
+  AssertionError [ERR_ASSERTION]: missing catalog API: assertCampaignPack
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at catalog (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:13:114)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:181:31)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/tempting-fates-catalog.test.ts:195:1
+✖ passive guard rejects exotic, cyclic, decorated, sparse, symbolic, hidden and oversized structures (0.732351ms)
+  AssertionError [ERR_ASSERTION]: missing catalog API: assertCampaignPack
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at catalog (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:13:114)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:196:31)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/tempting-fates-catalog.test.ts:209:1
+✖ public handout and rumor candidate are exact minimal detached DTOs with no referee truth (0.324728ms)
+  AssertionError [ERR_ASSERTION]: missing catalog API: assertCampaignPack
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at catalog (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:13:114)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:210:31)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/tempting-fates-catalog.test.ts:223:1
+✖ seed has literal v1 defaults, exact caller scope, fixed Fate roles and traveler-only expedition (0.40589ms)
+  AssertionError [ERR_ASSERTION]: missing catalog API: assertCampaignPack
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at catalog (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:13:114)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:224:31)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/tempting-fates-catalog.test.ts:242:1
+✖ one roster produces explicit stable genuine, counterfeit and legend item selections (0.310802ms)
+  AssertionError [ERR_ASSERTION]: missing catalog API: assertCampaignPack
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at catalog (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:13:114)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:243:31)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/tempting-fates-catalog.test.ts:259:1
+✖ seed options reject unknown fields, invalid exact scope, seed, public key and unsupported variants (0.399518ms)
+  AssertionError [ERR_ASSERTION]: missing catalog API: assertCampaignPack
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at catalog (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:13:114)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:260:31)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/tempting-fates-catalog.test.ts:272:1
+✖ travelers are bounded safe unique mortal identities with campaign-valid nature (0.349574ms)
+  AssertionError [ERR_ASSERTION]: missing catalog API: assertCampaignPack
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at catalog (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:13:114)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:273:31)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/tempting-fates-catalog.test.ts:288:1
+✖ seed construction detaches nested inputs and never adds runtime knowledge, effects or display metadata (0.334486ms)
+  AssertionError [ERR_ASSERTION]: missing catalog API: assertCampaignPack
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at catalog (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:13:114)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:289:31)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/tempting-fates-catalog.test.ts:299:1
+✖ campaign construction leaves the existing causal and character schema freezes unchanged (0.403756ms)
+  AssertionError [ERR_ASSERTION]: missing catalog API: assertCampaignPack
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at catalog (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:13:114)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-300-1-dbb6439bc5/TESTS/tempting-fates-catalog.test.ts:300:31)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

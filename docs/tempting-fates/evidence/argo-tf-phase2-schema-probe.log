@@ -1,0 +1,14 @@
+{"name":"valid example","accepted":true}
+{"name":"both custody fields","accepted":false}
+{"name":"neither custody field","accepted":false}
+{"name":"ground item","accepted":true}
+{"name":"unsafe integer","accepted":false}
+{"name":"fractional resource","accepted":false}
+{"name":"negative resource","accepted":false}
+{"name":"duplicate alive authority","accepted":false}
+{"name":"authority claim","accepted":false}
+{"name":"reserved actor ID","accepted":false}
+{"name":"scope mismatch documented semantic limit","accepted":true}
+{"name":"HP above max documented semantic limit","accepted":true}
+{"name":"duplicate actor documented semantic limit","accepted":true}
+{"name":"negative zero canonical preflight limit","accepted":true}

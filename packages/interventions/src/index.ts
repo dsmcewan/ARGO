@@ -36,3 +36,5 @@ export async function runSubscriber(options:{updates:AsyncIterable<DerivedContex
  }finally{if(iterator.return)await serviceCall(()=>iterator.return!(),5000).catch(()=>{});}
  return outcomes;
 }
+
+export * from './characters.ts';

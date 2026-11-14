@@ -1,0 +1,171 @@
+{
+  "status": "implemented_and_offline_verified_local_campaign_candidate",
+  "branch": "argo/tempting-fates",
+  "baseline_character_runtime": "9d0f0e7e494a76e2be2ec694f3138566a4e0222e",
+  "tested_code_commit": "12229dec115abb8d34c5abba987530fbeda3daa8",
+  "main_changed": false,
+  "remote_writes": false,
+  "paid_model_calls": 0,
+  "operational_trust_promoted": false,
+  "application_merge_approved": false,
+  "owner_scope": {
+    "tone": "Dark tragic mythology: horror, hubris and divine punishment",
+    "delivery": "Playable campaign kit, strict TypeScript/JSON world schemas and deterministic tools",
+    "exclusion": "No exploration, combat or resource expansion of authoritative ledger or character authority"
+  },
+  "profiles": {
+    "campaign": "tempting-fates-pack/0.1.0",
+    "pure_rules": "tempting-fates-rules/0.1.0",
+    "proposed_tabletop_record": "tempting-fates-tabletop/0.1.0",
+    "existing_authority": "tempted-fates/1.0.0"
+  },
+  "content": {
+    "books": 9,
+    "locations": 8,
+    "ordinary_routes": 9,
+    "npcs": 11,
+    "mortal_npcs": 8,
+    "fates": 3,
+    "factions": 3,
+    "rumors": 12,
+    "items_across_variants": 5,
+    "encounters": 8,
+    "relic_variants": 3,
+    "starting_hooks": 4
+  },
+  "full_gate": {
+    "checks_passed": 10,
+    "checks_failed": 0,
+    "record": "evidence/full-gate/gate-result.json",
+    "elapsed_seconds": 182.501,
+    "execution": "Offline disposable clone; read-only candidate; network-unshared Bubblewrap",
+    "merge_ready_field": "Clean committed checkout requirement passed; not operator approval or candidate-vs-trusted-policy authorization"
+  },
+  "campaign_regressions": {
+    "contracts": 5,
+    "rules": 12,
+    "catalog": 18,
+    "integration": 5,
+    "total": 40,
+    "all_passed": true,
+    "included_in_full_gate": true
+  },
+  "review": {
+    "kind": "Separate native Codex peers; same-model advisory review, not cross-vendor or human approval",
+    "records": [
+      "evidence/argo-tf200-review.json",
+      "evidence/argo-tf300-review.json",
+      "evidence/argo-tf-campaign-review.json",
+      "evidence/argo-tf-phase2-review.json",
+      "evidence/argo-tf-phase2-fix-review.json"
+    ],
+    "finding_fixed": "TF-PH2-01: TypeScript now matches JSON exclusive item custody; negative compile and runtime schema cases retained",
+    "unresolved_material_findings_in_reviewed_scope": 0,
+    "independent_probes": {
+      "rules_assertions": 40570,
+      "catalog_checks": 64,
+      "campaign_narrative_strings_cross_checked": 159
+    }
+  },
+  "lane_commit_mapping": [
+    {
+      "ticket": "TF-000",
+      "local_author_commit": "d4020952d21bea8a87da3d0524fe50712f821bee",
+      "reachable_integration_commit": "d4020952d21bea8a87da3d0524fe50712f821bee",
+      "owned_paths_match_at_integration": true
+    },
+    {
+      "ticket": "TF-100",
+      "local_author_commit": "ab83d9fdb6c1334c20b5e6e43d41f09e5433c749",
+      "reachable_integration_commit": "d4b8086559a2934c233892949055531b24ba3706",
+      "owned_paths_match_at_integration": true
+    },
+    {
+      "ticket": "TF-200",
+      "local_author_commit": "a571f2875dd3ff1b3e00c37ba69a8d313934d3bb",
+      "reachable_integration_commit": "b61c8c7d8875c8188c1ceec08e29aa36e2ebda5d",
+      "owned_paths_match_at_integration": true
+    },
+    {
+      "ticket": "TF-300",
+      "local_author_commit": "aeac8921f89f60b0ac43e77246a3349eaf381425",
+      "reachable_integration_commit": "3e60d8c10cbf88e03cddbfbe09d6906c0577b743",
+      "owned_paths_match_at_integration": true
+    },
+    {
+      "ticket": "TF-900",
+      "local_author_commit": "5a2f5718abf0cdc1ee87a104bf4a6ee1d387690b",
+      "reachable_integration_commit": "12229dec115abb8d34c5abba987530fbeda3daa8",
+      "owned_paths_match_at_integration": true
+    }
+  ],
+  "code_and_data_sha256": {
+    "TESTS/tempting-fates-catalog.test.ts": "0ec51c00f5cb7f4e71572100603bac68ae16bea98a734f45f9e63ce6cc5bbef9",
+    "TESTS/tempting-fates-contracts.test.ts": "30f78749deae3a3a2626116e9748cb8b0e3410589662c389d5e6b78bc0e74a8f",
+    "TESTS/tempting-fates-integration.test.ts": "0540b8d2a3d0ce2750817c90652f56e2940e6eda72575450d8207a9c1ab43cc1",
+    "TESTS/tempting-fates-rules.test.ts": "356822d819bd14f1f00b2e24d05370a0862eed72970a2f79255bc763a9824f27",
+    "docs/tempting-fates/phase2/example-state.json": "3f9f66ad6bd4ca3ca69a4f686b1320d317de94f7385734113fc300db71299898",
+    "docs/tempting-fates/phase2/example-state.ts": "e1332f4247f05e0f82a72f1b6807fbc6c04499cc63f99fa26e10b8bcc10ac3ca",
+    "docs/tempting-fates/phase2/tabletop-state.schema.json": "4ed7bb407c4969cf0fcdcc899157f70111586069874daa116ce6ca11b3626665",
+    "docs/tempting-fates/phase2/tabletop-state.ts": "08227ff712ce08b1dc95af82b3b500380c2f56eeb10f0b6452c93052322bca32",
+    "docs/tempting-fates/seed.json": "8bbb912db822c01929d034bb83af65909cb869af2b1e8df11f7d16f403c34d7e",
+    "package-lock.json": "3d9bee935d7f4b47fc6712ad619b45489100cd892a1e301bbcd7324c6c48f6a0",
+    "scenarios/tempted-fates/campaign/FREEZE.json": "a6f19d93ce1b24b502a5f7068b8b5f105e3c38ffffa80e13a897c5d08fcae91f",
+    "scenarios/tempted-fates/campaign/catalog.ts": "59056e3b02e50d895d3f540dadf25ad2eb0c8424ea74e10fb6a6fc429c8d78f1",
+    "scenarios/tempted-fates/campaign/content.schema.json": "b52554b0e795f89c3fa204924eac68d2dbcb9e08590b40d972370f5d858ff69f",
+    "scenarios/tempted-fates/campaign/rules.ts": "03069b53a98c3b95d6e3aaf50f1fb1fa6113ec2eb9cea77a658bd48ca39663b1",
+    "scenarios/tempted-fates/campaign/types.ts": "f047ef254bc420341b5a077a5d8c28da2113e524677467c493edd99dcde75642",
+    "scenarios/tempted-fates/campaign/world.json": "0cd93546979225b2566be756558bf9d3dc0c060cdeffe2dbc3c08fa7568ba363",
+    "scenarios/tempted-fates/index.ts": "7d9456d0484a28b888927740fe72e0b65aee4f5ad01743fb0631a7e308c1f0de",
+    "scenarios/tempted-fates/package.json": "c8ebe7f673241c2324bb91a4cf8659f6b933eb7e16824a195e002451dc6d52d6"
+  },
+  "campaign_content_at_gate_sha256": {
+    "CAMPAIGNS/Tempting_Fates/ATLAS.md": "94bfc685cd14b67a37660ec78db492ec999ae89d95a589dcf11e99030354cf64",
+    "CAMPAIGNS/Tempting_Fates/ATTRIBUTION.md": "08215e74323a84a861eab7bdc0aaab05fc22ef0fcadcb05cff97d7cb1d40530b",
+    "CAMPAIGNS/Tempting_Fates/CHARACTER_SHEET.md": "b44098a1ca716e78dbddbb2960284408b43855a2d9ac2cc048ee4a46e6c8a770",
+    "CAMPAIGNS/Tempting_Fates/ENCOUNTERS.md": "191790032237d39012919f0b5da765aab0d39d0c7728b52350646ccc39767190",
+    "CAMPAIGNS/Tempting_Fates/PLAYER_GUIDE.md": "da7db8b118973e3141315a7e367bb4e5a32221461d7cd52647103759e59982c2",
+    "CAMPAIGNS/Tempting_Fates/QUICKSTART.md": "f050c77c581b03430beed6574190ee4b0ed7e8fb02d7ad44dfcb02a82d80935c",
+    "CAMPAIGNS/Tempting_Fates/README.md": "c57f9c81a5cd5ba33ac49d9783a6962d2df13ccb6485d90970b47b4ce1e959b5",
+    "CAMPAIGNS/Tempting_Fates/REFEREE_GUIDE.md": "c96c13786122b3b8dd95be44052be8ec1572b500b07b8b5a0493720250f4086f",
+    "CAMPAIGNS/Tempting_Fates/RULES.md": "6ce8e82af1326fb0095826d5e66d0314dd01de3f6fcd3805b98daca9f4f110f1"
+  },
+  "evidence_manifest": "evidence/manifest.json",
+  "board": {
+    "snapshot": "board-snapshot.json",
+    "submissions": "evidence/argo-tf-board-submissions.json",
+    "states": {
+      "TF-000": "VERIFYING",
+      "TF-100": "VERIFYING",
+      "TF-200": "VERIFYING",
+      "TF-300": "VERIFYING",
+      "TF-900": "READY"
+    },
+    "reason_for_integration_ready": "Pinned manifest policy refused direct existing Ajv dependency declaration and workspace lock change; explicit failure recorded, artifacts retained, no dispatcher running",
+    "policy_bypassed": false,
+    "application_accepted": false
+  },
+  "preserved_from_baseline": [
+    "packages",
+    "SYSTEMS",
+    "MECHANICS",
+    "SCENARIOS",
+    "tools",
+    "controller",
+    "scripts",
+    "pantheon",
+    "pantheon-seat-core",
+    "RESEARCH",
+    "REPAIRS"
+  ],
+  "documentation_addendum": "Later bookkeeping adds evidence and corrects guide spacing/first-edition naming and the referee-only quickstart link. All code, JSON content, schema and test bytes remain the exact full-gate candidate. Source plan/spec/status prose may differ; evidence manifest binds retained bytes.",
+  "limits": [
+    "Human-refereed level-one play; no live table balance playtest",
+    "Tabletop HP, journey, supplies and faction effects do not enter authoritative state",
+    "Phase2 state schema is a proposed grammar, not a semantic validator, save importer or new ruleset",
+    "Host identity, legitimate perception, rights and campaign artifact-method authorization remain deployment responsibilities",
+    "The existing anomaly cutoff remains world/branch-wide; no ordinary campaign trigger is added",
+    "Existing v1 authority/storage review defects and separate repair candidate remain outside this build",
+    "No paid provider calls, new service, voice/UI, automatic merge or GitHub publication"
+  ]
+}

@@ -1,0 +1,94 @@
+TAP version 13
+# Subtest: character readers return only the owner profile and latest private impression per subject
+ok 1 - character readers return only the owner profile and latest private impression per subject
+  ---
+  duration_ms: 24.278662
+  type: 'test'
+  ...
+# Subtest: private narrator archive contains the traveler record without other actor speech or private impressions
+ok 2 - private narrator archive contains the traveler record without other actor speech or private impressions
+  ---
+  duration_ms: 7.094337
+  type: 'test'
+  ...
+# Subtest: party narrator requires viewer acquisition in that party, filters before pagination, and reveals no hidden totals
+ok 3 - party narrator requires viewer acquisition in that party, filters before pagination, and reveals no hidden totals
+  ---
+  duration_ms: 16.949686
+  type: 'test'
+  ...
+# Subtest: actor identity and all tenant/rights/world/branch scope fields bind before transport
+ok 4 - actor identity and all tenant/rights/world/branch scope fields bind before transport
+  ---
+  duration_ms: 8.662825
+  type: 'test'
+  ...
+# Subtest: source scope, current cursor, existing actors, and party membership are enforced
+ok 5 - source scope, current cursor, existing actors, and party membership are enforced
+  ---
+  duration_ms: 27.986186
+  type: 'test'
+  ...
+# Subtest: same-tick acquisition never backdates knowledge to an earlier ledger prefix
+ok 6 - same-tick acquisition never backdates knowledge to an earlier ledger prefix
+  ---
+  duration_ms: 7.719839
+  type: 'test'
+  ...
+# Subtest: actor context keeps latest 16 first acquisitions; repeated grants do not refresh memory
+ok 7 - actor context keeps latest 16 first acquisitions; repeated grants do not refresh memory
+  ---
+  duration_ms: 6.068866
+  type: 'test'
+  ...
+# Subtest: private impressions have no silent subject-count cap
+ok 8 - private impressions have no silent subject-count cap
+  ---
+  duration_ms: 26.000287
+  type: 'test'
+  ...
+# Subtest: current ontology and engagement cutoffs suppress every narrator page and carry through actor views
+ok 9 - current ontology and engagement cutoffs suppress every narrator page and carry through actor views
+  ---
+  duration_ms: 16.445902
+  type: 'test'
+  ...
+# Subtest: empty unconfigured source returns explicit absence, not fabricated character state
+ok 10 - empty unconfigured source returns explicit absence, not fabricated character state
+  ---
+  duration_ms: 7.836858
+  type: 'test'
+  ...
+# Subtest: query, principal, factory configuration, and output remain detached across await boundaries
+ok 11 - query, principal, factory configuration, and output remain detached across await boundaries
+  ---
+  duration_ms: 23.557331
+  type: 'test'
+  ...
+# Subtest: actor output owns detached nested profiles and impressions
+ok 12 - actor output owns detached nested profiles and impressions
+  ---
+  duration_ms: 6.403954
+  type: 'test'
+  ...
+# Subtest: passive guards reject active query/principal/source DTOs and validate the entire projection
+ok 13 - passive guards reject active query/principal/source DTOs and validate the entire projection
+  ---
+  duration_ms: 40.019759
+  type: 'test'
+  ...
+# Subtest: bounded read transport supports cancellation without accepting a late projection
+ok 14 - bounded read transport supports cancellation without accepting a late projection
+  ---
+  duration_ms: 12.444077
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1096.822381

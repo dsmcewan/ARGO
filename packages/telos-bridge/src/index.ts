@@ -18,3 +18,5 @@ export function createTelosBridge(options:{scope:Scope;transport?:TelosTransport
 export function createTelosMock(authority:{submit:(proposal:IntentProposal,principal:Principal,options:ServiceOptions)=>Promise<Outcome>}):TelosTransport{
  return (proposal,principal,options)=>authority.submit(proposal,principal,options);
 }
+
+export * from './characters.ts';

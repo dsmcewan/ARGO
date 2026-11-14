@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "trials": [
+    {
+      "delay_ms": 250,
+      "receipt_observed_before_kill": true,
+      "sequence_after_crash": 1,
+      "sequence_after_retry": 1
+    },
+    {
+      "delay_ms": 1500,
+      "receipt_observed_before_kill": true,
+      "sequence_after_crash": 1,
+      "sequence_after_retry": 1
+    }
+  ],
+  "limits": "SIGKILL process crash, not host power loss; no private-key bytes retained"
+}

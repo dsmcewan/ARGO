@@ -1,0 +1,120 @@
+✖ character interpretation builds an observer-owned proposal through its own nature and predecessor (4.779007ms)
+✖ an eligible addressed character returns only a bounded speech proposal at the supplied cursor (1.543024ms)
+✖ narration sends the world-external voice and only a filtered record page to an injected provider (1.465507ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 0
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1050.72967
+
+✖ failing tests:
+
+test at TESTS/character-presentation.test.ts:19:1
+✖ character interpretation builds an observer-owned proposal through its own nature and predecessor (4.779007ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + null
+  - {
+  -   body: {
+  -     evidence_ids: [
+  -       'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+  -     ],
+  -     interpretation: 'Still polite. Still not my reason to abandon the gate.',
+  -     previous_impression_id: 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb',
+  -     subject_actor_id: 'traveler',
+  -     type: 'form_impression'
+  -   },
+  -   expected_cursor: {
+  -     head: 'cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc',
+  -     sequence: 5,
+  -     world_time: 20
+  -   },
+  -   request_id: 'impress_1',
+  -   scope: {
+  -     branch_id: 'main',
+  -     campaign_id: 'campaign',
+  -     rights_lane: 'private_upload',
+  -     tenant_id: 'tenant',
+  -     workspace_id: 'workspace',
+  -     workspace_tenant_id: 'tenant:private_upload:workspace',
+  -     world_id: 'world'
+  -   },
+  -   version: 'character-memory/1.0.0'
+  - }
+  
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-300-1-8827166903/TESTS/character-presentation.test.ts:23:9)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: { version: 'character-memory/1.0.0', scope: { tenant_id: 'tenant', rights_lane: 'private_upload', workspace_id: 'workspace', workspace_tenant_id: 'tenant:private_upload:workspace', campaign_id: 'campaign', world_id: 'world', branch_id: 'main' }, request_id: 'impress_1', expected_cursor: { sequence: 5, head: 'cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc', world_time: 20 }, body: { type: 'form_impression', subject_actor_id: 'traveler', evidence_ids: [Array], interpretation: 'Still polite. Still not my reason to abandon the gate.', previous_impression_id: 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb' } },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-presentation.test.ts:60:1
+✖ an eligible addressed character returns only a bounded speech proposal at the supplied cursor (1.543024ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + null
+  - {
+  -   body: {
+  -     addressed_actor_ids: [
+  -       'traveler'
+  -     ],
+  -     text: 'The gate stays shut.',
+  -     type: 'speak'
+  -   },
+  -   expected_cursor: {
+  -     head: 'cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc',
+  -     sequence: 5,
+  -     world_time: 20
+  -   },
+  -   request_id: 'answer',
+  -   scope: {
+  -     branch_id: 'main',
+  -     campaign_id: 'campaign',
+  -     rights_lane: 'private_upload',
+  -     tenant_id: 'tenant',
+  -     workspace_id: 'workspace',
+  -     workspace_tenant_id: 'tenant:private_upload:workspace',
+  -     world_id: 'world'
+  -   },
+  -   version: 'character-memory/1.0.0'
+  - }
+  
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-300-1-8827166903/TESTS/character-presentation.test.ts:63:9)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: { version: 'character-memory/1.0.0', scope: { tenant_id: 'tenant', rights_lane: 'private_upload', workspace_id: 'workspace', workspace_tenant_id: 'tenant:private_upload:workspace', campaign_id: 'campaign', world_id: 'world', branch_id: 'main' }, request_id: 'answer', expected_cursor: { sequence: 5, head: 'cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc', world_time: 20 }, body: { type: 'speak', text: 'The gate stays shut.', addressed_actor_ids: [Array] } },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-presentation.test.ts:87:1
+✖ narration sends the world-external voice and only a filtered record page to an injected provider (1.465507ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + ''
+  - 'The gate remained a gate. A rare display of consistency.'
+  
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-300-1-8827166903/TESTS/character-presentation.test.ts:92:9)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: 'The gate remained a gate. A rare display of consistency.',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

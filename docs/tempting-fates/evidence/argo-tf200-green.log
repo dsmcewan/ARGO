@@ -1,0 +1,20 @@
+✔ ability generation uses the lowest of exactly three d6 and adds ten for defense (3.227065ms)
+✔ normal checks exceed the target strictly; DEX+2 fails on thirteen and passes on fourteen (0.592219ms)
+✔ advantage and disadvantage select the supplied high and low dice with exact dice counts (0.860933ms)
+✔ capacity reports exact fit and negative remaining without discarding any possessions (2.470868ms)
+✔ damage preserves exact zero unconscious and negative dead boundaries (0.663282ms)
+✔ ordinary rest previews d8 plus Constitution, caps HP and never resurrects (0.714308ms)
+✔ morale holds on a tie and fails only above its rating (0.564698ms)
+✔ finite project advances are limited independently by requested steps, resources and remaining segments (0.414727ms)
+✔ all calculators reject unclosed and active inputs before reading a getter or proxy trap (2.042897ms)
+✔ nested malformed arrays, symbols, hidden properties, cycles and hostile numbers are rejected (1.107074ms)
+✔ plain null-prototype input is accepted without coercion (0.295664ms)
+✔ every calculator preserves caller input and returns fresh detached output (0.812432ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1299.36863

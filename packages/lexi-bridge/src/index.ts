@@ -43,3 +43,5 @@ export function createLexiMock(readAuthoritySnapshot:(options:ServiceOptions)=>P
  // live endpoint is implied; the ledger's signed journal is the mock's durable projection source.
  return async(query,principal,options)=>projectKnowledge(await readAuthoritySnapshot(options),query,principal);
 }
+
+export * from './characters.ts';

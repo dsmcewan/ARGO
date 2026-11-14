@@ -1,0 +1,20 @@
+✔ character commands accept five bounded variants without authorizing caller-chosen speech identity (8.722888ms)
+✔ character cursors reject inconsistent heads and noncanonical temporal integers (0.999092ms)
+✔ character scope identity and version are checked on nested public queries and envelopes (7.543719ms)
+✔ character DTO preflight rejects active objects without invoking user getters or proxy traps (0.588383ms)
+✔ character text and array bounds reject empty identity, unbounded speech and duplicate evidence (3.264956ms)
+✔ character experience variants distinguish authenticated speech from committed action summaries (1.935505ms)
+✔ character projection bounds every stored experience and acquisition to its authoritative cursor (8.054356ms)
+✔ character actor views bind impression ownership and profile to the queried actor (5.228032ms)
+✔ character narrator queries reject private viewer substitution, invalid page bounds and party mismatch (2.726656ms)
+✔ character narrator pages bind coverage and visible cursors without admitting observer metadata (2.727709ms)
+✔ character receipts bind event hash and cursor while preserving the exact command kind (2.305147ms)
+✔ character identity helpers bind scope, content and authenticated identity without receipt-list noise (6.255116ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 955.114561

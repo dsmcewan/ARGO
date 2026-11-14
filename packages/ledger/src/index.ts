@@ -121,3 +121,8 @@ export function makeCheckpoint(state:Snapshot,id:string,actorIds:string[],expire
  if(expiresAt<=state.world_time||actorIds.some(actor=>!own(state.actors,actor)))fail('INVALID_ACTION','Checkpoint participants or expiry invalid');
  const value:EncounterCheckpoint={checkpoint_id:id,scope:structuredClone(state.genesis.scope),head:state.head,sequence:state.sequence,world_time:state.world_time,actor_ids:[...actorIds],policy,expires_at:expiresAt};assertContract('EncounterCheckpoint',value);return value;
 }
+
+export * from './characters.ts';
+
+// Separate versioned combat/exploration/resource journal for new worlds only.
+export * from './mortal/index.ts';

@@ -1,0 +1,89 @@
+✖ campaign grammar accepts a bounded referee pack without requiring production content counts (6.00775ms)
+✖ campaign grammar rejects unknown authorizing fields and malformed reference identities (0.960894ms)
+✖ campaign grammar rejects version drift, unsafe arithmetic inputs and unknown variant assessments (0.722371ms)
+✖ public handout and rumor candidate grammar refuses referee secrets and automatic delivery metadata (0.83395ms)
+✖ campaign schema and typed API freeze pins the complete shared interface (0.674291ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 0
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 195.648608
+
+✖ failing tests:
+
+test at TESTS/tempting-fates-contracts.test.ts:36:1
+✖ campaign grammar accepts a bounded referee pack without requiring production content counts (6.00775ms)
+  Error: ENOENT: no such file or directory, open '/workspace/ARGO/.board/tempting-fates/worktrees/TF-000-1-88789a0d60/scenarios/tempted-fates/campaign/content.schema.json'
+      at async open (node:internal/fs/promises:1345:25)
+      at async readFile (node:internal/fs/promises:2003:14)
+      at async validator (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-000-1-88789a0d60/TESTS/tempting-fates-contracts.test.ts:11:26)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-000-1-88789a0d60/TESTS/tempting-fates-contracts.test.ts:37:17)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/workspace/ARGO/.board/tempting-fates/worktrees/TF-000-1-88789a0d60/scenarios/tempted-fates/campaign/content.schema.json'
+  }
+
+test at TESTS/tempting-fates-contracts.test.ts:39:1
+✖ campaign grammar rejects unknown authorizing fields and malformed reference identities (0.960894ms)
+  Error: ENOENT: no such file or directory, open '/workspace/ARGO/.board/tempting-fates/worktrees/TF-000-1-88789a0d60/scenarios/tempted-fates/campaign/content.schema.json'
+      at async open (node:internal/fs/promises:1345:25)
+      at async readFile (node:internal/fs/promises:2003:14)
+      at async validator (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-000-1-88789a0d60/TESTS/tempting-fates-contracts.test.ts:11:26)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-000-1-88789a0d60/TESTS/tempting-fates-contracts.test.ts:40:17)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/workspace/ARGO/.board/tempting-fates/worktrees/TF-000-1-88789a0d60/scenarios/tempted-fates/campaign/content.schema.json'
+  }
+
+test at TESTS/tempting-fates-contracts.test.ts:56:1
+✖ campaign grammar rejects version drift, unsafe arithmetic inputs and unknown variant assessments (0.722371ms)
+  Error: ENOENT: no such file or directory, open '/workspace/ARGO/.board/tempting-fates/worktrees/TF-000-1-88789a0d60/scenarios/tempted-fates/campaign/content.schema.json'
+      at async open (node:internal/fs/promises:1345:25)
+      at async readFile (node:internal/fs/promises:2003:14)
+      at async validator (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-000-1-88789a0d60/TESTS/tempting-fates-contracts.test.ts:11:26)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-000-1-88789a0d60/TESTS/tempting-fates-contracts.test.ts:57:17)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/workspace/ARGO/.board/tempting-fates/worktrees/TF-000-1-88789a0d60/scenarios/tempted-fates/campaign/content.schema.json'
+  }
+
+test at TESTS/tempting-fates-contracts.test.ts:69:1
+✖ public handout and rumor candidate grammar refuses referee secrets and automatic delivery metadata (0.83395ms)
+  Error: ENOENT: no such file or directory, open '/workspace/ARGO/.board/tempting-fates/worktrees/TF-000-1-88789a0d60/scenarios/tempted-fates/campaign/content.schema.json'
+      at async open (node:internal/fs/promises:1345:25)
+      at async readFile (node:internal/fs/promises:2003:14)
+      at async validator (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-000-1-88789a0d60/TESTS/tempting-fates-contracts.test.ts:11:26)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-000-1-88789a0d60/TESTS/tempting-fates-contracts.test.ts:70:16)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/workspace/ARGO/.board/tempting-fates/worktrees/TF-000-1-88789a0d60/scenarios/tempted-fates/campaign/content.schema.json'
+  }
+
+test at TESTS/tempting-fates-contracts.test.ts:79:1
+✖ campaign schema and typed API freeze pins the complete shared interface (0.674291ms)
+  Error: ENOENT: no such file or directory, open '/workspace/ARGO/.board/tempting-fates/worktrees/TF-000-1-88789a0d60/scenarios/tempted-fates/campaign/FREEZE.json'
+      at async open (node:internal/fs/promises:1345:25)
+      at async readFile (node:internal/fs/promises:2003:14)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-000-1-88789a0d60/TESTS/tempting-fates-contracts.test.ts:80:26)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/workspace/ARGO/.board/tempting-fates/worktrees/TF-000-1-88789a0d60/scenarios/tempted-fates/campaign/FREEZE.json'
+  }

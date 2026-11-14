@@ -1,0 +1,25 @@
+✖ Phase 2 tabletop state grammar remains explicit, closed and non-authoritative (7.63824ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1328.805584
+
+✖ failing tests:
+
+test at TESTS/tempting-fates-integration.test.ts:121:1
+✖ Phase 2 tabletop state grammar remains explicit, closed and non-authoritative (7.63824ms)
+  Error: ENOENT: no such file or directory, open '/workspace/ARGO/.board/tempting-fates/worktrees/TF-900-1-545390c872/docs/tempting-fates/phase2/tabletop-state.schema.json'
+      at async open (node:internal/fs/promises:1345:25)
+      at async readFile (node:internal/fs/promises:2003:14)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-900-1-545390c872/TESTS/tempting-fates-integration.test.ts:123:26)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/workspace/ARGO/.board/tempting-fates/worktrees/TF-900-1-545390c872/docs/tempting-fates/phase2/tabletop-state.schema.json'
+  }

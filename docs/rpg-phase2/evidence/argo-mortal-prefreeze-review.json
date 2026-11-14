@@ -1,0 +1,61 @@
+{
+  "review_kind": "Read-only prefreeze contract risk review",
+  "reviewer": "ledger_final_review",
+  "reviewed_at": "2026-11-14T07:29:19.998358+00:00",
+  "status": "Clarifications required before freeze; implementation not reviewed",
+  "files": [
+    {
+      "path": "SYSTEMS/mortal-v2/CONTRACT.md",
+      "sha256": "b10c4e48a5a7875d3d27d5bc5a7202dbcaee535aea266af0a3133a5ae987d08a"
+    },
+    {
+      "path": "packages/contracts/src/mortal-types.ts",
+      "sha256": "cc190ee13578b4260abc1bf326000bbf047e7971aa448a8f4bc2c30d81925272"
+    }
+  ],
+  "findings": [
+    {
+      "id": "PREFREEZE-01",
+      "priority": "high",
+      "issue": "Zero-HP actor admission is not globally defined",
+      "example": "Generic admission forbids dead actors, but travel/explore/wait/pickup/loot/buy and transfer do not expressly require standing. An implementer can permit an unconscious actor to travel or loot while following the written per-action rules.",
+      "requested_rule": "Every actor command except rest requires hp>0; rest alone permits hp=0. Combat additionally requires actor_id to equal the current order[turn]."
+    },
+    {
+      "id": "PREFREEZE-02",
+      "priority": "high",
+      "issue": "Elapsed time, supply damage, hazard/reward and capacity ordering is unspecified",
+      "example": "A1HP actor without rations/water explores a ration reward. Reward-before-time can avoid starvation; time-before-reward can kill. The contract only states that admitted travel finishes at its destination on death, leaving admitted exploration outcome uncertain. Different order also changes deterministic draws.",
+      "requested_rule": "Specify one exact operation order, debit/preflight rules, and whether admitted hazard/search/reward finishes after actor becomes unconscious or dead. Do not let reward availability retroactively satisfy a preflight supply requirement unless intentionally specified."
+    },
+    {
+      "id": "PREFREEZE-03",
+      "priority": "medium",
+      "issue": "Actor view promises no exact API/field whitelist",
+      "example": "Permitted encounter facts is undefined, while raw event/receipt effects can include other participants supply damage/resources.",
+      "requested_rule": "Define the closed viewer projection before exposing it, or explicitly defer the view API and keep raw snapshots/events/receipts host-only."
+    },
+    {
+      "id": "PREFREEZE-04",
+      "priority": "medium",
+      "issue": "Duplicate request-ID rejection is assigned to storage without a whole-history replay rule",
+      "example": "Pure event creation can construct consecutive otherwise-valid signed events reusing request_id with different command/current cursor; state has no dedup map. Whole-history replay needs its own seen-ID index to reject histories storage would refuse.",
+      "requested_rule": "Require replayMortal and persisted-history validation to reject duplicate request_id; describe verifyMortalEvent as structural/transition verification that needs an external index for history-wide uniqueness."
+    }
+  ],
+  "pending_changes_excluded": [
+    "signed receipt genesis/key/signature fields",
+    "paginated event reads",
+    "one initiative draw at begin",
+    "round_participants and exactly-once six-second charging including same-round escape"
+  ],
+  "limits": [
+    "No implementation execution or balance claim.",
+    "No tactical grid, morale, Fate migration or new writer was proposed.",
+    "Source hashes identify the in-progress snapshot and do not approve later edits."
+  ],
+  "source_edits": false,
+  "board_mutations": false,
+  "paid_calls": 0,
+  "nested_workers": false
+}

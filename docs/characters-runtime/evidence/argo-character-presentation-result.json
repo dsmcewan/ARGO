@@ -1,0 +1,39 @@
+{
+  "ticket": "CR-300",
+  "commit": "19140f5cfbdc4e3abf7272751950d3d53cba3219",
+  "files": {
+    "packages/argo-dm/src/characters.ts": "27eeab50cdd12a94a6338fa9f0100978ad057ae2f559ac68e8e5ab54063e54c6",
+    "packages/interventions/src/characters.ts": "4ac87407fcad3db2f0116049dec9ef50681488a230a8605f159aa6a6894a6a3e",
+    "TESTS/character-presentation.test.ts": "2f6e62edf4535cdc148f22944effaae6c2d583eea7088818cab81751f2eea216"
+  },
+  "logs": {
+    "/tmp/argo-character-presentation-red.log": "dcfea327c0d18035cc595330a20d9f82edf64ac0f9a7a054434b8c7e5641bbca",
+    "/tmp/argo-character-presentation-cutoff-red.log": "af213b385f909fe8267a9960e54792bc92a23e81a30b188ba6698ef436e0c21f",
+    "/tmp/argo-character-presentation-output-red.log": "bd36defd7223b8924e4a9640884d15c76e9987792a922061fe97fbd8a2c6d47b",
+    "/tmp/argo-character-presentation-green.log": "7f4371756b4b7498cb4577598aad5bb5738b237f2c0a88b6146089916c59577f",
+    "/tmp/argo-character-presentation-full.log": "08553b90175bd49aa1fb3a1a494170c751bec60221fd256304b11174c5da2d6e",
+    "/tmp/argo-character-presentation-typecheck.log": "2cf20646d72113be26c6fbe14738bc101ebf909ab8a2374290f369e1d53c975c"
+  },
+  "focused_tests": {
+    "passed": 23,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "foundation_tests": {
+    "passed": 118,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "typecheck": "passed",
+  "paid_model_calls": 0,
+  "operational_trust_approval": false,
+  "limits": [
+    "Host must authenticate and filter the reader; these DTO guards do not independently prove membership or fresh authority.",
+    "Narrator payload is one bounded authorized page, not the whole retained archive.",
+    "Voice policy is tested at injected provider request boundary, not live-model stylistic compliance.",
+    "Character planner returns optional untrusted commands; authority must revalidate before append.",
+    "Baseline model-client and protected acceptance policy remain unchanged."
+  ]
+}

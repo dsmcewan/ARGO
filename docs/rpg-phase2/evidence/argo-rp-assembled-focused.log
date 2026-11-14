@@ -1,0 +1,33 @@
+✔ balance preregistration pairs HP/armor/policies without reusing held-out seeds (7.911076ms)
+✔ balance intervals preserve exact paired counts and do not invent certainty (2.023646ms)
+✔ balance uses genuine reducer transitions and replay for every combat endpoint (789.603656ms)
+✔ immediate retreat cannot win an encounter by secretly attacking (226.525055ms)
+✔ bounded trials report censorship rather than silently dropping hard seeds (6.736203ms)
+✔ resource stress executes legal light, discovery, forage, food and rest boundaries (812.954947ms)
+✔ study rejects undersized claims while small test studies retain every arm and seed (1226.570859ms)
+✔ campaign initializes fresh deterministic mortal worlds with fixed variant and no Fate combat actors (227.725477ms)
+✔ campaign host options refuse active, unknown and identity-colliding inputs (21.972805ms)
+✔ mortal actor view exposes own state and admitted encounter facts without host secrets (36.41222ms)
+✔ campaign real durable loop spends food and stock once, preserves private views and replays after reopening (2680.3902ms)
+✔ journal binds complete genesis and derives signed replay and receipt from one admitted action (81.825ms)
+✔ journal replay checks each physical transition and every draw even when a mutated event is re-signed (56.021419ms)
+✔ genesis metadata, key, seed and variant changes cannot inherit another signed history (36.871406ms)
+✔ whole replay rejects duplicate request IDs that pass isolated event verification (37.052366ms)
+✔ receipts verify from pinned public trust and refuse every signed identity/content mutation (17.24999ms)
+✔ journal DTO guards run before getters/proxies, and caller history is never mutated (14.108158ms)
+✔ SQLite commits replayable state and idempotency together, reopens, and pages host history (2366.664766ms)
+✔ concurrent handles serialize conflicting actions and duplicate retry never spends twice (2264.249143ms)
+✔ rejected command has no event/index/RNG effect and input mutation cannot alter queued work (1161.51688ms)
+✔ external trusted prefix detects rollback and divergent/mismatched genesis at reopen (5823.801441ms)
+✔ a worker-held write lock never blocks the parent loop and termination releases the OS lock (1415.990133ms)
+✔ storage refuses corrupt event/index/receipt bytes on reopen and never persists private PEM (2011.351012ms)
+✔ cached history pages and retries rebind event bytes to their signed receipt hash (911.949452ms)
+✔ host API rejects active DTOs before cloning, bounds page requests, and closes idempotently (916.942952ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 20186.893419

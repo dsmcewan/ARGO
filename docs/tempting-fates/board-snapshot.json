@@ -1,0 +1,56 @@
+{
+  "audit_chain_valid": true,
+  "audit_head": {
+    "seq": 57,
+    "hash": "c37b498dac7ce926d872be2d788f9f2cd827e1874de8a8760e28bd703d874d23"
+  },
+  "acceptance_claimed": false,
+  "automatic_dispatch_running": false,
+  "tickets": [
+    {
+      "id": "TF-000",
+      "status": "VERIFYING",
+      "attempt": 1,
+      "epoch": 1,
+      "base_commit": "7460c313368c53bd6a5d450d9f823e9c1285e79c",
+      "commit_sha": "d4020952d21bea8a87da3d0524fe50712f821bee",
+      "error": null
+    },
+    {
+      "id": "TF-100",
+      "status": "VERIFYING",
+      "attempt": 1,
+      "epoch": 1,
+      "base_commit": "d4020952d21bea8a87da3d0524fe50712f821bee",
+      "commit_sha": "ab83d9fdb6c1334c20b5e6e43d41f09e5433c749",
+      "error": null
+    },
+    {
+      "id": "TF-200",
+      "status": "VERIFYING",
+      "attempt": 1,
+      "epoch": 1,
+      "base_commit": "d4020952d21bea8a87da3d0524fe50712f821bee",
+      "commit_sha": "a571f2875dd3ff1b3e00c37ba69a8d313934d3bb",
+      "error": null
+    },
+    {
+      "id": "TF-300",
+      "status": "VERIFYING",
+      "attempt": 1,
+      "epoch": 1,
+      "base_commit": "d4020952d21bea8a87da3d0524fe50712f821bee",
+      "commit_sha": "aeac8921f89f60b0ac43e77246a3349eaf381425",
+      "error": null
+    },
+    {
+      "id": "TF-900",
+      "status": "READY",
+      "attempt": 1,
+      "epoch": 1,
+      "base_commit": "d4020952d21bea8a87da3d0524fe50712f821bee",
+      "commit_sha": null,
+      "error": "Integration source 5a2f5718abf0cdc1ee87a104bf4a6ee1d387690b retained in CAS; Board refused pinned dependency manifest changes. Offline application candidate is separately tested. Operator-approved policy is required before automated application acceptance; no dispatcher is running."
+    }
+  ]
+}

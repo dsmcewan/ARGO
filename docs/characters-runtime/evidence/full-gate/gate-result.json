@@ -1,0 +1,65 @@
+{
+  "candidate": "0b827e1e41bc954c73df36d7513a9007de15a0cb",
+  "gate": {
+    "controller": "deterministic-v1",
+    "commit": "0b827e1e41bc954c73df36d7513a9007de15a0cb",
+    "workspace_sha256": "cdfb19478dd50e12eb42bd062daddccfab4868a839b700166312b9ea61acbe1c",
+    "merge_ready": true,
+    "checks": [
+      {
+        "name": "generated-types",
+        "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "schema",
+        "output_sha256": "67f16524049736f5c7ae4797b3c9a1905b4a092f4b4819e31854fc4e493866db"
+      },
+      {
+        "name": "boundaries",
+        "output_sha256": "4c3185cf2b29bed5b98ba789ed4c651caa16c927ced1128a1c8dc74589695957"
+      },
+      {
+        "name": "types",
+        "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "board-and-dispatch",
+        "output_sha256": "5a4dbf8116e8cd6d489e61398142f8e7536fa58c705f5437b4a715bebd27b236"
+      },
+      {
+        "name": "research-python",
+        "output_sha256": "e6990adbf8cd3f15bbf6707f12ca44d88f48df2ac4eea1ed7775a957cf02aba1"
+      },
+      {
+        "name": "research-tests",
+        "output_sha256": "a5c2dfe85dd27c14043262b22ad979183f2e7b978385dbe35855369374847dbd"
+      },
+      {
+        "name": "research-package",
+        "output_sha256": "21cddbfa4ca6eac9315c754f50759b35411a03f74f5d79a7c5318c6833b4e1b1"
+      },
+      {
+        "name": "foundation",
+        "output_sha256": "4725a0b8a0a3f3bd812c7200574489130eec7c7126e429eeb9d3ca279effa5e9"
+      },
+      {
+        "name": "model-and-process",
+        "output_sha256": "3fcc927904ee70393804d3acbe9023246d433ccd82067e9dfe716e5e493f0087"
+      }
+    ]
+  },
+  "elapsed_seconds": 166.861,
+  "execution": "Disposable clone; full candidate read-only; network-unshared Bubblewrap; offline dependencies",
+  "source_head_unchanged": true,
+  "merged": false,
+  "operational_trust_promoted": false,
+  "paid_model_calls": 0,
+  "remote_writes": false,
+  "logs": {
+    "application-gate.log": "f27905573b604ccd2311b6928edde4ac710b4b610ac87cbcd808fba9647a3da0",
+    "checkout.log": "1fc0e6d106046757a41a1a2b83cbd793224586d6dfa3b4d2419be64a04ff944c",
+    "clone.log": "9ee0aacef7044c12c8a43f83bc2ab360226df380082701f7c4822c3cf68f3fda",
+    "pantheon-install.log": "178c8457015fa8fcd91650ef25c0d212e906ce8bfed7373fc2dfde9e57be1dfd",
+    "root-install.log": "e845549e7a93d4cf20e361edea6827ade6a4c65ad077834ef7a603f44cae8720"
+  }
+}

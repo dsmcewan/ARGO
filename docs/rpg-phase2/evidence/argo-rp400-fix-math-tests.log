@@ -1,0 +1,11 @@
+✔ balance intervals preserve exact paired counts and do not invent certainty (4.333756ms)
+✔ paired score bounds retain uncertainty for all-equal, all-improved and all-worsened samples (1.219925ms)
+✔ shared train and heldout comparison suppresses terminal inference for a censored pair in either arm (1.7198ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1564.896488

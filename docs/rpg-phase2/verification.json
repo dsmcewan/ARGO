@@ -1,0 +1,343 @@
+{
+  "profile": "mortal-rules/0.2.0",
+  "baseline": "b3aa71f74ab406940dcc86545e4f7954d51f4eac",
+  "runtime_candidate": "bb7c838252f320548d47c6c433b0eb429afd8e70",
+  "main_unchanged": "100e6c2bb3b6f1a5a8ca07e7685f492b01c7f345",
+  "scope": "Fresh-world physical authority, campaign initialization and offline balance. Existing Fate/character authority not migrated.",
+  "source_and_test_hashes": {
+    "SYSTEMS/mortal-v2/CONTRACT.md": "ede698b24b62c4d47f6d45f3cbe4288b43dd230128a3a09edb59fee121f35447",
+    "SYSTEMS/mortal-v2/FREEZE.json": "5e8130c3e774670073fdf1d3f07242ffa8c58d73330ede1baea3079ca5a19714",
+    "SYSTEMS/mortal-v2/mortal.schema.json": "070be914286893c86598578dccabe152bbdece23ba859d162776243f2b0b21ff",
+    "TESTS/mortal-balance.test.ts": "b3134443c359e8ddd7d362478d890934bee717bdc095e0adb9b06e75d188cd8a",
+    "TESTS/mortal-contracts.test.ts": "c0d0fe168e7f34c4f810a07bcd99f6328809127860f712cdee035fda111ff3b8",
+    "TESTS/mortal-fixtures.ts": "de4ae5876bb7f23b3ca3789e9c02762b22ad6285a65605f576126e0ee3f3d70a",
+    "TESTS/mortal-integration.test.ts": "7dfffb05dc3b0631a86b9fa287e1875db9eccbfb883fb5c7769a99df9a094f89",
+    "TESTS/mortal-journal.test.ts": "a78fbe3daec824b07b71e8c24cd496d69dccfc2245736f498b3141294871e470",
+    "TESTS/mortal-rules.test.ts": "8419b789f36a9c06724ef9322063941e00260e9548c33526e108ef9eead57050",
+    "TESTS/mortal-storage.test.ts": "e4e03dde4f2f2adceaa59a2f925e606486dc063095bcf7bf8bb6de91cc4934f4",
+    "package-lock.json": "28fb9235f1f025821195099ad703098bb703ad09438a523817a558b4ca4556b0",
+    "packages/contracts/src/index.ts": "14f7c1488fc4dff21da330a2462f8d6bfb784e2d9a07b81aaa20507055468a31",
+    "packages/contracts/src/mortal-types.ts": "f798d4d9325b502006d871867d00805d95febc9ba8a8bdd7f79846808e31686f",
+    "packages/contracts/src/mortal.ts": "c51c63e6ae4c92ed4ce9b72f4fd0ae49fa4bbf9d74940e47bffb3e87ba753d75",
+    "packages/ledger/src/index.ts": "df14bc386fcf023c3a928a3109f3146c370746dc68b6a388dbdc52fc8ab4d049",
+    "packages/ledger/src/mortal/index.ts": "5597e1ddfec664b5951f00d3afca5839a1dd7d0895d3561cead5dde38811de91",
+    "packages/ledger/src/mortal/journal.ts": "4a09c73e452fbe4f1f5adf5b8b0796de758f8eb3a8905c04eb0ca44ad1e3896b",
+    "packages/ledger/src/mortal/rules.ts": "fadca52771d69ef23ee4e37106ce366f9a8611f099f441d5d3613a032b87bdf5",
+    "packages/ledger/src/mortal/storage-worker.ts": "e226917c9c1b2d62b31b28871b357ebfae84e8ead7c5d139b93c4660221cecc5",
+    "packages/ledger/src/mortal/storage.ts": "6d5620521c060757515d6fe75ff3c380f1bb405368995c178feca65562138099",
+    "packages/ledger/src/mortal/view.ts": "70234a502a0250df58d3cb173131d30414319ec25f61f3eeb8247886a4516aa7",
+    "scenarios/tempted-fates/balance/cli.ts": "ebe5c28f953f3c2710777aea92ff3e69f415f45703fd18606eac03fe5610ac3e",
+    "scenarios/tempted-fates/balance/fixtures.ts": "51cac7b10b5217f6992140c9632478af1c1c727af3efe4ecec5519d1ea1a28e2",
+    "scenarios/tempted-fates/balance/protocol.json": "6fda0e10089e5be991983e08a3894f9d7abe734fed502b3f87f85e09048bdff5",
+    "scenarios/tempted-fates/balance/runner.ts": "b22bc90e439ca731d185b8cd2e3e04daeba5ddc47b3010da9c40487ca3f8305d",
+    "scenarios/tempted-fates/balance/statistics.ts": "df967028fcc2c2258e7e71515bf7b28d3c4737914903bb7af6399d9149e26e82",
+    "scenarios/tempted-fates/index.ts": "063c44eb40151ddf6b62d7152fee17d5056e237ec1988a885f189e4526b2a417",
+    "scenarios/tempted-fates/package.json": "58e81e7d8b4f159957c52bfeae5e3f8c3d438d759dac4a0887289e7ba2fff1fb",
+    "scenarios/tempted-fates/runtime.ts": "ca99cb79519961ef13caa1eedfc51f511c4b8e72a0318c53878d8571c537e888"
+  },
+  "paid_model_calls": 0,
+  "pushed": false,
+  "merged_to_main": false,
+  "operational_trust_promoted": false,
+  "review_kind": "Independent native agents using the same available model; not cross-vendor or human certification",
+  "application_gate": {
+    "candidate": "bb7c838252f320548d47c6c433b0eb429afd8e70",
+    "gate": {
+      "controller": "deterministic-v1",
+      "commit": "bb7c838252f320548d47c6c433b0eb429afd8e70",
+      "workspace_sha256": "d618234af6381783616eeefe240781f377a3bf3b1916f656f9ad7d8fe09b7b5f",
+      "merge_ready": true,
+      "checks": [
+        {
+          "name": "generated-types",
+          "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "schema",
+          "output_sha256": "67f16524049736f5c7ae4797b3c9a1905b4a092f4b4819e31854fc4e493866db"
+        },
+        {
+          "name": "boundaries",
+          "output_sha256": "58e1b9bedd28c07331f1ffd11d9b0a1900e18bfe7fe803ff25770dbe5517d82d"
+        },
+        {
+          "name": "types",
+          "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "board-and-dispatch",
+          "output_sha256": "1e5735228c45d05c9c5d8e2f76a882eea495086fdcedd78fc580311b9c1895ac"
+        },
+        {
+          "name": "research-python",
+          "output_sha256": "611e9a2672c448485eef1305863fda434479fbdff5d1d3beff2015a9891666c8"
+        },
+        {
+          "name": "research-tests",
+          "output_sha256": "a5c2dfe85dd27c14043262b22ad979183f2e7b978385dbe35855369374847dbd"
+        },
+        {
+          "name": "research-package",
+          "output_sha256": "21cddbfa4ca6eac9315c754f50759b35411a03f74f5d79a7c5318c6833b4e1b1"
+        },
+        {
+          "name": "foundation",
+          "output_sha256": "fbd3d3bf3a1bb59dd2fcb3af503ade79b215b92401c2644be6d2c72d54be7ddd"
+        },
+        {
+          "name": "model-and-process",
+          "output_sha256": "3fcc927904ee70393804d3acbe9023246d433ccd82067e9dfe716e5e493f0087"
+        }
+      ]
+    },
+    "elapsed_seconds": 276.913,
+    "execution": "Disposable clone; full candidate read-only; network-unshared Bubblewrap; offline dependencies",
+    "source_head_unchanged": true,
+    "merged": false,
+    "operational_trust_promoted": false,
+    "paid_model_calls": 0,
+    "remote_writes": false,
+    "logs": {
+      "application-gate.log": "29521189a4270ebb403cdde140e63fb2bc6f3b00bdaf7fa6ffae088d07a23909",
+      "checkout.log": "97ad1f384392208ca3e08a49e971308bca8f31ffe084f6fef26f10e36e973f9f",
+      "clone.log": "e82a72be5705a95815fb401adf16824d07f5a1f70fa4ca83ff76d021a2b97fbe",
+      "pantheon-install.log": "178c8457015fa8fcd91650ef25c0d212e906ce8bfed7373fc2dfde9e57be1dfd",
+      "root-install.log": "e845549e7a93d4cf20e361edea6827ade6a4c65ad077834ef7a603f44cae8720"
+    }
+  },
+  "author_to_integration": [
+    {
+      "ticket": "RP-100",
+      "author": "2423d5b856ef57b39214116472c8b899cd45e428",
+      "integration": "2423d5b856ef57b39214116472c8b899cd45e428"
+    },
+    {
+      "ticket": "RP-200",
+      "author": "d9094d6e1a045a328b21cb966ec064923c97f19c",
+      "integration": "d156819b3e988467148a615aaa0d528e1acae949"
+    },
+    {
+      "ticket": "RP-300",
+      "author": "378c17b7da648598b31c4b859ce62b2216099e9b",
+      "integration": "ed49ec9d80214e0c3af6db7b080b4719172002b6"
+    },
+    {
+      "ticket": "RP-300",
+      "author": "df40a526ccb4960f437bff4df700a820226370ac",
+      "integration": "c91cf6e2c2160b0abd7f4dc322c87b1290a29fec"
+    },
+    {
+      "ticket": "RP-400",
+      "author": "4a113c36535e9e598b2413be8f69f2a30b8669b4",
+      "integration": "bb7c838252f320548d47c6c433b0eb429afd8e70"
+    },
+    {
+      "ticket": "RP-900",
+      "author": "7071ae2465af40bc7a901d4e1039e4281e072a68",
+      "integration": "2d8b14d3072b2923ec815a82d723dbd9dc5320f0"
+    },
+    {
+      "ticket": "RP-900",
+      "author": "9397aa1e85627fc2ce83adbe930b0dbd7987bdf8",
+      "integration": "7a6fc9b610363454614cf18c05f708fcf6fbf991"
+    },
+    {
+      "ticket": "RP-900",
+      "author": "9b3e568c219b7070e4345a53da27da2523e971d9",
+      "integration": "1e5d1123f42cc94a8d588ff7a8cb84e5b35da8c4"
+    },
+    {
+      "ticket": "RP-400",
+      "author": "967f23536dd5fde630867f5b862fd7a2e74040fc",
+      "integration": "03650a664ea01a00ae233e0b0955ad7e6ae42751",
+      "scope": "retained evidence/documentation"
+    },
+    {
+      "ticket": "RP-400",
+      "author": "17416956ff422828e3dd993fbc612ee6da843bc1",
+      "integration": "3c25fdd7316017ac8e334f40e934a6eed93281ef",
+      "scope": "retained evidence/documentation"
+    },
+    {
+      "ticket": "RP-900",
+      "author": "26a865fc9c67857bc9507e42afc8c92c2f3bdc94",
+      "integration": "31a0e96d76f0a3309e4f97880dbec138231b0b5d",
+      "scope": "retained evidence/documentation"
+    }
+  ],
+  "focused_evidence": {
+    "contract_cases": 13,
+    "pure_rule_cases": 20,
+    "seeded_proposal_attempts": 10000,
+    "journal_storage_cases": 14,
+    "campaign_integration_cases": 5,
+    "balance_method_cases": 10,
+    "ordinary_process_rule_assertions": 542,
+    "sigkill_trials": 10,
+    "sigkill_limit": "8 before commit, 2 after acknowledged commit; no observed commit-before-ack window"
+  },
+  "balance": {
+    "protocol": "mortal-balance/1.0.0",
+    "method_revision": 2,
+    "source_fingerprint": "db0af69c416361853ac6384e6d2c6ac23b6b5207c1313f801623208ff1f6643f",
+    "selected_hp": "classic",
+    "trials_per_cell_per_partition": 500,
+    "combat_trials": 21000,
+    "resource_trials": 8000,
+    "total_trials": 29000,
+    "every_trial_replayed": true,
+    "censored_combat_trials": 0,
+    "heldout_selected_target": {
+      "status": "match",
+      "reason": "target-bounds-match",
+      "censored_pairs": 0,
+      "danger": {
+        "low": 0.31157576004032633,
+        "high": 0.4072494205426536
+      },
+      "escape": {
+        "low": 0.89072748659894,
+        "high": 0.9448765542037539
+      },
+      "delta": {
+        "low": 0.22047060122659076,
+        "high": 0.3326283470923532
+      }
+    },
+    "heldout_reselection": false,
+    "reports": {
+      "train-bb7c838.json": {
+        "path": "docs/rpg-phase2/balance/evidence/train-bb7c838.json",
+        "sha256": "0100de2f92323a12ebd2af67f6b58d1b0838e8d763d2f3b84ab1fa60e92d5056"
+      },
+      "train-bb7c838.json.decision.json": {
+        "path": "docs/rpg-phase2/balance/evidence/train-bb7c838.json.decision.json",
+        "sha256": "532fc2c927ee1f0b543fc02c13ba77510b63595d3057f9f65423362b99996608"
+      },
+      "train-bb7c838.json.started.json": {
+        "path": "docs/rpg-phase2/balance/evidence/train-bb7c838.json.started.json",
+        "sha256": "13d48b035717db01aca5f07acf13b2a38a3e0ea012e6a5e7d3ca819a1289b9b4"
+      },
+      "holdout-bb7c838.json": {
+        "path": "docs/rpg-phase2/balance/evidence/holdout-bb7c838.json",
+        "sha256": "366cfba4e5de8fda8b56fc14cd6a61c16e7d46a5d5d143f60e1bd190d13b2c51"
+      },
+      "holdout-bb7c838.json.started.json": {
+        "path": "docs/rpg-phase2/balance/evidence/holdout-bb7c838.json.started.json",
+        "sha256": "2812e59d9d35de042e1f20ebc47d37f648b5c5add2d951bacb8791c132992148"
+      }
+    },
+    "limits": [
+      "Fixed synthetic Strength2/Constitution2/d6 player versus one HP4/Strength1/armor11/d4 raider for the primary target.",
+      "Two-raider stress and all HP/armor/policy alternatives are retained separately; no universal encounter or economy claim.",
+      "Intervals use nominal Wilson score coverage with declared tail allocation, not an exact finite-sample guarantee.",
+      "Study kernel replay is separate from signed journal/storage tests; data-only reviewer verifies reports, not transcripts.",
+      "Human enjoyment and long campaign economy still require playtesting."
+    ]
+  },
+  "independent_data_reviews": {
+    "argo-rp400-verify-report.py": {
+      "path": "docs/rpg-phase2/evidence/argo-rp400-verify-report.py",
+      "sha256": "d0259e43f240adc1ac154200c0ec3714ac696df8f55d6c6365c8cb1279fea4d0"
+    },
+    "argo-rp400-train-data-review.json": {
+      "path": "docs/rpg-phase2/evidence/argo-rp400-train-data-review.json",
+      "sha256": "d2e2ea4a1fbc455cf5e51c522d87e950d7749b8692955dfb9790d793262c110c"
+    },
+    "argo-rp400-holdout-data-review.json": {
+      "path": "docs/rpg-phase2/evidence/argo-rp400-holdout-data-review.json",
+      "sha256": "83486c96cb818abc348ba8ddc880acfe8ca3fbe523324e92e9c2ce846fdb3d69"
+    }
+  },
+  "integration_submission": {
+    "ticket": "RP-900",
+    "candidate": "26a865fc9c67857bc9507e42afc8c92c2f3bdc94",
+    "artifacts": {
+      "packages/ledger/src/mortal/view.ts": "70234a502a0250df58d3cb173131d30414319ec25f61f3eeb8247886a4516aa7",
+      "scenarios/tempted-fates/runtime.ts": "ca99cb79519961ef13caa1eedfc51f511c4b8e72a0318c53878d8571c537e888",
+      "scenarios/tempted-fates/package.json": "58e81e7d8b4f159957c52bfeae5e3f8c3d438d759dac4a0887289e7ba2fff1fb",
+      "package-lock.json": "28fb9235f1f025821195099ad703098bb703ad09438a523817a558b4ca4556b0",
+      "docs/rpg-phase2/evidence/full-gate/gate-result.json": "70e0f633048edefb1f94531c5dffa2b385c51b6a1ee19e7f6ff4d5689fa82aac"
+    },
+    "application_gate_commit": "bb7c838252f320548d47c6c433b0eb429afd8e70",
+    "application_gate_checks_passed": 10,
+    "automatic_dispatch_enabled": false,
+    "trust_policy_changed": false,
+    "submit_refused": "Candidate changes pinned gate policy",
+    "status": "READY",
+    "lease_released": true
+  },
+  "next_dependencies": [
+    "Operator-controlled application acceptance policy for workspace manifest changes; do not self-promote trust.",
+    "Host authentication, signing-key custody and external rollback checkpoints.",
+    "Human playtests of danger recognition, retreat timing and supply decisions.",
+    "Unified authority/migration contract before connecting existing Fate, character and narrator profiles to mortal worlds."
+  ],
+  "recorded_at_utc": "2026-11-14T08:27:53.978636+00:00",
+  "branch": "argo/rpg-phase2",
+  "tested_runtime_unchanged": true,
+  "post_gate_changes": "Documentation and retained evidence only",
+  "record_base_commit": "31a0e96d76f0a3309e4f97880dbec138231b0b5d",
+  "board_submissions": [
+    {
+      "ticket": "RP-100",
+      "candidate": "2423d5b856ef57b39214116472c8b899cd45e428",
+      "status": "VERIFYING",
+      "artifacts": {
+        "SYSTEMS/mortal-v2/CONTRACT.md": "ede698b24b62c4d47f6d45f3cbe4288b43dd230128a3a09edb59fee121f35447",
+        "SYSTEMS/mortal-v2/FREEZE.json": "5e8130c3e774670073fdf1d3f07242ffa8c58d73330ede1baea3079ca5a19714",
+        "SYSTEMS/mortal-v2/mortal.schema.json": "070be914286893c86598578dccabe152bbdece23ba859d162776243f2b0b21ff",
+        "packages/contracts/src/mortal.ts": "c51c63e6ae4c92ed4ce9b72f4fd0ae49fa4bbf9d74940e47bffb3e87ba753d75",
+        "packages/contracts/src/mortal-types.ts": "f798d4d9325b502006d871867d00805d95febc9ba8a8bdd7f79846808e31686f",
+        "TESTS/mortal-contracts.test.ts": "c0d0fe168e7f34c4f810a07bcd99f6328809127860f712cdee035fda111ff3b8"
+      }
+    },
+    {
+      "ticket": "RP-200",
+      "candidate": "d9094d6e1a045a328b21cb966ec064923c97f19c",
+      "status": "VERIFYING",
+      "artifacts": {
+        "packages/ledger/src/mortal/rules.ts": "fadca52771d69ef23ee4e37106ce366f9a8611f099f441d5d3613a032b87bdf5",
+        "TESTS/mortal-rules.test.ts": "8419b789f36a9c06724ef9322063941e00260e9548c33526e108ef9eead57050"
+      }
+    },
+    {
+      "ticket": "RP-300",
+      "candidate": "df40a526ccb4960f437bff4df700a820226370ac",
+      "status": "VERIFYING",
+      "artifacts": {
+        "packages/ledger/src/mortal/journal.ts": "4a09c73e452fbe4f1f5adf5b8b0796de758f8eb3a8905c04eb0ca44ad1e3896b",
+        "packages/ledger/src/mortal/storage.ts": "6d5620521c060757515d6fe75ff3c380f1bb405368995c178feca65562138099",
+        "packages/ledger/src/mortal/storage-worker.ts": "e226917c9c1b2d62b31b28871b357ebfae84e8ead7c5d139b93c4660221cecc5",
+        "TESTS/mortal-journal.test.ts": "a78fbe3daec824b07b71e8c24cd496d69dccfc2245736f498b3141294871e470",
+        "TESTS/mortal-storage.test.ts": "e4e03dde4f2f2adceaa59a2f925e606486dc063095bcf7bf8bb6de91cc4934f4"
+      }
+    },
+    {
+      "ticket": "RP-400",
+      "candidate": "17416956ff422828e3dd993fbc612ee6da843bc1",
+      "status": "VERIFYING",
+      "artifacts": {
+        "scenarios/tempted-fates/balance/protocol.json": "6fda0e10089e5be991983e08a3894f9d7abe734fed502b3f87f85e09048bdff5",
+        "scenarios/tempted-fates/balance/runner.ts": "b22bc90e439ca731d185b8cd2e3e04daeba5ddc47b3010da9c40487ca3f8305d",
+        "scenarios/tempted-fates/balance/statistics.ts": "df967028fcc2c2258e7e71515bf7b28d3c4737914903bb7af6399d9149e26e82",
+        "scenarios/tempted-fates/balance/cli.ts": "ebe5c28f953f3c2710777aea92ff3e69f415f45703fd18606eac03fe5610ac3e",
+        "docs/rpg-phase2/balance/PREREGISTRATION.md": "763a066011db0c231b73273a79307be56b2908cbc8af1df3cea18258d35bef97",
+        "docs/rpg-phase2/balance/RESULTS.md": "d74e111ade235dbb1a199d2eb7b0f6eeac0418187e689d15feeab9a1a0afc576",
+        "docs/rpg-phase2/balance/evidence/train-bb7c838.json": "0100de2f92323a12ebd2af67f6b58d1b0838e8d763d2f3b84ab1fa60e92d5056",
+        "docs/rpg-phase2/balance/evidence/train-bb7c838.json.decision.json": "532fc2c927ee1f0b543fc02c13ba77510b63595d3057f9f65423362b99996608",
+        "docs/rpg-phase2/balance/evidence/holdout-bb7c838.json": "366cfba4e5de8fda8b56fc14cd6a61c16e7d46a5d5d143f60e1bd190d13b2c51"
+      }
+    }
+  ],
+  "board_snapshot": "docs/rpg-phase2/board-snapshot.json",
+  "board_status": {
+    "RP-100": "VERIFYING",
+    "RP-200": "VERIFYING",
+    "RP-300": "VERIFYING",
+    "RP-400": "VERIFYING",
+    "RP-900": "READY"
+  },
+  "automatic_dispatch_enabled": false,
+  "post_submission_records": "This record and final Board snapshot were assembled by the coordinator after worker submission. They do not replace submitted immutable candidates or claim a controller merge."
+}

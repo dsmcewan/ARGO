@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "tickets": [
+    {
+      "id": "CR-000",
+      "wave": 0,
+      "lane": "contracts",
+      "title": "Character runtime contracts",
+      "seat_model": "gpt-6-astra",
+      "reviewer_model": null,
+      "owned_paths": [
+        "SYSTEMS/characters-v1/",
+        "packages/contracts/src/characters.ts",
+        "packages/contracts/src/character-types.ts",
+        "packages/contracts/src/index.ts",
+        "TESTS/character-contracts.test.ts",
+        "TESTS/character-fixtures.ts"
+      ],
+      "gate_cmd": [
+        "python3",
+        "-c",
+        "raise SystemExit('Application acceptance requires separately approved controller policy; Board v1 data gate does not certify runtime code')"
+      ],
+      "spec_path": "docs/characters-runtime/tickets/CR-000.md",
+      "depends_on": [],
+      "max_attempts": 3
+    },
+    {
+      "id": "CR-100",
+      "wave": 1,
+      "lane": "authority",
+      "title": "Character runtime authority",
+      "seat_model": "gpt-6-astra",
+      "reviewer_model": null,
+      "owned_paths": [
+        "packages/ledger/src/characters.ts",
+        "packages/telos-bridge/src/characters.ts",
+        "TESTS/character-authority.test.ts"
+      ],
+      "gate_cmd": [
+        "python3",
+        "-c",
+        "raise SystemExit('Application acceptance requires separately approved controller policy; Board v1 data gate does not certify runtime code')"
+      ],
+      "spec_path": "docs/characters-runtime/tickets/CR-100.md",
+      "depends_on": [],
+      "max_attempts": 3
+    },
+    {
+      "id": "CR-200",
+      "wave": 1,
+      "lane": "knowledge",
+      "title": "Character runtime knowledge",
+      "seat_model": "gpt-6-astra",
+      "reviewer_model": null,
+      "owned_paths": [
+        "packages/lexi-bridge/src/characters.ts",
+        "TESTS/character-knowledge.test.ts"
+      ],
+      "gate_cmd": [
+        "python3",
+        "-c",
+        "raise SystemExit('Application acceptance requires separately approved controller policy; Board v1 data gate does not certify runtime code')"
+      ],
+      "spec_path": "docs/characters-runtime/tickets/CR-200.md",
+      "depends_on": [],
+      "max_attempts": 3
+    },
+    {
+      "id": "CR-300",
+      "wave": 1,
+      "lane": "presentation",
+      "title": "Character runtime presentation",
+      "seat_model": "gpt-6-astra",
+      "reviewer_model": null,
+      "owned_paths": [
+        "packages/argo-dm/src/characters.ts",
+        "packages/interventions/src/characters.ts",
+        "TESTS/character-presentation.test.ts"
+      ],
+      "gate_cmd": [
+        "python3",
+        "-c",
+        "raise SystemExit('Application acceptance requires separately approved controller policy; Board v1 data gate does not certify runtime code')"
+      ],
+      "spec_path": "docs/characters-runtime/tickets/CR-300.md",
+      "depends_on": [],
+      "max_attempts": 3
+    },
+    {
+      "id": "CR-900",
+      "wave": 2,
+      "lane": "integration",
+      "title": "Character runtime integration",
+      "seat_model": "gpt-6-astra",
+      "reviewer_model": null,
+      "owned_paths": [
+        "packages/ledger/src/index.ts",
+        "packages/telos-bridge/src/index.ts",
+        "packages/lexi-bridge/src/index.ts",
+        "packages/argo-dm/src/index.ts",
+        "packages/interventions/src/index.ts",
+        "TESTS/character-integration.test.ts",
+        "docs/characters-runtime/",
+        "docs/superpowers/plans/2026-11-13-character-runtime.md"
+      ],
+      "gate_cmd": [
+        "python3",
+        "-c",
+        "raise SystemExit('Application acceptance requires separately approved controller policy; Board v1 data gate does not certify runtime code')"
+      ],
+      "spec_path": "docs/characters-runtime/tickets/CR-900.md",
+      "depends_on": [],
+      "max_attempts": 3
+    }
+  ]
+}

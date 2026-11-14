@@ -1,0 +1,124 @@
+TAP version 13
+# Subtest: initial state binds the complete variant/genesis; hashing excludes only head
+ok 1 - initial state binds the complete variant/genesis; hashing excludes only head
+  ---
+  duration_ms: 38.162795
+  type: 'test'
+  ...
+# Subtest: capacity counts items and exact consumable bundle ceilings
+ok 2 - capacity counts items and exact consumable bundle ceilings
+  ---
+  duration_ms: 6.280054
+  type: 'test'
+  ...
+# Subtest: permissions, scope, stale heads and malformed active DTOs refuse without input mutation
+ok 3 - permissions, scope, stale heads and malformed active DTOs refuse without input mutation
+  ---
+  duration_ms: 27.908201
+  type: 'test'
+  ...
+# Subtest: travel costs apply only to its actor, with prepaid food at strict active-period boundaries
+ok 4 - travel costs apply only to its actor, with prepaid food at strict active-period boundaries
+  ---
+  duration_ms: 19.362792
+  type: 'test'
+  ...
+# Subtest: light is preflighted and spent per turn; travel arrival persists when simultaneous needs kill before hazard
+ok 5 - light is preflighted and spent per turn; travel arrival persists when simultaneous needs kill before hazard
+  ---
+  duration_ms: 22.074253
+  type: 'test'
+  ...
+# Subtest: search attempts persist on failure or incapacity; finite forage rewards cannot exceed capacity
+ok 6 - search attempts persist on failure or incapacity; finite forage rewards cannot exceed capacity
+  ---
+  duration_ms: 18.192209
+  type: 'test'
+  ...
+# Subtest: rest admits unconscious survivors, charges full coverage and uses only personal active cooldown
+ok 7 - rest admits unconscious survivors, charges full coverage and uses only personal active cooldown
+  ---
+  duration_ms: 21.244748
+  type: 'test'
+  ...
+# Subtest: all other actor commands refuse unconscious and dead controllers
+ok 8 - all other actor commands refuse unconscious and dead controllers
+  ---
+  duration_ms: 13.263287
+  type: 'test'
+  ...
+# Subtest: equipment, physical custody and corpse looting conserve actual items and clear equipment
+ok 9 - equipment, physical custody and corpse looting conserve actual items and clear equipment
+  ---
+  duration_ms: 25.117627
+  type: 'test'
+  ...
+# Subtest: resource transfers and finite purchases validate post-transaction capacity and conserve coin
+ok 10 - resource transfers and finite purchases validate post-transaction capacity and conserve coin
+  ---
+  duration_ms: 29.385381
+  type: 'test'
+  ...
+# Subtest: shared mutable host references cannot couple actors, genesis or returned state
+ok 11 - shared mutable host references cannot couple actors, genesis or returned state
+  ---
+  duration_ms: 7.129806
+  type: 'test'
+  ...
+# Subtest: equipment replacement and encounter attacks cannot bypass ownership, live target, ammo or exit permissions
+ok 12 - equipment replacement and encounter attacks cannot bypass ownership, live target, ammo or exit permissions
+  ---
+  duration_ms: 20.707442
+  type: 'test'
+  ...
+# Subtest: only the referee creates a co-located encounter; its fixed initiative and turn identity bind every action
+ok 13 - only the referee creates a co-located encounter; its fixed initiative and turn identity bind every action
+  ---
+  duration_ms: 11.214267
+  type: 'test'
+  ...
+# Subtest: defend expires at the next turn; strict ties miss and ranged ammunition is still spent
+ok 14 - defend expires at the next turn; strict ties miss and ranged ammunition is still spent
+  ---
+  duration_ms: 10.012285
+  type: 'test'
+  ...
+# Subtest: zero-HP and negative-HP attacks close a round once; dead participants skip food but keep elapsed participation
+ok 15 - zero-HP and negative-HP attacks close a round once; dead participants skip food but keep elapsed participation
+  ---
+  duration_ms: 17.208547
+  type: 'test'
+  ...
+# Subtest: retreat has no free retaliation and charges current-round escapees but never prior-round escapees
+ok 16 - retreat has no free retaliation and charges current-round escapees but never prior-round escapees
+  ---
+  duration_ms: 20.060449
+  type: 'test'
+  ...
+# Subtest: round starvation is simultaneous per actor and can end combat without recursively charging another round
+ok 17 - round starvation is simultaneous per actor and can end combat without recursively charging another round
+  ---
+  duration_ms: 7.857149
+  type: 'test'
+  ...
+# Subtest: request IDs cannot grind RNG and all rejected proposals preserve state and counter
+ok 18 - request IDs cannot grind RNG and all rejected proposals preserve state and counter
+  ---
+  duration_ms: 153.754136
+  type: 'test'
+  ...
+# Subtest: immutable genesis references and exhausted bounded counters fail closed
+ok 19 - immutable genesis references and exhausted bounded counters fail closed
+  ---
+  duration_ms: 11.838666
+  type: 'test'
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 19
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1871.839587

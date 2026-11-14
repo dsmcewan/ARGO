@@ -1,0 +1,10 @@
+{
+  "profile_version": "character-memory/1.0.0",
+  "carrier_gameplay_version": "1.0.0",
+  "files": {
+    "SYSTEMS/characters-v1/CONTRACT.md": "41e4b54bee1fa95a198c437443432cbdd058e9b6192b2eb410fad1e43171a759",
+    "SYSTEMS/characters-v1/API.md": "90b853e6e50309c0b204ab6c3e7ca9fbcd69d145f51ccd40dcd3ff61a45e3f77",
+    "SYSTEMS/characters-v1/characters.schema.json": "b1e62cc9fa5c3266da55d845b008d6d7c0a94255e1ce3cdd48744172dc43ec93"
+  },
+  "scope": "Local additive interface identity; does not approve an operational policy root or change frozen gameplay history"
+}

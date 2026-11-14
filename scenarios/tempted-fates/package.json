@@ -1,1 +1,14 @@
-{"name":"@argo/tempted-fates","version":"0.1.0","private":true,"type":"module","exports":"./index.ts","dependencies":{"@argo/contracts":"0.1.0","@argo/argo-dm":"0.1.0","@argo/interventions":"0.1.0"}}
+{
+  "name": "@argo/tempted-fates",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": "./index.ts",
+  "dependencies": {
+    "@argo/contracts": "0.1.0",
+    "@argo/argo-dm": "0.1.0",
+    "@argo/interventions": "0.1.0",
+    "ajv": "8.17.1",
+    "@argo/ledger": "0.1.0"
+  }
+}

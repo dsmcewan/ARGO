@@ -1,0 +1,58 @@
+{
+  "reviewer": "character_contract_scout",
+  "role": "independent read-only review of root-authored proposed state blueprint",
+  "source_commit": "5e5ec59a2a80cbe9848488e95de1ede72afff001",
+  "source_sha256": {
+    "docs/tempting-fates/phase2/README.md": "b6cda93981d4bf80e090a7156c5d1bcf550bc41cd98ac09424e7d3f4b7859504",
+    "docs/tempting-fates/phase2/tabletop-state.ts": "85f1ca58ca43861798108fe67c6984f784bcd4e00909124fc27d7acae59cb6a8",
+    "docs/tempting-fates/phase2/tabletop-state.schema.json": "4ed7bb407c4969cf0fcdcc899157f70111586069874daa116ce6ca11b3626665",
+    "docs/tempting-fates/phase2/example-state.json": "3f9f66ad6bd4ca3ca69a4f686b1320d317de94f7385734113fc300db71299898",
+    "docs/tempting-fates/phase2/example-state.ts": "e1332f4247f05e0f82a72f1b6807fbc6c04499cc63f99fa26e10b8bcc10ac3ca",
+    "TESTS/tempting-fates-integration.test.ts": "2d5538807e4c69a9403d0fbc5895bf0e615ae94ec7939af18e031805cab422de"
+  },
+  "scope": "Proposed isolated human-referee tabletop state and its targeted integration test; no live world/content/rules engine review",
+  "verdict": "one type/schema alignment fix recommended before calling the interface coherent",
+  "findings": [
+    {
+      "id": "TF-PH2-01",
+      "severity": "medium",
+      "path": "docs/tempting-fates/phase2/tabletop-state.ts",
+      "line": 14,
+      "title": "TypeScript permits dual or absent item custody rejected by JSON Schema",
+      "evidence": "Both a held item also carrying a location ID and an item with neither custody field typecheck successfully (probe exit 0), while the real JSON Schema rejects both.",
+      "impact": "Typed consumers can construct an invalid referee record without a compile-time error despite the owner requesting clean strict TypeScript/JSON interfaces. No runtime authoritative write is introduced.",
+      "recommendation": "Represent item placement with a union: {custodian_actor_id:string,location_id:null} | {custodian_actor_id:null,location_id:string}; retain shared item fields. Add both negative compile examples and both JSON mutation cases."
+    }
+  ],
+  "checks": {
+    "targeted_phase2_test": {
+      "passed": 1,
+      "failed": 0,
+      "command": "node --test --test-isolation=none --test-name-pattern='Phase 2 tabletop state grammar' TESTS/tempting-fates-integration.test.ts"
+    },
+    "type_probe_exit": 0,
+    "schema_probe_cases": 14,
+    "schema_meta_validation": "pass",
+    "isolation": "authoritative:false, source:human_referee and strict unknown-field rejection; no import or ledger action API added",
+    "custody": "Schema XOR correct; TypeScript mismatch reported",
+    "life": "No second actor alive flag; schema rejects adding it",
+    "integer_bounds": "Safe-integer endpoints and positive/nonnegative fields reject tested fractional/overflow/negative values"
+  },
+  "intentional_limits": [
+    "Unique/referenced IDs, full workspace identity, HP<=maximum, project progress limits, ownership/capacity and chronology are explicitly future semantic checks; the current schema permits some invalid semantic states and documentation accurately says so.",
+    "JSON Schema alone accepts JavaScript negative zero; a future importer needs canonical/passive DTO validation before state admission. No importer currently exists.",
+    "Array bounds and free-text ruling results make this a bounded referee record, not an immutable replay ledger.",
+    "Tabletop HP, positions and resource counters remain outside existing authoritative state; new causal ruleset/migration remains a required Phase 2 decision.",
+    "All-zero pack hash is clearly labeled an example placeholder, not accepted source provenance."
+  ],
+  "evidence": {
+    "/tmp/argo-tf-phase2-targeted.log": "1eea632f1646ac40af55590bf8ac8c14be08209b90d3b36540cb15d48b2a2883",
+    "/tmp/argo-tf-phase2-type-probe.mts": "e62e9e66c9981a193b21171f8e1ca55616332a57e42493c0fc101a8b13a38bd6",
+    "/tmp/argo-tf-phase2-type-probe.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/tmp/argo-tf-phase2-schema-probe.log": "562a4cb3e6e078ded26aa7dd53bb73db0d369167c5b5ce004b1f61167009cf8c"
+  },
+  "repo_files_changed": false,
+  "paid_calls": false,
+  "board_mutations": false,
+  "review_does_not_approve_operational_merge": true
+}

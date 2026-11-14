@@ -1,0 +1,134 @@
+{
+  "reviewer": "narrator_intent_check",
+  "review_kind": "Separate native Codex read-only review; advisory same-model evidence, not operational trust approval",
+  "reviewed_commit": "19140f5cfbdc4e3abf7272751950d3d53cba3219",
+  "reviewed_at": "2026-11-13T23:41:02.823052+00:00",
+  "verdict": "PASS within the stated presentation/planner scope; no confirmed defect found",
+  "confirmed_defects": [],
+  "reviewed_files": [
+    {
+      "path": "packages/argo-dm/src/characters.ts",
+      "sha256": "27eeab50cdd12a94a6338fa9f0100978ad057ae2f559ac68e8e5ab54063e54c6"
+    },
+    {
+      "path": "packages/interventions/src/characters.ts",
+      "sha256": "4ac87407fcad3db2f0116049dec9ef50681488a230a8605f159aa6a6894a6a3e"
+    },
+    {
+      "path": "TESTS/character-presentation.test.ts",
+      "sha256": "2f6e62edf4535cdc148f22944effaae6c2d583eea7088818cab81751f2eea216"
+    }
+  ],
+  "contract_references": [
+    {
+      "path": "SYSTEMS/characters-v1/API.md",
+      "sha256": "90b853e6e50309c0b204ab6c3e7ca9fbcd69d145f51ccd40dcd3ff61a45e3f77"
+    },
+    {
+      "path": "SYSTEMS/characters-v1/CONTRACT.md",
+      "sha256": "41e4b54bee1fa95a198c437443432cbdd058e9b6192b2eb410fad1e43171a759"
+    },
+    {
+      "path": "SYSTEMS/characters-v1/FREEZE.json",
+      "sha256": "66709119d921a239fabaa9409e7e79032c058f118ac5ed74d73a9a290b1f586f"
+    }
+  ],
+  "verification": {
+    "committed_suite": {
+      "command": "node --test TESTS/character-presentation.test.ts",
+      "passed": 23,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "duration_ms": 1305.675193
+    },
+    "independent_probes": {
+      "passed": 8,
+      "failed": 0,
+      "paid_model_calls": 0,
+      "checks": [
+        {
+          "name": "changed authorized context before first invocation suppresses provider calls",
+          "passed": true
+        },
+        {
+          "name": "a cutoff after pool refusal suppresses cross-pool failover invocation",
+          "passed": true
+        },
+        {
+          "name": "caller cancellation before loading obtains no context and invokes no provider",
+          "passed": true
+        },
+        {
+          "name": "initial context deadline refuses generation and awaits no late result",
+          "passed": true
+        },
+        {
+          "name": "whole-page fingerprint includes pagination metadata before delivery",
+          "passed": true
+        },
+        {
+          "name": "branch campaign and rights identities receive distinct cache keys",
+          "passed": true
+        },
+        {
+          "name": "untrusted records and presentation request remain quoted JSON without tools",
+          "passed": true
+        },
+        {
+          "name": "actor callback cannot mutate owned context and malformed output yields no command",
+          "passed": true
+        }
+      ]
+    },
+    "types": {
+      "command": "node node_modules/typescript/bin/tsc --noEmit",
+      "exit_code": 0,
+      "diagnostics": 0
+    }
+  },
+  "findings_confirmed_by_inspection": [
+    "Neither new module imports a ledger writer or returns authority capabilities; the agent emits typed untrusted commands only.",
+    "Actor view/profile/impression owner constraints and acquired evidence identity are checked before planning; callback inputs and returned commands are detached and frozen.",
+    "Busy, ended, cutoff, unaddressed, self-addressed, unconfigured and cooldown-bound responses skip the speech planner.",
+    "Narration validates complete query binding and hashes the whole authorized page; pre-call, per-attempt, post-generation and final delivery refreshes suppress changed/cutoff context.",
+    "Caller cancellation is checked after provider/callback completion; context loader and planner service calls are bounded.",
+    "Cache identity includes complete scope, audience, party, viewer and traveler; incoming text stays inside quoted JSON data and no model tools are enabled."
+  ],
+  "coverage_limits": [
+    "View authenticity, legitimate witnesses, acquisition provenance, real identity and append/replay semantics belong to trusted host wiring and other components; fabricated trusted host pages are not authenticated here.",
+    "Injected offline providers demonstrate request structure and refusal behavior, not live tone compliance or semantic resistance to prompt injection. The shared client places the voice header and quoted JSON in a user message; this is not an authenticated provider system-policy boundary.",
+    "An arbitrary host-supplied callback may close over external capabilities or ignore cancellation. These modules pass no writer capability and prevent late returned proposals/prose, but do not isolate arbitrary callback side effects.",
+    "Each narrator call uses one audience-filtered page, not the entire archive; completeness and pagination are host/view concerns.",
+    "The ordinary actor planner is bound to actorId and accepts a host-authorized view; it does not authenticate that view or keep a current-state reservation while planning. Authority must revalidate its expected cursor.",
+    "The three-file commit does not wire package-root exports; whole-candidate public entrypoint wiring and cross-component integration still require root verification.",
+    "No full application gate, real provider call, live service or public deployment was performed in this review."
+  ],
+  "evidence": [
+    {
+      "path": "/tmp/argo-cr300-independent-tests.log",
+      "sha256": "5b5862f3aac2d09aaf7923b1664a5e1a76003b629795dd3d602a66b1b1c3ff80",
+      "bytes": 2452
+    },
+    {
+      "path": "/tmp/argo-cr300-independent-probes.mjs",
+      "sha256": "bae7895b0e070f8bbb9bd4c6c2899807dc0b3106cea03f6e858a49c856d3db19",
+      "bytes": 5719
+    },
+    {
+      "path": "/tmp/argo-cr300-independent-probes.log",
+      "sha256": "bce613fa09856a6d1651485b6a6bfc3d43948898263902d70da18ea6b7dfdb45",
+      "bytes": 1071
+    },
+    {
+      "path": "/tmp/argo-cr300-independent-types.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  ],
+  "repository_changes": false,
+  "board_mutations": false,
+  "paid_model_calls": 0,
+  "remote_writes": false,
+  "operational_trust_approval": false
+}

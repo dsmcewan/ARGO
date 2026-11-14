@@ -1,0 +1,10 @@
+FAIL Boundary paired samples remain uncertain The expression evaluated to a falsy value:
+
+  assert.ok(same.interval.low<0&&same.interval.high>0)
+
+FAIL Censored target cannot match Expected values to be strictly equal:
++ actual - expected
+
++ 'match'
+- 'inconclusive'
+
