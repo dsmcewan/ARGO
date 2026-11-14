@@ -41,7 +41,29 @@ An item may have at most one live loan/offer. Expired/withdrawn offers never aut
 
 Every accepted action produces one compound typed memory record with its sequence/time and deterministic witness acquisition. Speech source is always the authenticated actor. Shared room speech reaches standing occupants; an addressed whisper reaches only its declared standing colocated recipients; self-private notes reach only their author. Physical event descriptions disclose observable action identity, not hidden rolls, another actor's inventory totals, private policy or secret command fields. Observers are derived from the relevant before/after location and direct participants; new arrivals do not acquire earlier private records. Compound loan transactions remain one record/sequence rather than fabricated legacy events.
 
+Recipient/content policy is explicit:
+
+| Action | Acquirers | Memory payload |
+| --- | --- | --- |
+| speak | self; addressed whisper recipients; or standing room occupants | Authenticated speaker/text, separate addressed IDs, optional inbound reference. Room witnesses do not automatically become addressees. |
+| impress / set_activity | acting owner only | Private interpretation/activity; no record reaches the subject or room. |
+| offer_loan | lender and standing colocated borrower | Immutable offered terms and their exact hash. |
+| withdraw_loan_offer | lender; borrower only if standing and colocated at withdrawal | Offer ID and withdrawal; a distant borrower does not magically acquire it. |
+| accept_loan | standing colocated lender and borrower | Accepted offer ID/hash and custody change, no automatic extra payment. |
+| return_loan / ordinary transfer fulfilling a loan | holder and lender; original borrower only if standing and present | Observed return/fulfillment; no remote borrower update is disclosed. |
+| mortal | standing occupants at source before and destination after; present direct participants | Whitelisted action name and involved identities only. No raw command, amounts, inventory totals, RNG or hidden mechanics. |
+| set_knowledge | catalog owner only | Explicit host content grant/revocation, not a fabricated physical observation. |
+| close_mythic_engagement | none | No explanatory closing record is released to actors. |
+
+Actor views expose only acquired offer terms/updates through memory, not live global offer/loan tables. A failed later acceptance can report refusal without retroactively granting a remote withdrawal memory. NPC `speak` requires a non-null inbound reference to acquired speech that explicitly addressed that NPC; `(NPC ID, inbound record ID)` is consumed once in the same transaction. Player speech may start a conversation without an inbound reference. NPC proactive speech is deferred.
+
+Loan acceptance retains the borrower as the outer authenticated event principal. Only after matching the stored exact live offer may the reducer reconstruct a narrowly scoped internal mortal `transfer_item` from that lender to that borrower for that item, using the immutable lender controller identity. That capability is not caller-supplied and cannot authorize any other action. Current lender/borrower standing, custody, location, capacity and encounter checks still apply. Return uses the actual current holder's authority.
+
+Memory IDs derive from domain, complete genesis hash, request ID and sequence before signing; no after-state field contains its enclosing event hash. Initial knowledge grants are genesis entry IDs with origin/sequence zero, not self-referential genesis hashes. Dynamic acquisitions bind sequence/time. State hashing excludes only the new event head, as the existing mortal journal does; signed event provenance binds the resulting state to that head.
+
 `WorldActorQuery` requires full rights scope, actor and exact cursor. The scoped view exposes the actor's profile, acquired bounded memory, owned impressions, active owner knowledge, own physical view and the current shared scene/public occupants. It never returns the raw state, seed, controller IDs, foreign inventories, private goals or hidden rolls. Historical inspection uses a verified historical state and matching query; a future or mismatched query is rejected. Memory coverage is explicit; bounded context is not a claim to contain the whole archive.
+
+The concrete type is `WorldQuery` (the actor query described above). Historical projection is a host-forensic capability only. Player/NPC/session APIs always load the latest ledger prefix and require its exact cursor, so requesting an older prefix cannot bypass a current closure or revocation. The model refresh callback follows that same latest-prefix rule.
 
 Shared scene descriptions and environment are stored once in genesis and projected by location. Opinions remain in owner impressions. Knowledge entries remain source-backed owner policies; they do not become accepted bargains merely because the model repeats them. Dynamic activation/revocation is now replayable in shared events. The new context grammar represents mortal action types honestly instead of relabeling them as legacy character speech.
 
