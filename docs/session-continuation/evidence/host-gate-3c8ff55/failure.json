@@ -1,0 +1,9 @@
+{
+  "candidate": "3c8ff55d872891014c89fe43515b3c28fd492626",
+  "accepted": false,
+  "failure": "External full-gate runner timed out after 600 seconds",
+  "application_gate_result": null,
+  "limitation": "Legacy helper did not persist partial subprocess stdout on TimeoutExpired; no passed-group or assertion-completion count claimed.",
+  "next": "Measure unchanged full foundation separately, then independently review bounded gate deadline repair and run final complete application gate.",
+  "paid_calls": 0
+}

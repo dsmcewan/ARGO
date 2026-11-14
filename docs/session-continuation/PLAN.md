@@ -10,3 +10,7 @@ Base `8e2104c6d466b8b2bee2d0b23d984d2e60a65e11`. Read [DESIGN.md](DESIGN.md) fir
 Each stage uses a separately seeded Board at the already accepted integration commit. This preserves the dependency sequence without fabricating MERGED statuses in the data-only Board. Source gates intentionally refuse executable application acceptance; the immutable application gate and independent reviews supply separately recorded evidence. If a protected-policy change prevents even source submit, retain CAS hashes, record the exact refusal, release/retire the lease through public Board methods and record the true state. Never update Board rows directly or move controller trust pins.
 
 The source reviewer is another native peer, not a claimed cross-vendor reviewer. Existing upstream audit/review evidence is preserved, not overwritten. New timing targets are local performance goals, not flaky CI assertions. A failed target prompts measured follow-up; it never permits dropping verification work.
+
+## Measured gate follow-up
+
+The integrated host attempt at `3c8ff55` exceeded the external 600-second deadline and is not accepted. SC-640 is a separate, path-disjoint policy repair: measure the unchanged foundation workload, adjust only justified bounded execution deadlines, retain timeout evidence, independently review exact policy bytes and rerun the complete final gate. No test or trust check may be removed.
