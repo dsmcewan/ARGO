@@ -21,7 +21,7 @@ export interface CharacterAuthorityOptions {
 }
 interface Replayed {
  projection:CharacterProjection;state:Snapshot;
- receipts:Map<string,CharacterReceipt>;proposalIds:Set<string>;
+ receipts:Map<string,CharacterReceipt>;proposalIds:Set<string>;parents:Set<string>;
 }
 const cursor=(state:Snapshot):CharacterCursor=>({sequence:state.sequence,head:state.head,world_time:state.world_time});
 const detached=<T>(value:T):T=>freezeDto(structuredClone(value));
@@ -160,10 +160,13 @@ function actionText(action:Action,state:Snapshot):string|null{
  default:return null;
  }
 }
-function replayAll(genesis:Genesis,events:readonly LedgerEvent[],system:Principal):Replayed{
+function initialReplay(genesis:Genesis,system:Principal):Replayed{
  checkSystem(system,genesis);const state=initialSnapshot(genesis);
  const projection:CharacterProjection={version:CHARACTER_PROFILE,scope:structuredClone(genesis.scope),cursor:cursor(state),activation_sequence:null,profiles:[],actors:[],parties:Object.entries(genesis.parties).map(([party_id,actor_ids])=>({party_id,actor_ids:[...actor_ids]})),records:[],impressions:[],ontology_blocked:false,engagement_closed:false};
- const result:Replayed={projection,state,receipts:new Map(),proposalIds:new Set()},parents=new Set<string>();
+ return {projection,state,receipts:new Map(),proposalIds:new Set(),parents:new Set()};
+}
+function extendReplay(result:Replayed,events:readonly LedgerEvent[],system:Principal):Replayed{
+ const {projection,parents}=result,genesis=result.state.genesis;
  for(const event of events){
   verifyEvent(result.state,event,parents);const p=event.proposal,a=p.action;
   const reserved=p.proposal_id.startsWith(CHARACTER_CLAIM_PREFIX)||(a.type==='observe_claim'&&a.observation.claim_id.startsWith(CHARACTER_CLAIM_PREFIX));
@@ -189,7 +192,7 @@ function replayAll(genesis:Genesis,events:readonly LedgerEvent[],system:Principa
  assertCharacterContract('CharacterProjection',projection);return result;
 }
 export function replayCharacters(genesis:Genesis,events:readonly LedgerEvent[],systemPrincipal:Principal):CharacterProjection{
- return detached(replayAll(genesis,events,systemPrincipal).projection);
+ return detached(extendReplay(initialReplay(genesis,systemPrincipal),events,systemPrincipal).projection);
 }
 function priorReceipt(result:Replayed,command:CharacterCommand,requestHash:string):CharacterReceipt|undefined{
  const prior=result.receipts.get(command.request_id);
@@ -202,7 +205,26 @@ export async function createCharacterAuthority(options:CharacterAuthorityOptions
  if(!Number.isSafeInteger(timeout)||timeout<1||timeout>60000)fail('INVALID_CONTRACT','Invalid character adjudication deadline');
  // Pin actual genesis once. Later snapshots are rebuilt from one verified event prefix.
  const genesis=detached((await ledger.snapshot()).genesis);checkSystem(system,genesis);
- const load=async(call:ServiceOptions):Promise<Replayed>=>{cancelled(call);const events=await ledger.events(call);cancelled(call);return replayAll(genesis,events,system);};
+ // This handle remembers the exact verified prefix. It detects a subsequent
+ // rollback/divergence here; it is not an external checkpoint across restarts.
+ let cached:Replayed|undefined,bytes:string[]=[];
+ let loading:Promise<void>=Promise.resolve();
+ const load=(call:ServiceOptions):Promise<Replayed>=>{
+  // Serialize capture as well as replay: an older delayed events() response
+  // must not arrive after a newer prefix has already been published.
+  const pending=loading.then(async()=>{
+   cancelled(call);const events=await ledger.events(call);cancelled(call);
+   if(events.length<bytes.length)fail('CORRUPT_LEDGER','Character history lost the previously verified prefix');
+   const currentBytes=events.map(event=>canonical(event));
+   if(bytes.some((value,index)=>value!==currentBytes[index]))fail('CORRUPT_LEDGER','Character history replaced the previously verified prefix');
+   if(cached&&events.length===bytes.length)return cached;
+   // Carriers mutate projections and receipt indexes. Work on detached state
+   // so failure cannot poison the cache or a submit suspended in host work.
+   const next=extendReplay(cached?structuredClone(cached):initialReplay(genesis,system),events.slice(bytes.length),system);
+   cached=next;bytes=currentBytes;return next;
+  });
+  loading=pending.then(()=>{},()=>{});return pending;
+ };
  return Object.freeze({
   readProjection:async(call:ServiceOptions={}):Promise<CharacterProjection>=>detached((await load(call)).projection),
   submit:async(input:CharacterCommand,authenticated:Principal,call:ServiceOptions={}):Promise<CharacterReceipt>=>{
