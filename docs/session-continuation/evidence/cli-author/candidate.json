@@ -1,0 +1,87 @@
+{
+  "task": "SC-630",
+  "candidate": "f2641d92f5f07bc69b672ee6f6c3a189ee5f46cc",
+  "base": "3c8ff55d872891014c89fe43515b3c28fd492626",
+  "worktree": "/workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6",
+  "owned_files": {
+    "scenarios/tempted-fates/shared-world/cli.ts": "103d6e324e6aa146ab49e5abc1518bef1441323597deb5d30e4d46c6b17d4600",
+    "scenarios/tempted-fates/shared-world/README.md": "61c92ce62d85799ecbf9a018bae06e1466684a64d15ec9e695c1e077fb3f8004",
+    "TESTS/shared-world-conversation-cli.test.ts": "c89502f1c6faf9906a956383093e299bdff3674d4d276ba3dd7e3942249b7619"
+  },
+  "paid_calls": 0,
+  "source_handoff_only": false,
+  "completed_checks": [
+    {
+      "log": "red.log",
+      "result": "expected initial six failures before implementation"
+    },
+    {
+      "log": "green.initial.log",
+      "result": "initial six passed before isolated writer error fix"
+    },
+    {
+      "log": "writer-error.red.log",
+      "result": "focused regression reproduced unhandled Writable callback error before fix"
+    },
+    {
+      "log": "writer-error.green.log",
+      "result": "focused regression passed after fix"
+    },
+    {
+      "log": "extra-controls.log",
+      "result": "three added groups passed"
+    },
+    {
+      "log": "typecheck.log",
+      "result": "pass"
+    },
+    {
+      "log": "contracts.log",
+      "result": "pass; frozen schemas unchanged"
+    },
+    {
+      "log": "boundaries.log",
+      "result": "pass; 82 modules"
+    },
+    {
+      "log": "targeted-final.log",
+      "command": "node --test --test-isolation=none TESTS/shared-world-conversation-cli.test.ts TESTS/shared-world-session.test.ts",
+      "result": "pass; 19 tests, 0 failed, 0 skipped, 0 cancelled",
+      "duration_ms": 484993.335311,
+      "exit_code": 0,
+      "candidate": "f2641d92f5f07bc69b672ee6f6c3a189ee5f46cc"
+    }
+  ],
+  "pending_checks": [],
+  "independent_review": "Coordinator has started separate review of exact candidate; author does not certify acceptance.",
+  "extra_full_run": {
+    "log": "npm-test.log",
+    "command": "npm test",
+    "session_id": 92715,
+    "exit_code": 130,
+    "status": "intentionally cancelled/incomplete",
+    "reason": "Coordinator requested stopping redundant author full suite to avoid contention with authoritative final gate",
+    "known_file_level_failures": [
+      "TESTS/controller-policy.test.ts",
+      "TESTS/controller-repair.test.ts",
+      "TESTS/projection-contracts.test.ts"
+    ],
+    "diagnostic_limit": "Partial runner log did not expand individual assertions before cancellation; cause not inferred. Not acceptance evidence."
+  },
+  "source_clean_after_tests": true,
+  "author_checks_complete": true,
+  "acceptance_scope": "Author targeted checks complete; independent review and coordinator full gate remain separate.",
+  "log_sha256": {
+    "extra-controls.log": "c324565532ecad75c67bf0a18dfea92b751c8add3cb18d0e535234eb3e8aa0b6",
+    "red.log": "ea3144620bf9a5bf6c336e77bbff6a2c451b3d2ed1df07cb2c3df97d34bf55ef",
+    "npm-test.log": "b4ed6c3cca879fefe18a75c776b2b2dbde86ec884485cddcf23bd23e8b5af5b4",
+    "typecheck.initial.log": "2cf20646d72113be26c6fbe14738bc101ebf909ab8a2374290f369e1d53c975c",
+    "contracts.log": "2cd7874723b12ab43b0da644f0fa05f6af32153676d6e31de2c44c17c8e03428",
+    "targeted-final.log": "35adb362725514ff8adfd349c2ee2a82ec5f1ad7eac571ef6dbb5908177311c2",
+    "writer-error.green.log": "4935d658e6b463831ea0087fbab1c160d055c43de5f01fa75a820e19782c65d4",
+    "boundaries.log": "e47c0afeea3c3b43502770ad5783bbf4ba351ce8b864d59d839f760923e09580",
+    "typecheck.log": "2cf20646d72113be26c6fbe14738bc101ebf909ab8a2374290f369e1d53c975c",
+    "green.initial.log": "ced002c2754eb752650036aba6afbd9261be667e34205829aeb471a1137b2f00",
+    "writer-error.red.log": "7d6aaab53322f578b6d715b51704d4c769630d465be7c36e9a7d657cf14a0e02"
+  }
+}

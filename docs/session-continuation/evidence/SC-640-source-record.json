@@ -1,0 +1,18 @@
+{
+  "ticket_id": "SC-640",
+  "source_commit": "2debc1b6e1848c481abe6eeeef2271d207b07081",
+  "base_commit": "9fa800493a3c033b45bc3df7ab18a56e25bcd9a8",
+  "board_status": "FAILED",
+  "attempt": 1,
+  "source_submitted": false,
+  "source_refusal": "Candidate changes pinned gate policy",
+  "operationally_retired": true,
+  "artifacts": {
+    "controller/merge.mjs": "d5e6235a6ac96035895ec03aad41c0bf637c064f842bcd898e4c25e4e4a7262c",
+    "docs/characters-runtime/evidence/run-candidate-gate.py": "d857978e98726748b38b4ba9fc85a9171233fecf1c94b3c416bdf3de4d1bf713",
+    "docs/session-continuation/GATE_BUDGET.md": "8e29ac36d79fceff4a1a55f81998f322f0cb08729426c39c767134b3d71ad06d",
+    "scripts/gate.mjs": "5868f56b76ad14a675d6e579dd4346b0899230483d60a8e5e2415de5c8becbdc"
+  },
+  "application_acceptance": "Recorded separately; data-only Board gate not run, no controller trust promotion",
+  "paid_calls": 0
+}

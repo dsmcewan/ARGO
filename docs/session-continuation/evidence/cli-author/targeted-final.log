@@ -1,0 +1,27 @@
+✔ talk requires exclusive initialization and never silently creates a missing canonical store (22935.544514ms)
+✔ fixture identity and exact input are checked before any durable turn or player dispatch (33288.913963ms)
+✔ ordinary restart preserves turn results and repeated input selects its immutable per-turn fixture (44749.935282ms)
+✔ durable cancel and later closure suppress player delivery without rewriting committed receipts (56016.640365ms)
+✔ awaited emit blocks later admission and propagates rejected sinks including error rows (29226.197817ms)
+✔ default writer waits for its callback and bounds complete UTF-8 output before writing (398.788642ms)
+✔ invalid fixture shapes, actor limits and mode identities refuse before store creation (76761.548976ms)
+✔ status suppresses aged-out player delivery without replaying an accepted turn (45764.337871ms)
+✔ one-MiB line cap prevents dispatch and init awaits numeric-compatible async sinks (27710.425747ms)
+✔ session binds one direct principal and latest query while exact old retries survive restart (9607.018898ms)
+✔ session rejects authentic receipts for another exact request or principal (5723.490667ms)
+✔ session refuses forged identity, foreign genesis and active inputs before touching data (6437.064153ms)
+✔ referee capability stays actorless and current closure suppresses old memories (5294.902264ms)
+✔ stale racing session commands and unauthorized combat never partially apply (6819.799345ms)
+✔ generated dialogue is pending until acceptance and a closure race suppresses committed display (5508.167929ms)
+✔ revoked knowledge cannot be recovered through a stale session view and lost acknowledgments retry exactly (4773.000325ms)
+✔ ordinary-process offline CLI demo commits exact terms, night travel, return and signed restart privately (47134.265463ms)
+✔ CLI requires explicit private path and refuses symlink aliases into its source checkout (11574.611542ms)
+✔ ordinary CLI init uses closed explicit configuration and fixed referee/player capabilities (41091.921556ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 484993.335311

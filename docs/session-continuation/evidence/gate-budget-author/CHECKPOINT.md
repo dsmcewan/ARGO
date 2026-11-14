@@ -1,0 +1,9 @@
+# SC-640 helper checkpoint
+
+Candidate `47d3fa6a3b247986a0a6bb9aaad1f65cfff25273` is clean. Only `docs/characters-runtime/evidence/run-candidate-gate.py` changed; all deadlines remain unchanged pending the coordinator's measured native foundation duration.
+
+The helper retains subprocess stdout/merged stderr on timeout, writes `gate-failure.json` for timeout/nonzero/malformed gate/source-head failures, includes log hashes and source-head comparison, and raises so failed runs exit nonzero. Only fully checked success writes `gate-result.json`. An existing nonempty output directory is refused untouched to preserve earlier evidence; capture helper stdout outside that directory.
+
+The final eight-control run passes8/8 at the exact checkpoint. A prior rerun had7/8 pass because the synthetic child timeout was100ms and preceded child output; that result is retained. Increasing only the external harness allowance to1s resolved it without a source change. The eight controls cover: partial timeout output, nonzero output, malformed final record, wrong candidate, missing check, changed source head, success, and previous evidence refusal. They use real short-lived child processes for timeout/exit/output behavior while replacing checkout/install/Bubblewrap execution with explicit test controls. They are not application acceptance or proof that the actual ten groups pass. The identical8-control harness fails7 controls against the previous helper and passes the success control; both outputs are retained. No repository tests were edited or skipped. Python syntax parse and git diff check pass.
+
+Source/evidence hashes: `checkpoint-verification.json`. No providers, nested workers, Board writes, integration, trust-pin promotion or remote writes. Foundation and whole-gate budgets and GATE_BUDGET.md await actual diagnostic evidence.

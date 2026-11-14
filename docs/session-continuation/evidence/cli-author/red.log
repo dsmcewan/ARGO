@@ -1,0 +1,115 @@
+✖ talk requires exclusive initialization and never silently creates a missing canonical store (3008.665939ms)
+✖ fixture identity and exact input are checked before any durable turn or player dispatch (2654.127223ms)
+✖ ordinary restart preserves turn results and repeated input selects its immutable per-turn fixture (6191.64945ms)
+✖ durable cancel and later closure suppress player delivery without rewriting committed receipts (2718.724624ms)
+✖ awaited emit blocks later admission and propagates rejected sinks including error rows (2447.761599ms)
+✖ default writer waits for its callback and bounds complete UTF-8 output before writing (2.921868ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 0
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 20129.468884
+
+✖ failing tests:
+
+test at TESTS/shared-world-conversation-cli.test.ts:21:1
+✖ talk requires exclusive initialization and never silently creates a missing canonical store (3008.665939ms)
+  ArgoError: Use init, resume or demo with an explicit --dir
+      at fail (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/packages/contracts/src/index.ts:12:77)
+      at invalid (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/scenarios/tempted-fates/shared-world/cli.ts:23:47)
+      at argumentsFor (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/scenarios/tempted-fates/shared-world/cli.ts:28:69)
+      at main (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/scenarios/tempted-fates/shared-world/cli.ts:173:35)
+      at call (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/TESTS/shared-world-conversation-cli.test.ts:16:93)
+      at TestContext.<anonymous> (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/TESTS/shared-world-conversation-cli.test.ts:21:258)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    code: 'INVALID_CONTRACT'
+  }
+
+test at TESTS/shared-world-conversation-cli.test.ts:23:1
+✖ fixture identity and exact input are checked before any durable turn or player dispatch (2654.127223ms)
+  ArgoError: Use init, resume or demo with an explicit --dir
+      at fail (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/packages/contracts/src/index.ts:12:77)
+      at invalid (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/scenarios/tempted-fates/shared-world/cli.ts:23:47)
+      at argumentsFor (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/scenarios/tempted-fates/shared-world/cli.ts:28:69)
+      at main (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/scenarios/tempted-fates/shared-world/cli.ts:173:35)
+      at call (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/TESTS/shared-world-conversation-cli.test.ts:16:93)
+      at TestContext.<anonymous> (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/TESTS/shared-world-conversation-cli.test.ts:23:135)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'INVALID_CONTRACT'
+  }
+
+test at TESTS/shared-world-conversation-cli.test.ts:25:1
+✖ ordinary restart preserves turn results and repeated input selects its immutable per-turn fixture (6191.64945ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/TESTS/shared-world-conversation-cli.test.ts:25:146)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/shared-world-conversation-cli.test.ts:27:1
+✖ durable cancel and later closure suppress player delivery without rewriting committed receipts (2718.724624ms)
+  ArgoError: Use init, resume or demo with an explicit --dir
+      at fail (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/packages/contracts/src/index.ts:12:77)
+      at invalid (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/scenarios/tempted-fates/shared-world/cli.ts:23:47)
+      at argumentsFor (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/scenarios/tempted-fates/shared-world/cli.ts:28:69)
+      at main (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/scenarios/tempted-fates/shared-world/cli.ts:173:35)
+      at call (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/TESTS/shared-world-conversation-cli.test.ts:16:93)
+      at TestContext.<anonymous> (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/TESTS/shared-world-conversation-cli.test.ts:27:142)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'INVALID_CONTRACT'
+  }
+
+test at TESTS/shared-world-conversation-cli.test.ts:29:1
+✖ awaited emit blocks later admission and propagates rejected sinks including error rows (2447.761599ms)
+  ArgoError: Use init, resume or demo with an explicit --dir
+      at fail (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/packages/contracts/src/index.ts:12:77)
+      at invalid (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/scenarios/tempted-fates/shared-world/cli.ts:23:47)
+      at argumentsFor (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/scenarios/tempted-fates/shared-world/cli.ts:28:69)
+      at main (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/scenarios/tempted-fates/shared-world/cli.ts:173:35)
+      at call (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/TESTS/shared-world-conversation-cli.test.ts:16:93)
+      at TestContext.<anonymous> (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/TESTS/shared-world-conversation-cli.test.ts:29:134)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'INVALID_CONTRACT'
+  }
+
+test at TESTS/shared-world-conversation-cli.test.ts:31:1
+✖ default writer waits for its callback and bounds complete UTF-8 output before writing (2.921868ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at TestContext.<anonymous> (file:///workspace/reports/2026-11-14-argo-continuation/board-sc-630/worktrees/SC-630-1-6cd8aceba6/TESTS/shared-world-conversation-cli.test.ts:31:224)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

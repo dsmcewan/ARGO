@@ -1,0 +1,14 @@
+✔ talk requires exclusive initialization and never silently creates a missing canonical store (16488.712778ms)
+✔ fixture identity and exact input are checked before any durable turn or player dispatch (21777.999661ms)
+✔ ordinary restart preserves turn results and repeated input selects its immutable per-turn fixture (31106.854093ms)
+✔ durable cancel and later closure suppress player delivery without rewriting committed receipts (36088.953225ms)
+✔ awaited emit blocks later admission and propagates rejected sinks including error rows (16854.048589ms)
+✔ default writer waits for its callback and bounds complete UTF-8 output before writing (153.196999ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 125664.552385

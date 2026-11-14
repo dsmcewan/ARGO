@@ -1,0 +1,33 @@
+{
+  "kind": "synthetic controls; not application acceptance",
+  "results": [
+    {
+      "case": "timeout",
+      "passed": false,
+      "error": "[Errno 2] No such file or directory: '/tmp/argo-gate-helper-controls-aitgytag/timeout/application-gate.log'",
+      "stderr": "ozen runpy>\", line 98, in _run_module_code\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/workspace/reports/2026-11-14-argo-continuation/board-sc-640/worktrees/SC-640-1-aa7fa621ff/docs/characters-runtime/evidence/run-candidate-gate.py\", line 48, in <module>\n    gate = run('application-gate', args, stage, 600)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/reports/2026-11-14-argo-continuation/board-sc-640/worktrees/SC-640-1-aa7fa621ff/docs/characters-runtime/evidence/run-candidate-gate.py\", line 25, in run\n    result = subprocess.run(argv, cwd=cwd, env=env, stdout=subprocess.PIPE,\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/argo-gate-helper-controls-aitgytag/runner.py\", line 15, in controlled\n    return original([sys.executable,'-u','-c',code],*args,**kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py\", line 550, in run\n    stdout, stderr = process.communicate(input, timeout=timeout)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py\", line 1209, in communicate\n    stdout, stderr = self._communicate(input, endtime, timeout)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py\", line 2116, in _communicate\n    self._check_timeout(endtime, orig_timeout, stdout, stderr)\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py\", line 1253, in _check_timeout\n    raise TimeoutExpired(\nsubprocess.TimeoutExpired: Command '['/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3', '-u', '-c', \"import sys,time; print('CONTROL partial output',flush=True); time.sleep(60)\"]' timed out after 0.1 seconds\n"
+    },
+    {
+      "case": "nonzero",
+      "passed": false,
+      "error": "[Errno 2] No such file or directory: '/tmp/argo-gate-helper-controls-aitgytag/nonzero/gate-failure.json'",
+      "stderr": "Traceback (most recent call last):\n  File \"/tmp/argo-gate-helper-controls-aitgytag/runner.py\", line 20, in <module>\n    runpy.run_path(helper,run_name='__main__')\n  File \"<frozen runpy>\", line 287, in run_path\n  File \"<frozen runpy>\", line 98, in _run_module_code\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/workspace/reports/2026-11-14-argo-continuation/board-sc-640/worktrees/SC-640-1-aa7fa621ff/docs/characters-runtime/evidence/run-candidate-gate.py\", line 48, in <module>\n    gate = run('application-gate', args, stage, 600)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/reports/2026-11-14-argo-continuation/board-sc-640/worktrees/SC-640-1-aa7fa621ff/docs/characters-runtime/evidence/run-candidate-gate.py\", line 29, in run\n    raise RuntimeError(f'{name} exited {result.returncode}; see {output/name}.log')\nRuntimeError: application-gate exited 7; see /tmp/argo-gate-helper-controls-aitgytag/nonzero/application-gate.log\n"
+    },
+    {
+      "case": "malformed",
+      "passed": false,
+      "error": "[Errno 2] No such file or directory: '/tmp/argo-gate-helper-controls-aitgytag/malformed/gate-failure.json'",
+      "stderr": "Traceback (most recent call last):\n  File \"/tmp/argo-gate-helper-controls-aitgytag/runner.py\", line 20, in <module>\n    runpy.run_path(helper,run_name='__main__')\n  File \"<frozen runpy>\", line 287, in run_path\n  File \"<frozen runpy>\", line 98, in _run_module_code\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/workspace/reports/2026-11-14-argo-continuation/board-sc-640/worktrees/SC-640-1-aa7fa621ff/docs/characters-runtime/evidence/run-candidate-gate.py\", line 49, in <module>\n    record = json.loads(gate.decode().strip().splitlines()[-1])\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/__init__.py\", line 346, in loads\n    return _default_decoder.decode(s)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/decoder.py\", line 338, in decode\n    obj, end = self.raw_decode(s, idx=_w(s, 0).end())\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/decoder.py\", line 356, in raw_decode\n    raise JSONDecodeError(\"Expecting value\", s, err.value) from None\njson.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)\n"
+    },
+    {
+      "case": "success",
+      "passed": true
+    },
+    {
+      "case": "existing-output",
+      "passed": false,
+      "error": "",
+      "stderr": ""
+    }
+  ]
+}

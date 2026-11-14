@@ -1,0 +1,82 @@
+diff --git a/controller/merge.mjs b/controller/merge.mjs
+index e7ae384..32cf677 100644
+--- a/controller/merge.mjs
++++ b/controller/merge.mjs
+@@ -43,7 +43,7 @@ try{
+   '--ro-bind',source,'/workspace','--chdir','/workspace','--clearenv','--setenv','PATH','/tools:/usr/bin:/bin','--setenv','HOME','/tmp','--setenv','LANG','C.UTF-8'];
+  for(const path of protectedPaths)args.push('--ro-bind',join(source,path),'/workspace/'+path);
+  args.push('--','/tools/node','scripts/gate.mjs','--merge-ready');
+- process.stdout.write(await run('/usr/bin/bwrap',args,source,false,600000));
++ process.stdout.write(await run('/usr/bin/bwrap',args,source,false,1200000));
+  if((await git(['rev-parse','HEAD'])).trim()!==target||(await git(['status','--porcelain'])).trim())throw new Error('Target changed while candidate was being checked');
+  await git(['merge','--ff-only','--no-overwrite-ignore',candidate]);
+  console.log(`Merged tested candidate ${candidate} using trusted policy ${trusted}`);
+diff --git a/docs/characters-runtime/evidence/run-candidate-gate.py b/docs/characters-runtime/evidence/run-candidate-gate.py
+index bb1032f..c3c5c3c 100644
+--- a/docs/characters-runtime/evidence/run-candidate-gate.py
++++ b/docs/characters-runtime/evidence/run-candidate-gate.py
+@@ -62,7 +62,7 @@ try:
+                 '--ro-bind', str(stage), '/workspace', '--chdir', '/workspace', '--clearenv',
+                 '--setenv', 'PATH', '/tools:/usr/bin:/bin', '--setenv', 'HOME', '/tmp',
+                 '--setenv', 'LANG', 'C.UTF-8', '--', '/tools/node', 'scripts/gate.mjs', '--merge-ready']
+-        gate = run('application-gate', args, stage, 600)
++        gate = run('application-gate', args, stage, 1200)
+         active_step, active_timeout = 'gate-record', None
+         record = json.loads(gate.decode().strip().splitlines()[-1])
+         assert record['commit'] == a.candidate and record['merge_ready']
+diff --git a/docs/session-continuation/GATE_BUDGET.md b/docs/session-continuation/GATE_BUDGET.md
+new file mode 100644
+index 0000000..f851fc3
+--- /dev/null
++++ b/docs/session-continuation/GATE_BUDGET.md
+@@ -0,0 +1,37 @@
++# Measured gate execution budget
++
++SC-640, 2026-11-14. These bounded execution allowances support running the complete gate after the conversation host and CLI additions. Independent policy review and a successful complete application gate on the final integrated candidate remain required.
++
++## Evidence and limits
++
++The earlier full-gate attempt at `3c8ff55d872891014c89fe43515b3c28fd492626` exceeded the external 600-second deadline. Its [failure record](evidence/host-gate-3c8ff55/failure.json) and [runner result](evidence/host-gate-3c8ff55/runner-result.json) remain failures. The former helper lost partial subprocess output on timeout, so that attempt supports no passed-group or assertion-completion count.
++
++A subsequent [foundation diagnostic](evidence/foundation-diagnostic-3c8ff55/gate-result.json) used the unchanged native `scripts/run-tests.mjs` on all 49 foundation files at that same commit. It exited zero and [verified 567 named tests](evidence/foundation-diagnostic-3c8ff55/application-gate.log), including their source locations and normal per-file completion. The source head remained unchanged. Total elapsed time was **895.626 seconds, including clone and dependency installation**; foundation-only duration was not isolated. The diagnostic used an external 1200-second allowance and executed only the foundation group.
++
++Concurrent author suites and independent checks competed for CPU during portions of the diagnostic. This is a loaded-workspace execution measurement, not a portable performance benchmark. The later CLI additions increase the final test workload. An 18-minute foundation allowance gives 184.374 seconds beyond this observed diagnostic total; that arithmetic is a planning allowance, not a guarantee for the expanded suite. A quiet complete ten-group run on the final candidate must demonstrate completion within the selected bounds.
++
++Pinned diagnostic evidence SHA-256:
++
++| File | SHA-256 |
++| --- | --- |
++| `gate-result.json` | `a05ee0cc0660d1966da653a19822964f7798199a336fdd37f49e66ab6b8e5bbe` |
++| `application-gate.log` | `71844c76b286ca54ced5e5d6404ebb04bbed5bbde260a1ab7e84b023b5db01c9` |
++
++## Selected bounds
++
++| Execution boundary | Previous | Selected |
++| --- | --- | --- |
++| Foundation group in `scripts/gate.mjs` | 600000 ms | 1080000 ms / 18 minutes |
++| Whole confined gate in `controller/merge.mjs` | 600000 ms | 1200000 ms / 20 minutes |
++| Whole confined gate in the external Python helper | 600 seconds | 1200 seconds / 20 minutes |
++| Every other group in `scripts/gate.mjs` | 300000 ms | Unchanged |
++
++The whole-gate limits cover the confined application-gate subprocess. Clone, installation and staging retain their existing separate bounds. All ten groups, ordered discovery, the native runner's source-location and file-completion checks, immutable candidate/hash checks, network isolation, read-only sandbox, output caps and nonzero/timeout refusal remain in force. No test is skipped, parallelized or weakened. Trust pins, merge admission rules and CI configuration are unchanged.
++
++The [GitHub Actions job](../../.github/workflows/deterministic-gate.yml) still has a **20-minute total job cap**, including checkout, tool setup and both dependency installations. It invokes `scripts/gate.mjs` directly. Therefore the external helper's 20-minute application allowance does not give CI 20 additional minutes after setup: CI can expire earlier, and its eventual result must be checked separately. A timeout remains a failure requiring diagnosis; it cannot be converted into acceptance from this measurement.
++
++## Failure evidence
++
++The external helper now requires an empty output directory, preserving earlier evidence instead of overwriting it. Capture the helper's own console output outside that directory. Timeout output, including merged stderr, is retained in the relevant stage log; nonzero exits retain their output too. Failure writes `gate-failure.json` with stage, exception type, timeout/return-code details, elapsed time, source-head comparison and log hashes, then exits nonzero. A malformed final record or changed source head also fails. Only verified success writes `gate-result.json`.
++
++Eight external synthetic process controls cover timeout output, nonzero output, malformed records, wrong candidate, missing group, changed source head, success and preservation of earlier output. They test the reporting helper and do not stand in for application acceptance. The author retained an intermediate harness failure whose 100 ms synthetic timeout preceded child output; increasing only that control's allowance to one second made the controls reliable without changing production behavior. Exact source and control evidence are recorded in the SC-640 handoff; final independent review and application results belong to the coordinator's acceptance record.
+diff --git a/scripts/gate.mjs b/scripts/gate.mjs
+index 70e1622..19793c0 100644
+--- a/scripts/gate.mjs
++++ b/scripts/gate.mjs
+@@ -21,7 +21,7 @@ for(const [name,cmd,args,opts] of [
+  ['research-python', 'python3', ['-I','-S','-B','scripts/run-python-tests.py','RESEARCH']],
+  ['research-tests',process.execPath,['scripts/run-tests.mjs','RESEARCH/test_validate.mjs']],
+  ['research-package',process.execPath,['RESEARCH/validate.mjs']],
+- ['foundation',process.execPath,['scripts/run-tests.mjs',...(await readdir(resolve(root,'TESTS'))).filter(f=>f.endsWith('.test.ts')).sort().map(f=>'TESTS/'+f)],{timeout:600000}],
++ ['foundation',process.execPath,['scripts/run-tests.mjs',...(await readdir(resolve(root,'TESTS'))).filter(f=>f.endsWith('.test.ts')).sort().map(f=>'TESTS/'+f)],{timeout:1080000}],
+  ['model-and-process',process.execPath,['../scripts/run-tests.mjs',...(await readdir(resolve(root,'packages/model-client/tests'))).filter(f=>f.endsWith('.test.mjs')).sort().map(f=>'../packages/model-client/tests/'+f),...(await readdir(resolve(root,'pantheon/tests'))).filter(f=>f.endsWith('.test.mjs')).sort().map(f=>'tests/'+f)],{cwd:resolve(root,'pantheon')}],
+ ]){
+  const output=await run(cmd,args,opts);if(name==='schema'&&!output.includes('Frozen schemas: 36 definitions'))throw new Error('Schema checker did not complete');if(name==='research-package'&&!output.includes('PASS five starter reports, provenance, references, coverage paths and unchanged v1 freeze'))throw new Error('Research validator did not complete');checks.push({name,output_sha256:createHash('sha256').update(output).digest('hex')});console.log(`PASS ${name}`);

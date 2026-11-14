@@ -1,0 +1,26 @@
+{
+  "candidate": "47d3fa6a3b247986a0a6bb9aaad1f65cfff25273",
+  "base": "9fa800493a3c033b45bc3df7ab18a56e25bcd9a8",
+  "status": "helper checkpoint, awaiting independent review and measured budget",
+  "helper_sha256": "bf43fad5090495c01bb6ebcf02818fa6838c6f74b47a22ce9a8142cb907b2d84",
+  "evidence_sha256": {
+    "helper-controls.py": "f4cd7c040df004fffe65962aa7cca6a99d5ce548fe7f86f94e875f5fb44c1dcb",
+    "helper-before.py": "7e6ffc9b056cdc42055b151ccfa74309eb92e278c58662bc927bd7937eac6b7c",
+    "helper-eight-red.json": "99096486e7c40f2d90315f224b69557166ed8307df2d284edb686c93890e8c21",
+    "helper-checkpoint-green.json": "3a785a6752fca0e63c1160cf52f102e2cf75520b0b3ce12735a7f8368f52c96b",
+    "helper-checkpoint-final.json": "2165e65ea072bec18127e5e45d24b66d56238e0acb25a8b7d13fd938a48cec96"
+  },
+  "synthetic_controls": {
+    "passed": 8,
+    "failed": 0,
+    "exit": 0,
+    "not_application_acceptance": true,
+    "latest": "helper-checkpoint-final.json",
+    "retained_intermediate": "helper-checkpoint-green.json",
+    "harness_note": "Synthetic timeout increased from100ms to1s so the child can print before deadline. Production budgets unchanged; intermediate7/8 result retained."
+  },
+  "budgets_changed": false,
+  "paid_model_calls": 0,
+  "merge_push_board_submit": false,
+  "source_clean": true
+}

@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/workspace/reports/2026-11-14-argo-continuation/gate-budget-review/helper-faults.py", line 43, in <module>
+    fixture_child(*sys.argv[2:]);raise SystemExit(0)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/reports/2026-11-14-argo-continuation/gate-budget-review/helper-faults.py", line 38, in fixture_child
+    exec(compile(source,helper,'exec'),{'__name__':'__main__','__file__':helper})
+  File "/workspace/reports/2026-11-14-argo-continuation/board-sc-640/worktrees/SC-640-1-aa7fa621ff/docs/characters-runtime/evidence/run-candidate-gate.py", line 48, in <module>
+    run('clone', ['git', 'clone', '--no-local', '--no-checkout', str(repo), str(stage)], root)
+  File "/workspace/reports/2026-11-14-argo-continuation/board-sc-640/worktrees/SC-640-1-aa7fa621ff/docs/characters-runtime/evidence/run-candidate-gate.py", line 46, in run
+    raise subprocess.CalledProcessError(result.returncode, argv, output=result.stdout)
+subprocess.CalledProcessError: Command '['git', 'clone', '--no-local', '--no-checkout', '/workspace/reports/2026-11-14-argo-continuation/gate-budget-review/helper-47d3fa6/controls/synthetic-repo', '/tmp/argo-review-gate-l2cq4g2x/candidate']' returned non-zero exit status 3.

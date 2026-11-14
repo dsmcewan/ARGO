@@ -1,0 +1,28 @@
+{
+  "status": "failed",
+  "candidate": "47d3fa6a3b247986a0a6bb9aaad1f65cfff25273",
+  "failure": {
+    "stage": "application-gate",
+    "type": "TimeoutExpired",
+    "message": "Command '['/usr/bin/bwrap', '--unshare-all', '--cap-drop', 'ALL', '--die-with-parent', '--new-session', '--ro-bind', '/usr', '/usr', '--symlink', 'usr/bin', '/bin', '--symlink', 'usr/sbin', '/sbin', '--symlink', 'usr/lib', '/lib', '--symlink', 'usr/lib64', '/lib64', '--dir', '/tools', '--ro-bind', '/SYNTHETIC/node', '/tools/node', '--proc', '/proc', '--dev', '/dev', '--tmpfs', '/tmp', '--ro-bind', '/tmp/argo-review-gate-3cz4fua0/candidate', '/workspace', '--chdir', '/workspace', '--clearenv', '--setenv', 'PATH', '/tools:/usr/bin:/bin', '--setenv', 'HOME', '/tmp', '--setenv', 'LANG', 'C.UTF-8', '--', '/tools/node', 'scripts/gate.mjs', '--merge-ready']' timed out after 600 seconds",
+    "timed_out": true,
+    "timeout_seconds": 600,
+    "returncode": null
+  },
+  "elapsed_seconds": 0.022,
+  "source_head_before": "47d3fa6a3b247986a0a6bb9aaad1f65cfff25273",
+  "source_head_after": "47d3fa6a3b247986a0a6bb9aaad1f65cfff25273",
+  "source_head_unchanged": true,
+  "source_head_check_error": null,
+  "merged": false,
+  "operational_trust_promoted": false,
+  "paid_model_calls": 0,
+  "remote_writes": false,
+  "logs": {
+    "application-gate.log": "1e5efb41b34235721fa2c604c75111085229ee87a9ba4f461fb597e8cecdfd4c",
+    "checkout.log": "891c28555b4c75505f2bf15efc17e033d64c7bc212eb311474ad570834f604f6",
+    "clone.log": "891c28555b4c75505f2bf15efc17e033d64c7bc212eb311474ad570834f604f6",
+    "pantheon-install.log": "891c28555b4c75505f2bf15efc17e033d64c7bc212eb311474ad570834f604f6",
+    "root-install.log": "891c28555b4c75505f2bf15efc17e033d64c7bc212eb311474ad570834f604f6"
+  }
+}
