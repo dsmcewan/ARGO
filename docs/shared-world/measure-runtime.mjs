@@ -26,6 +26,7 @@ const targets = [128, 512, 1000, 2000];
 const mod = async path => import(pathToFileURL(join(repo, path)).href);
 const {hash, WORLD_PROFILE} = await mod('packages/contracts/src/index.ts');
 const {openWorldLedger, viewWorldActor, worldStateHash, replayWorld} = await mod('packages/ledger/src/index.ts');
+const {createWorldModelAgent} = await mod('packages/interventions/src/index.ts');
 const {buildSharedWorldCampaign} = await mod('scenarios/tempted-fates/shared-world/seed.ts');
 const pack = JSON.parse(await readFile(join(repo, 'scenarios/tempted-fates/campaign/world.json'), 'utf8'));
 const keys = generateKeyPairSync('ed25519');
@@ -36,6 +37,9 @@ const {genesis} = buildSharedWorldCampaign(pack, {
  travelers:[{id:'hero', name:'Ariadne', controller_id:'auth_hero', weapon:'spear', nature:{description:'Careful and direct.', priorities:['keep promises']}, presentation:{occupation:'Traveler', wants:'Find a safe route.', will_not:'Accept an unknown obligation.'}, max_speech_characters:240}],
 });
 const principal = {scope, principal_id:'auth_hero', actor_id:'hero', role:'player'};
+const npcPrincipal = {scope, principal_id:'npc_host', actor_id:'melia', role:'npc'};
+const genesisHash = hash(genesis);
+const memoryId = sequence => hash({domain:'shared-world/0.1.0/memory',genesis_hash:genesisHash,request_id:`observation_${sequence}`,sequence});
 const directory = await mkdtemp(join(tmpdir(), 'argo-shared-runtime-'));
 const path = join(directory, 'world.db');
 let writer, sibling;
@@ -49,15 +53,19 @@ try {
  writer = await openWorldLedger(options);
  let cursor = (await writer.snapshot()).cursor;
  const command = () => ({version:WORLD_PROFILE, scope, request_id:`observation_${cursor.sequence+1}`, actor_id:'hero', expected:cursor, causation_id:cursor.head,
-  action:{type:'speak', text:`Observation ${cursor.sequence+1}: I note the harbor stones.`, audience:{kind:'self',addressed_actor_ids:[]}, in_reply_to:null}});
+  action:{type:'speak', text:`Question ${cursor.sequence+1}: May I borrow the lamp without a deposit?`, audience:{kind:'whisper',addressed_actor_ids:['melia']}, in_reply_to:null}});
+ const npcCommand = () => ({...command(),actor_id:'melia',action:{type:'speak',text:'It is a free loan. Bring it back and supply your own oil.',audience:{kind:'whisper',addressed_actor_ids:['hero']},in_reply_to:memoryId(cursor.sequence)}});
  for (const target of targets) {
   const fillStart = performance.now();
-  while (cursor.sequence < target) cursor = (await writer.submit(command(), principal)).cursor;
+  while (cursor.sequence < target) {
+   const npc=cursor.sequence%2===1;
+   cursor = (await writer.submit(npc?npcCommand():command(),npc?npcPrincipal:principal)).cursor;
+  }
   const fill_ms = performance.now()-fillStart;
   const snap = await writer.snapshot();
-  const currentQuery = () => ({version:WORLD_PROFILE,scope,actor_id:'hero',cursor});
+  const currentQuery = () => ({version:WORLD_PROFILE,scope,actor_id:'melia',cursor});
   const snapshot = await samples(() => writer.snapshot());
-  const scoped_view = await samples(async () => viewWorldActor(genesis,await writer.snapshot(),currentQuery(),principal));
+  const scoped_view = await samples(async () => viewWorldActor(genesis,await writer.snapshot(),currentQuery(),npcPrincipal));
   const opening = await elapsed(() => openWorldLedger({...options,expectedHead:cursor}));
   sibling = opening.value;
   assert.equal(worldStateHash(await sibling.snapshot()),worldStateHash(snap));
@@ -67,11 +75,22 @@ try {
   const retry = await samples(async () => assert.deepEqual(await writer.submit(pending,principal),append.value));
   const refresh = await elapsed(() => sibling.snapshot());
   assert.deepEqual(refresh.value.cursor,cursor);
+  let modelCalls=0,contextReads=0;
+  const agent=createWorldModelAgent({scope,actorId:'melia',sessionId:'offline_measurement',candidates:[{vendor:'xai',model:'grok-4.7',pool:'injected'}],
+   clientFor:()=>({responses:{create:async()=>{modelCalls++;return {id:'fixture',status:'completed',output:[{type:'message',content:[{type:'output_text',text:JSON.stringify({text:'It is a free loan. Bring it back and supply your own oil.'})}]}]};}}}),
+   refreshContext:async query=>{contextReads++;return viewWorldActor(genesis,await writer.snapshot(),query,npcPrincipal);},
+  });
+  const dialogue=await elapsed(async()=>{
+   const proposal=await agent.respond(currentQuery(),memoryId(cursor.sequence),`observation_${cursor.sequence+1}`);
+   assert.ok(proposal);const receipt=await writer.submit(proposal,npcPrincipal);cursor=receipt.cursor;return receipt;
+  });
+  assert.equal(modelCalls,1);
   const expected = await writer.snapshot();
-  assert.equal(worldStateHash(refresh.value),worldStateHash(expected));
+  assert.equal(worldStateHash(await sibling.snapshot()),worldStateHash(expected));
   await sibling.close(); sibling = undefined;
   const row={prefix_events:target,after_sample_events:cursor.sequence,fill_ms,cold_open_ms:opening.ms,warm_snapshot:snapshot,warm_scoped_view:scoped_view,
-   warm_speech_append_ms:append.ms,exact_retry:retry,two_handle_one_event_refresh_ms:refresh.ms,state_bytes:Buffer.byteLength(JSON.stringify(expected)),state_hash:worldStateHash(expected)};
+   warm_speech_append_ms:append.ms,warm_contextual_dialogue_and_commit_ms:dialogue.ms,dialogue_context_reads:contextReads,injected_model_calls:modelCalls,
+   exact_retry:retry,two_handle_one_event_refresh_ms:refresh.ms,state_bytes:Buffer.byteLength(JSON.stringify(expected)),state_hash:worldStateHash(expected)};
   rows.push(row);process.stdout.write(JSON.stringify(row)+'\n');
  }
  const allEvents=[];
@@ -88,7 +107,8 @@ try {
   limits:['One machine; five warm read/retry samples, one append and one suffix refresh per checkpoint.',
    'History-bearing state hashes grow with history; cold replay is not claimed to be linear.',
    'Parent event-loop samples cover store/view operations; the final standalone synchronous forensic replay is measured separately.',
-   'Self-private speech workload and actual campaign seed; no provider latency, combat load or general graph-scale claim.']};
+   'Alternating addressed speech in the actual campaign; bulk turns use explicit fixtures and the measured contextual reply uses an injected provider.',
+   'No provider latency, combat-load or general graph-scale claim.']};
  await mkdir(output,{recursive:true});await writeFile(join(output,'measurement.json'),JSON.stringify(record,null,2)+'\n');
  process.stdout.write(`Saved ${join(output,'measurement.json')}\n`);
 } finally {eventLoop.disable();await sibling?.close();await writer?.close();await rm(directory,{recursive:true,force:true});}
