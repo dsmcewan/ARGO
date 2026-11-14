@@ -1,0 +1,9 @@
+PASS frozen input and pack stay unchanged; returned genesis is deterministic
+PASS physical selection and identity bind all three fixed variants
+PASS creation is deterministic across HP modes with exact starter inventory and bounds
+PASS options reject proxy/accessor execution and hidden, exotic or malformed data
+PASS initial actor view has exact public keys and only self inventory/local routes
+PASS scope, controller, actor kind, referee and genesis mismatches fail closed
+PASS returned actor view is deeply detached from host genesis/state and principal
+PASS view rejects active principal without executing traps
+PASS all 8 independent probe groups

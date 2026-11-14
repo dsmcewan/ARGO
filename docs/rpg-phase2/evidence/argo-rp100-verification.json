@@ -1,0 +1,58 @@
+{
+  "task": "RP-100",
+  "base": "78bc63f4410cf7bd899c03c1c44b75d78b72651d",
+  "commit": "2423d5b856ef57b39214116472c8b899cd45e428",
+  "files": {
+    "SYSTEMS/mortal-v2/CONTRACT.md": "ede698b24b62c4d47f6d45f3cbe4288b43dd230128a3a09edb59fee121f35447",
+    "SYSTEMS/mortal-v2/FREEZE.json": "5e8130c3e774670073fdf1d3f07242ffa8c58d73330ede1baea3079ca5a19714",
+    "SYSTEMS/mortal-v2/mortal.schema.json": "070be914286893c86598578dccabe152bbdece23ba859d162776243f2b0b21ff",
+    "packages/contracts/src/mortal-types.ts": "f798d4d9325b502006d871867d00805d95febc9ba8a8bdd7f79846808e31686f",
+    "packages/contracts/src/mortal.ts": "c51c63e6ae4c92ed4ce9b72f4fd0ae49fa4bbf9d74940e47bffb3e87ba753d75",
+    "TESTS/mortal-contracts.test.ts": "c0d0fe168e7f34c4f810a07bcd99f6328809127860f712cdee035fda111ff3b8"
+  },
+  "tests": {
+    "initial_red": 12,
+    "equipment_rule_red": "Missing expected exception for equipped tool/loot",
+    "variant_red": "New explicit variant rejected before schema addition",
+    "final_focused": {
+      "passed": 13,
+      "failed": 0
+    },
+    "typecheck": "pass",
+    "existing_frozen_contracts": "pass",
+    "full_suite": {
+      "passed": 210,
+      "failed": 0,
+      "scope": "Before final variant addition; final variant is covered by focused13 and fresh typecheck. Parent requested no repeat of full suite before assembled gate."
+    }
+  },
+  "logs": {
+    "/tmp/argo-rp100-red.log": "e1773902258d89bbf7deecc5af912f4e6d890e40b76d2dfdd3afc36fa17986ed",
+    "/tmp/argo-rp100-equipment-red.log": "788463279cb70c513094a584567aedb7c5ec0163b4299a900e4e09d5ce3ca3ef",
+    "/tmp/argo-rp100-variant-red.log": "14c5c5968574a82f68d16436b289c9bc442d320a1049215db920f76a24e2ab2d",
+    "/tmp/argo-rp100-green.log": "1e2b1cf1c4f95bf6ca46f76dca68aa3f4b486a4411e2c04a745208d57fe9c97c",
+    "/tmp/argo-rp100-typecheck.log": "2cf20646d72113be26c6fbe14738bc101ebf909ab8a2374290f369e1d53c975c",
+    "/tmp/argo-rp100-old-contracts.log": "2cd7874723b12ab43b0da644f0fa05f6af32153676d6e31de2c44c17c8e03428",
+    "/tmp/argo-rp100-suite.log": "59d22c810129f2435957c758b796aa9acccc8ef7c847dc6b055faca49a6ca1dd"
+  },
+  "freeze": {
+    "profile_version": "mortal-rules/0.2.0",
+    "files": {
+      "SYSTEMS/mortal-v2/CONTRACT.md": "ede698b24b62c4d47f6d45f3cbe4288b43dd230128a3a09edb59fee121f35447",
+      "SYSTEMS/mortal-v2/mortal.schema.json": "070be914286893c86598578dccabe152bbdece23ba859d162776243f2b0b21ff",
+      "packages/contracts/src/mortal-types.ts": "f798d4d9325b502006d871867d00805d95febc9ba8a8bdd7f79846808e31686f"
+    },
+    "scope": "Fresh-world mortal authority interface; does not migrate frozen v1 history, authenticate callers, or approve an operational merge"
+  },
+  "exports": [
+    "assertMortalContract",
+    "assertMortalGenesis",
+    "assertMortalData",
+    "mortalSchema"
+  ],
+  "notes": [
+    "Contracts index export remains root-owned and unchanged.",
+    "No runtime admission/storage implementation, board mutations, paid calls, or push.",
+    "Parent owns independent review and operational application acceptance."
+  ]
+}

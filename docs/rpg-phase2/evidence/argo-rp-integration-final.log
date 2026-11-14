@@ -1,0 +1,13 @@
+✔ campaign initializes fresh deterministic mortal worlds with fixed variant and no Fate combat actors (312.037328ms)
+✔ campaign host options refuse active, unknown and identity-colliding inputs (17.524411ms)
+✔ mortal actor view exposes own state and admitted encounter facts without host secrets (61.505784ms)
+✔ campaign real durable loop spends food and stock once, preserves private views and replays after reopening (3279.299194ms)
+✔ durable combat admits owned attacks and retreat without a second turn or hidden retaliation (1415.443974ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7248.967276

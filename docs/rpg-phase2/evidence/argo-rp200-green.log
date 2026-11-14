@@ -1,0 +1,28 @@
+✔ initial state binds the complete variant/genesis; hashing excludes only head (33.826005ms)
+✔ capacity counts items and exact consumable bundle ceilings (7.592334ms)
+✔ permissions, scope, stale heads and malformed active DTOs refuse without input mutation (39.799587ms)
+✔ travel costs apply only to its actor, with prepaid food at strict active-period boundaries (21.478661ms)
+✔ light is preflighted and spent per turn; travel arrival persists when simultaneous needs kill before hazard (23.732195ms)
+✔ search attempts persist on failure or incapacity; finite forage rewards cannot exceed capacity (24.69665ms)
+✔ rest admits unconscious survivors, charges full coverage and uses only personal active cooldown (23.667964ms)
+✔ all other actor commands refuse unconscious and dead controllers (20.264717ms)
+✔ equipment, physical custody and corpse looting conserve actual items and clear equipment (31.881623ms)
+✔ resource transfers and finite purchases validate post-transaction capacity and conserve coin (57.764345ms)
+✔ shared mutable host references cannot couple actors, genesis or returned state (7.595552ms)
+✔ equipment replacement and encounter attacks cannot bypass ownership, live target, ammo or exit permissions (33.367225ms)
+✔ only the referee creates a co-located encounter; its fixed initiative and turn identity bind every action (18.790272ms)
+✔ defend expires at the next turn; strict ties miss and ranged ammunition is still spent (10.950376ms)
+✔ zero-HP and negative-HP attacks close a round once; dead participants skip food but keep elapsed participation (32.791096ms)
+✔ retreat has no free retaliation and charges current-round escapees but never prior-round escapees (34.329197ms)
+✔ round starvation is simultaneous per actor and can end combat without recursively charging another round (24.391619ms)
+✔ request IDs cannot grind RNG and all rejected proposals preserve state and counter (187.900343ms)
+✔ immutable genesis references and exhausted bounded counters fail closed (18.312319ms)
+✔ 10,000 seeded accepted/rejected proposals preserve conservation and replay sampled prefixes (30055.891848ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 32669.704345

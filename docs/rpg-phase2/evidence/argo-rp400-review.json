@@ -1,0 +1,81 @@
+{
+  "reviewer": "character_contract_scout",
+  "role": "Independent read-only balance-method review",
+  "source_commit": "d156819b3e988467148a615aaa0d528e1acae949",
+  "balance_source_commit": "a8c3bf9",
+  "source_sha256": {
+    "scenarios/tempted-fates/balance/runner.ts": "3595916f928a7a6215f3b94f43025ae7a31ad3ed3807e5edbca060bde51b7abf",
+    "scenarios/tempted-fates/balance/statistics.ts": "718e1a01dd61055f9e44aa948b586d24e3f12e0db45f1f9e655c6e8d897fcfbb",
+    "scenarios/tempted-fates/balance/fixtures.ts": "51cac7b10b5217f6992140c9632478af1c1c727af3efe4ecec5519d1ea1a28e2",
+    "scenarios/tempted-fates/balance/protocol.json": "07c5cec8476cc88bdcea37fb1557a167ddcd578bd22d05b026e8b63b24183c98",
+    "scenarios/tempted-fates/balance/cli.ts": "ba167265eb68ff2e996e85361f7542d9bcd177ec30c47e545ab2fca90d7ef2d1",
+    "docs/rpg-phase2/balance/PREREGISTRATION.md": "26f530a26482d0bab20043f1143a3a111df7bee5df76f83ed3f7fc057233a832",
+    "TESTS/mortal-balance.test.ts": "fc04c96c58c501484ae50f9c9488791db6cfcffcdcd6714d79257c3120785fd8",
+    "packages/ledger/src/mortal/rules.ts": "fadca52771d69ef23ee4e37106ce366f9a8611f099f441d5d3613a032b87bdf5",
+    "packages/ledger/src/mortal/view.ts": "70234a502a0250df58d3cb173131d30414319ec25f61f3eeb8247886a4516aa7",
+    "packages/contracts/src/mortal.ts": "c51c63e6ae4c92ed4ce9b72f4fd0ae49fa4bbf9d74940e47bffb3e87ba753d75",
+    "packages/contracts/src/mortal-types.ts": "f798d4d9325b502006d871867d00805d95febc9ba8a8bdd7f79846808e31686f",
+    "SYSTEMS/mortal-v2/mortal.schema.json": "070be914286893c86598578dccabe152bbdece23ba859d162776243f2b0b21ff"
+  },
+  "outcome": "Two medium method fixes recommended before outcome study; one low retention clarification",
+  "findings": [
+    {
+      "id": "RP400-M01",
+      "severity": "medium",
+      "location": "scenarios/tempted-fates/balance/statistics.ts:17",
+      "title": "Paired Wald interval collapses to false certainty at boundary samples",
+      "evidence": "pairedDifference with 500 identical pairs yields [0,0]; 500 improvements yields [1,1]. The variance formula is correct for an asymptotic Wald approximation, but that approximation has a boundary-coverage failure. At true improvement probability .001 and no worsening, probability of seeing zero improvements in 500 pairs is .6063789448611847; the reported [0,0] then excludes the true nonzero effect.",
+      "recommendation": "Before any outcome study, choose/document a nondegenerate score or conservative exact bound for paired differences, or a principled conservative boundary fallback. Update preregistration and tests rather than silently changing the method after outcomes."
+    },
+    {
+      "id": "RP400-M02",
+      "severity": "medium",
+      "location": "scenarios/tempted-fates/balance/runner.ts:143",
+      "title": "Censored comparisons can retain a target match in heldout results",
+      "evidence": "Censored paired observations are converted to 0. assessTarget has no censorship input and can return match for a synthetic 500-pair sample containing 50 unresolved pairs, fight incapacitations200 and escapes450. The training recommendation globally checks censorship; holdout always returns heldout-no-selection while its comparisons still expose the target match.",
+      "recommendation": "Retain every row and denominator, but mark confirmatory comparisons inconclusive when their relevant trial arms contain censorship, in either partition. Distinguish observed standing-at-cap from terminal standing survival in descriptive outputs. Add an explicit censored-target regression without running the full study."
+    },
+    {
+      "id": "RP400-M03",
+      "severity": "low",
+      "location": "scenarios/tempted-fates/balance/runner.ts:132",
+      "title": "Report retains aggregate hashes rather than individual seed-level digests promised in prose",
+      "evidence": "combatSummary emits one replay_digest over all {trial,digest} rows and one full-row digest; runStudy discards individual combat rows. PREREGISTRATION says to keep the exact seed-level digest. A later audit must rerun source to inspect any one seed.",
+      "recommendation": "Either retain a seed-level manifest/NDJSON companion with a report hash, or state accurately that only aggregate commitments plus deterministic regeneration inputs are retained."
+    }
+  ],
+  "known_change_pending": {
+    "fingerprint": "Baseline CLI omits imported old schemas, manifests and preregistration prose. Parent reports author is already improving fingerprint coverage; this known pending change was not claimed fixed or independently re-reviewed."
+  },
+  "verified_by_reading": [
+    "Session uses initialMortalState and resolveMortal for every admitted/refused transition; fixture generation changes initial configuration only.",
+    "Command fold replay compares every transition digest and final state; documentation correctly distinguishes this from signed journal verification.",
+    "Policies use own HP/maxHP, own known weapon ID, visible acting order and opponent standing/escape status; no numerical enemy HP threshold, secret seed inspection or future draw selection was found. They access host state directly, so a future policy API taking ActorView would make this discipline structural, but current predicates use available facts.",
+    "Health classification is explicit: hp>0 standing, hp==0 unconscious, hp<0 dead; escape requires admitted retreat plus standing actor; victory requires terminated encounter, no retreat and incapacitated foes.",
+    "Common seeds/initial HP draws are paired across arms; separate train/holdout/pilot domains and no hidden random rerolls found.",
+    "Declared primary targets use unarmored single-raider cells; armor and outnumbered cells are reported separately.",
+    "Wilson and paired mean/sample-variance math match independent ordinary-case calculations; TARGET_Z correctly represents four one-sided Bonferroni target bounds.",
+    "Trial count500 per arm/partition is explicitly preregistered; no adaptive stopping in runStudy. Pilot discards outcomes and retains timings/counts.",
+    "Holdout CLI binds the exact training report/decision, source fingerprint and trial count; holdout produces no new selected recommendation. File-exclusive artifacts are process evidence, not cryptographic prevention of an analyst fabricating inputs or rerunning under another filename.",
+    "Finite resource scenarios follow legal commands, do not patch HP/clocks after initialization, retain refusal counters, and separate stock depletion from missed due payments."
+  ],
+  "execution": {
+    "math_unit_tests": {
+      "passed": 1,
+      "failed": 0
+    },
+    "math_only_probes": "Independent Wilson50/100, paired four-observation variance, boundary samples and synthetic censored comparison",
+    "training_runs": 0,
+    "holdout_runs": 0,
+    "pilot_runs": 0,
+    "full_study_runs": 0
+  },
+  "evidence_sha256": {
+    "/tmp/argo-rp400-math-test.log": "b369d195c2a4b16aaa8fb78e5eb22f5b94547d0ead7bfef520eeab9ef707e421",
+    "/tmp/argo-rp400-statistics-probe.log": "20d19f33568420853317f09b561a97b4baff1884bc70721a85beedff23f0e958"
+  },
+  "source_writes": false,
+  "board_mutations": false,
+  "paid_calls": false,
+  "scope_limit": "No train/holdout outcomes inspected; no review of the eventual empirical recommendation or revised fingerprint."
+}

@@ -1,0 +1,21 @@
+✔ mortal genesis validates independent passive data and preserves its bytes (365.303636ms)
+✔ mortal genesis refuses noninitial health, activity and unsafe identity or resource values (10.641702ms)
+✔ mortal genesis requires public-only Ed25519 keys (3.391693ms)
+✔ mortal genesis retains explicit private world variant without adding it to actor views (6.595304ms)
+✔ mortal genesis rejects dangling and duplicate identities before authority initialization (16.321894ms)
+✔ mortal equipment has one placement and mechanically consistent item kind (6.473477ms)
+✔ initial capacity counts resource bundles once and rejects a single excess slot (2.559274ms)
+✔ passive mortal inspection refuses active and noncanonical data without triggering it (45.902885ms)
+✔ commands carry closed intents, bounded participant rosters and exact role identities (14.685388ms)
+✔ state and event contracts bind scopes, cursors, round rosters and bounded random records (10.386456ms)
+✔ receipts retain public verification identity and reject legacy unbound shapes (2.660764ms)
+✔ actor views admit only own stores and equipment with bounded visible encounter facts (2.835561ms)
+✔ mortal schema meta-validation and interface freeze pin all shared source files (219.285683ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1690.658078

@@ -1,0 +1,209 @@
+{
+  "note": "Original reports preserved unchanged. Historical absolute source paths map to these retained bytes. Use reachable assembled candidate and source hashes, not an ephemeral checkout, when rerunning.",
+  "artifacts": [
+    {
+      "original_path": "/tmp/argo-mortal-prefreeze-review.json",
+      "retained_path": "argo-mortal-prefreeze-review.json",
+      "sha256": "41f2167b84de0eed9b92d8f4402d2ccb925a7b1346753c1147dca5f232c59b97",
+      "bytes": 3623
+    },
+    {
+      "original_path": "/tmp/argo-review2-stage-gate.py",
+      "retained_path": "argo-review2-stage-gate.py",
+      "sha256": "7e6ffc9b056cdc42055b151ccfa74309eb92e278c58662bc927bd7937eac6b7c",
+      "bytes": 3747
+    },
+    {
+      "original_path": "/tmp/argo-rp-assembled-focused.log",
+      "retained_path": "argo-rp-assembled-focused.log",
+      "sha256": "98bd39ab525b0ac0fd07efb5d8247a794f5e3cb0ed9f92f324ef94c318e4a778",
+      "bytes": 2726
+    },
+    {
+      "original_path": "/tmp/argo-rp-combined-types.log",
+      "retained_path": "argo-rp-combined-types.log",
+      "sha256": "2cf20646d72113be26c6fbe14738bc101ebf909ab8a2374290f369e1d53c975c",
+      "bytes": 40
+    },
+    {
+      "original_path": "/tmp/argo-rp-integration-final.log",
+      "retained_path": "argo-rp-integration-final.log",
+      "sha256": "4aab66d253baf4fe2c8515a2bb263c545bee68983ce92e37909fbd0a6524f4df",
+      "bytes": 671
+    },
+    {
+      "original_path": "/tmp/argo-rp100-equipment-red.log",
+      "retained_path": "argo-rp100-equipment-red.log",
+      "sha256": "788463279cb70c513094a584567aedb7c5ec0163b4299a900e4e09d5ce3ca3ef",
+      "bytes": 1011
+    },
+    {
+      "original_path": "/tmp/argo-rp100-green.log",
+      "retained_path": "argo-rp100-green.log",
+      "sha256": "1e2b1cf1c4f95bf6ca46f76dca68aa3f4b486a4411e2c04a745208d57fe9c97c",
+      "bytes": 1390
+    },
+    {
+      "original_path": "/tmp/argo-rp100-old-contracts.log",
+      "retained_path": "argo-rp100-old-contracts.log",
+      "sha256": "2cd7874723b12ab43b0da644f0fa05f6af32153676d6e31de2c44c17c8e03428",
+      "bytes": 202
+    },
+    {
+      "original_path": "/tmp/argo-rp100-red.log",
+      "retained_path": "argo-rp100-red.log",
+      "sha256": "e1773902258d89bbf7deecc5af912f4e6d890e40b76d2dfdd3afc36fa17986ed",
+      "bytes": 16434
+    },
+    {
+      "original_path": "/tmp/argo-rp100-suite.log",
+      "retained_path": "argo-rp100-suite.log",
+      "sha256": "59d22c810129f2435957c758b796aa9acccc8ef7c847dc6b055faca49a6ca1dd",
+      "bytes": 21488
+    },
+    {
+      "original_path": "/tmp/argo-rp100-typecheck.log",
+      "retained_path": "argo-rp100-typecheck.log",
+      "sha256": "2cf20646d72113be26c6fbe14738bc101ebf909ab8a2374290f369e1d53c975c",
+      "bytes": 40
+    },
+    {
+      "original_path": "/tmp/argo-rp100-variant-red.log",
+      "retained_path": "argo-rp100-variant-red.log",
+      "sha256": "14c5c5968574a82f68d16436b289c9bc442d320a1049215db920f76a24e2ab2d",
+      "bytes": 1310
+    },
+    {
+      "original_path": "/tmp/argo-rp100-verification.json",
+      "retained_path": "argo-rp100-verification.json",
+      "sha256": "3c576fb3bd46d271b4c36a7c626bdb2b4c75ce7f4aaeeb0c7c800d4edb27c38d",
+      "bytes": 3047
+    },
+    {
+      "original_path": "/tmp/argo-rp200-green.log",
+      "retained_path": "argo-rp200-green.log",
+      "sha256": "a0e14dd268aba4af14281832bd8ac0c0e4f955ade220e015e97ecaa6e9c652f5",
+      "bytes": 2281
+    },
+    {
+      "original_path": "/tmp/argo-rp200-probes.log",
+      "retained_path": "argo-rp200-probes.log",
+      "sha256": "edc47e5e73ec4015c2c8fe61f386e78e54d76e87f7e30952e04395382bae2bba",
+      "bytes": 590
+    },
+    {
+      "original_path": "/tmp/argo-rp200-probes.mjs",
+      "retained_path": "argo-rp200-probes.mjs",
+      "sha256": "b7daf06da821d4c1c3b93238ef292e2cf01f2ac372264555be42826ba6a1c318",
+      "bytes": 9075
+    },
+    {
+      "original_path": "/tmp/argo-rp200-review.json",
+      "retained_path": "argo-rp200-review.json",
+      "sha256": "22e89dba45df0dc8ffe7e9bef374bb7a32c0ca4ac26ee6adcf2cf3303173154f",
+      "bytes": 5923
+    },
+    {
+      "original_path": "/tmp/argo-rp200-tests.log",
+      "retained_path": "argo-rp200-tests.log",
+      "sha256": "ff53a3ec119a485feaf790a91c3823805fa1fa4e89aea1bf58f7f0bb112cfac7",
+      "bytes": 4879
+    },
+    {
+      "original_path": "/tmp/argo-rp200-typecheck.log",
+      "retained_path": "argo-rp200-typecheck.log",
+      "sha256": "2cf20646d72113be26c6fbe14738bc101ebf909ab8a2374290f369e1d53c975c",
+      "bytes": 40
+    },
+    {
+      "original_path": "/tmp/argo-rp200-types.log",
+      "retained_path": "argo-rp200-types.log",
+      "sha256": "2cf20646d72113be26c6fbe14738bc101ebf909ab8a2374290f369e1d53c975c",
+      "bytes": 40
+    },
+    {
+      "original_path": "/tmp/argo-rp300-review-crash-early.log",
+      "retained_path": "argo-rp300-review-crash-early.log",
+      "sha256": "7c5aff78655a2da59ea50fe5302948f6c01765995861c1aa826fa799c02b0218",
+      "bytes": 1285
+    },
+    {
+      "original_path": "/tmp/argo-rp300-review-crash-early.mjs",
+      "retained_path": "argo-rp300-review-crash-early.mjs",
+      "sha256": "6dda9be081474556f6959fd929d6eccba33c51481dc80553d1c7508ab51af1cb",
+      "bytes": 4633
+    },
+    {
+      "original_path": "/tmp/argo-rp300-review-crash-late.log",
+      "retained_path": "argo-rp300-review-crash-late.log",
+      "sha256": "0d1a0479c63a17007cddc8f718b2773ea34459079df4311e3cc0adc36d082de6",
+      "bytes": 421
+    },
+    {
+      "original_path": "/tmp/argo-rp300-review-crash.mjs",
+      "retained_path": "argo-rp300-review-crash.mjs",
+      "sha256": "c486b219aad484d8ec534afcf34082af4f28de29b52ddcebdc2b3a9d71b45e42",
+      "bytes": 4623
+    },
+    {
+      "original_path": "/tmp/argo-rp300-review-tests.log",
+      "retained_path": "argo-rp300-review-tests.log",
+      "sha256": "ead5560dff9ab27b3a487fb339ea7b9e223ce4fa14042e092f75f92bfea90678",
+      "bytes": 1630
+    },
+    {
+      "original_path": "/tmp/argo-rp300-review.json",
+      "retained_path": "argo-rp300-review.json",
+      "sha256": "4cb27a64643369dd1fcf680b1fe6e7eacbc67eea2f3b6754cf3c1a2caa2203d7",
+      "bytes": 7937
+    },
+    {
+      "original_path": "/tmp/argo-rp400-math-test.log",
+      "retained_path": "argo-rp400-math-test.log",
+      "sha256": "b369d195c2a4b16aaa8fb78e5eb22f5b94547d0ead7bfef520eeab9ef707e421",
+      "bytes": 208
+    },
+    {
+      "original_path": "/tmp/argo-rp400-review.json",
+      "retained_path": "argo-rp400-review.json",
+      "sha256": "d657cd062f779e10d9d4b196a74342819d56f8315dc083d81dbb5528cbabc2a1",
+      "bytes": 7325
+    },
+    {
+      "original_path": "/tmp/argo-rp400-statistics-probe.log",
+      "retained_path": "argo-rp400-statistics-probe.log",
+      "sha256": "20d19f33568420853317f09b561a97b4baff1884bc70721a85beedff23f0e958",
+      "bytes": 1425
+    },
+    {
+      "original_path": "/tmp/argo-rp900-review-probe.mjs",
+      "retained_path": "argo-rp900-review-probe.mjs",
+      "sha256": "48fdb89b1a1a11e05f9b7d359aa22d44f17c47286ab14a280c9c696aaf92ffd0",
+      "bytes": 9058
+    },
+    {
+      "original_path": "/tmp/argo-rp900-review.json",
+      "retained_path": "argo-rp900-review.json",
+      "sha256": "9e49fa948a9bb9301bee351e1f1294c6d9e8a13134948970d7ba21ad552fa75c",
+      "bytes": 4696
+    },
+    {
+      "original_path": "/tmp/argo-rp900-review-probe-portable.mjs",
+      "retained_path": "argo-rp900-review-probe-portable.mjs",
+      "sha256": "c16af50a0f6c183911a0ef25e4275c98e077fa987b8d5728a434c4c87b258b04",
+      "bytes": 9231
+    },
+    {
+      "original_path": "/tmp/argo-rp900-portable-results.json",
+      "retained_path": "argo-rp900-portable-results.json",
+      "sha256": "79757dd72f541076c5eac6688a32a392d98a90fc406e52e24b00a8ce99d40558",
+      "bytes": 1600
+    },
+    {
+      "original_path": "/tmp/argo-rp900-portable.log",
+      "retained_path": "argo-rp900-portable.log",
+      "sha256": "b6299bee2674d654ca41c61fab76a57205ab1f93fcce30b5cfdfaa2b1e80c29e",
+      "bytes": 652
+    }
+  ]
+}
