@@ -1,5 +1,7 @@
 # Balance execution evidence
 
+For the completed retained training and held-out studies, see [RESULTS.md](../RESULTS.md). The notes below preserve the earlier pilot checkpoint.
+
 No training or held-out outcome study has run at this checkpoint. The preregistered500-per-partition design remains unchanged.
 
 The ten-seed timing pilot ran against assembled commit `d156819b3e988467148a615aaa0d528e1acae949` using the real pure reducer. It completed210 combat trials and80 resource trials, replaying every trial, in6385.032605ms. The report deliberately contains no endpoint rates or selection recommendation. Linear extrapolation suggests about5.3 minutes per500-seed partition on this environment, but sustained runtime may differ. This estimate is not a reason to change sample counts based on outcomes.
