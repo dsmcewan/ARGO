@@ -123,3 +123,6 @@ export function makeCheckpoint(state:Snapshot,id:string,actorIds:string[],expire
 }
 
 export * from './characters.ts';
+
+// Separate versioned combat/exploration/resource journal for new worlds only.
+export * from './mortal/index.ts';
