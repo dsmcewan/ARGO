@@ -4,6 +4,8 @@ Status: recommendation in response to the owner's checkpoint question, 2026-11-1
 
 Use a successful durable commit as the trigger. Prefer an encounter transition from open to closed, an explicit expedition checkpoint, or a periodic threshold (initially 512 new events) for long conversations that may not advance world time. The projector must have reached exactly the chosen committed prefix. A scene description, narrator declaration or NPC agreement cannot trigger or certify authority.
 
+The concrete existing hook is a committed `WorldEvent` whose verified before-state has `physical.encounter !== null` and whose after-state has `physical.encounter === null`. The mortal reducer already emits `encounter_end` or `referee_close` for these endings. Subscribe after durable journal commit, and request a checkpoint of that event's exact cursor; never publish from a proposed action or an uncommitted reducer result. An explicit expedition checkpoint would be a new versioned contract, not an event already supplied by this profile. Store checkpoint publication in an administrative manifest, outside fictional speech or knowledge events, so it cannot trigger itself recursively.
+
 Snapshotting at a coherent prefix does not require every asynchronous NPC/model call to stop. Those proposals retain their original expected cursor and may be rejected as stale. No database transaction may remain open across model work. A background checkpoint job can coalesce later requests while it seals one immutable prefix; it must not freeze unrelated players while waiting for an absent worker.
 
 ## What is sealed
