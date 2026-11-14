@@ -21,6 +21,8 @@ LEXI/TELOS transports are injected and default to unavailable. Their determinist
 
 ## Start here
 
+- [Review repairs: scoped encounters, authored NPC knowledge and observation admission](docs/review-successors/README.md)
+
 - [Connected character dialogue and scoped scene context](docs/npc-dialogue/README.md)
 - [Character runtime, Tempting Fates campaign and mortal RPG release scope](docs/releases/2026-11-14-rpg-foundation.md)
 - [Playable Tempting Fates campaign kit](CAMPAIGNS/Tempting_Fates/README.md)

@@ -1,5 +1,7 @@
 # ARGO status and architecture reference
 
+Visibility rechecked on **2026-11-14**: `dsmcewan/ARGO` is **public**. The owner authorized public pushes in this conversation. The CI/source timeline below is historical; newer review repairs and their exact verification identities are in [review successors](docs/review-successors/README.md).
+
 Checked **2026-11-13** against Git history, GitHub Actions job logs and the implementation sources. The verified implementation baseline is [`e2f4d7efa2b6db8826bcc870e0f709f85e97079a`](https://github.com/dsmcewan/ARGO/commit/e2f4d7efa2b6db8826bcc870e0f709f85e97079a), which passed on both the research branch and `main`. This reference adds documentation; it does not change runtime behavior or frozen contracts.
 
 **Current state:** the four-phase foundation and the offline build board are implemented and verified. Five starter research reports and an 11-ticket headless planning seed are saved. Paid vendor runs and live gameplay service deployment have not been performed or verified in this work. The proposed two-plane graph stores and general component bus remain unimplemented in this repository.
@@ -10,11 +12,11 @@ For the consolidated present/target/data/build-dependency guide, read [SYSTEM_RO
 
 The review of `a9745e72e93d82c72e87f5159edd5c59f4c426c0` found two P1, eight P2 and six P3 issues that the earlier passing suites did not cover. [The original review](REPAIRS/REVIEW_2026-11-13.md) and [repair resolutions](REPAIRS/RESOLUTIONS.md) supersede any implication that the historical verification below establishes unattended-build readiness. All twelve contained findings have been repaired across five disjoint blackboard lanes and independently reviewed; the integrated code at `ff22632` passed all ten unified gate groups. Four versioned-contract/storage decisions remain held back; no paid vendor runs are authorized.
 
-The private main CI at `a9745e7` [passed](https://github.com/dsmcewan/ARGO/actions/runs/43456584810). This closes the old pending-save instructions; it does not close the subsequent review findings. Board v1 coordinated real leases, path claims and CAS handoffs, but its immutable data-only policy cannot accept application/control-policy changes. The batch is operationally retired with its actual states preserved. External verification and retirement records are under `REPAIRS/acceptance/`; no board MERGED state was fabricated.
+The main CI at `a9745e7` [passed](https://github.com/dsmcewan/ARGO/actions/runs/43456584810). This closes the old pending-save instructions; it does not close the subsequent review findings. Board v1 coordinated real leases, path claims and CAS handoffs, but its immutable data-only policy cannot accept application/control-policy changes. The batch is operationally retired with its actual states preserved. External verification and retirement records are under `REPAIRS/acceptance/`; no board MERGED state was fabricated.
 
 ## CI failures, repairs and timestamps
 
-All runs below belong to the same private repository, **`dsmcewan/ARGO`**. `argo/foundation-spine` and `argo/rpg-research` are branches. Times are GitHub's run **last-updated** timestamps on November 13, converted to EST (UTC−05:00); they are not notification delivery or deployment timestamps.
+All runs below belong to the same repository, **`dsmcewan/ARGO`**. `argo/foundation-spine` and `argo/rpg-research` are branches. Times are GitHub's run **last-updated** timestamps on November 13, converted to EST (UTC−05:00); they are not notification delivery or deployment timestamps.
 
 | Commit | Branch | Result and run | Last updated UTC | EST |
 |---|---|---|---|---|
