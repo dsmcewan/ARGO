@@ -1,11 +1,24 @@
 {
   "profile_version": "shared-world/0.1.0",
-  "status": "candidate_pending_independent_review",
+  "status": "reviewed_frozen",
   "files": {
     "SYSTEMS/shared-world-v1/CONTRACT.md": "a7d3043105752495de744c21da30a90982e4a68cdddd06344ffe058a04d19606",
     "SYSTEMS/shared-world-v1/world.schema.json": "6918294342f48f8a3d4edf81b1be99b4b17d8294185d25b0f1965d1f1533b665",
     "packages/contracts/src/shared-world-types.ts": "f1cc8f944b0847f14df17b048eee9ad1f25f185790fa8e8612d97331b4b67351",
     "packages/contracts/src/shared-world.ts": "8edbb1eb833c0fb579d7bbd52b50b791d1cd43751cc690ee29e91995f56cc9c2"
   },
-  "scope": "Contract-only fresh-world candidate; exact source awaits independent review before runtime release. Preserves historical profiles; does not authenticate callers or approve operational merge."
+  "scope": "Reviewed frozen contract for fresh shared worlds. Preserves historical profiles; does not authenticate callers or approve runtime, deployment or operational merge.",
+  "reviewed_candidate": "186e052a19de6466aedaf048ecb5d9c4fd4fc1eb",
+  "reviews": [
+    {
+      "scope": "authority_and_implementability",
+      "verdict": "READY",
+      "report": "/workspace/reports/2026-11-14-argo-shared-world/contract-review-authority/review-186e052.md"
+    },
+    {
+      "scope": "privacy_and_immutable_identity",
+      "verdict": "READY",
+      "report": "/workspace/reports/2026-11-14-argo-shared-world/contract-review-privacy/fixed-186e052/REVIEW.md"
+    }
+  ]
 }
