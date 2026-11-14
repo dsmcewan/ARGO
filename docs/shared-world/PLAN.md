@@ -88,13 +88,13 @@ Create `scenarios/tempted-fates/shared-world/{cli.ts,README.md}`, `packages/sess
 
 Produces `createWorldSession({genesis,ledger,principal})`, a host capability with `query()`, `view(query)`, `prepare(action,requestId)` and `submit(command)`; the principal is bound once by authenticated host construction. The CLI uses those interfaces and explicit JSON actions; it does not parse prose into authority. Receipt verification binds the exact request and principal as well as the trusted key, genesis and scope.
 
-- [ ] Add the session host and trusted local JSON-line CLI with explicit initialization/resume, private local keys and refusal to overwrite a world.
-- [ ] Execute the full lamp conversation/offer/accept/travel/oil/return scenario using injected provider responses; retain actual requests/receipts and replay hash.
-- [ ] Test refusal, concurrent commands, private solo facts, closure and restart through public APIs; document exact run commands and host trust limits.
+- [x] Add the session host and trusted local JSON-line CLI with explicit initialization/resume, private local keys and refusal to overwrite a world.
+- [x] Execute the full lamp conversation/offer/accept/travel/oil/return scenario using injected provider responses; retain actual requests/receipts and replay hash.
+- [x] Test refusal, concurrent commands, private solo facts, closure and restart through public APIs; document exact run commands and host trust limits.
 
 ## Final acceptance and delivery
 
-- [ ] Integrate all exact source commits, exports and manifests; run contracts/typecheck/boundaries and relevant tests.
-- [ ] Obtain independent native reviews of authority/storage and context/host; fix and retest findings.
+- [x] Integrate all exact source commits, exports and manifests; run contracts/typecheck/boundaries and relevant tests.
+- [x] Obtain independent native reviews of authority/storage and context/host; fix and retest findings.
 - [ ] Run the complete unchanged ten-group application gate on an immutable candidate in read-only network isolation.
 - [ ] Retain portable evidence and real Board states; push PR, require successful GitHub checks, merge under standing authorization and synchronize main.

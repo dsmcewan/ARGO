@@ -1,5 +1,7 @@
 # ARGO status and architecture reference
 
+**Latest implementation, 2026-11-14:** [the shared-world milestone](docs/shared-world/README.md) adds a runnable local session with one actor registry, clock and signed SQLite history for ordinary mortal speech, knowledge, custody, travel, combat and resources. It includes fixed-principal sessions, a private JSON-line CLI and an injected offline demonstration. Its evidence and limits supersede the older tables for this new profile; historical file-ledger and Fate profiles remain separate. [Next dependencies](docs/shared-world/NEXT.md) cover performance, model evaluation and later ports.
+
 Visibility rechecked on **2026-11-14**: `dsmcewan/ARGO` is **public**. The owner authorized public pushes in this conversation. The CI/source timeline below is historical; newer review repairs and their exact verification identities are in [review successors](docs/review-successors/README.md).
 
 Checked **2026-11-13** against Git history, GitHub Actions job logs and the implementation sources. The verified implementation baseline is [`e2f4d7efa2b6db8826bcc870e0f709f85e97079a`](https://github.com/dsmcewan/ARGO/commit/e2f4d7efa2b6db8826bcc870e0f709f85e97079a), which passed on both the research branch and `main`. This reference adds documentation; it does not change runtime behavior or frozen contracts.

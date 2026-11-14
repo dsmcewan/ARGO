@@ -1,24 +1,60 @@
-# Shared headless world
+# One shared headless world
 
-Implementation in progress from baseline `3fd1e4d`. The owner approved a single headless session connecting dialogue, custody, exploration, combat and resources. No paid model calls or deployment are authorized by this milestone.
+The new `shared-world/0.1.0` profile connects ordinary mortal dialogue, knowledge, item custody, explicit loans, travel, combat and resources to one actor registry, world clock and signed SQLite history. It starts fresh worlds; historical profiles and their frozen contracts remain unchanged. This milestone has no paid model calls, deployment, UI or automatic background agents.
 
-[Design](DESIGN.md) · [Implementation plan](PLAN.md) · [Independent design review](evidence/recon/design-review.md)
+[Run the CLI](../../scenarios/tempted-fates/shared-world/README.md) · [Design](DESIGN.md) · [Frozen contract](../../SYSTEMS/shared-world-v1/CONTRACT.md) · [Plan](PLAN.md) · [Next dependencies](NEXT.md)
 
-Contract source `186e052` passed 25 author tests and 29 unchanged independent probes across two native reviewers. Metadata-only commit `15d49d3` freezes the four source hashes. SW-100 is submitted as VERIFYING on the source Board; application/runtime acceptance remains separate.
+## Run a session
 
-The reviewed seed (`31e8c42`), dialogue adapter (`dfed2b9`) and pure authority (`2c0c1c8`) are integrated. The authority review reproduced an unconscious-lender memory defect; the repaired candidate passes both unchanged review suites. These source tickets are VERIFYING; signed storage has since passed its independent reviews; session acceptance remains pending.
+After `npm ci --ignore-scripts`, using Node 24.22.1:
 
-The shared authority uses one signed journal and actor namespace, reusing the pure mortal-v3 reducer. Historical profiles remain unchanged. The first session covers ordinary mortal play; Fate jurisdictions and lifespan transactions need a later explicit shared-world port.
+```sh
+node scenarios/tempted-fates/shared-world/cli.ts demo --dir /tmp/my-new-argo-world
+node scenarios/tempted-fates/shared-world/cli.ts resume --dir /tmp/my-new-argo-world --actor hero
+```
 
-| Stage | Ticket | Release condition |
+Choose a new directory outside the checkout. The demonstration commits seven events: addressed speech, an injected contextual reply, a separate loan offer, explicit acceptance, two night travel actions, and return of the lamp. It proves that conversation creates no loan, travel consumes two oil turns and 1200 seconds, an old exact acceptance retry cannot duplicate the transaction, and reopening/full replay reconstructs the same world. The CLI guide explains fresh custom initialization and JSON-line commands.
+
+The demonstration's model response is a labeled offline fixture. The reusable model adapter actually builds a request from the character's nature, current scene, owner-authorized knowledge, received speech and private impressions; it does not select production dialogue from templates. It requires an injected client, permits speech or silence only, refreshes context around generation, and has no writer. This establishes request construction and safe integration, not live dialogue quality.
+
+## Data and authority
+
+| Surface | Responsibility |
+| --- | --- |
+| `@argo/contracts` shared-world types and guards | Closed, bounded DTOs; full rights scope, exact cursor and complete genesis identity. Authentication remains the host's responsibility. |
+| `@argo/ledger` pure world rules and scoped projector | One authority for physical actions and knowledge acquisition; current actor views; shared scene facts distinct from private beliefs/impressions. |
+| `@argo/ledger` signed SQLite worker | Atomic command, physical/epistemic result, request index and receipt; exact retries; concurrent writer preconditions; unseen-suffix verification for warm handles. |
+| `@argo/session` | Fixed authenticated principal; current query/view; structured command preparation; signed receipt bound to the exact submitted request. |
+| `@argo/interventions` shared-world model adapter | Bounded actor-specific context and an optional speech proposal; no canonical writes or implicit provider. |
+| `scenarios/tempted-fates/shared-world/` | Source-pinned mortal seed, selected owner policy catalog, private initialization/resume and the offline demonstration. |
+
+A room or environment is canonical shared state. Whether a character likes it belongs to that actor's impression, never a shared fact inferred from agreement. Owner knowledge is explicitly granted from a source-pinned catalog; arbitrary campaign secrets do not become everyone's context. Actor views bound their recent memory and report coverage rather than silently promising full-history recall. The full journal remains authority-private.
+
+A loan policy is not an offer; an offer is not acceptance. The borrower must accept an exact offer hash. Promise and custody commit together, and failed or repeated commands cannot create partial obligations. NPC speech is attributed to its authenticated actor; addressed observers must be valid present recipients. Generated text is displayed only after an accepted exact-request receipt and a fresh permitted view.
+
+## Verification and source identity
+
+The exact source histories are retained through integration merges, not replaced with a single synthetic commit:
+
+| Ticket | Final source | Verification |
 | --- | --- | --- |
-| Contracts | SW-100 | Independently reviewed schema/type/guard freeze |
-| Pure authority and views | SW-200 | Frozen contract, deterministic action/projection tests |
-| Scoped model adapter | SW-400 | Frozen contract, injected request/privacy/freshness checks |
-| Fresh campaign seed | SW-500 | Frozen contract, source/identity/starting-kit checks |
-| Signed journal and worker | SW-300 | Integrated pure authority, replay/atomicity/concurrency checks |
-| Session host and CLI | SW-510 | Integrated storage and campaign seed, end-to-end lamp session |
+| SW-100 contracts | `186e052` (freeze metadata `15d49d3`) | 25 author tests; two independent contract suites, 29 probes; frozen source hashes. |
+| SW-200 pure rules/views | `2c0c1c8` | 31 source tests; 25 independent probes. Review found an unconscious lender receiving return knowledge; repaired and unchanged probes rerun. |
+| SW-400 model context | `dfed2b9` | 23 source tests; 17 independent probes including four injected vendor request formats. |
+| SW-500 campaign seed | `31e8c42` | 12 source tests; 11 independent groups covering 24 seed combinations. |
+| SW-300 journal/store | `2a2f02f` | 18 source tests; two independent suites, 20 groups, including actual COMMIT failure, writer races, lost acknowledgment and signed replay. |
+| SW-510 session/CLI | `0d29515` | 10 source tests; two independent reviews, 16 probe groups, including ordinary-process CLI runs. |
 
-Each stage uses an immutable source batch and disjoint leases. New batches are initialized only after their prerequisite commits are integrated; the data-only Board cannot unlock application dependencies by pretending they passed its validator. Source tickets stop at VERIFYING. Independent application acceptance, GitHub delivery and any future Board policy migration are recorded separately.
+Here “independent” means a separate native Codex reviewer, not a person or another vendor. These checks exercise ordinary-process controls as well as test-runner paths; they are bounded evidence, not proof against arbitrary malicious code. [Evidence index](evidence/README.md) preserves probes, failures, repairs, commands and hashes. Full application-gate and GitHub delivery identities are recorded separately after acceptance.
 
-The deterministic demonstration will ask Melia's terms, accept a particular free-loan offer, travel at night using lamp oil, return the lamp, then resume and replay exactly. Generated dialogue is tested through an injected model response; prose alone cannot create a bargain or transfer.
+All six source tickets use the actual blackboard, leases, disjoint worktrees and CAS. They stop at **VERIFYING** because the existing Board accepts data validators, not application changes. The application gate and reviewed GitHub merge are separate acceptance records; no Board MERGED status is fabricated.
+
+## Performance and limits
+
+The [first ordinary-process measurement](evidence/runtime-measure-120119c/measurement.json), at clean commit `120119c`, measured the signed store plus actual campaign model context before the session wrapper. At 2000 events the injected contextual reply and commit took **551 ms**, a single append **80 ms**, and a fresh verified handle **74.1 s**. Full replay of 2002 events took **69.5 s**. Those are one-machine observations, not service guarantees or provider latency. The completed session wrapper is measured separately.
+
+Warm storage verifies only new suffixes and reuses privately registered immutable snapshots. History-bearing state hashes still grow with history; cold full replay remains expensive. The bounded DTO/RPC size limits apply to complete canonical state rather than silently truncating it. Snapshot caching does not supply an independent rollback anchor: a trusted external expected cursor is required to detect privileged history rollback.
+
+The CLI is a trusted local operator tool. Its private directory contains the seed, signing key, controller identities and private world state. Selecting `--actor` or `--referee` is not remote authentication. Production authentication, entitlement, key custody, backup/recovery, live model behavior and hosting remain separate work.
+
+The new profile covers ordinary mortals. Fate jurisdictions, lifespan gifts, the full narrator record and old character-state migrations still require explicit reviewed ports. The shared closure flag suppresses dialogue without ending physical play; it does not implement the whole Fate/anomaly kernel. General graph stores, component buses, voice and autonomous world simulation are not supplied by this milestone.

@@ -1,0 +1,52 @@
+{
+  "candidate": "0d295152d7ee8a7e9a2a97a7f470e8108c2b26b2",
+  "base": "120119c81c4e4562e5078b30f58390d364be13cb",
+  "date": "2026-11-14",
+  "paid_calls": 0,
+  "source_sha256": {
+    "packages/session/package.json": "8d6fb5d0b237fe7cc5c3a86462ff6a6b1b1e818e0c6ae925a18882bb8d8643a9",
+    "packages/session/src/index.ts": "5ecf41b28dfd6679520fe79a38d85060b0eabf44676e31e951dd828b684535b2",
+    "scenarios/tempted-fates/shared-world/cli.ts": "1f40728429c4bc473f8c49905f7ea0a8770112adbf8839cc3cafbbd410e5423b",
+    "scenarios/tempted-fates/shared-world/README.md": "79deac283c1df298d7b86f40a9f565f9c6a86a0288f797a2e88026804f35733e",
+    "TESTS/shared-world-session.test.ts": "59a28c27a3ba24340236c2f9de1aa28047f55b8f8b53f495f3f2354ca7a8a06a"
+  },
+  "checks": {
+    "targeted_tests": {
+      "command": "node TESTS/shared-world-session.test.ts",
+      "exit": 0,
+      "tests": 10,
+      "passed": 10,
+      "log": "tests-third.log"
+    },
+    "typecheck": {
+      "command": "npm run typecheck",
+      "exit": 0,
+      "log": "typecheck.log"
+    },
+    "contracts": {
+      "command": "npm run contracts",
+      "exit": 0,
+      "log": "contracts.log"
+    },
+    "standalone_demo": {
+      "command": "env -u NODE_TEST_CONTEXT node scenarios/tempted-fates/shared-world/cli.ts demo --dir /tmp/argo-sw510-evidence-demo",
+      "exit": 0,
+      "log": "demo.jsonl"
+    },
+    "boundary_check": {
+      "command": "node scripts/check-boundaries.mjs",
+      "exit": 1,
+      "reason": "Coordinator-owned scenario manifest needs @argo/session dependency; no other boundary failure reported.",
+      "log": "boundaries.log"
+    },
+    "diff_check": {
+      "command": "git diff --cached --check",
+      "exit": 0
+    }
+  },
+  "not_claimed": [
+    "No paid provider generation or model-quality measurement.",
+    "No full immutable controller application gate; coordinator runs after integration.",
+    "No Board self-approval, merge or push."
+  ]
+}

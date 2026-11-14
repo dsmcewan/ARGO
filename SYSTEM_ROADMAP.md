@@ -1,6 +1,6 @@
 # ARGO system roadmap: present, target and the path between
 
-For the newer character/mortal runtime and review repairs, start with [review successors](docs/review-successors/README.md) and [their remaining dependencies](docs/review-successors/NEXT.md). The baseline tables below retain the earlier foundation record.
+For the current runnable ordinary mortal session, start with [shared-world implementation and evidence](docs/shared-world/README.md) and [its next dependencies](docs/shared-world/NEXT.md). Dialogue and physical play now share one signed journal in that fresh profile. The [review successors](docs/review-successors/README.md) retain earlier repairs and limitations. The baseline tables below retain the original foundation record; they do not describe every later package.
 
 Baseline **`d32da3b16b9f463a9a094445ab92da9748ebc568`**, checked 2026-11-13. [Main CI passed](https://github.com/dsmcewan/ARGO/actions/runs/43479525034) for that exact commit. The additive PC-001 local contract profile passed all ten controller checks and main integration at `140b644`; its exact candidate/trust evidence is in [projection contracts](docs/projection-contracts/verification.json). The [repair evidence](REPAIRS/acceptance/verification.json) records the integrated code at `ff22632`; later documentation does not change its runtime. Twelve review findings are repaired; four remain explicit design decisions.
 

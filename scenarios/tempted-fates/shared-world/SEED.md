@@ -2,7 +2,7 @@
 
 `buildSharedWorldCampaign(pack, options)` prepares a fresh `shared-world/0.1.0` genesis from the exact pinned Tempting Fates pack and the existing pure mortal-v3 factory. It returns `{genesis, manifest}` as detached, deeply frozen data. It opens no journal, writes no file, calls no model and migrates no world. The genesis contains the private deterministic seed, controller mapping and actor-owned profiles and is host-only; actor sessions must use the scoped authority projection.
 
-The exported types are `SharedWorldTraveler`, `SharedWorldCampaignOptions`, `SharedWorldCampaignManifest` and `SharedWorldCampaignSeed`. Import from `scenarios/tempted-fates/shared-world/seed.ts` until the coordinator publishes package exports.
+The exported types are `SharedWorldTraveler`, `SharedWorldCampaignOptions`, `SharedWorldCampaignManifest` and `SharedWorldCampaignSeed`. Import `buildSharedWorldCampaign` and these types from `@argo/tempted-fates`; the implementation remains in `scenarios/tempted-fates/shared-world/seed.ts`.
 
 ## Required host options
 

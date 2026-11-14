@@ -1,0 +1,16 @@
+{
+  "ticket_id": "SW-510",
+  "source_commit": "0d295152d7ee8a7e9a2a97a7f470e8108c2b26b2",
+  "base_commit": "120119c81c4e4562e5078b30f58390d364be13cb",
+  "board_status": "VERIFYING",
+  "attempt": 1,
+  "artifacts": {
+    "TESTS/shared-world-session.test.ts": "59a28c27a3ba24340236c2f9de1aa28047f55b8f8b53f495f3f2354ca7a8a06a",
+    "packages/session/package.json": "8d6fb5d0b237fe7cc5c3a86462ff6a6b1b1e818e0c6ae925a18882bb8d8643a9",
+    "packages/session/src/index.ts": "5ecf41b28dfd6679520fe79a38d85060b0eabf44676e31e951dd828b684535b2",
+    "scenarios/tempted-fates/shared-world/README.md": "79deac283c1df298d7b86f40a9f565f9c6a86a0288f797a2e88026804f35733e",
+    "scenarios/tempted-fates/shared-world/cli.ts": "1f40728429c4bc473f8c49905f7ea0a8770112adbf8839cc3cafbbd410e5423b"
+  },
+  "application_acceptance": "Recorded separately; data-only Board gate not run",
+  "paid_calls": 0
+}

@@ -1,0 +1,29 @@
+{
+  "directory_mode": 448,
+  "files": {
+    "genesis.json": {
+      "mode": 384,
+      "bytes": 18451
+    },
+    "manifest.json": {
+      "mode": 384,
+      "bytes": 605
+    },
+    "model-request.json": {
+      "mode": 384,
+      "bytes": 7999
+    },
+    "ready.json": {
+      "mode": 384,
+      "bytes": 121
+    },
+    "signing-key.pem": {
+      "mode": 384,
+      "bytes": 119
+    },
+    "world.sqlite": {
+      "mode": 384,
+      "bytes": 65536
+    }
+  }
+}

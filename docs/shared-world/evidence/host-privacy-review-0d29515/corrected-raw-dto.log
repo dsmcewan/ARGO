@@ -1,0 +1,28 @@
+{
+  "candidate": "0d295152d7ee8a7e9a2a97a7f470e8108c2b26b2",
+  "before": {
+    "head": "0d295152d7ee8a7e9a2a97a7f470e8108c2b26b2",
+    "status": ""
+  },
+  "after": {
+    "head": "0d295152d7ee8a7e9a2a97a7f470e8108c2b26b2",
+    "status": ""
+  },
+  "checks": [
+    {
+      "name": "Owned snapshot fast path does not bless frozen clones, getters, proxies or immutable-definition substitutions",
+      "status": "pass",
+      "details": {
+        "traps": 0,
+        "hostile_snapshots_refused": 6,
+        "revoked_proxy_rejects_in_upstream_promise_assimilation": true,
+        "genuine_owned_cache_unmodified": true
+      }
+    }
+  ],
+  "passed": 1,
+  "failed": 0,
+  "paid_calls": 0,
+  "outside_node_test_runner": true,
+  "scope": "Trusted-local fixed session, model disclosure and CLI output; remote authentication and hostile same-process ledger implementations excluded"
+}

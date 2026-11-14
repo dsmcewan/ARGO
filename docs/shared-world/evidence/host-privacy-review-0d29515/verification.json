@@ -1,0 +1,66 @@
+{
+  "candidate": "0d295152d7ee8a7e9a2a97a7f470e8108c2b26b2",
+  "base": "120119c81c4e4562e5078b30f58390d364be13cb",
+  "verified_at_utc": "2026-11-14T15:39:08.646276+00:00",
+  "head_after": "0d295152d7ee8a7e9a2a97a7f470e8108c2b26b2",
+  "status_after": "",
+  "verdict": "READY_SCOPED",
+  "source_tests": {
+    "passed": 10,
+    "failed": 0
+  },
+  "independent_groups": {
+    "passing_across_runs": 8,
+    "unresolved": 0,
+    "initial_full_run": {
+      "passed": 7,
+      "failed_reviewer_expectation": 1
+    },
+    "corrected_targeted_run": {
+      "passed": 1,
+      "failed": 0
+    }
+  },
+  "source_hashes": {
+    "TESTS/shared-world-session.test.ts": "59a28c27a3ba24340236c2f9de1aa28047f55b8f8b53f495f3f2354ca7a8a06a",
+    "packages/session/package.json": "8d6fb5d0b237fe7cc5c3a86462ff6a6b1b1e818e0c6ae925a18882bb8d8643a9",
+    "packages/session/src/index.ts": "5ecf41b28dfd6679520fe79a38d85060b0eabf44676e31e951dd828b684535b2",
+    "scenarios/tempted-fates/shared-world/README.md": "79deac283c1df298d7b86f40a9f565f9c6a86a0288f797a2e88026804f35733e",
+    "scenarios/tempted-fates/shared-world/cli.ts": "1f40728429c4bc473f8c49905f7ea0a8770112adbf8839cc3cafbbd410e5423b"
+  },
+  "frozen_contract_hashes": {
+    "SYSTEMS/shared-world-v1/CONTRACT.md": "a7d3043105752495de744c21da30a90982e4a68cdddd06344ffe058a04d19606",
+    "SYSTEMS/shared-world-v1/world.schema.json": "6918294342f48f8a3d4edf81b1be99b4b17d8294185d25b0f1965d1f1533b665",
+    "packages/contracts/src/shared-world-types.ts": "f1cc8f944b0847f14df17b048eee9ad1f25f185790fa8e8612d97331b4b67351",
+    "packages/contracts/src/shared-world.ts": "8edbb1eb833c0fb579d7bbd52b50b791d1cd43751cc690ee29e91995f56cc9c2"
+  },
+  "evidence_hashes": {
+    "results.json": "23e61b2bc5909550c420a6f53a0814c9b4ca0bd85d68d79331a4db940e684a6f",
+    "display-order.json": "e227f921cc10cf7785529e32cdc53f8433af0c43e90c0b73965965f83dd144de",
+    "closed-input.stdout": "88b68830fabf326d147e6c061333cdcc4d0075531aeccb199df2f38b008665a2",
+    "query.stdout": "5f7bd6c35953cea533c011dc0817102dff60dca94c17280a7b842da157e05df2",
+    "REVIEW.md": "c13a5ec63fb36091fda4bc8180d7a48217572f9d1f274923097f0cf15bd88756",
+    "query.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "display-races.json": "3e7cdc78fb8250f7f1a194c2726e51e748644ef7de487cbae323795b4fd9a497",
+    "cli-private-files-metadata.json": "74846d7a21c3345e25fe4e5e628239a58f9e943c27638fa1ce8e1812f70a4d41",
+    "demo.stdout": "38e539e2624e71490b964daf0b9eb3ad635ccf1abfa07e5a0ba02a2e047be41b",
+    "probes.log": "23e61b2bc5909550c420a6f53a0814c9b4ca0bd85d68d79331a4db940e684a6f",
+    "corrected-raw-dto.log": "c54876b8fe3cee43ade5f0fb7fc49801df79a0b04b37cfea88ba83d6acef3604",
+    "demo.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "view.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "probes.mjs": "e727dc7275bb290ab2957f4e59a6507534861764893ebf81c15169ba8aa6a688",
+    "source-tests.log": "3baee399cf1e13ab9ae265cb8dc6d081857e9df0a6ca0d25a15ba1ae10cc1723",
+    "closed-input.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "view.stdout": "5c00d9cf8ba303555761571ebd5b82da9fd382a390cf6e1c05a4fa8f71f44a6d",
+    "real-session-provider-request.json": "8d0b29a5596cfdcc15ef1ea8a8b7f0340e65e9cfe8801bd3b6b628d9473e4012",
+    "final-results.json": "2b2857d9a7fbd4e989d833c5267694166f5bbdd57354a1329b22dd0eed68c7af",
+    "initial-revoked-proxy-expectation/results.json": "23e61b2bc5909550c420a6f53a0814c9b4ca0bd85d68d79331a4db940e684a6f",
+    "initial-revoked-proxy-expectation/probes.log": "23e61b2bc5909550c420a6f53a0814c9b4ca0bd85d68d79331a4db940e684a6f",
+    "initial-revoked-proxy-expectation/probes.mjs": "4e0f4efef409ea29cadd3110bdd5a042b3c14317f56032d5cdbee65fa00cacb5",
+    "initial-revoked-proxy-expectation/README.md": "80d759610652ea1a619b87a34ffded4153ff0f08a91130acdfa0df22b454c2ef",
+    "corrected-raw-dto/results.json": "c54876b8fe3cee43ade5f0fb7fc49801df79a0b04b37cfea88ba83d6acef3604"
+  },
+  "repository_source_edits": false,
+  "paid_calls": 0,
+  "all_test_processes_finished": true
+}
