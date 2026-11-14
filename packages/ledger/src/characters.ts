@@ -1,7 +1,7 @@
 /** Privileged host boundary for the additive character-memory ledger profile. */
 import {
  CHARACTER_PROFILE,CHARACTER_CLAIM_PREFIX,assertCharacterContract,assertCharacterPrincipal,
- characterProposalId,characterRequestHash,canonical,fail,requireScope,own,freezeDto,serviceCall,
+ characterProposalId,characterRequestHash,canonical,fail,requireScope,own,freezeDto,serviceCall,ArgoError,
 } from '@argo/contracts';
 import type {
  Genesis,Snapshot,LedgerEvent,Principal,IntentProposal,Action,ServiceOptions,CharacterCommand,
@@ -21,7 +21,7 @@ export interface CharacterAuthorityOptions {
 }
 interface Replayed {
  projection:CharacterProjection;state:Snapshot;
- receipts:Map<string,CharacterReceipt>;proposalIds:Set<string>;parents:Set<string>;
+ receipts:Map<string,CharacterReceipt>;proposalIds:Set<string>;parents:Set<string>;heads:string[];
 }
 const cursor=(state:Snapshot):CharacterCursor=>({sequence:state.sequence,head:state.head,world_time:state.world_time});
 const detached=<T>(value:T):T=>freezeDto(structuredClone(value));
@@ -163,7 +163,7 @@ function actionText(action:Action,state:Snapshot):string|null{
 function initialReplay(genesis:Genesis,system:Principal):Replayed{
  checkSystem(system,genesis);const state=initialSnapshot(genesis);
  const projection:CharacterProjection={version:CHARACTER_PROFILE,scope:structuredClone(genesis.scope),cursor:cursor(state),activation_sequence:null,profiles:[],actors:[],parties:Object.entries(genesis.parties).map(([party_id,actor_ids])=>({party_id,actor_ids:[...actor_ids]})),records:[],impressions:[],ontology_blocked:false,engagement_closed:false};
- return {projection,state,receipts:new Map(),proposalIds:new Set(),parents:new Set()};
+ return {projection,state,receipts:new Map(),proposalIds:new Set(),parents:new Set(),heads:[]};
 }
 function extendReplay(result:Replayed,events:readonly LedgerEvent[],system:Principal):Replayed{
  const {projection,parents}=result,genesis=result.state.genesis;
@@ -185,7 +185,7 @@ function extendReplay(result:Replayed,events:readonly LedgerEvent[],system:Princ
    const text=actionText(a,result.state);
    if(text!==null)projection.records.push({experience:{record_id:event.hash,kind:'action',actor_id:p.actor_id,principal_actor_id:event.authority.principal_actor_id,sequence:event.sequence,world_time:p.world_time,text,action_type:a.type as NonNullable<CharacterExperience['action_type']>,addressed_actor_ids:[]},acquisitions:[{actor_id:p.actor_id,sequence:event.sequence,world_time:p.world_time,party_id:null}]});
   }
-  result.state=apply(result.state,event);parents.add(event.hash);result.proposalIds.add(p.proposal_id);
+  result.state=apply(result.state,event);parents.add(event.hash);result.proposalIds.add(p.proposal_id);result.heads.push(event.hash);
   const cutoffs=Object.values(result.state.cutoffs);projection.ontology_blocked=cutoffs.length>0;projection.engagement_closed=cutoffs.some(c=>c.named_at_sequence!==null);
  }
  projection.cursor=cursor(result.state);projection.actors=Object.entries(result.state.actors).map(([actor_id,value])=>({actor_id,alive:value.alive}));
@@ -208,8 +208,22 @@ export async function createCharacterAuthority(options:CharacterAuthorityOptions
  // This handle remembers the exact verified prefix. It detects a subsequent
  // rollback/divergence here; it is not an external checkpoint across restarts.
  let cached:Replayed|undefined,bytes:string[]=[];
+ let acknowledged:{sequence:number;head:string}|undefined;
+ const checked=(result:Replayed):Replayed=>{
+  if(acknowledged&&result.heads[acknowledged.sequence-1]!==acknowledged.head)fail('CORRUPT_LEDGER','Character history lost or replaced an acknowledged commit');
+  return result;
+ };
+ const acknowledge=(receipt:CharacterReceipt):CharacterReceipt=>{
+  const next={sequence:receipt.cursor.sequence,head:receipt.event_hash};
+  if(cached&&cached.state.sequence>=next.sequence&&cached.heads[next.sequence-1]!==next.head||acknowledged?.sequence===next.sequence&&acknowledged.head!==next.head)fail('CORRUPT_LEDGER','Character receipt differs from the known committed prefix');
+  // Responses may complete out of order. An older exact retry never lowers
+  // the minimum prefix required by subsequent reads of this handle.
+  if(!acknowledged||next.sequence>acknowledged.sequence)acknowledged=next;
+  return receipt;
+ };
  let loading:Promise<void>=Promise.resolve();
  const load=(call:ServiceOptions):Promise<Replayed>=>{
+  cancelled(call);
   // Serialize capture as well as replay: an older delayed events() response
   // must not arrive after a newer prefix has already been published.
   const pending=loading.then(async()=>{
@@ -217,21 +231,30 @@ export async function createCharacterAuthority(options:CharacterAuthorityOptions
    if(events.length<bytes.length)fail('CORRUPT_LEDGER','Character history lost the previously verified prefix');
    const currentBytes=events.map(event=>canonical(event));
    if(bytes.some((value,index)=>value!==currentBytes[index]))fail('CORRUPT_LEDGER','Character history replaced the previously verified prefix');
-   if(cached&&events.length===bytes.length)return cached;
+   if(cached&&events.length===bytes.length)return checked(cached);
    // Carriers mutate projections and receipt indexes. Work on detached state
    // so failure cannot poison the cache or a submit suspended in host work.
-   const next=extendReplay(cached?structuredClone(cached):initialReplay(genesis,system),events.slice(bytes.length),system);
+   const next=checked(extendReplay(cached?structuredClone(cached):initialReplay(genesis,system),events.slice(bytes.length),system));
    cached=next;bytes=currentBytes;return next;
   });
-  loading=pending.then(()=>{},()=>{});return pending;
+  loading=pending.then(()=>{},()=>{});
+  const signal=call.signal;if(!signal)return pending;
+  let abort=()=>{};
+  const stopped=new Promise<never>((_,reject)=>{
+   abort=()=>reject(new ArgoError('CANCELLED','Character operation cancelled before append'));
+   signal.addEventListener('abort',abort,{once:true});if(signal.aborted)abort();
+  });
+  // Stop only this caller's wait. The underlying read still owns its place in
+  // the queue, and a cancelled queued operation fails before invoking events.
+  return Promise.race([pending,stopped]).finally(()=>signal.removeEventListener('abort',abort));
  };
  return Object.freeze({
-  readProjection:async(call:ServiceOptions={}):Promise<CharacterProjection>=>detached((await load(call)).projection),
+  readProjection:async(call:ServiceOptions={}):Promise<CharacterProjection>=>detached(checked(await load(call)).projection),
   submit:async(input:CharacterCommand,authenticated:Principal,call:ServiceOptions={}):Promise<CharacterReceipt>=>{
    assertCharacterContract('CharacterCommand',input);assertCharacterPrincipal(authenticated);
    const command=detached(input),principal=detached(authenticated);requireScope(genesis.scope,command.scope);requireScope(command.scope,principal.scope);
-   const requestHash=characterRequestHash(command,principal);let result=await load(call);
-   const prior=priorReceipt(result,command,requestHash);if(prior)return prior;
+   const requestHash=characterRequestHash(command,principal);let result=checked(await load(call));
+   const prior=priorReceipt(result,command,requestHash);if(prior)return acknowledge(prior);
    admit(command,principal,system,result);let body:CharacterEnvelopeBody;
    const action=command.body;
    if(action.type==='speak'||action.type==='witness_action'){
@@ -242,7 +265,7 @@ export async function createCharacterAuthority(options:CharacterAuthorityOptions
     assertCharacterContract('CharacterWitnessGrant',response);const witnesses=structuredClone(response);
     if(action.type==='speak')witnesses.actor_ids=[source,...witnesses.actor_ids.filter(id=>id!==source)];
     checkGrant(witnesses,requestHash,source,result.state);cancelled(call);
-    result=await load(call);const duplicate=priorReceipt(result,command,requestHash);if(duplicate)return duplicate;
+    result=checked(await load(call));const duplicate=priorReceipt(result,command,requestHash);if(duplicate)return acknowledge(duplicate);
     admit(command,principal,system,result);checkGrant(witnesses,requestHash,source,result.state);
     body=action.type==='speak'?{type:'speak',actor_id:principal.actor_id,text:action.text,addressed_actor_ids:[...action.addressed_actor_ids],witnesses}:{type:'witness_action',record_id:action.record_id,witnesses};
    }else if(action.type==='form_impression')body={type:action.type,data:impressionData(action,principal,result.projection,result.state)};
@@ -256,12 +279,12 @@ export async function createCharacterAuthority(options:CharacterAuthorityOptions
    try{
     const outcome=await ledger.submit(proposal,system,call);
     const receipt:CharacterReceipt={version:CHARACTER_PROFILE,scope:command.scope,request_id:command.request_id,request_hash:requestHash,event_id:outcome.event_id,event_hash:outcome.event_hash,cursor:{sequence:outcome.sequence,head:outcome.event_hash,world_time:outcome.world_time},kind:action.type};
-    assertCharacterContract('CharacterReceipt',receipt);return detached(receipt);
+    assertCharacterContract('CharacterReceipt',receipt);return acknowledge(detached(receipt));
    }catch(error){
     // A simultaneous exact retry may carry a different host grant. Only the first
     // committed envelope owns that request; return it rather than appending twice.
     if(error&&typeof error==='object'&&'code'in error&&error.code==='CONFLICT'){
-     const duplicate=priorReceipt(await load(call),command,requestHash);if(duplicate)return duplicate;
+     const duplicate=priorReceipt(checked(await load(call)),command,requestHash);if(duplicate)return acknowledge(duplicate);
     }
     throw error;
    }

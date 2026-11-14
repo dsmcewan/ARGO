@@ -93,6 +93,80 @@ test('overlapping event loads cannot publish a later prefix ahead of an older in
  assert.deepEqual(await authority.readProjection(),later);assert.equal(earlier.records.length,0);
 });
 
+for(const timing of ['before enqueue','while queued'] as const)test(`a character read cancelled ${timing} settles before the preceding source is released`,async t=>{
+ const f=await journal(t),events=await f.ledger.events(),started=deferred<void>(),release=deferred<void>();let calls=0;
+ const authority=await createCharacterAuthority({ledger:source(f.ledger,async()=>{
+  calls++;if(calls===1){started.resolve();await release.promise;}return structuredClone(events);
+ }),systemPrincipal:system()});
+ const first=authority.readProjection();await started.promise;
+ const controller=new AbortController();if(timing==='before enqueue')controller.abort();
+ let settled=false;
+ const stopped=authority.readProjection({signal:controller.signal}).then(
+  ()=>({code:'FULFILLED'}),error=>({code:error.code as string}),
+ ).then(result=>{settled=true;return result;});
+ if(timing==='while queued')controller.abort();
+ const healthy=authority.readProjection();
+ try{
+  // Yield a complete event-loop turn without releasing the controlled source.
+  // Cancellation must not depend on the preceding read making progress.
+  await new Promise<void>(resolve=>setImmediate(resolve));
+  assert.equal(settled,true,'cancelled read remained queued behind the blocked source');
+  assert.equal(calls,1,'healthy reads must still serialize behind the held read');
+ }finally{release.resolve();}
+ assert.deepEqual(await stopped,{code:'CANCELLED'});
+ assert.deepEqual(await healthy,await first);
+ assert.equal(calls,2,'the cancelled queued task must never call the source later');
+});
+
+test('an acknowledged character commit must appear in subsequent structural ledger reads',async t=>{
+ const f=await journal(t);let events=await f.ledger.events();
+ const authority=await createCharacterAuthority({ledger:source(f.ledger,async()=>structuredClone(events)),systemPrincipal:system()});
+ const command=await f.command({type:'set_activity',activity:{description:'Keeping watch',busy_until:12}});
+ const receipt=await authority.submit(command,principal('traveler'));assert.equal(receipt.cursor.sequence,3);
+ await assert.rejects(authority.readProjection(),{code:'CORRUPT_LEDGER'});
+ const other=await journal(t);await other.submit({type:'set_activity',activity:{description:'A different commitment',busy_until:12}},principal('traveler'));
+ events=await other.ledger.events();assert.doesNotThrow(()=>replayCharacters(f.seed,events,system()));
+ await assert.rejects(authority.readProjection(),{code:'CORRUPT_LEDGER'});
+ events=await f.ledger.events();const projection=await authority.readProjection();
+ assert.equal(projection.cursor.head,receipt.event_hash);assert.equal(projection.profiles[0]!.activity.description,'Keeping watch');
+ assert.deepEqual(await authority.submit(command,principal('traveler')),receipt);
+});
+
+test('an older in-flight character read cannot publish after a newer commit is acknowledged',async t=>{
+ const f=await journal(t),events=await f.ledger.events(),committed=deferred<void>(),releaseSubmit=deferred<void>();
+ const started=deferred<void>(),releaseRead=deferred<LedgerEvent[]>();let holdRead=false;
+ const ledger:Ledger={...f.ledger,
+  events:async()=>{if(holdRead){started.resolve();return releaseRead.promise;}return structuredClone(events);},
+  submit:async(...args)=>{const outcome=await f.ledger.submit(...args);committed.resolve();await releaseSubmit.promise;return outcome;},
+ };
+ const authority=await createCharacterAuthority({ledger,systemPrincipal:system()});
+ const command=await f.command({type:'set_activity',activity:{description:'Keeping watch',busy_until:12}});
+ const submitting=authority.submit(command,principal('traveler'));await committed.promise;
+ holdRead=true;const reading=authority.readProjection();await started.promise;
+ releaseSubmit.resolve();assert.equal((await submitting).cursor.sequence,3);
+ releaseRead.resolve(structuredClone(events));await assert.rejects(reading,{code:'CORRUPT_LEDGER'});
+});
+
+test('out-of-order character acknowledgments cannot lower the required committed prefix',async t=>{
+ const f=await journal(t);let events=await f.ledger.events();
+ const firstCommitted=deferred<void>(),releaseFirst=deferred<void>();let submits=0;
+ const ledger:Ledger={...f.ledger,events:async()=>structuredClone(events),submit:async(...args)=>{
+  const first=++submits===1,outcome=await f.ledger.submit(...args);
+  if(first){events=await f.ledger.events();firstCommitted.resolve();await releaseFirst.promise;}
+  return outcome;
+ }};
+ const authority=await createCharacterAuthority({ledger,systemPrincipal:system()});
+ const firstCommand=await f.command({type:'set_activity',activity:{description:'First watch',busy_until:12}});
+ const first=authority.submit(firstCommand,principal('traveler'));await firstCommitted.promise;
+ const secondCommand=await f.command({type:'set_activity',activity:{description:'Second watch',busy_until:14}});
+ const second=await authority.submit(secondCommand,principal('traveler'));assert.equal(second.cursor.sequence,4);
+ releaseFirst.resolve();assert.equal((await first).cursor.sequence,3);
+ await assert.rejects(authority.readProjection(),{code:'CORRUPT_LEDGER'});
+ events=await f.ledger.events();assert.equal((await authority.readProjection()).cursor.sequence,4);
+ const retry=await authority.submit(firstCommand,principal('traveler'));assert.equal(retry.cursor.sequence,3);
+ assert.equal((await authority.readProjection()).cursor.sequence,4);
+});
+
 test('witness freshness, cancellation and exact retries survive intervening cached reads',async t=>{
  const f=await journal(t),started=deferred<void>(),release=deferred<CharacterWitnessGrant>();let requestHash='';
  const authority=await createCharacterAuthority({ledger:f.ledger,systemPrincipal:system(),authorizeWitnesses:async request=>{requestHash=request.request_hash;started.resolve();return release.promise;}});
