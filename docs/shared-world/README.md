@@ -6,6 +6,8 @@ Implementation in progress from baseline `3fd1e4d`. The owner approved a single 
 
 Contract source `186e052` passed 25 author tests and 29 unchanged independent probes across two native reviewers. Metadata-only commit `15d49d3` freezes the four source hashes. SW-100 is submitted as VERIFYING on the source Board; application/runtime acceptance remains separate.
 
+The reviewed seed (`31e8c42`), dialogue adapter (`dfed2b9`) and pure authority (`2c0c1c8`) are integrated. The authority review reproduced an unconscious-lender memory defect; the repaired candidate passes both unchanged review suites. These source tickets are VERIFYING; signed storage and session acceptance remain pending.
+
 The shared authority will use one signed journal and actor namespace, reusing the pure mortal-v3 reducer. Historical profiles remain unchanged. The first session covers ordinary mortal play; Fate jurisdictions and lifespan transactions need a later explicit shared-world port.
 
 | Stage | Ticket | Release condition |

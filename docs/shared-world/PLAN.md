@@ -44,12 +44,12 @@ Create `packages/ledger/src/world/{rules.ts,view.ts}` and `TESTS/shared-world-{r
 
 Consumes the frozen types. Produces `initialWorldState(genesis): WorldState`, `resolveWorld(genesis,state,command,principal): WorldResolution`, `worldStateHash(state): string`, `viewWorldActor(genesis,state,query,principal): WorldActorView`. All arguments use the corresponding World types. No persistence, model calls or callbacks.
 
-- [ ] Write failing tests for social-first then physical actions, one clock/RNG, exact actor controller matching and duplicate NPC reply refusal.
-- [ ] Implement pure dispatch through `resolveMortalV3` using reconstructed internal metadata, extracting only its physical payload and elapsed world time.
-- [ ] Add durable speech/witness acquisition, owner impressions, activities, knowledge activation/revocation and monotone closure.
-- [ ] Add free-loan offer, withdrawal, exact acceptance and return. Test capacity/expiry/foreign acceptance and no relending or partial effects.
-- [ ] Add actor views with current/full-scope binding, bounded explicit memory coverage, own knowledge/opinions, shared scene and safe physical disclosure; test solo privacy and cutoff.
-- [ ] Verify source tests and deterministic prefix replay inputs; commit for integration and independent review.
+- [x] Write failing tests for social-first then physical actions, one clock/RNG, exact actor controller matching and duplicate NPC reply refusal.
+- [x] Implement pure dispatch through `resolveMortalV3` using reconstructed internal metadata, extracting only its physical payload and elapsed world time.
+- [x] Add durable speech/witness acquisition, owner impressions, activities, knowledge activation/revocation and monotone closure.
+- [x] Add free-loan offer, withdrawal, exact acceptance and return. Test capacity/expiry/foreign acceptance and no relending or partial effects.
+- [x] Add actor views with current/full-scope binding, bounded explicit memory coverage, own knowledge/opinions, shared scene and safe physical disclosure; test solo privacy and cutoff.
+- [x] Verify source tests and deterministic prefix replay inputs; commit for integration and independent review.
 
 ## SW-300: journal and storage (after SW-200 integration)
 

@@ -1,0 +1,86 @@
+{
+  "candidate": "2c0c1c8cc1f0aadedc7c94754ad917f9538b60a1",
+  "before": {
+    "sha": "2c0c1c8cc1f0aadedc7c94754ad917f9538b60a1",
+    "status": ""
+  },
+  "after": {
+    "sha": "2c0c1c8cc1f0aadedc7c94754ad917f9538b60a1",
+    "status": ""
+  },
+  "checks": [
+    {
+      "name": "Immutable candidate and frozen source identity",
+      "status": "pass",
+      "details": {
+        "changed": [
+          "TESTS/shared-world-rules-helpers.ts",
+          "TESTS/shared-world-rules.test.ts",
+          "TESTS/shared-world-views.test.ts",
+          "packages/ledger/src/world/rules.ts",
+          "packages/ledger/src/world/rules/README.md",
+          "packages/ledger/src/world/rules/engine.ts",
+          "packages/ledger/src/world/rules/ownership.ts",
+          "packages/ledger/src/world/view.ts"
+        ]
+      }
+    },
+    {
+      "name": "Current cursor, reader identity and full namespace bind the projected view",
+      "status": "pass"
+    },
+    {
+      "name": "Self/whisper/room acquisition is derived; arrival never imports earlier solo knowledge",
+      "status": "pass"
+    },
+    {
+      "name": "NPC reply admission depends on addressed acquired inbound, standing/busy and complete history",
+      "status": "pass"
+    },
+    {
+      "name": "Two directly addressed NPCs independently consume one inbound",
+      "status": "pass"
+    },
+    {
+      "name": "Real nonstanding transitions prevent later ordinary witness and speech acquisition",
+      "status": "pass"
+    },
+    {
+      "name": "Private impressions require acquired subject evidence and exact owner predecessor",
+      "status": "pass"
+    },
+    {
+      "name": "Travel witnesses get no endpoint, route, private resource or roll details",
+      "status": "pass"
+    },
+    {
+      "name": "Remote withdrawal updates canon but not borrower knowledge or global status surfaces",
+      "status": "pass"
+    },
+    {
+      "name": "Later-holder fulfillment is redacted and excludes remote borrower/room bystanders",
+      "status": "pass"
+    },
+    {
+      "name": "Knowledge uses committed owner activation plus independent validity and revocation",
+      "status": "pass"
+    },
+    {
+      "name": "Closure hides all dialogue context and cannot be bypassed with stale queries",
+      "status": "pass"
+    },
+    {
+      "name": "Owned caches and passive boundaries cannot poison prior views or forks",
+      "status": "pass"
+    },
+    {
+      "name": "Loan fulfillment to unconscious lender rejects atomically instead of adding knowledge",
+      "status": "pass"
+    }
+  ],
+  "passed": 14,
+  "failed": 0,
+  "paid_calls": 0,
+  "repository_edits": false,
+  "scope": "Pure rules/projection only; synthetic helper heads are not signed journal commits"
+}
