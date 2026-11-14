@@ -1,0 +1,23 @@
+{
+  "status": "drafting_and_independent_review",
+  "runtime_released": false,
+  "lanes": {
+    "DR-201": {
+      "source": "800f36152b57183f0ad7d460355f513e8056941c",
+      "manifest": "SYSTEMS/mortal-v3/FREEZE.json",
+      "native_review": "pending"
+    },
+    "DR-211": {
+      "source": null,
+      "manifest": "SYSTEMS/dialogue-knowledge-v1/FREEZE.json",
+      "native_review": "pending"
+    },
+    "DR-221": {
+      "source": "d5f02ad419900050d59b32f521823cbca6ba513e",
+      "manifest": "SYSTEMS/observation-admission-v1/FREEZE.json",
+      "native_review": "pending"
+    }
+  },
+  "old_frozen_contracts_changed": false,
+  "paid_model_calls": 0
+}
