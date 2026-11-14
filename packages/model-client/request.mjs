@@ -84,7 +84,7 @@ export function prepareRequest({vendor,model,prompt,history=[],previousResponseI
         previousResponseId?{previous_response_id:previousResponseId}:{})};
     if(scope&&sessionId)request.prompt_cache_key=cacheKey({scope,sessionId,vendor,model});
   }
-  return {vendor,model,cap,request,options,continuity,history:structuredClone(history),prompt:pinned};
+  return {vendor,model,cap,request,options,continuity,history:structuredClone(history),prompt:pinned,outputBudgetPolicy};
 }
 
 export async function checkBudget(prepared,countTokens){

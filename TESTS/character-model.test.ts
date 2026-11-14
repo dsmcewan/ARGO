@@ -124,6 +124,53 @@ test('the total deadline also bounds optional cooldown bookkeeping',async()=>{
  await assert.rejects(r.agent.respond(r.view.query,r.view.experiences[0]!.record_id,'cooldown_hang'));assert.equal(r.requests.length,0);
 });
 
+test('model-backed dialogue forwards bounded output and token counting across all four providers',async()=>{
+ const candidates:Candidate[]=[{vendor:'anthropic',model:'claude-fable-5-2',pool:'offline'},{vendor:'agy_google',model:'gemini-4-carbon',pool:'offline'},{vendor:'openai',model:'gpt-6-astra',pool:'offline'},{vendor:'xai',model:'grok-4.7',pool:'offline'}];
+ for(const candidate of candidates){
+  let captured:Record<string,unknown>|undefined,counts=0;
+  const payload=JSON.stringify({text:'The lamp can wait beside the bench.'});
+  const capture=(request:Record<string,unknown>)=>{captured=request;};
+  const client=candidate.vendor==='anthropic'?{messages:{create:async(request:Record<string,unknown>)=>{capture(request);return {stop_reason:'end_turn',content:[{type:'text',text:payload}]};}}}:
+   candidate.vendor==='agy_google'?{models:{generateContent:async(request:Record<string,unknown>)=>{capture(request);return {candidates:[{finishReason:'STOP',content:{role:'model',parts:[{text:payload}]}}]};}}}:
+   {responses:{create:async(request:Record<string,unknown>)=>{capture(request);return response('The lamp can wait beside the bench.');}}};
+  const r=await rig({candidates:[candidate],clientFor:()=>client,maxOutputTokens:800,countTokensFor:seat=>{assert.equal(seat.vendor,candidate.vendor);return async()=>{counts++;return 100;};}});
+  const cmd=await r.agent.respond(r.view.query,r.view.experiences[0]!.record_id,'provider');
+  assert.equal(cmd?.body.type==='speak'&&cmd.body.text,'The lamp can wait beside the bench.');assert.ok(captured);
+  const config=captured.config as Record<string,unknown>|undefined;
+  assert.equal(captured.max_tokens??captured.max_output_tokens??config?.maxOutputTokens,800,candidate.vendor);
+  assert.equal(counts,candidate.vendor==='openai'||candidate.vendor==='agy_google'?1:0);
+ }
+});
+
+test('disclosure is rechecked after token counting before generation can start',async()=>{
+ let r:Awaited<ReturnType<typeof rig>>;
+ r=await rig({candidates:[{vendor:'openai',model:'gpt-6-astra',pool:'counting'}],countTokensFor:()=>async()=>{r.view.ontology_blocked=true;return 100;}});
+ assert.equal(await r.agent.respond(r.view.query,r.view.experiences[0]!.record_id,'count_cutoff'),null);
+ assert.equal(r.requests.length,0,'A token-count delay must not bypass renewed disclosure');
+});
+
+test('a late token count cannot invoke generation after the turn deadline',async()=>{
+ let finish:((value:number)=>void)|undefined;
+ const r=await rig({timeoutMs:25,candidates:[{vendor:'openai',model:'gpt-6-astra',pool:'late_count'}],countTokensFor:()=>()=>new Promise<number>(resolve=>{finish=resolve;})});
+ await assert.rejects(r.agent.respond(r.view.query,r.view.experiences[0]!.record_id,'late_count'));
+ assert.ok(finish);finish(100);await new Promise(resolve=>setTimeout(resolve,20));
+ assert.equal(r.requests.length,0,'Expired async counting cannot start a provider side effect');
+});
+
+test('bounded dialogue refuses Google continuation instead of issuing another generation request',async()=>{
+ let calls=0;
+ const r=await rig({candidates:[{vendor:'agy_google',model:'gemini-4-carbon',pool:'continuation'}],countTokensFor:()=>async()=>100,
+  clientFor:()=>({models:{generateContent:async()=>{calls++;return calls===1?{candidates:[{finishReason:'CONTINUATION',continuationToken:'next',content:{parts:[]}}]}:{candidates:[{finishReason:'STOP',content:{parts:[{text:'{"text":"A second generation request."}'}]}}]};}}})});
+ await assert.rejects(r.agent.respond(r.view.query,r.view.experiences[0]!.record_id,'no_hops'));
+ assert.equal(calls,1);
+});
+
+test('valid-looking prose mixed with refusal or built-in tool records is not dialogue',async()=>{
+ const mixed=[{...response('Valid-looking reply'),output:[...response('Valid-looking reply').output,{type:'web_search_call',id:'unexpected_tool',status:'completed'}]},
+  {...response('Valid-looking reply'),output:[{type:'message',content:[{type:'output_text',text:'{"text":"Valid-looking reply"}'},{type:'refusal',refusal:'Cannot comply'}]}]}];
+ for(const value of mixed){const r=await rig({},async()=>value);await assert.rejects(r.agent.respond(r.view.query,r.view.experiences[0]!.record_id,'mixed'));}
+});
+
 test('cancellation and deadlines bound unresponsive provider work',async()=>{
  const r=await rig({timeoutMs:25},async()=>new Promise(()=>{}));await assert.rejects(r.agent.respond(r.view.query,r.view.experiences[0]!.record_id,'timeout'));
  const cancel=new AbortController();cancel.abort();const before=await rig();await assert.rejects(before.agent.respond(before.view.query,before.view.experiences[0]!.record_id,'cancel',{signal:cancel.signal}));assert.equal(before.requests.length,0);

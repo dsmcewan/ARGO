@@ -61,14 +61,18 @@ export function createModelCharacterAgent(options:CharacterModelOptions){
       const value=await supplement();signal.throwIfAborted();return hash({view,supplement:value})===fingerprint;
      }catch{signal.throwIfAborted();return false;}
     };
+    const contextChanged=new Error('Authorized dialogue context changed before generation');
     const routed=await routeCall({candidates,signal,deadline,maxAttempts:1,...(cooldown?{cooldown}:{}),invoke:async(candidate,{signal:attemptSignal})=>{
      if(!await unchanged())return null;attemptSignal.throwIfAborted();
      const counter=countTokensFor?.(candidate);
      const result=await sendModelTurn({client:clientFor(candidate),vendor:candidate.vendor,model:candidate.model,prompt:body,
       contractHeader:CHARACTER_DIALOGUE_INSTRUCTIONS,history:[],continuity:'replay',effort,outputBudgetPolicy:'explicit',
+      responseMode:'text_only',beforeGenerate:async()=>{if(!await unchanged())throw contextChanged;},
       extra:{max_output_tokens:maxTokens},scope:{...scope,profile:'character-dialogue/0.1.0',actor_id:actorId,task:kind},
-      sessionId:'npc:'+hash({session:sessionId,actor_id:actorId,task:kind}),signal:attemptSignal,deadline,...(counter?{countTokens:counter}:{})});
+      sessionId:'npc:'+hash({session:sessionId,actor_id:actorId,task:kind}),signal:attemptSignal,deadline,...(counter?{countTokens:counter}:{})})
+      .catch(error=>{if(error===contextChanged)return null;throw error;});
      attemptSignal.throwIfAborted();
+     if(result===null)return null;
      if(!result.complete||!result.usable_for_resume||typeof result.text!=='string'||result.tools.length)fail('UNAVAILABLE','Character response is incomplete or requests unsupported tools');
      const answer=parseDialogueResponse(result.text,limit);
      return await unchanged()?answer:null;
