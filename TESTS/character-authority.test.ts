@@ -1,9 +1,11 @@
 import {test} from 'node:test';
+import {sign} from 'node:crypto';
 import assert from 'node:assert/strict';
 import {mkdtemp,rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
-import {openLedger} from '../packages/ledger/src/index.ts';
+import {openLedger,replay} from '../packages/ledger/src/index.ts';
+import {unsigned,eventHash} from '../packages/ledger/src/mechanics.ts';
 import {CHARACTER_PROFILE,characterProposalId,characterRequestHash,canonical} from '../packages/contracts/src/index.ts';
 import type {CharacterCommand,CharacterCommandBody,CharacterEnvelope,CharacterProjection,CharacterReceipt,CharacterWitnessGrant,Principal} from '../packages/contracts/src/index.ts';
 import {genesis,keys,principal,proposal} from './fixtures.ts';
@@ -163,7 +165,22 @@ test('signed speech cannot bypass prior cooldown, death, party membership or out
   const c=await f.command(speech('Forged!'));
   if(mode==='observers'||mode==='source'){
    const p=principal('traveler'),envelope:CharacterEnvelope={version:CHARACTER_PROFILE,scope:c.scope,request_id:c.request_id,request_hash:characterRequestHash(c,p),requester:{principal_id:p.principal_id,actor_id:p.actor_id,role:p.role},body:{type:'speak',actor_id:'traveler',text:'Forged!',addressed_actor_ids:['donor'],witnesses:{request_hash:characterRequestHash(c,p),actor_ids:['traveler'],party_id:null}}};
-   await writeCarrier(f,envelope,system(),mode==='observers'?{observers:['system','outsider']}:{source_id:'clotho'});
+   const patch=mode==='observers'?{observers:['system','outsider']}:{source_id:'clotho'};
+   const before=await f.ledger.events();
+   await assert.rejects(writeCarrier(f,envelope,system(),patch),/observation|witness|source|authoriz/i);
+   assert.deepEqual(await f.ledger.events(),before,'new invalid delivery refuses before append');
+   // Old signed v1 histories must still exercise the character replay guard.
+   // Construct a historical record explicitly; never relax new admission.
+   await writeCarrier(f,envelope);
+   const history=await f.ledger.events(),last=history.at(-1)!;
+   assert.equal(last.proposal.action.type,'observe_claim');
+   if(last.proposal.action.type!=='observe_claim')throw Error('Missing carrier');
+   Object.assign(last.proposal.action.observation,patch);
+   last.authority.signature=sign(null,Buffer.from(canonical(unsigned(last))),keys.privateKey).toString('base64');
+   last.hash=eventHash(last);
+   assert.equal(replay(f.seed,history).sequence,history.length,'legacy rule/signature replay is preserved');
+   assert.throws(()=>authority.replayCharacters(f.seed,history,system()),/carrier/i,mode);
+   continue;
   }else await forgedCarrier(f,c,principal('traveler'),e=>{if(mode==='party'){e.body.witnesses.party_id='party';e.body.witnesses.actor_ids.push('outsider');}});
   await assert.rejects(f.service.readProjection(),/carrier/i,mode);
  }
