@@ -72,3 +72,51 @@ Actor reads use the public scoped projector, preserving the storage-owned immuta
 After a dispatched request loses acknowledgment, it may already have committed. Reconcile the **same command/request ID** rather than inventing a replacement action. A stale new command must be explicitly prepared again following the caller's decision. Restart verifies the full journal; independent rollback protection requires a separately trusted `expectedHead` checkpoint when opening the public ledger. A colocated state/checkpoint file is not independent protection. The demo supplies its in-memory final cursor when reopening and compares full replay; normal CLI resume does not claim an external rollback anchor.
 
 `TESTS/shared-world-session.test.ts` covers request binding, authentic foreign receipts, fixed identity, stale races, private observations, current closure, physical combat, signed restart, private CLI storage and the ordinary-process offline demo. All provider behavior in this pass is injected and offline.
+
+## Explicit offline conversation
+
+`talk-init` creates one durable conversation store for this existing world; `talk` opens it. Both require a fixed player, NPC and fixture file. They do not initialize another world or discover a provider.
+
+```sh
+node scenarios/tempted-fates/shared-world/cli.ts talk-init --dir /path/to/private-world --actor hero --npc melia --fixture /path/to/replies.json
+node scenarios/tempted-fates/shared-world/cli.ts talk --dir /path/to/private-world --actor hero --npc melia --fixture /path/to/replies.json
+```
+
+The canonical sidecar is `WORLD/turns.sqlite`, with its own private SQLite worker. Creation is exclusive. Opening a missing, corrupt, foreign or differently bound store fails; it never silently creates a replacement. There is no store-path override. The CLI supports one player/NPC/policy binding per world directory, and both principals must match the saved genesis. The private world and sidecars retain the existing owner, file-type and 0700/0600 checks. Selecting these local capabilities does not authenticate a remote player.
+
+The fixture is closed, bounded JSON data, not executable code:
+
+```json
+{
+  "version": "shared-world-offline-fixture/1.0.0",
+  "fixture_id": "melia_visit",
+  "turns": [
+    {"turn_id":"first", "player_text":"May I borrow the lamp?", "reply_text":"No fee or deposit. Buy your oil and agree when it comes back."},
+    {"turn_id":"second", "player_text":"May I borrow the lamp?", "reply_text":"The terms are unchanged; no service or oath is required."},
+    {"turn_id":"quiet", "player_text":"I will wait.", "reply_text":null}
+  ]
+}
+```
+
+Files are regular non-symlink UTF-8 JSON, at most one MiB, with 1–256 turns. Fixture and turn IDs use 1–64 safe ASCII identifier characters and exclude reserved object names. Turn IDs are unique; input text may repeat under different IDs. Text must be nonblank and fit the actual actor's speech cap; only reply text may be null. Unknown fields, duplicate IDs, oversized strings and invalid reply shapes fail. Input/reply text is never trimmed, interpolated or replaced by a fallback.
+
+The complete canonical fixture and the versioned CLI fixture adapter determine the persisted provider-policy identity. Reopening with different fixture meaning, actor/NPC identities or resolved model policy fails. Formatting-only JSON changes keep the same identity. This declares the intended callback behavior; a hash is not proof about arbitrary host code. The pinned adapter uses one injected Responses-shaped client, low effort, a ten-second generation budget, 32 KiB context and 700 output tokens. It constructs no SDK, loads no arbitrary module and reads no provider credentials. It selects each row from the host's immutable turn/attempt context and verifies the actual focused model input before returning its strict text/null fixture response. Repeated identical input cannot select another turn's fixture through ambient mutable state.
+
+Each conversation input line is a closed object:
+
+| Input | Behavior |
+| --- | --- |
+| `{"op":"talk","turn_id":"first","text":"May I borrow the lamp?"}` | Start or join this exact durable turn. Unknown fixture IDs and changed exact text fail before turn or player dispatch. |
+| `{"op":"continue","turn_id":"first"}` | Explicitly reconcile/resume an existing turn; never invent a missing turn or regenerate a consumed attempt. |
+| `{"op":"status","turn_id":"first"}` | Read a fresh public result without driving work. A known fixture turn absent from the store returns null. |
+| `{"op":"cancel","turn_id":"first"}` | Persist cancellation. It cannot undo a possible canonical commit or erase its receipt. |
+
+Every new-mode result and error is labeled `mode:"offline_fixture"`; validated rows also identify the fixture and its hash. Turn rows contain the host's public result, including phase/outcome, verified receipts, and an optional delivery with stable `delivery_id`. They never expose private outbox commands, NPC context or pending model text. The output is evidence of integration with deterministic fixtures, not live dialogue quality.
+
+Delivery is selected from the **player's fresh scoped view**, matching the actual committed NPC record. A reply may remain committed while cancellation, closure, eviction or a concurrent change suppresses text. Status and repeated reads repeat that projection, not cached outbox disclosure. `no_reply` does not prove intentional silence; `generation_uncertain` does not authorize regeneration. Conversation speech cannot create a loan, transfer custody or perform physical actions; use the separate explicit low-level session operations for those.
+
+After restart or an ambiguous acknowledgment, reuse the same turn ID/input and use `continue` or `status`. A consumed generation attempt is never automatically repeated. EOF/host close is not durable cancellation of other callers; use `cancel` explicitly. The host, sidecar and caller-owned world journal close in that order. Losing or restoring both trusted local stores can lose attempt/silence tombstones; the sidecar is not an independent rollback anchor. A stable delivery ID permits consumer deduplication, but printing is not claimed exactly once.
+
+All CLI modes now await each output, including errors and demo rows, before advancing input. The default writer waits for the stream write callback and propagates failure; it does not keep dispatching after a broken sink. Input lines and JSON config/fixture files are capped at one MiB. Complete encoded output lines, including wrappers, escapes and newline, are capped at 16 MiB and never truncated. An output failure after commit is an ambiguous display acknowledgment, so reconcile the existing turn rather than creating a new one.
+
+`TESTS/shared-world-conversation-cli.test.ts` exercises actual host/store behavior, ordinary-process restart using private stdin/stdout/stderr file descriptors, fixture binding/preflight, repeated inputs, cancellation, closure/eviction, private output and backpressure. Existing `init`, `resume`, `demo` and low-level JSON operation shapes remain supported.
