@@ -264,6 +264,48 @@
       "retained_path": "full-gate/root-install.log",
       "sha256": "e845549e7a93d4cf20e361edea6827ade6a4c65ad077834ef7a603f44cae8720",
       "bytes": 25
+    },
+    {
+      "original_path": "/tmp/argo-rp400-verify-report.py",
+      "retained_path": "argo-rp400-verify-report.py",
+      "sha256": "d0259e43f240adc1ac154200c0ec3714ac696df8f55d6c6365c8cb1279fea4d0",
+      "bytes": 25171
+    },
+    {
+      "original_path": "/tmp/argo-rp400-train-data-review.json",
+      "retained_path": "argo-rp400-train-data-review.json",
+      "sha256": "d2e2ea4a1fbc455cf5e51c522d87e950d7749b8692955dfb9790d793262c110c",
+      "bytes": 7028
+    },
+    {
+      "original_path": "/tmp/argo-rp400-train-data-review.log",
+      "retained_path": "argo-rp400-train-data-review.log",
+      "sha256": "d2e2ea4a1fbc455cf5e51c522d87e950d7749b8692955dfb9790d793262c110c",
+      "bytes": 7028
+    },
+    {
+      "original_path": "/tmp/argo-rp400-holdout-data-review.json",
+      "retained_path": "argo-rp400-holdout-data-review.json",
+      "sha256": "83486c96cb818abc348ba8ddc880acfe8ca3fbe523324e92e9c2ce846fdb3d69",
+      "bytes": 7220
+    },
+    {
+      "original_path": "/tmp/argo-rp400-holdout-data-review.log",
+      "retained_path": "argo-rp400-holdout-data-review.log",
+      "sha256": "83486c96cb818abc348ba8ddc880acfe8ca3fbe523324e92e9c2ce846fdb3d69",
+      "bytes": 7220
+    },
+    {
+      "original_path": "/tmp/argo-rp-board-submissions.json",
+      "retained_path": "argo-rp-board-submissions.json",
+      "sha256": "83be89af02df864ddd8eb8d4d4413349f0c7105cbf68678e5d9b931b0caa9f58",
+      "bytes": 3142
+    },
+    {
+      "original_path": "/tmp/argo-rp-board-integration.json",
+      "retained_path": "argo-rp-board-integration.json",
+      "sha256": "0573734331d7173d28541d0ac3d30a1ab9e6cae07c97488dae8cc212af420164",
+      "bytes": 949
     }
   ]
 }

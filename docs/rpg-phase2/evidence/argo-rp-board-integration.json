@@ -1,0 +1,18 @@
+{
+  "ticket": "RP-900",
+  "candidate": "26a865fc9c67857bc9507e42afc8c92c2f3bdc94",
+  "artifacts": {
+    "packages/ledger/src/mortal/view.ts": "70234a502a0250df58d3cb173131d30414319ec25f61f3eeb8247886a4516aa7",
+    "scenarios/tempted-fates/runtime.ts": "ca99cb79519961ef13caa1eedfc51f511c4b8e72a0318c53878d8571c537e888",
+    "scenarios/tempted-fates/package.json": "58e81e7d8b4f159957c52bfeae5e3f8c3d438d759dac4a0887289e7ba2fff1fb",
+    "package-lock.json": "28fb9235f1f025821195099ad703098bb703ad09438a523817a558b4ca4556b0",
+    "docs/rpg-phase2/evidence/full-gate/gate-result.json": "70e0f633048edefb1f94531c5dffa2b385c51b6a1ee19e7f6ff4d5689fa82aac"
+  },
+  "application_gate_commit": "bb7c838252f320548d47c6c433b0eb429afd8e70",
+  "application_gate_checks_passed": 10,
+  "automatic_dispatch_enabled": false,
+  "trust_policy_changed": false,
+  "submit_refused": "Candidate changes pinned gate policy",
+  "status": "READY",
+  "lease_released": true
+}

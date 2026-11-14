@@ -1,0 +1,52 @@
+[
+  {
+    "ticket": "RP-100",
+    "candidate": "2423d5b856ef57b39214116472c8b899cd45e428",
+    "status": "VERIFYING",
+    "artifacts": {
+      "SYSTEMS/mortal-v2/CONTRACT.md": "ede698b24b62c4d47f6d45f3cbe4288b43dd230128a3a09edb59fee121f35447",
+      "SYSTEMS/mortal-v2/FREEZE.json": "5e8130c3e774670073fdf1d3f07242ffa8c58d73330ede1baea3079ca5a19714",
+      "SYSTEMS/mortal-v2/mortal.schema.json": "070be914286893c86598578dccabe152bbdece23ba859d162776243f2b0b21ff",
+      "packages/contracts/src/mortal.ts": "c51c63e6ae4c92ed4ce9b72f4fd0ae49fa4bbf9d74940e47bffb3e87ba753d75",
+      "packages/contracts/src/mortal-types.ts": "f798d4d9325b502006d871867d00805d95febc9ba8a8bdd7f79846808e31686f",
+      "TESTS/mortal-contracts.test.ts": "c0d0fe168e7f34c4f810a07bcd99f6328809127860f712cdee035fda111ff3b8"
+    }
+  },
+  {
+    "ticket": "RP-200",
+    "candidate": "d9094d6e1a045a328b21cb966ec064923c97f19c",
+    "status": "VERIFYING",
+    "artifacts": {
+      "packages/ledger/src/mortal/rules.ts": "fadca52771d69ef23ee4e37106ce366f9a8611f099f441d5d3613a032b87bdf5",
+      "TESTS/mortal-rules.test.ts": "8419b789f36a9c06724ef9322063941e00260e9548c33526e108ef9eead57050"
+    }
+  },
+  {
+    "ticket": "RP-300",
+    "candidate": "df40a526ccb4960f437bff4df700a820226370ac",
+    "status": "VERIFYING",
+    "artifacts": {
+      "packages/ledger/src/mortal/journal.ts": "4a09c73e452fbe4f1f5adf5b8b0796de758f8eb3a8905c04eb0ca44ad1e3896b",
+      "packages/ledger/src/mortal/storage.ts": "6d5620521c060757515d6fe75ff3c380f1bb405368995c178feca65562138099",
+      "packages/ledger/src/mortal/storage-worker.ts": "e226917c9c1b2d62b31b28871b357ebfae84e8ead7c5d139b93c4660221cecc5",
+      "TESTS/mortal-journal.test.ts": "a78fbe3daec824b07b71e8c24cd496d69dccfc2245736f498b3141294871e470",
+      "TESTS/mortal-storage.test.ts": "e4e03dde4f2f2adceaa59a2f925e606486dc063095bcf7bf8bb6de91cc4934f4"
+    }
+  },
+  {
+    "ticket": "RP-400",
+    "candidate": "17416956ff422828e3dd993fbc612ee6da843bc1",
+    "status": "VERIFYING",
+    "artifacts": {
+      "scenarios/tempted-fates/balance/protocol.json": "6fda0e10089e5be991983e08a3894f9d7abe734fed502b3f87f85e09048bdff5",
+      "scenarios/tempted-fates/balance/runner.ts": "b22bc90e439ca731d185b8cd2e3e04daeba5ddc47b3010da9c40487ca3f8305d",
+      "scenarios/tempted-fates/balance/statistics.ts": "df967028fcc2c2258e7e71515bf7b28d3c4737914903bb7af6399d9149e26e82",
+      "scenarios/tempted-fates/balance/cli.ts": "ebe5c28f953f3c2710777aea92ff3e69f415f45703fd18606eac03fe5610ac3e",
+      "docs/rpg-phase2/balance/PREREGISTRATION.md": "763a066011db0c231b73273a79307be56b2908cbc8af1df3cea18258d35bef97",
+      "docs/rpg-phase2/balance/RESULTS.md": "d74e111ade235dbb1a199d2eb7b0f6eeac0418187e689d15feeab9a1a0afc576",
+      "docs/rpg-phase2/balance/evidence/train-bb7c838.json": "0100de2f92323a12ebd2af67f6b58d1b0838e8d763d2f3b84ab1fa60e92d5056",
+      "docs/rpg-phase2/balance/evidence/train-bb7c838.json.decision.json": "532fc2c927ee1f0b543fc02c13ba77510b63595d3057f9f65423362b99996608",
+      "docs/rpg-phase2/balance/evidence/holdout-bb7c838.json": "366cfba4e5de8fda8b56fc14cd6a61c16e7d46a5d5d143f60e1bd190d13b2c51"
+    }
+  }
+]
