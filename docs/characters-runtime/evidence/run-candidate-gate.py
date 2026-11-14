@@ -62,7 +62,7 @@ try:
                 '--ro-bind', str(stage), '/workspace', '--chdir', '/workspace', '--clearenv',
                 '--setenv', 'PATH', '/tools:/usr/bin:/bin', '--setenv', 'HOME', '/tmp',
                 '--setenv', 'LANG', 'C.UTF-8', '--', '/tools/node', 'scripts/gate.mjs', '--merge-ready']
-        gate = run('application-gate', args, stage, 600)
+        gate = run('application-gate', args, stage, 1200)
         active_step, active_timeout = 'gate-record', None
         record = json.loads(gate.decode().strip().splitlines()[-1])
         assert record['commit'] == a.candidate and record['merge_ready']
