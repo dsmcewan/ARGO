@@ -22,6 +22,7 @@ export function createFates(ids:Record<FateRole,string>){
 export type * from './campaign/types.ts';
 export * from './campaign/catalog.ts';
 export * from './campaign/rules.ts';
+export * from './campaign/dialogue.ts';
 
 // Fresh-world versioned mortal initialization; old Fate authority is unchanged.
 export * from './runtime.ts';
