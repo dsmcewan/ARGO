@@ -37,6 +37,8 @@ Actions:
 
 An item may have at most one live loan/offer. Expired/withdrawn offers never authorize acceptance. A loaned item cannot be offered again by its temporary holder. An accepted record survives subsequent custody movement; only return to the original lender fulfills it. This is an explicit free-loan kernel, not general commerce or legal adjudication.
 
+After every custody-changing action, including pickup or loot, regained custody by the original lender fulfills the open loan. The return location is the agreed checkpoint, not a prohibition on an earlier voluntary hand-back elsewhere. Crossing that checkpoint does not impose automatic penalties or silently release the obligation.
+
 ## Epistemic projection and dialogue
 
 Every accepted action produces one compound typed memory record with its sequence/time and deterministic witness acquisition. Speech source is always the authenticated actor. Shared room speech reaches standing occupants; an addressed whisper reaches only its declared standing colocated recipients; self-private notes reach only their author. Physical event descriptions disclose observable action identity, not hidden rolls, another actor's inventory totals, private policy or secret command fields. Observers are derived from the relevant before/after location and direct participants; new arrivals do not acquire earlier private records. Compound loan transactions remain one record/sequence rather than fabricated legacy events.
