@@ -1,0 +1,16 @@
+✔ private outbox explicitly creates, binds, reopens and refuses replacements or wrong policy (8693.948817ms)
+✔ two handles CAS one input and cannot mutate immutable text or replace a saved command (4846.798ms)
+✔ stored row corruption, foreign tables and unsafe filesystem capabilities fail closed (6986.153885ms)
+✔ active inputs and forged opaque capabilities are refused without executing getters (2165.854068ms)
+✔ open mode is captured before awaits and directory symlink aliases are refused (2029.248388ms)
+✔ literal sqlite_ internal names do not hide a foreign sqliteX table (4126.500872ms)
+✔ close drains all 64 accepted RPCs before terminating its worker (4131.359589ms)
+✔ oversized stored JSON is refused and a consumed attempt cannot publish silence after deadline (3131.924968ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 36131.522382

@@ -1,0 +1,22 @@
+{
+  "candidate": "e096530b2618119ab3dd545f3defe36b754021bd",
+  "node": "v24.22.1",
+  "ordinary_process": true,
+  "test_runner": false,
+  "paid_calls": 0,
+  "probe_sha256": "6e7913e83711ee07bd4eb080765abf600352afcd5e179b98a8e276df2d4ee345",
+  "results": [
+    {
+      "name": "15_crashed_process_permanent_attempt_never_regenerates",
+      "passed": false,
+      "elapsed_ms": 9281,
+      "error": "Error: Child never entered injected provider; child diagnostics {\"stdout\":\"\",\"stderr\":\"\",\"exit\":null}\n    at fixture.policy.timeout_ms (file:///workspace/reports/2026-11-14-argo-continuation/turn-review-host/probes-child-diagnostic.mjs:334:11)\n    at async fixture (file:///workspace/reports/2026-11-14-argo-continuation/turn-review-host/probes-child-diagnostic.mjs:90:77)\n    at async file:///workspace/reports/2026-11-14-argo-continuation/turn-review-host/probes-child-diagnostic.mjs:375:32"
+    }
+  ],
+  "passed": 0,
+  "failed": 1,
+  "limits": [
+    "Injected offline clients only. Not the full native application gate.",
+    "Private temporary worlds/keys are removed; evidence contains no signing keys."
+  ]
+}

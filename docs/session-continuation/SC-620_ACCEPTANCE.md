@@ -1,0 +1,11 @@
+# Durable turn host source acceptance
+
+Source `0458268ed82d6d703b4604bd71647986fdd05ae7` is independently accepted for SC-620. Its source history is retained by the integration merge `04e2769`; the root lockfile adds only the session package's two declared workspace dependencies. Full application acceptance and CLI work remain separate.
+
+The host and private SQLite outbox implement the [selected turn contract](TURN_CONTRACT.md): one fixed authenticated pair, exact saved-command reconciliation, a permanent bounded generation attempt, cancellation and fresh player-scoped disclosure. The host never owns the caller's ledger, and closing does not wait for an unresolved caller acknowledgment. A stable per-binding cache identity preserves actor/policy partitions without replaying provider history.
+
+[Author evidence](evidence/turn-author/HANDOFF-FOLLOWUP.md) records 18 passing host tests and type/contract/boundary checks at the exact source. Independent store verification comprises 11 ordinary-process groups executed at `e096530`, with all store bytes [rebound unchanged](evidence/turn-review-store/final-0458268/REVIEW.md) to the final source. The separate host reviewer resolved three reproduced defects through 10 passing focused groups at the final source and retained applicable prior 19-group evidence at its original identity. Original failures and harness corrections are preserved in the review directories. Independent means another native Codex peer, not a human or cross-vendor review.
+
+The [actual Board source record](evidence/SC-620-source-record.json) is **FAILED after operational retirement**: nine files were saved to CAS, but the package-manifest change triggered `Candidate changes pinned gate policy`. The public `fail_claim` method released its one-attempt lease. This is not a passing Board gate or controller merge; separate source review and final application/CI acceptance govern integration. No Board rows or controller trust pins were changed to bypass that refusal.
+
+No paid calls, live dialogue evaluation, checkpoint boot, new world authority, or independent rollback anchor is supplied. The outbox coordinates only handles sharing its canonical file. Lost generation results are uncertain and are not automatically generated again; stable delivery IDs support consumer deduplication without promising exactly-once terminal output.

@@ -1,0 +1,1 @@
+The first run passed seven public API groups and failed the process race because process-racer.mjs had an unmatched closing parenthesis. node --check confirmed failure before candidate imports. This is a review harness defect, not a source finding. The corrected process race is rerun separately; earlier evidence is preserved.

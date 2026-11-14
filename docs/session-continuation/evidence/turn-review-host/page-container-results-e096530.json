@@ -1,0 +1,22 @@
+{
+  "candidate": "e096530b2618119ab3dd545f3defe36b754021bd",
+  "node": "v24.22.1",
+  "ordinary_process": true,
+  "test_runner": false,
+  "paid_calls": 0,
+  "probe_sha256": "1ead4e112f331f8876e28c7f35b692db4323b209af0d98fd274c96c3a27aef2c",
+  "results": [
+    {
+      "name": "C_prefix_page_containers_reject_accessors_and_proxies_without_traps",
+      "passed": false,
+      "elapsed_ms": 5128,
+      "error": "AssertionError [ERR_ASSERTION]: Prefix page DTO container executed active code before rejecting it\n+ actual - expected\n\n  {\n+   accessorTraps: 1,\n+   proxyTraps: 8\n-   accessorTraps: 0,\n-   proxyTraps: 0\n  }\n\n    at file:///workspace/reports/2026-11-14-argo-continuation/turn-review-host/page-container-probes.mjs:145:9\n    at async fixture (file:///workspace/reports/2026-11-14-argo-continuation/turn-review-host/page-container-probes.mjs:90:77)\n    at async file:///workspace/reports/2026-11-14-argo-continuation/turn-review-host/page-container-probes.mjs:151:32"
+    }
+  ],
+  "passed": 0,
+  "failed": 1,
+  "limits": [
+    "Injected offline clients only. Not the full native application gate.",
+    "Private temporary worlds/keys are removed; evidence contains no signing keys."
+  ]
+}

@@ -1,0 +1,12 @@
+✔ private outbox explicitly creates, binds, reopens and refuses replacements or wrong policy (6526.590293ms)
+✔ two handles CAS one input and cannot mutate immutable text or replace a saved command (4150.366418ms)
+✔ stored row corruption, foreign tables and unsafe filesystem capabilities fail closed (6589.03918ms)
+✔ active inputs and forged opaque capabilities are refused without executing getters (1899.586731ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 19180.811645

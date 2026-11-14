@@ -1,0 +1,28 @@
+PASS same canonical outbox across two ordinary processes consumes one generation
+{
+  "candidate": "e096530b2618119ab3dd545f3defe36b754021bd",
+  "before": {
+    "sha": "e096530b2618119ab3dd545f3defe36b754021bd",
+    "status": ""
+  },
+  "after": {
+    "sha": "e096530b2618119ab3dd545f3defe36b754021bd",
+    "status": ""
+  },
+  "ordinary_process": true,
+  "paid_calls": 0,
+  "checks": [
+    {
+      "name": "same canonical outbox across two ordinary processes consumes one generation",
+      "status": "pass",
+      "details": {
+        "processes": 2,
+        "generation_calls": 1,
+        "phase": "settled"
+      }
+    }
+  ],
+  "passed": 1,
+  "failed": 0,
+  "scope": "Independent public host/store tests; external SQL controls assume trusted local storage. Crash/COMMIT and private RPC source review are separate."
+}

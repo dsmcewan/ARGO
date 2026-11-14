@@ -1,0 +1,8 @@
+
+> argo@0.1.0 typecheck
+> tsc --noEmit
+
+packages/session/src/conversation.ts(128,8): error TS7006: Parameter 'input' implicitly has an 'any' type.
+packages/session/src/conversation.ts(129,10): error TS7006: Parameter 'input' implicitly has an 'any' type.
+packages/session/src/conversation.ts(130,8): error TS7006: Parameter 'input' implicitly has an 'any' type.
+packages/session/src/conversation.ts(131,10): error TS7006: Parameter 'input' implicitly has an 'any' type.

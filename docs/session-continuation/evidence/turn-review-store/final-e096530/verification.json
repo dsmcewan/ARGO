@@ -1,0 +1,156 @@
+{
+  "candidate": "e096530b2618119ab3dd545f3defe36b754021bd",
+  "verdict": "READY_STORE_SCOPE",
+  "review_scope": "Opaque store, private files, binding, row/transition guards, worker RPC, SQLite CAS and durability; final driver/privacy and whole application acceptance are separate.",
+  "source_clean_after": true,
+  "frozen_unchanged_since_checkpoint": true,
+  "source_hashes": {
+    "packages/session/src/conversation-types.ts": "7007528fe9f72e3d4ee3d8091512b2065f1203bc52ecafd393dbdde78ddfaf38",
+    "packages/session/src/conversation-guards.ts": "e276e14a1bf9af48079673f5a2b163b9751a0b857036eedf4c5311ebe293407d",
+    "packages/session/src/conversation-store.ts": "9fe225478aa8847ed0cc6aa118850909007c60f96f1c198fc5e7e97b120269ef",
+    "packages/session/src/conversation-store-worker.ts": "0885ac35c25cd0426a63b88fe22b696d1187edf9571a2d45390a2e29370a2bf1",
+    "packages/session/src/conversation.ts": "ae146e23070c71d8400f91582c87067df0e156426a6e747fe9bfb20bfb477aa6",
+    "packages/session/src/index.ts": "7fa0a76a1310cfbee097364e7476bbdff756de18e347f80483ccb9d29578120c",
+    "packages/session/package.json": "23d621e04345400aca781aee4448548f6e9a3f3726d67006b5a6e191eeb113a0",
+    "TESTS/shared-world-turn-store.test.ts": "e726cb26a90e0c5638dad1ac1519e40631fcd2e536ccc6e72680733ea6cc7884",
+    "TESTS/shared-world-conversation.test.ts": "9ced9b1e0a7bda4ee80ba229923d47176328902266352c39a0a2c31f1c8d17ba"
+  },
+  "evidence_hashes": {
+    "checkpoint-probes.mjs": "8196b61f10bcd02e2f3b3034603943ee1018f3fa17945fe580ff77c6e2d2a07c",
+    "final-e096530/fix-controls.log": "5eb9ae70bc3903c69685169f127ebad520857587988b09c4532d4032158e63e3",
+    "final-e096530/fix-controls/observations.json": "825d71d550e56b37f3d2624a448092dd61bacaf286230ea33df7b332b17409f0",
+    "final-e096530/fix-controls/parse-trace.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "final-e096530/fix-verification.json": "eef1495f53512f62e85daf089a1d9746851f5febb0815072ba29591029882e26",
+    "final-e096530/initial-harness-syntax-error/README.md": "540b0eb7f290695e18958023145899635da1586aa483edce01965ab6c9ece71f",
+    "final-e096530/initial-harness-syntax-error/probes.mjs": "140bfc201a8e6e45caf3b59d9891a5d1ced2c50615b094aa355c74cf2958acca",
+    "final-e096530/initial-harness-syntax-error/process-racer.mjs": "725e8d2faefdce0bd4a20a36d2cc19cce730fcf9e2b37a5ccca969147aeb279b",
+    "final-e096530/initial-harness-syntax-error/public-probes.log": "44c4e400079970ac3a18fe8b2b50a7c56312e98972eb31f5ed1e4eb9d9698501",
+    "final-e096530/initial-harness-syntax-error/results.json": "d2796a2e0bffb11a6717ac5549d9f7d260846b7c8ccc0aa55bd7d71507e47f5d",
+    "final-e096530/process-rerun.log": "209dd827ef80cd40a27f308438152276fec7f9f1bdbd7aae5f485ee92350d499",
+    "final-e096530/process-rerun/process-0.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "final-e096530/process-rerun/process-1.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "final-e096530/process-rerun/results.json": "42a0a8e9e0368c997464c6ada96eb1cbac33b28506615b092378757b9674f4f5",
+    "final-e096530/public-probes.log": "44c4e400079970ac3a18fe8b2b50a7c56312e98972eb31f5ed1e4eb9d9698501",
+    "final-e096530/public-probes/results.json": "d2796a2e0bffb11a6717ac5549d9f7d260846b7c8ccc0aa55bd7d71507e47f5d",
+    "final-e096530/worker-faults.log": "815679c097a2fb702061af4a3b6f1c6b3481c2bb6ed2804c73134429d314c37c",
+    "final-e096530/worker-faults/fault-trace.jsonl": "097b2e776d2f13d49e18a1e70abb8b0be39daf00567160612ff265b3fc96b567",
+    "final-e096530/worker-faults/results.json": "9f7e8d31d872adf802c5258216aadfdd7f6cc88296b034b6e9896ca8327f84ec",
+    "probes.mjs": "e6340b7517be8eb00e63042b94d1c1db2e642dada89a33aef50be9b659aadd0b",
+    "process-racer.mjs": "2483cdbefa84dee7fef8fd6861969ca696d4163413cc7b15691bb334b3fe1a88",
+    "trace-json.mjs": "14421c1dd3911e556b9313503f12c8118442ce55833014ccfaac7ae0487457ec",
+    "worker-fault-hook.mjs": "ceb63b95dba926470412647fc253cee514491df6da94ec163ae31c501d77f59e",
+    "worker-fault-probes.mjs": "3d86c7dfcafc8f765fa7cc138fd35274a73cbbb71bdd68751e900042d2e1d3a3"
+  },
+  "resolved_findings": {
+    "SC620-ST01": true,
+    "SC620-ST02": true,
+    "SC620-ST03": true,
+    "SC620-ST04": true,
+    "SC620-ST05": true,
+    "immediate_directory_alias_refusal": true,
+    "NC-ID-LF": true,
+    "NC-ID65-LF": true,
+    "NC-DIGEST-LF": true
+  },
+  "public_api_groups": [
+    {
+      "name": "private explicit create/open and no replacement on existing or missing stores",
+      "status": "pass",
+      "details": {
+        "mode": 384,
+        "binding": "b8e6798678fdc5d35381193aaba787f699ded86affcf5483360a43c3331f9bc4"
+      }
+    },
+    {
+      "name": "path grammar, unsafe permissions, symlinks and unsafe sidecars refuse before use",
+      "status": "pass"
+    },
+    {
+      "name": "foreign SQLite file and every full world/player/policy binding mismatch refuse",
+      "status": "pass"
+    },
+    {
+      "name": "opaque registration and passive constructor/input data never execute traps",
+      "status": "pass"
+    },
+    {
+      "name": "same-file two-handle CAS preserves one attempt and cancelled tombstone",
+      "status": "pass",
+      "details": {
+        "calls": 1,
+        "revision_before": 3,
+        "revision_after": 4
+      }
+    },
+    {
+      "name": "same canonical outbox across two ordinary processes consumes one generation",
+      "status": "pass",
+      "details": {
+        "processes": 2,
+        "generation_calls": 1,
+        "phase": "settled"
+      }
+    },
+    {
+      "name": "silence tombstone survives close/reopen and read/resume never regenerate it",
+      "status": "pass"
+    },
+    {
+      "name": "external local corruption controls: closed row JSON, duplicate columns/hash and binding are checked on open/read",
+      "status": "pass",
+      "details": {
+        "classification": "Trusted-local corruption detection; not malicious-storage or rollback authentication"
+      }
+    }
+  ],
+  "fault_rpc_groups": [
+    {
+      "name": "outbox COMMIT refusal rolls back insertion and same public turn can succeed afterward",
+      "status": "pass",
+      "details": {
+        "after_refusal_rows": 0,
+        "after_success_events": 2,
+        "model_calls": 1
+      }
+    },
+    {
+      "name": "worker exit after COMMIT before acknowledgment preserves accepted input without regeneration on read",
+      "status": "pass",
+      "details": {
+        "recovered_phase": "accepted",
+        "generation_calls": 1,
+        "world_events": 2
+      }
+    },
+    {
+      "name": "raw worker refuses unknown operation/envelope and oversized RPC without corrupting valid reads",
+      "status": "pass",
+      "details": {
+        "unknown_code": "INVALID_CONTRACT",
+        "envelope_code": "INVALID_CONTRACT",
+        "oversized_code": "INVALID_CONTRACT",
+        "preserved_turn": "valid"
+      }
+    }
+  ],
+  "independent_counts": {
+    "public_api_groups": 8,
+    "fault_rpc_groups": 3,
+    "original_defects_resolved": 5,
+    "directory_alias_control": 1,
+    "identifier_negative_controls": 3
+  },
+  "harness_history": "Initial public run had a child-process syntax error before source import. Seven unaffected groups passed; the corrected process group passed separately. Original scripts/log/results retained under initial-harness-syntax-error.",
+  "limitations": [
+    "No native completion or whole-application gate certification.",
+    "COMMIT refusal is controlled fault injection, not a real disk-full experiment. Worker post-COMMIT exit is actual termination.",
+    "External SQL corruption checks assume trusted local storage; no adversarial row-hash authenticity or both-store rollback guarantee.",
+    "Provider callbacks remain injected offline fixtures; policy hash does not authenticate executable callbacks.",
+    "No automatic generation coordination across independent outbox files.",
+    "Final integration SHA must retain these hashes or receive targeted re-review."
+  ],
+  "paid_calls": 0,
+  "network_calls": 0,
+  "source_edits": false,
+  "nested_agents": false
+}

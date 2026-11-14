@@ -1,0 +1,5 @@
+
+> argo@0.1.0 typecheck
+> tsc --noEmit
+
+TESTS/shared-world-turn-store.test.ts(13,48): error TS2493: Tuple type '[fn?: TestFn | undefined]' of length '1' has no element at index '1'.

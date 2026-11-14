@@ -1,0 +1,112 @@
+{
+  "candidate": "e096530b2618119ab3dd545f3defe36b754021bd",
+  "node": "v24.22.1",
+  "ordinary_process": true,
+  "test_runner": false,
+  "paid_calls": 0,
+  "probe_sha256": "5b1d5d1343f97d7caffce3b44ea5df48d97479692ee180d20f0045956eac8cbd",
+  "results": [
+    {
+      "name": "01_context_exact_duplicate_and_restart",
+      "passed": true,
+      "elapsed_ms": 14280
+    },
+    {
+      "name": "02_commit_then_bad_receipt_hero",
+      "passed": true,
+      "elapsed_ms": 9545
+    },
+    {
+      "name": "02_commit_then_bad_receipt_raider",
+      "passed": true,
+      "elapsed_ms": 11703
+    },
+    {
+      "name": "03_cancel_pending_intent_before_real_submit_then_reconcile",
+      "passed": true,
+      "elapsed_ms": 5049
+    },
+    {
+      "name": "04_two_handles_one_attempt_and_waiter_abort",
+      "passed": true,
+      "elapsed_ms": 10672
+    },
+    {
+      "name": "05_durable_cancel_fences_ignored_cross_handle_late_output",
+      "passed": true,
+      "elapsed_ms": 10010
+    },
+    {
+      "name": "06_close_fences_local_generation_keeps_ledger_and_other_handle",
+      "passed": true,
+      "elapsed_ms": 10850
+    },
+    {
+      "name": "07_deadline_does_not_renew_or_accept_late_provider",
+      "passed": true,
+      "elapsed_ms": 5988
+    },
+    {
+      "name": "08_stale_generation_and_lock_free_world_writer",
+      "passed": true,
+      "elapsed_ms": 5485
+    },
+    {
+      "name": "09_closure_after_reply_commit_before_delivery",
+      "passed": true,
+      "elapsed_ms": 4199
+    },
+    {
+      "name": "10_player_eviction_while_npc_still_sees_reply",
+      "passed": true,
+      "elapsed_ms": 5793
+    },
+    {
+      "name": "11_cancellation_during_async_player_read_suppresses_delivery",
+      "passed": true,
+      "elapsed_ms": 8762
+    },
+    {
+      "name": "12_silence_and_malformed_model_outputs_never_authorize_actions",
+      "passed": true,
+      "elapsed_ms": 10985
+    },
+    {
+      "name": "13_passive_input_detachment_and_opaque_store_capability",
+      "passed": true,
+      "elapsed_ms": 3898
+    },
+    {
+      "name": "14_missing_or_foreign_receipt_prefix_refuses_cached_delivery",
+      "passed": true,
+      "elapsed_ms": 6280
+    },
+    {
+      "name": "15_crashed_process_permanent_attempt_never_regenerates",
+      "passed": false,
+      "elapsed_ms": 8637,
+      "error": "Error: Child never entered injected provider\n    at Timeout.<anonymous> (file:///workspace/reports/2026-11-14-argo-continuation/turn-review-host/probes.mjs:39:116)\n    at listOnTimeout (node:internal/timers:685:17)\n    at process.processTimers (node:internal/timers:618:7)"
+    },
+    {
+      "name": "16_actual_journal_only_rollback_rejects_retained_receipt",
+      "passed": true,
+      "elapsed_ms": 8520
+    },
+    {
+      "name": "17_saved_reply_stale_slot_proves_rejection_without_rebase",
+      "passed": true,
+      "elapsed_ms": 4422
+    },
+    {
+      "name": "18_cancel_during_ignored_token_counter_has_no_provider_call",
+      "passed": true,
+      "elapsed_ms": 8596
+    }
+  ],
+  "passed": 18,
+  "failed": 1,
+  "limits": [
+    "Injected offline clients only. Not the full native application gate.",
+    "Private temporary worlds/keys are removed; evidence contains no signing keys."
+  ]
+}
