@@ -14,6 +14,7 @@ These are portable copies of the offline source reviews and measurements. Some o
 | `host-authority-review-0d29515/`, `host-privacy-review-0d29515/` | Fixed-principal sessions, exact receipt binding, private CLI initialization/resume, ordinary demo and cutoff-safe release. Initial reviewer matcher failure and corrected targeted result are retained. |
 | `host-source-0d29515/` | Author suite and demonstration. Its missing dependency boundary was resolved by coordinator commit `897a2e3`; the original failure log is retained. |
 | `measurement-session-review/` | Static review of final session measurement and package wiring at `897a2e3`; it makes no timing claim. |
+| [Complete session measurement](session-measure-639d31b/measurement.json) | Ordinary-process fixed-principal query/view/submit, five context refreshes and exact receipt verification; 2002-event full replay equals the saved state. |
 | `SW-*-source-submission.json` | Sanitized actual Board/CAS submissions; no lease tokens or invented MERGED states. Contract submission is in its freeze acceptance record. |
 
 Independent reviewers are separate native Codex peers, not cross-vendor or human reviews. Retained provider requests contain synthetic test-world data, not private user worlds or provider credentials. Private signing keys, random seeds, live world directories and databases are excluded.

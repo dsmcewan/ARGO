@@ -6,7 +6,7 @@ The next work depends on the goal. The following is a dependency map, not author
 
 ## Longer persistent sessions
 
-First address measured cold startup. The initial signed-store measurement at `120119c` took 74.1 seconds to open a verified 2000-event history, despite a warm contextual reply and commit taking about 551 ms. The completed session measurement is retained separately. Both use one machine, a speech workload and injected clients; they do not measure provider latency or a general graph workload.
+First address measured cold startup. The initial signed-store measurement at `120119c` took 74.1 seconds to open a verified 2000-event history, despite a warm contextual reply and commit taking about 551 ms. The [completed session run at `639d31b`](evidence/session-measure-639d31b/measurement.json) measured 358 ms for the injected contextual reply and signed commit, 74.4 seconds for cold opening, and 59.4 seconds for exact full replay at 2002 events. Both runs use one machine, a speech workload and injected clients; they do not measure provider latency or a general graph workload.
 
 Set a restart budget, profile cold verification, then improve it while retaining exact signed prefixes, state hashes, tamper rejection and lost-acknowledgment retry behavior. History-bearing state hashes still grow with the journal. A trusted persistent checkpoint or different history/hash representation needs its own contract review; skipping verification is not a valid performance repair. Privileged rollback detection still needs an external expected cursor.
 
