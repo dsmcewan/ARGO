@@ -204,6 +204,23 @@ test('two handles reconcile identical witnessed submissions before demanding ano
  assert.deepEqual(await other.submit(p,principal()),a);assert.equal(calls,2);
 });
 
+test('cancellation during the second journal read rejects an exact concurrent retry without losing its commit',async t=>{
+ const entered=deferred<ObservationAdmissionRequest>(),release=deferred<ObservationWitnessGrant>(),controller=new AbortController();
+ let calls=0;const f=await runtime(t,async r=>{calls++;entered.resolve(r);return release.promise;});
+ const other=await openLedger({...f.options,authorizeObservationWitnesses:async r=>grant(r)}),p=input(['outsider']);
+ const pending=f.ledger.submit(p,principal(),{signal:controller.signal}),r=await entered.promise;
+ const committed=await other.submit(p,principal());
+ const original=fs.readFile;let injected=false;
+ const spy=t.mock.method(fs,'readFile',async(...args:Parameters<typeof fs.readFile>)=>{
+  const bytes=await original(...args);if(!injected&&args[0]===join(f.directory,'events.jsonl')){injected=true;controller.abort();}return bytes;
+ });
+ syncBuiltinESMExports();t.after(()=>{spy.mock.restore();syncBuiltinESMExports();});
+ const rejected=assert.rejects(pending,{code:'CANCELLED'});release.resolve(grant(r));await rejected;
+ spy.mock.restore();syncBuiltinESMExports();assert.equal(injected,true);
+ assert.equal((await f.ledger.events()).length,1);
+ assert.deepEqual(await f.ledger.submit(p,principal()),committed);assert.equal(calls,1);
+});
+
 test('cancelled host work cannot append when it resolves late and the linked signal is aborted',async t=>{
  const entered=deferred<{request:ObservationAdmissionRequest;signal:AbortSignal}>(),release=deferred<ObservationWitnessGrant>();
  const f=await runtime(t,async(r,_s,call)=>{entered.resolve({request:r,signal:call.signal});return release.promise;});

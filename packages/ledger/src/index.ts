@@ -99,7 +99,9 @@ export async function openLedger(options:LedgerOptions){
    const deadline=safeAdd(startedAt,5000);
    type Step={kind:'committed';value:Outcome}|{kind:'witness';state:Snapshot};
    const attempt=(authorization?:ObservationAuthorization):Promise<Step>=>locked(directory,outward?Math.min(timeout,observationRemaining(deadline,signal)):timeout,signal,async()=>{
-    const {state,parents,proposals}=await readChecked();const prior=proposals.get(p.proposal_id);
+    const {state,parents,proposals}=await readChecked();
+    if(signal?.aborted)fail('CANCELLED','Operation cancelled during ledger read');
+    const prior=proposals.get(p.proposal_id);
     if(prior){
      if(hash(p)!==hash(prior.proposal))fail('CONFLICT','Proposal idempotency conflict');
      if(principal.principal_id!==prior.authority.principal_id||principal.actor_id!==prior.authority.principal_actor_id||principal.role!==prior.authority.principal_role)fail('UNAUTHORIZED','Idempotent actor authentication differs');
