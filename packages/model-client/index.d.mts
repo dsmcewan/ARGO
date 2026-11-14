@@ -19,6 +19,8 @@ export interface RequestOptions {
   scope?:OpaqueItem;
   sessionId?:string;
   effort?:string;
+  /** Explicit mode requires and preserves a caller cap; defaults retain long-decode behavior. */
+  outputBudgetPolicy?:'long_decode'|'explicit';
   architecture?:boolean;
   contractHeader?:string;
   signal?:AbortSignal;

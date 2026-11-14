@@ -16,9 +16,14 @@ export function cacheKey({scope,sessionId,vendor,model}){
 }
 
 export function prepareRequest({vendor,model,prompt,history=[],previousResponseId,continuity='replay',extra={},scope,sessionId,
-  effort,architecture=false,contractHeader='',signal}){
+  effort,architecture=false,contractHeader='',signal,outputBudgetPolicy='long_decode'}){
   const cap=CAPABILITIES[model];
   if(!cap||cap.vendor!==vendor)throw new Error('Model capability or vendor mismatch');
+  if(!['long_decode','explicit'].includes(outputBudgetPolicy))throw new Error('Unsupported output budget policy');
+  const outputBudget=(value,label)=>{
+    if(outputBudgetPolicy==='explicit'&&value==null)throw new Error('Explicit output budget policy requires an explicit output token cap');
+    return count(value??65536,label);
+  };
   if(typeof prompt!=='string'||!prompt)throw new Error('Prompt is required');
   if(!Array.isArray(history))throw new Error('History must be an array');
   for(const key of Object.keys(extra))if(RESERVED.has(key))throw new Error(`Reserved request field: ${key}`);
@@ -37,7 +42,7 @@ export function prepareRequest({vendor,model,prompt,history=[],previousResponseI
     if(['any','tool'].includes(e.tool_choice?.type))delete e.tool_choice;
     const depth=effort??e.output_config?.effort??(architecture?'xhigh':'high');
     if(!cap.efforts.includes(depth))throw new Error('Unsupported effort for model');
-    const max=count(e.max_tokens??e.max_output_tokens??65536,'max_tokens');
+    const max=outputBudget(e.max_tokens??e.max_output_tokens,'max_tokens');
     delete e.max_output_tokens;
     if(max>cap.output)throw new Error('Output token budget exceeds model limit');
     request={...e,model,max_tokens:max,output_config:{...e.output_config,effort:depth},messages:[...structuredClone(history),{role:'user',content:pinned}]};
@@ -59,12 +64,13 @@ export function prepareRequest({vendor,model,prompt,history=[],previousResponseI
     if(!cap.efforts.includes(depth))throw new Error('Unsupported effort for model');
     thinking.thinkingLevel=depth.toUpperCase();
     config.thinkingConfig=thinking;
-    config.maxOutputTokens=Math.max(65536,count(config.maxOutputTokens??65536,'maxOutputTokens'));
+    const max=outputBudget(config.maxOutputTokens,'maxOutputTokens');
+    config.maxOutputTokens=outputBudgetPolicy==='explicit'?max:Math.max(65536,max);
     if(config.maxOutputTokens>cap.output)throw new Error('Output token budget exceeds configured long-decode bound');
     if(signal)config.abortSignal=signal;
     request={...e,model,config,contents:[...structuredClone(history),{role:'user',parts:[{text:pinned}]}]};
   }else{
-    const max=count(e.max_output_tokens??e.max_tokens??65536,'max_output_tokens');
+    const max=outputBudget(e.max_output_tokens??e.max_tokens,'max_output_tokens');
     if(cap.output&&max>cap.output)throw new Error('Output token budget exceeds model limit');
     delete e.max_tokens;
     const reasoning={...e.reasoning};
