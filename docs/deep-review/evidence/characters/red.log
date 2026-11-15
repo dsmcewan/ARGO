@@ -1,0 +1,47 @@
+✖ unchanged character reads do no repeated signature work and an append verifies only its suffix (176.260819ms)
+✖ a warm character authority rejects rollback and a signed divergent observed prefix (131.965579ms)
+✔ changed cached carrier bytes fail even when the stored event hash is unchanged (123.239807ms)
+✔ a bad later suffix cannot publish earlier carrier mutations or poison the cache (219.469553ms)
+✔ overlapping event loads cannot publish a later prefix ahead of an older in-flight read (178.14992ms)
+✔ witness freshness, cancellation and exact retries survive intervening cached reads (281.145908ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 4
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1121.460157
+
+✖ failing tests:
+
+test at TESTS/character-cache.test.ts:34:1
+✖ unchanged character reads do no repeated signature work and an append verifies only its suffix (176.260819ms)
+  AssertionError [ERR_ASSERTION]: a verified unchanged prefix must not repeat signatures
+  
+  2 !== 0
+  
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/deep-review/worktrees/DR-110-1-42e155104b/TESTS/character-cache.test.ts:41:76)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-cache.test.ts:50:1
+✖ a warm character authority rejects rollback and a signed divergent observed prefix (131.965579ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/deep-review/worktrees/DR-110-1-42e155104b/TESTS/character-cache.test.ts:54:2)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: [Object],
+    operator: 'rejects',
+    diff: 'simple'
+  }

@@ -1,0 +1,38 @@
+{
+  "candidate": "e096530b2618119ab3dd545f3defe36b754021bd",
+  "ordinary_process": true,
+  "checks": [
+    {
+      "name": "outbox COMMIT refusal rolls back insertion and same public turn can succeed afterward",
+      "status": "pass",
+      "details": {
+        "after_refusal_rows": 0,
+        "after_success_events": 2,
+        "model_calls": 1
+      }
+    },
+    {
+      "name": "worker exit after COMMIT before acknowledgment preserves accepted input without regeneration on read",
+      "status": "pass",
+      "details": {
+        "recovered_phase": "accepted",
+        "generation_calls": 1,
+        "world_events": 2
+      }
+    },
+    {
+      "name": "raw worker refuses unknown operation/envelope and oversized RPC without corrupting valid reads",
+      "status": "pass",
+      "details": {
+        "unknown_code": "INVALID_CONTRACT",
+        "envelope_code": "INVALID_CONTRACT",
+        "oversized_code": "INVALID_CONTRACT",
+        "preserved_turn": "valid"
+      }
+    }
+  ],
+  "passed": 3,
+  "failed": 0,
+  "limits": "External preload instruments worker only. COMMIT error is simulated, not a physical disk-full experiment; actual worker exits after COMMIT before acknowledgment. Public host creates all turns; raw worker negative controls are separate internal transport tests.",
+  "paid_calls": 0
+}

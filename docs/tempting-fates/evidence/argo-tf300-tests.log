@@ -1,0 +1,118 @@
+TAP version 13
+# Subtest: catalog accepts a complete small pack and reversed ordinary-route endpoints without changing it
+ok 1 - catalog accepts a complete small pack and reversed ordinary-route endpoints without changing it
+  ---
+  duration_ms: 23.478042
+  type: 'test'
+  ...
+# Subtest: catalog validates closed grammar without coercing, removing fields, or supplying defaults
+ok 2 - catalog validates closed grammar without coercing, removing fields, or supplying defaults
+  ---
+  duration_ms: 12.438232
+  type: 'test'
+  ...
+# Subtest: every collection rejects duplicate IDs and NPC/item reserved namespaces cannot collide
+ok 3 - every collection rejects duplicate IDs and NPC/item reserved namespaces cannot collide
+  ---
+  duration_ms: 10.34318
+  type: 'test'
+  ...
+# Subtest: route, occupant, faction, encounter, rumor, hook and item references must actually resolve
+ok 4 - route, occupant, faction, encounter, rumor, hook and item references must actually resolve
+  ---
+  duration_ms: 5.827413
+  type: 'test'
+  ...
+# Subtest: ordinary atlas is connected, route memberships are reciprocal, and loom access stays conditional
+ok 5 - ordinary atlas is connected, route memberships are reciprocal, and loom access stays conditional
+  ---
+  duration_ms: 3.358068
+  type: 'test'
+  ...
+# Subtest: occupants occur at their declared site exactly once and Fate identity/role/location are fixed
+ok 6 - occupants occur at their declared site exactly once and Fate identity/role/location are fixed
+  ---
+  duration_ms: 4.199354
+  type: 'test'
+  ...
+# Subtest: artifact selection excludes the other variant artifact and every physical claimed artifact from legend
+ok 7 - artifact selection excludes the other variant artifact and every physical claimed artifact from legend
+  ---
+  duration_ms: 4.365365
+  type: 'test'
+  ...
+# Subtest: clock, arithmetic, speech-codepoint and safe-number limits reject malformed content
+ok 8 - clock, arithmetic, speech-codepoint and safe-number limits reject malformed content
+  ---
+  duration_ms: 4.227487
+  type: 'test'
+  ...
+# Subtest: passive guard rejects proxies and getters before invoking any caller behavior
+ok 9 - passive guard rejects proxies and getters before invoking any caller behavior
+  ---
+  duration_ms: 2.814421
+  type: 'test'
+  ...
+# Subtest: passive guard rejects exotic, cyclic, decorated, sparse, symbolic, hidden and oversized structures
+ok 10 - passive guard rejects exotic, cyclic, decorated, sparse, symbolic, hidden and oversized structures
+  ---
+  duration_ms: 63.776193
+  type: 'test'
+  ...
+# Subtest: public handout and rumor candidate are exact minimal detached DTOs with no referee truth
+ok 11 - public handout and rumor candidate are exact minimal detached DTOs with no referee truth
+  ---
+  duration_ms: 14.97846
+  type: 'test'
+  ...
+# Subtest: seed has literal v1 defaults, exact caller scope, fixed Fate roles and traveler-only expedition
+ok 12 - seed has literal v1 defaults, exact caller scope, fixed Fate roles and traveler-only expedition
+  ---
+  duration_ms: 20.498086
+  type: 'test'
+  ...
+# Subtest: one roster produces explicit stable genuine, counterfeit and legend item selections
+ok 13 - one roster produces explicit stable genuine, counterfeit and legend item selections
+  ---
+  duration_ms: 44.217174
+  type: 'test'
+  ...
+# Subtest: seed options reject unknown fields, invalid exact scope, seed, public key and unsupported variants
+ok 14 - seed options reject unknown fields, invalid exact scope, seed, public key and unsupported variants
+  ---
+  duration_ms: 12.167826
+  type: 'test'
+  ...
+# Subtest: travelers are bounded safe unique mortal identities with campaign-valid nature
+ok 15 - travelers are bounded safe unique mortal identities with campaign-valid nature
+  ---
+  duration_ms: 11.633846
+  type: 'test'
+  ...
+# Subtest: ASCII identifiers and private seed reject trailing line terminators without normalization
+ok 16 - ASCII identifiers and private seed reject trailing line terminators without normalization
+  ---
+  duration_ms: 2.713853
+  type: 'test'
+  ...
+# Subtest: seed construction detaches nested inputs and never adds runtime knowledge, effects or display metadata
+ok 17 - seed construction detaches nested inputs and never adds runtime knowledge, effects or display metadata
+  ---
+  duration_ms: 2.377272
+  type: 'test'
+  ...
+# Subtest: campaign construction leaves the existing causal and character schema freezes unchanged
+ok 18 - campaign construction leaves the existing causal and character schema freezes unchanged
+  ---
+  duration_ms: 3.056474
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1409.72991

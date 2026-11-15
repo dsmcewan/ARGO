@@ -1,0 +1,9 @@
+{
+  "profile_version": "mortal-rules/0.3.0",
+  "files": {
+    "SYSTEMS/mortal-v3/CONTRACT.md": "b8cb9fc2202cacba73eb26198f3a2a94f4c73a259f1120855476ef8eb35af591",
+    "SYSTEMS/mortal-v3/mortal.schema.json": "8cc7d1b9f5894adf4c5f22e8efb8172d2f474ab6a944add8cbb7fc87def757e0",
+    "packages/contracts/src/mortal-v3-types.ts": "9540819917dc0f58a92793c2dd69baee8c029f99099f681ca79e713e6d390699"
+  },
+  "scope": "Fresh-world v3 interface; preserves v2 history and does not migrate worlds, authenticate callers, enforce wall-clock deadlines or approve operational merge"
+}

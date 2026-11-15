@@ -1,0 +1,118 @@
+✖ explicit Google budgets retain short caller limits instead of increasing generation allowance (2.949004ms)
+✖ explicit output policy requires a positive safe integer cap on every provider surface (0.581108ms)
+✖ explicit caps normalize supported aliases without leaking local policy to provider requests (0.638065ms)
+✔ omitted and long-decode policies retain the existing default and legacy-cap behavior (0.918641ms)
+✖ unknown output policies and caps beyond the model limit fail before generation (0.335278ms)
+✖ combined-context accounting reserves the explicit output cap and rejects overflow (0.403696ms)
+✖ single-turn generation sends explicit small caps through all provider transports (3.184655ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 1
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 21.152825
+
+✖ failing tests:
+
+test at packages/model-client/tests/output-budget.test.mjs:15:1
+✖ explicit Google budgets retain short caller limits instead of increasing generation allowance (2.949004ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  65536 !== 2048
+  
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-200-1-6ccba453f0/packages/model-client/tests/output-budget.test.mjs:19:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 65536,
+    expected: 2048,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages/model-client/tests/output-budget.test.mjs:25:1
+✖ explicit output policy requires a positive safe integer cap on every provider surface (0.581108ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-200-1-6ccba453f0/packages/model-client/tests/output-budget.test.mjs:27:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /explicit.*output|output.*explicit/i,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at packages/model-client/tests/output-budget.test.mjs:35:1
+✖ explicit caps normalize supported aliases without leaking local policy to provider requests (0.638065ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  65536 !== 800
+  
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-200-1-6ccba453f0/packages/model-client/tests/output-budget.test.mjs:39:14)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 65536,
+    expected: 800,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages/model-client/tests/output-budget.test.mjs:60:1
+✖ unknown output policies and caps beyond the model limit fail before generation (0.335278ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-200-1-6ccba453f0/packages/model-client/tests/output-budget.test.mjs:63:14)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /output.*policy|policy.*output/i,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at packages/model-client/tests/output-budget.test.mjs:73:1
+✖ combined-context accounting reserves the explicit output cap and rejects overflow (0.403696ms)
+  Error: Combined input and output exceeds model context window
+      at checkBudget (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-200-1-6ccba453f0/packages/model-client/request.mjs:92:36)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-200-1-6ccba453f0/packages/model-client/tests/output-budget.test.mjs:75:16)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at packages/model-client/tests/output-budget.test.mjs:79:1
+✖ single-turn generation sends explicit small caps through all provider transports (3.184655ms)
+  AssertionError [ERR_ASSERTION]: agy_google transport retains the chosen cap
+  
+  65536 !== 1536
+  
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-200-1-6ccba453f0/packages/model-client/tests/output-budget.test.mjs:91:12)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 65536,
+    expected: 1536,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

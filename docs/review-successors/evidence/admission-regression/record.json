@@ -1,0 +1,11 @@
+{
+  "implementation_baseline": "7292ef71c6c96f6bcdcc82f0e3740f5e3b4b885f",
+  "test_source": "40975f7",
+  "command": "node --test --test-isolation=none --test-name-pattern='signed speech cannot bypass' TESTS/character-authority.test.ts",
+  "expected_before_repair": "missing expected rejection for forged external observer delivery",
+  "tests": 1,
+  "passed": 0,
+  "failed": 1,
+  "log": "red.log",
+  "log_sha256": "fe0ff35cf714ecd83eff9c99fc0598cbdab5bd5eb68048be6273e829377b78f3"
+}

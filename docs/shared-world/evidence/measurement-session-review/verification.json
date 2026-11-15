@@ -1,0 +1,26 @@
+{
+  "candidate": "897a2e36caf82331a2f7816b3d781e95913ea4ba",
+  "comparison_base": "120119c81c4e4562e5078b30f58390d364be13cb",
+  "verdict": "READY for static measurement-session and wiring review",
+  "scope": "Measurement instrument delta and workspace dependency/ownership spot check; not runtime/session/model acceptance",
+  "findings": [],
+  "source_sha256": {
+    "docs/shared-world/measure-runtime.mjs": "0c42b92bbab5bba5a000c934883dc9a498f7e29f449f02012de8cd7ce063b780",
+    "packages/session/src/index.ts": "5ecf41b28dfd6679520fe79a38d85060b0eabf44676e31e951dd828b684535b2",
+    "packages/session/package.json": "8d6fb5d0b237fe7cc5c3a86462ff6a6b1b1e818e0c6ae925a18882bb8d8643a9",
+    "packages/ledger/src/index.ts": "506365291ff8a33f79c41e35adfec37067d8296a39e39fdd1e6ad8685ccdedc0",
+    "packages/ledger/src/world/index.ts": "42ba0f1ae4952d3f12592b702b2cd536e15b49ab1f3712fca117ab979ec46418",
+    "packages/interventions/src/index.ts": "3b439208fafeeed1b809d3c1cee0b1967a7cacf2322879dfef16c7f1527ad447",
+    "scenarios/tempted-fates/package.json": "33710862ac894b29b428a0b9629b1dc943b06a9df9ddb9ddce8672f2a7f88e05",
+    "package.json": "072f0b182bb5d02df9c9b8cb6c01716e6dd2e0d081164b2450d5bbbdfedf3e9b",
+    "package-lock.json": "7a50904ca8b7d4f54709522f39ba439195a5c4b085d57fa941395052936c9490",
+    "OWNERSHIP.json": "8745760848f6eb7e73103ddd22d5b54aa9332a653d9eccba84b84c0a2f7a222c"
+  },
+  "runtime_executed": false,
+  "benchmark_executed": false,
+  "tests_run": false,
+  "repository_edits": false,
+  "paid_calls": 0,
+  "subagents": 0,
+  "source_identity": "Committed git show bytes; concurrent unrelated documentation edits excluded"
+}

@@ -1,0 +1,27 @@
+test_distinct_peer_processes_cannot_rotate_their_identities (__main__.RotatedIdentityProbe.test_distinct_peer_processes_cannot_rotate_their_identities) ... Executing <Task pending name='Task-2' coro=<RotatedIdentityProbe.test_distinct_peer_processes_cannot_rotate_their_identities() running at /tmp/argo-mb-peer-binding-probe.py:13> wait_for=<Future pending cb=[Task.task_wakeup()] created at /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py:448> cb=[_run_until_complete_cb() at /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py:181] created at /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py:100> took 0.735 seconds
+SOURCE_SHA256 ffae3c881e835c84e23dff0f6b7d0095a7599eb80b309ab7ec407e76b796bd13
+RESULT {"artifacts": [{"logical_path": "results/A/value.json", "sha256": "d1bb83a87ba185c3fdf0922d25a8ae2883c0237924c7b9474f3c037369e29a1a"}], "base_commit": "33883acf4d36e234da443670d271ba79edee3d50", "candidate_commit": "7d8cbba11ab4eb6c765205a8fc378fcff9431e99", "epoch": 1, "id": "A", "mesh": {"candidate_commit": "7d8cbba11ab4eb6c765205a8fc378fcff9431e99", "peer_ids": ["peer_a", "peer_b", "peer_c"], "protocol": "argo.mesh/1", "rounds": 2, "scope": "3983c3a08ded03f043e0379483d3da10e7e497adffe2fba744c9b80eb0c5b48e", "status": "completed", "trace_path": "/tmp/argo-mesh-dispatch-oracle-tirb87tn/repo/.board/mesh-traces/3983c3a08ded03f043e0379483d3da10e7e497adffe2fba744c9b80eb0c5b48e.jsonl", "trace_sha256": "d97db6b286a89822bd960c1d6512abe52dfe06beb9a427034f1bd7570ba76807"}, "spec_sha256": "92b257a2796c802b8ccc76d0861d174c483816e6ff1545e53d99c9910f11912f", "status": "VERIFYING"}
+ATTRIBUTIONS [('peer_a', 'peer_c'), ('peer_b', 'peer_a'), ('peer_c', 'peer_b')]
+FAIL
+
+======================================================================
+FAIL: test_distinct_peer_processes_cannot_rotate_their_identities (__main__.RotatedIdentityProbe.test_distinct_peer_processes_cannot_rotate_their_identities)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/tmp/argo-mb-peer-binding-probe.py", line 20, in test_distinct_peer_processes_cannot_rotate_their_identities
+    self.assertEqual(row['status'], 'failed', 'each peer process must echo its own assigned peer ID')
+AssertionError: 'VERIFYING' != 'failed'
+- VERIFYING
++ failed
+ : each peer process must echo its own assigned peer ID
+
+----------------------------------------------------------------------
+Ran 1 test in 3.085s
+
+FAILED (failures=1)

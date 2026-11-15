@@ -1,0 +1,62 @@
+{
+  "reviewer": "character_narrator_scout",
+  "review_kind": "Independent same-model peer read-only code review; not operational merge approval",
+  "source_commit": "7071ae2465af40bc7a901d4e1039e4281e072a68",
+  "worktree": "/workspace/ARGO/.board/rpg-phase2/worktrees/RP-900-1-42f995f361",
+  "reviewed_modules": [
+    "scenarios/tempted-fates/runtime.ts",
+    "packages/ledger/src/mortal/view.ts",
+    "TESTS/mortal-integration.test.ts"
+  ],
+  "status": "No concrete defects found in the reviewed adapter/view scope",
+  "findings": [],
+  "verification": [
+    {
+      "command": "node /tmp/argo-rp900-review-probe.mjs",
+      "result": "Passed all 8 independent groups",
+      "groups": [
+        "frozen input and pack stay unchanged; returned genesis is deterministic",
+        "physical selection and identity bind all three fixed variants",
+        "creation is deterministic across HP modes with exact starter inventory and bounds",
+        "options reject proxy/accessor execution and hidden, exotic or malformed data",
+        "initial actor view has exact public keys and only self inventory/local routes",
+        "scope, controller, actor kind, referee and genesis mismatches fail closed",
+        "returned actor view is deeply detached from host genesis/state and principal",
+        "view rejects active principal without executing traps"
+      ]
+    },
+    {
+      "command": "node --test --test-name-pattern='campaign initializes|campaign host options' TESTS/mortal-integration.test.ts",
+      "result": "Command exited 0; this sandbox runner reported 1 passing test file, 0 failures for the adapter-only name filter. The earlier root log reports the two named adapter cases separately."
+    }
+  ],
+  "source_hashes": {
+    "SYSTEMS/mortal-v2/CONTRACT.md": "ede698b24b62c4d47f6d45f3cbe4288b43dd230128a3a09edb59fee121f35447",
+    "SYSTEMS/mortal-v2/mortal.schema.json": "070be914286893c86598578dccabe152bbdece23ba859d162776243f2b0b21ff",
+    "packages/contracts/src/mortal-types.ts": "f798d4d9325b502006d871867d00805d95febc9ba8a8bdd7f79846808e31686f",
+    "packages/contracts/src/mortal.ts": "c51c63e6ae4c92ed4ce9b72f4fd0ae49fa4bbf9d74940e47bffb3e87ba753d75",
+    "scenarios/tempted-fates/runtime.ts": "ca99cb79519961ef13caa1eedfc51f511c4b8e72a0318c53878d8571c537e888",
+    "packages/ledger/src/mortal/view.ts": "70234a502a0250df58d3cb173131d30414319ec25f61f3eeb8247886a4516aa7",
+    "TESTS/mortal-integration.test.ts": "fdd857cc9c0e3e94ecbdba3675201914eb73ea00d4e219206ecd5893dc5085e1"
+  },
+  "probe_artifact": {
+    "path": "/tmp/argo-rp900-review-probe.mjs",
+    "sha256": "48fdb89b1a1a11e05f9b7d359aa22d44f17c47286ab14a280c9c696aaf92ffd0"
+  },
+  "review_notes": [
+    "All three explicit variants produce different genesis identity; only genuine/counterfeit contain measure_cup, initially with Ione.",
+    "Fresh genesis omits Fate actors and loom; implements mortal supplies, mundane equipment, finite opportunities/stocks and ordinary routes only. No magical cup effect or character-memory bridge is represented as implemented.",
+    "Lowest-three-d6 ability generation, d8 HP and explicit floor4 choice are deterministic under a separately labelled initialization HMAC domain. Genesis values, not prose, bind initialized actor state.",
+    "Host options reject passive-data violations before active reads; frozen inputs and nested outputs remained unchanged/detached in probes.",
+    "Actor views enforce direct controller/kind/actor and exact scope/genesis match, redact host data, and whitelist self inventory plus local route/location. Referee role is refused.",
+    "Supplied state and principal authentication remain explicit host responsibilities; view shape validation is not history verification or authentication.",
+    "Frozen v0.2 contract explicitly labels changed initiative, active-time metabolism and resource-container conventions; old human-referee 0.1 book is not silently treated as the new executable authority."
+  ],
+  "limits": [
+    "Core rules/journal/storage lane implementations were not present in the reviewed source commit. Their absence is not a defect in this review.",
+    "Pure view probes constructed only a literal contract-validated initial state from genesis, without shadow mechanics, forged history or invented accepted encounters.",
+    "Encounter filtering code was read but no actual admitted encounter/retreat was independently exercised; assemble real core to run existing remaining integration tests.",
+    "No full gate, live authentication, deployment, provider run, operational merge or private material was exercised."
+  ],
+  "changes_made": "Only /tmp review evidence; no repository, board, source, or trust-root changes."
+}

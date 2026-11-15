@@ -1,0 +1,40 @@
+[
+  {
+    "ticket": "ND-100",
+    "source_commit": "603ab62c923c6eddbf673d93d1939219bee8d12d",
+    "status": "READY",
+    "submit_refusal": "Candidate changes pinned gate policy",
+    "artifacts": {
+      "TESTS/character-model-integration.test.ts": "b7eaf919c68ed19a9413cb29868764f243286b7bfbd52e9135a0eb1b92e8a8ab",
+      "TESTS/character-model.test.ts": "e728b2cc7d81146cafa2da184f7415e01bdd9eca00c94ce0ce7293297de4c281",
+      "package-lock.json": "d15d132ac31a15a6a7eb24334b4c917028bd3e304bb013c8dfbd7e0e6cf2932c",
+      "packages/interventions/package.json": "2396f0aa7ead47d075f1b75ef09edd2309ad860105372b44446651db8b0f7c6f",
+      "packages/interventions/src/character-model.ts": "ff6a949de3030f301f724f945291c67ee804f9d7a88b590be52d8e26cabe0e15",
+      "packages/interventions/src/dialogue-context.ts": "4844f0a0b095b2c0fba85b288d4b04e6e853c6180447b42bd28f2c70bcdf20e8",
+      "packages/interventions/src/index.ts": "051d5b79eb8484524b6be329bc53258b43f08080bffb67e152930d50cada255b"
+    }
+  },
+  {
+    "ticket": "ND-200",
+    "source_commit": "c3aa114828ac71f78e8f2c818f187b8a85800c38",
+    "status": "READY",
+    "submit_refusal": "Candidate changes pinned gate policy",
+    "artifacts": {
+      "packages/model-client/index.d.mts": "6bff60d8a178c0699c46294f8e833741e99373b1c3131f1929e678ccf8b0349e",
+      "packages/model-client/request.mjs": "d23ec443e09f261d304412393036deaac4d0c5b7794c5e7d8e5e24d45e8fb944",
+      "packages/model-client/tests/output-budget.test.mjs": "90aed5f64c283a656e6858cb12138ab902a27732ad98d7e7c3a1d85185721254",
+      "packages/model-client/tests/public-types.test.mjs": "10c7067e3d8ab219afdc998ad833a3ffb18fd5dd17429393b2a2517cb78bd337"
+    }
+  },
+  {
+    "ticket": "ND-300",
+    "source_commit": "25144a99be1690aee9020c573747d6aac42f5938",
+    "status": "VERIFYING",
+    "submit_refusal": null,
+    "artifacts": {
+      "TESTS/campaign-dialogue.test.ts": "f1b0beac018640b55c68510c69b5209ae57ac5ede66186b2afe592dc07fee7e1",
+      "scenarios/tempted-fates/campaign/dialogue.ts": "fd734e27e9e6b846c2287f3ae5d0545675f2e3be96705f7f1a2b9eacb9798fcc",
+      "scenarios/tempted-fates/index.ts": "10a3b4993d4bf4f74b4c57b5e03ccc7ecc1d3f00aa1b3ff23cd124f8e2a987e5"
+    }
+  }
+]

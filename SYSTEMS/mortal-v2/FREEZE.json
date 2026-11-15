@@ -1,0 +1,9 @@
+{
+  "profile_version": "mortal-rules/0.2.0",
+  "files": {
+    "SYSTEMS/mortal-v2/CONTRACT.md": "ede698b24b62c4d47f6d45f3cbe4288b43dd230128a3a09edb59fee121f35447",
+    "SYSTEMS/mortal-v2/mortal.schema.json": "070be914286893c86598578dccabe152bbdece23ba859d162776243f2b0b21ff",
+    "packages/contracts/src/mortal-types.ts": "f798d4d9325b502006d871867d00805d95febc9ba8a8bdd7f79846808e31686f"
+  },
+  "scope": "Fresh-world mortal authority interface; does not migrate frozen v1 history, authenticate callers, or approve an operational merge"
+}

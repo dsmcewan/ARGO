@@ -1,0 +1,159 @@
+{
+  "review_id": "character-runtime-independent-authority-combined",
+  "reviewed_at_utc": "2026-11-13T23:46:18.880603+00:00",
+  "reviewer": "foundation_review",
+  "repository": "/workspace/ARGO/.worktrees/character-runtime",
+  "reviewed_commit": "0b827e1e41bc954c73df36d7513a9007de15a0cb",
+  "base_commit": "100e6c2bb3b6f1a5a8ca07e7685f492b01c7f345",
+  "worktree_status": "",
+  "node_version": "v24.22.1",
+  "mode": "Read-only source review and disposable offline runtime probes. No repository, Board, trust policy, remote-ref or model-provider writes/calls.",
+  "verdict": "No confirmed blocking defect found within the reviewed authority/replay and combined integration scope. This is not operational trust-root approval or a claim of comprehensive security.",
+  "findings": [],
+  "independent_verification": [
+    {
+      "name": "Existing authority and combined integration suite rerun",
+      "command": "node --test TESTS/character-authority.test.ts TESTS/character-integration.test.ts",
+      "cwd": "/workspace/ARGO/.worktrees/character-runtime",
+      "tests": 26,
+      "pass": 26,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "duration_ms": 7577.300532,
+      "log": "/tmp/argo-character-combined-native.log",
+      "log_sha256": "c5705f06e3f82f40bd7bf07f490823126ee17a48a4a4051a2d6f8e835431ca91"
+    },
+    {
+      "name": "Independent signed-carrier, retry and cross-component probes",
+      "command": "ARGO_REVIEW_ROOT=/path/to/checkout-at-0b827e1e41bc954c73df36d7513a9007de15a0cb node --test /tmp/argo-character-combined-probe.mjs",
+      "tests": 6,
+      "pass": 6,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "duration_ms": 2302.574427,
+      "probe": "/tmp/argo-character-combined-probe.mjs",
+      "probe_sha256": "6c147a89675d55bd9245a1abe7ee0525f9963ec60c63be2ed644f86386a7108f",
+      "log": "/tmp/argo-character-combined-probe.log",
+      "log_sha256": "427191854f1d371b72b01fb8fbf00861f3b4132840afdb41a5017019206be4bf",
+      "portability": "Set ARGO_REVIEW_ROOT to a checkout of the reviewed commit with its locked dependencies installed. Uses native Node24 and real signed ledgers in newly created temporary directories; each test removes its ledger. No process, provider or network mocks are needed. The witness adjudicator is an injected deterministic host callback.",
+      "assertions": [
+        "A legacy-valid, correctly signed configure carrier with an inner system requester using another service principal ID is rejected by character replay with CORRUPT_LEDGER.",
+        "A legacy-valid, correctly signed speech carrier whose request hash binds an earlier cursor is rejected by reconstructed-prefix hash verification.",
+        "Two concurrently adjudicated same-ID commands with different authenticated principal IDs yield one commit and one CONFLICT, never a second character record.",
+        "A pending witness grant cannot append across a profile reconfiguration. After a later successful speech and actor death, an exact committed retry returns the original receipt without append; new speech is refused.",
+        "A valid legacy outsider observation falsely naming the traveler is not captured as character speech. Genuine carrier content stays out of traveler/donor/outsider legacy LEXI views. Merely addressing donor does not confer an acquisition in its character view.",
+        "A real proxy custody action preserves the donor as action actor and proxy as principal actor, renders literal item/recipient details, omits the private grant ID, replays every committed prefix and returns deeply immutable detached projection DTOs."
+      ]
+    }
+  ],
+  "source_evidence": [
+    {
+      "path": "packages/ledger/src/characters.ts",
+      "lines": [
+        30,
+        34,
+        62,
+        92,
+        112,
+        163
+      ],
+      "conclusion": "Configured system identity, direct player/NPC life, active nature, cooldown, grant hash/membership and inner semantics are checked at admission and preceding-prefix replay. Signature verification precedes carrier processing."
+    },
+    {
+      "path": "packages/ledger/src/characters.ts",
+      "lines": [
+        194,
+        201,
+        207,
+        218,
+        222,
+        237
+      ],
+      "conclusion": "Request identity includes principal and exact cursor. Inputs and callback DTOs are detached. Adjudication runs outside the ledger writer lock; a fresh prefix and final ledger CAS guard append. Simultaneous exact retries recover only the committed matching receipt."
+    },
+    {
+      "path": "packages/ledger/src/characters.ts",
+      "lines": [
+        146,
+        163,
+        182
+      ],
+      "conclusion": "Archive text is a deterministic action whitelist and preserves action actor versus authenticated proxy operator. It excludes raw grant/consent bodies and hidden RNG bookkeeping. Capture starts once after first configure."
+    },
+    {
+      "path": "packages/lexi-bridge/src/characters.ts",
+      "lines": [
+        5,
+        20,
+        31,
+        44,
+        82
+      ],
+      "conclusion": "The host reader owns the projection capability. Public readers bind principal, full scope and current cursor; actor and narrator filters select distinct DTOs. Combined integration uses the actual ledger and these readers."
+    },
+    {
+      "path": "TESTS/character-integration.test.ts",
+      "lines": [
+        49,
+        101,
+        143
+      ],
+      "conclusion": "Existing integration exercises real storage, bridge/authority, opposing private impressions, reader/narrator restrictions, injected prose clients, busy silence and a committed cutoff during generation. It does not make live model calls."
+    }
+  ],
+  "limits_and_declined_to_judge": [
+    {
+      "limit": "Host authentication and witness reality are trusted inputs, not established by JSON role labels, a request hash, or a signed carrier. No live identity or physical perception service was tested.",
+      "source": "SYSTEMS/characters-v1/CONTRACT.md:9,13,48"
+    },
+    {
+      "limit": "A hostile holder of the configured writer capability can assert a semantically valid but physically false witness grant or requester. The runtime validates binding and eligibility, not independent proof of those host assertions.",
+      "source": "SYSTEMS/characters-v1/CONTRACT.md:48"
+    },
+    {
+      "limit": "The combined view factory and full projection remain privileged capabilities. Review assumes workers receive only scoped DTOs/loaders as documented; no production deployment wiring or process capability sandbox was audited here.",
+      "source": "SYSTEMS/characters-v1/CONTRACT.md:27,29"
+    },
+    {
+      "limit": "Old v1 source/lifecycle permission gaps remain by explicit compatibility policy. The independent spoof probe verifies separation from the new character archive, not global repair of legacy observations.",
+      "source": "SYSTEMS/characters-v1/CONTRACT.md:43"
+    },
+    {
+      "limit": "No large-history performance or crash-recovery campaign was run. Character projection performs full verified event replay; the frozen profile explicitly retains ledger replay and manual crash-recovery limits. No rollback anchor or independent storage freshness assurance is added.",
+      "source": "packages/ledger/src/characters.ts:163,205; SYSTEMS/characters-v1/CONTRACT.md:43; SYSTEMS/characters-v1/API.md:53"
+    },
+    {
+      "limit": "Source sequence/cursor gaps remain visible; this does not conceal all hidden event existence, timing or count metadata.",
+      "source": "SYSTEMS/characters-v1/CONTRACT.md:31"
+    },
+    {
+      "limit": "No claim of model-level prompt-injection resistance, prose quality, truthfulness or stable voice follows from injected offline client tests. Narration has no writer in the reviewed adapter, and cutoff/context checks are deterministic.",
+      "source": "SYSTEMS/characters-v1/CONTRACT.md:33,35"
+    },
+    {
+      "limit": "Protected application-policy adoption and supervisor approval are separate from this review. No board state or trust policy was promoted.",
+      "source": "SYSTEMS/characters-v1/CONTRACT.md:43"
+    }
+  ],
+  "source_sha256": {
+    "SYSTEMS/characters-v1/CONTRACT.md": "41e4b54bee1fa95a198c437443432cbdd058e9b6192b2eb410fad1e43171a759",
+    "SYSTEMS/characters-v1/API.md": "90b853e6e50309c0b204ab6c3e7ca9fbcd69d145f51ccd40dcd3ff61a45e3f77",
+    "SYSTEMS/characters-v1/FREEZE.json": "66709119d921a239fabaa9409e7e79032c058f118ac5ed74d73a9a290b1f586f",
+    "SYSTEMS/characters-v1/characters.schema.json": "b1e62cc9fa5c3266da55d845b008d6d7c0a94255e1ce3cdd48744172dc43ec93",
+    "packages/contracts/src/characters.ts": "1e67ff2a1cd35d88997debd77898b922b1c041b8d4aafa15e64fcd11d1bea00c",
+    "packages/contracts/src/character-types.ts": "1d5b1233d358730651c3c57ee84d810a6bb18ae589faff68c737ef9102a7f405",
+    "packages/ledger/src/characters.ts": "f866bc6d84b9d1c5298ef6276264f6fc196e005e32dc815f639336a5f3fd76f1",
+    "packages/ledger/src/mechanics.ts": "b609add08bf42b34cf88cef436cf6c47295aac874b5e3e35291d2b8fe79b6a3c",
+    "packages/ledger/src/index.ts": "c8f81d605349be711c31b2fd0726df6d940fa82f71c897b6253de9cbc89c0c4c",
+    "packages/lexi-bridge/src/characters.ts": "3ffedc6915f9dc52a992b83700cb4eb1780b2b90bb83721e39f8901a036b7446",
+    "packages/telos-bridge/src/characters.ts": "e97bbba00f634121102192a57e56b84d79d811055631e459b1b534d652972bfc",
+    "packages/interventions/src/characters.ts": "4ac87407fcad3db2f0116049dec9ef50681488a230a8605f159aa6a6894a6a3e",
+    "packages/argo-dm/src/characters.ts": "27eeab50cdd12a94a6338fa9f0100978ad057ae2f559ac68e8e5ab54063e54c6",
+    "TESTS/character-authority.test.ts": "3c1cdb98fdcce41a8f34da976205b38215477b8221b8e0da82070cdc9d1af87e",
+    "TESTS/character-integration.test.ts": "503597fac363bd107b33f53c6f4bb6ec6e10d805f66027dfa64b072949cd1a4f",
+    "TESTS/fixtures.ts": "76677ed44a6396ee735bc7287324d8a997fbddd12d2bc8b2c238377b12835e48",
+    "TESTS/character-fixtures.ts": "8f2c2e44dbf66d41239136a0a549497b3df27bc4a877e23f2e0effc1ef8e4b38"
+  }
+}

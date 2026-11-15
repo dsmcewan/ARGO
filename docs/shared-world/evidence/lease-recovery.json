@@ -1,0 +1,11 @@
+{
+  "ticket": "SW-100",
+  "expired_attempt": 1,
+  "new_attempt": 2,
+  "old_worktree_preserved": true,
+  "draft_copy": "Only ticket-owned files copied after worker pause",
+  "recovery": "Normal claim sweep and prepare_worktree; no direct SQL modification",
+  "supervisor_heartbeat_seconds": 60,
+  "lease_ttl_seconds": 900,
+  "application_runtime_started": false
+}

@@ -1,0 +1,398 @@
+✖ campaign dialogue exports only the queried NPC disposition and explicitly disclosed room (4.082238ms)
+✖ null location grants disclose no room despite seed NPC occupancy (0.925915ms)
+✖ the host selected room is projected without inferring presence from seed occupancy (0.698348ms)
+✖ travelers receive no NPC disposition even when a room is explicitly disclosed (0.640841ms)
+✖ two characters share authored room facts while retaining only their own goals (0.680575ms)
+✖ the content identity changes with a revision of authored scene content (0.729978ms)
+✖ results are detached deeply frozen data and inputs remain unchanged (0.864018ms)
+✖ unknown and malformed location grants fail rather than falling back to an NPC home (1.334741ms)
+✖ malformed query identities, scopes and cursors are refused before disclosure (1.268275ms)
+✖ accessor input is rejected without evaluating pack, query or grant getters (0.949198ms)
+✖ active and revoked proxies are refused without triggering proxy traps (10.253235ms)
+✖ cycles, symbol and hidden grant properties cannot bypass passive disclosure validation (6.222976ms)
+✖ actor disposition limits count Unicode characters and reject excess without truncation (4.891211ms)
+✖ long private disposition on another NPC does not enter or block the selected actor context (2.186135ms)
+✖ room prose honors the authored Unicode limit without leaking other room data (3.098733ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 0
+ℹ fail 15
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 56.030741
+
+✖ failing tests:
+
+test at TESTS/campaign-dialogue.test.ts:22:1
+✖ campaign dialogue exports only the queried NPC disposition and explicitly disclosed room (4.082238ms)
+  AssertionError [ERR_ASSERTION]: Public campaign entry point must export the dialogue projector
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at build (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-300-1-5a41005b3c/TESTS/campaign-dialogue.test.ts:15:9)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-300-1-5a41005b3c/TESTS/campaign-dialogue.test.ts:27:29)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/campaign-dialogue.test.ts:37:1
+✖ null location grants disclose no room despite seed NPC occupancy (0.925915ms)
+  AssertionError [ERR_ASSERTION]: Public campaign entry point must export the dialogue projector
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at build (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-300-1-5a41005b3c/TESTS/campaign-dialogue.test.ts:15:9)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-300-1-5a41005b3c/TESTS/campaign-dialogue.test.ts:39:15)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/campaign-dialogue.test.ts:42:1
+✖ the host selected room is projected without inferring presence from seed occupancy (0.698348ms)
+  AssertionError [ERR_ASSERTION]: Public campaign entry point must export the dialogue projector
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at build (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-300-1-5a41005b3c/TESTS/campaign-dialogue.test.ts:15:9)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-300-1-5a41005b3c/TESTS/campaign-dialogue.test.ts:44:15)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/campaign-dialogue.test.ts:49:1
+✖ travelers receive no NPC disposition even when a room is explicitly disclosed (0.640841ms)
+  AssertionError [ERR_ASSERTION]: Public campaign entry point must export the dialogue projector
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at build (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-300-1-5a41005b3c/TESTS/campaign-dialogue.test.ts:15:9)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-300-1-5a41005b3c/TESTS/campaign-dialogue.test.ts:50:15)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/campaign-dialogue.test.ts:55:1
+✖ two characters share authored room facts while retaining only their own goals (0.680575ms)
+  AssertionError [ERR_ASSERTION]: Public campaign entry point must export the dialogue projector
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at build (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-300-1-5a41005b3c/TESTS/campaign-dialogue.test.ts:15:9)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-300-1-5a41005b3c/TESTS/campaign-dialogue.test.ts:58:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/campaign-dialogue.test.ts:65:1
+✖ the content identity changes with a revision of authored scene content (0.729978ms)
+  AssertionError [ERR_ASSERTION]: Public campaign entry point must export the dialogue projector
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at build (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-300-1-5a41005b3c/TESTS/campaign-dialogue.test.ts:15:9)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-300-1-5a41005b3c/TESTS/campaign-dialogue.test.ts:66:30)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/campaign-dialogue.test.ts:73:1
+✖ results are detached deeply frozen data and inputs remain unchanged (0.864018ms)
+  AssertionError [ERR_ASSERTION]: Public campaign entry point must export the dialogue projector
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at build (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-300-1-5a41005b3c/TESTS/campaign-dialogue.test.ts:15:9)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-300-1-5a41005b3c/TESTS/campaign-dialogue.test.ts:75:15)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/campaign-dialogue.test.ts:85:1
+✖ unknown and malformed location grants fail rather than falling back to an NPC home (1.334741ms)
+  AssertionError [ERR_ASSERTION]: The "invalid" validation function is expected to return "true". Received false
+  
+  Caught error:
+  
+  AssertionError [ERR_ASSERTION]: Public campaign entry point must export the dialogue projector
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-300-1-5a41005b3c/TESTS/campaign-dialogue.test.ts:87:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [AssertionError],
+    expected: [Function: invalid],
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at TESTS/campaign-dialogue.test.ts:96:1
+✖ malformed query identities, scopes and cursors are refused before disclosure (1.268275ms)
+  AssertionError [ERR_ASSERTION]: The validation function is expected to return "true". Received false
+  
+  Caught error:
+  
+  AssertionError [ERR_ASSERTION]: Public campaign entry point must export the dialogue projector
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-300-1-5a41005b3c/TESTS/campaign-dialogue.test.ts:101:46)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [AssertionError],
+    expected: [Function (anonymous)],
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at TESTS/campaign-dialogue.test.ts:104:1
+✖ accessor input is rejected without evaluating pack, query or grant getters (0.949198ms)
+  AssertionError [ERR_ASSERTION]: The "invalid" validation function is expected to return "true". Received false
+  
+  Caught error:
+  
+  AssertionError [ERR_ASSERTION]: Public campaign entry point must export the dialogue projector
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-300-1-5a41005b3c/TESTS/campaign-dialogue.test.ts:109:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [AssertionError],
+    expected: [Function: invalid],
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at TESTS/campaign-dialogue.test.ts:113:1
+✖ active and revoked proxies are refused without triggering proxy traps (10.253235ms)
+  AssertionError [ERR_ASSERTION]: The "invalid" validation function is expected to return "true". Received false
+  
+  Caught error:
+  
+  AssertionError [ERR_ASSERTION]: Public campaign entry point must export the dialogue projector
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-300-1-5a41005b3c/TESTS/campaign-dialogue.test.ts:119:11)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [AssertionError],
+    expected: [Function: invalid],
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at TESTS/campaign-dialogue.test.ts:125:1
+✖ cycles, symbol and hidden grant properties cannot bypass passive disclosure validation (6.222976ms)
+  AssertionError [ERR_ASSERTION]: The "invalid" validation function is expected to return "true". Received false
+  
+  Caught error:
+  
+  AssertionError [ERR_ASSERTION]: Public campaign entry point must export the dialogue projector
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-300-1-5a41005b3c/TESTS/campaign-dialogue.test.ts:129:53)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [AssertionError],
+    expected: [Function: invalid],
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at TESTS/campaign-dialogue.test.ts:134:1
+✖ actor disposition limits count Unicode characters and reject excess without truncation (4.891211ms)
+  AssertionError [ERR_ASSERTION]: Public campaign entry point must export the dialogue projector
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at build (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-300-1-5a41005b3c/TESTS/campaign-dialogue.test.ts:15:9)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-300-1-5a41005b3c/TESTS/campaign-dialogue.test.ts:138:16)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/campaign-dialogue.test.ts:144:1
+✖ long private disposition on another NPC does not enter or block the selected actor context (2.186135ms)
+  AssertionError [ERR_ASSERTION]: Public campaign entry point must export the dialogue projector
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at build (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-300-1-5a41005b3c/TESTS/campaign-dialogue.test.ts:15:9)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-300-1-5a41005b3c/TESTS/campaign-dialogue.test.ts:146:15)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/campaign-dialogue.test.ts:150:1
+✖ room prose honors the authored Unicode limit without leaking other room data (3.098733ms)
+  AssertionError [ERR_ASSERTION]: Public campaign entry point must export the dialogue projector
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at build (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-300-1-5a41005b3c/TESTS/campaign-dialogue.test.ts:15:9)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-300-1-5a41005b3c/TESTS/campaign-dialogue.test.ts:153:15)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

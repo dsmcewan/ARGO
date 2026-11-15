@@ -1,0 +1,51 @@
+{
+  "protocol": "mortal-balance/1.0.0",
+  "phase": "holdout",
+  "trials": 500,
+  "source": {
+    "commit": "bb7c838252f320548d47c6c433b0eb429afd8e70",
+    "node": "v24.22.1",
+    "files": {
+      "SYSTEMS/CONTRACT_FREEZE.json": "4b0771886e0d7fb8b8c1bd8aaf1d96f3634cc5bf8411ff0c37ebe2a31e53663f",
+      "SYSTEMS/argo-v1.schema.json": "8770f07efd24a47598d15171a3a10658d5f7b676d3fcc03362b1cac622b32a4e",
+      "SYSTEMS/characters-v1/FREEZE.json": "66709119d921a239fabaa9409e7e79032c058f118ac5ed74d73a9a290b1f586f",
+      "SYSTEMS/characters-v1/characters.schema.json": "b1e62cc9fa5c3266da55d845b008d6d7c0a94255e1ce3cdd48744172dc43ec93",
+      "SYSTEMS/examples/observe-claim.json": "aa834c2854198db9e8bde3d45ea9b8455e4c159cef5f13ff4db95fe08f86b236",
+      "SYSTEMS/mortal-v2/FREEZE.json": "5e8130c3e774670073fdf1d3f07242ffa8c58d73330ede1baea3079ca5a19714",
+      "SYSTEMS/mortal-v2/mortal.schema.json": "070be914286893c86598578dccabe152bbdece23ba859d162776243f2b0b21ff",
+      "SYSTEMS/proposals/headless-v2/FREEZE.json": "3f45b293ab32829c6872cfc6221b77d8e66e81d3efa8faf1120f25d691504a28",
+      "SYSTEMS/proposals/headless-v2/projection-v2.schema.json": "a9322a33f03f62b2c2fc656f3bb6cef0b771901bc09cb9f262c96f8cbbf2badb",
+      "docs/rpg-phase2/balance/PREREGISTRATION.md": "763a066011db0c231b73273a79307be56b2908cbc8af1df3cea18258d35bef97",
+      "package-lock.json": "28fb9235f1f025821195099ad703098bb703ad09438a523817a558b4ca4556b0",
+      "package.json": "072f0b182bb5d02df9c9b8cb6c01716e6dd2e0d081164b2450d5bbbdfedf3e9b",
+      "packages/contracts/package.json": "04d9ff81dbf5a2b07f9ac6ff6b43281d2065b61ec30de7dc362aec58936dd862",
+      "packages/contracts/src/character-types.ts": "1d5b1233d358730651c3c57ee84d810a6bb18ae589faff68c737ef9102a7f405",
+      "packages/contracts/src/characters.ts": "1e67ff2a1cd35d88997debd77898b922b1c041b8d4aafa15e64fcd11d1bea00c",
+      "packages/contracts/src/generated.ts": "fac420ed01eaa3eb64abb38450550ea2521bd6c31d70728e13487c42740497f4",
+      "packages/contracts/src/index.ts": "14f7c1488fc4dff21da330a2462f8d6bfb784e2d9a07b81aaa20507055468a31",
+      "packages/contracts/src/mortal-types.ts": "f798d4d9325b502006d871867d00805d95febc9ba8a8bdd7f79846808e31686f",
+      "packages/contracts/src/mortal.ts": "c51c63e6ae4c92ed4ce9b72f4fd0ae49fa4bbf9d74940e47bffb3e87ba753d75",
+      "packages/contracts/src/projection-generated.ts": "1ca42c7d7c33156700371aa2cacb6c11a1101fb030ca903b2c38f8ee69f33663",
+      "packages/contracts/src/projection-v2.ts": "7177ab860e89f8e058fbebd30aa7b69bc8888711890c21ace08d4980f372f228",
+      "packages/contracts/src/transport.ts": "0cf3648bf053644174762d2059e861d34d37f871cb0637505066903506cdb6e4",
+      "packages/ledger/package.json": "fb85d07226fc2a7e76ea3989cd88fd42db92502764185edce3ed5dacf76057c2",
+      "packages/ledger/src/mortal/rules.ts": "fadca52771d69ef23ee4e37106ce366f9a8611f099f441d5d3613a032b87bdf5",
+      "scenarios/tempted-fates/balance/cli.ts": "ebe5c28f953f3c2710777aea92ff3e69f415f45703fd18606eac03fe5610ac3e",
+      "scenarios/tempted-fates/balance/fixtures.ts": "51cac7b10b5217f6992140c9632478af1c1c727af3efe4ecec5519d1ea1a28e2",
+      "scenarios/tempted-fates/balance/protocol.json": "6fda0e10089e5be991983e08a3894f9d7abe734fed502b3f87f85e09048bdff5",
+      "scenarios/tempted-fates/balance/runner.ts": "b22bc90e439ca731d185b8cd2e3e04daeba5ddc47b3010da9c40487ca3f8305d",
+      "scenarios/tempted-fates/balance/statistics.ts": "df967028fcc2c2258e7e71515bf7b28d3c4737914903bb7af6399d9149e26e82",
+      "scenarios/tempted-fates/package.json": "58e81e7d8b4f159957c52bfeae5e3f8c3d438d759dac4a0887289e7ba2fff1fb"
+    },
+    "fingerprint": "db0af69c416361853ac6384e6d2c6ac23b6b5207c1313f801623208ff1f6643f"
+  },
+  "started_at_utc": "2026-11-14T08:18:43.279Z",
+  "frozen_decision": {
+    "protocol": "mortal-balance/1.0.0",
+    "training_report_sha256": "0100de2f92323a12ebd2af67f6b58d1b0838e8d763d2f3b84ab1fa60e92d5056",
+    "source_fingerprint": "db0af69c416361853ac6384e6d2c6ac23b6b5207c1313f801623208ff1f6643f",
+    "trials": 500,
+    "recommendation": "classic",
+    "selection_rule": "Retain classic if all preregistered adjusted target intervals match; otherwise floor4 only if its intervals match; otherwise no-target-match. Any censorship prevents recommendation."
+  }
+}

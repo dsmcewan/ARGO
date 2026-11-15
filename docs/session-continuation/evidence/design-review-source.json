@@ -1,0 +1,36 @@
+{
+  "scope": "Read-only pre-implementation design review",
+  "verdict": "READY",
+  "remaining_blockers": [],
+  "sources": {
+    "initial": {
+      "commit": "3a0996f9c5722d1687ab33ca4c38b6e6d9697b07",
+      "files": {
+        "docs/session-continuation/DESIGN.md": {
+          "sha256": "344d6927f37f7f75ac21114ea14381f535e09dcf2ef9bc3639e2ccba96ebb416",
+          "bytes": 9806
+        },
+        "docs/session-continuation/PLAN.md": {
+          "sha256": "004763e435b265588d3546f512ff040c6e0515a845edea9ef3995839899f3e88",
+          "bytes": 3142
+        }
+      }
+    },
+    "final": {
+      "commit": "619f124a82cff818abff730248ac4d60acf421ed",
+      "files": {
+        "docs/session-continuation/DESIGN.md": {
+          "sha256": "2fe2b52671dbd0cf4d75aeb19cf3744315d62b225bc26ced7908becac01eb7e4",
+          "bytes": 10431
+        },
+        "docs/session-continuation/PLAN.md": {
+          "sha256": "004763e435b265588d3546f512ff040c6e0515a845edea9ef3995839899f3e88",
+          "bytes": 3142
+        }
+      }
+    }
+  },
+  "head_after": "619f124a82cff818abff730248ac4d60acf421ed",
+  "status_after": "",
+  "report_sha256": "7926da5f0b8ba2984d9e9536d0a34bea414e6d796cf8b203e6f24489eaef12e3"
+}

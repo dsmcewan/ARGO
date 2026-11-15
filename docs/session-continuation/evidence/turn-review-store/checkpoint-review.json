@@ -1,0 +1,57 @@
+{
+  "candidate": "3870f44b20d241e9ca855279ccf3fd703801a22d",
+  "verdict": "CHANGES_REQUIRED_INTERIM_STORE_ONLY",
+  "source_hashes": {
+    "packages/session/src/conversation-types.ts": "7007528fe9f72e3d4ee3d8091512b2065f1203bc52ecafd393dbdde78ddfaf38",
+    "packages/session/src/conversation-guards.ts": "0f377523208ea91b47ecbce2865cddbbcc41712ee51761494c6625d093149bc1",
+    "packages/session/src/conversation-store.ts": "240e07093032b145dc3ee4251b501e5d44be4feb2432707990b10ab7d6cd9194",
+    "packages/session/src/conversation-store-worker.ts": "ff921c04cf174ba37cb807c4acf5dcd549478cf6517b090796da0866a7235a23",
+    "TESTS/shared-world-turn-store.test.ts": "1365cc34edc813d99748a2f0dd29c45b92aad334cd3cb854e083460f38dffa47"
+  },
+  "evidence_hashes": {
+    "checkpoint-probes.mjs": "8196b61f10bcd02e2f3b3034603943ee1018f3fa17945fe580ff77c6e2d2a07c",
+    "trace-json.mjs": "14421c1dd3911e556b9313503f12c8118442ce55833014ccfaac7ae0487457ec",
+    "checkpoint-probes.log": "205d54b6867e29ec1268e66edbc16c18745f145170f58b2cc05d7fb099b170aa",
+    "checkpoint-store-tests.log": "8f6335a67d695b87a68accb8bd313da0074eb1e372c3b63c2181a4b0d5b2b5ad",
+    "checkpoint-observations/observations.json": "f4fb6c350c0de084f3fb0ad21e1aa8ceaadcd2947277e045c155f56b26be1d6c",
+    "checkpoint-observations/parse-trace.jsonl": "c3c11191e8162900754da69c316370c191ef465c49de2653e4895fdfdd7f1b66"
+  },
+  "source_clean_after": true,
+  "actual_source_sha": "3870f44b20d241e9ca855279ccf3fd703801a22d",
+  "confirmed_findings": [
+    "SC620-ST01",
+    "SC620-ST02",
+    "SC620-ST03",
+    "SC620-ST04",
+    "SC620-ST05"
+  ],
+  "negative_controls": [
+    "NC-ID-LF",
+    "NC-ID65-LF",
+    "NC-DIGEST-LF"
+  ],
+  "directory_alias": "Coordinator chose explicit immediate private-directory symlink refusal; broader trusted-UID ancestor TOCTOU resistance is not claimed.",
+  "tests": [
+    {
+      "command": "node --test TESTS/shared-world-turn-store.test.ts",
+      "exit_code": 0,
+      "reported_groups": 1,
+      "note": "Native output reported one successful test-file group; do not inflate this into independent assertion counts."
+    },
+    {
+      "command": "ARGO_REVIEW_PARSE_TRACE=OUTPUT/parse-trace.jsonl node --import trace-json.mjs checkpoint-probes.mjs CHECKOUT SHA OUTPUT",
+      "exit_code": 0,
+      "note": "Observation harness reproduced five defects; exit zero is successful capture, not source acceptance."
+    }
+  ],
+  "review_limits": [
+    "Checkpoint driver is absent; public host/cross-process turn probes remain pending final source.",
+    "Internal storeAccess and pure transition helpers were used for interim store observations only.",
+    "External SQL edits and parse instrumentation are controlled trusted-local corruption tests, not a malicious-storage authentication claim.",
+    "Worker crash/COMMIT failure, all capacity boundaries, complete phase matrix and final integrated source tests remain for final candidate."
+  ],
+  "paid_calls": 0,
+  "network_calls": 0,
+  "source_edits": false,
+  "nested_agents": false
+}

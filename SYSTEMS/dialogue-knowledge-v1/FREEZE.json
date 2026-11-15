@@ -1,0 +1,12 @@
+{
+  "profile_version": "authored-knowledge/1.0.0",
+  "dialogue_version": "character-dialogue/0.2.0",
+  "files": {
+    "SYSTEMS/dialogue-knowledge-v1/CONTRACT.md": "3fc976f9e2c875f950c46bcc9c793297196e874eefb4f26430a19a8641c29272",
+    "SYSTEMS/dialogue-knowledge-v1/knowledge.schema.json": "b336a195b7ec00e9ce78b980930262bbee91735ca228935ee2dfc79f6cb3cdf1",
+    "SYSTEMS/dialogue-knowledge-v1/authored-sources.json": "ca15ebcbe3d0bbaf2ee721df26f22b50abdcff93dc632c95c1af72d5b40fac97",
+    "packages/contracts/src/dialogue-knowledge-types.ts": "582becd45418f9909c5ddf725b4e8a3773096b70d56e7e6312d7f5e6bacef13b",
+    "packages/contracts/src/dialogue-knowledge.ts": "acf09f258bcfbfb0647fe1ea143d48e00b487644f952651bf8a0b6416b31b267"
+  },
+  "scope": "Additive presentation contracts only; does not approve operational trust, runtime implementation, host grant authentication or ledger mutation."
+}

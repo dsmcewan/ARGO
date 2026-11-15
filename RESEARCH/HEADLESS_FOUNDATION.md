@@ -25,7 +25,7 @@ Map these concepts onto existing `Scope`, `KnowledgeQuery`, `IntentProposal`, `O
 
 ## Single-writer boundaries
 
-TELOS-authorized ledger append remains the only canonical mutation path. Canonical projector writes Plane A from events; LEXI's projector writes Plane B from committed observations. NPCs and interventions retain separate principals and scoped read surfaces; they emit optional proposals. Empty proposals, rejection and cancellation must have no canonical side effects. Transport sessions may be stateful; narration stays stateless regarding world truth.
+TELOS-authorized ledger append remains the only canonical mutation path. Canonical projector writes Plane A from events; LEXI's projector writes Plane B from committed observations. NPCs and interventions retain separate principals and scoped read surfaces; they emit optional proposals. Empty proposals and authority rejection before commit must have no canonical side effects. Cancellation or timeout after submission can race a successful commit; reconcile using the same proposal ID rather than assuming no mutation occurred. Transport sessions may be stateful; narration stays stateless regarding world truth.
 
 Any secret disclosure, rumor transmission or promise becoming actor knowledge requires the authorized epistemic commit path. Delivery and observation need an explicit protocol: generating prose is not evidence the intended recipient heard it. Preserve idempotency across message retry and projection replay.
 

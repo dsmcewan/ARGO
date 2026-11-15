@@ -1,0 +1,33 @@
+✔ shared genesis validates one mortal roster and rejects cross-profile or duplicated physical authority (559.246753ms)
+✔ commands require a complete current cursor and closed actor/audience fields (14.816006ms)
+✔ genesis rejects mismatched profiles, scenes, identities and unbound authored policies (61.102881ms)
+✔ every action has a closed structural grammar and referee actions cannot name an actor (138.449978ms)
+✔ speech distinguishes addressees from witnesses and rejects ambiguous or unbounded input (4.72074ms)
+✔ loan terms are free and immutable, hash-bound, timed and closed by explicit lifecycle (23.145437ms)
+✔ state has one cursor and rejects invented memory identities, recipients and future acquisitions (21.055069ms)
+✔ compound loan fulfillment uses only loan participants rather than room witness union (4.301381ms)
+✔ private impression and activity records cannot disclose to the subject or room (2.669413ms)
+✔ actor views bind one reader, own knowledge/inventory, explicit coverage and no raw authority (45.283575ms)
+✔ signed artifacts bind full request identity, one memory and the shared genesis cursor (70.839357ms)
+✔ passive boundaries reject active values without evaluating getters or proxy traps (16.934837ms)
+✔ persisted social records cannot become orphaned or contradict their current rows (65.118831ms)
+✔ travel hides both endpoints and third-party return holders receive only their custody facts (16.952049ms)
+✔ genesis-bound projections preserve physical and private authored identity (37.780894ms)
+✔ request identities use one closed domain and bind complete command and principal data (7.282789ms)
+✔ NPC replies consume addressed acquired inbound IDs across the full memory history (7.599311ms)
+✔ passive argument and projection budgets refuse excess without changing input (368.554083ms)
+✔ passive byte limits include JSON escaping, quotes, keys and container punctuation (494.754352ms)
+✔ genesis-bound resolutions preserve every nested State binding (42.476415ms)
+✔ immutable profile nature and revision bind impressions in state and visible projections (24.04384ms)
+✔ genesis-bound actor views pin all immutable definitions while allowing current mutable state (50.399403ms)
+✔ visible offer memories bind source, world, issued prefix and authored policy references (79.656343ms)
+✔ visible speech has a known direct source and genesis-origin grants require initial eligibility at every prefix (21.826305ms)
+✔ the freeze candidate pins exactly the new contract schema and type/guard bytes (13.277283ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4230.100787

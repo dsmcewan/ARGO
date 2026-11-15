@@ -1,0 +1,13 @@
+# SC-620 host review repair candidate
+
+Exact candidate `0458268ed82d6d703b4604bd71647986fdd05ae7` is clean in the leased worktree. Parent candidate is `e096530b2618119ab3dd545f3defe36b754021bd`; this followup changes only `packages/session/src/conversation.ts` and `TESTS/shared-world-conversation.test.ts`. The independently reviewed store source/test hashes remain identical. Root owns acceptance, package-lock integration, CLI and publication.
+
+The host now rechecks its persisted generation claim, cancellation and deadline after an awaited NPC view. A completed cross-handle cancellation during the final model refresh prevents the provider dispatch. Closing fences all host-owned waits on external ledger snapshot/event/submit methods, consumes late resolution/rejection, drains local outbox operations and never closes the caller ledger. Exact pending commands survive both player and NPC COMMIT-before-ack shutdown; a fresh handle recovers them without another model attempt or duplicate speech. Original injected ledger method descriptors are validated and captured before wrapping.
+
+Event pages pass the existing passive JSON guard before any length/index access. A returned Proxy is refused before the host wrapper can assimilate it. An injected async callback returning a Proxy necessarily reads `then` during JavaScript Promise resolution before the host receives it; the final regression separates this unavoidable callback behavior from forbidden data/index/descriptor reads. The original independent probe and intermediate author output are preserved, not silently rewritten.
+
+Model cache identity is domain-separated and stable for the full fixed binding (world/genesis/player/NPC/policy), with existing actor/vendor/model partitioning retained. Per-turn callback metadata remains unique. No provider continuity or `previous_response_id` is added; no live cache-hit claim is made.
+
+Verification: all18 conversation tests pass (105.9s); typecheck, frozen contracts, import boundaries and staged diff check pass. See `verification-followup.json` for source and log hashes. Red tests reproduced all four behavior defects before production edits; the first focused green run had only the overbroad Proxy trap expectation remaining, then the full final18 passed. The author initially invoked a nonexistent validation script; that failure is retained in `contracts-final-review.log`, followed by a successful actual `npm run contracts` in `contracts-final-correct.log`.
+
+No paid calls, nested workers, Board submissions, merges or pushes. Independent immutable host review and full application gate remain coordinator responsibilities.

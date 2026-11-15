@@ -1,0 +1,14 @@
+✔ independent: signed configure with a different service requester fails replay, although its legacy signature is valid (196.834971ms)
+✔ independent: a signed speech request bound to an older cursor fails inner replay (156.229079ms)
+✔ independent: same request ID with different authenticated identities races to one commit; loser conflicts (229.62597ms)
+✔ independent: pending grants cannot cross a live nature revision; old exact retry after death returns original receipt only (376.978454ms)
+✔ independent: source-spoofed legacy beliefs stay outside the character archive, and genuine carriers stay private (195.125952ms)
+✔ independent: proxy custody preserves source and operator, grant bodies remain outside archive, and every prefix replays (206.41673ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2302.574427

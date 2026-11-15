@@ -1,0 +1,33 @@
+{
+  "candidate": "04bae2b1f5ccb5f570ee76231efe3104b1309243",
+  "clean_before_and_after": true,
+  "verdict": "CHANGES_REQUIRED",
+  "author_tests": {
+    "passed": 20,
+    "failed": 0,
+    "command": "node --test --test-isolation=none TESTS/shared-world-contracts.test.ts"
+  },
+  "independent_checks": {
+    "passed": 14,
+    "failed": 6
+  },
+  "paid_calls": 0,
+  "repository_edits": false,
+  "source_sha256": {
+    "SYSTEMS/shared-world-v1/FREEZE.json": "9f67a8e512d82c27eda7c2d531079e9e154429f0f275320aa99bdf2c793e4beb",
+    "SYSTEMS/shared-world-v1/CONTRACT.md": "0232234c9dc3bba3dbacc2dea87bbbca94e93f1f7b78eab38e1c8508f4ded311",
+    "SYSTEMS/shared-world-v1/world.schema.json": "6918294342f48f8a3d4edf81b1be99b4b17d8294185d25b0f1965d1f1533b665",
+    "packages/contracts/src/shared-world-types.ts": "f1cc8f944b0847f14df17b048eee9ad1f25f185790fa8e8612d97331b4b67351",
+    "packages/contracts/src/shared-world.ts": "ab15168a41db710acd0a0e48f1b0c2a41eaaf5ed9c426df324f0546dbdada9b5",
+    "TESTS/shared-world-contracts.test.ts": "1119c1e7fa55a2121665ac4df10e969a9b8ee062093966935c8166b8b4c0143a",
+    "TESTS/shared-world-contract-fixtures.ts": "bdcde13e6d9c6ba445fbd7c42e5f1e6ce7dff2171905d30d7f5e29342ff0c86e"
+  },
+  "artifacts_sha256": {
+    "REVIEW.md": "dabca1e588b503dc4d1ec66538753082bc08b575ff3782a2f51f5fde83c6cdef",
+    "contract-tests.log": "100e9ea43fb3b8e849359f1184d7138c2b6a08d56148c086f7c16337083d3866",
+    "contract-tests.initial.log": "7e4564bac316689e58449279aa4cdbcba646b164b81b74b744815a9594f2ac63",
+    "probes.log": "2785552bb8b61cdb542f0e6dcfb83d6faa3391891e6ce6a46086cd97ec2b2d3c",
+    "probes.mjs": "13b3f4030a5e8d044d5fa1baf1e52a1749cc167866bcdc08d978e5ee936e7caa",
+    "probe-results.json": "2785552bb8b61cdb542f0e6dcfb83d6faa3391891e6ce6a46086cd97ec2b2d3c"
+  }
+}

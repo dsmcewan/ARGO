@@ -93,6 +93,9 @@ export async function exchange(prepared,client,onEvent){
         for(const part of candidate?.content?.parts??[])append(part);
       }
       if(reason==='STOP'&&!blocked){complete=true;break;}
+      // A caller's explicit output budget covers this turn, not each of an
+      // unbounded series of fresh generation requests. Long-decode keeps hops.
+      if(prepared.outputBudgetPolicy==='explicit')break;
       if(reason!=='CONTINUATION'||blocked||typeof token!=='string'||!token)break;
       if(seen.has(token))throw new Error('Repeated Google continuation checkpoint');
       seen.add(token);checkpoint=token;
@@ -101,6 +104,14 @@ export async function exchange(prepared,client,onEvent){
     complete=complete&&output.length>0;
     text=textOf(output);
     tools=output.filter(p=>p.functionCall).map(p=>p.functionCall.name);
+  }
+  if(prepared.responseMode==='text_only'){
+    const plain=cap.surface==='responses'
+      ?output.every(item=>item?.type==='reasoning'||item?.type==='message'&&Array.isArray(item.content)&&item.content.every(part=>part?.type==='output_text'&&typeof part.text==='string'))
+      :cap.surface==='messages'
+        ?output.every(item=>['thinking','redacted_thinking'].includes(item?.type)||item?.type==='text'&&typeof item.text==='string')
+        :output.every(part=>part&&typeof part==='object'&&typeof part.text==='string'&&Object.keys(part).every(key=>['text','thought','thoughtSignature'].includes(key)));
+    complete=complete&&plain;
   }
   const replay=cap.surface!=='responses'||continuity==='replay';
   const nextHistory=cap.surface==='responses'?[...history,{role:'user',content:prompt},...structuredClone(output)]

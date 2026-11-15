@@ -1,0 +1,46 @@
+[
+  {
+    "name": "caller_mode_mutation_after_await",
+    "open_empty_refused": true,
+    "mutated_open_initialized": true
+  },
+  {
+    "name": "sqlite_like_wildcard_foreign_table",
+    "foreign_table_accepted": true
+  },
+  {
+    "name": "closed_identifier_terminal_newline",
+    "turn_lf": false,
+    "turn_65": false,
+    "digest_lf": false
+  },
+  {
+    "name": "expired_null_result_fence",
+    "persisted_deadline": 2000,
+    "settle_time": 2001,
+    "late_null_accepted": true,
+    "late_null_outcome": "no_reply",
+    "expired_uncertain_control": true
+  },
+  {
+    "name": "close_at_rpc_capacity",
+    "close_accepted": false,
+    "close_code": "UNAVAILABLE",
+    "accepted_calls": 64,
+    "fulfilled": 0,
+    "rejected": 64
+  },
+  {
+    "name": "directory_symlink",
+    "directory_alias_accepted": true,
+    "interpretation": "Canonical alias accepted; contract interpretation should distinguish from symlink file refusal."
+  },
+  {
+    "name": "oversized_decode",
+    "json_bytes": 262158,
+    "row_limit": 131072,
+    "load_refused": true,
+    "code": "CORRUPT_LEDGER",
+    "parse_instrumentation": "See parse-trace.jsonl: worker JSON.parse called before bounded row refusal."
+  }
+]

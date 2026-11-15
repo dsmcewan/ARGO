@@ -1,0 +1,6 @@
+../../../../tmp/argo-tf-phase2-type-probe.mts(2,7): error TS2322: Type '{ item_id: string; custodian_actor_id: string; location_id: string; slots: number; destroyed: false; }' is not assignable to type 'TabletopItem'.
+  Types of property 'location_id' are incompatible.
+    Type 'string' is not assignable to type 'null'.
+../../../../tmp/argo-tf-phase2-type-probe.mts(3,7): error TS2322: Type '{ item_id: string; custodian_actor_id: null; location_id: null; slots: number; destroyed: false; }' is not assignable to type 'TabletopItem'.
+  Types of property 'location_id' are incompatible.
+    Type 'null' is not assignable to type 'string'.

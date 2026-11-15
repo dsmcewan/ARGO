@@ -1,0 +1,22 @@
+✔ unchanged reads and retries do not reverify already accepted signatures (81.770249ms)
+✔ another writer is verified once and matches cold replay without exposing cached objects (88.258447ms)
+✔ same-size edits with restored mtime cannot hide behind a warm prefix (36.529957ms)
+✔ an observed prefix cannot roll back within the same open handle (45.893183ms)
+✔ a successful append is protected before any subsequent read warms the cache (33.89794ms)
+✔ a durable append stays protected when its derived snapshot write fails (30.601225ms)
+✔ a failed multi-event suffix cannot partially publish the verification cache (94.214894ms)
+✔ genesis and journal existence remain checked even when history is cached (34.66609ms)
+✔ snapshot files remain disposable and a post-append snapshot failure is retryable (33.356844ms)
+✔ blank or partial suffix records fail instead of becoming a trusted prefix (48.595097ms)
+✔ every durable event prefix replays bit-for-bit, with signed causal/epistemic history and private RNG (105.862724ms)
+✔ exact retries are idempotent, changed IDs and stale concurrent heads cannot append (47.696542ms)
+✔ scope, causality and authority failures append nothing; partial tails fail closed (23.35404ms)
+✔ canonical codec rejects collisions, unsafe integers and prototype-sensitive keys (1.013499ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1997.085684

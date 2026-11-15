@@ -1,0 +1,195 @@
+✖ ability generation uses the lowest of exactly three d6 and adds ten for defense (1.519819ms)
+✖ normal checks exceed the target strictly; DEX+2 fails on thirteen and passes on fourteen (0.265959ms)
+✖ advantage and disadvantage select the supplied high and low dice with exact dice counts (0.19721ms)
+✖ capacity reports exact fit and negative remaining without discarding any possessions (0.414027ms)
+✖ damage preserves exact zero unconscious and negative dead boundaries (0.19706ms)
+✖ ordinary rest previews d8 plus Constitution, caps HP and never resurrects (0.231785ms)
+✖ morale holds on a tie and fails only above its rating (0.280355ms)
+✖ finite project advances are limited independently by requested steps, resources and remaining segments (0.249017ms)
+✖ all calculators reject unclosed and active inputs before reading a getter or proxy trap (1.506775ms)
+✖ nested malformed arrays, symbols, hidden properties, cycles and hostile numbers are rejected (0.529813ms)
+✖ plain null-prototype input is accepted without coercion (0.423103ms)
+✖ every calculator preserves caller input and returns fresh detached output (0.308979ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 0
+ℹ fail 12
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 987.306793
+
+✖ failing tests:
+
+test at TESTS/tempting-fates-rules.test.ts:11:1
+✖ ability generation uses the lowest of exactly three d6 and adds ten for defense (1.519819ms)
+  TypeError [Error]: rules.abilityFromDice is not a function
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-200-1-0aa7a7192c/TESTS/tempting-fates-rules.test.ts:12:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+
+test at TESTS/tempting-fates-rules.test.ts:17:1
+✖ normal checks exceed the target strictly; DEX+2 fails on thirteen and passes on fourteen (0.265959ms)
+  TypeError [Error]: rules.resolveCheck is not a function
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-200-1-0aa7a7192c/TESTS/tempting-fates-rules.test.ts:18:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+
+test at TESTS/tempting-fates-rules.test.ts:24:1
+✖ advantage and disadvantage select the supplied high and low dice with exact dice counts (0.19721ms)
+  TypeError [Error]: rules.resolveCheck is not a function
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-200-1-0aa7a7192c/TESTS/tempting-fates-rules.test.ts:25:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at TESTS/tempting-fates-rules.test.ts:30:1
+✖ capacity reports exact fit and negative remaining without discarding any possessions (0.414027ms)
+  TypeError [Error]: rules.capacity is not a function
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-200-1-0aa7a7192c/TESTS/tempting-fates-rules.test.ts:31:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at TESTS/tempting-fates-rules.test.ts:38:1
+✖ damage preserves exact zero unconscious and negative dead boundaries (0.19706ms)
+  TypeError [Error]: rules.previewDamage is not a function
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-200-1-0aa7a7192c/TESTS/tempting-fates-rules.test.ts:39:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at TESTS/tempting-fates-rules.test.ts:46:1
+✖ ordinary rest previews d8 plus Constitution, caps HP and never resurrects (0.231785ms)
+  TypeError [Error]: rules.previewRest is not a function
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-200-1-0aa7a7192c/TESTS/tempting-fates-rules.test.ts:47:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at TESTS/tempting-fates-rules.test.ts:52:1
+✖ morale holds on a tie and fails only above its rating (0.280355ms)
+  TypeError [Error]: rules.resolveMorale is not a function
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-200-1-0aa7a7192c/TESTS/tempting-fates-rules.test.ts:53:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at TESTS/tempting-fates-rules.test.ts:59:1
+✖ finite project advances are limited independently by requested steps, resources and remaining segments (0.249017ms)
+  TypeError [Error]: rules.previewProject is not a function
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-200-1-0aa7a7192c/TESTS/tempting-fates-rules.test.ts:60:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at TESTS/tempting-fates-rules.test.ts:76:1
+✖ all calculators reject unclosed and active inputs before reading a getter or proxy trap (1.506775ms)
+  AssertionError [ERR_ASSERTION]: The validation function is expected to return "true". Received false
+  
+  Caught error:
+  
+  TypeError: rules[name] is not a function
+      at invalid (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-200-1-0aa7a7192c/TESTS/tempting-fates-rules.test.ts:8:40)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-200-1-0aa7a7192c/TESTS/tempting-fates-rules.test.ts:80:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: TypeError: rules[name] is not a function
+        at invoke (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-200-1-0aa7a7192c/TESTS/tempting-fates-rules.test.ts:75:105)
+        at file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-200-1-0aa7a7192c/TESTS/tempting-fates-rules.test.ts:80:15
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at invalid (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-200-1-0aa7a7192c/TESTS/tempting-fates-rules.test.ts:8:40)
+        at TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-200-1-0aa7a7192c/TESTS/tempting-fates-rules.test.ts:80:3)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1402:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+        at Test.postRun (node:internal/test_runner/test:1542:19),
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at TESTS/tempting-fates-rules.test.ts:88:1
+✖ nested malformed arrays, symbols, hidden properties, cycles and hostile numbers are rejected (0.529813ms)
+  AssertionError [ERR_ASSERTION]: The validation function is expected to return "true". Received false
+  
+  Caught error:
+  
+  TypeError: rules.abilityFromDice is not a function
+      at invalid (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-200-1-0aa7a7192c/TESTS/tempting-fates-rules.test.ts:8:40)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-200-1-0aa7a7192c/TESTS/tempting-fates-rules.test.ts:93:29)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: TypeError: rules.abilityFromDice is not a function
+        at file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-200-1-0aa7a7192c/TESTS/tempting-fates-rules.test.ts:93:47
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at invalid (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-200-1-0aa7a7192c/TESTS/tempting-fates-rules.test.ts:8:40)
+        at TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-200-1-0aa7a7192c/TESTS/tempting-fates-rules.test.ts:93:29)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1402:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+        at Test.postRun (node:internal/test_runner/test:1542:19)
+        at Test.run (node:internal/test_runner/test:1467:12),
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at TESTS/tempting-fates-rules.test.ts:101:1
+✖ plain null-prototype input is accepted without coercion (0.423103ms)
+  TypeError [Error]: rules.previewDamage is not a function
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-200-1-0aa7a7192c/TESTS/tempting-fates-rules.test.ts:102:95)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at TESTS/tempting-fates-rules.test.ts:104:1
+✖ every calculator preserves caller input and returns fresh detached output (0.308979ms)
+  TypeError [Error]: rules[name] is not a function
+      at invoke (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-200-1-0aa7a7192c/TESTS/tempting-fates-rules.test.ts:75:105)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/tempting-fates/worktrees/TF-200-1-0aa7a7192c/TESTS/tempting-fates-rules.test.ts:108:35)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

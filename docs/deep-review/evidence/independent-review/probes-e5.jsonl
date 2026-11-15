@@ -1,0 +1,3 @@
+{"probe":"acknowledged_append_rollback","acknowledged_sequence":1,"accepted":true,"sequence":0}
+{"probe":"bom_at_warm_suffix_boundary","warm":{"accepted":true,"sequence":2},"cold":{"accepted":false,"code":"CORRUPT_LEDGER","message":"Corrupt ledger JSON"}}
+{"probe":"pre_aborted_character_read_queued_behind_load","settledBeforeFirstRelease":false,"final":"CANCELLED"}

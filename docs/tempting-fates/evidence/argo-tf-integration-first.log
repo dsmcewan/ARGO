@@ -1,0 +1,13 @@
+✔ authored Greek campaign is complete and public extracts exclude referee state (229.067399ms)
+✔ world variants remain fixed and seed scopes do not become public campaign truth (126.704641ms)
+✔ real ARGO campaign supports private rumors and causal custody while rules previews have no authority (2591.145993ms)
+✔ playable book links and retained first-edition attribution inputs resolve (26.50297ms)
+✔ Phase 2 tabletop state grammar remains explicit, closed and non-authoritative (64.490256ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4073.479777

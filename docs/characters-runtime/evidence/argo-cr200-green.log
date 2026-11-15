@@ -1,0 +1,22 @@
+✔ character readers return only the owner profile and latest private impression per subject (33.995567ms)
+✔ private narrator archive contains the traveler record without other actor speech or private impressions (10.059813ms)
+✔ party narrator requires viewer acquisition in that party, filters before pagination, and reveals no hidden totals (15.665624ms)
+✔ actor identity and all tenant/rights/world/branch scope fields bind before transport (8.788892ms)
+✔ source scope, current cursor, existing actors, and party membership are enforced (29.369652ms)
+✔ same-tick acquisition never backdates knowledge to an earlier ledger prefix (7.506179ms)
+✔ actor context keeps latest 16 first acquisitions; repeated grants do not refresh memory (6.66238ms)
+✔ private impressions have no silent subject-count cap (23.06345ms)
+✔ current ontology and engagement cutoffs suppress every narrator page and carry through actor views (25.009746ms)
+✔ empty unconfigured source returns explicit absence, not fabricated character state (3.893183ms)
+✔ query, principal, factory configuration, and output remain detached across await boundaries (4.352773ms)
+✔ actor output owns detached nested profiles and impressions (6.095978ms)
+✔ passive guards reject active query/principal/source DTOs and validate the entire projection (24.131951ms)
+✔ bounded read transport supports cancellation without accepting a late projection (27.591923ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1493.245363

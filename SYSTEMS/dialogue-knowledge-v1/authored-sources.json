@@ -1,0 +1,37 @@
+{
+  "version": "authored-knowledge-sources/1.0.0",
+  "manifest_id": "tempting_fates_loan_sources",
+  "revision": "1",
+  "sources": [
+    {
+      "source_id": "encounter_lamp_costs",
+      "document_path": "CAMPAIGNS/Tempting_Fates/ENCOUNTERS.md",
+      "document_sha256": "191790032237d39012919f0b5da765aab0d39d0c7728b52350646ccc39767190",
+      "locator": {
+        "start_line": 21,
+        "end_line": 23
+      },
+      "excerpt_sha256": "e5342b42acfda155e007020519ca54c2af421acb5f7a1e847f50c66c228a37ac"
+    },
+    {
+      "source_id": "encounter_lamp_exit",
+      "document_path": "CAMPAIGNS/Tempting_Fates/ENCOUNTERS.md",
+      "document_sha256": "191790032237d39012919f0b5da765aab0d39d0c7728b52350646ccc39767190",
+      "locator": {
+        "start_line": 29,
+        "end_line": 29
+      },
+      "excerpt_sha256": "b19e43d575949d289199d65604a24193ed1eedc1f9d20c013e0f57c9c5b0fec6"
+    },
+    {
+      "source_id": "quickstart_lamp_terms",
+      "document_path": "CAMPAIGNS/Tempting_Fates/QUICKSTART.md",
+      "document_sha256": "42278fe08da8bf4e9231b2a0dc434b92ae8562a0f012af0c1b7b819a47612f48",
+      "locator": {
+        "start_line": 21,
+        "end_line": 21
+      },
+      "excerpt_sha256": "41716c043467d8279bd054fce6384986064b6426443e6d266aea11451960d5a1"
+    }
+  ]
+}

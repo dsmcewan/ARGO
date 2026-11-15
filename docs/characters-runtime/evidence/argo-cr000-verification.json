@@ -1,0 +1,48 @@
+{
+  "ticket": "CR-000",
+  "commit": "3f231e8c45adb76277a1da86768cd5c0009a8883",
+  "scope": "Shared additive contract profile only; no runtime behavior or operational trust approval",
+  "files": {
+    "SYSTEMS/characters-v1/API.md": "90b853e6e50309c0b204ab6c3e7ca9fbcd69d145f51ccd40dcd3ff61a45e3f77",
+    "SYSTEMS/characters-v1/CONTRACT.md": "41e4b54bee1fa95a198c437443432cbdd058e9b6192b2eb410fad1e43171a759",
+    "SYSTEMS/characters-v1/FREEZE.json": "66709119d921a239fabaa9409e7e79032c058f118ac5ed74d73a9a290b1f586f",
+    "SYSTEMS/characters-v1/characters.schema.json": "b1e62cc9fa5c3266da55d845b008d6d7c0a94255e1ce3cdd48744172dc43ec93",
+    "TESTS/character-contracts.test.ts": "270abbdaa97d98280e70db7bb6c664080e3a155ec08e2b4d85918ba52ef6bcfb",
+    "TESTS/character-fixtures.ts": "8f2c2e44dbf66d41239136a0a549497b3df27bc4a877e23f2e0effc1ef8e4b38",
+    "packages/contracts/src/character-types.ts": "1d5b1233d358730651c3c57ee84d810a6bb18ae589faff68c737ef9102a7f405",
+    "packages/contracts/src/characters.ts": "1e67ff2a1cd35d88997debd77898b922b1c041b8d4aafa15e64fcd11d1bea00c",
+    "packages/contracts/src/index.ts": "cda1fb92d72b5c336b5c4e351ecdb275be063aef84e81821220985e0a85cb15c"
+  },
+  "freeze": {
+    "profile_version": "character-memory/1.0.0",
+    "carrier_gameplay_version": "1.0.0",
+    "files": {
+      "SYSTEMS/characters-v1/CONTRACT.md": "41e4b54bee1fa95a198c437443432cbdd058e9b6192b2eb410fad1e43171a759",
+      "SYSTEMS/characters-v1/API.md": "90b853e6e50309c0b204ab6c3e7ca9fbcd69d145f51ccd40dcd3ff61a45e3f77",
+      "SYSTEMS/characters-v1/characters.schema.json": "b1e62cc9fa5c3266da55d845b008d6d7c0a94255e1ce3cdd48744172dc43ec93"
+    },
+    "scope": "Local additive interface identity; does not approve an operational policy root or change frozen gameplay history"
+  },
+  "verification": {
+    "full_foundation_tests": 95,
+    "passed": 95,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "strict_typecheck_exit": 0,
+    "frozen_v1_check_exit": 0,
+    "red_evidence": "12 initial missing-API behavioral failures; new principal guard failed before implementation; freeze test refused missing manifest"
+  },
+  "logs": {
+    "/tmp/argo-cr000-contracts-red.log": "75e1a8be7c5829d6cda75dc9ea84825c60d1201fab87c607b8cc38163521aafc",
+    "/tmp/argo-cr000-contracts-green.log": "4b7e40ab218194011afce5b57fc55802303ff9fe59a0f6a5431ac521b8d1df6c",
+    "/tmp/argo-cr000-freeze-red.log": "958ac7270ea515f9fd5d7f47d7debe40b29b0a56844ae0adf26eb6cfb89aff09",
+    "/tmp/argo-cr000-principal-red.log": "43ba01962ec164ea69ec6645e22d2cf5d563ae6663294bc71558adf38051aa43",
+    "/tmp/argo-cr000-foundation-final.log": "7ab36942af5d4ed548e78ff96cbe6aa99edd04201682520f5b97e15ee044e55b",
+    "/tmp/argo-cr000-typecheck-final.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/tmp/argo-cr000-frozen-v1.log": "2cd7874723b12ab43b0da644f0fa05f6af32153676d6e31de2c44c17c8e03428"
+  },
+  "paid_model_calls": 0,
+  "board_mutations": false,
+  "public_push": false
+}

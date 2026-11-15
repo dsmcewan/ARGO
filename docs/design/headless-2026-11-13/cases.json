@@ -1,0 +1,1250 @@
+{
+  "schema_version": 1,
+  "status": "declarative_not_executed",
+  "baseline_commit": "41f2cb8568b53fac984e1114d7342eef540bb6d5",
+  "cases": [
+    {
+      "id": "HD-T01",
+      "decisions": [
+        "D05"
+      ],
+      "given": "Plane A durably covers scoped prefix N/hash H; Plane B covers N-1.",
+      "when": "A caller requests a combined view at N.",
+      "then": "Refuse with projection lag/unavailable; do not combine A(N) with B(N-1) or silently downgrade the exact request.",
+      "invariant": "A response binds one verified common ledger prefix.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T02",
+      "decisions": [
+        "D05"
+      ],
+      "given": "Both cursors report sequence N but different complete scope or head hash.",
+      "when": "The coordinator considers publishing a common checkpoint.",
+      "then": "Refuse publication, retain the prior valid checkpoint and investigate the divergence.",
+      "invariant": "A common sequence number is not a common history identity.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T03",
+      "decisions": [
+        "D05"
+      ],
+      "given": "A projector computes event effects but crashes before committing its SQLite transaction.",
+      "when": "It restarts from its durable cursor.",
+      "then": "No cursor may be ahead of durable rows; reprocess from the last committed prefix without duplicate effects.",
+      "invariant": "Rows and projector cursor commit atomically within each plane.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T04",
+      "decisions": [
+        "D05"
+      ],
+      "given": "Both planes committed N, but the coordinator crashed before publishing N.",
+      "when": "Recovery runs.",
+      "then": "Verify both committed receipts and the authoritative prefix before publishing once; never manufacture missing rows or replay duplicate effects.",
+      "invariant": "Publication is recoverable independently of the two store transactions.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T05",
+      "decisions": [
+        "D05"
+      ],
+      "given": "Manifest N names an absent or corrupt store generation.",
+      "when": "A query presents that checkpoint handle.",
+      "then": "Fail that checkpoint closed; rebuild and verify replacement generations before publishing them; do not substitute different bytes under the same handle.",
+      "invariant": "Checkpoint identity is stable and missing state is not silently accepted.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T06",
+      "decisions": [
+        "D05"
+      ],
+      "given": "A reader has a live retention pin and open read transactions for old checkpoint M.",
+      "when": "A projector advances and a compactor attempts to discard M history or delete its store generation.",
+      "then": "Compaction/deletion cannot remove resources needed by that reader; bounded expiry and transaction completion govern eventual release.",
+      "invariant": "Published historical reads retain the exact state they reference.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T07",
+      "decisions": [
+        "D05"
+      ],
+      "given": "A checkpoint retention pin expires before the reader opens its store transactions.",
+      "when": "The reader tries to proceed using the old handle.",
+      "then": "Refuse or reacquire and revalidate coverage; never proceed on an unpinned possibly deleted generation.",
+      "invariant": "A stale retention lease is not permission to read retired state.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T08",
+      "decisions": [
+        "D05"
+      ],
+      "given": "At seq10 custody B has valid interval [30,infinity). An explicit authorized advance_time commits tick40 by seq12. At seq13, still tick40, custody changes to C.",
+      "when": "The projector handles seq13 and a reader asks valid40 separately at recorded prefixes12 and13.",
+      "then": "Retain the superseded B revision and return B at valid40/prefix12; overwriting its sole valid_to=40 and returning no owner is a failure. At valid40/prefix13 return C. Both queries are within their prefix world clock of40.",
+      "invariant": "Later interval closure does not erase older recorded-prefix answers.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T09",
+      "decisions": [
+        "D05"
+      ],
+      "given": "Custody changes A-to-B at tick30/seq12 and B-to-C at tick30/seq13.",
+      "when": "Readers query valid30 separately at prefixes12 and13.",
+      "then": "Return B then C through recorded revisions; do not collapse both prefixes into C or require a fabricated extra tick.",
+      "invariant": "Sequence distinguishes equal-tick transitions.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T10",
+      "decisions": [
+        "D05"
+      ],
+      "given": "A claim occurred at tick10 but A acquisition committed at tick20/seq8.",
+      "when": "A queries cutoff tick19/seq8 or tick20/seq7.",
+      "then": "Exclude the claim in both cases; occurrence time cannot satisfy the acquisition cutoff.",
+      "invariant": "Both acquisition time and recorded sequence constrain knowledge.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T11",
+      "decisions": [
+        "D05",
+        "D06"
+      ],
+      "given": "A acquired a private claim at tick20/seq8; B belongs to the same party but has no disclosure receipt/acquisition.",
+      "when": "B or a party view queries that prefix.",
+      "then": "Exclude the claim; party membership cannot union A private knowledge.",
+      "invariant": "Knowledge requires explicit authorized observers/disclosure.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T12",
+      "decisions": [
+        "D05",
+        "D06"
+      ],
+      "given": "A acquired a claim at20/8; a later authorized disclosure to B commits at24/11.",
+      "when": "B queries cutoff23/11,24/10, then24/11.",
+      "then": "The first two exclude it; the last may include it. A original acquisition remains20/8.",
+      "invariant": "Later transmission creates a later recipient acquisition, not retroactive sharing.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T13",
+      "decisions": [
+        "D05"
+      ],
+      "given": "A caller supplies a foreign rights lane, actor, party or complete scope with a valid local checkpoint handle.",
+      "when": "The scoped query service receives the request.",
+      "then": "Reject authorization before returning records; checkpoint possession does not confer access.",
+      "invariant": "Authenticated complete scope and viewer authority bind every query.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T14",
+      "decisions": [
+        "D05"
+      ],
+      "given": "A caller requests an acquisition sequence or tick beyond the checkpoint coverage.",
+      "when": "The query service evaluates the request.",
+      "then": "Reject the request; do not fill missing data from a later independently advancing plane.",
+      "invariant": "An exact query cannot exceed its materialized checkpoint.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T15",
+      "decisions": [
+        "D05",
+        "D06"
+      ],
+      "given": "The published graph checkpoint is20; authority disappearance occurred at25 and naming at27.",
+      "when": "A present caller requests historical prefix20, or generated text based on20 is ready for delivery.",
+      "then": "Apply current anomaly restrictions from the authority, suppress prohibited output and do not let the caller select old policy state.",
+      "invariant": "Historical data cannot roll back current safety policy.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T16",
+      "decisions": [
+        "D05",
+        "D06"
+      ],
+      "given": "A common graph checkpoint is healthy, but current authority anomaly or current entitlement status cannot be obtained.",
+      "when": "A response or disclosure requiring that policy is ready.",
+      "then": "Fail closed instead of treating the graph checkpoint or a TTL timestamp as current policy proof.",
+      "invariant": "Projection freshness and current authorization are separate prerequisites.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T17",
+      "decisions": [
+        "D05"
+      ],
+      "given": "A player is authorized for an actor knowledge view only.",
+      "when": "They request the canonical plane, full private event/receipt, seed, raw draw or internal plane/genesis commitment using a selector or checkpoint handle.",
+      "then": "Reject privileged selectors and do not expose hidden data; only separately allowed v1 blinded RNG outcome fields remain eligible.",
+      "invariant": "Knowledge references do not confer authority-store access.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T18",
+      "decisions": [
+        "D05"
+      ],
+      "given": "A visible derived rumor has a source claim that the viewer cannot read.",
+      "when": "The query includes provenance references or traversal.",
+      "then": "Do not expose private source content or a fetchable unrestricted reference; apply provenance disclosure rules.",
+      "invariant": "Provenance cannot bypass the underlying knowledge boundary.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T19",
+      "decisions": [
+        "D05"
+      ],
+      "given": "A model proposes a backdated correction of custody or a historical assertion under v1.",
+      "when": "The proposal reaches the projector or authority.",
+      "then": "Reject the unsupported correction; no insertion into past ledger order or projector-only truth mutation.",
+      "invariant": "Historical correction requires a separately reviewed authorized event contract.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T20",
+      "decisions": [
+        "D02"
+      ],
+      "given": "A new-version ID-entry array contains duplicate IDs or is not in the specified lexical order.",
+      "when": "It is validated as canonical signed/state input.",
+      "then": "Reject it; do not silently sort or choose the last duplicate before verifying identity.",
+      "invariant": "A versioned map has one deterministic representation and unique keys.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T21",
+      "decisions": [
+        "D02"
+      ],
+      "given": "A v2 entry has id constructor or prototype as an allowed scalar string.",
+      "when": "A bridge attempts to coerce the representation into an unchanged v1 identifier-keyed snapshot/write path.",
+      "then": "Refuse capability incompatibility before mutation; do not silently rename or promise unchanged v1 support. The reviewed v2 entry-array reader must preserve the scalar exactly.",
+      "invariant": "Allowed ID values and unsafe object property names are distinct.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T22",
+      "decisions": [
+        "D02"
+      ],
+      "given": "An otherwise plausible identifier is __proto__ or starts with an underscore.",
+      "when": "It is presented under the proposed unchanged ASCII/length identifier domain.",
+      "then": "Reject by the ID grammar before mutation; do not claim __proto__ was a valid v1 ID.",
+      "invariant": "The first-character rule remains explicit and unchanged.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T23",
+      "decisions": [
+        "D02"
+      ],
+      "given": "A legacy signed history contains a valid scalar claim ID constructor or case-distinct IDs A and a.",
+      "when": "Migration attempts to reserve, case-fold or rename those strings.",
+      "then": "Refuse that lossy migration; preserve original bytes/IDs and verify the legacy history before deriving a new representation.",
+      "invariant": "Migration never silently changes signed history or existing ID identity.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T24",
+      "decisions": [
+        "D02"
+      ],
+      "given": "A malformed v1 snapshot has an unsafe object property rejected by the original codec.",
+      "when": "An importer converts it into a representable v2 entry array.",
+      "then": "Conversion alone must not authenticate it; reject/quarantine pending separately authorized recovery provenance.",
+      "invariant": "Representability is not proof of valid legacy history.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T25",
+      "decisions": [
+        "D02"
+      ],
+      "given": "An ID-bearing DTO has getters, a nonplain prototype or prototype-sensitive object properties.",
+      "when": "It reaches contract validation or migration.",
+      "then": "Reject unsafe object structure without executing accessors; allowing matching scalar ID strings does not relax object safety.",
+      "invariant": "Identifier compatibility does not authorize prototype mutation or accessor execution.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T26",
+      "decisions": [
+        "D05"
+      ],
+      "given": "A local manifest and both databases are restored together with an older valid journal prefix.",
+      "when": "A design claims its local checkpoint detects every operator rollback.",
+      "then": "Reject that assurance claim; require D04 independent anchoring if selected, or document the bounded storage trust model.",
+      "invariant": "A same-domain projection manifest is not an independent rollback anchor.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T27",
+      "decisions": [
+        "D06"
+      ],
+      "given": "A v1 world is at tick10 and no clock advance is authorized; its frozen unit is one second.",
+      "when": "A ten-minute session deadline expires or many wall-clock days pass.",
+      "then": "World tick, age, lifespan balances and ledger head remain unchanged; the unit definition does not imply wall-clock synchronization.",
+      "invariant": "Only authorized advance_time changes world time; v1 units/replay remain fixed.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T28",
+      "decisions": [
+        "D06"
+      ],
+      "given": "A raid and a solo proposal share checkpoint H; the raid commits first.",
+      "when": "The solo proposal is submitted unchanged against H.",
+      "then": "Return CONFLICT without implicit queue, rebase, backdated insert or new branch; request fresh context before a changed intent.",
+      "invariant": "Sessions cannot overwrite another committed expedition past.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T29",
+      "decisions": [
+        "D06"
+      ],
+      "given": "A party collected multiple proposals against one serialize checkpoint.",
+      "when": "The first commits and the coordinator tries to replay the rest against the new head without revalidation/confirmation.",
+      "then": "Reject stale proposals; serialize means ordered authority execution, not silent identity/head rewriting.",
+      "invariant": "Ordering does not remove per-proposal current-state authorization.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T30",
+      "decisions": [
+        "D06"
+      ],
+      "given": "A session has awaiting participants or an unconfirmed intent.",
+      "when": "A timer, disconnection or spotlight rotation occurs.",
+      "then": "Do not manufacture pass, consent, proposal, observation or clock advancement; update only explicit coordination state.",
+      "invariant": "Transport pacing is not fictional actor choice.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T31",
+      "decisions": [
+        "D06"
+      ],
+      "given": "A generated disclosure has not been emitted or acknowledged.",
+      "when": "The model or coordinator marks it heard or uses it as donor consent.",
+      "then": "Do not commit acquisition or consent; require the separate authenticated delivery and informed-donor paths.",
+      "invariant": "Generated prose, knowledge acquisition and consent are different events.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T32",
+      "decisions": [
+        "D06"
+      ],
+      "given": "A disclosure unit is bound to one scope, content digest and recipient.",
+      "when": "An acknowledgement changes recipient/scope/bytes or is supplied only by model JSON.",
+      "then": "Reject the receipt and append no observation.",
+      "invariant": "Delivery evidence is authenticated and binds exact recipient and content.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T33",
+      "decisions": [
+        "D06"
+      ],
+      "given": "One disclosure has been acknowledged by A but not B.",
+      "when": "A shared-party transport retries or an aggregated UI requests both actors knowledge.",
+      "then": "Create no B acquisition from A receipt; retries reconcile A same delivery key without duplicate observation.",
+      "invariant": "Party delivery is evaluated per recipient.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T34",
+      "decisions": [
+        "D06"
+      ],
+      "given": "An observation submission may have appended before cancellation or timeout.",
+      "when": "The coordinator tries a new proposal ID without reconciling the old one.",
+      "then": "Refuse that recovery strategy; retry/query the original identity first and use authority-side delivery deduplication before any replacement proposal.",
+      "invariant": "Cancellation after submission is not proof of no commit.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T35",
+      "decisions": [
+        "D06",
+        "D05"
+      ],
+      "given": "A client acknowledgement at tick30 is not committed as an observation until tick40.",
+      "when": "A query asks acquisition cutoff30 under the recommended commit-time profile.",
+      "then": "Exclude it; retain receipt time as separate evidence without backdating acquisition. A different historical-acquisition rule requires review.",
+      "invariant": "Committed knowledge preserves v1 acquisition semantics.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T36",
+      "decisions": [
+        "D06",
+        "D05"
+      ],
+      "given": "A prepared unit passed an earlier policy check, but a cutoff/revocation is ordered before its actual release gate.",
+      "when": "The delivery scheduler releases queued content.",
+      "then": "Suppress the prohibited unit under current policy and create no observation for unsent content; queued authorization is not perpetual permission.",
+      "invariant": "Current authorization is checked at the defined release point.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T37",
+      "decisions": [
+        "D06"
+      ],
+      "given": "Only a fragment of a future voice/text unit was transmitted and no complete-unit acknowledgement exists.",
+      "when": "The coordinator attempts to commit acquisition of the full utterance.",
+      "then": "Reject full-unit acquisition; partial voice semantics remain unsupported until their versioned protocol is approved.",
+      "invariant": "Delivery uncertainty cannot invent complete observations.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T38",
+      "decisions": [
+        "D06"
+      ],
+      "given": "A genuine authorized past delivery has a pending receipt, but membership/rights changed before its observation commit.",
+      "when": "Recovery attempts blind re-emission or silently discards the evidence.",
+      "then": "Do neither: retain private evidence, apply the reviewed historical-delivery rules, and fail the unresolved transition closed until those rules exist.",
+      "invariant": "Past delivery reconciliation is distinct from current permission to disclose again.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T39",
+      "decisions": [
+        "D06"
+      ],
+      "given": "A caller selects queue or transparent_fork on a first-release checkpoint.",
+      "when": "The coordinator attempts to run that mode.",
+      "then": "Return explicit capability unsupported; create neither queue nor branch nor implicit return/merge behavior.",
+      "invariant": "Reserved mode names do not establish implemented scheduling.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T40",
+      "decisions": [
+        "D05"
+      ],
+      "given": "An imported genesis has an altered untouched initial balance but the same signed event head.",
+      "when": "A projector uses only a local genesis hash or store cursor as authentication.",
+      "then": "Reject that authentication claim; D03 trusted genesis identity/import verification must establish the selected history before trusted rebuild.",
+      "invariant": "A derived local fingerprint cannot authenticate genesis by itself.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T41",
+      "decisions": [
+        "D05"
+      ],
+      "given": "A checkpoint world clock is40 and the stored custody interval is open-ended.",
+      "when": "A caller requests canonical valid time50 or time earlier than supported genesis/retained history.",
+      "then": "Reject unsupported temporal coverage; do not extrapolate or invent facts from the open interval.",
+      "invariant": "Recorded intervals do not authorize future prediction or fabricated prehistory.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-T42",
+      "decisions": [
+        "D05"
+      ],
+      "given": "A proposed temporal row has a fractional/unsafe tick or an empty/reversed finite interval.",
+      "when": "It is validated for projection publication.",
+      "then": "Reject the invalid row; same-tick historical answers must use recorded revisions rather than invalid intervals.",
+      "invariant": "All temporal bounds have explicit safe-integer and half-open-interval semantics.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-001",
+      "decisions": [
+        "D01"
+      ],
+      "given": "A validly signed receipt from a different complete Scope has the same proposal ID, action type, sequence and world time; its signer is valid for both tenants.",
+      "when": "The bridge verifies it for the original submitted proposal.",
+      "then": "Reject the complete-scope mismatch before returning an outcome.",
+      "invariant": "A trusted key and matching short identifiers do not substitute for full namespace binding.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-002",
+      "decisions": [
+        "D01"
+      ],
+      "given": "Two proposals share ID, kind, expected head/sequence and time, but differ in recipient, amount, causal parents or proxy grant.",
+      "when": "A receipt for one is returned for the other.",
+      "then": "Recompute the full canonical proposal digest and reject the mismatch.",
+      "invariant": "Every submitted proposal field contributes to receipt identity.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-003",
+      "decisions": [
+        "D01"
+      ],
+      "given": "An authority receipt has a valid signature over its original outcome.",
+      "when": "An intermediary substitutes event_hash, rng_commitment or another outcome field.",
+      "then": "Signature verification fails; no modified presentation outcome is accepted.",
+      "invariant": "The signature covers the complete outcome and all binding fields.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-004",
+      "decisions": [
+        "D01",
+        "D03"
+      ],
+      "given": "An attacker includes a new Ed25519 key and internally valid signatures in a receipt or genesis manifest.",
+      "when": "The verifier resolves trust for a previously registered scoped ledger.",
+      "then": "Reject the unregistered signer; do not bootstrap trust from the supplied bundle.",
+      "invariant": "Cryptographic self-consistency is not authority authentication.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-005",
+      "decisions": [
+        "D01"
+      ],
+      "given": "The full proposal matches, but the signed submitter is another principal, actor or role.",
+      "when": "The current caller attempts to accept or retrieve the receipt.",
+      "then": "Reject subject mismatch and independently enforce current authentication/disclosure policy.",
+      "invariant": "Historical receipt retrieval is bound to the authenticated subject and does not bypass access control.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-006",
+      "decisions": [
+        "D01"
+      ],
+      "given": "A donor confirmation is accepted by the existing verifyReceipt(consent, principal) callback.",
+      "when": "That confirmation is presented as proof that a TELOS outcome came from the expected authority.",
+      "then": "Reject the substitution; require the separate authority-outcome domain and trusted authority key.",
+      "invariant": "Donor consent verification and authority outcome verification are different protocols.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-007",
+      "decisions": [
+        "D01",
+        "D04"
+      ],
+      "given": "An action committed, but the transport response was lost.",
+      "when": "The authenticated caller retries the identical full proposal and ID.",
+      "then": "Return the original commit identity/receipt after required confirmation; append and apply exactly once and do not reroll.",
+      "invariant": "Timeout is not proof of non-commit; idempotency binds complete request identity.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-008",
+      "decisions": [
+        "D01"
+      ],
+      "given": "A caller requires a v2 authenticated receipt, but a legacy peer returns only OutcomeV1.",
+      "when": "Compatibility negotiation or response validation occurs.",
+      "then": "Return explicit capability/verification failure; never manufacture scope, proposal identity or a signature.",
+      "invariant": "No silent downgrade from authenticated receipt assurance.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-009",
+      "decisions": [
+        "D01",
+        "D04"
+      ],
+      "given": "A valid old receipt describes a proxy action committed before the grant was revoked.",
+      "when": "The holder tries to use that receipt as authorization for another proxy action.",
+      "then": "The old receipt remains historical evidence only; the new proposal is checked against current revocation state and refused.",
+      "invariant": "A receipt does not confer future action authority.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-010",
+      "decisions": [
+        "D03"
+      ],
+      "given": "A trusted manifest commits to the full genesis, and signed events never touch one donor balance.",
+      "when": "An import changes that balance while retaining the original terminal event head.",
+      "then": "Reject the recomputed genesis commitment mismatch before authenticated replay.",
+      "invariant": "Untouched initial state is authenticated independently of which events happen to exercise it.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-011",
+      "decisions": [
+        "D03"
+      ],
+      "given": "A trusted manifest exists for an empty history whose event head is null.",
+      "when": "An import changes the private seed or another genesis field.",
+      "then": "Reject the genesis digest mismatch even though no event signature or RNG record is available.",
+      "invariant": "Sequence-zero identity cannot depend on a first event or first random draw.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-012",
+      "decisions": [
+        "D03"
+      ],
+      "given": "A valid private genesis bundle and manifest cover actors, items, parties, world time, scope, ruleset, seed and authority key.",
+      "when": "Mutate each category separately without changing the trusted manifest.",
+      "then": "Every mutation fails commitment verification; private nonce replacement also fails.",
+      "invariant": "The commitment covers the complete genesis bundle, not a selective projection.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-013",
+      "decisions": [
+        "D03"
+      ],
+      "given": "The current v1 ledger directory contains genesis G and the caller supplies different G2.",
+      "when": "openLedger opens it, or an open ledger later reads modified genesis.json.",
+      "then": "Preserve the existing immutable-genesis refusal; do not describe this as a new v2 capability.",
+      "invariant": "The standalone-import gap does not negate implemented supplied/file genesis checking.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-014",
+      "decisions": [
+        "D01",
+        "D03"
+      ],
+      "given": "An authority holds a full private genesis bundle and an event containing hidden RNG details.",
+      "when": "It returns an ordinary outcome receipt or public genesis manifest.",
+      "then": "No seed, private commitment nonce, full random record or authority-only event body is disclosed.",
+      "invariant": "Commitment/signature verification does not authorize disclosure of their private preimages.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-015",
+      "decisions": [
+        "D03"
+      ],
+      "given": "A v1 export contains valid event signatures and an expected terminal head but lacks a trusted genesis attestation.",
+      "when": "It is requested as authenticated standalone history.",
+      "then": "Refuse that assurance or route only to an explicitly labeled unanchored analysis mode.",
+      "invariant": "An expected v1 head does not authenticate every genesis field.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-016",
+      "decisions": [
+        "D03",
+        "D04"
+      ],
+      "given": "A legacy bundle may already have lost a valid revocation suffix before a new migration attestation is created.",
+      "when": "An operator signs the currently supplied bundle without an independently trusted prior checkpoint/source.",
+      "then": "Do not claim retrospective completeness or rollback resistance; require explicit limited provenance or a trustworthy migration source.",
+      "invariant": "A new signature cannot prove that missing historical records never existed.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-017",
+      "decisions": [
+        "D04"
+      ],
+      "given": "Anchored mode witnessed a proxy revocation at sequence N; local events are restored to complete valid prefix N-1.",
+      "when": "The authority starts or receives another proxy proposal.",
+      "then": "Fresh witness comparison detects the older prefix and refuses new action processing before proxy validation can authorize it.",
+      "invariant": "Valid signatures on an older prefix do not defeat a separately retained current checkpoint.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-018",
+      "decisions": [
+        "D03",
+        "D04"
+      ],
+      "given": "The full local directory, snapshot, genesis manifest copy and local checkpoint cache are restored to an old mutually consistent backup; the independent witness remains current.",
+      "when": "The authority attempts recovery and then a new mutation.",
+      "then": "Consult the witness and quarantine the stale/conflicting local history; local consistency cannot authorize continuation.",
+      "invariant": "Whole-directory rollback must not roll back the trust source used to detect it.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-019",
+      "decisions": [
+        "D04"
+      ],
+      "given": "A proposed anchor shares the journal backup/restore credentials and rollback domain.",
+      "when": "Both are restored to the same pre-revocation state.",
+      "then": "The design must not label this independent rollback protection or report detection that the evidence cannot establish.",
+      "invariant": "A second file, table, Git ref or service name is not an independent trust domain.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-020",
+      "decisions": [
+        "D04"
+      ],
+      "given": "Anchored mode cannot obtain a fresh authenticated current witness point before starting a mutation.",
+      "when": "A new proposal arrives, including one using a locally unrevoked grant.",
+      "then": "Fail unavailable without accepting a new commit or silently switching to trusted_storage mode.",
+      "invariant": "Strong rollback assurance trades availability for current-state confirmation.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-021",
+      "decisions": [
+        "D04"
+      ],
+      "given": "A crash occurs before a proposed event is durably appended and the witness still names the predecessor.",
+      "when": "The authority recovers and the caller retries the same proposal.",
+      "then": "Perform ordinary current-head validation; no commit or RNG effect is inferred from the interrupted attempt.",
+      "invariant": "No durable event plus no witness advance does not create an acknowledged mutation.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-022",
+      "decisions": [
+        "D04"
+      ],
+      "given": "The local journal ends with a partial/torn event and the witness state is separately available.",
+      "when": "Recovery runs.",
+      "then": "Fail closed and quarantine; do not silently drop bytes under a generic recovery rule. Any repair requires a reviewed proof that no witnessed event is removed.",
+      "invariant": "Partial-tail recovery must not become an unchecked history truncation mechanism.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-023",
+      "decisions": [
+        "D01",
+        "D04"
+      ],
+      "given": "One exact complete event was fsynced after the confirmed prefix, but the witness CAS has not completed.",
+      "when": "Recovery retries after a crash or timeout.",
+      "then": "Verify and CAS the same signed next event/link; do not reroll, append a replacement or run another action on the pending state.",
+      "invariant": "There is at most one unconfirmed pending commit per local writer and it retains exact identity.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-024",
+      "decisions": [
+        "D04"
+      ],
+      "given": "A pending fsynced event exists and the witness remains unavailable.",
+      "when": "A later player action or current-policy narration request arrives.",
+      "then": "Remain unavailable for operations requiring confirmed current state; do not expose the pending event as committed or bypass the unresolved append.",
+      "invariant": "Pending revocation/cutoff recovery cannot be bypassed through ordinary gameplay traffic.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-025",
+      "decisions": [
+        "D01",
+        "D04"
+      ],
+      "given": "The witness accepted an exact event, but its response was lost before the authority recorded success.",
+      "when": "Recovery or exact caller retry reads the witness.",
+      "then": "Verify the exact per-sequence head, finalize once and serve the original receipt without a second event.",
+      "invariant": "An uncertain network response does not duplicate an externally confirmed commit.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-026",
+      "decisions": [
+        "D01",
+        "D04"
+      ],
+      "given": "The event and witness point are durable, but the process crashed before snapshot or receipt delivery.",
+      "when": "The authority restarts.",
+      "then": "Replay the confirmed journal, rebuild derived caches and recover the original receipt identity.",
+      "invariant": "Snapshot and response persistence are not the source of commit authority.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-027",
+      "decisions": [
+        "D04"
+      ],
+      "given": "The witness is ahead of local durable bytes, whether because of malicious rollback or lost storage.",
+      "when": "The authority attempts to resume writes.",
+      "then": "Refuse and recover verified missing event bytes from an authorized source; do not synthesize them from the checkpoint hash.",
+      "invariant": "Rollback detection does not by itself provide event-data recovery or RPO-zero.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-028",
+      "decisions": [
+        "D03",
+        "D04"
+      ],
+      "given": "Two validly signed candidate heads claim the same registered ledger and sequence, or one substitutes a different genesis digest.",
+      "when": "A writer calls witness Advance or recovery compares local/witness state.",
+      "then": "Reject the conflicting CAS/identity and quarantine; do not select by timestamp or signature validity alone.",
+      "invariant": "The witness retains one ordered registered history, not arbitrary signed heads.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-029",
+      "decisions": [
+        "D04"
+      ],
+      "given": "An attacker replays an older, correctly signed witness response containing an earlier challenge nonce.",
+      "when": "A fresh current-read request is awaiting its response.",
+      "then": "Reject nonce mismatch; a valid old signature cannot satisfy the fresh linearizable-read requirement.",
+      "invariant": "Authenticity of a checkpoint response is separate from freshness of that response.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-030",
+      "decisions": [
+        "D03",
+        "D04"
+      ],
+      "given": "A rolled-back writer proposes a new history epoch or ledger ID without an authorized migration/registration.",
+      "when": "It attempts to reset witness state and continue from an older prefix.",
+      "then": "Refuse reset; retain the registered ledger history and require an explicit predecessor-bound migration.",
+      "invariant": "Changing identity fields cannot silently bypass rollback protection.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-031",
+      "decisions": [
+        "D01",
+        "D04"
+      ],
+      "given": "The witness current sequence is later than the event named in a receipt.",
+      "when": "The verifier checks whether the receipt event was actually confirmed.",
+      "then": "Require the authenticated historical point or specified inclusion evidence matching that event hash; sequence comparison alone is insufficient.",
+      "invariant": "A larger sequence number is not a proof of ancestry.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-032",
+      "decisions": [
+        "D04"
+      ],
+      "given": "Deployment explicitly selected trusted_storage mode and both journal and all local checkpoint copies are consistently rolled back.",
+      "when": "A design or acceptance report evaluates the guarantee.",
+      "then": "Record that cryptographic rollback detection is outside this mode; do not present prefix validation as detection or relabel this a passing anchored test.",
+      "invariant": "The supported storage assumption must remain truthful and visible.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-033",
+      "decisions": [
+        "D01",
+        "D04"
+      ],
+      "given": "An anchored-mode authority has fsynced an event but has not confirmed the witness CAS.",
+      "when": "It is about to publish an outcome receipt, subscriber event or projection checkpoint.",
+      "then": "Withhold committed success until confirmation; a client deadline yields an uncertain/unavailable result instead.",
+      "invariant": "Only witness-confirmed events become externally authoritative in anchored mode.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "HD-AUTH-034",
+      "decisions": [
+        "D01",
+        "D03",
+        "D04"
+      ],
+      "given": "A bundle has an authentic complete genesis and a valid historical authority receipt, but no fresh current checkpoint under an assurance policy that requires one.",
+      "when": "A consumer treats those signatures as proof that the latest revocation/cutoff is present.",
+      "then": "Reject that freshness inference and enforce the selected current-checkpoint protocol.",
+      "invariant": "Genesis authenticity, receipt binding and history freshness are separate guarantees.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D09-BUILD-001",
+      "decisions": [
+        "D09"
+      ],
+      "given": "A submitted external-application attempt is VERIFYING with no authenticated verifier receipt.",
+      "when": "The worker prints success, exits zero, or uploads a forged receipt or a correctly signed receipt copied from another request.",
+      "then": "No REVIEW, MERGING or MERGED transition occurs; no artifact is accepted and no dependent becomes READY. Only the bound trusted verifier channel and exact current receipt can authorize the next step.",
+      "invariant": "Worker output and model verdicts cannot attest their own acceptance.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D09-BUILD-002",
+      "decisions": [
+        "D09"
+      ],
+      "given": "The verifier has signed a passing receipt for a fixed repository, board, ticket, epoch, request, run, base, candidate/tree, target ref, policy, runtime and artifact manifest.",
+      "when": "Each binding is independently changed in a replay, including replay of an otherwise valid receipt from another board or epoch.",
+      "then": "Signature verification or exact-request comparison rejects every mutation before state advancement or Git mutation.",
+      "invariant": "An authenticated result is usable only for the exact immutable acceptance request.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D09-BUILD-003",
+      "decisions": [
+        "D09"
+      ],
+      "given": "A profile pins required parent-owned oracles, protected import inventory and normal-completion requirements.",
+      "when": "A candidate adds an import shadow module, changes pinned tools code, exits before assertions, skips a required case, or prints a counterfeit child completion record.",
+      "then": "Policy rejects before unsafe import, or the trusted parent records an incomplete/failed check. It emits no passing acceptance receipt merely from the child's claimed results.",
+      "invariant": "Receipt signing cannot convert an untrusted in-process self-report into independent semantic verification.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D09-BUILD-004",
+      "decisions": [
+        "D09"
+      ],
+      "given": "A verification request is durably reserved and the transport times out without a known execution result.",
+      "when": "Recovery queries the same request; later an operator closes that run and reserves another, after which the old run reports success.",
+      "then": "Uncertainty initially retains VERIFYING and path locks. The late old-run receipt is fenced. No process is assumed dead solely from elapsed time, and a stopped run is reaped before replacement is authorized.",
+      "invariant": "Timeout is not proof of failure or permission to reuse a stale success.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D09-BUILD-005",
+      "decisions": [
+        "D09"
+      ],
+      "given": "An exact request has a durably sealed passing receipt.",
+      "when": "The same request is retried, followed by a request with the same ID but different bytes.",
+      "then": "The exact retry returns the original sealed result without another execution. Changed bytes under that ID are refused. Receipt ingestion itself does not merge or duplicate audit transitions.",
+      "invariant": "Verification retries are idempotent by immutable request identity.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D09-BUILD-006",
+      "decisions": [
+        "D09"
+      ],
+      "given": "Two disjoint application attempts passed verification against the same expected base, and the first has been integrated.",
+      "when": "The second attempts integration with its original receipt.",
+      "then": "The changed target base prevents Git mutation. The ticket requires a fresh attempt/candidate and verification, or fails when its configured attempt budget is exhausted. Disjoint paths do not permit an implicit rebase or receipt reuse.",
+      "invariant": "Acceptance binds the exact tested base and candidate, independently of path disjointness.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D09-BUILD-007",
+      "decisions": [
+        "D09"
+      ],
+      "given": "A repository/ref is registered to board-owned integration, and an integration intent is durably recorded before its ref CAS.",
+      "when": "The board crashes before CAS while another board or the standalone controller attempts to integrate into the same ref.",
+      "then": "The shared outstanding-intent reservation blocks the other integrators. Recovery sees the expected base, revalidates evidence and collisions, and executes the original integration once.",
+      "invariant": "One integration owner and one unresolved intent govern a repository/ref across all boards.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D09-BUILD-008",
+      "decisions": [
+        "D09"
+      ],
+      "given": "Ref CAS reached the exact candidate but checkout or SQLite acceptance has not completed.",
+      "when": "Recovery is interrupted repeatedly, including during optional re-verification and after its pass but before finalization.",
+      "then": "The immutable integration intent and path/target locks survive every interruption. Recovery never resets Git to base or releases accepted artifacts early; it completes safe checkout and finalizes the same candidate once.",
+      "invariant": "Verification-state changes cannot erase an already authorized integration's durable identity.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D09-BUILD-009",
+      "decisions": [
+        "D09"
+      ],
+      "given": "An incoming tracked path collides with an existing ignored file, directory, symlink or non-directory ancestor in the supervisor-owned target checkout.",
+      "when": "Normal integration runs, or recovery encounters the collision after a previously completed ref CAS.",
+      "then": "Normal integration refuses before changing the ref. Recovery preserves the local bytes and integrated ref, retains its intent/reservations and withholds artifacts until the collision is explicitly resolved. Safe tracked-only directory replacements remain permitted.",
+      "invariant": "Git acceptance and recovery never authorize destruction of unrelated local data.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D09-BUILD-010",
+      "decisions": [
+        "D09"
+      ],
+      "given": "An integration intent exists but the target ref now names neither its expected base nor its exact candidate.",
+      "when": "Recovery runs, including a case where the intended candidate is merely an ancestor of the observed target.",
+      "then": "The attempt remains unresolved with its target reservation for operator investigation. Recovery does not infer this operation succeeded from ancestry, set MERGED, or expose CAS handoff.",
+      "invariant": "Observed ancestry is not an authenticated completion record for a specific integration.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D09-BUILD-011",
+      "decisions": [
+        "D09"
+      ],
+      "given": "A passing receipt binds an exact candidate artifact manifest.",
+      "when": "CAS bytes are corrupted, an object is missing, an old-epoch artifact is substituted, or the manifest changes after verification; repeat before and after ref integration.",
+      "then": "No downstream artifact is accepted or mounted. Before integration the ref is unchanged; after integration recovery retains the unresolved intent. Any repair reconstructs only the identical committed blob and records that repair, without accepting a different artifact.",
+      "invariant": "Accepted handoff binds exact candidate bytes, source epoch and receipt, not a mutable ticket label.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D09-BUILD-012",
+      "decisions": [
+        "D09"
+      ],
+      "given": "A passing receipt exists but its verifier key or allowed policy trust generation is revoked before acceptance finalization.",
+      "when": "The board attempts normal integration or recovery of a ref already advanced to the candidate.",
+      "then": "The old receipt cannot authorize acceptance. Pre-integration work stops; an integrated candidate remains unresolved without rollback or handoff until a separately authorized fresh proof/recovery decision satisfies current trust policy.",
+      "invariant": "Trust changes cannot be bypassed by replaying a formerly valid receipt.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D09-BUILD-013",
+      "decisions": [
+        "D09"
+      ],
+      "given": "All required checks and independent review pass for the exact current attempt, candidate, base and manifests.",
+      "when": "The sole board integrator completes CAS and checkout, commits SQLite finalization, and loses its reply before the caller retries.",
+      "then": "The retry returns the existing MERGED result without another Git update. Exactly that manifest is accepted, eligible dependents become READY atomically, and the downstream claim pins and rehashes its read-only parent inputs.",
+      "invariant": "One real integration produces one atomic artifact-acceptance/dependency transition; repeated delivery remains idempotent.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D09-BUILD-014",
+      "decisions": [
+        "D09"
+      ],
+      "given": "A genuine legacy board contains active leases, data-only gate results and interrupted integrations.",
+      "when": "The reviewed storage migration is interrupted and retried, then a fresh batch adopts the external-application profile.",
+      "then": "Migration is atomic and preserves legacy identities, locks and audit history. Old passed booleans never become external receipts; retired boards remain truthful. Only newly provisioned immutable profile/key bindings enable new external requests.",
+      "invariant": "Compatibility migration cannot manufacture acceptance authority or rewrite historical lifecycle outcomes.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D06-CLOCK-01",
+      "decisions": [
+        "D06"
+      ],
+      "given": "V1 world_time10, headH, no authorized advance proposal.",
+      "when": "Advance a fake host clock30 days, poll, reconnect and expire an appointment.",
+      "then": "World time, actor ages, time balances, RNG counter and ledger head remain unchanged.",
+      "invariant": "Wall-clock scheduling is not canonical authority.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D06-CLOCK-02",
+      "decisions": [
+        "D06"
+      ],
+      "given": "V1 world_time10; a player and a system principal each prepare to_time11.",
+      "when": "Submit the player proposal, then a current-checkpoint system proposal.",
+      "then": "Player action appends nothing; system advance sets world_time11 only, without automatic lifespan debit or aging.",
+      "invariant": "Only explicit authorized advance_time changes the current v1 clock.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D06-CONFLICT-01",
+      "decisions": [
+        "D06"
+      ],
+      "given": "A solo and a raid proposal share full scope, headH, sequenceS, world_time10 and target the same item.",
+      "when": "A deterministic barrier lets the raid commit first, then releases solo.",
+      "then": "Solo returns CONFLICT; exactly one new event exists, with no queue, fork or silent rebase. Reverse the barrier in a separate fixture to reverse the permitted winner.",
+      "invariant": "Determinism binds accepted ordering; arbitrary network-race winners are not promised.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D06-RETRY-01",
+      "decisions": [
+        "D06"
+      ],
+      "given": "A proposal committed, but its response was lost.",
+      "when": "Retry the exact proposal bytes and original authenticated principal; separately retry its ID with changed content.",
+      "then": "Exact retry returns the original outcome and adds no event; changed-content retry conflicts.",
+      "invariant": "Stable proposal identity reconciles uncertain submission without duplicate effects.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D06-CANCEL-01",
+      "decisions": [
+        "D06"
+      ],
+      "given": "One request is cancelled before append; a second loses its response after durable append.",
+      "when": "Cancel and reconcile each request using its original proposal identity.",
+      "then": "The pre-append case has zero effects; the post-append case resolves to its one committed result. Do not assert that cancellation undoes committed effects.",
+      "invariant": "Transport cancellation is not a rollback acknowledgement.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D06-PARTY-01",
+      "decisions": [
+        "D06"
+      ],
+      "given": "ActorA privately acquired claimR at tick10/sequence5; A and B are members of the same genesis party.",
+      "when": "Query B and the party view without an explicit party disclosure.",
+      "then": "R is absent; no union of members private claim sets is returned.",
+      "invariant": "Party membership alone never shares private acquisition.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D06-ACQUISITION-01",
+      "decisions": [
+        "D06"
+      ],
+      "given": "A permitted source occurrence at tick5 is newly observed at tick12/sequence8 by actorA and explicitly disclosed to the fixture party.",
+      "when": "Query at time11/sequence8, time12/sequence7, and time12/sequence8.",
+      "then": "Only the final authorized query includes the new record; acquired_at is12, never5.",
+      "invariant": "Occurrence time cannot backdate acquisition, and both prefix/time cutoffs apply.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D06-DELIVERY-01",
+      "decisions": [
+        "D06"
+      ],
+      "given": "Proposed deliveryD binds full scope, recipientA and payload digestP; narration was generated but no recipient acknowledgement exists.",
+      "when": "Simulate send failure, then an acknowledgement for a different payload or recipient.",
+      "then": "No acquisition commit is accepted. A matching acknowledgement may request one separately authorized observation at its eventual commit time.",
+      "invariant": "Generated prose, attempted delivery and mismatched acknowledgements do not create knowledge.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D06-DELIVERY-02",
+      "decisions": [
+        "D06"
+      ],
+      "given": "A matching acknowledgement for deliveryD was accepted and its observation committed; a duplicate acknowledgement arrives after reconnect.",
+      "when": "Process the duplicate with the stable observation proposal/claim identity.",
+      "then": "Return the original committed identity with one claim/event total; do not create a later duplicate acquisition.",
+      "invariant": "Delivery retries are idempotent across the transport-to-observation boundary.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D06-CUTOFF-01",
+      "decisions": [
+        "D06"
+      ],
+      "given": "A queued narrative payload was prepared before an anomaly cutoff, but release occurs after the cutoff commits.",
+      "when": "Reauthorize at the recipient release boundary; also request a historical view.",
+      "then": "Forbidden exposition is suppressed for release and historical presentation. If a prior release is uncertain, record uncertainty instead of claiming the information was erased.",
+      "invariant": "Current presentation policy cannot be bypassed by stale payloads or historical time.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D06-RUMOR-01",
+      "decisions": [
+        "D06"
+      ],
+      "given": "Proposed authority-only assessment: bridge passable at20, destroyed at30; old report acquired byA at40.",
+      "when": "Assess the report at20 and40 and request A views before and after40.",
+      "then": "Authority may mark the report outdated at40 without equating it to originally false; acquisition remains40 and assessment metadata is absent from narrator text/ranking.",
+      "invariant": "Canonical truth, temporal assessment, provenance and actor acquisition are different records.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D06-POLICY-01",
+      "decisions": [
+        "D06"
+      ],
+      "given": "V1 fixture requests queue or transparent_fork checkpoint policy, or a checkpoint with expires_at equal to world_time.",
+      "when": "Pass the checkpoint to proposal coordination/subscriber validation.",
+      "then": "Unsupported modes and expiry are refused before planner execution; no canonical events or RNG draws occur.",
+      "invariant": "Reserved modes and expired checkpoints cannot imply supported scheduling.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D10-BOUNDS-01",
+      "decisions": [
+        "D10"
+      ],
+      "given": "Proposed hd-tick-fixture/1 declares2 entities,1 project per entity,2 ticks per invocation,2 candidates per tick and4 effects per tick.",
+      "when": "Exercise each bound atM-1,M,M+1 and integer overflow using synthetic configuration/action records.",
+      "then": "Within-bound cases have explicit oracles; oversized/overflow cases reject without partial state, RNG or cursor updates, not by silently omitting entities.",
+      "invariant": "Finite work budgets are validated inputs, not measured production capacity.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D10-BATCH-01",
+      "decisions": [
+        "D10"
+      ],
+      "given": "Proposed pure finite planner at world100, authorized target104, fixed policy/genesis/input proposals and stable slot identities.",
+      "when": "Process2+2 ticks versus1+1+1+1; permute input entity-map insertion order.",
+      "then": "Final state, cursor104 and per-slot commitments match after canonical entity ordering; whole event hashes are compared only when envelope identities/order/key are also identical.",
+      "invariant": "Invocation batching and map iteration do not alter deterministic rule effects.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D10-ATOMIC-01",
+      "decisions": [
+        "D10"
+      ],
+      "given": "A proposed tick contains one valid resource effect and one unauthorized gift/consent or out-of-jurisdiction Fate effect.",
+      "when": "Validate the complete tick under the authority writer boundary.",
+      "then": "Reject all effects; world clock, durable cursor, resources, head and RNG remain at the prior checkpoint.",
+      "invariant": "Planner output cannot partially commit or manufacture authority/consent.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D10-CASCADE-01",
+      "decisions": [
+        "D10"
+      ],
+      "given": "Pure fixture entityA has resource1 and project progress3/4 at100; one follow-up can be created.",
+      "when": "Process tick101.",
+      "then": "Exactly one resource is spent and one project completes; resource0 remains; the follow-up cannot execute before102 and cannot invent replenishment.",
+      "invariant": "Completion cascades are bounded; initial stock equals remaining plus recorded spend.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D10-RECOVERY-01",
+      "decisions": [
+        "D10"
+      ],
+      "given": "A proposed logical tick committed but the projector/scheduler response or cache write was interrupted.",
+      "when": "Restart from durable accepted events and reconcile the original tick/proposal identity.",
+      "then": "Apply committed effects once; rebuild cursor from those effects; never expose a cursor beyond the common committed prefix.",
+      "invariant": "Durable cursor and effect acceptance recover together without duplicate ticks.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D10-RNG-01",
+      "decisions": [
+        "D10"
+      ],
+      "given": "V1 fixture has private seed and rng_counterK; an invalid proposal and narrator invocation precede an accepted draw.",
+      "when": "Reject the invalid proposal, generate mock prose, then submit one valid system draw and replay.",
+      "then": "Rejection/prose do not incrementK; the accepted draw increments once and replay verifies value/nonce/commitment. Public outcomes omit seed and hidden value.",
+      "invariant": "Current v1 RNG semantics remain unchanged and authority-private.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D10-SLOTS-01",
+      "decisions": [
+        "D10"
+      ],
+      "given": "Proposed migrated slot identity binds scope, ruleset/policy, tick, entity, project, slot and distribution/bound parameters with a private test seed.",
+      "when": "Change HTTP retry IDs, batching and arrival timing while retaining identical accepted inputs; then change a true slot input.",
+      "then": "Incidental changes preserve slot commitments; the changed true input belongs to a different slot. This is a proposed migration oracle, not a v1 claim.",
+      "invariant": "Retry IDs must not become random-outcome fishing inputs.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D10-PLANNER-01",
+      "decisions": [
+        "D10"
+      ],
+      "given": "A stochastic planner emitted different proposalsP andQ for the same initial view; accepted execution recorded exactP bytes and input/policy digests.",
+      "when": "Replay the accepted trace with the planner unavailable or returningQ.",
+      "then": "Replay consumes recordedP and yields the same accepted state; it does not invoke the model or assertP equalsQ. Q needs a separate current authorization decision.",
+      "invariant": "Deterministic replay concerns captured accepted inputs, not reproducible LLM generation.",
+      "verification_status": "not_executed"
+    },
+    {
+      "id": "D06-D10-BACKLOG-01",
+      "decisions": [
+        "D06",
+        "D10"
+      ],
+      "given": "Proposed target104 is explicitly authorized from100, with a per-invocation budget of2 ticks.",
+      "when": "Run one invocation, then pause host time for30 days and reconnect without renewed processing.",
+      "then": "At most102 is processed; remaining backlog is explicit. Host elapsed time adds no further target, effects or lifespan debit.",
+      "invariant": "Authorization bounds the target and work budgets bound each invocation.",
+      "verification_status": "not_executed"
+    }
+  ]
+}

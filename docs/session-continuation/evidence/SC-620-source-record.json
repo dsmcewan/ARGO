@@ -1,0 +1,23 @@
+{
+  "ticket_id": "SC-620",
+  "source_commit": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+  "base_commit": "3a2fab7ab5a50dc7cd4f9eaa8732f027a1ce733d",
+  "board_status": "FAILED",
+  "attempt": 1,
+  "source_submitted": false,
+  "source_refusal": "Candidate changes pinned gate policy",
+  "operationally_retired": true,
+  "artifacts": {
+    "TESTS/shared-world-conversation.test.ts": "0b3808770fe066fefc68ea73e94db95b898f7b3936102d67438520ede810ab95",
+    "TESTS/shared-world-turn-store.test.ts": "e726cb26a90e0c5638dad1ac1519e40631fcd2e536ccc6e72680733ea6cc7884",
+    "packages/session/package.json": "23d621e04345400aca781aee4448548f6e9a3f3726d67006b5a6e191eeb113a0",
+    "packages/session/src/conversation-guards.ts": "e276e14a1bf9af48079673f5a2b163b9751a0b857036eedf4c5311ebe293407d",
+    "packages/session/src/conversation-store-worker.ts": "0885ac35c25cd0426a63b88fe22b696d1187edf9571a2d45390a2e29370a2bf1",
+    "packages/session/src/conversation-store.ts": "9fe225478aa8847ed0cc6aa118850909007c60f96f1c198fc5e7e97b120269ef",
+    "packages/session/src/conversation-types.ts": "7007528fe9f72e3d4ee3d8091512b2065f1203bc52ecafd393dbdde78ddfaf38",
+    "packages/session/src/conversation.ts": "1376bb3bee4a4d08919270d3b8092e22290b7a7eb75e56b7f3133b2d18481ba2",
+    "packages/session/src/index.ts": "7fa0a76a1310cfbee097364e7476bbdff756de18e347f80483ccb9d29578120c"
+  },
+  "application_acceptance": "Recorded separately; data-only Board gate not run, no controller trust promotion",
+  "paid_calls": 0
+}

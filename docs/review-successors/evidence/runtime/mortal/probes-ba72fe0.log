@@ -1,0 +1,18 @@
+✔ remote hazard changes global time/RNG without advancing encounter clocks, defense or turn token (197.87141ms)
+✔ all ordinary remote dependency paths preserve the paused encounter and roster resources (539.74084ms)
+✔ escaped roster and site bystanders remain locked; scoped views explain only their own lock (239.145384ms)
+✔ a dead roster owner and their possessions stay protected until encounter closure (227.730814ms)
+✔ referee identity and waiting-turn token cannot be replaced by a fresh cursor or timeout label (172.47105ms)
+✔ immediate administrative close pays exactly one round and simultaneous missing needs (50.193281ms)
+✔ retreat pays its original round once; a later close charges only the next pending roster (195.828608ms)
+✔ two SQLite handles reconcile exact recovery once and preserve the result across restart (7374.841847ms)
+✔ a normal-turn/recovery race has one winner and rejects the stale competing command (3706.529936ms)
+✔ v2/v3 database mixing is rejected without changing either committed database (8588.1087ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 23241.371624

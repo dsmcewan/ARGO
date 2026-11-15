@@ -1,0 +1,8 @@
+file:///workspace/ARGO/.board/shared-world-host/worktrees/SW-510-1-3f6965d414/scripts/check-boundaries.mjs:16
+   if(owner){const dependency=packages.get(owner).name;if(!Object.hasOwn(manifest.dependencies??{},dependency))throw Error(`${file}: undeclared workspace dependency ${dependency}`);continue;}
+                                                                                                                     ^
+
+Error: /workspace/ARGO/.board/shared-world-host/worktrees/SW-510-1-3f6965d414/scenarios/tempted-fates/shared-world/cli.ts: undeclared workspace dependency @argo/session
+    at file:///workspace/ARGO/.board/shared-world-host/worktrees/SW-510-1-3f6965d414/scripts/check-boundaries.mjs:16:118
+
+Node.js v24.22.1

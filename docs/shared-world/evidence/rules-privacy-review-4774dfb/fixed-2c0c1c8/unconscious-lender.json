@@ -1,0 +1,10 @@
+{
+  "lender_hp_before": 0,
+  "direct_return_refused": true,
+  "standing_control_accepted": true,
+  "ordinary_return_accepted": false,
+  "error": {
+    "code": "UNAUTHORIZED",
+    "message": "World action requires a standing actor"
+  }
+}

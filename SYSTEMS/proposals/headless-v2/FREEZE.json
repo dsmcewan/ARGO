@@ -1,0 +1,11 @@
+{
+  "profile": "projection/2.0.0",
+  "schema_id": "https://argo.local/schemas/projection-v2.json",
+  "status": "frozen_local_contract",
+  "files": {
+    "SYSTEMS/proposals/headless-v2/projection-v2.schema.json": "a9322a33f03f62b2c2fc656f3bb6cef0b771901bc09cb9f262c96f8cbbf2badb",
+    "SYSTEMS/proposals/headless-v2/CONTRACT.md": "6d443a5d3a8c8d7999e94cec2c145f5998fd64c7a38b9981d0763efe5c58fa5d"
+  },
+  "v1_compatibility": "Additive opt-in projection/read profile; frozen v1 bytes and signed histories unchanged.",
+  "scope": "Local contracts and pure reference selectors; trusted host inputs required. No persistent store, source authentication, live provider or production assurance."
+}

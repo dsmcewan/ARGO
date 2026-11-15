@@ -1,0 +1,67 @@
+{
+  "wilson_50_of_100": {
+    "low": 0.4038315303659956,
+    "high": 0.5961684696340044
+  },
+  "paired_four_observations": {
+    "count": 4,
+    "counts": {
+      "improved": 1,
+      "worsened": 1,
+      "both": 1,
+      "neither": 1
+    },
+    "mean": 0,
+    "interval": {
+      "low": -0.8001519460592184,
+      "high": 0.8001519460592184
+    },
+    "method": "paired asymptotic normal; seed is the sampling unit"
+  },
+  "zero_discordances": {
+    "count": 500,
+    "counts": {
+      "improved": 0,
+      "worsened": 0,
+      "both": 500,
+      "neither": 0
+    },
+    "mean": 0,
+    "interval": {
+      "low": 0,
+      "high": 0
+    },
+    "method": "paired asymptotic normal; seed is the sampling unit"
+  },
+  "all_improvements": {
+    "count": 500,
+    "counts": {
+      "improved": 500,
+      "worsened": 0,
+      "both": 0,
+      "neither": 0
+    },
+    "mean": 1,
+    "interval": {
+      "low": 1,
+      "high": 1
+    },
+    "method": "paired asymptotic normal; seed is the sampling unit"
+  },
+  "probability_zero_improvements_if_true_p_001": 0.6063789448611847,
+  "synthetic_target_with_50_unresolved_paired_trials": {
+    "status": "match",
+    "danger": {
+      "low": 0.3521228457764473,
+      "high": 0.44986671801438366
+    },
+    "escape": {
+      "low": 0.8658358237653206,
+      "high": 0.9262059210713559
+    },
+    "delta": {
+      "low": 0.3508441461691201,
+      "high": 0.44915585383087997
+    }
+  }
+}

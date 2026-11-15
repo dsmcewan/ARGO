@@ -1,0 +1,245 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "41f2cb8568b53fac984e1114d7342eef540bb6d5",
+  "scope": "Actual data-ticket acceptance into isolated argo/headless-design integration branch. Final main acceptance is separately enforced by the trusted application controller and GitHub Actions, not asserted by these data gates.",
+  "tickets": [
+    {
+      "ticket": "HD-001",
+      "status": "MERGED",
+      "candidate": "46c737276c8113b64ca89ed85ba71e42f764c8f7",
+      "merged_commit": "46c737276c8113b64ca89ed85ba71e42f764c8f7",
+      "target_worktree": "/workspace/ARGO/.worktrees/headless-design",
+      "board_dir": "/workspace/ARGO/.board/headless-design",
+      "gate": {
+        "at_us": 1794592905055319,
+        "candidate": "46c737276c8113b64ca89ed85ba71e42f764c8f7",
+        "completed": true,
+        "exit_code": 0,
+        "output_sha256": "dca21897803875fdc1b824df2a7ad24d1a16afcf0c8035604d7059aabd5b4c0d",
+        "passed": true,
+        "policy_sha256": "d0f512c4ce81884d4273fd0d4097a3be9e61f3dbfc184efc2f42a0ba52311735"
+      },
+      "accepted_artifacts": [
+        {
+          "logical_path": "SYSTEM_ROADMAP.md",
+          "sha256": "21a9f9338c00048c3741d04709d395a412e1b6fef74a4c902dce6f4eed377029",
+          "accepted": 1
+        },
+        {
+          "logical_path": "docs/design/headless-2026-11-13/HD-002.md",
+          "sha256": "5b5eb377c3ed9489d74d4e6a8d34e8c6113fcbb1b87ee4388930d58bd015c2dd",
+          "accepted": 1
+        },
+        {
+          "logical_path": "docs/design/headless-2026-11-13/README.md",
+          "sha256": "e18a3fa3397d541eca20d10af06687da3e690715e6db4ace41c6e9d9322b1ccd",
+          "accepted": 1
+        },
+        {
+          "logical_path": "docs/design/headless-2026-11-13/authority-history.md",
+          "sha256": "7ac5c16f0e9af3b7cead611460814b648926c653c32c6eefaf0b441f5228671a",
+          "accepted": 1
+        },
+        {
+          "logical_path": "docs/design/headless-2026-11-13/build-gate-protocol.md",
+          "sha256": "fc10660b782652a6a377cb7bcff2df62a9fa9e525312919146031902fe5e09d3",
+          "accepted": 1
+        },
+        {
+          "logical_path": "docs/design/headless-2026-11-13/cases.json",
+          "sha256": "3965a4ef955b5f772219f2cbf3f16adbb50b7c7b956f77e71480cdf0e1f0c5b8",
+          "accepted": 1
+        },
+        {
+          "logical_path": "docs/design/headless-2026-11-13/evidence/knave-1e/ATTRIBUTION.md",
+          "sha256": "162f9c5990bc30008e79aa46e8073c7af86c7a7a9bcfefc5f1592fc8ff77d6df",
+          "accepted": 1
+        },
+        {
+          "logical_path": "docs/design/headless-2026-11-13/evidence/knave-1e/CC-BY-4.0.txt",
+          "sha256": "9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411",
+          "accepted": 1
+        },
+        {
+          "logical_path": "docs/design/headless-2026-11-13/evidence/knave-1e/SOURCE-GRANTS.md",
+          "sha256": "c12f2b2b48ef3cf8d24086989e4f6c137f30ce886251ab7a935b097f150bd069",
+          "accepted": 1
+        },
+        {
+          "logical_path": "docs/design/headless-2026-11-13/evidence/knave-1e/knave-1e.pdf",
+          "sha256": "fc2ff96175f6b60ddbbf02b6139a5da569752155948371613e201d21cf92bc78",
+          "accepted": 1
+        },
+        {
+          "logical_path": "docs/design/headless-2026-11-13/evidence/knave-1e/manifest.json",
+          "sha256": "9db3cc1ca203cca8202025bd43859713012b85b7550ce863c59c9b963543c4c5",
+          "accepted": 1
+        },
+        {
+          "logical_path": "docs/design/headless-2026-11-13/evidence/knave-1e/rules-sample-cases.json",
+          "sha256": "627ce523d37fe3631519959f423f5e6d4df0ec8f070a1622d53edfde725547a9",
+          "accepted": 1
+        },
+        {
+          "logical_path": "docs/design/headless-2026-11-13/evidence/source-refresh/LEXI-current-commit.json",
+          "sha256": "b4e55e8272ae8e6e460734985a09d9941c4d1fb8d1b586a84c06e04375e8685a",
+          "accepted": 1
+        },
+        {
+          "logical_path": "docs/design/headless-2026-11-13/evidence/source-refresh/LEXI-current-ref.json",
+          "sha256": "36afc0f3b51c6b84b8916a1a3d7055fd6054cde6c75a5725b8878d5234d6945b",
+          "accepted": 1
+        },
+        {
+          "logical_path": "docs/design/headless-2026-11-13/evidence/source-refresh/LEXI-retained-reference-resolved.json",
+          "sha256": "4d60cdf62918cdb47c9c81cc83d5239ef6af920504c1f6e54be078cfa795615a",
+          "accepted": 1
+        },
+        {
+          "logical_path": "docs/design/headless-2026-11-13/evidence/source-refresh/LEXI-tree-delta.json",
+          "sha256": "6f04451488628029b96d38b37c5c395676c89c9e6ea3b576d6fcb18d64b7b9a7",
+          "accepted": 1
+        },
+        {
+          "logical_path": "docs/design/headless-2026-11-13/evidence/source-refresh/TELOS-current-commit.json",
+          "sha256": "35e13871a38a4ff5615e1a58670b3f8d6f714d29dc4447e08db4f06175982091",
+          "accepted": 1
+        },
+        {
+          "logical_path": "docs/design/headless-2026-11-13/evidence/source-refresh/TELOS-current-ref.json",
+          "sha256": "8be160f136b1970d289c6507f7ef3a2805b2c12aa676ae6663e11987689a341b",
+          "accepted": 1
+        },
+        {
+          "logical_path": "docs/design/headless-2026-11-13/evidence/source-refresh/TELOS-retained-reference-resolved.json",
+          "sha256": "2dcba7ef721a63c694e88cedda69ca239da4a6ad285bb72c37ca58455ce68b34",
+          "accepted": 1
+        },
+        {
+          "logical_path": "docs/design/headless-2026-11-13/evidence/source-refresh/TELOS-tree-delta.json",
+          "sha256": "6f04451488628029b96d38b37c5c395676c89c9e6ea3b576d6fcb18d64b7b9a7",
+          "accepted": 1
+        },
+        {
+          "logical_path": "docs/design/headless-2026-11-13/evidence/source-refresh/claude-config-current-commit.json",
+          "sha256": "e137bb8dbf6d3b8183ecd8782e8b76b6c07e6b4817a48df897fcbb27f78bb868",
+          "accepted": 1
+        },
+        {
+          "logical_path": "docs/design/headless-2026-11-13/evidence/source-refresh/claude-config-current-ref.json",
+          "sha256": "c39524f95c3df4018fb0aef10ad92519784fa32b806f3adecd2aa67ad3519946",
+          "accepted": 1
+        },
+        {
+          "logical_path": "docs/design/headless-2026-11-13/evidence/source-refresh/claude-config-retained-reference-resolved.json",
+          "sha256": "a59d72a28cbdd3495c044072b6247736af628ac39c8a88b512386731b6c4e3e6",
+          "accepted": 1
+        },
+        {
+          "logical_path": "docs/design/headless-2026-11-13/evidence/source-refresh/claude-config-tree-delta.json",
+          "sha256": "6f04451488628029b96d38b37c5c395676c89c9e6ea3b576d6fcb18d64b7b9a7",
+          "accepted": 1
+        },
+        {
+          "logical_path": "docs/design/headless-2026-11-13/mechanics-fixtures.md",
+          "sha256": "8d0609d0a5a0ecf4d298fa605530d250f38c3842d5a8b2e5005f92c2766b318d",
+          "accepted": 1
+        },
+        {
+          "logical_path": "docs/design/headless-2026-11-13/packet.json",
+          "sha256": "cbad7ae419ad63a850633df321127590f65611e7df0cd79c3a476b1bcc06e44e",
+          "accepted": 1
+        },
+        {
+          "logical_path": "docs/design/headless-2026-11-13/roadmap-seed.json",
+          "sha256": "5d5548e6afc3ed9c2d0ebb5862259d630a2349de4a34e663ff4f970a655777cd",
+          "accepted": 1
+        },
+        {
+          "logical_path": "docs/design/headless-2026-11-13/source-delta.md",
+          "sha256": "79182ad5b63dbd8d13d300de69b7834f267889d1246b5ccc7b06e4c6b178e5ff",
+          "accepted": 1
+        },
+        {
+          "logical_path": "docs/design/headless-2026-11-13/source-evidence.json",
+          "sha256": "db3a625100a60f7dedb71d3cb70d2c5433e1bf3f23c1d284f31439451f714836",
+          "accepted": 1
+        },
+        {
+          "logical_path": "docs/design/headless-2026-11-13/temporal-storage.md",
+          "sha256": "d176b424297a7c4229442160be20a8ede6cd11f6e3df4caf2e675336122b34bb",
+          "accepted": 1
+        }
+      ],
+      "audit_valid": true,
+      "audit_head": {
+        "seq": 40,
+        "hash": "36423f9273b9f08d404027c3db98bf1905056446e990f8a859d2920c28afe1c5"
+      }
+    },
+    {
+      "ticket": "HD-002",
+      "status": "MERGED",
+      "candidate": "d647849238850efad146d2039fc5f1232663582f",
+      "merged_commit": "d647849238850efad146d2039fc5f1232663582f",
+      "target_worktree": "/workspace/ARGO/.worktrees/headless-design",
+      "board_dir": "/workspace/ARGO/.board/headless-roadmap",
+      "gate": {
+        "at_us": 1794592951697506,
+        "candidate": "d647849238850efad146d2039fc5f1232663582f",
+        "completed": true,
+        "exit_code": 0,
+        "output_sha256": "c14d6ecbe46bafae0dcbb96eee0c8e5cfc7c25f1f4d5a3887e2e145fbbbc9317",
+        "passed": true,
+        "policy_sha256": "050d864b6452e4b9ed8049f780b236038e84dee5f2474d8f52d20b614f8b8a16"
+      },
+      "accepted_artifacts": [
+        {
+          "logical_path": "docs/roadmap/system.json",
+          "sha256": "e2a82cbd4bb392cb4d68a49d81669cf55ab497906af9eb17092f188f5ff4cb4d",
+          "accepted": 1
+        }
+      ],
+      "audit_valid": true,
+      "audit_head": {
+        "seq": 11,
+        "hash": "6afec747ae4260e12cf116cff6fbf068d6e2fb12c83a8944cf7014ed91c01000"
+      }
+    }
+  ],
+  "sequential_precondition": "HD-002 initialized only after the supervisor read HD-001 MERGED; seeds remain immutable and use distinct local batches.",
+  "paid_vendor_calls": false,
+  "runtime_or_frozen_changes": false,
+  "design_cases": {
+    "count": 111,
+    "status": "declarative_not_executed"
+  },
+  "rules_samples": {
+    "count": 3,
+    "status": "declarative_not_executed"
+  },
+  "independent_reviews": [
+    {
+      "peer": "research_r5",
+      "candidate": "46c737276c8113b64ca89ed85ba71e42f764c8f7",
+      "scope": "Complete design/evidence packet, cases and proposed HD-002 narrow data update",
+      "result": "approved_as_proposed_design",
+      "limits": "Does not adopt production choices, freeze schemas or certify unexecuted runtime cases."
+    },
+    {
+      "peer": "research_r3",
+      "candidate": "46c737276c8113b64ca89ed85ba71e42f764c8f7",
+      "scope": "Source identity/availability, Knave license/rule evidence, references and proposal labeling",
+      "result": "approved"
+    }
+  ],
+  "additional_checks": [
+    "Independently reconstructed 491 Git tree objects from retained catalogs to three resolved current root trees.",
+    "Reverified 9 selected upstream source files against Git blob and retained SHA-256 identities.",
+    "Reverified 26 local baseline source hashes and 5 retained rules/license/analysis bundle hashes.",
+    "Local Markdown links resolve after adding this acceptance metadata.",
+    "Original audit evidence and all runtime/frozen files unchanged.",
+    "HD-002 complete decisions/work-item arrays match their pinned baseline hash."
+  ],
+  "acceptance_metadata_note": "This verification file and BOARD.md are supervisor-generated records after ticket acceptance. They are not artifacts included in their own receipts; the final exact candidate includes them for the separately trusted controller."
+}

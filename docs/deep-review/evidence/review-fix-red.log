@@ -1,0 +1,48 @@
+✔ unchanged reads and retries do not reverify already accepted signatures (132.019692ms)
+✔ another writer is verified once and matches cold replay without exposing cached objects (64.962564ms)
+✔ same-size edits with restored mtime cannot hide behind a warm prefix (36.653762ms)
+✔ an observed prefix cannot roll back within the same open handle (53.308569ms)
+✖ a successful append is protected before any subsequent read warms the cache (42.792319ms)
+✖ a durable append stays protected when its derived snapshot write fails (24.195432ms)
+✔ a failed multi-event suffix cannot partially publish the verification cache (73.430748ms)
+✔ genesis and journal existence remain checked even when history is cached (23.993159ms)
+✔ snapshot files remain disposable and a post-append snapshot failure is retryable (34.549424ms)
+✔ blank or partial suffix records fail instead of becoming a trusted prefix (36.27049ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 8
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1930.374422
+
+✖ failing tests:
+
+test at TESTS/ledger-cache.test.ts:65:1
+✖ a successful append is protected before any subsequent read warms the cache (42.792319ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/deep-review/worktrees/DR-100-1-98bae495fd/TESTS/ledger-cache.test.ts:70:2)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /prefix|corrupt/i,
+    operator: 'rejects',
+    diff: 'simple'
+  }
+
+test at TESTS/ledger-cache.test.ts:74:1
+✖ a durable append stays protected when its derived snapshot write fails (24.195432ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/deep-review/worktrees/DR-100-1-98bae495fd/TESTS/ledger-cache.test.ts:79:2)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /prefix|corrupt/i,
+    operator: 'rejects',
+    diff: 'simple'
+  }

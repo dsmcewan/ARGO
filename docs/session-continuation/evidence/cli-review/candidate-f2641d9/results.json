@@ -1,0 +1,32 @@
+{
+  "candidate": "f2641d92f5f07bc69b672ee6f6c3a189ee5f46cc",
+  "ordinary_process": true,
+  "paid_calls": 0,
+  "checks": [
+    {
+      "id": "C01",
+      "name": "ordinary exclusive creation/open and private canonical path",
+      "status": "pass",
+      "elapsed_ms": 50912.034477,
+      "details": {
+        "exclusive_create": true,
+        "missing_open_did_not_create": true,
+        "canonical_path": "WORLD/turns.sqlite",
+        "private_files": 5
+      }
+    },
+    {
+      "id": "C02",
+      "name": "complete fixture binding and private path refusal preserve logical stores",
+      "status": "pass",
+      "elapsed_ms": 81990.99186100002,
+      "details": {
+        "refusal_cases": 16,
+        "canonical_format_only_reopen": true,
+        "logical_stores_unchanged": true
+      }
+    }
+  ],
+  "passed": 2,
+  "failed": 0
+}

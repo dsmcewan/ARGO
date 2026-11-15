@@ -1,0 +1,38 @@
+{
+  "candidate": "31e8c428472a0130fc75e46ce156dd5bddc0c534",
+  "scope": "Shared-world fresh campaign seed only",
+  "verdict": "READY",
+  "clean_before_and_after": true,
+  "named_tests": {
+    "seed_passed": 12,
+    "contract_passed": 25,
+    "failed": 0
+  },
+  "independent_checks": {
+    "passed": 11,
+    "failed": 0,
+    "initialization_combinations": 24
+  },
+  "paid_calls": 0,
+  "repository_edits": false,
+  "source_sha256": {
+    "scenarios/tempted-fates/shared-world/seed.ts": "2f20b41b2079f09c77c70b61a3b0a1a013bbbe73f41bf7e60c7bbc5287a8ce6d",
+    "scenarios/tempted-fates/shared-world/SEED.md": "d146faa9744e969e5ef728562a2d9bf9978cfe172bce2299dc8035afdfa81acf",
+    "TESTS/shared-world-campaign.test.ts": "48c162c48717c865adfd7f70a427ad020634abebfbe5d2923608eb5c9cb7c561",
+    "scenarios/tempted-fates/runtime.ts": "ca99cb79519961ef13caa1eedfc51f511c4b8e72a0318c53878d8571c537e888",
+    "scenarios/tempted-fates/runtime-v3.ts": "48c8c0966b1bd250c6901ff50a3f2f33ca3466fc1f71ff107bb6a4838be25730",
+    "SYSTEMS/shared-world-v1/FREEZE.json": "e6d12b9aae970406a8f0fa93ad879cb07d6c93e7be8a64f0adbc42b8af4a1ef7",
+    "SYSTEMS/shared-world-v1/CONTRACT.md": "a7d3043105752495de744c21da30a90982e4a68cdddd06344ffe058a04d19606",
+    "scenarios/tempted-fates/campaign/world.json": "0cd93546979225b2566be756558bf9d3dc0c060cdeffe2dbc3c08fa7568ba363",
+    "scenarios/tempted-fates/campaign/knowledge/catalog.json": "1144325430fd2e214c95d20a74b2bfd3b5e8a09a21531fc819c94458ab02977f",
+    "scenarios/tempted-fates/campaign/knowledge/sources.json": "ca15ebcbe3d0bbaf2ee721df26f22b50abdcff93dc632c95c1af72d5b40fac97",
+    "scenarios/tempted-fates/campaign/knowledge/identity.json": "70a85f31bd4ea145c57527b962b12380df2cf0a04b74884a77fdbaec4b0c2445"
+  },
+  "artifacts_sha256": {
+    "REVIEW.md": "fcd0f608a2c453b878adc40b70d9ebdb13f40140c3d3f56d4571f2dc6f1c44df",
+    "probes.log": "67cfd8a52102f719d85e0112a0738c68246abcf4a3384a853b83ab1dd104471c",
+    "tests.log": "856abe9bfa3d6ad4caa686bbefc41d698710c1623f615de5697d332131b9ad71",
+    "probes.mjs": "37f4f56a76db9e6349fa63ffff2276afb7635d1df3c2f8d93275c2ff6812ac46",
+    "probe-results.json": "67cfd8a52102f719d85e0112a0738c68246abcf4a3384a853b83ab1dd104471c"
+  }
+}

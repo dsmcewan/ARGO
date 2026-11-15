@@ -1,0 +1,611 @@
+{
+  "candidate": "639d31b1414c21fa7516dc9d363ad35bae148afd",
+  "scope": "Read-only documentation/provenance review; no runtime execution",
+  "head_at_check": "83bc6c154cd0879f481185eb159cded8fa1e507d",
+  "worktree_status_at_check": "",
+  "board_read_mode": "SQLite mode=ro; explicit metadata columns only; no lease token or identity secrets read",
+  "links": {
+    "documents": [
+      "README.md",
+      "STATUS_AND_ARCHITECTURE.md",
+      "SYSTEM_ROADMAP.md",
+      "docs/shared-world/README.md",
+      "docs/shared-world/NEXT.md",
+      "docs/shared-world/PLAN.md",
+      "docs/shared-world/evidence/README.md",
+      "docs/shared-world/evidence/contracts/README.md",
+      "scenarios/tempted-fates/shared-world/README.md",
+      "scenarios/tempted-fates/shared-world/SEED.md"
+    ],
+    "relative_link_count": 130,
+    "broken": [],
+    "limitation": "Checks committed target paths, not HTTP availability or fragment anchor rendering"
+  },
+  "submissions": [
+    {
+      "ticket": "SW-100",
+      "evidence": "docs/shared-world/evidence/contracts/freeze-acceptance.json",
+      "source": "15d49d3c1ca5615ecc195da8b99401071fd4bd55",
+      "source_is_ancestor": true,
+      "board": {
+        "id": "SW-100",
+        "status": "VERIFYING",
+        "attempt": 2,
+        "epoch": 2,
+        "base_commit": "5fc58af1dffe8a2a5c464366cc9836242026c80e",
+        "commit_sha": "15d49d3c1ca5615ecc195da8b99401071fd4bd55",
+        "merged_commit": null
+      },
+      "record_matches_board_commit": true,
+      "record_matches_board_status": true,
+      "artifacts": [
+        {
+          "path": "SYSTEMS/shared-world-v1/CONTRACT.md",
+          "expected_sha256": "a7d3043105752495de744c21da30a90982e4a68cdddd06344ffe058a04d19606",
+          "inside_ticket_ownership": true,
+          "source_matches": true,
+          "candidate_matches": true,
+          "board_artifact_matches": true,
+          "cas_matches": true
+        },
+        {
+          "path": "SYSTEMS/shared-world-v1/FREEZE.json",
+          "expected_sha256": "e6d12b9aae970406a8f0fa93ad879cb07d6c93e7be8a64f0adbc42b8af4a1ef7",
+          "inside_ticket_ownership": true,
+          "source_matches": true,
+          "candidate_matches": true,
+          "board_artifact_matches": true,
+          "cas_matches": true
+        },
+        {
+          "path": "SYSTEMS/shared-world-v1/world.schema.json",
+          "expected_sha256": "6918294342f48f8a3d4edf81b1be99b4b17d8294185d25b0f1965d1f1533b665",
+          "inside_ticket_ownership": true,
+          "source_matches": true,
+          "candidate_matches": true,
+          "board_artifact_matches": true,
+          "cas_matches": true
+        },
+        {
+          "path": "TESTS/shared-world-contract-fixtures.ts",
+          "expected_sha256": "62aad1bc18c22748d1a76c47f1cc451b7fabda6c59a506002e73505515e1750e",
+          "inside_ticket_ownership": true,
+          "source_matches": true,
+          "candidate_matches": true,
+          "board_artifact_matches": true,
+          "cas_matches": true
+        },
+        {
+          "path": "TESTS/shared-world-contracts.test.ts",
+          "expected_sha256": "ecc7982beb426a4dc9bd3d7b542c9a30aed1fdf4bccf3d0697123e0db62cc747",
+          "inside_ticket_ownership": true,
+          "source_matches": true,
+          "candidate_matches": true,
+          "board_artifact_matches": true,
+          "cas_matches": true
+        },
+        {
+          "path": "packages/contracts/src/shared-world-types.ts",
+          "expected_sha256": "f1cc8f944b0847f14df17b048eee9ad1f25f185790fa8e8612d97331b4b67351",
+          "inside_ticket_ownership": true,
+          "source_matches": true,
+          "candidate_matches": true,
+          "board_artifact_matches": true,
+          "cas_matches": true
+        },
+        {
+          "path": "packages/contracts/src/shared-world.ts",
+          "expected_sha256": "8edbb1eb833c0fb579d7bbd52b50b791d1cd43751cc690ee29e91995f56cc9c2",
+          "inside_ticket_ownership": true,
+          "source_matches": true,
+          "candidate_matches": true,
+          "board_artifact_matches": true,
+          "cas_matches": true
+        }
+      ]
+    },
+    {
+      "ticket": "SW-200",
+      "evidence": "docs/shared-world/evidence/SW-200-source-submission.json",
+      "source": "2c0c1c8cc1f0aadedc7c94754ad917f9538b60a1",
+      "source_is_ancestor": true,
+      "board": {
+        "id": "SW-200",
+        "status": "VERIFYING",
+        "attempt": 1,
+        "epoch": 1,
+        "base_commit": "8ff20160fcd949a64e5e11c356d5de57d769983e",
+        "commit_sha": "2c0c1c8cc1f0aadedc7c94754ad917f9538b60a1",
+        "merged_commit": null
+      },
+      "record_matches_board_commit": true,
+      "record_matches_board_status": true,
+      "artifacts": [
+        {
+          "path": "TESTS/shared-world-rules-helpers.ts",
+          "expected_sha256": "c783c92c3c36a4a93497bb7908fd5ed6dacd7b93e58ff62ec78df24cf9874edf",
+          "inside_ticket_ownership": true,
+          "source_matches": true,
+          "candidate_matches": true,
+          "board_artifact_matches": true,
+          "cas_matches": true
+        },
+        {
+          "path": "TESTS/shared-world-rules.test.ts",
+          "expected_sha256": "144fdf27377b24862ca9a2acb2d1fe0d6bfb0057b3e64f6144fb331723d0a709",
+          "inside_ticket_ownership": true,
+          "source_matches": true,
+          "candidate_matches": true,
+          "board_artifact_matches": true,
+          "cas_matches": true
+        },
+        {
+          "path": "TESTS/shared-world-views.test.ts",
+          "expected_sha256": "69a79c53d3dff1c3cf57cfcbf0b332e7fb91df42370260132f926aa68e925e12",
+          "inside_ticket_ownership": true,
+          "source_matches": true,
+          "candidate_matches": true,
+          "board_artifact_matches": true,
+          "cas_matches": true
+        },
+        {
+          "path": "packages/ledger/src/world/rules.ts",
+          "expected_sha256": "aa8f60643039d819294c3936fa662fdbfcc42152780702950773c1d911c6c9ac",
+          "inside_ticket_ownership": true,
+          "source_matches": true,
+          "candidate_matches": true,
+          "board_artifact_matches": true,
+          "cas_matches": true
+        },
+        {
+          "path": "packages/ledger/src/world/rules/README.md",
+          "expected_sha256": "3729e9d841681d41037b87fff5bdc96d416598b1cce408aac8f807e39be41dc0",
+          "inside_ticket_ownership": true,
+          "source_matches": true,
+          "candidate_matches": true,
+          "board_artifact_matches": true,
+          "cas_matches": true
+        },
+        {
+          "path": "packages/ledger/src/world/rules/engine.ts",
+          "expected_sha256": "08af735d724e9bd205e11306a0fbc6462277b3934e08fb5499184577ead2d8f1",
+          "inside_ticket_ownership": true,
+          "source_matches": true,
+          "candidate_matches": true,
+          "board_artifact_matches": true,
+          "cas_matches": true
+        },
+        {
+          "path": "packages/ledger/src/world/rules/ownership.ts",
+          "expected_sha256": "9ccaf02a50871409ce7f60ab2566cf076588fff96eee4a5880a47eb6e38e16a3",
+          "inside_ticket_ownership": true,
+          "source_matches": true,
+          "candidate_matches": true,
+          "board_artifact_matches": true,
+          "cas_matches": true
+        },
+        {
+          "path": "packages/ledger/src/world/view.ts",
+          "expected_sha256": "091a46c5549ad359466ca3dbb8f695b28c5a81bf087b290597b37d78b2838aea",
+          "inside_ticket_ownership": true,
+          "source_matches": true,
+          "candidate_matches": true,
+          "board_artifact_matches": true,
+          "cas_matches": true
+        }
+      ]
+    },
+    {
+      "ticket": "SW-300",
+      "evidence": "docs/shared-world/evidence/SW-300-source-submission.json",
+      "source": "2a2f02faf0c95e4095a8b5a43d022218cc15d0bc",
+      "source_is_ancestor": true,
+      "board": {
+        "id": "SW-300",
+        "status": "VERIFYING",
+        "attempt": 1,
+        "epoch": 1,
+        "base_commit": "521e826b9588a1293ed22c243a14b83924c275bd",
+        "commit_sha": "2a2f02faf0c95e4095a8b5a43d022218cc15d0bc",
+        "merged_commit": null
+      },
+      "record_matches_board_commit": true,
+      "record_matches_board_status": true,
+      "artifacts": [
+        {
+          "path": "TESTS/shared-world-journal.test.ts",
+          "expected_sha256": "51407ee8e6174150b8c0c94db9ae8066ec7b923a97a20a1c9816441276ede9e1",
+          "inside_ticket_ownership": true,
+          "source_matches": true,
+          "candidate_matches": true,
+          "board_artifact_matches": true,
+          "cas_matches": true
+        },
+        {
+          "path": "TESTS/shared-world-storage.test.ts",
+          "expected_sha256": "147d99586d5948fe8a4c83169035983ced256332e2db9c2e39344926085bd29d",
+          "inside_ticket_ownership": true,
+          "source_matches": true,
+          "candidate_matches": true,
+          "board_artifact_matches": true,
+          "cas_matches": true
+        },
+        {
+          "path": "packages/ledger/src/world/index.ts",
+          "expected_sha256": "42ba0f1ae4952d3f12592b702b2cd536e15b49ab1f3712fca117ab979ec46418",
+          "inside_ticket_ownership": true,
+          "source_matches": true,
+          "candidate_matches": true,
+          "board_artifact_matches": true,
+          "cas_matches": true
+        },
+        {
+          "path": "packages/ledger/src/world/journal.ts",
+          "expected_sha256": "acc2f0b4c16eb7df4139b879b16bedbe7f6812dccd33fc4893f595c9cff709f9",
+          "inside_ticket_ownership": true,
+          "source_matches": true,
+          "candidate_matches": true,
+          "board_artifact_matches": true,
+          "cas_matches": true
+        },
+        {
+          "path": "packages/ledger/src/world/storage-worker.ts",
+          "expected_sha256": "64e54a3630fa3943a1a923b8702597129ff4430c4257fe80093f78c4a0232f97",
+          "inside_ticket_ownership": true,
+          "source_matches": true,
+          "candidate_matches": true,
+          "board_artifact_matches": true,
+          "cas_matches": true
+        },
+        {
+          "path": "packages/ledger/src/world/storage.ts",
+          "expected_sha256": "3d0ea4e164f0524946b263018a01e85583f107457b1510c17c80cd261e8e327e",
+          "inside_ticket_ownership": true,
+          "source_matches": true,
+          "candidate_matches": true,
+          "board_artifact_matches": true,
+          "cas_matches": true
+        }
+      ]
+    },
+    {
+      "ticket": "SW-400",
+      "evidence": "docs/shared-world/evidence/SW-400-source-submission.json",
+      "source": "dfed2b980e73dc65f54b65f7db2468442117e415",
+      "source_is_ancestor": true,
+      "board": {
+        "id": "SW-400",
+        "status": "VERIFYING",
+        "attempt": 1,
+        "epoch": 1,
+        "base_commit": "8ff20160fcd949a64e5e11c356d5de57d769983e",
+        "commit_sha": "dfed2b980e73dc65f54b65f7db2468442117e415",
+        "merged_commit": null
+      },
+      "record_matches_board_commit": true,
+      "record_matches_board_status": true,
+      "artifacts": [
+        {
+          "path": "TESTS/shared-world-dialogue.test.ts",
+          "expected_sha256": "6186922648909ce30800a8ccb3cab3e3ddbac9422f7caf3d21de32301442db6e",
+          "inside_ticket_ownership": true,
+          "source_matches": true,
+          "candidate_matches": true,
+          "board_artifact_matches": true,
+          "cas_matches": true
+        },
+        {
+          "path": "packages/interventions/src/world-context.ts",
+          "expected_sha256": "b0b22518563c70caeda1d2f9f453bf8e67f118d9bc4addef62099b24c3340761",
+          "inside_ticket_ownership": true,
+          "source_matches": true,
+          "candidate_matches": true,
+          "board_artifact_matches": true,
+          "cas_matches": true
+        },
+        {
+          "path": "packages/interventions/src/world-model.ts",
+          "expected_sha256": "c7357a06551362c50090740e33e2dce5010c524d001d3d3412d1f727171fa405",
+          "inside_ticket_ownership": true,
+          "source_matches": true,
+          "candidate_matches": true,
+          "board_artifact_matches": true,
+          "cas_matches": true
+        }
+      ]
+    },
+    {
+      "ticket": "SW-500",
+      "evidence": "docs/shared-world/evidence/SW-500-source-submission.json",
+      "source": "31e8c428472a0130fc75e46ce156dd5bddc0c534",
+      "source_is_ancestor": true,
+      "board": {
+        "id": "SW-500",
+        "status": "VERIFYING",
+        "attempt": 1,
+        "epoch": 1,
+        "base_commit": "8ff20160fcd949a64e5e11c356d5de57d769983e",
+        "commit_sha": "31e8c428472a0130fc75e46ce156dd5bddc0c534",
+        "merged_commit": null
+      },
+      "record_matches_board_commit": true,
+      "record_matches_board_status": true,
+      "artifacts": [
+        {
+          "path": "TESTS/shared-world-campaign.test.ts",
+          "expected_sha256": "48c162c48717c865adfd7f70a427ad020634abebfbe5d2923608eb5c9cb7c561",
+          "inside_ticket_ownership": true,
+          "source_matches": true,
+          "candidate_matches": true,
+          "board_artifact_matches": true,
+          "cas_matches": true
+        },
+        {
+          "path": "scenarios/tempted-fates/shared-world/SEED.md",
+          "expected_sha256": "d146faa9744e969e5ef728562a2d9bf9978cfe172bce2299dc8035afdfa81acf",
+          "inside_ticket_ownership": true,
+          "source_matches": true,
+          "candidate_matches": false,
+          "board_artifact_matches": true,
+          "cas_matches": true
+        },
+        {
+          "path": "scenarios/tempted-fates/shared-world/seed.ts",
+          "expected_sha256": "2f20b41b2079f09c77c70b61a3b0a1a013bbbe73f41bf7e60c7bbc5287a8ce6d",
+          "inside_ticket_ownership": true,
+          "source_matches": true,
+          "candidate_matches": true,
+          "board_artifact_matches": true,
+          "cas_matches": true
+        }
+      ]
+    },
+    {
+      "ticket": "SW-510",
+      "evidence": "docs/shared-world/evidence/SW-510-source-submission.json",
+      "source": "0d295152d7ee8a7e9a2a97a7f470e8108c2b26b2",
+      "source_is_ancestor": true,
+      "board": {
+        "id": "SW-510",
+        "status": "VERIFYING",
+        "attempt": 1,
+        "epoch": 1,
+        "base_commit": "120119c81c4e4562e5078b30f58390d364be13cb",
+        "commit_sha": "0d295152d7ee8a7e9a2a97a7f470e8108c2b26b2",
+        "merged_commit": null
+      },
+      "record_matches_board_commit": true,
+      "record_matches_board_status": true,
+      "artifacts": [
+        {
+          "path": "TESTS/shared-world-session.test.ts",
+          "expected_sha256": "59a28c27a3ba24340236c2f9de1aa28047f55b8f8b53f495f3f2354ca7a8a06a",
+          "inside_ticket_ownership": true,
+          "source_matches": true,
+          "candidate_matches": true,
+          "board_artifact_matches": true,
+          "cas_matches": true
+        },
+        {
+          "path": "packages/session/package.json",
+          "expected_sha256": "8d6fb5d0b237fe7cc5c3a86462ff6a6b1b1e818e0c6ae925a18882bb8d8643a9",
+          "inside_ticket_ownership": true,
+          "source_matches": true,
+          "candidate_matches": true,
+          "board_artifact_matches": true,
+          "cas_matches": true
+        },
+        {
+          "path": "packages/session/src/index.ts",
+          "expected_sha256": "5ecf41b28dfd6679520fe79a38d85060b0eabf44676e31e951dd828b684535b2",
+          "inside_ticket_ownership": true,
+          "source_matches": true,
+          "candidate_matches": true,
+          "board_artifact_matches": true,
+          "cas_matches": true
+        },
+        {
+          "path": "scenarios/tempted-fates/shared-world/README.md",
+          "expected_sha256": "79deac283c1df298d7b86f40a9f565f9c6a86a0288f797a2e88026804f35733e",
+          "inside_ticket_ownership": true,
+          "source_matches": true,
+          "candidate_matches": true,
+          "board_artifact_matches": true,
+          "cas_matches": true
+        },
+        {
+          "path": "scenarios/tempted-fates/shared-world/cli.ts",
+          "expected_sha256": "1f40728429c4bc473f8c49905f7ea0a8770112adbf8839cc3cafbbd410e5423b",
+          "inside_ticket_ownership": true,
+          "source_matches": true,
+          "candidate_matches": true,
+          "board_artifact_matches": true,
+          "cas_matches": true
+        }
+      ]
+    }
+  ],
+  "review_records": [
+    {
+      "record": "docs/shared-world/evidence/contracts/authority/review-186e052.json",
+      "candidate": "186e052a19de6466aedaf048ecb5d9c4fd4fc1eb",
+      "verdict": "READY for contract freeze within independent authority/implementability review scope",
+      "source_is_ancestor": true,
+      "hash_count": 7,
+      "historical_mismatches": [],
+      "current_differences": [
+        "SYSTEMS/shared-world-v1/FREEZE.json"
+      ]
+    },
+    {
+      "record": "docs/shared-world/evidence/contracts/privacy/fixed-186e052/verification.json",
+      "candidate": "186e052a19de6466aedaf048ecb5d9c4fd4fc1eb",
+      "verdict": "READY",
+      "source_is_ancestor": true,
+      "hash_count": 7,
+      "historical_mismatches": [],
+      "current_differences": [
+        "SYSTEMS/shared-world-v1/FREEZE.json"
+      ]
+    },
+    {
+      "record": "docs/shared-world/evidence/rules-authority-review-4774dfb/fixed-2c0c1c8/review.json",
+      "candidate": "2c0c1c8cc1f0aadedc7c94754ad917f9538b60a1",
+      "verdict": "READY for SW-200 pure authority scope",
+      "source_is_ancestor": true,
+      "hash_count": 2,
+      "historical_mismatches": [],
+      "current_differences": []
+    },
+    {
+      "record": "docs/shared-world/evidence/rules-privacy-review-4774dfb/fixed-2c0c1c8/verification.json",
+      "candidate": "2c0c1c8cc1f0aadedc7c94754ad917f9538b60a1",
+      "verdict": "READY_SCOPED",
+      "source_is_ancestor": true,
+      "hash_count": 8,
+      "historical_mismatches": [],
+      "current_differences": []
+    },
+    {
+      "record": "docs/shared-world/evidence/dialogue-review-dfed2b9/verification.json",
+      "candidate": "dfed2b980e73dc65f54b65f7db2468442117e415",
+      "verdict": "READY",
+      "source_is_ancestor": true,
+      "hash_count": 11,
+      "historical_mismatches": [],
+      "current_differences": []
+    },
+    {
+      "record": "docs/shared-world/evidence/seed-review-31e8c42/verification.json",
+      "candidate": "31e8c428472a0130fc75e46ce156dd5bddc0c534",
+      "verdict": "READY",
+      "source_is_ancestor": true,
+      "hash_count": 11,
+      "historical_mismatches": [],
+      "current_differences": [
+        "scenarios/tempted-fates/shared-world/SEED.md"
+      ]
+    },
+    {
+      "record": "docs/shared-world/evidence/storage-authority-review-2a2f02f/review.json",
+      "candidate": "2a2f02faf0c95e4095a8b5a43d022218cc15d0bc",
+      "verdict": "READY for reviewed SW-300 authority/storage scope",
+      "source_is_ancestor": true,
+      "hash_count": 6,
+      "historical_mismatches": [],
+      "current_differences": []
+    },
+    {
+      "record": "docs/shared-world/evidence/storage-boundary-review-2a2f02f/verification.json",
+      "candidate": "2a2f02faf0c95e4095a8b5a43d022218cc15d0bc",
+      "verdict": "READY_SCOPED",
+      "source_is_ancestor": true,
+      "hash_count": 6,
+      "historical_mismatches": [],
+      "current_differences": []
+    },
+    {
+      "record": "docs/shared-world/evidence/host-authority-review-0d29515/review.json",
+      "candidate": "0d295152d7ee8a7e9a2a97a7f470e8108c2b26b2",
+      "verdict": "READY for reviewed SW-510 owned authority/receipt/persistence scope; coordinator integration prerequisite remains",
+      "source_is_ancestor": true,
+      "hash_count": 5,
+      "historical_mismatches": [],
+      "current_differences": []
+    },
+    {
+      "record": "docs/shared-world/evidence/host-privacy-review-0d29515/verification.json",
+      "candidate": "0d295152d7ee8a7e9a2a97a7f470e8108c2b26b2",
+      "verdict": "READY_SCOPED",
+      "source_is_ancestor": true,
+      "hash_count": 5,
+      "historical_mismatches": [],
+      "current_differences": []
+    }
+  ],
+  "measurement_runner": {
+    "reviewed_source": "897a2e36caf82331a2f7816b3d781e95913ea4ba",
+    "sha256": "0c42b92bbab5bba5a000c934883dc9a498f7e29f449f02012de8cd7ce063b780",
+    "identical_to_reviewed_source": true
+  },
+  "wiring_spot_check": {
+    "session_lock_matches_dependencies": true,
+    "scenario_lock_matches_dependencies": true,
+    "session_workspace_link": {
+      "resolved": "packages/session",
+      "link": true
+    },
+    "session_public_export_exists": true,
+    "sole_world_writer_lane": [
+      "authority"
+    ],
+    "shared_state_writer": "packages/ledger",
+    "session_ownership": [
+      {
+        "lane": "session",
+        "paths": [
+          "packages/session/"
+        ],
+        "writes_world_state": false
+      }
+    ],
+    "coordinator_exports_present": {
+      "packages/contracts/src/index.ts": true,
+      "packages/ledger/src/index.ts": true,
+      "packages/interventions/src/index.ts": true,
+      "scenarios/tempted-fates/index.ts": true
+    }
+  },
+  "changes_since_measurement_review": [
+    "README.md",
+    "STATUS_AND_ARCHITECTURE.md",
+    "SYSTEM_ROADMAP.md",
+    "docs/shared-world/NEXT.md",
+    "docs/shared-world/PLAN.md",
+    "docs/shared-world/README.md",
+    "docs/shared-world/evidence/README.md",
+    "docs/shared-world/evidence/SW-510-source-submission.json",
+    "docs/shared-world/evidence/host-authority-review-0d29515/REVIEW.md",
+    "docs/shared-world/evidence/host-authority-review-0d29515/candidate.diff",
+    "docs/shared-world/evidence/host-authority-review-0d29515/probes.log",
+    "docs/shared-world/evidence/host-authority-review-0d29515/probes.mts",
+    "docs/shared-world/evidence/host-authority-review-0d29515/review.json",
+    "docs/shared-world/evidence/host-privacy-review-0d29515/REVIEW.md",
+    "docs/shared-world/evidence/host-privacy-review-0d29515/cli-private-files-metadata.json",
+    "docs/shared-world/evidence/host-privacy-review-0d29515/closed-input.stderr",
+    "docs/shared-world/evidence/host-privacy-review-0d29515/closed-input.stdout",
+    "docs/shared-world/evidence/host-privacy-review-0d29515/corrected-raw-dto.log",
+    "docs/shared-world/evidence/host-privacy-review-0d29515/corrected-raw-dto/results.json",
+    "docs/shared-world/evidence/host-privacy-review-0d29515/demo.stderr",
+    "docs/shared-world/evidence/host-privacy-review-0d29515/demo.stdout",
+    "docs/shared-world/evidence/host-privacy-review-0d29515/display-order.json",
+    "docs/shared-world/evidence/host-privacy-review-0d29515/display-races.json",
+    "docs/shared-world/evidence/host-privacy-review-0d29515/final-results.json",
+    "docs/shared-world/evidence/host-privacy-review-0d29515/initial-revoked-proxy-expectation/README.md",
+    "docs/shared-world/evidence/host-privacy-review-0d29515/initial-revoked-proxy-expectation/probes.log",
+    "docs/shared-world/evidence/host-privacy-review-0d29515/initial-revoked-proxy-expectation/probes.mjs",
+    "docs/shared-world/evidence/host-privacy-review-0d29515/initial-revoked-proxy-expectation/results.json",
+    "docs/shared-world/evidence/host-privacy-review-0d29515/probes.log",
+    "docs/shared-world/evidence/host-privacy-review-0d29515/probes.mjs",
+    "docs/shared-world/evidence/host-privacy-review-0d29515/query.stderr",
+    "docs/shared-world/evidence/host-privacy-review-0d29515/query.stdout",
+    "docs/shared-world/evidence/host-privacy-review-0d29515/real-session-provider-request.json",
+    "docs/shared-world/evidence/host-privacy-review-0d29515/results.json",
+    "docs/shared-world/evidence/host-privacy-review-0d29515/source-tests.log",
+    "docs/shared-world/evidence/host-privacy-review-0d29515/verification.json",
+    "docs/shared-world/evidence/host-privacy-review-0d29515/view.stderr",
+    "docs/shared-world/evidence/host-privacy-review-0d29515/view.stdout",
+    "docs/shared-world/evidence/host-source-0d29515/HANDOFF.md",
+    "docs/shared-world/evidence/host-source-0d29515/boundaries.log",
+    "docs/shared-world/evidence/host-source-0d29515/contracts.log",
+    "docs/shared-world/evidence/host-source-0d29515/demo.jsonl",
+    "docs/shared-world/evidence/host-source-0d29515/tests-third.log",
+    "docs/shared-world/evidence/host-source-0d29515/typecheck.log",
+    "docs/shared-world/evidence/host-source-0d29515/verification.json",
+    "docs/shared-world/evidence/measurement-session-review/review.md",
+    "docs/shared-world/evidence/measurement-session-review/verification.json",
+    "scenarios/tempted-fates/shared-world/SEED.md"
+  ],
+  "head_after_check": "83bc6c154cd0879f481185eb159cded8fa1e507d",
+  "worktree_status_after_check": ""
+}

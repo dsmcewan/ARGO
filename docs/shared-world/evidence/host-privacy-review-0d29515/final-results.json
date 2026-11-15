@@ -1,0 +1,97 @@
+{
+  "candidate": "0d295152d7ee8a7e9a2a97a7f470e8108c2b26b2",
+  "verdict": "READY_SCOPED",
+  "passed_groups_across_runs": 8,
+  "unresolved_groups": 0,
+  "checks": [
+    {
+      "name": "Immutable candidate, frozen hashes and documented public session package",
+      "status": "pass",
+      "evidence": "results.json (initial full run)"
+    },
+    {
+      "name": "Actual sessions bind all query scope fields and never leak private player memories or owner policy",
+      "status": "pass",
+      "details": {
+        "private_player_fragment_absent": true,
+        "owner_policy_only": true,
+        "scope_fields_checked": 7
+      },
+      "evidence": "results.json (initial full run)"
+    },
+    {
+      "name": "Owned snapshot fast path does not bless frozen clones, getters, proxies or immutable-definition substitutions",
+      "status": "pass",
+      "details": {
+        "traps": 0,
+        "hostile_snapshots_refused": 6,
+        "revoked_proxy_rejects_in_upstream_promise_assimilation": true,
+        "genuine_owned_cache_unmodified": true
+      },
+      "evidence": "corrected-raw-dto/results.json (targeted corrected harness expectation)"
+    },
+    {
+      "name": "Generated text stays pending, exact request receipt precedes fresh-view display, and no template changes the output",
+      "status": "pass",
+      "details": {
+        "provider_calls": 1,
+        "words_changed_custody": false,
+        "release_order": [
+          "submit",
+          "verified_receipt",
+          "current_query",
+          "current_view"
+        ]
+      },
+      "evidence": "results.json (initial full run)"
+    },
+    {
+      "name": "Authentic wrong-request receipt stops display before any fresh disclosure read",
+      "status": "pass",
+      "details": {
+        "authentic_signature_for_other_request_refused": true,
+        "disclosure_reads": 0
+      },
+      "evidence": "results.json (initial full run)"
+    },
+    {
+      "name": "Closure after accepted speech, query/read races, and post-cutoff player speech release only receipts",
+      "status": "pass",
+      "details": {
+        "accepted_before_visibility_change": true,
+        "stale_views_rejected": true,
+        "cutoff_does_not_reopen": true
+      },
+      "evidence": "results.json (initial full run)"
+    },
+    {
+      "name": "Model refresh through real sessions observes revocation and closure without extra generations",
+      "status": "pass",
+      "details": {
+        "revocation_suppressed": true,
+        "closure_suppressed": true,
+        "postclosure_calls": 0
+      },
+      "evidence": "results.json (initial full run)"
+    },
+    {
+      "name": "Ordinary CLI labels its only fixture model and emits scoped rows rather than private files or raw authority state",
+      "status": "pass",
+      "details": {
+        "demo_types": [
+          "demo_started",
+          "committed",
+          "spoken",
+          "demo_complete"
+        ],
+        "events": 7,
+        "oil_spent": 2,
+        "elapsed_seconds": 1200,
+        "private_model_request_only_in_private_file": true,
+        "closed_input_errors": 4
+      },
+      "evidence": "results.json (initial full run)"
+    }
+  ],
+  "execution_note": "Seven unchanged groups passed in the initial full run. Only the revoked-proxy matcher was corrected; its group was rerun independently. Original failure and script are preserved. No source edits."
+}

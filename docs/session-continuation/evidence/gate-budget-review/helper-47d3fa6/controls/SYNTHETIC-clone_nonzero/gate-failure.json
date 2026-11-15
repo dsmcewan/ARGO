@@ -1,0 +1,24 @@
+{
+  "status": "failed",
+  "candidate": "47d3fa6a3b247986a0a6bb9aaad1f65cfff25273",
+  "failure": {
+    "stage": "clone",
+    "type": "CalledProcessError",
+    "message": "Command '['git', 'clone', '--no-local', '--no-checkout', '/workspace/reports/2026-11-14-argo-continuation/gate-budget-review/helper-47d3fa6/controls/synthetic-repo', '/tmp/argo-review-gate-l2cq4g2x/candidate']' returned non-zero exit status 3.",
+    "timed_out": false,
+    "timeout_seconds": 300,
+    "returncode": 3
+  },
+  "elapsed_seconds": 0.003,
+  "source_head_before": "47d3fa6a3b247986a0a6bb9aaad1f65cfff25273",
+  "source_head_after": "47d3fa6a3b247986a0a6bb9aaad1f65cfff25273",
+  "source_head_unchanged": true,
+  "source_head_check_error": null,
+  "merged": false,
+  "operational_trust_promoted": false,
+  "paid_model_calls": 0,
+  "remote_writes": false,
+  "logs": {
+    "clone.log": "8196511eb83385419db87b76fff1ed630c81510ccb0a45d493aa96f2e86c2fdc"
+  }
+}

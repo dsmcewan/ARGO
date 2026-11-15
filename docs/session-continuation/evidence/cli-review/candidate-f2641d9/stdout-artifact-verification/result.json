@@ -1,0 +1,19 @@
+{
+  "candidate": "f2641d92f5f07bc69b672ee6f6c3a189ee5f46cc",
+  "name": "C10P retained actual executable stdout-failure evidence with correct Node error formatting",
+  "status": "pass",
+  "original_execution_preserved": true,
+  "original_failed_assertion": "Error name formatting only: Node prints OutputFailure [Error], not OutputFailure:",
+  "child_exit_code": 1,
+  "child_exit_evidence": "Original probe asserted code===1 immediately before the retained failing formatting assertion.",
+  "stdout_bytes": 0,
+  "ordinary_process": true,
+  "injected_fault": "stdout is a read-only private regular-file descriptor (EBADF)",
+  "turns": 1,
+  "world_events": 2,
+  "second_input_not_admitted": true,
+  "signed_replay_equal": true,
+  "no_reply_or_private_key_in_stderr": true,
+  "stderr_sha256": "0c58e086385aff0b2dda920a0dfbcf084bec301d2079a1f316d182914ddf8dfa",
+  "fresh_child_not_reexecuted": true
+}

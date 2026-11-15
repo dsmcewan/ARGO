@@ -1,0 +1,32 @@
+✔ unchanged character reads do no repeated signature work and an append verifies only its suffix (247.818188ms)
+✔ a warm character authority rejects rollback and a signed divergent observed prefix (165.743228ms)
+✔ changed cached carrier bytes fail even when the stored event hash is unchanged (101.213668ms)
+✔ a bad later suffix cannot publish earlier carrier mutations or poison the cache (144.458808ms)
+✔ overlapping event loads cannot publish a later prefix ahead of an older in-flight read (94.352156ms)
+✔ a character read cancelled before enqueue settles before the preceding source is released (79.596749ms)
+✔ a character read cancelled while queued settles before the preceding source is released (61.429003ms)
+✔ an acknowledged character commit must appear in subsequent structural ledger reads (202.096778ms)
+✔ an older in-flight character read cannot publish after a newer commit is acknowledged (61.024896ms)
+✔ out-of-order character acknowledgments cannot lower the required committed prefix (126.867236ms)
+✔ witness freshness, cancellation and exact retries survive intervening cached reads (186.791951ms)
+✔ incremental prefixes match cold replay without backdating same-tick acquisitions or profile revisions (353.821452ms)
+✔ unchanged reads and retries do not reverify already accepted signatures (22.138396ms)
+✔ another writer is verified once and matches cold replay without exposing cached objects (62.190166ms)
+✔ same-size edits with restored mtime cannot hide behind a warm prefix (25.446502ms)
+✔ an observed prefix cannot roll back within the same open handle (31.131531ms)
+✔ a successful append is protected before any subsequent read warms the cache (22.29535ms)
+✔ a durable append stays protected when its derived snapshot write fails (27.515368ms)
+✔ a durable append stays protected if closing the synchronized event file fails (24.059719ms)
+✔ a failed multi-event suffix cannot partially publish the verification cache (78.943462ms)
+✔ genesis and journal existence remain checked even when history is cached (20.958192ms)
+✔ snapshot files remain disposable and a post-append snapshot failure is retryable (26.796073ms)
+✔ blank or partial suffix records fail instead of becoming a trusted prefix (54.825863ms)
+✔ a BOM at an append boundary is rejected identically by warm and cold readers (45.22879ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3641.571227

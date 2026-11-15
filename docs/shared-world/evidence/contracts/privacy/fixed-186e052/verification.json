@@ -1,0 +1,37 @@
+{
+  "candidate": "186e052a19de6466aedaf048ecb5d9c4fd4fc1eb",
+  "initial_reviewed_candidate": "04bae2b1f5ccb5f570ee76231efe3104b1309243",
+  "scope": "Shared-world contract privacy and immutable identity only",
+  "verdict": "READY",
+  "resolved_initial_findings": 6,
+  "clean_before_and_after": true,
+  "author_tests": {
+    "passed": 25,
+    "failed": 0,
+    "command": "node --test --test-isolation=none TESTS/shared-world-contracts.test.ts"
+  },
+  "independent_checks": {
+    "passed": 20,
+    "failed": 0,
+    "probe_unchanged": true,
+    "probe_sha256": "13b3f4030a5e8d044d5fa1baf1e52a1749cc167866bcdc08d978e5ee936e7caa"
+  },
+  "schema_types_unchanged": true,
+  "paid_calls": 0,
+  "repository_edits": false,
+  "source_sha256": {
+    "SYSTEMS/shared-world-v1/FREEZE.json": "85de19185b6ed29bdaeb3e547e6d695c5a85e03e112dd4bac5b0c8122db4385e",
+    "SYSTEMS/shared-world-v1/CONTRACT.md": "a7d3043105752495de744c21da30a90982e4a68cdddd06344ffe058a04d19606",
+    "SYSTEMS/shared-world-v1/world.schema.json": "6918294342f48f8a3d4edf81b1be99b4b17d8294185d25b0f1965d1f1533b665",
+    "packages/contracts/src/shared-world-types.ts": "f1cc8f944b0847f14df17b048eee9ad1f25f185790fa8e8612d97331b4b67351",
+    "packages/contracts/src/shared-world.ts": "8edbb1eb833c0fb579d7bbd52b50b791d1cd43751cc690ee29e91995f56cc9c2",
+    "TESTS/shared-world-contracts.test.ts": "ecc7982beb426a4dc9bd3d7b542c9a30aed1fdf4bccf3d0697123e0db62cc747",
+    "TESTS/shared-world-contract-fixtures.ts": "62aad1bc18c22748d1a76c47f1cc451b7fabda6c59a506002e73505515e1750e"
+  },
+  "artifacts_sha256": {
+    "REVIEW.md": "99c0e2b3ec975e74e1d671b27d929b1c6dd2c25cb63f8cd60d2845964ec5625a",
+    "contract-tests.log": "2889cbf856aaf9a280200bef54dc86e842bce4f7b5f25c7ac1eca7a57da73b9c",
+    "probes.log": "7729279217d84009ea995cd8941bf21ef4ca8177e1776a68435cb33135cba728",
+    "probe-results.json": "7729279217d84009ea995cd8941bf21ef4ca8177e1776a68435cb33135cba728"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "repository": "dsmcewan/TELOS",
+  "commit": "acc61c2abcf3611d2b3f7c7b03d59d493316f292",
+  "files": [
+    {
+      "path": "build-gate/trace-mesh/README.md",
+      "local_path": "/tmp/argo-mesh-source/README.md",
+      "blob_sha": "b84e2ef97fca1f86dc01ca5ce81105e0969edcab",
+      "url": "https://github.com/dsmcewan/TELOS/blob/acc61c2abcf3611d2b3f7c7b03d59d493316f292/build-gate/trace-mesh/README.md",
+      "sha256": "3ca527cef37c4466276be4ddcd20d184ffabcaeead27547d5dda405f31d08c69",
+      "bytes": 6523
+    },
+    {
+      "path": "build-gate/trace-mesh/mutual-mesh.mjs",
+      "local_path": "/tmp/argo-mesh-source/mutual-mesh.mjs",
+      "blob_sha": "5eddd0d4a29325af9014cde76f91035b799be42e",
+      "url": "https://github.com/dsmcewan/TELOS/blob/acc61c2abcf3611d2b3f7c7b03d59d493316f292/build-gate/trace-mesh/mutual-mesh.mjs",
+      "sha256": "e953f5e2a1cad14d3cffd04aba243bedc4c18318199e4ab6749a4282692d9b56",
+      "bytes": 3139
+    },
+    {
+      "path": "build-gate/trace-mesh/trace-store.mjs",
+      "local_path": "/tmp/argo-mesh-source/trace-store.mjs",
+      "blob_sha": "15e6f914f017b4cba155a22954151ec969a111dc",
+      "url": "https://github.com/dsmcewan/TELOS/blob/acc61c2abcf3611d2b3f7c7b03d59d493316f292/build-gate/trace-mesh/trace-store.mjs",
+      "sha256": "dae2f94dd18836cdceecebbbbc7e24297c2f49cb51f46a17a06dc3643ab1a7c6",
+      "bytes": 9633
+    },
+    {
+      "path": "build-gate/trace-mesh/telos-gate.mjs",
+      "local_path": "/tmp/argo-mesh-source/telos-gate.mjs",
+      "blob_sha": "a1598d22cb61b944562112236bc9bfecd36cb4b9",
+      "url": "https://github.com/dsmcewan/TELOS/blob/acc61c2abcf3611d2b3f7c7b03d59d493316f292/build-gate/trace-mesh/telos-gate.mjs",
+      "sha256": "b3ecb630fa23c7846399c0ae040315a80a9213583576cfda5756a0818c17343d",
+      "bytes": 3466
+    },
+    {
+      "path": "build-gate/scripts/test-trace-mesh.mjs",
+      "local_path": "/tmp/argo-mesh-source/test-trace-mesh.mjs",
+      "blob_sha": "52fe9567307795dd7d202764ca57e70213bfcbaa",
+      "url": "https://github.com/dsmcewan/TELOS/blob/acc61c2abcf3611d2b3f7c7b03d59d493316f292/build-gate/scripts/test-trace-mesh.mjs",
+      "sha256": "2b675e0203eb811084f33eddd29b32d530f3704de7209ce130618d8784ff9e06",
+      "bytes": 10303
+    },
+    {
+      "path": "build-gate/scripts/test-telos-trace-gate.mjs",
+      "local_path": "/tmp/argo-mesh-source/test-telos-trace-gate.mjs",
+      "blob_sha": "9994767d8178b5c33d32e0cfc3feab352bbffbe4",
+      "url": "https://github.com/dsmcewan/TELOS/blob/acc61c2abcf3611d2b3f7c7b03d59d493316f292/build-gate/scripts/test-telos-trace-gate.mjs",
+      "sha256": "aa1453fa75ec55a2d19172a150d3b5fe69ac3f5a7ba061195ae2624eeffbcb01",
+      "bytes": 8032
+    },
+    {
+      "path": "build-gate/scripts/test-live-trace-mesh.mjs",
+      "local_path": "/tmp/argo-mesh-source/test-live-trace-mesh.mjs",
+      "blob_sha": "25aa5d04dc590d303d70a2e4b4b1858e95363405",
+      "url": "https://github.com/dsmcewan/TELOS/blob/acc61c2abcf3611d2b3f7c7b03d59d493316f292/build-gate/scripts/test-live-trace-mesh.mjs",
+      "sha256": "be282e596d17bb5796941dbcc95bcb16550c3d0c21a5a267f05f34abead7f7ab",
+      "bytes": 839
+    },
+    {
+      "path": "docs/runs/trace-mesh-first-slice/VERIFICATION.md",
+      "local_path": "/tmp/argo-mesh-source/VERIFICATION.md",
+      "blob_sha": "c8836601d606516bf31372562f72573a4d214885",
+      "url": "https://github.com/dsmcewan/TELOS/blob/acc61c2abcf3611d2b3f7c7b03d59d493316f292/docs/runs/trace-mesh-first-slice/VERIFICATION.md",
+      "sha256": "f63d6b79a146b2da8d03b3f05b8233397166f3247669ad4c130d71d28c82adf7",
+      "bytes": 4178
+    }
+  ],
+  "retrieved_at": "2026-11-13T18:48:29Z"
+}

@@ -1,0 +1,46 @@
+import {hash} from '../packages/contracts/src/index.ts';
+import {mortalGenesis} from './mortal-fixtures.ts';
+import type {WorldGenesis,WorldState,WorldCommand,WorldAction,WorldLoanOffer,WorldMemory,WorldActorView,WorldEvent,WorldReceipt} from '../packages/contracts/src/shared-world-types.ts';
+export const worldDigest='a'.repeat(64),worldSignature=Buffer.alloc(64).toString('base64');
+export function worldGenesis():WorldGenesis {
+ const mortal={...mortalGenesis(),version:'mortal-rules/0.3.0' as const};
+ const source_manifest={version:'authored-knowledge-sources/1.0.0' as const,manifest_id:'sources',revision:'test/1',sources:[{source_id:'loan_source',document_path:'CAMPAIGNS/Loan.md',document_sha256:'b'.repeat(64),locator:{start_line:1,end_line:3},excerpt_sha256:'c'.repeat(64)}]};
+ return {version:'shared-world/0.1.0',mortal,environment:'night',
+  profiles:mortal.actors.map(actor=>({actor_id:actor.id,revision:1,nature:{description:'Practical and attentive.',priorities:['keep promises']},activity:{description:'At leisure.',busy_until:0},max_speech_characters:240,presentation:{occupation:'Resident',wants:'Finish the work.',will_not:'Break a promise.'}})),
+  scenes:mortal.locations.map(location=>({location_id:location.id,description:'A stone courtyard.'})),
+  source_manifest,knowledge_catalog:{version:'authored-knowledge/1.0.0',catalog_id:'policies',revision:'test/1',pack_hash:mortal.pack_hash,source_manifest_hash:hash(source_manifest),entries:[{knowledge_id:'lamp_policy',owner_actor_id:'hero',kind:'offer_policy',subject_item_id:'lamp',text:'A free loan; bring the lamp back. Repair only actual agreed damage, capped at five obols.',terms:{loan_fee_obols:0,advance_deposit_obols:0,replacement_value_obols:10,repair_basis:'actual_damage_by_explicit_agreement',repair_cap_obols:5,oil_supplied_by:'borrower',oil_price_obols:1,oil_duration_exploration_turns:18,return_checkpoint:'explicit_agreement_normally_next_harbor_return',compulsory_service:false,oath_required:false},validity:{from_tick:0,until_tick:null},provenance:{kind:'authored_actor_policy',source_ids:['loan_source']},disclosure:'owner_context_may_express_in_addressed_speech'}]},initial_knowledge_ids:['lamp_policy']};
+}
+export function worldState():WorldState {
+ const g=worldGenesis(),m=g.mortal;
+ return {version:g.version,scope:structuredClone(m.scope),genesis_hash:hash(g),cursor:{sequence:0,head:hash(g),world_time:0},physical:{actors:structuredClone(m.actors),items:structuredClone(m.items),opportunities:structuredClone(m.opportunities),stocks:structuredClone(m.stocks),encounter:null,rng_counter:0},profiles:structuredClone(g.profiles),memories:[],impressions:[],knowledge:[{knowledge_id:'lamp_policy',origin:'genesis',sequence:0,world_time:0,active:true}],offers:[],loans:[],mythic_closed:false};
+}
+export function worldCommand(action:WorldAction={type:'speak',text:'May I borrow the lamp?',audience:{kind:'whisper',addressed_actor_ids:['raider']},in_reply_to:null}):WorldCommand {
+ const s=worldState();return {version:s.version,scope:s.scope,request_id:'request_1',actor_id:'hero',expected:s.cursor,causation_id:s.cursor.head,action};
+}
+export function worldOffer():WorldLoanOffer {
+ const terms={genesis_hash:hash(worldGenesis()),offer_id:'lamp_offer',policy_id:'lamp_policy',item_id:'lamp',lender_actor_id:'hero',borrower_actor_id:'companion',return_location_id:'harbor',loan_fee_obols:0 as const,advance_deposit_obols:0 as const,repair_basis:'actual_damage_by_explicit_agreement' as const,repair_cap_obols:5,oil_supplied_by:'borrower' as const,expires_at:60,issued_sequence:1,issued_at:0};
+ return {terms,offer_hash:hash({domain:'shared-world/0.1.0/loan-offer',terms}),status:'open',closed_sequence:null};
+}
+export function worldMemory():WorldMemory {
+ const command=worldCommand();return {record_id:hash({domain:'shared-world/0.1.0/memory',genesis_hash:hash(worldGenesis()),request_id:command.request_id,sequence:1}),request_id:command.request_id,sequence:1,world_time:0,actor_id:'hero',acquired_by:['hero','raider'],payload:{type:'speak',text:'May I borrow the lamp?',audience:{kind:'whisper',addressed_actor_ids:['raider']},in_reply_to:null}};
+}
+export function worldOfferedState():WorldState {
+ const state=worldState(),offer=worldOffer(),memory=worldMemory();state.cursor={sequence:1,head:worldDigest,world_time:0};
+ memory.acquired_by=['hero','companion'];memory.payload={type:'loan_offered',terms:offer.terms,offer_hash:offer.offer_hash};state.memories=[memory];state.offers=[offer];return state;
+}
+export function worldAcceptedState():WorldState {
+ const state=worldOfferedState(),offer=state.offers[0]!;offer.status='accepted';offer.closed_sequence=2;
+ const memory:WorldMemory={record_id:hash({domain:'shared-world/0.1.0/memory',genesis_hash:state.genesis_hash,request_id:'request_2',sequence:2}),request_id:'request_2',sequence:2,world_time:0,actor_id:'companion',acquired_by:['hero','companion'],payload:{type:'loan_accepted',loan_id:'lamp_offer',offer_id:'lamp_offer',offer_hash:offer.offer_hash,item_id:'lamp',lender_actor_id:'hero',borrower_actor_id:'companion'}};
+ state.memories.push(memory);state.cursor.sequence=2;state.physical.items.find(i=>i.id==='lamp')!.owner_id='companion';
+ state.loans=[{loan_id:'lamp_offer',offer_id:'lamp_offer',offer_hash:offer.offer_hash,item_id:'lamp',lender_actor_id:'hero',borrower_actor_id:'companion',accepted_sequence:2,accepted_at:0,status:'open',returned_sequence:null}];return state;
+}
+export function worldView():WorldActorView {
+ const g=worldGenesis(),s=worldState(),{controller_id:_,kind:__,...self}=g.mortal.actors[0]!;
+ return {version:s.version,genesis_hash:s.genesis_hash,query:{version:s.version,scope:s.scope,actor_id:'hero',cursor:s.cursor},profile:g.profiles[0]!,physical:{self,items:g.mortal.items.filter(i=>i.owner_id==='hero'),location:g.mortal.locations[0]!,routes:g.mortal.routes,encounter:null,activity_lock:null},scene:{...g.scenes[0]!,environment:g.environment,occupants:g.mortal.actors.map(a=>({actor_id:a.id,name:a.name,condition:'standing'}))},memories:[],impressions:[],knowledge:[{entry:g.knowledge_catalog.entries[0]!,acquisition:s.knowledge[0]!}],knowledge_source:{pack_hash:g.mortal.pack_hash,catalog_hash:hash(g.knowledge_catalog),source_manifest_hash:hash(g.source_manifest)},source_definitions:g.source_manifest.sources,replied_to:[],coverage:{memory_total:0,memory_returned:0,impressions_total:0,impressions_returned:0,complete:true},mythic_closed:false};
+}
+export function worldEvent():WorldEvent {
+ const s=worldState(),command=worldCommand();return {version:s.version,scope:s.scope,genesis_hash:s.genesis_hash,sequence:1,previous_hash:s.cursor.head,world_time:0,command,principal:{scope:s.scope,principal_id:'auth_hero',role:'player',actor_id:'hero'},before_hash:worldDigest,after_hash:worldDigest,draws:[],effects:[],memory:worldMemory(),signature:worldSignature,hash:worldDigest};
+}
+export function worldReceipt():WorldReceipt {
+ const e=worldEvent();return {version:e.version,scope:e.scope,genesis_hash:e.genesis_hash,authority_key_id:'mortal_key',signature:worldSignature,request_id:e.command.request_id,request_hash:hash({command:e.command,principal:e.principal}),event_hash:e.hash,cursor:{sequence:e.sequence,head:e.hash,world_time:e.world_time},state_hash:e.after_hash};
+}

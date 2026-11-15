@@ -1,0 +1,1 @@
+Seven of eight integration groups passed; one reviewer assertion attempted JSON.parse on the entire provider input, which correctly contains the frozen instruction prefix followed by the JSON packet. Final probe checks that exact prefix and parses the remaining packet. This was a reviewer parsing error, not a product failure.

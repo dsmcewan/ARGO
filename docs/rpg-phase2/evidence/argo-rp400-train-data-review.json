@@ -1,0 +1,154 @@
+{
+  "censored_combat_rows": 0,
+  "checks": 3597237,
+  "combat_rows_reconstructed": 10500,
+  "comparisons": [
+    {
+      "censored_pairs": 0,
+      "hp": "classic",
+      "paired95": {
+        "count": 500,
+        "counts": {
+          "both": 323,
+          "improved": 137,
+          "neither": 40,
+          "worsened": 0
+        },
+        "interval": {
+          "high": 0.3207893607813951,
+          "low": 0.22175923443172832
+        },
+        "marginal_intervals": {
+          "improved": {
+            "high": 0.3207893607813951,
+            "low": 0.23170705338588274
+          },
+          "worsened": {
+            "high": 0.009947818954154416,
+            "low": 0
+          }
+        },
+        "marginal_one_sided_alpha": 0.0125,
+        "mean": 0.274,
+        "method": "union-bounded Wilson score marginals for p(improved)-p(worsened); nominal score coverage, not an exact finite-sample guarantee"
+      },
+      "target": {
+        "censored_pairs": 0,
+        "danger": {
+          "high": 0.40317047501129166,
+          "low": 0.3077342881233214
+        },
+        "delta": {
+          "high": 0.3263749658191936,
+          "low": 0.21487186217863008
+        },
+        "escape": {
+          "high": 0.9432010296225837,
+          "low": 0.8884428024559268
+        },
+        "reason": "target-bounds-match",
+        "status": "match"
+      }
+    },
+    {
+      "censored_pairs": 0,
+      "hp": "floor4",
+      "paired95": {
+        "count": 500,
+        "counts": {
+          "both": 358,
+          "improved": 127,
+          "neither": 15,
+          "worsened": 0
+        },
+        "interval": {
+          "high": 0.2999321164432907,
+          "low": 0.20301439152799877
+        },
+        "marginal_intervals": {
+          "improved": {
+            "high": 0.2999321164432907,
+            "low": 0.2129622104821532
+          },
+          "worsened": {
+            "high": 0.009947818954154416,
+            "low": 0
+          }
+        },
+        "marginal_one_sided_alpha": 0.0125,
+        "mean": 0.254,
+        "method": "union-bounded Wilson score marginals for p(improved)-p(worsened); nominal score coverage, not an exact finite-sample guarantee"
+      },
+      "target": {
+        "censored_pairs": 0,
+        "danger": {
+          "high": 0.331175902170619,
+          "low": 0.24112155561757573
+        },
+        "delta": {
+          "high": 0.3054490882664548,
+          "low": 0.19629067199430145
+        },
+        "escape": {
+          "high": 0.9829693996217181,
+          "low": 0.9476796505613769
+        },
+        "reason": "target-bounds-match",
+        "status": "match"
+      }
+    }
+  ],
+  "decision_sha256": "532fc2c927ee1f0b543fc02c13ba77510b63595d3057f9f65423362b99996608",
+  "decision_verified": true,
+  "heldout_reports_read": 0,
+  "integer_results_digests": {
+    "clock_isolation": "db4f4750e53df661e846eb15a440bdab604473a103cd6bbdae0f8dd4aadfb419",
+    "light_exact": "8d44a0ed6586c7f6b918952f62f874a882158b839e647bdda1d051336d0fe177",
+    "light_short": "4f1fd4f98b366257b0895427d5a3910ccd0d2adb51a2d065dfe0ec4874897560",
+    "needs_prepared": "ffde3b8a2d383694b6a074f435cd1fe2cd7daeab6c62efe773b028953c8e7c24",
+    "needs_short": "1a2e645b956b78f540316321cd15b4fb0c546ff0104fe0d6bf00d3daf50128d6",
+    "outnumbered_classic_a11_fight": "2cd1a26c0e67afca7e61c187d317bf495a469dcdb9b85cc07fd36c224ebac512",
+    "outnumbered_classic_a11_immediate": "ea812f3d32145372ce5b37da6005c053a76c3eae402d786807684a566f366b5d",
+    "outnumbered_classic_a11_threshold": "e899c513cde7767cdeda45f3c24acb2a05525759e6c09648338cd151d2faecb7",
+    "rest_prepared": "4facfa292f09df0b6c76c1d79c652027d692721972a7e81c88199502ea77a4e9",
+    "rest_short": "e96e366d83cbd4994dd71e85adf3176acf6a31f8bd78fc8158bd9fd07ed95100",
+    "search_forage": "17bc7e5c2016195c532dd61e433a61011743383c5e4886257e46bc3b71a76046",
+    "solo_classic_a11_fight": "308968dbe066aea0116c7201f861011c7b04bfc62a772c83bf56da818129b4b7",
+    "solo_classic_a11_immediate": "788c96a4850a947335eec4c3d8e0ec8ae43a94d4198bd8f7b947793e31532c4a",
+    "solo_classic_a11_threshold": "b33f55b070ed4043acf18d4b171d506f17a37e2fae0b3cf83ba3e91b76c365a0",
+    "solo_classic_a12_fight": "5462bef09c48d067e64254c40d460a2e33b5541d5037d3c29f877bfed0b9ec03",
+    "solo_classic_a12_immediate": "82d4dd1e3a00d24e2f959d0ca2a7ea7d7a864fb3d171b1365e122ab7c520a0b2",
+    "solo_classic_a12_threshold": "f7826d6519277b41317a50ab496cb7da493684dc845baf1a86f5dcc743561a97",
+    "solo_classic_a14_fight": "20bbc4ea7155769b69f536dc01317b297ab979cc418306452eadf1579ee3edd9",
+    "solo_classic_a14_immediate": "456640767df9601df92ef3e8aa3ed5cdd90f6a5f3f540e2297144a8d67b83dc4",
+    "solo_classic_a14_threshold": "b3c1d2e29dac2abbd63ea9f18f3bde54a42b396c471aebf6006b4f0e7a61aa64",
+    "solo_floor4_a11_fight": "49d57151e0eed190fecdcc1a44cf9c3f05414cb84b9e23353e7eb86024703813",
+    "solo_floor4_a11_immediate": "fcd77771ce28e018384a15cf7342e30e31162995d1520bd9090944f5a5e88aee",
+    "solo_floor4_a11_threshold": "ffbd7b446c3d7597997118aee438e0255e4258f033c6ec1014ed3dfaff2f45d1",
+    "solo_floor4_a12_fight": "4e7d370bc92643eea4d2ef74091fcc91163a63d365f6690930814fc281b3ef3b",
+    "solo_floor4_a12_immediate": "107d98bd2a3b0606c9d10d5060177bd57c66c210a0fc6bfa57f983ddad4a908b",
+    "solo_floor4_a12_threshold": "ec11902b05ef03a6e7a37d51a7cb5b60545e9376dfd89af4a7a71cf8a2f078a9",
+    "solo_floor4_a14_fight": "c195211362e6595599aa5637d6ad197a1aafce0db955eb5d522003e9902c4e69",
+    "solo_floor4_a14_immediate": "5082a3beac7218e9c2f7ce8f376184456400e71536744d0d44ce7adbb344881a",
+    "solo_floor4_a14_threshold": "34223ee6d4e83d942bfb189a453920a4948020b4e5ab989c4de00596a0212609"
+  },
+  "limits": [
+    "Report-only verification cannot recompute state or transition/replay transcript hashes; it checks retained row equality of transition and replay hashes plus every aggregate digest.",
+    "Source fingerprint self-consistency and optional expected immutable commit are checked; this script does not read repository source bytes.",
+    "No proof of absent unrecorded runs or seed peeking follows from report files alone.",
+    "Wilson score coverage is nominal, not an exact finite-sample family-wise guarantee; these fixed synthetic fixtures do not establish general player enjoyment or universal balance."
+  ],
+  "phase": "train",
+  "recommendation": "classic",
+  "reconstructed_replay_digest": "87b301e50d01b8f56e28d0d9549354c78764aef76694d3fece96be4da8ae42e5",
+  "report": "/workspace/ARGO/.board/rpg-phase2/worktrees/RP-400-1-fc98f0198f/docs/rpg-phase2/balance/evidence/train-bb7c838.json",
+  "report_sha256": "0100de2f92323a12ebd2af67f6b58d1b0838e8d763d2f3b84ab1fa60e92d5056",
+  "resource_rows_reconstructed": 4000,
+  "simulations_run": 0,
+  "source_commit": "bb7c838252f320548d47c6c433b0eb429afd8e70",
+  "source_file_count": 30,
+  "source_fingerprint": "db0af69c416361853ac6384e6d2c6ac23b6b5207c1313f801623208ff1f6643f",
+  "status": "pass",
+  "trials_per_cell": 500,
+  "verifier_sha256": "d0259e43f240adc1ac154200c0ec3714ac696df8f55d6c6365c8cb1279fea4d0"
+}

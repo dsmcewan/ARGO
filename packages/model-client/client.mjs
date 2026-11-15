@@ -2,22 +2,32 @@ import {prepareRequest,checkBudget,compactConversation} from './request.mjs';
 import {boundedCall} from './router.mjs';
 import {exchange} from './wire.mjs';
 import {CAPABILITIES} from './registry.mjs';
+import {googleCountConfig} from './google-count.mjs';
 
-export async function sendModelTurn({client,onEvent,countTokens,compactAfterBytes=512000,deadline=Date.now()+900000,...args}){
+export async function sendModelTurn({client,onEvent,countTokens,beforeGenerate,responseMode='any',compactAfterBytes=512000,deadline=Date.now()+900000,...args}){
   if(!client)throw new Error('SDK client required');
+  if(!['any','text_only'].includes(responseMode))throw new Error('Unsupported response mode');
+  if(beforeGenerate!==undefined&&typeof beforeGenerate!=='function')throw new Error('Invalid generation preflight');
   return boundedCall(async signal=>{
+    signal.throwIfAborted();
     let history=args.history??[];
     let compacted=false;
     if(CAPABILITIES[args.model]?.compaction&&history.length&&Buffer.byteLength(JSON.stringify(history))>=compactAfterBytes){
       history=await compactConversation({client,model:args.model,history,system:args.extra?.system,tools:args.extra?.tools,signal});
       compacted=true;
     }
+    signal.throwIfAborted();
     const prepared=prepareRequest({...args,history,signal});
     if(prepared.options.headers['anthropic-beta'])prepared.options.headers['anthropic-beta']=
       [...(client.argoBetaHeaders??[]),prepared.options.headers['anthropic-beta']].join(',');
     const counter=countTokens??sdkCounter(client,prepared,signal);
     await checkBudget(prepared,counter);
-    return {...await exchange(prepared,client,onEvent),compacted};
+    signal.throwIfAborted();
+    if(Date.now()>=deadline)throw new Error('Request deadline exceeded');
+    await beforeGenerate?.({signal});
+    signal.throwIfAborted();
+    if(Date.now()>=deadline)throw new Error('Request deadline exceeded');
+    return {...await exchange({...prepared,responseMode},client,onEvent),compacted};
   },{signal:args.signal,deadline});
 }
 
@@ -36,11 +46,12 @@ function sdkCounter(client,{cap},signal){
       // The Developer API SDK's CountTokensConfig rejects system/tools/generationConfig.
       // Its REST countTokens endpoint accepts generateContentRequest instead. Inject the full
       // count request through the SDK's documented extraBody hook; omit the alternative contents.
-      const {systemInstruction,tools,abortSignal,httpOptions,automaticContinuation,...generationConfig}=config;
-      const full=systemInstruction!==undefined||tools!==undefined||config.responseSchema||config.responseJsonSchema;
+      const {systemInstruction,tools,toolConfig,safetySettings,...generationConfig}=googleCountConfig(config);
+      const full=systemInstruction!==undefined||tools!==undefined||toolConfig!==undefined||safetySettings!==undefined||generationConfig.responseSchema||generationConfig.responseJsonSchema;
       const body={model:`models/${model}`,contents,
-        ...(systemInstruction!==undefined?{systemInstruction:typeof systemInstruction==='string'?{parts:[{text:systemInstruction}]}:systemInstruction}:{}),
-        ...(tools!==undefined?{tools}:{}),generationConfig};
+        ...(systemInstruction!==undefined?{systemInstruction}:{}),
+        ...(tools!==undefined?{tools}:{}),...(toolConfig!==undefined?{toolConfig}:{}),
+        ...(safetySettings!==undefined?{safetySettings}:{}),generationConfig};
       return (await client.models.countTokens({model,...(full?{}:{contents}),config:{abortSignal:signal,
         ...(full?{httpOptions:{extraBody:{generateContentRequest:body}}}:{})}})).totalTokens;
     };

@@ -20,8 +20,13 @@ export function canonical(value:unknown):string{
   try{
    if(Reflect.ownKeys(v).some(k=>typeof k==='symbol'))fail('INVALID_CONTRACT','Canonical symbols are forbidden');
    if(Array.isArray(v)){
-    if(Object.keys(v).length!==v.length)fail('INVALID_CONTRACT','Sparse or decorated arrays are forbidden');
-    return '['+Array.from({length:v.length},(_,i)=>{if(!Object.hasOwn(v,i))fail('INVALID_CONTRACT','Sparse array');return visit(v[i]);}).join(',')+']';
+    const descriptors=Object.getOwnPropertyDescriptors(v);
+    if(Object.keys(descriptors).length!==v.length+1)fail('INVALID_CONTRACT','Sparse or decorated arrays are forbidden');
+    return '['+Array.from({length:v.length},(_,i)=>{
+     const d=descriptors[String(i)];
+     if(!d||!d.enumerable||!('value' in d))fail('INVALID_CONTRACT','Unsafe canonical array entry');
+     return visit(d.value);
+    }).join(',')+']';
    }
    if(Object.getPrototypeOf(v)!==Object.prototype&&Object.getPrototypeOf(v)!==null)fail('INVALID_CONTRACT','Only plain canonical objects are allowed');
    const descriptors=Object.getOwnPropertyDescriptors(v);
@@ -57,3 +62,31 @@ export function assertKnowledgeDisclosure(value:unknown):asserts value is Contra
  if(value.audience==='actor'&&value.party_id!==null||value.audience==='party'&&value.party_id===null)fail('INVALID_CONTRACT','Invalid knowledge audience');
  for(const claim of value.claims)if(claim.acquired_at>value.as_of_world_time||claim.sequence>value.as_of_sequence||!claim.observation.observers.includes(value.actor_id)||(value.audience==='party'&&claim.observation.party_id!==value.party_id))fail('INVALID_CONTRACT','Knowledge disclosure exceeds actor, party or time boundary');
 }
+
+// Additive, opt-in local projection profile; gameplay v1 remains unchanged.
+export {projectionSchema,assertProjectionContract,validateActorQuery,validateCanonicalQuery,buildActorView,selectCanonicalRelations,adaptV1KnowledgeQuery,encodeIdEntries} from './projection-v2.ts';
+export type {ProjectionReadContext} from './projection-v2.ts';
+export type * from './projection-generated.ts';
+
+// Additive private character-memory profile; no frozen gameplay reinterpretation.
+export {CHARACTER_PROFILE,CHARACTER_CLAIM_PREFIX,characterSchema,assertCharacterContract,assertCharacterPrincipal,characterRequestHash,characterProposalId} from './characters.ts';
+export type * from './character-types.ts';
+
+// Separate versioned mortal authority; frozen v1 contracts retain their semantics.
+export * from './mortal-types.ts';
+export {assertMortalContract,assertMortalGenesis,assertMortalData,mortalSchema} from './mortal.ts';
+
+// Fresh-world encounter recovery; frozen mortal-v2 stays independently readable.
+export * from './mortal-v3-types.ts';
+export {assertMortalV3Contract,assertMortalV3Genesis,assertMortalV3Data,mortalV3Schema} from './mortal-v3.ts';
+
+// Admission-only policy for new v1 observations, not historic witness proof.
+export * from './observation-admission.ts';
+
+// Authored actor policy requires pinned sources and a scoped host disclosure.
+export type * from './dialogue-knowledge-types.ts';
+export * from './dialogue-knowledge.ts';
+
+// Fresh shared-world authority; historical profiles remain independently readable.
+export * from './shared-world-types.ts';
+export {worldSchema,assertWorldData,assertWorldContract,assertWorldGenesis,worldRequestHash} from './shared-world.ts';

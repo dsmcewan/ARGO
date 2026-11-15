@@ -1,0 +1,132 @@
+--- normalized-v2/storage-worker.ts
++++ v3/storage-worker.ts
+@@ -79,6 +79,12 @@
+  db = new DatabaseSync(config.path, {timeout: 5000, enableForeignKeyConstraints: true, enableDoubleQuotedStringLiterals: false, allowExtension: false});
+  const tables = db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'").all().map(row => row.name);
+  if (tables.some(name => name !== 'mortal_v3_meta' && name !== 'mortal_v3_events')) corrupt('SQLite file belongs to another application');
++ // Refuse foreign or mismatched existing files before WAL/schema/metadata
++ // mutation. Only a completely empty application database can initialize.
++ if (tables.length) {
++  if (tables.length !== 2) corrupt('Incomplete mortal v3 database');
++  metadata();
++ }
+  db.exec('PRAGMA journal_mode=WAL; PRAGMA synchronous=FULL; PRAGMA trusted_schema=OFF; BEGIN IMMEDIATE;');
+  try {
+   db.exec(`CREATE TABLE IF NOT EXISTS mortal_v3_meta(singleton INTEGER PRIMARY KEY CHECK(singleton=1),genesis_hash TEXT NOT NULL,genesis_json TEXT NOT NULL) STRICT;
+--- normalized-v2/rules.ts
++++ v3/rules.ts
+@@ -59,7 +59,8 @@
+  if(s.sequence===0&&canonical(s)!==canonical(initialMortalV3State(g)))fail('CORRUPT_LEDGER','Mortal initial state differs from genesis');
+  if(s.encounter){
+   const locations=new Set(s.encounter.order.map(id=>actor(s,id).location_id));
+-  if(locations.size!==1)fail('CORRUPT_LEDGER','Mortal encounter actors are not co-located');
++  if(locations.size!==1||!locations.has(s.encounter.location_id))fail('CORRUPT_LEDGER','Mortal encounter actors are outside the fixed site');
++  if(!viable(s,s.encounter))fail('CORRUPT_LEDGER','An ended mortal encounter remained open');
+  }
+ }
+ const eligible=(s:MortalV3State,e:MortalV3Encounter,id:string):boolean=>actor(s,id).hp>0&&!e.escaped.includes(id);
+@@ -90,25 +91,41 @@
+  if(command.expected.sequence!==input.sequence||command.expected.head!==input.head)fail('CONFLICT','Stale mortal cursor');
+  if(command.causation_id!==null&&command.causation_id!==input.head)fail('CONFLICT','Mortal causation is not current');
+  bounded(input.sequence+1,1000000);
+- const action=command.action,combat=['attack','defend','retreat','pass'].includes(action.type);
++ const action=command.action,combat=['attack','defend','retreat','pass'].includes(action.type),recovery=action.type==='recover_encounter';
+  let acting:MortalV3Actor|null=null,currentTurn=-1;
++ if(action.type==='begin_encounter'||recovery){
++  if(principal.role!=='referee'||principal.actor_id!==null||principal.principal_id!==genesis.referee_id||command.actor_id!==null)fail('UNAUTHORIZED','Only configured referee can administer an encounter');
++ }
+  if(action.type==='begin_encounter'){
+-  if(principal.role!=='referee'||principal.actor_id!==null||principal.principal_id!==genesis.referee_id||command.actor_id!==null)fail('UNAUTHORIZED','Only configured referee can establish an encounter');
+   if(input.encounter)fail('CONFLICT','A mortal encounter is already active');
+   const roster=[...action.side_a,...action.side_b],where=new Set<string>();
+   for(const id of roster){const a=actor(input,id);if(a.hp<=0)fail('INVALID_ACTION','Encounter participant must be standing');fits(input,id);where.add(a.location_id);}
+   if(where.size!==1)fail('INVALID_ACTION','Encounter participants must be co-located');checkTime(input,roster,6);
++ }else if(action.type==='recover_encounter'){
++  const e=input.encounter;
++  if(!e||e.id!==action.encounter_id||e.turn_started_sequence!==action.turn_started_sequence)fail('CONFLICT','Recovery no longer identifies the waiting turn');
++  currentTurn=e.turn;acting=actor(input,e.order[currentTurn]!);checkTime(input,e.round_participants,6);
+  }else{
+   if(principal.role==='referee'||principal.actor_id!==command.actor_id||command.actor_id===null)fail('UNAUTHORIZED','Direct mortal actor authentication required');
+   acting=actor(input,command.actor_id);
+   if(principal.principal_id!==acting.controller_id||principal.role!==acting.kind)fail('UNAUTHORIZED','Mortal controller or role differs');
+   if(acting.hp<0||acting.hp===0&&action.type!=='rest')fail('UNAUTHORIZED','Mortal action requires a standing actor; only rest admits unconscious survivors');
+   if(input.encounter){
+-   if(!combat)fail('CONFLICT','Out-of-combat action is unavailable during an encounter');
+-   if(!viable(input,input.encounter))fail('CORRUPT_LEDGER','An ended mortal encounter remained open');
+-   currentTurn=nextEligible(input,input.encounter,input.encounter.turn);
+-   if(currentTurn<0)fail('CORRUPT_LEDGER','Mortal encounter has no remaining current turn');
+-   if(input.encounter.order[currentTurn]!==acting.id)fail('UNAUTHORIZED','Mortal actor is out of turn');checkTime(input,input.encounter.round_participants,6);
++   const e=input.encounter;
++   if(combat){
++    currentTurn=e.turn;
++    if(e.order[currentTurn]!==acting.id)fail('UNAUTHORIZED','Mortal actor is out of turn');checkTime(input,e.round_participants,6);
++   }else{
++    // Lock the complete original roster and site. All other ordinary actions
++    // retain their local ownership/co-location checks below; no remote action
++    // may enter the site or transfer to a roster actor, including an escapee.
++    if(e.order.includes(acting.id)||acting.location_id===e.location_id)fail('CONFLICT','Mortal activity is locked');
++    if(action.type==='travel'){
++     const route=genesis.routes.find(r=>r.id===action.route_id);
++     if(route&&(route.from===e.location_id||route.to===e.location_id))fail('CONFLICT','Mortal activity is locked');
++    }
++    if((action.type==='give'||action.type==='transfer_item')&&action.to_actor_id!==null&&e.order.includes(action.to_actor_id))fail('CONFLICT','Mortal activity is locked');
++   }
+   }else if(combat)fail('INVALID_ACTION','Combat action requires an active encounter');
+  }
+  // All cheap permissions, resource amounts and possible reward capacity are
+@@ -192,14 +209,15 @@
+  const burn=(a:MortalV3Actor,turns:number,required:boolean)=>{if(required)resource(a,'oil',-turns);};
+  const finishCombat=()=>{
+   const e=state.encounter!;const next=nextEligible(state,e,e.turn+1);
+-  if(viable(state,e)&&next>=0){e.turn=next;e.defended=e.defended.filter(id=>id!==e.order[next]);return;}
++  if(viable(state,e)&&next>=0){e.turn=next;e.turn_started_sequence=state.sequence+1;e.defended=e.defended.filter(id=>id!==e.order[next]);return;}
+   advance(e.round_participants,6);
+   if(!viable(state,e)){effect('encounter_end',null,e.id,0);state.encounter=null;return;}
+   e.round=bounded(e.round+1,1000000);e.round_participants=e.order.filter(id=>eligible(state,e,id));e.turn=nextEligible(state,e,0);
++  e.turn_started_sequence=state.sequence+1;
+   if(e.turn<0)fail('CORRUPT_LEDGER','Mortal round has no eligible actor');e.defended=e.defended.filter(id=>id!==e.order[e.turn]);
+  };
+  const a=acting?actor(state,acting.id):null;
+- if(combat){state.encounter!.turn=currentTurn;state.encounter!.defended=state.encounter!.defended.filter(id=>id!==a!.id);}
++ if(combat||recovery){state.encounter!.turn=currentTurn;state.encounter!.defended=state.encounter!.defended.filter(id=>id!==a!.id);}
+  switch(action.type){
+  case 'travel':{
+   const route=genesis.routes.find(r=>r.id===action.route_id)!;a!.location_id=a!.location_id===route.from?route.to:route.from;effect('travel',a!.id,a!.location_id,0);
+@@ -234,7 +252,7 @@
+  }
+  case 'begin_encounter':{
+   const first=draw('initiative',6)<=3,order=first?[...action.side_a,...action.side_b]:[...action.side_b,...action.side_a];
+-  state.encounter={id:action.encounter_id,side_a:[...action.side_a],side_b:[...action.side_b],order,turn:0,round:1,round_participants:[...order],escaped:[],defended:[],escape_allowed:action.escape_allowed};effect('begin_encounter',null,action.encounter_id,0);break;
++  state.encounter={id:action.encounter_id,location_id:actor(state,order[0]!).location_id,turn_started_sequence:state.sequence+1,side_a:[...action.side_a],side_b:[...action.side_b],order,turn:0,round:1,round_participants:[...order],escaped:[],defended:[],escape_allowed:action.escape_allowed};effect('begin_encounter',null,action.encounter_id,0);break;
+  }
+  case 'attack':{
+   const target=actor(state,action.target_id),weapon=item(state,action.weapon_id);if(weapon.kind!=='weapon')fail('CORRUPT_LEDGER','Validated weapon changed');
+@@ -247,6 +265,12 @@
+  case 'defend':state.encounter!.defended.push(a!.id);effect('defend',a!.id,state.encounter!.id,2);finishCombat();break;
+  case 'retreat':state.encounter!.escaped.push(a!.id);effect('retreat',a!.id,state.encounter!.id,0);finishCombat();break;
+  case 'pass':effect('pass',a!.id,state.encounter!.id,0);finishCombat();break;
++ case 'recover_encounter':{
++  const e=state.encounter!;
++  if(action.resolution==='pass'){effect('referee_pass',a!.id,e.id,0);finishCombat();}
++  else{effect('referee_close',null,e.id,0);advance(e.round_participants,6);state.encounter=null;}
++  break;
++ }
+  }
+  state.sequence++;assertMortalV3Contract('State',state);return {state,draws,effects};
+ }
+--- normalized-v2/view.ts
++++ v3/view.ts
+@@ -12,10 +12,12 @@
+  const {controller_id:_,kind:__,...self}=actor;
+  let encounter:MortalV3ActorView['encounter']=null;
+  const fight=state.encounter;
++ const roster=fight?.order.includes(actor.id)??false;
++ const activity_lock:MortalV3ActorView['activity_lock']=fight&&(roster||actor.location_id===fight.location_id)?{encounter_id:fight.id,location_id:fight.location_id,reason:roster?'roster':'site'}:null;
+  if(fight&&[...fight.side_a,...fight.side_b].includes(actor.id)&&!fight.escaped.includes(actor.id)){
+   encounter={id:fight.id,round:fight.round,acting_id:fight.order[fight.turn]!,your_turn:fight.order[fight.turn]===actor.id,escape_allowed:fight.escape_allowed,
+    participants:[...fight.side_a,...fight.side_b].map(id=>{const participant=state.actors.find(a=>a.id===id)!;return {id,side:fight.side_a.includes(id)?'a':'b',condition:participant.hp>0?'standing':participant.hp===0?'unconscious':'dead',escaped:fight.escaped.includes(id)};})};
+  }
+- const result:MortalV3ActorView=structuredClone({version:state.version,scope:state.scope,cursor:{sequence:state.sequence,head:state.head},world_time:state.world_time,self,items:state.items.filter(i=>i.owner_id===actor.id),location,routes:genesis.routes.filter(r=>r.from===actor.location_id||r.to===actor.location_id),encounter});
++ const result:MortalV3ActorView=structuredClone({version:state.version,scope:state.scope,cursor:{sequence:state.sequence,head:state.head},world_time:state.world_time,self,items:state.items.filter(i=>i.owner_id===actor.id),location,routes:genesis.routes.filter(r=>r.from===actor.location_id||r.to===actor.location_id),encounter,activity_lock});
+  assertMortalV3Contract('ActorView',result);return result;
+ }

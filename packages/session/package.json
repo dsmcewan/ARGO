@@ -1,0 +1,1 @@
+{"name":"@argo/session","version":"0.1.0","private":true,"type":"module","exports":"./src/index.ts","dependencies":{"@argo/contracts":"0.1.0","@argo/ledger":"0.1.0","@argo/interventions":"0.1.0","@argo/model-client":"0.1.0"}}

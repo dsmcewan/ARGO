@@ -29,4 +29,6 @@
 - [x] Implement/test `tools/board.py` in the board-engine worktree: WAL/DAG, fenced leases, CAS, immutable specs, audit verification, supervised gate/review and real merge.
 - [x] Implement/test `tools/dispatch.py` in its own worktree: finite offline loop, read-only handoffs, writable ownership mounts, bounded child processes and cancellation on lease loss.
 - [x] Integrate peer commits; run end-to-end offline fixtures, schema checks and existing deterministic gates. Obtain independent review of final boundaries.
-- [ ] Commit and save to private ARGO, preserving intervening user commits. Record exact verification and remaining integration limits.
+- [x] Commit and save to private ARGO, preserving intervening user commits. Record exact verification and remaining integration limits.
+
+Closure: corrected combined candidate `e2f4d7e` passed branch/main CI and was saved. Subsequent status checkpoint `a9745e7` also passed main CI. Later repair work is separately tracked in `REPAIRS/RESOLUTIONS.md`; this completed historical plan is not reopened.

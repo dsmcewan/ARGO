@@ -1,0 +1,21 @@
+✔ multiple contextual exchanges commit only speech and restart without regeneration (8808.133019ms)
+✔ two handles race one canonical outbox and invoke one model turn (7912.341956ms)
+✔ commit followed by a bad receipt stays pending and exact retry recovers both speech stages (10130.21573ms)
+✔ waiter abort is separate from durable cancellation and late provider output is fenced (4021.571221ms)
+✔ a consumed generation marker never restarts and expires as uncertain (4731.839145ms)
+✔ current player disclosure suppresses closure and eviction instead of replaying cached prose (6325.58608ms)
+✔ journal prefix rollback refuses a signed outbox receipt (4864.270464ms)
+✔ a held callback leaves unrelated world writes available and stale text never commits (4582.353902ms)
+✔ malformed/tool replies settle without a physical action, and opaque/config accessors cannot run (5130.158315ms)
+✔ cancel reconciles an uncertain dispatched reply without delivering or regenerating it (5626.603175ms)
+✔ a verified different request at the expected next slot proves rejection without rebasing (7753.868306ms)
+✔ busy NPCs and explicit provider null produce no-reply without invented explanations (4175.103674ms)
+✔ host close drains a just-admitted insertion and never starts its generation afterward (4146.920008ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 78224.700832

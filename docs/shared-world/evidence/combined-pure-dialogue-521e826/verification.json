@@ -1,0 +1,75 @@
+{
+  "candidate": "521e826b9588a1293ed22c243a14b83924c275bd",
+  "verified_at_utc": "2026-11-14T14:56:46.356506+00:00",
+  "head_after": "521e826b9588a1293ed22c243a14b83924c275bd",
+  "status_after": "",
+  "verdict": "READY_COMBINED_PURE_SCOPE",
+  "probe_groups": {
+    "passed": 8,
+    "failed": 0
+  },
+  "injected_provider_calls": 5,
+  "paid_calls": 0,
+  "source_edits": false,
+  "prior_reviewed_files": {
+    "SW200": {
+      "reviewed_commit": "2c0c1c8cc1f0aadedc7c94754ad917f9538b60a1",
+      "files": {
+        "TESTS/shared-world-rules-helpers.ts": "c783c92c3c36a4a93497bb7908fd5ed6dacd7b93e58ff62ec78df24cf9874edf",
+        "TESTS/shared-world-rules.test.ts": "144fdf27377b24862ca9a2acb2d1fe0d6bfb0057b3e64f6144fb331723d0a709",
+        "TESTS/shared-world-views.test.ts": "69a79c53d3dff1c3cf57cfcbf0b332e7fb91df42370260132f926aa68e925e12",
+        "packages/ledger/src/world/rules.ts": "aa8f60643039d819294c3936fa662fdbfcc42152780702950773c1d911c6c9ac",
+        "packages/ledger/src/world/rules/README.md": "3729e9d841681d41037b87fff5bdc96d416598b1cce408aac8f807e39be41dc0",
+        "packages/ledger/src/world/rules/engine.ts": "08af735d724e9bd205e11306a0fbc6462277b3934e08fb5499184577ead2d8f1",
+        "packages/ledger/src/world/rules/ownership.ts": "9ccaf02a50871409ce7f60ab2566cf076588fff96eee4a5880a47eb6e38e16a3",
+        "packages/ledger/src/world/view.ts": "091a46c5549ad359466ca3dbb8f695b28c5a81bf087b290597b37d78b2838aea"
+      }
+    },
+    "SW400": {
+      "reviewed_commit": "dfed2b980e73dc65f54b65f7db2468442117e415",
+      "files": {
+        "TESTS/shared-world-dialogue.test.ts": "6186922648909ce30800a8ccb3cab3e3ddbac9422f7caf3d21de32301442db6e",
+        "packages/interventions/src/world-context.ts": "b0b22518563c70caeda1d2f9f453bf8e67f118d9bc4addef62099b24c3340761",
+        "packages/interventions/src/world-model.ts": "c7357a06551362c50090740e33e2dce5010c524d001d3d3412d1f727171fa405"
+      }
+    },
+    "SW500": {
+      "reviewed_commit": "31e8c428472a0130fc75e46ce156dd5bddc0c534",
+      "files": {
+        "TESTS/shared-world-campaign.test.ts": "48c162c48717c865adfd7f70a427ad020634abebfbe5d2923608eb5c9cb7c561",
+        "scenarios/tempted-fates/shared-world/SEED.md": "d146faa9744e969e5ef728562a2d9bf9978cfe172bce2299dc8035afdfa81acf",
+        "scenarios/tempted-fates/shared-world/seed.ts": "2f20b41b2079f09c77c70b61a3b0a1a013bbbe73f41bf7e60c7bbc5287a8ce6d"
+      }
+    }
+  },
+  "public_export_hashes": {
+    "packages/ledger/src/index.ts": "be5c095ba351c70bc3b121fe50b294e4e4b0d8f8f861963cb30ffef57906dbcf",
+    "packages/ledger/package.json": "fb85d07226fc2a7e76ea3989cd88fd42db92502764185edce3ed5dacf76057c2",
+    "packages/interventions/src/index.ts": "3b439208fafeeed1b809d3c1cee0b1967a7cacf2322879dfef16c7f1527ad447",
+    "packages/interventions/package.json": "2396f0aa7ead47d075f1b75ef09edd2309ad860105372b44446651db8b0f7c6f",
+    "scenarios/tempted-fates/index.ts": "33a151fc089a4aba98a88f710e6391aacb5bdcd876e669e6039abaa8efaa4c05",
+    "scenarios/tempted-fates/package.json": "58e81e7d8b4f159957c52bfeae5e3f8c3d438d759dac4a0887289e7ba2fff1fb",
+    "packages/model-client/index.mjs": "e4f1a4e1f03f9076f2b19731456bb4b7aef2514056628fd3173b865014489d42",
+    "packages/model-client/package.json": "80e687793d2dd368c2f7af8298bbd674385c08bec7a7e75cc5ae687d8112738c"
+  },
+  "frozen_contract_hashes": {
+    "SYSTEMS/shared-world-v1/CONTRACT.md": "a7d3043105752495de744c21da30a90982e4a68cdddd06344ffe058a04d19606",
+    "SYSTEMS/shared-world-v1/world.schema.json": "6918294342f48f8a3d4edf81b1be99b4b17d8294185d25b0f1965d1f1533b665",
+    "packages/contracts/src/shared-world-types.ts": "f1cc8f944b0847f14df17b048eee9ad1f25f185790fa8e8612d97331b4b67351",
+    "packages/contracts/src/shared-world.ts": "8edbb1eb833c0fb579d7bbd52b50b791d1cd43751cc690ee29e91995f56cc9c2"
+  },
+  "model_profile": "shared-world-dialogue/0.1.0",
+  "evidence_hashes": {
+    "results.json": "076bc8e16cf1552a44c8a6f5023d9e392eb8cdd3fa58145e251a62af88c22cbc",
+    "REVIEW.md": "a0df415c6da5e6918b6c6a23b1f644d0d415335177750baf1bc2a8c8273d27a9",
+    "actual-provider-request.json": "37c7076c3335cfb3a7e3aa897cecc4460b507040de611e1654b8aa9f5ca78bec",
+    "probe.mjs": "3d3ae8db6a127d1b196196a8974a5738efb4b6b7a6d398cb2d50216015497bac",
+    "structured-loan-outcome.json": "84c4b9e41ad398a392c6643afc2e65af1e7d158a3237c549981efd0e9efda591",
+    "travel-suppression.json": "bd0f6426766608deba992894d43b2e67bb2fd93b7a08f1a0b4f82bb48bf76cb0",
+    "generated-reply.json": "bd4892afcf5579af3e7c7fd7d976456db6185e7c51f7930e6e9045242eba479d",
+    "closure-suppression.json": "ce73f77c8439cfd4ff56cb3619b07b91b8d7284002d2f2df310d5d5f91a808e6",
+    "actual-melia-view.json": "41b60c707bf64d1ff8b06cd80d8581a09bd2f9e0fd71ff9600ef4c7c64605d2e",
+    "probe.log": "076bc8e16cf1552a44c8a6f5023d9e392eb8cdd3fa58145e251a62af88c22cbc",
+    "dependency-install.log": "23a99653960f8b39d2cdee77427e5c76ebd3c463eac108b9afc6ac3d29b448bc"
+  }
+}

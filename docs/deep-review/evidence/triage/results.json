@@ -1,0 +1,100 @@
+{
+  "revision": "0c24b32f947143c5b1095f702c878ed92888aa8d",
+  "node": "v24.22.1",
+  "network_calls": 0,
+  "encounter": {
+    "acting": "raider",
+    "world_time": 0,
+    "unrelated_location": "ruin",
+    "remote_travel": {
+      "accepted": false,
+      "code": "CONFLICT",
+      "message": "Out-of-combat action is unavailable during an encounter"
+    },
+    "remote_wait": {
+      "accepted": false,
+      "code": "CONFLICT",
+      "message": "Out-of-combat action is unavailable during an encounter"
+    },
+    "other_participant_retreat": {
+      "accepted": false,
+      "code": "UNAUTHORIZED",
+      "message": "Mortal actor is out of turn"
+    },
+    "referee_pass": {
+      "accepted": false,
+      "code": "INVALID_CONTRACT",
+      "message": "Mortal action requires a direct actor identity"
+    },
+    "referee_end": {
+      "accepted": false,
+      "code": "INVALID_CONTRACT",
+      "message": "Invalid mortal Command contract"
+    },
+    "referee_second_encounter": {
+      "accepted": false,
+      "code": "CONFLICT",
+      "message": "A mortal encounter is already active"
+    },
+    "current_actor_retreat": {
+      "accepted": true,
+      "encounter": null,
+      "world_time": 6
+    }
+  },
+  "private_claims": {
+    "accepted_claims": [
+      {
+        "claim_id": "private_delivery",
+        "source_id": "donor",
+        "observers": [
+          "outsider"
+        ],
+        "party_id": null,
+        "acquired_at": 10
+      },
+      {
+        "claim_id": "forged_source",
+        "source_id": "clotho",
+        "observers": [
+          "donor",
+          "outsider"
+        ],
+        "party_id": null,
+        "acquired_at": 10
+      }
+    ],
+    "actual_submitter": "donor",
+    "victim_in_submitter_party": false,
+    "character_experience_count": 0
+  },
+  "dialogue_context": {
+    "has_wants": true,
+    "has_will_not": true,
+    "has_ordinary_lamp": true,
+    "has_five_obol_terms": false,
+    "has_explicit_return_checkpoint": false,
+    "has_private_knowledge": [
+      false,
+      false,
+      false
+    ],
+    "experience_count": 1
+  },
+  "fenced_json": {
+    "accepted": false,
+    "code": "INVALID_CONTRACT",
+    "message": "Dialogue response must be one JSON object"
+  },
+  "speech_241": {
+    "accepted": false,
+    "code": "INVALID_CONTRACT",
+    "message": "Dialogue text is empty or over its character limit"
+  },
+  "speech_240": {
+    "accepted": true,
+    "characters": 240
+  },
+  "dialogue_provider_calls": 4,
+  "no_generated_speech_committed": true
+}

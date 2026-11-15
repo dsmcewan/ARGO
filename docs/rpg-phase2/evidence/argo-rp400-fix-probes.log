@@ -1,0 +1,6 @@
+{"purpose":"descriptive","same":{"low":-0.00994781895415442,"high":0.00994781895415442},"all_improved":{"low":0.9801043620916912,"high":1},"all_worsened":{"low":-1,"high":-0.9801043620916912}}
+{"purpose":"target","same":{"low":-0.012323306573314543,"high":0.012323306573314543},"all_improved":{"low":0.9753533868533707,"high":1},"all_worsened":{"low":-1,"high":-0.9753533868533707}}
+{"censored_arm":"fight","target":{"status":"inconclusive","reason":"censored-comparison","censored_pairs":1,"danger":null,"escape":null,"delta":null}}
+{"censored_arm":"escape","target":{"status":"inconclusive","reason":"censored-comparison","censored_pairs":1,"danger":null,"escape":null,"delta":null}}
+{"censored_arm":"both","target":{"status":"inconclusive","reason":"censored-comparison","censored_pairs":1,"danger":null,"escape":null,"delta":null}}
+{"synthetic_seed_row_reconstruction":"pass","combat_columns":25,"resource_columns":26,"all_return_fields_retained":true,"censored_cell_intervals":null,"actual_trials_executed":0}

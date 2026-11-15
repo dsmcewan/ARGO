@@ -1,0 +1,31 @@
+{
+  "candidate": "c4654d52b1a08bdb4bfa18822d2cc74229d606b6",
+  "gate": {
+    "summary": "Verified 114 named tests at trusted source locations; no failing tests.",
+    "files": [
+      "TESTS/shared-world-cold.test.ts",
+      "TESTS/shared-world-rules.test.ts",
+      "TESTS/shared-world-views.test.ts",
+      "TESTS/shared-world-journal.test.ts",
+      "TESTS/shared-world-storage.test.ts",
+      "TESTS/shared-world-contracts.test.ts",
+      "TESTS/shared-world-dialogue.test.ts",
+      "TESTS/shared-world-session.test.ts"
+    ],
+    "runner": "unchanged scripts/run-tests.mjs"
+  },
+  "elapsed_seconds": 174.363,
+  "execution": "Disposable clone; full candidate read-only; network-unshared Bubblewrap; offline dependencies",
+  "source_head_unchanged": true,
+  "merged": false,
+  "operational_trust_promoted": false,
+  "paid_model_calls": 0,
+  "remote_writes": false,
+  "harness_sha256": "986a7aa05650e3d6ec53a00b62558d7c57a7e1af81a13ad4e9e681d1a09cde83",
+  "logs": {
+    "application-gate.log": "1e778127fd8b926fe720cf0743c99635da59d55456977a2c900cca6a535743f3",
+    "checkout.log": "fae980a7a1b93cfa99a26368edd2ec5fa9e52c79fb1662825dc94dffda7cf226",
+    "clone.log": "8995b1e65ef463b0175efc7790b3e1b4ae4b0ae3743cc78d197ff9c897e79d8e",
+    "root-install.log": "ee49f9d82e7eb07b1db6995cf7e4d72b1b8ef45d4d58597dc6011f2a535d7ec5"
+  }
+}

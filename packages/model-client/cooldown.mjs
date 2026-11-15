@@ -36,6 +36,11 @@ export function openCooldownStore(directory){
       finally{await unlink(temporary).catch(e=>{if(e.code!=='ENOENT')throw e;});}
       return row;
     }),
-    success:pool=>transaction(pool,()=>unlink(path(pool)).catch(e=>{if(e.code!=='ENOENT')throw e;})),
+    success:pool=>transaction(pool,async()=>{
+      // Concurrent calls may finish out of order. Success is not permission to cancel a
+      // provider's still-active Retry-After, including one written by a newer request.
+      const current=await read(pool);
+      if(current&&current.until<=Date.now())await unlink(path(pool));
+    }),
   };
 }

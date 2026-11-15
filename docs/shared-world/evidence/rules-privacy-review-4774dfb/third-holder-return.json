@@ -1,0 +1,35 @@
+{
+  "raw": {
+    "record_id": "53de86126b5552dda51a722d0df28bf7e53ad60917811d3721dadbd97ed87673",
+    "request_id": "request_5",
+    "sequence": 5,
+    "world_time": 600,
+    "actor_id": "watcher",
+    "acquired_by": [
+      "hero",
+      "watcher"
+    ],
+    "payload": {
+      "type": "loan_returned",
+      "loan_id": "private_loan",
+      "offer_id": "private_loan",
+      "item_id": "lamp",
+      "lender_actor_id": "hero",
+      "borrower_actor_id": "companion",
+      "holder_actor_id": "watcher",
+      "via_mortal": "transfer_item"
+    }
+  },
+  "holder_view": {
+    "record_id": "53de86126b5552dda51a722d0df28bf7e53ad60917811d3721dadbd97ed87673",
+    "sequence": 5,
+    "world_time": 600,
+    "actor_id": "watcher",
+    "payload": {
+      "type": "custody_returned",
+      "item_id": "lamp",
+      "from_actor_id": "watcher",
+      "to_actor_id": "hero"
+    }
+  }
+}

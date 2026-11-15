@@ -1,0 +1,5 @@
+FAIL A_cancel_during_final_npc_refresh_prevents_actual_provider_dispatch Provider was dispatched after the other handle completed durable cancellation
+
+1 !== 0
+
+FAIL B_host_close_does_not_wait_for_unresolved_caller_ledger_ack host.close() is coupled to the unresolved caller-owned ledger submit; it cannot finish until acknowledgment arrives

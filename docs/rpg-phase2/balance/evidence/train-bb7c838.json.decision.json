@@ -1,0 +1,8 @@
+{
+  "protocol": "mortal-balance/1.0.0",
+  "training_report_sha256": "0100de2f92323a12ebd2af67f6b58d1b0838e8d763d2f3b84ab1fa60e92d5056",
+  "source_fingerprint": "db0af69c416361853ac6384e6d2c6ac23b6b5207c1313f801623208ff1f6643f",
+  "trials": 500,
+  "recommendation": "classic",
+  "selection_rule": "Retain classic if all preregistered adjusted target intervals match; otherwise floor4 only if its intervals match; otherwise no-target-match. Any censorship prevents recommendation."
+}

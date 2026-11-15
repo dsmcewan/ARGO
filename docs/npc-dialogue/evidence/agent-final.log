@@ -1,0 +1,28 @@
+✔ public model agent generates provider speech from addressed context without a dialogue template (1478.243785ms)
+✔ deterministic silence avoids provider and supplement calls (17.238717ms)
+✔ model silence and private impressions use their existing command forms (19.150122ms)
+✔ same scene remains shared while actor goals and cache identities stay private (9.690795ms)
+✔ cross-actor and stale supplementary data fail before provider generation (5.595237ms)
+✔ supplement getters, proxies and extra fields cannot inject prompt data (3.818106ms)
+✔ changed view or scene after generation suppresses a previously valid reply (20.226835ms)
+✔ 429 failover uses another pool and rechecks disclosure before that attempt (12.662044ms)
+✔ malformed, incomplete, tool and oversized model responses never become speech (24.552881ms)
+✔ UTF-8 input and Unicode speech budgets are enforced before release (5.644971ms)
+✔ nature revision conflicts are rejected without replacing historical interpretation (1.332888ms)
+✔ historical nature is retained separately from the current personality revision (4.833009ms)
+✔ non-retryable provider failures cannot create a 400 retry loop (6.103511ms)
+✔ the total deadline also bounds optional cooldown bookkeeping (25.933593ms)
+✔ model-backed dialogue forwards bounded output and token counting across all four providers (22.005457ms)
+✔ disclosure is rechecked after token counting before generation can start (3.196432ms)
+✔ a late token count cannot invoke generation after the turn deadline (47.826118ms)
+✔ bounded dialogue refuses Google continuation instead of issuing another generation request (5.021242ms)
+✔ valid-looking prose mixed with refusal or built-in tool records is not dialogue (6.821276ms)
+✔ cancellation and deadlines bound unresponsive provider work (27.309466ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1760.570336

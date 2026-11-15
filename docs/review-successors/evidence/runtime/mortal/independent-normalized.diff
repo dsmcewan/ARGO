@@ -1,0 +1,270 @@
+--- normalized-v2/journal.ts
++++ v3/journal.ts
+@@ -1,7 +1,8 @@
+ import {KeyObject, createPublicKey, sign, verify} from 'node:crypto';
+ import {types as nodeTypes} from 'node:util';
+-import {assertMortalV3Contract, assertMortalV3Genesis, assertMortalV3Data, assertScope, canonical, fail, hash} from '@argo/contracts';
+-import type {MortalV3Genesis, MortalV3State, MortalV3Command, MortalV3Principal, MortalV3Event, MortalV3Receipt, MortalV3ReceiptTrust} from '@argo/contracts';
++import {assertMortalV3Contract, assertMortalV3Genesis, assertMortalV3Data} from '../../../contracts/src/mortal-v3.ts';
++import {assertScope, canonical, fail, hash} from '../../../contracts/src/index.ts';
++import type {MortalV3Genesis, MortalV3State, MortalV3Command, MortalV3Principal, MortalV3Event, MortalV3Receipt, MortalV3ReceiptTrust} from '../../../contracts/src/mortal-v3-types.ts';
+ import {initialMortalV3State, resolveMortalV3, mortalV3StateHash} from './rules.ts';
+ 
+ function corruption(message: string): never {return fail('CORRUPT_LEDGER', message);}
+--- normalized-v2/rules.ts
++++ v3/rules.ts
+@@ -1,7 +1,9 @@
+ /** Pure, versioned mortal authority. No storage, callbacks, models or caller dice. */
+ import {createHmac} from 'node:crypto';
+-import {MORTAL_V3_PROFILE,assertMortalV3Genesis,assertMortalV3Contract,canonical,hash,fail} from '@argo/contracts';
+-import type {MortalV3Genesis,MortalV3State,MortalV3Actor,MortalV3Item,MortalV3Command,MortalV3Principal,MortalV3Resolution,MortalV3Draw,MortalV3Effect,MortalV3Encounter,MortalV3Resource} from '@argo/contracts';
++import {MORTAL_V3_PROFILE} from '../../../contracts/src/mortal-v3-types.ts';
++import {assertMortalV3Genesis, assertMortalV3Contract} from '../../../contracts/src/mortal-v3.ts';
++import {canonical, hash, fail} from '../../../contracts/src/index.ts';
++import type {MortalV3Genesis,MortalV3State,MortalV3Actor,MortalV3Item,MortalV3Command,MortalV3Principal,MortalV3Resolution,MortalV3Draw,MortalV3Effect,MortalV3Encounter,MortalV3Resource} from '../../../contracts/src/mortal-v3-types.ts';
+ 
+ const DAY=86400,CLOCK=1000000000000,RESOURCE=1000000;
+ // structuredClone preserves shared references. Canonical JSON materializes each
+@@ -57,7 +59,8 @@
+  if(s.sequence===0&&canonical(s)!==canonical(initialMortalV3State(g)))fail('CORRUPT_LEDGER','Mortal initial state differs from genesis');
+  if(s.encounter){
+   const locations=new Set(s.encounter.order.map(id=>actor(s,id).location_id));
+-  if(locations.size!==1)fail('CORRUPT_LEDGER','Mortal encounter actors are not co-located');
++  if(locations.size!==1||!locations.has(s.encounter.location_id))fail('CORRUPT_LEDGER','Mortal encounter actors are outside the fixed site');
++  if(!viable(s,s.encounter))fail('CORRUPT_LEDGER','An ended mortal encounter remained open');
+  }
+ }
+ const eligible=(s:MortalV3State,e:MortalV3Encounter,id:string):boolean=>actor(s,id).hp>0&&!e.escaped.includes(id);
+@@ -88,25 +91,41 @@
+  if(command.expected.sequence!==input.sequence||command.expected.head!==input.head)fail('CONFLICT','Stale mortal cursor');
+  if(command.causation_id!==null&&command.causation_id!==input.head)fail('CONFLICT','Mortal causation is not current');
+  bounded(input.sequence+1,1000000);
+- const action=command.action,combat=['attack','defend','retreat','pass'].includes(action.type);
++ const action=command.action,combat=['attack','defend','retreat','pass'].includes(action.type),recovery=action.type==='recover_encounter';
+  let acting:MortalV3Actor|null=null,currentTurn=-1;
++ if(action.type==='begin_encounter'||recovery){
++  if(principal.role!=='referee'||principal.actor_id!==null||principal.principal_id!==genesis.referee_id||command.actor_id!==null)fail('UNAUTHORIZED','Only configured referee can administer an encounter');
++ }
+  if(action.type==='begin_encounter'){
+-  if(principal.role!=='referee'||principal.actor_id!==null||principal.principal_id!==genesis.referee_id||command.actor_id!==null)fail('UNAUTHORIZED','Only configured referee can establish an encounter');
+   if(input.encounter)fail('CONFLICT','A mortal encounter is already active');
+   const roster=[...action.side_a,...action.side_b],where=new Set<string>();
+   for(const id of roster){const a=actor(input,id);if(a.hp<=0)fail('INVALID_ACTION','Encounter participant must be standing');fits(input,id);where.add(a.location_id);}
+   if(where.size!==1)fail('INVALID_ACTION','Encounter participants must be co-located');checkTime(input,roster,6);
++ }else if(action.type==='recover_encounter'){
++  const e=input.encounter;
++  if(!e||e.id!==action.encounter_id||e.turn_started_sequence!==action.turn_started_sequence)fail('CONFLICT','Recovery no longer identifies the waiting turn');
++  currentTurn=e.turn;acting=actor(input,e.order[currentTurn]!);checkTime(input,e.round_participants,6);
+  }else{
+   if(principal.role==='referee'||principal.actor_id!==command.actor_id||command.actor_id===null)fail('UNAUTHORIZED','Direct mortal actor authentication required');
+   acting=actor(input,command.actor_id);
+   if(principal.principal_id!==acting.controller_id||principal.role!==acting.kind)fail('UNAUTHORIZED','Mortal controller or role differs');
+   if(acting.hp<0||acting.hp===0&&action.type!=='rest')fail('UNAUTHORIZED','Mortal action requires a standing actor; only rest admits unconscious survivors');
+   if(input.encounter){
+-   if(!combat)fail('CONFLICT','Out-of-combat action is unavailable during an encounter');
+-   if(!viable(input,input.encounter))fail('CORRUPT_LEDGER','An ended mortal encounter remained open');
+-   currentTurn=nextEligible(input,input.encounter,input.encounter.turn);
+-   if(currentTurn<0)fail('CORRUPT_LEDGER','Mortal encounter has no remaining current turn');
+-   if(input.encounter.order[currentTurn]!==acting.id)fail('UNAUTHORIZED','Mortal actor is out of turn');checkTime(input,input.encounter.round_participants,6);
++   const e=input.encounter;
++   if(combat){
++    currentTurn=e.turn;
++    if(e.order[currentTurn]!==acting.id)fail('UNAUTHORIZED','Mortal actor is out of turn');checkTime(input,e.round_participants,6);
++   }else{
++    // Lock the complete original roster and site. All other ordinary actions
++    // retain their local ownership/co-location checks below; no remote action
++    // may enter the site or transfer to a roster actor, including an escapee.
++    if(e.order.includes(acting.id)||acting.location_id===e.location_id)fail('CONFLICT','Mortal activity is locked');
++    if(action.type==='travel'){
++     const route=genesis.routes.find(r=>r.id===action.route_id);
++     if(route&&(route.from===e.location_id||route.to===e.location_id))fail('CONFLICT','Mortal activity is locked');
++    }
++    if((action.type==='give'||action.type==='transfer_item')&&action.to_actor_id!==null&&e.order.includes(action.to_actor_id))fail('CONFLICT','Mortal activity is locked');
++   }
+   }else if(combat)fail('INVALID_ACTION','Combat action requires an active encounter');
+  }
+  // All cheap permissions, resource amounts and possible reward capacity are
+@@ -190,14 +209,15 @@
+  const burn=(a:MortalV3Actor,turns:number,required:boolean)=>{if(required)resource(a,'oil',-turns);};
+  const finishCombat=()=>{
+   const e=state.encounter!;const next=nextEligible(state,e,e.turn+1);
+-  if(viable(state,e)&&next>=0){e.turn=next;e.defended=e.defended.filter(id=>id!==e.order[next]);return;}
++  if(viable(state,e)&&next>=0){e.turn=next;e.turn_started_sequence=state.sequence+1;e.defended=e.defended.filter(id=>id!==e.order[next]);return;}
+   advance(e.round_participants,6);
+   if(!viable(state,e)){effect('encounter_end',null,e.id,0);state.encounter=null;return;}
+   e.round=bounded(e.round+1,1000000);e.round_participants=e.order.filter(id=>eligible(state,e,id));e.turn=nextEligible(state,e,0);
++  e.turn_started_sequence=state.sequence+1;
+   if(e.turn<0)fail('CORRUPT_LEDGER','Mortal round has no eligible actor');e.defended=e.defended.filter(id=>id!==e.order[e.turn]);
+  };
+  const a=acting?actor(state,acting.id):null;
+- if(combat){state.encounter!.turn=currentTurn;state.encounter!.defended=state.encounter!.defended.filter(id=>id!==a!.id);}
++ if(combat||recovery){state.encounter!.turn=currentTurn;state.encounter!.defended=state.encounter!.defended.filter(id=>id!==a!.id);}
+  switch(action.type){
+  case 'travel':{
+   const route=genesis.routes.find(r=>r.id===action.route_id)!;a!.location_id=a!.location_id===route.from?route.to:route.from;effect('travel',a!.id,a!.location_id,0);
+@@ -232,7 +252,7 @@
+  }
+  case 'begin_encounter':{
+   const first=draw('initiative',6)<=3,order=first?[...action.side_a,...action.side_b]:[...action.side_b,...action.side_a];
+-  state.encounter={id:action.encounter_id,side_a:[...action.side_a],side_b:[...action.side_b],order,turn:0,round:1,round_participants:[...order],escaped:[],defended:[],escape_allowed:action.escape_allowed};effect('begin_encounter',null,action.encounter_id,0);break;
++  state.encounter={id:action.encounter_id,location_id:actor(state,order[0]!).location_id,turn_started_sequence:state.sequence+1,side_a:[...action.side_a],side_b:[...action.side_b],order,turn:0,round:1,round_participants:[...order],escaped:[],defended:[],escape_allowed:action.escape_allowed};effect('begin_encounter',null,action.encounter_id,0);break;
+  }
+  case 'attack':{
+   const target=actor(state,action.target_id),weapon=item(state,action.weapon_id);if(weapon.kind!=='weapon')fail('CORRUPT_LEDGER','Validated weapon changed');
+@@ -245,6 +265,12 @@
+  case 'defend':state.encounter!.defended.push(a!.id);effect('defend',a!.id,state.encounter!.id,2);finishCombat();break;
+  case 'retreat':state.encounter!.escaped.push(a!.id);effect('retreat',a!.id,state.encounter!.id,0);finishCombat();break;
+  case 'pass':effect('pass',a!.id,state.encounter!.id,0);finishCombat();break;
++ case 'recover_encounter':{
++  const e=state.encounter!;
++  if(action.resolution==='pass'){effect('referee_pass',a!.id,e.id,0);finishCombat();}
++  else{effect('referee_close',null,e.id,0);advance(e.round_participants,6);state.encounter=null;}
++  break;
++ }
+  }
+  state.sequence++;assertMortalV3Contract('State',state);return {state,draws,effects};
+ }
+--- normalized-v2/storage-worker.ts
++++ v3/storage-worker.ts
+@@ -3,8 +3,9 @@
+ import {mkdirSync, openSync, closeSync, lstatSync} from 'node:fs';
+ import {dirname} from 'node:path';
+ import {createPrivateKey, createPublicKey} from 'node:crypto';
+-import {ArgoError, assertMortalV3Contract, assertMortalV3Genesis, canonical, fail, hash} from '@argo/contracts';
+-import type {MortalV3Genesis, MortalV3State, MortalV3Cursor, MortalV3Event, MortalV3Receipt, MortalV3Command, MortalV3Principal} from '@argo/contracts';
++import {ArgoError, canonical, fail, hash} from '../../../contracts/src/index.ts';
++import {assertMortalV3Contract, assertMortalV3Genesis} from '../../../contracts/src/mortal-v3.ts';
++import type {MortalV3Genesis, MortalV3State, MortalV3Cursor, MortalV3Event, MortalV3Receipt, MortalV3Command, MortalV3Principal} from '../../../contracts/src/mortal-v3-types.ts';
+ import {createMortalV3Event, verifyMortalV3Event, verifyMortalV3Receipt} from './journal.ts';
+ import {initialMortalV3State} from './rules.ts';
+ 
+@@ -45,17 +46,17 @@
+  } catch {return corrupt('Mortal stored event or receipt failed verification');}
+ }
+ function metadata(): void {
+- const row = db!.prepare('SELECT genesis_hash,genesis_json FROM mortal_meta WHERE singleton=1').get();
++ const row = db!.prepare('SELECT genesis_hash,genesis_json FROM mortal_v3_meta WHERE singleton=1').get();
+  if (!row || row.genesis_hash !== hash(genesis) || row.genesis_json !== canonical(genesis)) corrupt('Immutable mortal genesis differs');
+ }
+ function refresh(prior: MortalV3State): MortalV3State {
+  metadata();
+  if (prior.sequence) {
+-  const known = db!.prepare('SELECT event_hash FROM mortal_events WHERE sequence=?').get(prior.sequence);
++  const known = db!.prepare('SELECT event_hash FROM mortal_v3_events WHERE sequence=?').get(prior.sequence);
+   if (!known || known.event_hash !== prior.head) corrupt('Mortal database lost or replaced the previously verified prefix');
+  }
+  let state = prior;
+- for (const raw of db!.prepare('SELECT * FROM mortal_events WHERE sequence>? ORDER BY sequence').iterate(prior.sequence)) {
++ for (const raw of db!.prepare('SELECT * FROM mortal_v3_events WHERE sequence>? ORDER BY sequence').iterate(prior.sequence)) {
+   const {event} = rowValue(raw as Row);
+   try {state = verifyMortalV3Event(genesis, state, event);} catch {corrupt('Mortal history failed deterministic replay');}
+  }
+@@ -77,18 +78,24 @@
+  if (!lstatSync(config.path).isFile()) fail('INVALID_CONTRACT', 'Mortal SQLite path is not a regular file');
+  db = new DatabaseSync(config.path, {timeout: 5000, enableForeignKeyConstraints: true, enableDoubleQuotedStringLiterals: false, allowExtension: false});
+  const tables = db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'").all().map(row => row.name);
+- if (tables.some(name => name !== 'mortal_meta' && name !== 'mortal_events')) corrupt('SQLite file belongs to another application');
++ if (tables.some(name => name !== 'mortal_v3_meta' && name !== 'mortal_v3_events')) corrupt('SQLite file belongs to another application');
++ // Refuse foreign or mismatched existing files before WAL/schema/metadata
++ // mutation. Only a completely empty application database can initialize.
++ if (tables.length) {
++  if (tables.length !== 2) corrupt('Incomplete mortal v3 database');
++  metadata();
++ }
+  db.exec('PRAGMA journal_mode=WAL; PRAGMA synchronous=FULL; PRAGMA trusted_schema=OFF; BEGIN IMMEDIATE;');
+  try {
+-  db.exec(`CREATE TABLE IF NOT EXISTS mortal_meta(singleton INTEGER PRIMARY KEY CHECK(singleton=1),genesis_hash TEXT NOT NULL,genesis_json TEXT NOT NULL) STRICT;
+-CREATE TABLE IF NOT EXISTS mortal_events(sequence INTEGER PRIMARY KEY CHECK(sequence BETWEEN 1 AND 1000000),event_hash TEXT NOT NULL UNIQUE,request_id TEXT NOT NULL UNIQUE,request_hash TEXT NOT NULL,event_json TEXT NOT NULL,receipt_json TEXT NOT NULL) STRICT;
+-CREATE TRIGGER IF NOT EXISTS mortal_events_no_update BEFORE UPDATE ON mortal_events BEGIN SELECT RAISE(ABORT,'Mortal events are append-only'); END;
+-CREATE TRIGGER IF NOT EXISTS mortal_events_no_delete BEFORE DELETE ON mortal_events BEGIN SELECT RAISE(ABORT,'Mortal events are append-only'); END;
+-CREATE TRIGGER IF NOT EXISTS mortal_meta_no_update BEFORE UPDATE ON mortal_meta BEGIN SELECT RAISE(ABORT,'Mortal genesis is immutable'); END;
+-CREATE TRIGGER IF NOT EXISTS mortal_meta_no_delete BEFORE DELETE ON mortal_meta BEGIN SELECT RAISE(ABORT,'Mortal genesis is immutable'); END;`);
+-  if (!db.prepare('SELECT singleton FROM mortal_meta').get()) {
+-   if (db.prepare('SELECT sequence FROM mortal_events LIMIT 1').get()) corrupt('Mortal events exist without genesis');
+-   db.prepare('INSERT INTO mortal_meta(singleton,genesis_hash,genesis_json) VALUES (1,?,?)').run(hash(genesis), canonical(genesis));
++  db.exec(`CREATE TABLE IF NOT EXISTS mortal_v3_meta(singleton INTEGER PRIMARY KEY CHECK(singleton=1),genesis_hash TEXT NOT NULL,genesis_json TEXT NOT NULL) STRICT;
++CREATE TABLE IF NOT EXISTS mortal_v3_events(sequence INTEGER PRIMARY KEY CHECK(sequence BETWEEN 1 AND 1000000),event_hash TEXT NOT NULL UNIQUE,request_id TEXT NOT NULL UNIQUE,request_hash TEXT NOT NULL,event_json TEXT NOT NULL,receipt_json TEXT NOT NULL) STRICT;
++CREATE TRIGGER IF NOT EXISTS mortal_v3_events_no_update BEFORE UPDATE ON mortal_v3_events BEGIN SELECT RAISE(ABORT,'Mortal events are append-only'); END;
++CREATE TRIGGER IF NOT EXISTS mortal_v3_events_no_delete BEFORE DELETE ON mortal_v3_events BEGIN SELECT RAISE(ABORT,'Mortal events are append-only'); END;
++CREATE TRIGGER IF NOT EXISTS mortal_v3_meta_no_update BEFORE UPDATE ON mortal_v3_meta BEGIN SELECT RAISE(ABORT,'Mortal genesis is immutable'); END;
++CREATE TRIGGER IF NOT EXISTS mortal_v3_meta_no_delete BEFORE DELETE ON mortal_v3_meta BEGIN SELECT RAISE(ABORT,'Mortal genesis is immutable'); END;`);
++  if (!db.prepare('SELECT singleton FROM mortal_v3_meta').get()) {
++   if (db.prepare('SELECT sequence FROM mortal_v3_events LIMIT 1').get()) corrupt('Mortal events exist without genesis');
++   db.prepare('INSERT INTO mortal_v3_meta(singleton,genesis_hash,genesis_json) VALUES (1,?,?)').run(hash(genesis), canonical(genesis));
+   }
+   metadata(); db.exec('COMMIT');
+  } catch (error) {try {db.exec('ROLLBACK');} catch {} throw error;}
+@@ -97,7 +104,7 @@
+   const state = refresh(cached);
+   const expected = config.expectedHead;
+   if (expected) {
+-   const head = expected.sequence === 0 ? hash(genesis) : db!.prepare('SELECT event_hash FROM mortal_events WHERE sequence=?').get(expected.sequence)?.event_hash;
++   const head = expected.sequence === 0 ? hash(genesis) : db!.prepare('SELECT event_hash FROM mortal_v3_events WHERE sequence=?').get(expected.sequence)?.event_hash;
+    if (head !== expected.head || expected.sequence > state.sequence) corrupt('Mortal trusted checkpoint is not a committed prefix');
+   }
+   return {state, result: null};
+@@ -112,7 +119,7 @@
+      const state = refresh(cached), {after, limit} = message.args as {after: number; limit: number};
+      if (!Number.isSafeInteger(after) || after < 0 || !Number.isSafeInteger(limit) || limit < 1 || limit > 1000) fail('INVALID_CONTRACT', 'Invalid mortal event page');
+      const events: MortalV3Event[] = []; let bytes = 2;
+-     for (const raw of db!.prepare('SELECT * FROM mortal_events WHERE sequence>? ORDER BY sequence LIMIT ?').iterate(after, limit)) {
++     for (const raw of db!.prepare('SELECT * FROM mortal_v3_events WHERE sequence>? ORDER BY sequence LIMIT ?').iterate(after, limit)) {
+       const row = raw as Row; bytes += Buffer.byteLength(row.event_json, 'utf8') + 1;
+       if (bytes > MAX_REPLY) fail('UNAVAILABLE', 'Mortal reply exceeds 16 MiB; request a smaller history page');
+       events.push(rowValue(row).event);
+@@ -123,14 +130,14 @@
+      const {command, principal} = message.args as {command: MortalV3Command; principal: MortalV3Principal};
+      assertMortalV3Contract('Command', command); assertMortalV3Contract('Principal', principal);
+      const state = refresh(cached), requestHash = hash({command, principal});
+-     const prior = db!.prepare('SELECT * FROM mortal_events WHERE request_id=?').get(command.request_id);
++     const prior = db!.prepare('SELECT * FROM mortal_v3_events WHERE request_id=?').get(command.request_id);
+      if (prior) {
+       const {receipt} = rowValue(prior as Row);
+       if (prior.request_hash !== requestHash) fail('CONFLICT', 'Mortal request ID was reused with different content or identity');
+       return {state, result: receipt};
+      }
+      const created = createMortalV3Event(genesis, state, command, principal, privateKey);
+-     db!.prepare('INSERT INTO mortal_events(sequence,event_hash,request_id,request_hash,event_json,receipt_json) VALUES (?,?,?,?,?,?)').run(created.event.sequence, created.event.hash, command.request_id, requestHash, canonical(created.event), canonical(created.receipt));
++     db!.prepare('INSERT INTO mortal_v3_events(sequence,event_hash,request_id,request_hash,event_json,receipt_json) VALUES (?,?,?,?,?,?)').run(created.event.sequence, created.event.hash, command.request_id, requestHash, canonical(created.event), canonical(created.receipt));
+      return {state: created.state, result: created.receipt};
+     }); break;
+     case 'close': db!.close(); db = undefined; reply(message.id, null); port!.close(); return;
+--- normalized-v2/storage.ts
++++ v3/storage.ts
+@@ -2,8 +2,9 @@
+ import {KeyObject, createPublicKey} from 'node:crypto';
+ import {types as nodeTypes} from 'node:util';
+ import {resolve} from 'node:path';
+-import {ArgoError, assertMortalV3Contract, assertMortalV3Genesis, assertMortalV3Data, fail} from '@argo/contracts';
+-import type {MortalV3Genesis, MortalV3Cursor, MortalV3Ledger, MortalV3Event, MortalV3Receipt, MortalV3State, MortalV3Command, MortalV3Principal} from '@argo/contracts';
++import {ArgoError, fail} from '../../../contracts/src/index.ts';
++import {assertMortalV3Contract, assertMortalV3Genesis, assertMortalV3Data} from '../../../contracts/src/mortal-v3.ts';
++import type {MortalV3Genesis, MortalV3Cursor, MortalV3Ledger, MortalV3Event, MortalV3Receipt, MortalV3State, MortalV3Command, MortalV3Principal} from '../../../contracts/src/mortal-v3-types.ts';
+ 
+ type OpenOptions = {path: string; genesis: MortalV3Genesis; privateKey: KeyObject; expectedHead?: MortalV3Cursor};
+ type Pending = {resolve(value: unknown): void; reject(error: Error): void};
+--- normalized-v2/view.ts
++++ v3/view.ts
+@@ -1,5 +1,6 @@
+-import {assertMortalV3Genesis,assertMortalV3Contract,hash,requireScope,fail} from '@argo/contracts';
+-import type {MortalV3Genesis,MortalV3State,MortalV3Principal,MortalV3ActorView} from '@argo/contracts';
++import {assertMortalV3Genesis, assertMortalV3Contract} from '../../../contracts/src/mortal-v3.ts';
++import {hash, requireScope, fail} from '../../../contracts/src/index.ts';
++import type {MortalV3Genesis,MortalV3State,MortalV3Principal,MortalV3ActorView} from '../../../contracts/src/mortal-v3-types.ts';
+ /** Project an already verified host state for a directly authenticated current viewer. */
+ export function viewMortalV3Actor(genesis:MortalV3Genesis,state:MortalV3State,principal:MortalV3Principal):MortalV3ActorView{
+  assertMortalV3Genesis(genesis);assertMortalV3Contract('State',state);assertMortalV3Contract('Principal',principal);
+@@ -11,10 +12,12 @@
+  const {controller_id:_,kind:__,...self}=actor;
+  let encounter:MortalV3ActorView['encounter']=null;
+  const fight=state.encounter;
++ const roster=fight?.order.includes(actor.id)??false;
++ const activity_lock:MortalV3ActorView['activity_lock']=fight&&(roster||actor.location_id===fight.location_id)?{encounter_id:fight.id,location_id:fight.location_id,reason:roster?'roster':'site'}:null;
+  if(fight&&[...fight.side_a,...fight.side_b].includes(actor.id)&&!fight.escaped.includes(actor.id)){
+   encounter={id:fight.id,round:fight.round,acting_id:fight.order[fight.turn]!,your_turn:fight.order[fight.turn]===actor.id,escape_allowed:fight.escape_allowed,
+    participants:[...fight.side_a,...fight.side_b].map(id=>{const participant=state.actors.find(a=>a.id===id)!;return {id,side:fight.side_a.includes(id)?'a':'b',condition:participant.hp>0?'standing':participant.hp===0?'unconscious':'dead',escaped:fight.escaped.includes(id)};})};
+  }
+- const result:MortalV3ActorView=structuredClone({version:state.version,scope:state.scope,cursor:{sequence:state.sequence,head:state.head},world_time:state.world_time,self,items:state.items.filter(i=>i.owner_id===actor.id),location,routes:genesis.routes.filter(r=>r.from===actor.location_id||r.to===actor.location_id),encounter});
++ const result:MortalV3ActorView=structuredClone({version:state.version,scope:state.scope,cursor:{sequence:state.sequence,head:state.head},world_time:state.world_time,self,items:state.items.filter(i=>i.owner_id===actor.id),location,routes:genesis.routes.filter(r=>r.from===actor.location_id||r.to===actor.location_id),encounter,activity_lock});
+  assertMortalV3Contract('ActorView',result);return result;
+ }

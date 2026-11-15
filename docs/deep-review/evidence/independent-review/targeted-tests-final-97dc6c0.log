@@ -1,0 +1,92 @@
+✔ character authority captures signed private speech and reopens the exact projection (264.274957ms)
+✔ speech rejects actor spoofing, missing adjudication and invalid witness grants without append (170.40831ms)
+✔ exact retries survive later state while altered requests and authenticated identities conflict (196.001352ms)
+✔ two authorized observers retain different private impressions and unacquired evidence is refused (281.083298ms)
+✔ nature reconfiguration preserves activation, speech cooldown and impression predecessor history (305.543025ms)
+✔ ended actors cannot speak or form new impressions while historical actions remain witnessable (202.648953ms)
+✔ witness callback cannot append after a concurrent commit and never holds the ledger writer lock (112.070894ms)
+✔ cancelled and timed out witness adjudication cannot append when it settles late (134.773425ms)
+✔ callback DTO mutation and caller input mutation cannot rewrite accepted speech or authority snapshot (111.866194ms)
+✔ ordinary actor carrier lookalikes do not become trusted character records (115.579891ms)
+✔ system-authored invalid inner semantics and a changed carrier identity fail replay closed (170.966024ms)
+✔ signed inner request hashes are replay validated (82.617546ms)
+✔ signed speech cannot bypass prior cooldown, death, party membership or outer private-carrier constraints (501.119139ms)
+✔ validly hashed signed impressions cannot forge evidence, nature or predecessor state (345.958463ms)
+✔ activity updates and profile revisions preserve observer histories and require the direct living actor (138.141639ms)
+✔ a full witness grant cannot silently truncate the automatically added speaker (45.958124ms)
+✔ action history retains literal custody and subject details without consent or grant proofs (116.858642ms)
+✔ a carrier using the service identity with a downgraded role fails closed (97.994474ms)
+✔ action summaries exclude hidden rolls and consent evidence, and witnesses acquire only at annotation time (134.49226ms)
+✔ speech budget counts Unicode code points and cutoff rejects speech without adjudication (171.198049ms)
+✔ concurrent exact speech requests commit once even if host grants differ (100.247843ms)
+✖ character bridge binds receipts to scope, request content, kind and exact committed cursor (80.503312ms)
+✔ unchanged character reads do no repeated signature work and an append verifies only its suffix (102.579169ms)
+✔ a warm character authority rejects rollback and a signed divergent observed prefix (96.536377ms)
+✔ changed cached carrier bytes fail even when the stored event hash is unchanged (46.034915ms)
+✔ a bad later suffix cannot publish earlier carrier mutations or poison the cache (118.571237ms)
+✔ overlapping event loads cannot publish a later prefix ahead of an older in-flight read (77.165816ms)
+✔ a character read cancelled before enqueue settles before the preceding source is released (73.247354ms)
+✔ a character read cancelled while queued settles before the preceding source is released (58.781783ms)
+✔ an acknowledged character commit must appear in subsequent structural ledger reads (162.965232ms)
+✔ an older in-flight character read cannot publish after a newer commit is acknowledged (69.196397ms)
+✔ out-of-order character acknowledgments cannot lower the required committed prefix (96.639638ms)
+✔ witness freshness, cancellation and exact retries survive intervening cached reads (110.858713ms)
+✔ incremental prefixes match cold replay without backdating same-tick acquisitions or profile revisions (415.573546ms)
+✔ character readers return only the owner profile and latest private impression per subject (8.636535ms)
+✔ private narrator archive contains the traveler record without other actor speech or private impressions (8.496392ms)
+✔ party narrator requires viewer acquisition in that party, filters before pagination, and reveals no hidden totals (11.615952ms)
+✔ actor identity and all tenant/rights/world/branch scope fields bind before transport (4.748361ms)
+✔ source scope, current cursor, existing actors, and party membership are enforced (24.394193ms)
+✔ same-tick acquisition never backdates knowledge to an earlier ledger prefix (5.685207ms)
+✔ actor context keeps latest 16 first acquisitions; repeated grants do not refresh memory (4.645357ms)
+✔ private impressions have no silent subject-count cap (22.572054ms)
+✔ current ontology and engagement cutoffs suppress every narrator page and carry through actor views (15.37574ms)
+✔ empty unconfigured source returns explicit absence, not fabricated character state (3.078376ms)
+✔ query, principal, factory configuration, and output remain detached across await boundaries (3.111668ms)
+✔ actor output owns detached nested profiles and impressions (7.672576ms)
+✔ passive guards reject active query/principal/source DTOs and validate the entire projection (6.985207ms)
+✔ bounded read transport supports cancellation without accepting a late projection (14.857889ms)
+✔ unchanged reads and retries do not reverify already accepted signatures (42.855601ms)
+✔ another writer is verified once and matches cold replay without exposing cached objects (73.126451ms)
+✔ same-size edits with restored mtime cannot hide behind a warm prefix (22.075506ms)
+✔ an observed prefix cannot roll back within the same open handle (30.498404ms)
+✔ a successful append is protected before any subsequent read warms the cache (31.878656ms)
+✔ a durable append stays protected when its derived snapshot write fails (31.501358ms)
+✔ a failed multi-event suffix cannot partially publish the verification cache (102.625397ms)
+✔ genesis and journal existence remain checked even when history is cached (32.047307ms)
+✔ snapshot files remain disposable and a post-append snapshot failure is retryable (38.450267ms)
+✔ blank or partial suffix records fail instead of becoming a trusted prefix (40.383196ms)
+✔ a BOM at an append boundary is rejected identically by warm and cold readers (61.936613ms)
+✔ every durable event prefix replays bit-for-bit, with signed causal/epistemic history and private RNG (111.394803ms)
+✔ exact retries are idempotent, changed IDs and stale concurrent heads cannot append (67.628455ms)
+✔ scope, causality and authority failures append nothing; partial tails fail closed (26.458956ms)
+✔ canonical codec rejects collisions, unsafe integers and prototype-sensitive keys (1.1507ms)
+ℹ tests 63
+ℹ suites 0
+ℹ pass 62
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7508.913623
+
+✖ failing tests:
+
+test at ../tmp/argo-independent-review-final-97dc6c0/TESTS/character-authority.test.ts:251:1
+✖ character bridge binds receipts to scope, request content, kind and exact committed cursor (80.503312ms)
+  AssertionError [ERR_ASSERTION]: Character bridge is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at TestContext.<anonymous> (file:///tmp/argo-independent-review-final-97dc6c0/TESTS/character-authority.test.ts:252:32)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

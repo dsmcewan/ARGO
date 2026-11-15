@@ -1,0 +1,1079 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://argo.local/schemas/projection-v2.json",
+  "title": "ARGO additive local projection contract profile 2.0.0",
+  "description": "Additive projection data and pure boundary guards; not ledger v2, authentication, persistent storage, graph materialization or a full W03 freeze. Select a named $defs contract for validation.",
+  "$defs": {
+    "Prefix": {
+      "type": "object",
+      "properties": {
+        "scope": {
+          "$ref": "https://argo.local/contracts/1.0.0/argo.schema.json#/$defs/Scope"
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "head": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 64,
+              "maxLength": 64,
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "world_time": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "scope",
+        "sequence",
+        "head",
+        "world_time"
+      ],
+      "additionalProperties": false,
+      "if": {
+        "properties": {
+          "sequence": {
+            "const": 0
+          }
+        },
+        "required": [
+          "sequence"
+        ]
+      },
+      "then": {
+        "properties": {
+          "head": {
+            "type": "null"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "head": {
+            "type": "string",
+            "minLength": 64,
+            "maxLength": 64,
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "PlaneCursor": {
+      "type": "object",
+      "properties": {
+        "plane": {
+          "type": "string",
+          "enum": [
+            "canonical",
+            "epistemic"
+          ]
+        },
+        "prefix": {
+          "$ref": "#/$defs/Prefix"
+        },
+        "projector_version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 96,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "store_generation": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 96,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "state_digest": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64,
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "plane",
+        "prefix",
+        "projector_version",
+        "store_generation",
+        "state_digest"
+      ],
+      "additionalProperties": false
+    },
+    "CommonCheckpoint": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "type": "string",
+          "const": "2.0.0"
+        },
+        "checkpoint_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 96,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "genesis_ref": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 96,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "prefix": {
+          "$ref": "#/$defs/Prefix"
+        },
+        "canonical": {
+          "type": "object",
+          "properties": {
+            "plane": {
+              "type": "string",
+              "const": "canonical"
+            },
+            "prefix": {
+              "$ref": "#/$defs/Prefix"
+            },
+            "projector_version": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 96,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+            },
+            "store_generation": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 96,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+            },
+            "state_digest": {
+              "type": "string",
+              "minLength": 64,
+              "maxLength": 64,
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": [
+            "plane",
+            "prefix",
+            "projector_version",
+            "store_generation",
+            "state_digest"
+          ],
+          "additionalProperties": false
+        },
+        "epistemic": {
+          "type": "object",
+          "properties": {
+            "plane": {
+              "type": "string",
+              "const": "epistemic"
+            },
+            "prefix": {
+              "$ref": "#/$defs/Prefix"
+            },
+            "projector_version": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 96,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+            },
+            "store_generation": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 96,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+            },
+            "state_digest": {
+              "type": "string",
+              "minLength": 64,
+              "maxLength": 64,
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": [
+            "plane",
+            "prefix",
+            "projector_version",
+            "store_generation",
+            "state_digest"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "schema_version",
+        "checkpoint_id",
+        "genesis_ref",
+        "prefix",
+        "canonical",
+        "epistemic"
+      ],
+      "additionalProperties": false,
+      "description": "Internal host checkpoint. Prefix equality and authority/history authenticity require runtime and trusted-host checks."
+    },
+    "SourceRef": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "const": "genesis"
+            },
+            "genesis_ref": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 96,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+            }
+          },
+          "required": [
+            "kind",
+            "genesis_ref"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "const": "event"
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "event_hash": {
+              "type": "string",
+              "minLength": 64,
+              "maxLength": 64,
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": [
+            "kind",
+            "sequence",
+            "event_hash"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "ObjectRef": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "const": "entity"
+            },
+            "entity_id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 96,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+            }
+          },
+          "required": [
+            "kind",
+            "entity_id"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "const": "scalar"
+            },
+            "value": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 65536
+                },
+                {
+                  "type": "integer",
+                  "minimum": -9007199254740991,
+                  "maximum": 9007199254740991
+                },
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "value"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "CanonicalRelationVersion": {
+      "type": "object",
+      "properties": {
+        "scope": {
+          "$ref": "https://argo.local/contracts/1.0.0/argo.schema.json#/$defs/Scope"
+        },
+        "relation_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 96,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "revision_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 96,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "subject_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 96,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "predicate": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 96,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "object_ref": {
+          "$ref": "#/$defs/ObjectRef"
+        },
+        "valid_from_tick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "valid_to_tick": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "recorded_from_sequence": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "recorded_to_sequence": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source": {
+          "$ref": "#/$defs/SourceRef"
+        }
+      },
+      "required": [
+        "scope",
+        "relation_id",
+        "revision_id",
+        "subject_id",
+        "predicate",
+        "object_ref",
+        "valid_from_tick",
+        "valid_to_tick",
+        "recorded_from_sequence",
+        "recorded_to_sequence",
+        "source"
+      ],
+      "additionalProperties": false,
+      "description": "Cross-field interval ordering and event source sequence equality require semantic validation.",
+      "if": {
+        "properties": {
+          "recorded_from_sequence": {
+            "const": 0
+          }
+        },
+        "required": [
+          "recorded_from_sequence"
+        ]
+      },
+      "then": {
+        "properties": {
+          "source": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string",
+                "const": "genesis"
+              },
+              "genesis_ref": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 96,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+              }
+            },
+            "required": [
+              "kind",
+              "genesis_ref"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "source": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string",
+                "const": "event"
+              },
+              "sequence": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              "event_hash": {
+                "type": "string",
+                "minLength": 64,
+                "maxLength": 64,
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            },
+            "required": [
+              "kind",
+              "sequence",
+              "event_hash"
+            ],
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    "EpistemicClaim": {
+      "type": "object",
+      "properties": {
+        "scope": {
+          "$ref": "https://argo.local/contracts/1.0.0/argo.schema.json#/$defs/Scope"
+        },
+        "claim_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 96,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "channel": {
+          "type": "string",
+          "enum": [
+            "belief",
+            "rumor",
+            "external_account"
+          ]
+        },
+        "source_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 96,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "content": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 65536
+        },
+        "occurred_at_tick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "source": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "const": "event"
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "event_hash": {
+              "type": "string",
+              "minLength": 64,
+              "maxLength": 64,
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": [
+            "kind",
+            "sequence",
+            "event_hash"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "scope",
+        "claim_id",
+        "channel",
+        "source_id",
+        "content",
+        "occurred_at_tick",
+        "source"
+      ],
+      "additionalProperties": false
+    },
+    "Acquisition": {
+      "type": "object",
+      "properties": {
+        "scope": {
+          "$ref": "https://argo.local/contracts/1.0.0/argo.schema.json#/$defs/Scope"
+        },
+        "acquisition_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 96,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "claim_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 96,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "knower_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 96,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "acquired_at_tick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "acquired_at_sequence": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "party_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 96,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "const": "event"
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "event_hash": {
+              "type": "string",
+              "minLength": 64,
+              "maxLength": 64,
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": [
+            "kind",
+            "sequence",
+            "event_hash"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "scope",
+        "acquisition_id",
+        "claim_id",
+        "knower_id",
+        "acquired_at_tick",
+        "acquired_at_sequence",
+        "party_id",
+        "source"
+      ],
+      "additionalProperties": false,
+      "description": "Source sequence equality, claim linkage and temporal ordering require semantic validation."
+    },
+    "ActorKnowledgeQuery": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "type": "string",
+          "const": "2.0.0"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 96,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "scope": {
+          "$ref": "https://argo.local/contracts/1.0.0/argo.schema.json#/$defs/Scope"
+        },
+        "checkpoint_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 96,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "actor_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 96,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "audience": {
+          "type": "string",
+          "enum": [
+            "actor",
+            "party"
+          ]
+        },
+        "party_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 96,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "acquired_through_tick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "acquired_through_sequence": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "schema_version",
+        "request_id",
+        "scope",
+        "checkpoint_id",
+        "actor_id",
+        "audience",
+        "party_id",
+        "acquired_through_tick",
+        "acquired_through_sequence"
+      ],
+      "additionalProperties": false,
+      "if": {
+        "properties": {
+          "audience": {
+            "const": "actor"
+          }
+        },
+        "required": [
+          "audience"
+        ]
+      },
+      "then": {
+        "properties": {
+          "party_id": {
+            "type": "null"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "party_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 96,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+          }
+        }
+      }
+    },
+    "CanonicalHistoryQuery": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "type": "string",
+          "const": "2.0.0"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 96,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "scope": {
+          "$ref": "https://argo.local/contracts/1.0.0/argo.schema.json#/$defs/Scope"
+        },
+        "checkpoint_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 96,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "valid_at_tick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "schema_version",
+        "request_id",
+        "scope",
+        "checkpoint_id",
+        "valid_at_tick"
+      ],
+      "additionalProperties": false
+    },
+    "DisclosedClaim": {
+      "type": "object",
+      "properties": {
+        "claim_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 96,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "channel": {
+          "type": "string",
+          "enum": [
+            "belief",
+            "rumor",
+            "external_account"
+          ]
+        },
+        "content": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 65536
+        },
+        "occurred_at_tick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "acquired_at_tick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "acquired_at_sequence": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "claim_id",
+        "channel",
+        "content",
+        "occurred_at_tick",
+        "acquired_at_tick",
+        "acquired_at_sequence"
+      ],
+      "additionalProperties": false,
+      "description": "Occurrence cannot exceed acquisition; semantic validation enforces that comparison."
+    },
+    "ActorKnowledgeView": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "type": "string",
+          "const": "2.0.0"
+        },
+        "query": {
+          "$ref": "#/$defs/ActorKnowledgeQuery"
+        },
+        "policy_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 96,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "ontology_blocked": {
+          "type": "boolean"
+        },
+        "engagement_closed": {
+          "type": "boolean"
+        },
+        "claims": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DisclosedClaim"
+          },
+          "maxItems": 4096,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "schema_version",
+        "query",
+        "policy_id",
+        "ontology_blocked",
+        "engagement_closed",
+        "claims"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "engagement_closed": {
+                "const": true
+              }
+            },
+            "required": [
+              "engagement_closed"
+            ]
+          },
+          "then": {
+            "properties": {
+              "ontology_blocked": {
+                "const": true
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "anyOf": [
+              {
+                "properties": {
+                  "ontology_blocked": {
+                    "const": true
+                  }
+                },
+                "required": [
+                  "ontology_blocked"
+                ]
+              },
+              {
+                "properties": {
+                  "engagement_closed": {
+                    "const": true
+                  }
+                },
+                "required": [
+                  "engagement_closed"
+                ]
+              }
+            ]
+          },
+          "then": {
+            "properties": {
+              "claims": {
+                "type": "array",
+                "maxItems": 0
+              }
+            }
+          }
+        }
+      ],
+      "description": "Public local v2 profile: cutoff responses contain no claims. Strict claim-ID ordering and query binding require semantic validation."
+    },
+    "ReadPolicy": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "type": "string",
+          "const": "2.0.0"
+        },
+        "policy_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 96,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "prefix": {
+          "$ref": "#/$defs/Prefix"
+        },
+        "actor_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 96,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+        },
+        "actor_authorized": {
+          "type": "boolean"
+        },
+        "party_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 96,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+          },
+          "maxItems": 128,
+          "uniqueItems": true
+        },
+        "canonical_read": {
+          "type": "boolean"
+        },
+        "ontology_blocked": {
+          "type": "boolean"
+        },
+        "engagement_closed": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "schema_version",
+        "policy_id",
+        "prefix",
+        "actor_id",
+        "actor_authorized",
+        "party_ids",
+        "canonical_read",
+        "ontology_blocked",
+        "engagement_closed"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "engagement_closed": {
+                "const": true
+              }
+            },
+            "required": [
+              "engagement_closed"
+            ]
+          },
+          "then": {
+            "properties": {
+              "ontology_blocked": {
+                "const": true
+              }
+            }
+          }
+        }
+      ],
+      "description": "Internal trusted-host result only. Fields are not proof of authentication, freshness, prefix ancestry or release linearization. Party IDs must be sorted at runtime."
+    },
+    "JsonValue": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        },
+        {
+          "type": "string",
+          "maxLength": 65536
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "maxItems": 4096
+        },
+        {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "maxLength": 65536,
+            "not": {
+              "enum": [
+                "__proto__",
+                "constructor",
+                "prototype"
+              ]
+            }
+          },
+          "patternProperties": {
+            "^[\\s\\S]*$": {
+              "$ref": "#/$defs/JsonValue"
+            }
+          },
+          "maxProperties": 4096,
+          "additionalProperties": false
+        }
+      ],
+      "description": "Per-node JSON data bounds only. Runtime guards additionally enforce depth, aggregate node count, aggregate UTF-8 bytes, safe plain objects and accessor rejection."
+    },
+    "IdEntries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 96,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+          },
+          "value": {
+            "$ref": "#/$defs/JsonValue"
+          }
+        },
+        "required": [
+          "id",
+          "value"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 4096,
+      "uniqueItems": true,
+      "description": "IDs are scalar values, including constructor/prototype/toString. Strict ASCII lexical order and ID uniqueness are runtime constraints; uniqueItems alone compares whole entries."
+    }
+  }
+}

@@ -1,0 +1,26 @@
+✔ signed compound transitions replay every prefix with one cursor and atomic loan knowledge (467.180614ms)
+✔ replay rejects independently re-signed incorrect witnesses, effects, draws and state commitments (75.380297ms)
+✔ complete genesis, controller identity and request bytes are bound by journal and receipt signatures (78.120432ms)
+✔ whole replay refuses duplicate requests, reordered prefixes and active history without evaluating traps (160.02812ms)
+✔ journal owns inputs and finalizes the immutable state head without mutating prior states (97.8829ms)
+✔ SQLite commits signed compound history and receipts together and resumes exact retries (5131.936984ms)
+✔ two handles serialize stale writers and identical accepts never transfer or acquire twice (4441.50127ms)
+✔ an append failure rolls back custody, obligation, memory and request identity as one unit (2373.669318ms)
+✔ losing the worker after COMMIT before acknowledgment reconciles the same durable receipt (4742.246982ms)
+✔ unchanged verified worker prefixes reuse immutable owned snapshots and changed prefixes replace them (5851.533752ms)
+✔ external checkpoints bind sequence, hash and world time while allowing a committed ancestor (14080.83689ms)
+✔ warm prefix pages and retries rebind tampered bytes, while reopening replays every row (4111.078094ms)
+✔ cached handle refuses a removed acknowledged prefix and corrupt receipt or request-index bindings (12593.431363ms)
+✔ a failed multi-event suffix cannot publish partial state or poison the warm snapshot cache (2179.067423ms)
+✔ foreign databases and mismatched genesis are refused before changing existing database bytes (5888.664545ms)
+✔ raw inputs are validated before cloning and queued caller mutations cannot rewrite work (2482.05562ms)
+✔ complete reply bounds include RPC metadata and escaped UTF-8 bytes (468.843573ms)
+✔ SQLite lock waits leave the parent responsive, queued calls are bounded and close drains them (2726.701267ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 71398.965356

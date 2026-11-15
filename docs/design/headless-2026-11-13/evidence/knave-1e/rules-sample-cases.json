@@ -1,0 +1,32 @@
+[
+  {
+    "id": "KNAVE1-ABILITY-EXAMPLE",
+    "source_locator": "PDF page 1, Character Creation, step 1 and printed example",
+    "given": "Fixed Strength dice [2,2,6].",
+    "when": "Apply the printed initial ability procedure.",
+    "then": "Bonus is 2 (lowest die); defense is 12 (bonus +10).",
+    "classification": "source-derived declarative example",
+    "verification_status": "not_executed",
+    "contract_dependency": "W17"
+  },
+  {
+    "id": "KNAVE1-SAVE-BOUNDARY",
+    "source_locator": "PDF page 4, Playing the Game, Saving Throws",
+    "given": "Relevant ability bonus +2; unopposed save; no advantage/disadvantage.",
+    "when": "Evaluate fixed d20 results 13 and 14.",
+    "then": "Total15 fails; total16 succeeds, because the printed rule requires greater than15.",
+    "classification": "source-derived declarative boundary example",
+    "verification_status": "not_executed",
+    "contract_dependency": "W17"
+  },
+  {
+    "id": "KNAVE1-SLOT-CAPACITY",
+    "source_locator": "PDF page 1, Character Creation, item slots; PDF page 4, Item Slots",
+    "given": "Constitution defense12 and declared item-slot costs totaling12 or13.",
+    "when": "Compare occupied slots with capacity.",
+    "then": "Capacity is12: total12 fits; total13 does not fit. How an importer/action rejects or resolves overflow requires the separate adapter contract.",
+    "classification": "source-derived arithmetic plus explicitly unresolved action semantics",
+    "verification_status": "not_executed",
+    "contract_dependency": "W17"
+  }
+]

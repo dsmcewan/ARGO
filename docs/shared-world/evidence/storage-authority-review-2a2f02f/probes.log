@@ -1,0 +1,18 @@
+✔ independent signature and hash domains bind full event, principal, request, genesis and receipt (225.5989ms)
+✔ valid authority signatures cannot legitimize false outcomes or unauthorized principals (194.350059ms)
+✔ every mixed signed prefix replays deterministically and journal outputs cannot alias authority state (341.257221ms)
+✔ two writers race different loan outcomes; one commit wins and exact retries survive later closure/revocation (7264.599712ms)
+✔ simultaneous identical acceptance creates exactly one durable compound event and receipt (2383.073133ms)
+✔ deferred constraint failure at COMMIT rolls back the inserted event and never publishes cache or request (4147.819538ms)
+✔ fully re-signed false-outcome database rows fail suffix replay without publishing a partial prefix (4353.695112ms)
+✔ independent external checkpoints include time; acknowledged rollback fails but unanchored restart remains explicit (15523.163533ms)
+✔ lost acknowledgement after compound COMMIT reconciles original receipt without a second transfer (4205.897522ms)
+✔ foreign profile refusal preserves existing database bytes and journal mode (1957.206328ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 43797.265201

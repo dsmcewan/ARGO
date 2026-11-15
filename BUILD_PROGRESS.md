@@ -38,6 +38,13 @@ Plan: `docs/superpowers/plans/2026-11-13-argo-foundation.md`.
 - Limits remain explicit in `tools/README.md` and `RESEARCH/README.md`: arbitrary application gates need separate trusted adapters; the local audit has no external rollback anchor; capacity quotas are not implemented. Audit/synthesis/architecture semantic gates fail closed. Split graph projections, bus integration, the 10,000-event gameplay fuzz suite, deployed services and paid multi-vendor execution remain future work.
 - The first GitHub run at `401b5e3` exposed a capture-budget test that assumed alphabetical directory enumeration. Its oracle now counts actual file opens regardless of filename order. Production capture logic is unchanged; the recorded original local test results remain historical evidence, and the corrected candidate receives a fresh CI run before main advances.
 
+## Closure and subsequent review repairs
+
+- The earlier final-save steps are complete: corrected combined candidate `e2f4d7efa2b6db8826bcc870e0f709f85e97079a` passed both research and main CI, and documentation checkpoint `a9745e72e93d82c72e87f5159edd5c59f4c426c0` passed [main CI](https://github.com/dsmcewan/ARGO/actions/runs/43456584810). Earlier pending-save statements above are historical checkpoints.
+- The later research/structure review found 16 additional issues. Twelve contained repairs are underway in the live blackboard batch; four contract/storage decisions remain blocked. Current repair evidence and limitations are in `REPAIRS/RESOLUTIONS.md`; the status entry point is `STATUS_AND_ARCHITECTURE.md`. Historical pass counts do not prove these new cases were covered.
+
+- Review repair closure: twelve contained findings repaired; four versioned-contract/storage decisions deferred. Combined code `ff22632` passed all ten acceptance groups. Five independent peer reviews and real-controller refusal probes are recorded under `REPAIRS/acceptance/`. The board recorded real claims/CAS; its immutable data-only batch is operationally retired without fabricated acceptance. All current CI/save identities are inspectable on the corresponding Git commits and Actions runs.
+
 ## 2026-11-15 LEXI follow-up
 
 - **LEXI repin.** `4a9faf3383108164fee74660f745de7650771177` is recorded as a separate source identity (`repo-audit/evidence/lexi-repin-4a9faf3.json`, made by `repo-audit/repin_lexi.py` from a read-only clone). It descends directly from `c190e24`. Its only change is the development-session hook `.claude/hooks/session-start.sh`. Every file behind a LEXI finding has the same blob, so the findings stand. The original pin, tree listing and derived catalogs are unchanged.

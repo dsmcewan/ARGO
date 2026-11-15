@@ -1,0 +1,35 @@
+✔ unchanged reads and retries do not reverify already accepted signatures (150.921801ms)
+✔ another writer is verified once and matches cold replay without exposing cached objects (94.756675ms)
+✔ same-size edits with restored mtime cannot hide behind a warm prefix (46.178403ms)
+✔ an observed prefix cannot roll back within the same open handle (42.05989ms)
+✔ a successful append is protected before any subsequent read warms the cache (34.531669ms)
+✔ a durable append stays protected when its derived snapshot write fails (51.975006ms)
+✔ a failed multi-event suffix cannot partially publish the verification cache (117.427031ms)
+✔ genesis and journal existence remain checked even when history is cached (37.496317ms)
+✔ snapshot files remain disposable and a post-append snapshot failure is retryable (36.471644ms)
+✔ blank or partial suffix records fail instead of becoming a trusted prefix (54.164035ms)
+✖ a BOM at an append boundary is rejected identically by warm and cold readers (61.097559ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 10
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2958.739357
+
+✖ failing tests:
+
+test at TESTS/ledger-cache.test.ts:126:1
+✖ a BOM at an append boundary is rejected identically by warm and cold readers (61.097559ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/deep-review/worktrees/DR-100-1-98bae495fd/TESTS/ledger-cache.test.ts:131:2)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /corrupt|canonical/i,
+    operator: 'rejects',
+    diff: 'simple'
+  }

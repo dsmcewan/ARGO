@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: campaign grammar accepts a bounded referee pack without requiring production content counts
+ok 1 - campaign grammar accepts a bounded referee pack without requiring production content counts
+  ---
+  duration_ms: 248.227637
+  type: 'test'
+  ...
+# Subtest: campaign grammar rejects unknown authorizing fields and malformed reference identities
+ok 2 - campaign grammar rejects unknown authorizing fields and malformed reference identities
+  ---
+  duration_ms: 117.330689
+  type: 'test'
+  ...
+# Subtest: campaign grammar rejects version drift, unsafe arithmetic inputs and unknown variant assessments
+ok 3 - campaign grammar rejects version drift, unsafe arithmetic inputs and unknown variant assessments
+  ---
+  duration_ms: 158.513344
+  type: 'test'
+  ...
+# Subtest: public handout and rumor candidate grammar refuses referee secrets and automatic delivery metadata
+ok 4 - public handout and rumor candidate grammar refuses referee secrets and automatic delivery metadata
+  ---
+  duration_ms: 150.425205
+  type: 'test'
+  ...
+# Subtest: campaign schema and typed API freeze pins the complete shared interface
+ok 5 - campaign schema and typed API freeze pins the complete shared interface
+  ---
+  duration_ms: 10.140247
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 880.1333

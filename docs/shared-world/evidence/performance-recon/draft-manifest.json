@@ -1,0 +1,21 @@
+{
+  "status": "provisional_draft_not_runtime_acceptance",
+  "files": {
+    "packages/contracts/src/shared-world.ts": {
+      "saved_as": "draft/packages/contracts/src/shared-world.ts.txt",
+      "sha256": "f49feb9d328d5ccc524fc2eed9fdc8b104358ff2920210d5cd342e434e007385"
+    },
+    "packages/contracts/src/shared-world-types.ts": {
+      "saved_as": "draft/packages/contracts/src/shared-world-types.ts.txt",
+      "sha256": "f1cc8f944b0847f14df17b048eee9ad1f25f185790fa8e8612d97331b4b67351"
+    },
+    "SYSTEMS/shared-world-v1/world.schema.json": {
+      "saved_as": "draft/SYSTEMS/shared-world-v1/world.schema.json.txt",
+      "sha256": "6918294342f48f8a3d4edf81b1be99b4b17d8294185d25b0f1965d1f1533b665"
+    },
+    "TESTS/shared-world-contract-fixtures.ts": {
+      "saved_as": "draft/TESTS/shared-world-contract-fixtures.ts.txt",
+      "sha256": "211aa8380b479570100331bb5eeca748fbf56aa5f8b5ac157d8e72e01ba8f5da"
+    }
+  }
+}

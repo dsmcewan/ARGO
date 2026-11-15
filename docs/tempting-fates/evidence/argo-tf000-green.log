@@ -1,0 +1,13 @@
+✔ campaign grammar accepts a bounded referee pack without requiring production content counts (282.1767ms)
+✔ campaign grammar rejects unknown authorizing fields and malformed reference identities (130.507146ms)
+✔ campaign grammar rejects version drift, unsafe arithmetic inputs and unknown variant assessments (113.087183ms)
+✔ public handout and rumor candidate grammar refuses referee secrets and automatic delivery metadata (143.484416ms)
+✔ campaign schema and typed API freeze pins the complete shared interface (9.286814ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 913.842661

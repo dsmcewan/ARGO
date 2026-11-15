@@ -17,3 +17,21 @@ export function createFates(ids:Record<FateRole,string>){
   }
  }));
 }
+
+// Additive campaign authoring and tabletop preview tools; no new world writer.
+export type * from './campaign/types.ts';
+export * from './campaign/catalog.ts';
+export * from './campaign/rules.ts';
+export * from './campaign/dialogue.ts';
+
+// Fresh-world versioned mortal initialization; old Fate authority is unchanged.
+export * from './runtime.ts';
+
+// Explicit fresh-world successor; never silently upgrades a v2 journal.
+export * from './runtime-v3.ts';
+
+// Curated owner knowledge requires persisted activation and current disclosure.
+export * from './campaign/knowledge/index.ts';
+
+// One fresh shared identity for ordinary mortal dialogue and physical actions.
+export * from './shared-world/seed.ts';

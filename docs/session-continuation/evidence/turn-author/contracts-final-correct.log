@@ -1,0 +1,5 @@
+
+> argo@0.1.0 contracts
+> python3 scripts/generate-contract-types.py --check && node scripts/check-contracts.mjs
+
+Frozen schemas: 36 definitions; valid fixture accepted; five invalid mutations refused.

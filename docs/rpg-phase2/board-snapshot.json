@@ -1,0 +1,54 @@
+{
+  "captured_at_utc": "2026-11-14T08:27:23.459045+00:00",
+  "automatic_dispatch_enabled": false,
+  "tickets": [
+    {
+      "id": "RP-100",
+      "status": "VERIFYING",
+      "attempt": 1,
+      "epoch": 1,
+      "base_commit": "78bc63f4410cf7bd899c03c1c44b75d78b72651d",
+      "commit_sha": "2423d5b856ef57b39214116472c8b899cd45e428",
+      "error": null
+    },
+    {
+      "id": "RP-200",
+      "status": "VERIFYING",
+      "attempt": 1,
+      "epoch": 1,
+      "base_commit": "f7790094a61d30a6d40a8f1ef750c6147bdc7a27",
+      "commit_sha": "d9094d6e1a045a328b21cb966ec064923c97f19c",
+      "error": null
+    },
+    {
+      "id": "RP-300",
+      "status": "VERIFYING",
+      "attempt": 1,
+      "epoch": 1,
+      "base_commit": "f7790094a61d30a6d40a8f1ef750c6147bdc7a27",
+      "commit_sha": "df40a526ccb4960f437bff4df700a820226370ac",
+      "error": null
+    },
+    {
+      "id": "RP-400",
+      "status": "VERIFYING",
+      "attempt": 1,
+      "epoch": 1,
+      "base_commit": "f7790094a61d30a6d40a8f1ef750c6147bdc7a27",
+      "commit_sha": "17416956ff422828e3dd993fbc612ee6da843bc1",
+      "error": null
+    },
+    {
+      "id": "RP-900",
+      "status": "READY",
+      "attempt": 1,
+      "epoch": 1,
+      "base_commit": "f7790094a61d30a6d40a8f1ef750c6147bdc7a27",
+      "commit_sha": null,
+      "error": "Offline application gates passed at bb7c838; Board refuses workspace manifest change under pinned data-only policy. Candidate retained; dispatcher off; operator-controlled application acceptance required."
+    }
+  ],
+  "hash_chain_check": true,
+  "hash_chain_scope": "Local event-chain consistency only; no external completeness/authentication anchor",
+  "merged_by_this_task": false
+}

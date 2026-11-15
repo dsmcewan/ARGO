@@ -1,0 +1,27 @@
+{
+  "candidate": "e576fe0ad1c57ea71ec1aad2a48f0f7ed400ead1",
+  "observation_runtime_source": "67e156c6a6d7925c2fdcb30fe63665b2bb9095d7",
+  "cancellation_fix_source": "4bb2a8a287e296b82c5c2429fceed890281a4e7f",
+  "prior_reviewed_candidate": "ba72fe06fef3ebf5a4c14c942a5a1c35d4f116c9",
+  "scope": "observation admission and related ledger/character cache regressions",
+  "result": "No remaining scoped findings; 12 independent, 25 admission, 12 ledger-cache and 12 character-cache tests passed",
+  "files": {
+    "packages/ledger/src/index.ts": "eb55ff82e683ec04df9341a66b51c21c742d93a24b31aafbe4d6ded61748fe95",
+    "packages/ledger/src/observation-admission.ts": "aa7399a9b04a7881b9264270db6925660d30c2826374bee2fb09d1ba0981221f",
+    "packages/ledger/src/mechanics.ts": "b609add08bf42b34cf88cef436cf6c47295aac874b5e3e35291d2b8fe79b6a3c",
+    "packages/contracts/src/observation-admission.ts": "066ea4e430acfd9aeb7ac9f578a860aa6b47db4aa5eed7815d29cfe573c3cb02",
+    "SYSTEMS/observation-admission-v1/CONTRACT.md": "be3e8c8958d51da90dbcdf9572a25738aca0ddcf7edfb3fe85a99b4dad8f9053",
+    "SYSTEMS/observation-admission-v1/observation-admission.schema.json": "4b25665019544c8aa118f1421ab82f01b10c740aa85689b4de5ba09acbf8cfb7",
+    "SYSTEMS/observation-admission-v1/FREEZE.json": "f35a2cf38cfe8f63f7e55ec173ece7159dc2d549ad185eba8ed6734321506209",
+    "TESTS/observation-admission.test.ts": "0aa6f0af4a7bc92458cc59a0c4e49954447b8c9bb6c5b5ece8dbae08504dafb8",
+    "TESTS/ledger-cache.test.ts": "96df025536801a13bfb05f6f671c3cb1be5812bf954765988e72cbb1aa234278",
+    "TESTS/character-cache.test.ts": "620966006347c1287a1a0b7f639898f8e5ade2fc2c18c8329e07aafea075690f"
+  },
+  "evidence": {
+    "e576fe0-admission.log": "9ff431fea755ddf47382f270b560e125b74943ba1cd3de74109bd96b206f7cc5",
+    "e576fe0-character-cache.log": "639b67c720a3dcd30464a8e54bf8db1a39d639b674afa75003a5ef6cf4122737",
+    "e576fe0-independent.log": "fcd586050f6df0b26095f833f47317f3e7c5b39591f490f9ad789369c8676d33",
+    "e576fe0-ledger-cache.log": "a3475053894daa9079b9f9b761010b2338d30daa1d734a7f36d8080be99a5a80"
+  },
+  "probe_sha256": "5c9f0e8f040ab87217ca535a35c7b2561ea6edd24c42880bc4ab08bab66baa21"
+}

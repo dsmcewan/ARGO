@@ -1,0 +1,74 @@
+{
+  "ticket": "DOC-001",
+  "status": "MERGED",
+  "candidate": "cf7fa02dbbd0520b20a5e278c4bd58086426f40d",
+  "merged_commit": "cf7fa02dbbd0520b20a5e278c4bd58086426f40d",
+  "gate": {
+    "at_us": 1794591087773245,
+    "candidate": "cf7fa02dbbd0520b20a5e278c4bd58086426f40d",
+    "completed": true,
+    "exit_code": 0,
+    "output_sha256": "ff4413f8bd32013419edec263f7ef6b32d5b8626aba805722475a37833e2e3f5",
+    "passed": true,
+    "policy_sha256": "a90ede611ef65281e26143cc7baa3777d579cd4f8a2e801b809760aaad3e371e"
+  },
+  "artifacts": 5,
+  "audit_valid": true,
+  "audit_head": {
+    "seq": 16,
+    "sha256": "38c5c06027e66158110aa8ba83d7c04d389dbf9b522d637bc041934107f380ce"
+  },
+  "accepted_artifacts": [
+    {
+      "logical_path": "AGENTS.md",
+      "sha256": "1a154ce20c18024b2313ea05b7605aa3e8818c9c420aa48886e1a751d141db74",
+      "accepted": 1
+    },
+    {
+      "logical_path": "README.md",
+      "sha256": "d65d381657f974a2674578627ba3a73c99ece444a6039451512758b8e098a011",
+      "accepted": 1
+    },
+    {
+      "logical_path": "STATUS_AND_ARCHITECTURE.md",
+      "sha256": "8edddabc87b5fc0e30b2246442fcfe3d0690911a96a5063fa851fb28bdc1ab2d",
+      "accepted": 1
+    },
+    {
+      "logical_path": "SYSTEM_ROADMAP.md",
+      "sha256": "70d8833858c96225b4a7e1eb740f2b651434b5ee3705146c40f058cc3c7031d8",
+      "accepted": 1
+    },
+    {
+      "logical_path": "docs/roadmap/system.json",
+      "sha256": "1c5a159696282694e9f9cf1dc2ff5c8505bff267207883ab42857b16dc281e77",
+      "accepted": 1
+    }
+  ],
+  "baseline_commit": "eb2d4c57d409458d09bf27d4a70ebb067e8e7a8f",
+  "board_dir": "/workspace/ARGO/.board/documentation",
+  "paid_vendor_calls": false,
+  "runtime_or_frozen_changes": false,
+  "reviewers": [
+    {
+      "peer": "research_r5",
+      "scope": "independent architecture/dependency/readiness review",
+      "commit": "cf7fa02dbbd0520b20a5e278c4bd58086426f40d",
+      "result": "approved"
+    },
+    {
+      "peer": "research_r2",
+      "scope": "source/table/license/data-availability fact check",
+      "commit": "cf7fa02dbbd0520b20a5e278c4bd58086426f40d",
+      "result": "approved"
+    }
+  ],
+  "additional_checks": [
+    "Local Markdown links resolve",
+    "Dependency IDs and DAG validate",
+    "Frozen v1 file hashes unchanged",
+    "Original audit evidence unmodified",
+    "Only documentation/navigation/planning artifacts changed"
+  ],
+  "publication": "The final Git commit and GitHub Actions run record publication and main acceptance; this receipt records the completed board documentation task."
+}

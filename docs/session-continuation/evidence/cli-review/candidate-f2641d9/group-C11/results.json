@@ -1,0 +1,17 @@
+{
+  "candidate": "f2641d92f5f07bc69b672ee6f6c3a189ee5f46cc",
+  "ordinary_process": true,
+  "paid_calls": 0,
+  "checks": [
+    {
+      "id": "C11",
+      "name": "two ordinary processes share one turn without cross-turn fixture selection",
+      "status": "fail",
+      "elapsed_ms": 16263.111411,
+      "message": "{\"type\":\"error\",\"code\":\"CONFLICT\",\"message\":\"World query requires the exact shared cursor\",\"mode\":\"offline_fixture\",\"fixture_id\":\"independent_cli_v1\",\"fixture_hash\":\"99159b5a4e9a78ac29359612063143c85117b11c9d3b88164a193de106951ab6\"}\n\n\n1 !== 0\n",
+      "stack": "AssertionError [ERR_ASSERTION]: {\"type\":\"error\",\"code\":\"CONFLICT\",\"message\":\"World query requires the exact shared cursor\",\"mode\":\"offline_fixture\",\"fixture_id\":\"independent_cli_v1\",\"fixture_hash\":\"99159b5a4e9a78ac29359612063143c85117b11c9d3b88164a193de106951ab6\"}\n\n\n1 !== 0\n\n    at file:///workspace/reports/2026-11-14-argo-continuation/cli-review/probes-grouped.mjs:45:318\n    at async check (file:///workspace/reports/2026-11-14-argo-continuation/cli-review/probes-grouped.mjs:19:112)\n    at async file:///workspace/reports/2026-11-14-argo-continuation/cli-review/probes-grouped.mjs:45:1"
+    }
+  ],
+  "passed": 0,
+  "failed": 1
+}

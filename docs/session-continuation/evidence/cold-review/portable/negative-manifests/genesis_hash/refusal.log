@@ -1,0 +1,20 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ 'c2ed1ef5296b45aa06bf28453ff92cf69d00110d14e05f64a6da55144b3b69a7'
+- '0000000000000000000000000000000000000000000000000000000000000000'
+
+    at file:///workspace/reports/2026-11-14-argo-continuation/cold-review/portable/compatibility.mjs:37:8 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 'c2ed1ef5296b45aa06bf28453ff92cf69d00110d14e05f64a6da55144b3b69a7',
+  expected: '0000000000000000000000000000000000000000000000000000000000000000',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.1

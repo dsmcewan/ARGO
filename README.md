@@ -2,7 +2,18 @@
 
 ARGO is a foundation for a living-world roleplaying system: signed deterministic action authority, actor-scoped knowledge, and stateless narration.
 
-All four foundation phases are complete: source audit, frozen contracts, repaired Pantheon model boundary, and the sequential ledger/bridge/Tempted Fates spine. Independent review repairs and deterministic gates pass. Verification is recorded in [BUILD_PROGRESS.md](BUILD_PROGRESS.md), [AUDIT_STATUS.json](repo-audit/AUDIT_STATUS.json), and [the verification record](repo-audit/evidence/foundation-verification.json).
+The new [shared headless session](docs/shared-world/README.md) connects ordinary mortal dialogue, item custody, travel, combat and resources in one signed world. Run the offline Tempting Fates demonstration after installing the root workspace dependencies:
+
+```sh
+node scenarios/tempted-fates/shared-world/cli.ts demo --dir /tmp/my-new-argo-world
+node scenarios/tempted-fates/shared-world/cli.ts resume --dir /tmp/my-new-argo-world --actor hero
+```
+
+Choose a new private directory outside the checkout. The demo injects a model response and proves a conversation, explicit lamp loan, night journey, return and identical restart/replay. The [CLI guide](scenarios/tempted-fates/shared-world/README.md) describes JSON-line play and the trusted local operator boundary. This is a fresh ordinary mortal profile; the Fate/lifespan kernel remains separate, and live model quality has not been tested.
+
+[Verified startup work](docs/session-continuation/COLD_RESULTS.md) reduced the measured 2,000-event open from 74.37 to 13.88 seconds while preserving full replay checks; the under-ten-second goal remains unmet. The accepted [durable conversation continuation](docs/session-continuation/README.md) adds bounded turns for one authenticated player/NPC pair, saved-command recovery and fresh player-scoped delivery. Its [CLI guide](scenarios/tempted-fates/shared-world/README.md) uses explicit offline fixtures; integration checks do not establish live character quality. The requested [checkpoint-boot proposal](docs/session-continuation/CHECKPOINT_BOOT_PROPOSAL.md) is documented but not implemented.
+
+All four foundation phases are complete: source audit, frozen contracts, repaired Pantheon model boundary, and the sequential ledger/bridge/Tempted Fates spine. The earlier foundation repairs passed their deterministic gates. Twelve subsequent structural-review findings are repaired and independently verified; four contract/storage decisions remain blocked in [the repair record](REPAIRS/RESOLUTIONS.md). Verification is recorded in [BUILD_PROGRESS.md](BUILD_PROGRESS.md), [AUDIT_STATUS.json](repo-audit/AUDIT_STATUS.json), and [the verification record](repo-audit/evidence/foundation-verification.json).
 
 ```sh
 npm ci --ignore-scripts
@@ -21,8 +32,20 @@ LEXI/TELOS transports are injected and default to unavailable. Their determinist
 
 ## Start here
 
+- [One shared headless world: run commands, evidence and next dependencies](docs/shared-world/README.md)
+- [Startup results and durable offline conversation](docs/session-continuation/README.md)
+- [Review repairs: scoped encounters, authored NPC knowledge and observation admission](docs/review-successors/README.md)
+
+- [Connected character dialogue and scoped scene context](docs/npc-dialogue/README.md)
+- [Character runtime, Tempting Fates campaign and mortal RPG release scope](docs/releases/2026-11-14-rpg-foundation.md)
+- [Playable Tempting Fates campaign kit](CAMPAIGNS/Tempting_Fates/README.md)
+- [Authoritative mortal rules and measured balance](docs/rpg-phase2/README.md)
+- [Current system, target architecture, data and next dependencies](SYSTEM_ROADMAP.md)
+
+- [Consolidated status, CI timeline and architecture](STATUS_AND_ARCHITECTURE.md)
 - [Project brief](ARGO_BRIEF.md)
 - [RPG research and offline blackboard](RESEARCH/README.md)
+- [Concurrent Mesh builds through Pantheon](tools/MESH.md)
 - [Repository inventory](REPO_INVENTORY.md)
 - [Tempted Fates source](SCENARIOS/Tempted_Fates.md)
 - [Scenario requirements and canon boundary](repo-audit/SCENARIO_REQUIREMENTS.md)
@@ -33,7 +56,7 @@ LEXI/TELOS transports are injected and default to unavailable. Their determinist
 
 ## Evidence and reproduction
 
-The retained audit catalogs classify 525 source modules, extract 170 LEXI route declarations and 114 model classes, and record 840 verified Git blobs, including the uploaded Pantheon folders. They describe pinned source snapshots, not verified live services. See the inventory's coverage and limitations.
+The retained audit catalogs classify 525 source modules, extract 170 LEXI route declarations and 114 class declarations (104 direct `BaseModel`/`SQLModel` subclasses and 10 other classes), and record 840 verified Git blobs, including the uploaded Pantheon folders. The [count clarification](repo-audit/evidence/class-count-clarification.json) supersedes the historical `model_classes` label without changing the pinned evidence. They describe pinned source snapshots, not verified live services. See the inventory's coverage and limitations.
 
 LEXI, TELOS and claude-config source copies are excluded from this repository. The source manifest and complete tree indexes preserve their identities. To regenerate the catalogs, restore the pinned files beneath `repo-audit/sources/<repo>/`, preserving symlinks, then run:
 

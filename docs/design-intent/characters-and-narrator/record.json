@@ -1,0 +1,25 @@
+{
+  "status": "intent_not_implemented",
+  "source_kind": "Owner-supplied opening excerpt attributed to Claude; prior conversation not reconstructed",
+  "source_claimed_version": 3,
+  "source_date": "2026-11-13",
+  "checked_code_baseline": "40f9476fad68b0c73bb63f2575c355c1103294a0",
+  "campaign_scope": "all_argo_campaigns",
+  "scope_decision": {
+    "status": "Decided",
+    "question": "Does this character-and-narrator design apply to all ARGO campaigns, or specifically to Tempted Fates?",
+    "answer": "All ARGO campaigns"
+  },
+  "complete_v3_received": false,
+  "missing_referenced_material": [
+    "Remaining sections of version 3",
+    "Section 4: Recognising the known abuse",
+    "abuse-fragments/ measured draft",
+    "Original numbered open questions, including 6 and 7"
+  ],
+  "paid_model_calls": 0,
+  "files": {
+    "owner-excerpt.md": "13ac181d66188c6f49a8d19360bfd852a7261832168724127111416a057ef752",
+    "README.md": "b1b004ee7aa3736d198405f5711d7cbf9be1890d41c8f385a8e0a9404adc826e"
+  }
+}

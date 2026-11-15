@@ -1,0 +1,26 @@
+✖ mortal equipment has one placement and mechanically consistent item kind (740.014965ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1650.630177
+
+✖ failing tests:
+
+test at TESTS/mortal-contracts.test.ts:52:1
+✖ mortal equipment has one placement and mechanically consistent item kind (740.014965ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at refuse (file:///workspace/ARGO/.board/rpg-phase2/worktrees/RP-100-1-a2fae89470/TESTS/mortal-contracts.test.ts:26:38)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/rpg-phase2/worktrees/RP-100-1-a2fae89470/TESTS/mortal-contracts.test.ts:57:140)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: [Function (anonymous)],
+    operator: 'throws',
+    diff: 'simple'
+  }

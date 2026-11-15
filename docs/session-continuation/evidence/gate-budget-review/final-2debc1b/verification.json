@@ -1,0 +1,117 @@
+{
+  "candidate": "2debc1b6e1848c481abe6eeeef2271d207b07081",
+  "base": "9fa800493a3c033b45bc3df7ab18a56e25bcd9a8",
+  "verdict": "READY_SC640_SOURCE_REVIEW_NOT_APPLICATION_ACCEPTANCE",
+  "source_clean": true,
+  "changed_files": [
+    "controller/merge.mjs",
+    "docs/characters-runtime/evidence/run-candidate-gate.py",
+    "docs/session-continuation/GATE_BUDGET.md",
+    "scripts/gate.mjs"
+  ],
+  "source_sha256": {
+    "controller/merge.mjs": "d5e6235a6ac96035895ec03aad41c0bf637c064f842bcd898e4c25e4e4a7262c",
+    "docs/characters-runtime/evidence/run-candidate-gate.py": "d857978e98726748b38b4ba9fc85a9171233fecf1c94b3c416bdf3de4d1bf713",
+    "docs/session-continuation/GATE_BUDGET.md": "8e29ac36d79fceff4a1a55f81998f322f0cb08729426c39c767134b3d71ad06d",
+    "scripts/gate.mjs": "5868f56b76ad14a675d6e579dd4346b0899230483d60a8e5e2415de5c8becbdc"
+  },
+  "helper_failure_controls": {
+    "executed_at": "47d3fa6a3b247986a0a6bb9aaad1f65cfff25273",
+    "passed": 16,
+    "failed": 0,
+    "carried_forward_to": "2debc1b6e1848c481abe6eeeef2271d207b07081",
+    "basis": "Exact byte comparison changes only gate timeout 600 to 1200; whole-helper normalized AST identical.",
+    "normalized_ast_sha256": "79ca5110538d9f2d638afb3b7474cc44794b1a03842399d257399a5f44d2bac0",
+    "not_reexecuted_at_final_candidate": true,
+    "application_tests_executed": 0
+  },
+  "static_check": {
+    "candidate": "2debc1b6e1848c481abe6eeeef2271d207b07081",
+    "base": "9fa800493a3c033b45bc3df7ab18a56e25bcd9a8",
+    "changed": [
+      "controller/merge.mjs",
+      "docs/characters-runtime/evidence/run-candidate-gate.py",
+      "docs/session-continuation/GATE_BUDGET.md",
+      "scripts/gate.mjs"
+    ],
+    "groups": [
+      "generated-types",
+      "schema",
+      "boundaries",
+      "types",
+      "board-and-dispatch",
+      "research-python",
+      "research-tests",
+      "research-package",
+      "foundation",
+      "model-and-process"
+    ],
+    "typescript_parser": {
+      "path": "/workspace/ARGO/node_modules/typescript/lib/typescript.js",
+      "version": "5.9.3",
+      "sha256": "3ae902c92cc44dace175c0e69e13a4b0899f6983c6121d76b9ab8dd5795e7675"
+    },
+    "foundation_ms": 1080000,
+    "outer_ms": 1200000,
+    "preserved_sha256": {
+      "scripts/run-tests.mjs": "365438eded7e911a93b39279fd9ec63def4ba01e9d6b8b8b8eb1c08f27f78d6a",
+      "scripts/run-python-tests.py": "e5ba1bdb2eecbb192bd9a0a31530cc70269d83a28ef2edde8f3c0afe70c8f020",
+      "controller/acceptance-policy.mjs": "d52d7021dac0019c3876d083e2fcd29ef2005b1ca6fb445dc5b4cc2e8cc6e531",
+      "controller/policy.ts": "beeca198fc7df1048f2559af4368c296e3ea626166a1a83659dec6b5ac8c66da",
+      ".github/workflows/deterministic-gate.yml": "849fc7aa40a7b8e66f7d3966a7d50cc14ff49f59a88b70a4396530c067853fca",
+      "package.json": "072f0b182bb5d02df9c9b8cb6c01716e6dd2e0d081164b2450d5bbbdfedf3e9b",
+      "package-lock.json": "3b54aec2262b30c02b7c8e5ee899e964cd8c2123e4bc06974b8a35dfd1edfa94",
+      "SYSTEMS/CONTRACT_FREEZE.json": "4b0771886e0d7fb8b8c1bd8aaf1d96f3634cc5bf8411ff0c37ebe2a31e53663f"
+    },
+    "gate_ast": "Only reviewed foundation timeout differs",
+    "controller_ast": "Only reviewed whole-gate timeout differs",
+    "ci_cap_minutes": 20,
+    "ci_budget_note": "CI setup plus full execution must still fit its unchanged 20-minute cap.",
+    "source_clean": true,
+    "execution": "Static parsing only; no gate/controller/test invocation, trust promotion or merge."
+  },
+  "diagnostic": {
+    "candidate": "3c8ff55d872891014c89fe43515b3c28fd492626",
+    "archive_commit": "61d9ae4ecb16101f95a3b5f96bdd67ed1a81bd8a",
+    "files": 49,
+    "named_tests": 567,
+    "elapsed_seconds": 895.626,
+    "elapsed_includes_clone_and_install": true,
+    "result_sha256": "a05ee0cc0660d1966da653a19822964f7798199a336fdd37f49e66ab6b8e5bbe",
+    "log_hashes_verified": {
+      "application-gate.log": "71844c76b286ca54ced5e5d6404ebb04bbed5bbde260a1ab7e84b023b5db01c9",
+      "checkout.log": "ec9cb8485fed38ca5c84d5e179a60266f935ae37f1511a3813dd44d8adddef14",
+      "clone.log": "690ae236f2ad26eca29079895b0a9186e36ab3e403176a78108ec4f67ad52866",
+      "root-install.log": "85d66efc5af19832f7add7e3b176eeedee7a3ad92b9afb6f46993f9296355715"
+    },
+    "archived_bytes_match_local_evidence": true,
+    "foundation_only_external_diagnostic_not_full_gate": true
+  },
+  "prior_timeout": {
+    "path": "/workspace/reports/2026-11-14-argo-continuation/host-gate-3c8ff55/runner-result.json",
+    "sha256": "f1f852f8d89504cdec8e1caf948f61b88f5e9db7ea88e77e01abe101c1c1e3aa",
+    "exit_code": 1,
+    "status": "Preserved failure, no acceptance count"
+  },
+  "limitations": [
+    "Final integrated ten-group gate including CLI remains required.",
+    "Single loaded-workspace diagnostic is not a portable performance guarantee.",
+    "Foundation duration was not isolated from clone/install.",
+    "CI job still caps setup plus execution at 20 minutes and may expire sooner.",
+    "No operational trust-pin movement or merge authorization from this review."
+  ],
+  "review_evidence_sha256": {
+    "static-check.mjs": "bab7f4f1c53e81babfd4edab097caf9d916bd471a0b31f4a87494c90db3548a8",
+    "helper-ast-check.py": "b19a6c7921a1c597932219bbe412548d8a7ae619cc0c7f85f3d2f2dc3d298672",
+    "final-rebind.py": "a7ad14c77ea6b765ba43048b5c81ee98f85f6a62866e4731894a85fd41603456",
+    "final-2debc1b/static-check.json": "78c554923f25badd624b17d24e23a88ce26d071cf0fb09f1e5f580e356eaa100",
+    "final-2debc1b/helper-ast-check.json": "3790b9a87b449d4c9e2e3489dc959a7461bf0ffbfe5d94eb4bfa254debca2403",
+    "final-2debc1b/checkpoint-to-final.diff": "8f277cf6d83d6c0e019cc61eb385fb6dde2257c8dc6f7b5d6d62a5c398176bea",
+    "helper-47d3fa6/verification.json": "2977b1ad7be4f8fe3418a0f690ae9eae2fc61db64ea8a14f896daef883303e87",
+    "helper-47d3fa6/controls/independent-helper-controls.json": "0cd9aeafccb0d0c31f66b3bf21143d62f1aa6c91ded415e3d2c4411a32317f0f"
+  },
+  "source_edits": false,
+  "full_gate_executed": false,
+  "trust_pin_modified": false,
+  "paid_calls": 0
+}

@@ -1,0 +1,76 @@
+
+> argo@0.1.0 test
+> node --test TESTS/*.test.ts
+
+✔ TESTS/authority.test.ts (9710.939013ms)
+✔ TESTS/autonomy.test.ts (4446.552924ms)
+✔ TESTS/boundary-repairs.test.ts (4188.01064ms)
+✔ TESTS/bridges.test.ts (4567.773248ms)
+✔ TESTS/campaign-dialogue.test.ts (4160.976008ms)
+✔ TESTS/campaign-knowledge.test.ts (5120.667897ms)
+✔ TESTS/character-authority.test.ts (9399.399394ms)
+✔ TESTS/character-cache.test.ts (5830.191773ms)
+✔ TESTS/character-contracts.test.ts (3689.633735ms)
+✔ TESTS/character-integration.test.ts (4897.479905ms)
+✔ TESTS/character-knowledge.test.ts (2792.295307ms)
+✔ TESTS/character-model-integration.test.ts (3588.832944ms)
+✔ TESTS/character-model.test.ts (3030.000203ms)
+✔ TESTS/character-presentation.test.ts (2992.073542ms)
+✖ TESTS/controller-policy.test.ts (2496.283975ms)
+✖ TESTS/controller-repair.test.ts (20361.696445ms)
+✔ TESTS/dialogue-knowledge.test.ts (3512.993608ms)
+✔ TESTS/ledger-cache.test.ts (4286.509125ms)
+✔ TESTS/ledger.test.ts (3145.885802ms)
+✔ TESTS/mortal-balance.test.ts (7599.505451ms)
+✔ TESTS/mortal-contracts.test.ts (3175.806333ms)
+✔ TESTS/mortal-integration.test.ts (12383.180311ms)
+✔ TESTS/mortal-journal.test.ts (2954.091201ms)
+✔ TESTS/mortal-rules.test.ts (45771.361142ms)
+✔ TESTS/mortal-storage.test.ts (50163.068372ms)
+✔ TESTS/mortal-v3-campaign.test.ts (3361.860119ms)
+✔ TESTS/mortal-v3-contracts.test.ts (3485.266991ms)
+✔ TESTS/mortal-v3-rules.test.ts (3538.824385ms)
+✔ TESTS/mortal-v3-storage.test.ts (110208.745771ms)
+✔ TESTS/narration.test.ts (3480.080864ms)
+✔ TESTS/observation-admission.test.ts (10540.050914ms)
+✖ TESTS/projection-contracts.test.ts (7109.41486ms)
+✔ TESTS/review-regressions.test.ts (6093.433174ms)
+✔ TESTS/shared-world-campaign.test.ts (7754.09477ms)
+✔ TESTS/shared-world-cold.test.ts (5980.012558ms)
+✔ TESTS/shared-world-contracts.test.ts (5598.146073ms)
+✔ TESTS/shared-world-conversation-cli.test.ts (356813.583354ms)
+✔ TESTS/shared-world-conversation.test.ts (209732.251423ms)
+✔ TESTS/shared-world-dialogue.test.ts (5685.732315ms)
+✔ TESTS/shared-world-journal.test.ts (4925.577936ms)
+✔ TESTS/shared-world-rules.test.ts (19173.264049ms)
+✔ TESTS/shared-world-session.test.ts (157184.869067ms)
+✔ TESTS/shared-world-storage.test.ts (160403.298637ms)
+✔ TESTS/shared-world-turn-store.test.ts (123843.982721ms)
+✔ TESTS/shared-world-views.test.ts (8843.701159ms)
+✔ TESTS/tempted-fates.test.ts (8934.833037ms)
+✔ TESTS/tempting-fates-catalog.test.ts (5277.833799ms)
+✔ TESTS/tempting-fates-contracts.test.ts (2434.054523ms)
+✔ TESTS/tempting-fates-integration.test.ts (8560.609126ms)
+✔ TESTS/tempting-fates-rules.test.ts (5884.475656ms)
+ℹ tests 50
+ℹ suites 0
+ℹ pass 47
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 492973.958421
+
+✖ failing tests:
+
+test at TESTS/controller-policy.test.ts:1:1
+✖ TESTS/controller-policy.test.ts (2496.283975ms)
+  'test failed'
+
+test at TESTS/controller-repair.test.ts:1:1
+✖ TESTS/controller-repair.test.ts (20361.696445ms)
+  'test failed'
+
+test at TESTS/projection-contracts.test.ts:1:1
+✖ TESTS/projection-contracts.test.ts (7109.41486ms)
+  'test failed'

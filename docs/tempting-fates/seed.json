@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "tickets": [
+    {
+      "id": "TF-000",
+      "wave": 0,
+      "lane": "tf-000",
+      "title": "Tempting Fates TF-000",
+      "seat_model": "gpt-6-astra",
+      "reviewer_model": null,
+      "owned_paths": [
+        "scenarios/tempted-fates/campaign/types.ts",
+        "scenarios/tempted-fates/campaign/content.schema.json",
+        "scenarios/tempted-fates/campaign/CONTRACT.md",
+        "scenarios/tempted-fates/campaign/FREEZE.json",
+        "TESTS/tempting-fates-contracts.test.ts"
+      ],
+      "gate_cmd": [
+        "python3",
+        "-c",
+        "raise SystemExit('Application acceptance requires separately approved controller policy; Board v1 data gate does not certify runtime code')"
+      ],
+      "spec_path": "docs/tempting-fates/tickets/TF-000.md",
+      "depends_on": [],
+      "max_attempts": 3
+    },
+    {
+      "id": "TF-100",
+      "wave": 1,
+      "lane": "tf-100",
+      "title": "Tempting Fates TF-100",
+      "seat_model": "gpt-6-astra",
+      "reviewer_model": null,
+      "owned_paths": [
+        "scenarios/tempted-fates/campaign/world.json",
+        "CAMPAIGNS/Tempting_Fates/ATLAS.md",
+        "CAMPAIGNS/Tempting_Fates/ENCOUNTERS.md",
+        "CAMPAIGNS/Tempting_Fates/REFEREE_GUIDE.md"
+      ],
+      "gate_cmd": [
+        "python3",
+        "-c",
+        "raise SystemExit('Application acceptance requires separately approved controller policy; Board v1 data gate does not certify runtime code')"
+      ],
+      "spec_path": "docs/tempting-fates/tickets/TF-100.md",
+      "depends_on": [],
+      "max_attempts": 3
+    },
+    {
+      "id": "TF-200",
+      "wave": 1,
+      "lane": "tf-200",
+      "title": "Tempting Fates TF-200",
+      "seat_model": "gpt-6-astra",
+      "reviewer_model": null,
+      "owned_paths": [
+        "scenarios/tempted-fates/campaign/rules.ts",
+        "TESTS/tempting-fates-rules.test.ts",
+        "CAMPAIGNS/Tempting_Fates/RULES.md",
+        "CAMPAIGNS/Tempting_Fates/CHARACTER_SHEET.md",
+        "CAMPAIGNS/Tempting_Fates/ATTRIBUTION.md"
+      ],
+      "gate_cmd": [
+        "python3",
+        "-c",
+        "raise SystemExit('Application acceptance requires separately approved controller policy; Board v1 data gate does not certify runtime code')"
+      ],
+      "spec_path": "docs/tempting-fates/tickets/TF-200.md",
+      "depends_on": [],
+      "max_attempts": 3
+    },
+    {
+      "id": "TF-300",
+      "wave": 1,
+      "lane": "tf-300",
+      "title": "Tempting Fates TF-300",
+      "seat_model": "gpt-6-astra",
+      "reviewer_model": null,
+      "owned_paths": [
+        "scenarios/tempted-fates/campaign/catalog.ts",
+        "TESTS/tempting-fates-catalog.test.ts"
+      ],
+      "gate_cmd": [
+        "python3",
+        "-c",
+        "raise SystemExit('Application acceptance requires separately approved controller policy; Board v1 data gate does not certify runtime code')"
+      ],
+      "spec_path": "docs/tempting-fates/tickets/TF-300.md",
+      "depends_on": [],
+      "max_attempts": 3
+    },
+    {
+      "id": "TF-900",
+      "wave": 2,
+      "lane": "tf-900",
+      "title": "Tempting Fates TF-900",
+      "seat_model": "gpt-6-astra",
+      "reviewer_model": null,
+      "owned_paths": [
+        "scenarios/tempted-fates/index.ts",
+        "scenarios/tempted-fates/package.json",
+        "package-lock.json",
+        "TESTS/tempting-fates-integration.test.ts",
+        "CAMPAIGNS/Tempting_Fates/README.md",
+        "CAMPAIGNS/Tempting_Fates/PLAYER_GUIDE.md",
+        "CAMPAIGNS/Tempting_Fates/QUICKSTART.md",
+        "docs/tempting-fates/",
+        "docs/superpowers/plans/2026-11-14-tempting-fates.md",
+        "docs/superpowers/specs/2026-11-14-tempting-fates-design.md"
+      ],
+      "gate_cmd": [
+        "python3",
+        "-c",
+        "raise SystemExit('Application acceptance requires separately approved controller policy; Board v1 data gate does not certify runtime code')"
+      ],
+      "spec_path": "docs/tempting-fates/tickets/TF-900.md",
+      "depends_on": [],
+      "max_attempts": 3
+    }
+  ]
+}

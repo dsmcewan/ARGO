@@ -1,0 +1,9 @@
+test_distinct_peer_processes_cannot_rotate_their_identities (__main__.RotatedIdentityProbe.test_distinct_peer_processes_cannot_rotate_their_identities) ... Executing <Task pending name='Task-2' coro=<RotatedIdentityProbe.test_distinct_peer_processes_cannot_rotate_their_identities() running at /tmp/argo-mb-peer-binding-probe.py:13> wait_for=<Future pending cb=[Task.task_wakeup()] created at /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py:448> cb=[_run_until_complete_cb() at /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py:181] created at /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py:100> took 0.134 seconds
+SOURCE_SHA256 b50a8bdabadc4a93053d3f1e3ed78b98af135e76e7b7cd4e58a702e724a2889b
+RESULT {"base_commit": "1e4038f1115a35c6861474a57ca77b7ae2efe66e", "epoch": 1, "error": "Mesh peer peer_b returned a foreign process envelope", "id": "A", "spec_sha256": "92b257a2796c802b8ccc76d0861d174c483816e6ff1545e53d99c9910f11912f", "status": "failed"}
+ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.801s
+
+OK

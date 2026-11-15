@@ -1,0 +1,11 @@
+--- turn-api-proposal.md
++++ docs/session-continuation/TURN_CONTRACT.md
+@@ -1,6 +1,6 @@
+-# SC-620 concrete API and durable-row proposal
++# Durable conversation host contract
+ 
+-Design only, 2026-11-14. Read `docs/session-continuation/DESIGN.md` including the 619f124 receipt clarification, PLAN.md, and recon-turn-risks.md. No product edits, tests, providers, Board actions or subagents. This proposal uses one fixed whisper pair and the six approved phases; coordinator review precedes implementation.
++Selected implementation contract, 2026-11-14. Read DESIGN.md and PLAN.md first. This host-only format is additive; frozen shared-world wire contracts are unchanged. The coordinator selected this API after independent design review. Implementation and acceptance are recorded separately; this document alone makes neither claim. All concrete choices below, including the proposed bounds, are the SC-620 target.
+ 
+ ## Public TypeScript surface
+ 

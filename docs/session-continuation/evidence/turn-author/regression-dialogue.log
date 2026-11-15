@@ -1,0 +1,31 @@
+✔ packet and actual provider request carry exact policy, traits, inbound and owner reactions once (185.956409ms)
+✔ model text and silence are used without templates or implicit authority actions (34.496459ms)
+✔ ineligible or consumed inbound speech causes silence before client use (55.44796ms)
+✔ private opinions are owner-scoped and unrelated impressions are omitted from the packet (44.757693ms)
+✔ fixed actor and every scope/cursor field bind both input query and refreshed view (33.8144ms)
+✔ hostile passive views and queries are rejected without executing getters or proxies (25.675102ms)
+✔ static scene prose cannot establish a present or standing reply recipient (21.932009ms)
+✔ context changes while generation is pending suppress stale text and silence (111.508394ms)
+✔ post-count refresh prevents generation after asynchronous revocation (8.454569ms)
+✔ quota failover rechecks the exact context and nonretryable failure has no repair call (33.442066ms)
+✔ strict text-only JSON rejects speaker, reply, action, tools, refusal and oversized output (117.146932ms)
+✔ Unicode limits and complete UTF-8 prompt budget are enforced (26.035411ms)
+✔ cache identities and empty provider histories isolate actor, scope and genesis (34.150861ms)
+✔ injected adapters preserve small output caps across all four provider surfaces (69.614481ms)
+✔ cancellation and the total deadline cover reader, counter, provider and cooldown work (152.640296ms)
+✔ ignored cancellation cannot release late provider output or start work after a late read (61.808213ms)
+✔ caller mutation cannot retarget the fixed query or alter already-built provider context (24.257585ms)
+✔ invalid identities and missing injection fail before any refresh or provider call (5.672818ms)
+✔ room replies name only the inbound source and preserve an explicit room audience (14.621253ms)
+✔ a changed view during asynchronous cooldown success cannot release earlier generated text (15.958308ms)
+✔ cancellation at read completion is checked before any generation side effect (6.620774ms)
+✔ call option accessors and signal proxies are rejected without invoking traps (3.793197ms)
+✔ Google continuation is refused after one generation request (10.783673ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1111.830766

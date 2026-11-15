@@ -1,0 +1,70 @@
+import type {TabletopState} from './tabletop-state.ts';
+export const exampleState = {
+  "version": "tempting-fates-tabletop/0.1.0",
+  "source": "human_referee",
+  "authoritative": false,
+  "rules_profile": "tempting-fates-rules/0.1.0",
+  "scope": {
+    "tenant_id": "example",
+    "rights_lane": "homebrew",
+    "workspace_id": "table",
+    "workspace_tenant_id": "example:homebrew:table",
+    "campaign_id": "tempting_fates",
+    "world_id": "tabletop_example",
+    "branch_id": "main"
+  },
+  "pack_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "variant": "legend",
+  "revision": 1,
+  "world_time": 600,
+  "actors": [
+    {
+      "actor_id": "pc_a",
+      "location_id": "l_harbor",
+      "hit_points": 6,
+      "max_hit_points": 6,
+      "abilities": {
+        "strength": 2,
+        "dexterity": 2,
+        "constitution": 3,
+        "intelligence": 1,
+        "wisdom": 2,
+        "charisma": 1
+      },
+      "armor_defense": 11,
+      "equipped_item_ids": [
+        "lamp"
+      ],
+      "resources": {
+        "rations": 2,
+        "water_units": 2,
+        "oil_turns": 6,
+        "obols": 0
+      },
+      "conditions": []
+    }
+  ],
+  "items": [
+    {
+      "item_id": "lamp",
+      "custodian_actor_id": "pc_a",
+      "location_id": null,
+      "slots": 1,
+      "destroyed": false
+    }
+  ],
+  "projects": [],
+  "rulings": [
+    {
+      "ruling_id": "catch_jar",
+      "actor_id": "pc_a",
+      "world_time": 600,
+      "procedure": "Dexterity check, target15",
+      "supplied_dice": [
+        14
+      ],
+      "stated_risk": "The ordinary jar breaks.",
+      "result": "16 exceeds15; the jar is caught."
+    }
+  ]
+} satisfies TabletopState;

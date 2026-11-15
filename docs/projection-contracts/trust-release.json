@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "supervisor": "root",
+  "adopted_at": "2026-11-13T18:38:13.963412+00:00",
+  "authority": "User authorized offline implementation, repairs and saving to private ARGO; existing protected code unchanged. Independent review covers the three new policy files.",
+  "previous_trusted_commit": "ff2263296706147d096b7b39d6356c9a7ce39f07",
+  "adopted_trusted_commit": "1231bc22d040454d43e41a305b553f77b45fff72",
+  "trusted_checkout": "/workspace/ARGO/.worktrees/projection-trusted",
+  "allowed_policy_additions": [
+    {
+      "path": "TESTS/projection-contracts.test.ts",
+      "bytes": 32651,
+      "sha256": "5f052b36d3526190d53ddb9b6ec7d59110b7345006c6e8d6594404e5324ef531"
+    },
+    {
+      "path": "TESTS/projection-fixtures.ts",
+      "bytes": 4002,
+      "sha256": "032d93f252349db226ba589a3df08b5b199980dd0fcb9924abff2566c56dab0e"
+    },
+    {
+      "path": "scripts/generate-projection-types.py",
+      "bytes": 6688,
+      "sha256": "c6411f3a2267b8ab83dbb3bc59b41ddfce7be6eef857109ee2566b0b6375faa7"
+    }
+  ],
+  "policy_review_sha256": "ca3dd487dab089fbf795b1d86c7e38f71b608a7c974fb889719204bf74158a34",
+  "decision": "Explicit supervisor adoption of these immutable policy bytes; worker does not select trust binding.",
+  "application_acceptance": "pending; all ten checks remain required"
+}

@@ -1,0 +1,38 @@
+✔ character commands accept five bounded variants without authorizing caller-chosen speech identity (12.679124ms)
+✔ character cursors reject inconsistent heads and noncanonical temporal integers (1.604305ms)
+✔ character scope identity and version are checked on nested public queries and envelopes (14.719536ms)
+✔ character DTO preflight rejects active objects without invoking user getters or proxy traps (0.575277ms)
+✔ character text and array bounds reject empty identity, unbounded speech and duplicate evidence (6.386864ms)
+✔ character experience variants distinguish authenticated speech from committed action summaries (2.598899ms)
+✔ character projection bounds every stored experience and acquisition to its authoritative cursor (12.238348ms)
+✔ character actor views bind impression ownership and profile to the queried actor (6.669705ms)
+✔ character narrator queries reject private viewer substitution, invalid page bounds and party mismatch (4.792648ms)
+✔ character narrator pages bind coverage and visible cursors without admitting observer metadata (2.662618ms)
+✔ character receipts bind event hash and cursor while preserving the exact command kind (1.541358ms)
+✔ character identity helpers bind scope, content and authenticated identity without receipt-list noise (8.154543ms)
+✔ character projection retains complete history beyond public page bounds (403.929258ms)
+✖ character profile schema is meta-valid, immutable and bound to the explicit local freeze (42.233065ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 13
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2114.745535
+
+✖ failing tests:
+
+test at TESTS/character-contracts.test.ts:115:1
+✖ character profile schema is meta-valid, immutable and bound to the explicit local freeze (42.233065ms)
+  Error: ENOENT: no such file or directory, open '/workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/SYSTEMS/characters-v1/FREEZE.json'
+      at async open (node:internal/fs/promises:1345:25)
+      at async readFile (node:internal/fs/promises:2003:14)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:119:26)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/SYSTEMS/characters-v1/FREEZE.json'
+  }

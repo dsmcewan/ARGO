@@ -1,0 +1,25 @@
+{
+  "candidate": "ba72fe06fef3ebf5a4c14c942a5a1c35d4f116c9",
+  "observation_runtime_source": "67e156c6a6d7925c2fdcb30fe63665b2bb9095d7",
+  "scope": "observation admission and related ledger/character cache regressions",
+  "files": {
+    "packages/ledger/src/index.ts": "bf8f1585f86688fb1da2f5961e1bb8a3d0c98cfc5348d29e9fe47a40dc6c6c43",
+    "packages/ledger/src/observation-admission.ts": "aa7399a9b04a7881b9264270db6925660d30c2826374bee2fb09d1ba0981221f",
+    "packages/ledger/src/mechanics.ts": "b609add08bf42b34cf88cef436cf6c47295aac874b5e3e35291d2b8fe79b6a3c",
+    "packages/contracts/src/observation-admission.ts": "066ea4e430acfd9aeb7ac9f578a860aa6b47db4aa5eed7815d29cfe573c3cb02",
+    "SYSTEMS/observation-admission-v1/CONTRACT.md": "be3e8c8958d51da90dbcdf9572a25738aca0ddcf7edfb3fe85a99b4dad8f9053",
+    "SYSTEMS/observation-admission-v1/observation-admission.schema.json": "4b25665019544c8aa118f1421ab82f01b10c740aa85689b4de5ba09acbf8cfb7",
+    "SYSTEMS/observation-admission-v1/FREEZE.json": "f35a2cf38cfe8f63f7e55ec173ece7159dc2d549ad185eba8ed6734321506209",
+    "TESTS/observation-admission.test.ts": "3a88821308a2f2c2aed1245e7c56de3835f814adfc3b68f6031b4b301392b71a",
+    "TESTS/ledger-cache.test.ts": "96df025536801a13bfb05f6f671c3cb1be5812bf954765988e72cbb1aa234278",
+    "TESTS/character-cache.test.ts": "620966006347c1287a1a0b7f639898f8e5ade2fc2c18c8329e07aafea075690f"
+  },
+  "evidence": {
+    "ba72fe0-admission.log": "b4ddcd96bddf81b28e6f28e3932b114d3f83cd07ee5b4b42f480291318f3abfc",
+    "ba72fe0-character-cache.log": "3fb2368363223b9cc638d3edeb10b831d9122562263e843068ffefbd38032977",
+    "ba72fe0-expanded.log": "e505f522509046e467c42cd8dfcbb5cec7b329aaf119e1df0d70aa0c384702b5",
+    "ba72fe0-independent.log": "ca9c8e9cdc364c5797fd51d1fe93888493a69b2bd653a164eb07a67474b30731",
+    "ba72fe0-ledger-cache.log": "1e3aac88c56dc5731dcee45fce9445fc848aed6a102514365e67ffe08ab7a1ad"
+  },
+  "probe_sha256": "5c9f0e8f040ab87217ca535a35c7b2561ea6edd24c42880bc4ab08bab66baa21"
+}

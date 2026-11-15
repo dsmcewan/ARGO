@@ -1,0 +1,25 @@
+✔ unchanged reads and retries do not reverify already accepted signatures (90.124876ms)
+✔ another writer is verified once and matches cold replay without exposing cached objects (95.697709ms)
+✔ same-size edits with restored mtime cannot hide behind a warm prefix (41.311311ms)
+✔ an observed prefix cannot roll back within the same open handle (36.841672ms)
+✔ a failed multi-event suffix cannot partially publish the verification cache (75.608838ms)
+✔ genesis and journal existence remain checked even when history is cached (52.088826ms)
+✔ snapshot files remain disposable and a post-append snapshot failure is retryable (51.057407ms)
+✔ blank or partial suffix records fail instead of becoming a trusted prefix (64.167533ms)
+✔ every durable event prefix replays bit-for-bit, with signed causal/epistemic history and private RNG (124.679416ms)
+✔ exact retries are idempotent, changed IDs and stale concurrent heads cannot append (85.109127ms)
+✔ scope, causality and authority failures append nothing; partial tails fail closed (51.450725ms)
+✔ canonical codec rejects collisions, unsafe integers and prototype-sensitive keys (0.957335ms)
+✔ genesis cannot create an absent thread without a committed cutoff (0.863068ms)
+✔ prototype names cannot impersonate real actors or custodians (36.964347ms)
+✔ only the freshly authorized claims enter a model request (14.580026ms)
+✔ caller mutations during refresh cannot reach vendor context (2.353573ms)
+✔ mutating a shared refreshed view cannot change a retry context (7.456529ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2230.826537

@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "reviewer_assignment": "ledger_final_review",
+  "review_kind": "Independent native Codex peer read-only review; not human approval or operational merge authorization",
+  "reviewed_at": "2026-11-14T06:34:23.814269+00:00",
+  "commit": "a571f2875dd3ff1b3e00c37ba69a8d313934d3bb",
+  "verdict": "PASS within TF-200 scope; no material defect found",
+  "findings": [],
+  "files": [
+    {
+      "path": "scenarios/tempted-fates/campaign/rules.ts",
+      "sha256": "03069b53a98c3b95d6e3aaf50f1fb1fa6113ec2eb9cea77a658bd48ca39663b1",
+      "bytes": 6145
+    },
+    {
+      "path": "TESTS/tempting-fates-rules.test.ts",
+      "sha256": "356822d819bd14f1f00b2e24d05370a0862eed72970a2f79255bc763a9824f27",
+      "bytes": 10555
+    },
+    {
+      "path": "CAMPAIGNS/Tempting_Fates/RULES.md",
+      "sha256": "6ce8e82af1326fb0095826d5e66d0314dd01de3f6fcd3805b98daca9f4f110f1",
+      "bytes": 25005
+    },
+    {
+      "path": "CAMPAIGNS/Tempting_Fates/CHARACTER_SHEET.md",
+      "sha256": "b44098a1ca716e78dbddbb2960284408b43855a2d9ac2cc048ee4a46e6c8a770",
+      "bytes": 7505
+    },
+    {
+      "path": "CAMPAIGNS/Tempting_Fates/ATTRIBUTION.md",
+      "sha256": "08215e74323a84a861eab7bdc0aaab05fc22ef0fcadcb05cff97d7cb1d40530b",
+      "bytes": 5914
+    }
+  ],
+  "frozen_interfaces": {
+    "campaign_files_checked": 3,
+    "gameplay_v1_files_checked": 4,
+    "all_hashes_match": true,
+    "CampaignRules_signatures": "Seven exports match; strict TypeScript passed"
+  },
+  "source_check": {
+    "edition": "Knave 1.0 / first edition by Ben Milton / Questing Beast",
+    "method": "Independently SHA-256 checked retained PDF and license, extracted PDF text with pdftotext and compared creation, saves, combat, damage, morale and healing; read retained source-grant evidence.",
+    "pdf_sha256": "fc2ff96175f6b60ddbbf02b6139a5da569752155948371613e201d21cf92bc78",
+    "license_sha256": "9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411",
+    "accurate_subset": [
+      "Lowest of three d6; ability defense ten higher; optional pair swap",
+      "One starting d8 without Constitution addition",
+      "Strict d20 sum greater than target/defense; advantage high and disadvantage low",
+      "Constitution-defense item slots and unarmored defense11",
+      "Attacker Strength melee or Wisdom ranged; HP0 unconscious and negative dead",
+      "Ordinary d8 plus Constitution healing; morale2d6 holds on equality"
+    ],
+    "changes_disclosed": [
+      "Fixed Greek-myth kit, obol prices, supplies and equipment statistics",
+      "No optional low-HP reroll, XP or higher-level module",
+      "No player-facing defense rolls, critical damage, item-quality deterioration, ideal-weapon die or extra attack-plus-stunt",
+      "Daily rest timing and omission of full safe-haven heal",
+      "Original travel, retreat/pursuit, fall, finite project and bounded local taboo procedures",
+      "No spellbook/ritual engine or authority conferred by a preview"
+    ],
+    "attribution": "Author, edition, original source links, CC BY4.0 links/legal code, retained artifact identities, change notices and no-endorsement statement present. Existing source rights explicitly preserved without claiming a setting/repository-wide grant.",
+    "limit": "No live author page fetch in this pass; retained PDF is a corroborated mirror, accurately not described as author-checksum-authenticated."
+  },
+  "implementation_review": [
+    "No RNG invocation, I/O or canonical writer in calculator bodies; caller supplies dice; only seven named pure preview exports.",
+    "Passive descriptor traversal rejects proxies before traps, accessors, exotic prototypes, symbols, hidden properties, sparse/decorated arrays and cycles; finite traversal bounds are implemented.",
+    "Closed field sets, safe integer and negative-zero refusal, range checks, intermediate overflow refusal and exact dice counts match frozen contract.",
+    "No caller mutation; output consists of fresh primitive-valued objects; no internal mutable result reference escapes.",
+    "Strict success and morale equality boundaries differ deliberately and correctly; rest rejects negative HP; projects conserve finite resources and cannot overshoot."
+  ],
+  "tabletop_review": [
+    "Level-one creation is concrete; starting allowance sums to9slots or10with spear, within minimum Constitution defense11; gear hands/capacity and purchases are specified.",
+    "Combat specifies side initiative each round, movement/action budget, melee/ranged requirements, strict hits, weapon damage, zero/negative consequences, stunts, retreat/pursuit and optional mortal templates.",
+    "Exploration/travel durations, two-watch normal travel, forced march, daily food/water, fuel/ammunition, finite foraging, casualty transport and checkpoint handling are actionable.",
+    "Eight-hour supplied safe rest and one healing roll per24hours prevent repeated-nap recovery; zeroHP can survive/rest and negativeHP cannot resurrect.",
+    "Sheet matches rules and records slots, supplies, rest allowance, personal knowledge and observer-owned impressions; no universal reputation/virtue score.",
+    "Dark tragic mythic tone is explicit; particular divine punishments are bounded and signposted; Fates have no combat blocks or virtue-court role.",
+    "Informed actual time-gift consent remains separate from charisma, oaths, prices, character creation and calculator results; tabletop death is not end_thread and no ordinary action creates the anomaly."
+  ],
+  "verification": {
+    "native_rule_tests": {
+      "passed": 12,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "exit_code": 0
+    },
+    "strict_types": {
+      "exit_code": 0,
+      "diagnostic_bytes": 0
+    },
+    "independent_properties": {
+      "assertions": 40570,
+      "passive_side_effects": 0,
+      "exit_code": 0,
+      "scope": "Exhaustive small ability/check/damage/project domains plus passive-input, depth/budget and safe-integer boundary probes"
+    },
+    "review_checkout_clean_after": true,
+    "review_checkout_head_unchanged": true
+  },
+  "evidence": [
+    {
+      "path": "/tmp/argo-tf200-review-tests.log",
+      "portable_name": "argo-tf200-review-tests.log",
+      "sha256": "0bbe7fe7196ecda57136d325fd15a24908830f21ef1dfbb610aef03379bbc9ca",
+      "bytes": 1273
+    },
+    {
+      "path": "/tmp/argo-tf200-review-types.log",
+      "portable_name": "argo-tf200-review-types.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/tmp/argo-tf200-review-probes.mjs",
+      "portable_name": "argo-tf200-review-probes.mjs",
+      "sha256": "b4ebad768f6447bb1958fa0b01358ce48592818d5607817da6a4babf71953793",
+      "bytes": 3179
+    },
+    {
+      "path": "/tmp/argo-tf200-review-probes.log",
+      "portable_name": "argo-tf200-review-probes.log",
+      "sha256": "a5a6782fdb8242708ffce63a752b790d8fe3098f63d30e5c7d1d99e57a1bc7c6",
+      "bytes": 241
+    },
+    {
+      "path": "/tmp/argo-tf200-review-knave-raw.txt",
+      "portable_name": "argo-tf200-review-knave-raw.txt",
+      "sha256": "865f528d984cac44dc071581a315c98f1596f489416148e221aae1d46893aa0f",
+      "bytes": 36566
+    }
+  ],
+  "rerun": [
+    "From exact review checkout with pinned dependencies installed: node --test TESTS/tempting-fates-rules.test.ts",
+    "node node_modules/typescript/bin/tsc --noEmit",
+    "node argo-tf200-review-probes.mjs /absolute/path/to/exact/review/checkout"
+  ],
+  "limitations": [
+    "Read-only rules/reference inspection, not a live human tabletop playtest or exhaustive balance study.",
+    "No authoritative combat, travel, resource or consent subsystem was added or tested; those remain explicitly manual/referee responsibilities.",
+    "This review covers only the five TF-200 files and their frozen/source references, not authored campaign content, host seed/catalog integration or later candidate commits.",
+    "Same-model peer review does not confer human, cross-vendor, rights-owner or operational trust approval."
+  ],
+  "repository_edits": false,
+  "board_mutations": false,
+  "remote_writes": false,
+  "paid_model_calls": 0,
+  "nested_workers": false
+}

@@ -1,0 +1,114 @@
+{
+  "candidate": "648f9fae620f9692364e949fea8c0abe420fd22c",
+  "public_modules": {
+    "@argo/contracts": {
+      "path": "packages/contracts/src/index.ts",
+      "sha256": "698b3500a1642a2f8fc7f5049840b8158b7e1b293a4f0dfc13dadc873c8965ee"
+    },
+    "@argo/interventions": {
+      "path": "packages/interventions/src/index.ts",
+      "sha256": "051d5b79eb8484524b6be329bc53258b43f08080bffb67e152930d50cada255b"
+    },
+    "@argo/tempted-fates": {
+      "path": "scenarios/tempted-fates/index.ts",
+      "sha256": "b786bce401483fdcb11d88a1a6bae969cf7b6b276d2390e223bd677d64b8f123"
+    },
+    "@argo/model-client/request": {
+      "path": "packages/model-client/request.mjs",
+      "sha256": "9c70406f2e2c3709ae1ef364428db5739b474d6f6bda1f4f9b325c4a25e2b516"
+    }
+  },
+  "public_exports": {
+    "contracts": [
+      "assertKnowledgeActivationRegistration",
+      "assertKnowledgeViewBinding",
+      "assertAuthoredSourceBytes",
+      "assertAuthoredKnowledgeContract",
+      "hash",
+      "canonical"
+    ],
+    "interventions": [
+      "createModelCharacterAgent"
+    ],
+    "scenario": [
+      "campaignKnowledgeCatalog",
+      "campaignKnowledgeSourceManifest",
+      "campaignKnowledgeIdentity",
+      "createCampaignKnowledgeActivation",
+      "buildCampaignKnowledgeView",
+      "buildCampaignKnowledgeDialogueSupplement",
+      "buildCampaignDialogueSupplement"
+    ]
+  },
+  "checks": [
+    {
+      "name": "fixed bundled identities authenticate exact source bytes and reject a changed source",
+      "result": "pass"
+    },
+    {
+      "name": "activation is detached, immutable and registered at the verified current cursor",
+      "result": "pass"
+    },
+    {
+      "name": "selected policy has exact terms and no event, accepted-loan or global-fact claim",
+      "result": "pass"
+    },
+    {
+      "name": "missing and empty grants produce no knowledge, including for another NPC",
+      "result": "pass"
+    },
+    {
+      "name": "actor, world, branch, exact cursor and pinned identity mismatches are refused",
+      "result": "pass"
+    },
+    {
+      "name": "fixed helpers refuse attacker-chosen pack, catalog and pins",
+      "result": "pass"
+    },
+    {
+      "name": "shape validation does not claim to authenticate caller-selected knowledge",
+      "result": "pass"
+    },
+    {
+      "name": "hostile objects, oversized selections, sparse arrays and cycles are refused without effects",
+      "result": "fail",
+      "error": "TypeError: Cannot assign to read only property 'activation_id' of object '#<Object>'\n    at file:///workspace/reports/2026-11-14-argo-followup/runtime-knowledge-review/runtime-probes.mjs:136:62\n    at check (file:///workspace/reports/2026-11-14-argo-followup/runtime-knowledge-review/runtime-probes.mjs:65:42)\n    at file:///workspace/reports/2026-11-14-argo-followup/runtime-knowledge-review/runtime-probes.mjs:127:7"
+    },
+    {
+      "name": "legacy 0.1 preserves its closed field set and an actual request contains no authored terms",
+      "result": "pass"
+    },
+    {
+      "name": "public model path sends exact Melia terms and no private pack, authority or narrator data",
+      "result": "pass"
+    },
+    {
+      "name": "another NPC request cannot acquire Melia policy by sharing the campaign",
+      "result": "pass"
+    },
+    {
+      "name": "cache scope distinguishes dialogue version 0.1 and 0.2",
+      "result": "pass"
+    },
+    {
+      "name": "grant revocation during token counting prevents generation",
+      "result": "pass"
+    },
+    {
+      "name": "grant or content binding changes during generation suppress the proposed command",
+      "result": "pass"
+    },
+    {
+      "name": "knowledge views outside validity or future acquisition fail before the model call",
+      "result": "pass"
+    }
+  ],
+  "passed": 14,
+  "failed": 1,
+  "live_provider_calls": 0,
+  "authority_writes": 0,
+  "limitations": [
+    "Fixtures exercise actual provider request construction with injected responses; no live model prose quality or latency result.",
+    "Host authentication, persisted activation and earlier-prefix ancestry are trusted integration obligations; JSON shape and hash matching do not prove them."
+  ]
+}

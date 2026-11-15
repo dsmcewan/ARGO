@@ -1,0 +1,14 @@
+{
+  "ticket_id": "SW-400",
+  "source_commit": "dfed2b980e73dc65f54b65f7db2468442117e415",
+  "base_commit": "8ff20160fcd949a64e5e11c356d5de57d769983e",
+  "board_status": "VERIFYING",
+  "attempt": 1,
+  "artifacts": {
+    "TESTS/shared-world-dialogue.test.ts": "6186922648909ce30800a8ccb3cab3e3ddbac9422f7caf3d21de32301442db6e",
+    "packages/interventions/src/world-context.ts": "b0b22518563c70caeda1d2f9f453bf8e67f118d9bc4addef62099b24c3340761",
+    "packages/interventions/src/world-model.ts": "c7357a06551362c50090740e33e2dce5010c524d001d3d3412d1f727171fa405"
+  },
+  "application_acceptance": "Recorded separately; data-only Board gate not run",
+  "paid_calls": 0
+}

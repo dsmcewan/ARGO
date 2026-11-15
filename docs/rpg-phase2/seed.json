@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "tickets": [
+    {
+      "id": "RP-100",
+      "wave": 0,
+      "lane": "rp-100",
+      "title": "Mortal RPG phase2 RP-100",
+      "seat_model": "gpt-6-astra",
+      "reviewer_model": null,
+      "owned_paths": [
+        "packages/contracts/src/mortal.ts",
+        "packages/contracts/src/mortal-types.ts",
+        "SYSTEMS/mortal-v2/",
+        "TESTS/mortal-contracts.test.ts"
+      ],
+      "gate_cmd": [
+        "python3",
+        "-c",
+        "raise SystemExit('Application acceptance needs separately approved external controller policy; this data-only Board does not certify runtime code')"
+      ],
+      "spec_path": "docs/rpg-phase2/tickets/RP-100.md",
+      "depends_on": [],
+      "max_attempts": 3
+    },
+    {
+      "id": "RP-200",
+      "wave": 1,
+      "lane": "rp-200",
+      "title": "Mortal RPG phase2 RP-200",
+      "seat_model": "gpt-6-astra",
+      "reviewer_model": null,
+      "owned_paths": [
+        "packages/ledger/src/mortal/rules.ts",
+        "TESTS/mortal-rules.test.ts"
+      ],
+      "gate_cmd": [
+        "python3",
+        "-c",
+        "raise SystemExit('Application acceptance needs separately approved external controller policy; this data-only Board does not certify runtime code')"
+      ],
+      "spec_path": "docs/rpg-phase2/tickets/RP-200.md",
+      "depends_on": [],
+      "max_attempts": 3
+    },
+    {
+      "id": "RP-300",
+      "wave": 1,
+      "lane": "rp-300",
+      "title": "Mortal RPG phase2 RP-300",
+      "seat_model": "gpt-6-astra",
+      "reviewer_model": null,
+      "owned_paths": [
+        "packages/ledger/src/mortal/journal.ts",
+        "packages/ledger/src/mortal/storage.ts",
+        "packages/ledger/src/mortal/storage-worker.ts",
+        "TESTS/mortal-journal.test.ts",
+        "TESTS/mortal-storage.test.ts"
+      ],
+      "gate_cmd": [
+        "python3",
+        "-c",
+        "raise SystemExit('Application acceptance needs separately approved external controller policy; this data-only Board does not certify runtime code')"
+      ],
+      "spec_path": "docs/rpg-phase2/tickets/RP-300.md",
+      "depends_on": [],
+      "max_attempts": 3
+    },
+    {
+      "id": "RP-400",
+      "wave": 1,
+      "lane": "rp-400",
+      "title": "Mortal RPG phase2 RP-400",
+      "seat_model": "gpt-6-astra",
+      "reviewer_model": null,
+      "owned_paths": [
+        "scenarios/tempted-fates/balance/",
+        "TESTS/mortal-balance.test.ts",
+        "docs/rpg-phase2/balance/"
+      ],
+      "gate_cmd": [
+        "python3",
+        "-c",
+        "raise SystemExit('Application acceptance needs separately approved external controller policy; this data-only Board does not certify runtime code')"
+      ],
+      "spec_path": "docs/rpg-phase2/tickets/RP-400.md",
+      "depends_on": [],
+      "max_attempts": 3
+    },
+    {
+      "id": "RP-900",
+      "wave": 1,
+      "lane": "rp-900",
+      "title": "Mortal RPG phase2 RP-900",
+      "seat_model": "gpt-6-astra",
+      "reviewer_model": null,
+      "owned_paths": [
+        "packages/contracts/src/index.ts",
+        "packages/ledger/src/index.ts",
+        "packages/ledger/src/mortal/index.ts",
+        "packages/ledger/src/mortal/view.ts",
+        "scenarios/tempted-fates/runtime.ts",
+        "scenarios/tempted-fates/index.ts",
+        "scenarios/tempted-fates/package.json",
+        "package-lock.json",
+        "TESTS/mortal-fixtures.ts",
+        "TESTS/mortal-integration.test.ts",
+        "docs/rpg-phase2/README.md",
+        "docs/rpg-phase2/verification.json",
+        "docs/rpg-phase2/board-snapshot.json",
+        "docs/rpg-phase2/evidence/",
+        "docs/rpg-phase2/PLAN.md",
+        "CAMPAIGNS/Tempting_Fates/ENGINE_RULES.md"
+      ],
+      "gate_cmd": [
+        "python3",
+        "-c",
+        "raise SystemExit('Application acceptance needs separately approved external controller policy; this data-only Board does not certify runtime code')"
+      ],
+      "spec_path": "docs/rpg-phase2/tickets/RP-900.md",
+      "depends_on": [],
+      "max_attempts": 3
+    }
+  ]
+}

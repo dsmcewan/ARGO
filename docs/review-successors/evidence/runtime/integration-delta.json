@@ -1,0 +1,10 @@
+{
+  "initial_review_candidate": "ba72fe06fef3ebf5a4c14c942a5a1c35d4f116c9",
+  "fixed_runtime_candidate": "e576fe0ad1c57ea71ec1aad2a48f0f7ed400ead1",
+  "changed_paths": [
+    "TESTS/observation-admission.test.ts",
+    "packages/ledger/src/index.ts"
+  ],
+  "mortal_and_knowledge_implementations_unchanged": true,
+  "observation_fix_review": "observation/e576fe0-review.md"
+}

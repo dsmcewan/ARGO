@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "status": "proposed",
+  "baseline_commit": "41f2cb8568b53fac984e1114d7342eef540bb6d5",
+  "runtime_changed": false,
+  "paid_runs": false,
+  "contracts_frozen": false,
+  "decisions": [
+    "D01",
+    "D02",
+    "D03",
+    "D04",
+    "D05",
+    "D06",
+    "D09",
+    "D10"
+  ],
+  "work_items": [
+    "W01",
+    "W02"
+  ],
+  "code_references": [
+    "packages/contracts/src/index.ts",
+    "packages/contracts/src/generated.ts",
+    "packages/ledger/src/index.ts",
+    "packages/ledger/src/mechanics.ts",
+    "packages/lexi-bridge/src/index.ts",
+    "packages/telos-bridge/src/index.ts",
+    "packages/interventions/src/index.ts",
+    "tools/board.py",
+    "tools/board_support.py",
+    "controller/merge.mjs",
+    "controller/acceptance-policy.mjs",
+    "scripts/gate.mjs"
+  ],
+  "documents": {
+    "temporal-storage.md": [
+      "D02",
+      "D05",
+      "D06"
+    ],
+    "authority-history.md": [
+      "D01",
+      "D03",
+      "D04"
+    ],
+    "build-gate-protocol.md": [
+      "D09"
+    ],
+    "mechanics-fixtures.md": [
+      "D06",
+      "D10",
+      "W02"
+    ],
+    "source-delta.md": [
+      "W01"
+    ]
+  },
+  "next_acceptance": [
+    {
+      "work_item": "W03",
+      "requires": [
+        "W01",
+        "D02",
+        "D05"
+      ],
+      "deliverable": "Versioned projection/query contract proposal and executable negative fixtures; review before freeze."
+    },
+    {
+      "work_item": "W04",
+      "requires": [
+        "D01",
+        "D02",
+        "D03",
+        "D04"
+      ],
+      "deliverable": "Compatible authority/history migrations after design decisions; no v1 rewrite."
+    },
+    {
+      "work_item": "W14",
+      "requires": [
+        "D09"
+      ],
+      "deliverable": "Reviewed external application adapter plus forged/stale receipt and crash-recovery tests."
+    }
+  ],
+  "limits": [
+    "All cases are declarative, not executed runtime benchmarks.",
+    "Independent design review does not adopt unresolved production trust choices.",
+    "W01/W02 deliverables may retain explicit source/license gaps; no completion inferred from this packet.",
+    "D07, D08 and D11 remain separate decisions.",
+    "No implicit paid-run authorization."
+  ],
+  "case_count": 111,
+  "rules_sample_count": 3,
+  "source_fixture_ideas_count": 8
+}

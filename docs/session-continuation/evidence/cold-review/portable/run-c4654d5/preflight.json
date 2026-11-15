@@ -1,0 +1,60 @@
+{
+  "candidate": "c4654d52b1a08bdb4bfa18822d2cc74229d606b6",
+  "baseline": "8e2104c6d466b8b2bee2d0b23d984d2e60a65e11",
+  "fixture_sha256": "0253cd63832456400fae1ec8cd88ab0a1da22b3f61980b9c70727a839e32038c",
+  "fixture_manifest_sha256": "942fe0ed3d5aded4740b54d37c833b558cb8178c6f9cbd1192c0fc74583ea974",
+  "private_fixture_mode": "0700/0600",
+  "source_sha256": {
+    "packages/ledger/src/world/rules/engine.ts": "76bef309f955b0a83fb6f52f20e0d9a26874c4b7aad244f46519ebfe88a79777",
+    "packages/ledger/src/world/rules/ownership.ts": "9ccaf02a50871409ce7f60ab2566cf076588fff96eee4a5880a47eb6e38e16a3",
+    "packages/ledger/src/world/journal.ts": "acc2f0b4c16eb7df4139b879b16bedbe7f6812dccd33fc4893f595c9cff709f9",
+    "packages/contracts/src/index.ts": "9ecc6814ab29d9d64254562496ea925e06468850d916c8904179576d8c3e57c1",
+    "packages/contracts/src/shared-world.ts": "8edbb1eb833c0fb579d7bbd52b50b791d1cd43751cc690ee29e91995f56cc9c2"
+  },
+  "preserved_controls": {
+    "SYSTEMS": {
+      "tree_listing_sha256": "8574e8dcc3374adf4bad79b8ead780e3f5f57d677272bc58214d4560c06a98f6",
+      "tracked_files": 27
+    },
+    "packages/contracts": {
+      "tree_listing_sha256": "6a01eac7f3779a18c5f8921d9e7a38442df05452f27d237678950e36c2ecb637",
+      "tracked_files": 17
+    },
+    "packages/ledger/src/world/journal.ts": {
+      "tree_listing_sha256": "bcd305f5f9d86440d20dfabb09de3a2892e2601e0a4199c9832ca61557f6643e",
+      "tracked_files": 1
+    },
+    "packages/ledger/src/world/storage.ts": {
+      "tree_listing_sha256": "97ad11485c0599ab0d6cb954d803a86487c12f0432726cb8016d97675a75bbea",
+      "tracked_files": 1
+    },
+    "packages/ledger/src/world/storage-worker.ts": {
+      "tree_listing_sha256": "2bed20d4edc25a132ca3ba78befec7f9e2ba2c65429d9d1a5edfbf83be87eefa",
+      "tracked_files": 1
+    },
+    "packages/ledger/src/world/rules.ts": {
+      "tree_listing_sha256": "616c4640099556a9745cfbe576265b979cd0e9bde370e0b3b256d2c5b2c99e44",
+      "tracked_files": 1
+    },
+    "packages/ledger/src/world/view.ts": {
+      "tree_listing_sha256": "cdcca3b7836cf4d1bbd48ce88e256ac41fefae628c4e884697192485c282dcc0",
+      "tracked_files": 1
+    },
+    "packages/ledger/src/world/index.ts": {
+      "tree_listing_sha256": "52984c6c7b716c832dfe8df5fe1614668b107ba68536bf4a78185fbe4c62f4f0",
+      "tracked_files": 1
+    },
+    "packages/ledger/src/mortal-v3": {
+      "tree_listing_sha256": "9040813c3dcd09d1fc024504938685ffb822e65606a34e08ed9c4ab56d863161",
+      "tracked_files": 7
+    },
+    "scripts": {
+      "tree_listing_sha256": "946ed263e48928fd382c58646b607fc6f03574443027527bf70d01c9d11ea478",
+      "tracked_files": 7
+    }
+  },
+  "harness_sha256": "938c885383b9e7e5d97b27b9870095b419eaa58c4458429e42c4f11d05ee204f",
+  "status_before": "clean",
+  "ordinary_process": true,
+  "timeout_seconds": 120
+}

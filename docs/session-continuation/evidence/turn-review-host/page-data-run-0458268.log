@@ -1,0 +1,2 @@
+PAGE_TRAPS {"accessorTraps":0,"proxyDataTraps":0,"thenReads":1,"dataKeys":[]}
+PASS C_prefix_page_containers_reject_accessors_and_proxies_without_traps

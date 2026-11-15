@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "protocol": "argo.mesh/1",
+  "paid_runs": false,
+  "peer_count": 3,
+  "application_acceptance": "external_controller",
+  "artifacts": [
+    "tools/mesh_dispatch.py",
+    "tools/mesh_trace.py",
+    "tools/test_mesh_dispatch.py",
+    "tools/test_mesh_trace.py",
+    "tools/MESH.md",
+    "pantheon/src/board/blackboard-mesh.mjs",
+    "pantheon/bin/pantheon-mesh.mjs",
+    "pantheon/tests/blackboard-mesh.test.mjs",
+    "docs/mesh-builds/demo.py",
+    "docs/mesh-builds/examples/author.py",
+    "docs/mesh-builds/examples/peer.py",
+    "docs/mesh-builds/INTERFACE.md",
+    "docs/mesh-builds/policy-review.json",
+    "docs/mesh-builds/independent-review.json",
+    "docs/mesh-builds/verification.json"
+  ],
+  "limits": {
+    "parallel": [
+      1,
+      8
+    ],
+    "rounds": [
+      2,
+      8
+    ],
+    "attempts": [
+      1,
+      100
+    ]
+  },
+  "board_terminal_worker_status": "VERIFYING"
+}

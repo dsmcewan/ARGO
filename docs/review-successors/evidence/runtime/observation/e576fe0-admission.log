@@ -1,0 +1,33 @@
+✔ observation admission defaults to direct self-authorship and private acquisition (35.212532ms)
+✔ observation request identity binds complete proposal, authenticated principal and attempt window (8.984896ms)
+✔ witness grants authorize only their exact scoped request, recipients and checkpoint (16.871172ms)
+✔ grant lifetime is bounded and half-open, without manufacturing a new retry deadline (11.257364ms)
+✔ admission DTOs are closed, bounded and keep cursor nullability consistent (6.221208ms)
+✔ observation contract guards reject active data without invoking accessors or proxy traps (5.891049ms)
+✔ created admission requests own frozen data without freezing caller objects or mutating grants (2.420787ms)
+✔ observation admission freeze pins the contract, schema and shared type/guard module (13.13393ms)
+✔ new raw source and recipient attacks fail without events while private self observations stay callback-free (108.885126ms)
+✔ host witness runs outside the writer lock and grants only its exact visible acquisition (51.588259ms)
+✔ a concurrent commit invalidates an outstanding witness grant without delivering its claim (25.589849ms)
+✔ two handles reconcile identical witnessed submissions before demanding another grant (65.467201ms)
+✔ cancellation during the second journal read rejects an exact concurrent retry without losing its commit (48.705431ms)
+✔ cancelled host work cannot append when it resolves late and the linked signal is aborted (22.161832ms)
+✔ runtime refuses a changed grant, host denial and active grant data without appending (194.117712ms)
+✔ historical v1 source injection still replays and an exact authenticated retry needs no new witness (48.409759ms)
+✔ witness deadline starts at submission and preflight waiting cannot renew its budget (28.169398ms)
+✔ expiry during writer relock cannot append a previously valid witness grant (25.883013ms)
+✔ grant expiry immediately before journal writing fails without changing journal bytes (24.943817ms)
+✔ an uncooperative witness callback is bounded and receives an aborted signal at its deadline (5024.878066ms)
+✔ cheap state checks reject invalid outward requests before witness work (28.241479ms)
+✔ a valid legacy proxy grant cannot authorize a new observation even with a host verifier (27.973737ms)
+✔ caller mutation and a retained host response cannot rewrite the authorized observation (47.947858ms)
+✔ a changed verified journal prefix invalidates outstanding host authorization (72.480292ms)
+✔ cancellation at the awaited journal open prevents the observation append (37.336406ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5998.107499

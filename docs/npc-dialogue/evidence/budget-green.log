@@ -1,0 +1,15 @@
+✔ explicit Google budgets retain short caller limits instead of increasing generation allowance (3.023283ms)
+✔ explicit output policy requires a positive safe integer cap on every provider surface (3.821048ms)
+✔ explicit caps normalize supported aliases without leaking local policy to provider requests (2.725355ms)
+✔ omitted and long-decode policies retain the existing default and legacy-cap behavior (0.993491ms)
+✔ unknown output policies and caps beyond the model limit fail before generation (1.524245ms)
+✔ combined-context accounting reserves the explicit output cap and rejects overflow (0.44867ms)
+✔ single-turn generation sends explicit small caps through all provider transports (4.613563ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 33.175789

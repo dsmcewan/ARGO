@@ -1,0 +1,48 @@
+{
+  "reviewer": "character_contract_scout",
+  "review_type": "Independent narrow verification of TF-PH2-01",
+  "source_commit": "12229dec115abb8d34c5abba987530fbeda3daa8",
+  "fix_commit": "5a2f5718abf0cdc1ee87a104bf4a6ee1d387690b",
+  "source_sha256": {
+    "docs/tempting-fates/phase2/README.md": "b6cda93981d4bf80e090a7156c5d1bcf550bc41cd98ac09424e7d3f4b7859504",
+    "docs/tempting-fates/phase2/tabletop-state.ts": "08227ff712ce08b1dc95af82b3b500380c2f56eeb10f0b6452c93052322bca32",
+    "docs/tempting-fates/phase2/tabletop-state.schema.json": "4ed7bb407c4969cf0fcdcc899157f70111586069874daa116ce6ca11b3626665",
+    "docs/tempting-fates/phase2/example-state.json": "3f9f66ad6bd4ca3ca69a4f686b1320d317de94f7385734113fc300db71299898",
+    "docs/tempting-fates/phase2/example-state.ts": "e1332f4247f05e0f82a72f1b6807fbc6c04499cc63f99fa26e10b8bcc10ac3ca",
+    "TESTS/tempting-fates-integration.test.ts": "0540b8d2a3d0ce2750817c90652f56e2940e6eda72575450d8207a9c1ab43cc1"
+  },
+  "finding": "TF-PH2-01",
+  "outcome": "resolved",
+  "reason": "TabletopItem now encodes held versus grounded placement as an exclusive TypeScript union, matching existing JSON Schema oneOf. Both formerly accepted invalid object literals now fail tsc with TS2322.",
+  "checks": {
+    "targeted_phase2_test": {
+      "passed": 1,
+      "failed": 0
+    },
+    "repository_typecheck": "pass",
+    "independent_prior_negative_literal_probe": {
+      "compiler_exit": 2,
+      "expected_errors": [
+        "TS2322 at line 2 (both fields populated)",
+        "TS2322 at line 3 (both fields null)"
+      ]
+    },
+    "json_regressions": "dual custody and absent custody rejected; grounded placement accepted; original held example accepted",
+    "integration_negative_compile_assertions": "@ts-expect-error assertions checked by successful repository typecheck"
+  },
+  "evidence_sha256": {
+    "/tmp/argo-tf-phase2-fix-targeted.log": "44b85974c95674647d61bf39256a1f74339beb0d48505abfeb5dac436415ec70",
+    "/tmp/argo-tf-phase2-fix-typecheck.log": "2cf20646d72113be26c6fbe14738bc101ebf909ab8a2374290f369e1d53c975c",
+    "/tmp/argo-tf-phase2-fix-negative-types.log": "b51ddf4142406fbaa3e0444465921518e36513c961b3f3ee1e3fd96514f4fa57",
+    "/tmp/argo-tf-phase2-type-probe.mts": "e62e9e66c9981a193b21171f8e1ca55616332a57e42493c0fc101a8b13a38bd6"
+  },
+  "remaining_findings_in_narrow_scope": [],
+  "limits": [
+    "This follow-up verifies only the custody type/schema fix and its regressions, not the whole campaign or full regression suite.",
+    "Original report retains the documented proposed-only state-validation limits.",
+    "No operational merge approval or authority-state promotion is implied."
+  ],
+  "repository_files_changed_by_reviewer": false,
+  "paid_calls": false,
+  "board_mutations": false
+}

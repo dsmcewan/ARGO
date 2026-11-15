@@ -1,0 +1,16 @@
+{
+  "candidate": "e096530b2618119ab3dd545f3defe36b754021bd",
+  "checks": {
+    "SC620-ST01": true,
+    "SC620-ST02": true,
+    "SC620-ST03": true,
+    "SC620-ST04": true,
+    "SC620-ST05": true,
+    "immediate_directory_alias_refusal": true,
+    "NC-ID-LF": true,
+    "NC-ID65-LF": true,
+    "NC-DIGEST-LF": true
+  },
+  "all_expected_behaviors": true,
+  "note": "Reuses unchanged checkpoint observation script; its static descriptive strings describe the old checkpoint. Actual final values and zero-byte parse trace above are the repair oracles; the final candidate includes the driver."
+}

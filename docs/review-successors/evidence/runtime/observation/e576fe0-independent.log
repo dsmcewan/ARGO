@@ -1,0 +1,20 @@
+✔ default admits only self-private data and reopening cannot enable outward delivery (140.059768ms)
+✔ slow host does not hold writer lock; another handle advances and makes its grant stale (83.496388ms)
+✔ caller cancellation wins against a host that ignores its signal, including its later reply (64.26949ms)
+✔ concurrent exact duplicate returns original receipt before stale-cursor checks and without another witness (111.540437ms)
+✔ legacy spoofed-source observation above the new recipient cap retries only with original authenticated identity (79.172756ms)
+✔ a willing host cannot override source authorship or a valid proxy grant (41.964951ms)
+✔ request/snapshot are frozen, caller edits cannot change a pending request, and returned grant is detached before relock (90.929705ms)
+✔ grant expiry during relocking cannot gain a fresh admission window (61.98896ms)
+✔ post-append derived-snapshot failure preserves verified prefix and retry skips witness work (51.293278ms)
+✔ preflight, verifier work, and relock all consume the original five-second window (33.396594ms)
+✔ cancellation during the second durable read is checked before returning an exact concurrent retry (50.226383ms)
+✔ review target remained immutable through the probe run (23.950955ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 850.518499

@@ -1,0 +1,61 @@
+✖ real journal preserves two private interpretations of one witnessed action and replays every prefix (4.338123ms)
+✖ quiet characters and audience-safe narration use real stored speech without giving prose a writer (1.59455ms)
+✖ a real post-anomaly commit during generation suppresses retained-history narration (1.40329ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 0
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 909.235065
+
+✖ failing tests:
+
+test at TESTS/character-integration.test.ts:56:1
+✖ real journal preserves two private interpretations of one witnessed action and replays every prefix (4.338123ms)
+  AssertionError [ERR_ASSERTION]: The character runtime components required by this integration are not implemented yet
+      at components (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-900-1-e05eb04a67/TESTS/character-integration.test.ts:22:89)
+      at async world (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-900-1-e05eb04a67/TESTS/character-integration.test.ts:31:12)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-900-1-e05eb04a67/TESTS/character-integration.test.ts:57:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'fail',
+    diff: 'simple'
+  }
+
+test at TESTS/character-integration.test.ts:96:1
+✖ quiet characters and audience-safe narration use real stored speech without giving prose a writer (1.59455ms)
+  AssertionError [ERR_ASSERTION]: The character runtime components required by this integration are not implemented yet
+      at components (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-900-1-e05eb04a67/TESTS/character-integration.test.ts:22:89)
+      at async world (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-900-1-e05eb04a67/TESTS/character-integration.test.ts:31:12)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-900-1-e05eb04a67/TESTS/character-integration.test.ts:97:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'fail',
+    diff: 'simple'
+  }
+
+test at TESTS/character-integration.test.ts:123:1
+✖ a real post-anomaly commit during generation suppresses retained-history narration (1.40329ms)
+  AssertionError [ERR_ASSERTION]: The character runtime components required by this integration are not implemented yet
+      at components (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-900-1-e05eb04a67/TESTS/character-integration.test.ts:22:89)
+      at async world (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-900-1-e05eb04a67/TESTS/character-integration.test.ts:31:12)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-900-1-e05eb04a67/TESTS/character-integration.test.ts:124:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'fail',
+    diff: 'simple'
+  }

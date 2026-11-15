@@ -1,0 +1,22 @@
+{
+  "original_harness_sha256": "5aa2ae736e6df6d932e969f42fe656321695691c069751875ff5140c3602f886",
+  "portable_harness_sha256": "938c885383b9e7e5d97b27b9870095b419eaa58c4458429e42c4f11d05ee204f",
+  "eight_checks_unchanged_except_manifest_terminal_references": true,
+  "generic_oracle_verbatim_unchanged": true,
+  "generic_oracle_source_sha256": "a1b068789ce49c1c852d96fbe38cafce5cfff952a79eb8b8cd44c0d35f5d7363",
+  "required_fixture_manifest_source": "8e2104c6d466b8b2bee2d0b23d984d2e60a65e11",
+  "original_evidence_sha256": {
+    "compatibility.mjs": "5aa2ae736e6df6d932e969f42fe656321695691c069751875ff5140c3602f886",
+    "PREPARED.md": "2792e7fea0bece9f41cca1432dcaa61ae127d84622a2bf6a871c05143681eeae",
+    "prepared.json": "b68d4ba49285f81b36d9fb99248fe3f78f66b02494de99d9c05bd99c746f4de4",
+    "run-review.py": "984d74f355e229cd8da98e49c1a910bc12c2b75701cdbb655c3179b420aebff7",
+    "candidate-c4654d5/results.json": "6d3defbe7046794da2ef45a180ba06478e7ecb8ea2e6937e83603e87af2fdfe8",
+    "candidate-c4654d5/REVIEW.md": "e4825f0ac717482f20334135ae58b3a5052bc63d4ff54a40644f7026b332a817",
+    "candidate-c4654d5/review.json": "58f109da9b174418512c657c36a5c64b65c8def0f624cb807f2842abcc3c4037",
+    "candidate-c4654d5/compatibility.log": "69ed69560daf701903d0ad31c3465470ee7fefa7c5df2432f484ab4724149c65",
+    "candidate-c4654d5/verification.json": "39102ce6183648675bb80651cfe0a816b53db95a5dc0ad5568b082e2abf69680",
+    "candidate-c4654d5/preflight.json": "e355986add39a01da92f1570d00f55ee8e609ef1ffb66f9f4e9f2b6165c170df",
+    "candidate-c4654d5/focused-source-tests.log": "aa26175de01cb8f9c7f5897faa66e10751cef9f7fd57bf81e3cf82e190d51dfb",
+    "candidate-c4654d5/candidate.diff": "81bc63dd0d03d2e6a2b37a097ed1cd308d97f20ce344cb6d81854ce3a2d28106"
+  }
+}

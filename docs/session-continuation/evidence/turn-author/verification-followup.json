@@ -1,0 +1,80 @@
+{
+  "candidate": "0458268ed82d6d703b4604bd71647986fdd05ae7",
+  "previous_candidate": "e096530b2618119ab3dd545f3defe36b754021bd",
+  "base": "3a2fab7ab5a50dc7cd4f9eaa8732f027a1ce733d",
+  "clean": true,
+  "source_sha256": {
+    "TESTS/shared-world-conversation.test.ts": "0b3808770fe066fefc68ea73e94db95b898f7b3936102d67438520ede810ab95",
+    "TESTS/shared-world-turn-store.test.ts": "e726cb26a90e0c5638dad1ac1519e40631fcd2e536ccc6e72680733ea6cc7884",
+    "packages/session/package.json": "23d621e04345400aca781aee4448548f6e9a3f3726d67006b5a6e191eeb113a0",
+    "packages/session/src/conversation-guards.ts": "e276e14a1bf9af48079673f5a2b163b9751a0b857036eedf4c5311ebe293407d",
+    "packages/session/src/conversation-store-worker.ts": "0885ac35c25cd0426a63b88fe22b696d1187edf9571a2d45390a2e29370a2bf1",
+    "packages/session/src/conversation-store.ts": "9fe225478aa8847ed0cc6aa118850909007c60f96f1c198fc5e7e97b120269ef",
+    "packages/session/src/conversation-types.ts": "7007528fe9f72e3d4ee3d8091512b2065f1203bc52ecafd393dbdde78ddfaf38",
+    "packages/session/src/conversation.ts": "1376bb3bee4a4d08919270d3b8092e22290b7a7eb75e56b7f3133b2d18481ba2",
+    "packages/session/src/index.ts": "7fa0a76a1310cfbee097364e7476bbdff756de18e347f80483ccb9d29578120c"
+  },
+  "log_sha256": {
+    "host-review-red.log": "fef804bf5239f529ec920f9b2a2b43c38df166b5852beb94679c1c24fa8feeaa",
+    "host-review-green.log": "ca03b550b26538e1950ab6318178cf9a1fcfe956b61849f39a2f6a6dfd6c9af6",
+    "host-final-review.log": "bd7558ee92aa9f5e13ce4783ae6ded86b2af386ff60db0b9bf048efd91c4636a",
+    "typecheck-final-review.log": "2cf20646d72113be26c6fbe14738bc101ebf909ab8a2374290f369e1d53c975c",
+    "contracts-final-correct.log": "2cd7874723b12ab43b0da644f0fa05f6af32153676d6e31de2c44c17c8e03428",
+    "boundaries-final-review.log": "e47c0afeea3c3b43502770ad5783bbf4ba351ce8b864d59d839f760923e09580",
+    "contracts-final-review.log": "7116346e32a4544cd0f575abd6d4ce5d24950136c2b099cd04e00e7553ea92da"
+  },
+  "checks": {
+    "host_tests": {
+      "passed": 18,
+      "failed": 0,
+      "exit": 0,
+      "log": "host-final-review.log"
+    },
+    "typecheck": {
+      "exit": 0,
+      "log": "typecheck-final-review.log"
+    },
+    "contracts": {
+      "exit": 0,
+      "log": "contracts-final-correct.log"
+    },
+    "boundaries": {
+      "exit": 0,
+      "modules": 82,
+      "log": "boundaries-final-review.log"
+    },
+    "diff_check": "passed"
+  },
+  "repairs": [
+    "H1 revalidate attempt/cancellation/deadline after awaited NPC view",
+    "H2 detach host waits on caller ledger while preserving exact pending command and draining local work; capture original passive capability methods",
+    "H3 validate event page before data access; reject returned proxy before host Promise assimilation",
+    "Stable domain-separated per-binding model cache identity; no history/previous_response_id change"
+  ],
+  "red_green": {
+    "red": "host-review-red.log",
+    "red_failures": [
+      "H1 provider dispatch after durable cross-handle cancellation",
+      "H2 close awaited committed held acknowledgment",
+      "H3 active array getter",
+      "Per-turn cache key instability"
+    ],
+    "intermediate": "host-review-green.log",
+    "intermediate_note": "4/5 passed; remaining proxy assertion counted unavoidable Promise then assimilation. Corrected test separates injected async callback assimilation from data reads; host rejects proxy before own extra assimilation. Final18 pass."
+  },
+  "limits": [
+    "Original async injected callback returning a Proxy necessarily reads then during JavaScript Promise assimilation; no claim that arbitrary trusted callback behavior is prevented. Data/index/descriptor reads are zero.",
+    "No live provider calls, cache-hit measurement, or semantic quality claim.",
+    "No full application gate or independent final approval by author.",
+    "No Board submit, merge, push, trust-pin changes, or new anti-rollback anchor."
+  ],
+  "other_outcome": "contracts-final-review.log retains an author invocation of nonexistent scripts/validate-contracts.mjs (MODULE_NOT_FOUND); correct npm run contracts then passed, recorded separately.",
+  "paid_calls": 0,
+  "unchanged_store_files": [
+    "packages/session/src/conversation-store.ts",
+    "packages/session/src/conversation-store-worker.ts",
+    "packages/session/src/conversation-guards.ts",
+    "packages/session/src/conversation-types.ts",
+    "TESTS/shared-world-turn-store.test.ts"
+  ]
+}

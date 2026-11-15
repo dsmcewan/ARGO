@@ -19,7 +19,7 @@ test('Integration Test Zero: Tempted Fates TF-01..TF-12',async()=>{
   }
   assert.equal((await ledger.events()).length,0);
   const physicalBefore=(await ledger.snapshot()).items;
-  await submit({type:'observe_claim',observation:{claim_id:'account',channel:'external_account',source_id:'guidebook',content:'The relic is said to grant youth.',observers:['donor'],party_id:null,occurred_at:0}});
+  await submit({type:'observe_claim',observation:{claim_id:'account',channel:'external_account',source_id:'donor',content:'According to the guidebook, the relic is said to grant youth.',observers:['donor'],party_id:null,occurred_at:0}});
   assert.deepEqual((await ledger.snapshot()).items,physicalBefore,'TF-02/03 guide does not move or create a relic');
   assert.equal((await read('traveler')).claims.length,0,'TF-02 private-solo secret is not global truth');
   await submit({type:'move_item',item_id:'lamp',to_actor_id:'traveler'});assert.equal((await ledger.snapshot()).items.lamp!.custodian_id,'traveler');

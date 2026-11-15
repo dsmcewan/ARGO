@@ -1,0 +1,235 @@
+[
+  {
+    "board": "deep-review",
+    "tickets": [
+      {
+        "id": "DR-100",
+        "status": "VERIFYING",
+        "definition": {
+          "depends_on": [],
+          "gate_cmd": [
+            "python3",
+            "-c",
+            "raise SystemExit('Application acceptance remains external to data-only Board policy')"
+          ],
+          "id": "DR-100",
+          "lane": "ledger",
+          "max_attempts": 3,
+          "owned_paths": [
+            "packages/ledger/src/index.ts",
+            "TESTS/ledger-cache.test.ts",
+            "docs/deep-review/"
+          ],
+          "reviewer_model": null,
+          "seat_model": "gpt-6-astra",
+          "spec_path": "docs/deep-review/tickets/DR-100.md",
+          "title": "Incremental journal verification",
+          "wave": 1
+        },
+        "source_commit": "48459fb82053076729f8bf16388d2a4b323991b7",
+        "attempt": 1,
+        "error": null
+      },
+      {
+        "id": "DR-110",
+        "status": "VERIFYING",
+        "definition": {
+          "depends_on": [],
+          "gate_cmd": [
+            "python3",
+            "-c",
+            "raise SystemExit('Application acceptance remains external to data-only Board policy')"
+          ],
+          "id": "DR-110",
+          "lane": "character-projection",
+          "max_attempts": 3,
+          "owned_paths": [
+            "packages/ledger/src/characters.ts",
+            "TESTS/character-cache.test.ts"
+          ],
+          "reviewer_model": null,
+          "seat_model": "gpt-6-astra",
+          "spec_path": "docs/deep-review/tickets/DR-110.md",
+          "title": "Incremental character projection",
+          "wave": 1
+        },
+        "source_commit": "853768b279caa4011a6dedf47b7ba0930c11e25d",
+        "attempt": 1,
+        "error": null
+      }
+    ]
+  },
+  {
+    "board": "deep-review-followups",
+    "tickets": [
+      {
+        "id": "DR-190",
+        "status": "READY",
+        "definition": {
+          "depends_on": [],
+          "gate_cmd": [
+            "python3",
+            "-c",
+            "raise SystemExit('Intake only: reviewed versioned contracts and application policy are required')"
+          ],
+          "id": "DR-190",
+          "lane": "coordination",
+          "max_attempts": 1,
+          "owned_paths": [
+            "docs/deep-review/design/sequence.md"
+          ],
+          "reviewer_model": null,
+          "seat_model": "gpt-6-astra",
+          "spec_path": "docs/deep-review/tickets/DR-190.md",
+          "title": "Version and review successor contracts",
+          "wave": 2
+        },
+        "source_commit": null,
+        "attempt": 0,
+        "error": null
+      },
+      {
+        "id": "DR-200",
+        "status": "BLOCKED",
+        "definition": {
+          "depends_on": [
+            "DR-190"
+          ],
+          "gate_cmd": [
+            "python3",
+            "-c",
+            "raise SystemExit('Intake only: reviewed versioned contracts and application policy are required')"
+          ],
+          "id": "DR-200",
+          "lane": "encounters",
+          "max_attempts": 1,
+          "owned_paths": [
+            "docs/deep-review/design/encounters.md"
+          ],
+          "reviewer_model": null,
+          "seat_model": "gpt-6-astra",
+          "spec_path": "docs/deep-review/tickets/DR-200.md",
+          "title": "Recover stalled encounters without freezing unrelated actors",
+          "wave": 3
+        },
+        "source_commit": null,
+        "attempt": 0,
+        "error": null
+      },
+      {
+        "id": "DR-210",
+        "status": "BLOCKED",
+        "definition": {
+          "depends_on": [
+            "DR-190"
+          ],
+          "gate_cmd": [
+            "python3",
+            "-c",
+            "raise SystemExit('Intake only: reviewed versioned contracts and application policy are required')"
+          ],
+          "id": "DR-210",
+          "lane": "actor-knowledge",
+          "max_attempts": 1,
+          "owned_paths": [
+            "docs/deep-review/design/actor-knowledge.md"
+          ],
+          "reviewer_model": null,
+          "seat_model": "gpt-6-astra",
+          "spec_path": "docs/deep-review/tickets/DR-210.md",
+          "title": "Project curated authored NPC knowledge",
+          "wave": 3
+        },
+        "source_commit": null,
+        "attempt": 0,
+        "error": null
+      },
+      {
+        "id": "DR-220",
+        "status": "BLOCKED",
+        "definition": {
+          "depends_on": [
+            "DR-190"
+          ],
+          "gate_cmd": [
+            "python3",
+            "-c",
+            "raise SystemExit('Intake only: reviewed versioned contracts and application policy are required')"
+          ],
+          "id": "DR-220",
+          "lane": "epistemic-policy",
+          "max_attempts": 1,
+          "owned_paths": [
+            "docs/deep-review/design/observations.md"
+          ],
+          "reviewer_model": null,
+          "seat_model": "gpt-6-astra",
+          "spec_path": "docs/deep-review/tickets/DR-220.md",
+          "title": "Authorize legacy epistemic acquisitions",
+          "wave": 3
+        },
+        "source_commit": null,
+        "attempt": 0,
+        "error": null
+      },
+      {
+        "id": "DR-230",
+        "status": "BLOCKED",
+        "definition": {
+          "depends_on": [
+            "DR-200",
+            "DR-210",
+            "DR-220"
+          ],
+          "gate_cmd": [
+            "python3",
+            "-c",
+            "raise SystemExit('Intake only: reviewed versioned contracts and application policy are required')"
+          ],
+          "id": "DR-230",
+          "lane": "shared-world",
+          "max_attempts": 1,
+          "owned_paths": [
+            "docs/deep-review/design/shared-world.md"
+          ],
+          "reviewer_model": null,
+          "seat_model": "gpt-6-astra",
+          "spec_path": "docs/deep-review/tickets/DR-230.md",
+          "title": "Join character and mortal worlds",
+          "wave": 3
+        },
+        "source_commit": null,
+        "attempt": 0,
+        "error": null
+      },
+      {
+        "id": "DR-240",
+        "status": "BLOCKED",
+        "definition": {
+          "depends_on": [
+            "DR-190"
+          ],
+          "gate_cmd": [
+            "python3",
+            "-c",
+            "raise SystemExit('Intake only: reviewed versioned contracts and application policy are required')"
+          ],
+          "id": "DR-240",
+          "lane": "dialogue-evaluation",
+          "max_attempts": 1,
+          "owned_paths": [
+            "docs/deep-review/design/dialogue-evaluation.md"
+          ],
+          "reviewer_model": null,
+          "seat_model": "gpt-6-astra",
+          "spec_path": "docs/deep-review/tickets/DR-240.md",
+          "title": "Bound dialogue formatting repair and define live evaluation",
+          "wave": 3
+        },
+        "source_commit": null,
+        "attempt": 0,
+        "error": null
+      }
+    ]
+  }
+]

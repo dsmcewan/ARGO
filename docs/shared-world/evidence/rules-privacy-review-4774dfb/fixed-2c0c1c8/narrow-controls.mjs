@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import {pathToFileURL} from 'node:url';
+import {resolve} from 'node:path';
+const root=process.argv[2];const h=await import(pathToFileURL(resolve(root,'TESTS/shared-world-rules-helpers.ts')));
+const {canonical}=await import(pathToFileURL(resolve(root,'packages/contracts/src/index.ts')));
+const {worldStateHash}=await import(pathToFileURL(resolve(root,'packages/ledger/src/world/rules.ts')));
+assert.equal(process.env.NODE_TEST_CONTEXT,undefined);
+const g=h.genesis();g.mortal.seed='6'.padStart(64,'0');g.mortal.actors[0].hp=1;g.mortal.actors[0].resources.rations=0;
+let s=h.commit(g,h.start(g),h.offer('control_return',3000));s=h.commit(g,s,h.accept(s),'companion');s=h.commit(g,s,{type:'mortal',action:{type:'wait',turns:1}});
+const before=canonical(s),hash=worldStateHash(s),request='retry_same_id';
+assert.throws(()=>h.run(g,s,{type:'mortal',action:{type:'transfer_item',item_id:'lamp',to_actor_id:'hero'}},'companion',request),{code:'UNAUTHORIZED'});
+assert.equal(canonical(s),before);assert.equal(worldStateHash(s),hash);assert.equal(s.loans[0].status,'open');assert.equal(h.item(s).owner_id,'companion');
+const alternate=h.run(g,s,{type:'mortal',action:{type:'transfer_item',item_id:'lamp',to_actor_id:'watcher'}},'companion',request);
+assert.equal(alternate.memory.request_id,request);assert.equal(h.item(alternate.state).owner_id,'watcher');assert.equal(alternate.state.loans[0].status,'open');
+const ordinary=h.run(g,s,{type:'mortal',action:{type:'transfer_item',item_id:'club',to_actor_id:'hero'}},'raider');
+assert.equal(h.item(ordinary.state,'club').owner_id,'hero');assert(!ordinary.memory.acquired_by.includes('hero'));assert.equal(ordinary.memory.payload.type,'mortal');assert.equal(canonical(s),before);
+console.log(JSON.stringify({outside_node_test_runner:true,rejected_transition_atomic:true,rejected_request_reusable:true,nonfulfilling_loan_transfer_allowed:true,ordinary_nonloan_transfer_unchanged:true}));

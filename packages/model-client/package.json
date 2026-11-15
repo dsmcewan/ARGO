@@ -8,8 +8,14 @@
       "types": "./index.d.mts",
       "import": "./index.mjs"
     },
-    "./request": "./request.mjs",
-    "./router": "./router.mjs",
+    "./request": {
+      "types": "./request.d.mts",
+      "default": "./request.mjs"
+    },
+    "./router": {
+      "types": "./router.d.mts",
+      "default": "./router.mjs"
+    },
     "./models": "./models.json"
   },
   "engines": {

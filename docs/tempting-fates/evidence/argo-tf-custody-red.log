@@ -1,0 +1,6 @@
+
+> argo@0.1.0 typecheck
+> tsc --noEmit
+
+TESTS/tempting-fates-integration.test.ts(131,2): error TS2578: Unused '@ts-expect-error' directive.
+TESTS/tempting-fates-integration.test.ts(133,2): error TS2578: Unused '@ts-expect-error' directive.

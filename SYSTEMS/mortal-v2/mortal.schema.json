@@ -1,0 +1,1836 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://argo.local/schemas/mortal-rules/0.2.0",
+  "$defs": {
+    "Id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 96,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$(?![\\s\\S])",
+      "not": {
+        "enum": [
+          "__proto__",
+          "prototype",
+          "constructor"
+        ]
+      }
+    },
+    "Hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "minLength": 64,
+      "maxLength": 64
+    },
+    "Version": {
+      "const": "mortal-rules/0.2.0"
+    },
+    "Scope": {
+      "$ref": "https://argo.local/contracts/1.0.0/argo.schema.json#/$defs/Scope"
+    },
+    "Signature": {
+      "type": "string",
+      "minLength": 88,
+      "maxLength": 88,
+      "pattern": "^[A-Za-z0-9+/]{86}==$"
+    },
+    "Ability": {
+      "enum": [
+        "strength",
+        "dexterity",
+        "constitution",
+        "intelligence",
+        "wisdom",
+        "charisma"
+      ]
+    },
+    "Resource": {
+      "enum": [
+        "rations",
+        "water",
+        "oil",
+        "obols",
+        "ammo"
+      ]
+    },
+    "Resources": {
+      "type": "object",
+      "properties": {
+        "rations": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "water": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "oil": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "obols": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "ammo": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        }
+      },
+      "required": [
+        "rations",
+        "water",
+        "oil",
+        "obols",
+        "ammo"
+      ],
+      "additionalProperties": false
+    },
+    "Actor": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/Id"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "controller_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "kind": {
+          "enum": [
+            "player",
+            "npc"
+          ]
+        },
+        "location_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "hp": {
+          "type": "integer",
+          "minimum": -1000000,
+          "maximum": 100
+        },
+        "max_hp": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        },
+        "abilities": {
+          "type": "object",
+          "properties": {
+            "strength": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10
+            },
+            "dexterity": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10
+            },
+            "constitution": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10
+            },
+            "intelligence": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10
+            },
+            "wisdom": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10
+            },
+            "charisma": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10
+            }
+          },
+          "required": [
+            "strength",
+            "dexterity",
+            "constitution",
+            "intelligence",
+            "wisdom",
+            "charisma"
+          ],
+          "additionalProperties": false
+        },
+        "resources": {
+          "$ref": "#/$defs/Resources"
+        },
+        "active_seconds": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000000
+        },
+        "fed_until": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000000
+        },
+        "next_rest_at": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000000
+        },
+        "discoveries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Id"
+          },
+          "minItems": 0,
+          "maxItems": 256,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "controller_id",
+        "kind",
+        "location_id",
+        "hp",
+        "max_hp",
+        "abilities",
+        "resources",
+        "active_seconds",
+        "fed_until",
+        "next_rest_at",
+        "discoveries"
+      ],
+      "additionalProperties": false
+    },
+    "Location": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/Id"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "safe_rest": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "safe_rest"
+      ],
+      "additionalProperties": false
+    },
+    "Hazard": {
+      "type": "object",
+      "properties": {
+        "ability": {
+          "$ref": "#/$defs/Ability"
+        },
+        "target": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 30
+        },
+        "damage_die": {
+          "enum": [
+            4,
+            6,
+            8
+          ]
+        }
+      },
+      "required": [
+        "ability",
+        "target",
+        "damage_die"
+      ],
+      "additionalProperties": false
+    },
+    "Route": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/Id"
+        },
+        "from": {
+          "$ref": "#/$defs/Id"
+        },
+        "to": {
+          "$ref": "#/$defs/Id"
+        },
+        "turns": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 144
+        },
+        "requires_light": {
+          "type": "boolean"
+        },
+        "hazard": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hazard"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "from",
+        "to",
+        "turns",
+        "requires_light",
+        "hazard"
+      ],
+      "additionalProperties": false
+    },
+    "Opportunity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/Id"
+        },
+        "location_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "kind": {
+          "enum": [
+            "search",
+            "forage"
+          ]
+        },
+        "ability": {
+          "$ref": "#/$defs/Ability"
+        },
+        "target": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 30
+        },
+        "turns": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 24
+        },
+        "requires_light": {
+          "type": "boolean"
+        },
+        "remaining": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "reward_resource": {
+          "$ref": "#/$defs/Resource"
+        },
+        "reward_units": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10
+        },
+        "failure_damage_die": {
+          "enum": [
+            0,
+            4,
+            6,
+            8
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "location_id",
+        "kind",
+        "ability",
+        "target",
+        "turns",
+        "requires_light",
+        "remaining",
+        "reward_resource",
+        "reward_units",
+        "failure_damage_die"
+      ],
+      "additionalProperties": false
+    },
+    "Stock": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/Id"
+        },
+        "location_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "resource": {
+          "enum": [
+            "rations",
+            "water",
+            "oil",
+            "ammo"
+          ]
+        },
+        "price": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000
+        },
+        "remaining": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "treasury": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        }
+      },
+      "required": [
+        "id",
+        "location_id",
+        "resource",
+        "price",
+        "remaining",
+        "treasury"
+      ],
+      "additionalProperties": false
+    },
+    "Cursor": {
+      "type": "object",
+      "properties": {
+        "sequence": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "head": {
+          "$ref": "#/$defs/Hash"
+        }
+      },
+      "required": [
+        "sequence",
+        "head"
+      ],
+      "additionalProperties": false
+    },
+    "Draw": {
+      "type": "object",
+      "properties": {
+        "index": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000000
+        },
+        "purpose": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "sides": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 100
+        },
+        "value": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        }
+      },
+      "required": [
+        "index",
+        "purpose",
+        "sides",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "Effect": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "actor_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "subject_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "amount": {
+          "type": "integer",
+          "minimum": -1000000000000,
+          "maximum": 1000000000000
+        }
+      },
+      "required": [
+        "kind",
+        "actor_id",
+        "subject_id",
+        "amount"
+      ],
+      "additionalProperties": false
+    },
+    "Item": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/Id"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "kind": {
+          "enum": [
+            "weapon",
+            "armor",
+            "tool",
+            "loot"
+          ]
+        },
+        "owner_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "location_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "slots": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "equipped": {
+          "type": "boolean"
+        },
+        "damage_die": {
+          "enum": [
+            0,
+            4,
+            6,
+            8
+          ]
+        },
+        "attack_ability": {
+          "enum": [
+            "strength",
+            "wisdom",
+            null
+          ]
+        },
+        "armor_defense": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 16
+        },
+        "tool": {
+          "enum": [
+            "lamp",
+            "firekit",
+            null
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "kind",
+        "owner_id",
+        "location_id",
+        "slots",
+        "equipped",
+        "damage_die",
+        "attack_ability",
+        "armor_defense",
+        "tool"
+      ],
+      "additionalProperties": false,
+      "oneOf": [
+        {
+          "properties": {
+            "owner_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "location_id": {
+              "type": "null"
+            }
+          }
+        },
+        {
+          "properties": {
+            "owner_id": {
+              "type": "null"
+            },
+            "location_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "equipped": {
+              "const": false
+            }
+          }
+        }
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "weapon"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "damage_die": {
+                "enum": [
+                  4,
+                  6,
+                  8
+                ]
+              },
+              "attack_ability": {
+                "enum": [
+                  "strength",
+                  "wisdom"
+                ]
+              },
+              "armor_defense": {
+                "const": 0
+              },
+              "tool": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "armor"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "damage_die": {
+                "const": 0
+              },
+              "attack_ability": {
+                "type": "null"
+              },
+              "armor_defense": {
+                "type": "integer",
+                "minimum": 12,
+                "maximum": 16
+              },
+              "tool": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "tool"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "damage_die": {
+                "const": 0
+              },
+              "attack_ability": {
+                "type": "null"
+              },
+              "armor_defense": {
+                "const": 0
+              },
+              "tool": {
+                "enum": [
+                  "lamp",
+                  "firekit",
+                  null
+                ]
+              },
+              "equipped": {
+                "const": false
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "loot"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "damage_die": {
+                "const": 0
+              },
+              "attack_ability": {
+                "type": "null"
+              },
+              "armor_defense": {
+                "const": 0
+              },
+              "tool": {
+                "type": "null"
+              },
+              "equipped": {
+                "const": false
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Genesis": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "$ref": "#/$defs/Version"
+        },
+        "scope": {
+          "$ref": "#/$defs/Scope"
+        },
+        "pack_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "seed": {
+          "$ref": "#/$defs/Hash"
+        },
+        "authority_key_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "authority_public_key": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "referee_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "world_time": {
+          "const": 0
+        },
+        "actors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Actor"
+          },
+          "minItems": 1,
+          "maxItems": 64
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Item"
+          },
+          "minItems": 0,
+          "maxItems": 512
+        },
+        "locations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Location"
+          },
+          "minItems": 1,
+          "maxItems": 128
+        },
+        "routes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Route"
+          },
+          "minItems": 0,
+          "maxItems": 256
+        },
+        "opportunities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Opportunity"
+          },
+          "minItems": 0,
+          "maxItems": 256
+        },
+        "stocks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Stock"
+          },
+          "minItems": 0,
+          "maxItems": 256
+        },
+        "variant": {
+          "enum": [
+            "genuine",
+            "counterfeit",
+            "legend"
+          ]
+        }
+      },
+      "required": [
+        "version",
+        "scope",
+        "pack_hash",
+        "seed",
+        "authority_key_id",
+        "authority_public_key",
+        "referee_id",
+        "world_time",
+        "actors",
+        "items",
+        "locations",
+        "routes",
+        "opportunities",
+        "stocks",
+        "variant"
+      ],
+      "additionalProperties": false
+    },
+    "Principal": {
+      "type": "object",
+      "properties": {
+        "scope": {
+          "$ref": "#/$defs/Scope"
+        },
+        "principal_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "role": {
+          "enum": [
+            "player",
+            "npc",
+            "referee"
+          ]
+        },
+        "actor_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "scope",
+        "principal_id",
+        "role",
+        "actor_id"
+      ],
+      "additionalProperties": false,
+      "oneOf": [
+        {
+          "properties": {
+            "role": {
+              "enum": [
+                "player",
+                "npc"
+              ]
+            },
+            "actor_id": {
+              "$ref": "#/$defs/Id"
+            }
+          }
+        },
+        {
+          "properties": {
+            "role": {
+              "const": "referee"
+            },
+            "actor_id": {
+              "type": "null"
+            }
+          }
+        }
+      ]
+    },
+    "Action_travel": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "travel"
+        },
+        "route_id": {
+          "$ref": "#/$defs/Id"
+        }
+      },
+      "required": [
+        "type",
+        "route_id"
+      ],
+      "additionalProperties": false
+    },
+    "Action_explore": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "explore"
+        },
+        "opportunity_id": {
+          "$ref": "#/$defs/Id"
+        }
+      },
+      "required": [
+        "type",
+        "opportunity_id"
+      ],
+      "additionalProperties": false
+    },
+    "Action_rest": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "rest"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "Action_wait": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "wait"
+        },
+        "turns": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 24
+        }
+      },
+      "required": [
+        "type",
+        "turns"
+      ],
+      "additionalProperties": false
+    },
+    "Action_equip": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "equip"
+        },
+        "item_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "equipped": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "type",
+        "item_id",
+        "equipped"
+      ],
+      "additionalProperties": false
+    },
+    "Action_transfer_item": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "transfer_item"
+        },
+        "item_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "to_actor_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "item_id",
+        "to_actor_id"
+      ],
+      "additionalProperties": false
+    },
+    "Action_pickup": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "pickup"
+        },
+        "item_id": {
+          "$ref": "#/$defs/Id"
+        }
+      },
+      "required": [
+        "type",
+        "item_id"
+      ],
+      "additionalProperties": false
+    },
+    "Action_loot": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "loot"
+        },
+        "item_id": {
+          "$ref": "#/$defs/Id"
+        }
+      },
+      "required": [
+        "type",
+        "item_id"
+      ],
+      "additionalProperties": false
+    },
+    "Action_give": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "give"
+        },
+        "to_actor_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "resource": {
+          "$ref": "#/$defs/Resource"
+        },
+        "units": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        }
+      },
+      "required": [
+        "type",
+        "to_actor_id",
+        "resource",
+        "units"
+      ],
+      "additionalProperties": false
+    },
+    "Action_buy": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "buy"
+        },
+        "stock_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "units": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        }
+      },
+      "required": [
+        "type",
+        "stock_id",
+        "units"
+      ],
+      "additionalProperties": false
+    },
+    "Action_begin_encounter": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "begin_encounter"
+        },
+        "encounter_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "side_a": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Id"
+          },
+          "minItems": 1,
+          "maxItems": 12,
+          "uniqueItems": true
+        },
+        "side_b": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Id"
+          },
+          "minItems": 1,
+          "maxItems": 12,
+          "uniqueItems": true
+        },
+        "escape_allowed": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "type",
+        "encounter_id",
+        "side_a",
+        "side_b",
+        "escape_allowed"
+      ],
+      "additionalProperties": false
+    },
+    "Action_attack": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "attack"
+        },
+        "target_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "weapon_id": {
+          "$ref": "#/$defs/Id"
+        }
+      },
+      "required": [
+        "type",
+        "target_id",
+        "weapon_id"
+      ],
+      "additionalProperties": false
+    },
+    "Action_defend": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "defend"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "Action_retreat": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "retreat"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "Action_pass": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "pass"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "Action": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Action_travel"
+        },
+        {
+          "$ref": "#/$defs/Action_explore"
+        },
+        {
+          "$ref": "#/$defs/Action_rest"
+        },
+        {
+          "$ref": "#/$defs/Action_wait"
+        },
+        {
+          "$ref": "#/$defs/Action_equip"
+        },
+        {
+          "$ref": "#/$defs/Action_transfer_item"
+        },
+        {
+          "$ref": "#/$defs/Action_pickup"
+        },
+        {
+          "$ref": "#/$defs/Action_loot"
+        },
+        {
+          "$ref": "#/$defs/Action_give"
+        },
+        {
+          "$ref": "#/$defs/Action_buy"
+        },
+        {
+          "$ref": "#/$defs/Action_begin_encounter"
+        },
+        {
+          "$ref": "#/$defs/Action_attack"
+        },
+        {
+          "$ref": "#/$defs/Action_defend"
+        },
+        {
+          "$ref": "#/$defs/Action_retreat"
+        },
+        {
+          "$ref": "#/$defs/Action_pass"
+        }
+      ]
+    },
+    "Command": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "$ref": "#/$defs/Version"
+        },
+        "scope": {
+          "$ref": "#/$defs/Scope"
+        },
+        "request_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "actor_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "expected": {
+          "$ref": "#/$defs/Cursor"
+        },
+        "causation_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hash"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "action": {
+          "$ref": "#/$defs/Action"
+        }
+      },
+      "required": [
+        "version",
+        "scope",
+        "request_id",
+        "actor_id",
+        "expected",
+        "causation_id",
+        "action"
+      ],
+      "additionalProperties": false
+    },
+    "Encounter": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/Id"
+        },
+        "side_a": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Id"
+          },
+          "minItems": 1,
+          "maxItems": 12,
+          "uniqueItems": true
+        },
+        "side_b": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Id"
+          },
+          "minItems": 1,
+          "maxItems": 12,
+          "uniqueItems": true
+        },
+        "order": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Id"
+          },
+          "minItems": 2,
+          "maxItems": 24,
+          "uniqueItems": true
+        },
+        "turn": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 23
+        },
+        "round": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "round_participants": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Id"
+          },
+          "minItems": 1,
+          "maxItems": 24,
+          "uniqueItems": true
+        },
+        "escaped": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Id"
+          },
+          "minItems": 0,
+          "maxItems": 24,
+          "uniqueItems": true
+        },
+        "defended": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Id"
+          },
+          "minItems": 0,
+          "maxItems": 24,
+          "uniqueItems": true
+        },
+        "escape_allowed": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "side_a",
+        "side_b",
+        "order",
+        "turn",
+        "round",
+        "round_participants",
+        "escaped",
+        "defended",
+        "escape_allowed"
+      ],
+      "additionalProperties": false
+    },
+    "State": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "$ref": "#/$defs/Version"
+        },
+        "scope": {
+          "$ref": "#/$defs/Scope"
+        },
+        "genesis_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "head": {
+          "$ref": "#/$defs/Hash"
+        },
+        "world_time": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000000
+        },
+        "rng_counter": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000000
+        },
+        "actors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Actor"
+          },
+          "minItems": 1,
+          "maxItems": 64
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Item"
+          },
+          "minItems": 0,
+          "maxItems": 512
+        },
+        "opportunities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Opportunity"
+          },
+          "minItems": 0,
+          "maxItems": 256
+        },
+        "stocks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Stock"
+          },
+          "minItems": 0,
+          "maxItems": 256
+        },
+        "encounter": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Encounter"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "version",
+        "scope",
+        "genesis_hash",
+        "sequence",
+        "head",
+        "world_time",
+        "rng_counter",
+        "actors",
+        "items",
+        "opportunities",
+        "stocks",
+        "encounter"
+      ],
+      "additionalProperties": false
+    },
+    "Event": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "$ref": "#/$defs/Version"
+        },
+        "scope": {
+          "$ref": "#/$defs/Scope"
+        },
+        "genesis_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "previous_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "command": {
+          "$ref": "#/$defs/Command"
+        },
+        "principal": {
+          "$ref": "#/$defs/Principal"
+        },
+        "before_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "after_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "draws": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Draw"
+          },
+          "minItems": 0,
+          "maxItems": 256
+        },
+        "effects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Effect"
+          },
+          "minItems": 0,
+          "maxItems": 1024
+        },
+        "signature": {
+          "$ref": "#/$defs/Signature"
+        },
+        "hash": {
+          "$ref": "#/$defs/Hash"
+        }
+      },
+      "required": [
+        "version",
+        "scope",
+        "genesis_hash",
+        "sequence",
+        "previous_hash",
+        "command",
+        "principal",
+        "before_hash",
+        "after_hash",
+        "draws",
+        "effects",
+        "signature",
+        "hash"
+      ],
+      "additionalProperties": false
+    },
+    "Receipt": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "$ref": "#/$defs/Version"
+        },
+        "scope": {
+          "$ref": "#/$defs/Scope"
+        },
+        "genesis_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "authority_key_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "signature": {
+          "$ref": "#/$defs/Signature"
+        },
+        "request_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "request_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "event_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "cursor": {
+          "$ref": "#/$defs/Cursor"
+        },
+        "state_hash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "effects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Effect"
+          },
+          "minItems": 0,
+          "maxItems": 1024
+        }
+      },
+      "required": [
+        "version",
+        "scope",
+        "genesis_hash",
+        "authority_key_id",
+        "signature",
+        "request_id",
+        "request_hash",
+        "event_hash",
+        "cursor",
+        "state_hash",
+        "effects"
+      ],
+      "additionalProperties": false
+    },
+    "ActorSelf": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/Id"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "location_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "hp": {
+          "type": "integer",
+          "minimum": -1000000,
+          "maximum": 100
+        },
+        "max_hp": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        },
+        "abilities": {
+          "type": "object",
+          "properties": {
+            "strength": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10
+            },
+            "dexterity": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10
+            },
+            "constitution": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10
+            },
+            "intelligence": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10
+            },
+            "wisdom": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10
+            },
+            "charisma": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10
+            }
+          },
+          "required": [
+            "strength",
+            "dexterity",
+            "constitution",
+            "intelligence",
+            "wisdom",
+            "charisma"
+          ],
+          "additionalProperties": false
+        },
+        "resources": {
+          "$ref": "#/$defs/Resources"
+        },
+        "active_seconds": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000000
+        },
+        "fed_until": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000000
+        },
+        "next_rest_at": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000000
+        },
+        "discoveries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Id"
+          },
+          "minItems": 0,
+          "maxItems": 256,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "location_id",
+        "hp",
+        "max_hp",
+        "abilities",
+        "resources",
+        "active_seconds",
+        "fed_until",
+        "next_rest_at",
+        "discoveries"
+      ],
+      "additionalProperties": false
+    },
+    "ActorView": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "$ref": "#/$defs/Version"
+        },
+        "scope": {
+          "$ref": "#/$defs/Scope"
+        },
+        "cursor": {
+          "$ref": "#/$defs/Cursor"
+        },
+        "world_time": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000000
+        },
+        "self": {
+          "$ref": "#/$defs/ActorSelf"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Item"
+          },
+          "minItems": 0,
+          "maxItems": 512
+        },
+        "location": {
+          "$ref": "#/$defs/Location"
+        },
+        "routes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Route"
+          },
+          "minItems": 0,
+          "maxItems": 256
+        },
+        "encounter": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "$ref": "#/$defs/Id"
+                },
+                "round": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 1000000
+                },
+                "acting_id": {
+                  "$ref": "#/$defs/Id"
+                },
+                "your_turn": {
+                  "type": "boolean"
+                },
+                "escape_allowed": {
+                  "type": "boolean"
+                },
+                "participants": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "$ref": "#/$defs/Id"
+                      },
+                      "side": {
+                        "enum": [
+                          "a",
+                          "b"
+                        ]
+                      },
+                      "condition": {
+                        "enum": [
+                          "standing",
+                          "unconscious",
+                          "dead"
+                        ]
+                      },
+                      "escaped": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "side",
+                      "condition",
+                      "escaped"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 2,
+                  "maxItems": 24
+                }
+              },
+              "required": [
+                "id",
+                "round",
+                "acting_id",
+                "your_turn",
+                "escape_allowed",
+                "participants"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "version",
+        "scope",
+        "cursor",
+        "world_time",
+        "self",
+        "items",
+        "location",
+        "routes",
+        "encounter"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

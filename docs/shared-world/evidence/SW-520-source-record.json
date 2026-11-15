@@ -1,0 +1,17 @@
+{
+  "ticket_id": "SW-520",
+  "source_commit": "0c4b1026f40dbc804f38c274f6cbbc0415e97bcd",
+  "base_commit": "1ea79ef89c649f4930b18327071d4a5ef9f97ebd",
+  "board_status": "READY",
+  "attempt": 1,
+  "source_submission_accepted": false,
+  "submission_error": "Candidate changes pinned gate policy",
+  "claim_released_through": "Board.fail_claim",
+  "operationally_retired": true,
+  "artifacts": {
+    "docs/shared-world/GATE_BUDGET.md": "ca0e14726d3ec917f2df68955102a3b65b378bd975f5028fac496fc66d0e3bce",
+    "scripts/gate.mjs": "2711c874af35eb93c3b67a566cf33413cbf2569c3e0328d13df0983d3d10e79b"
+  },
+  "application_acceptance": "Independent protected-policy review complete; full external application gate running. No Board policy or status override.",
+  "paid_calls": 0
+}

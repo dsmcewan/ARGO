@@ -1,0 +1,25 @@
+✖ legacy persona entry point carries the common world-external onlooker policy (90.169242ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1931.014736
+
+✖ failing tests:
+
+test at TESTS/character-integration.test.ts:31:1
+✖ legacy persona entry point carries the common world-external onlooker policy (90.169242ms)
+  AssertionError [ERR_ASSERTION]: Every existing persona receives the shared voice policy
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-900-1-e05eb04a67/TESTS/character-integration.test.ts:40:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

@@ -1,0 +1,274 @@
+✖ public model agent generates provider speech from addressed context without a dialogue template (1079.062594ms)
+✖ deterministic silence avoids provider and supplement calls (0.638226ms)
+✖ model silence and private impressions use their existing command forms (0.392565ms)
+✖ same scene remains shared while actor goals and cache identities stay private (0.455854ms)
+✖ cross-actor and stale supplementary data fail before provider generation (0.681146ms)
+✖ supplement getters, proxies and extra fields cannot inject prompt data (1.177064ms)
+✖ changed view or scene after generation suppresses a previously valid reply (0.728264ms)
+✖ 429 failover uses another pool and rechecks disclosure before that attempt (0.549219ms)
+✖ malformed, incomplete, tool and oversized model responses never become speech (0.818293ms)
+✖ UTF-8 input and Unicode speech budgets are enforced before release (0.644577ms)
+✖ nature revision conflicts are rejected without replacing historical interpretation (0.44842ms)
+✖ cancellation and deadlines bound unresponsive provider work (0.279374ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 0
+ℹ fail 12
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1098.793034
+
+✖ failing tests:
+
+test at TESTS/character-model.test.ts:24:1
+✖ public model agent generates provider speech from addressed context without a dialogue template (1079.062594ms)
+  AssertionError [ERR_ASSERTION]: The public model-backed character agent must be connected
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at factory (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:11:9)
+      at async rig (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:20:17)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:25:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-model.test.ts:39:1
+✖ deterministic silence avoids provider and supplement calls (0.638226ms)
+  AssertionError [ERR_ASSERTION]: The public model-backed character agent must be connected
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at factory (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:11:9)
+      at async rig (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:20:17)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:41:29)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-model.test.ts:46:1
+✖ model silence and private impressions use their existing command forms (0.392565ms)
+  AssertionError [ERR_ASSERTION]: The public model-backed character agent must be connected
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at factory (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:11:9)
+      at async rig (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:20:17)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:47:15)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-model.test.ts:55:1
+✖ same scene remains shared while actor goals and cache identities stay private (0.455854ms)
+  AssertionError [ERR_ASSERTION]: The public model-backed character agent must be connected
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at factory (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:11:9)
+      at async rig (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:20:17)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:56:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-model.test.ts:64:1
+✖ cross-actor and stale supplementary data fail before provider generation (0.681146ms)
+  AssertionError [ERR_ASSERTION]: The public model-backed character agent must be connected
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at factory (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:11:9)
+      at async rig (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:20:17)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:66:66)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-model.test.ts:71:1
+✖ supplement getters, proxies and extra fields cannot inject prompt data (1.177064ms)
+  AssertionError [ERR_ASSERTION]: The public model-backed character agent must be connected
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at factory (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:11:9)
+      at async rig (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:20:17)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:74:11)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-model.test.ts:79:1
+✖ changed view or scene after generation suppresses a previously valid reply (0.728264ms)
+  AssertionError [ERR_ASSERTION]: The public model-backed character agent must be connected
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at factory (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:11:9)
+      at async rig (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:20:17)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:80:42)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-model.test.ts:86:1
+✖ 429 failover uses another pool and rechecks disclosure before that attempt (0.549219ms)
+  AssertionError [ERR_ASSERTION]: The public model-backed character agent must be connected
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at factory (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:11:9)
+      at async rig (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:20:17)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:87:82)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-model.test.ts:93:1
+✖ malformed, incomplete, tool and oversized model responses never become speech (0.818293ms)
+  AssertionError [ERR_ASSERTION]: The public model-backed character agent must be connected
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at factory (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:11:9)
+      at async rig (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:20:17)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:95:38)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-model.test.ts:98:1
+✖ UTF-8 input and Unicode speech budgets are enforced before release (0.644577ms)
+  AssertionError [ERR_ASSERTION]: The public model-backed character agent must be connected
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at factory (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:11:9)
+      at async rig (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:20:17)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:99:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-model.test.ts:105:1
+✖ nature revision conflicts are rejected without replacing historical interpretation (0.44842ms)
+  AssertionError [ERR_ASSERTION]: The public model-backed character agent must be connected
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at factory (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:11:9)
+      at async rig (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:20:17)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:106:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-model.test.ts:110:1
+✖ cancellation and deadlines bound unresponsive provider work (0.279374ms)
+  AssertionError [ERR_ASSERTION]: The public model-backed character agent must be connected
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at factory (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:11:9)
+      at async rig (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:20:17)
+      at async TestContext.<anonymous> (file:///workspace/ARGO/.board/npc-dialogue/worktrees/ND-100-1-b0518e5219/TESTS/character-model.test.ts:111:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,49 @@
+node:internal/child_process:1191
+    result.error = new ErrnoException(result.error, 'spawnSync ' + options.file);
+                   ^
+
+<ref *1> Error: spawnSync git EPERM
+    at Object.spawnSync (node:internal/child_process:1191:20)
+    at spawnSync (node:child_process:929:24)
+    at execFileSync (node:child_process:972:15)
+    at git (file:///workspace/reports/2026-11-14-argo-shared-world/gate-budget-review-0c4b102/static-check.mjs:8:22)
+    at file:///workspace/reports/2026-11-14-argo-shared-world/gate-budget-review-0c4b102/static-check.mjs:9:14
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -1,
+  code: 'EPERM',
+  syscall: 'spawnSync git',
+  path: 'git',
+  spawnargs: [
+    '-C',
+    '/workspace/ARGO/.board/shared-world-gate-budget/worktrees/SW-520-1-4136752cec',
+    'rev-parse',
+    'HEAD'
+  ],
+  error: [Circular *1],
+  status: 0,
+  signal: null,
+  output: [
+    null,
+    Buffer(41) [Uint8Array] [
+      48,  99, 52, 98,  49, 48, 50,  54, 102,  52,
+      48, 100, 98, 99,  56, 48, 52, 102,  51,  56,
+      99,  50, 55, 52, 102, 54, 99,  98,  98,  99,
+      48,  52, 49, 53, 101, 57, 55,  98,  99, 100,
+      10
+    ],
+    Buffer(0) [Uint8Array] []
+  ],
+  pid: 377659,
+  stdout: Buffer(41) [Uint8Array] [
+    48,  99, 52, 98,  49, 48, 50,  54, 102,  52,
+    48, 100, 98, 99,  56, 48, 52, 102,  51,  56,
+    99,  50, 55, 52, 102, 54, 99,  98,  98,  99,
+    48,  52, 49, 53, 101, 57, 55,  98,  99, 100,
+    10
+  ],
+  stderr: Buffer(0) [Uint8Array] []
+}
+
+Node.js v24.22.1

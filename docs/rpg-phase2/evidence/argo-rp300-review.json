@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "reviewer_assignment": "ledger_final_review",
+  "review_kind": "Independent native Codex read-only source and runtime review; no merge authorization",
+  "reviewed_at": "2026-11-14T07:59:59.276559+00:00",
+  "requested_candidate": "378c17b7da648598b31c4b859ce62b2216099e9b",
+  "reviewed_candidate": "df40a526ccb4960f437bff4df700a820226370ac",
+  "verdict": "PASS within journal/storage scope on real assembled dependency; no remaining confirmed defect found",
+  "reviewed_files": [
+    {
+      "path": "packages/ledger/src/mortal/journal.ts",
+      "sha256": "4a09c73e452fbe4f1f5adf5b8b0796de758f8eb3a8905c04eb0ca44ad1e3896b",
+      "bytes": 8476
+    },
+    {
+      "path": "packages/ledger/src/mortal/storage.ts",
+      "sha256": "6d5620521c060757515d6fe75ff3c380f1bb405368995c178feca65562138099",
+      "bytes": 7983
+    },
+    {
+      "path": "packages/ledger/src/mortal/storage-worker.ts",
+      "sha256": "e226917c9c1b2d62b31b28871b357ebfae84e8ead7c5d139b93c4660221cecc5",
+      "bytes": 10383
+    },
+    {
+      "path": "TESTS/mortal-journal.test.ts",
+      "sha256": "a78fbe3daec824b07b71e8c24cd496d69dccfc2245736f498b3141294871e470",
+      "bytes": 8657
+    },
+    {
+      "path": "TESTS/mortal-storage.test.ts",
+      "sha256": "e4e03dde4f2f2adceaa59a2f925e606486dc063095bcf7bf8bb6de91cc4934f4",
+      "bytes": 10089
+    }
+  ],
+  "findings": [],
+  "repaired_during_review": {
+    "issue": "Historical event pages/exact retries did not recompute the signed event hash against loaded event body bytes.",
+    "discovery": "Author/root reported; reviewer independently inspected the final fix.",
+    "fix_commit": "df40a526ccb4960f437bff4df700a820226370ac",
+    "fix": "rowValue recomputes hash(event minus hash), then verifies the receipt signature and all event/request/index/receipt bindings.",
+    "regression": "cached history pages and retries rebind event bytes to their signed receipt hash"
+  },
+  "source_checks": [
+    "Signed events bind complete immutable genesis, current state hash, previous event head, scope, command/principal, draws/effects and deterministic after-state. Signed receipts use the fixed domain separator and independent pinned public trust.",
+    "Whole replay rejects repeated request IDs; single-event verification correctly documents that history-wide uniqueness needs an external index.",
+    "SQLite event, receipt and unique request identity reside in one row inserted under BEGIN IMMEDIATE; cache publication occurs only after COMMIT. Exceptions roll back and do not publish speculative state.",
+    "Each read/write transaction verifies metadata and cached head, then catches up new committed events before using state. Read pagination occurs in the same read transaction.",
+    "Worker owns synchronous SQLite and signature/replay operations. Parent RPC is asynchronous, clones DTOs before posting, bounds outstanding calls and drains accepted calls before close.",
+    "Worker failure rejects pending calls with explicit may-have-committed uncertainty; exact request retries are checked before current cursor admission and bound to full command plus principal.",
+    "New database files are created0600, regular-file check rejects direct symlinks, extensions/trusted schema disabled, WAL/FULL synchronous used. Parent/worker key matches genesis and private PEM is not persisted in database or returned.",
+    "Incremental caches and host-only state/history/receipt APIs have explicit privileged-DB and disclosure limits; no unverified scope-to-filesystem or player-facing authentication claim."
+  ],
+  "verification": {
+    "native_journal_storage_tests": {
+      "command": "node --test TESTS/mortal-journal.test.ts TESTS/mortal-storage.test.ts",
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "exit_code": 0,
+      "elapsed_ms": 24859.156836
+    },
+    "independent_sigkill_trials": {
+      "total": 10,
+      "before_commit": 8,
+      "after_commit_and_acknowledgement": 2,
+      "all_reopened": true,
+      "all_exact_retries_ended_at_one_event": true,
+      "all_replayed_bit_exactly": true,
+      "all_receipts_verified": true,
+      "sampled_delays_ms": [
+        0,
+        0,
+        1,
+        1,
+        5,
+        10,
+        20,
+        50,
+        250,
+        1500
+      ],
+      "limit": "No sampled trial landed between durable commit and receipt acknowledgment; no power-loss guarantee."
+    },
+    "reviewed_file_hashes_match_assembled_candidate": true,
+    "assembled_checkout_clean_after": true,
+    "source_checkouts_unmodified_by_reviewer": true
+  },
+  "limits": [
+    "Existing file/directory permissions and authenticated principal delivery are host responsibilities.",
+    "Incremental snapshots trust previously verified database rows to stay append-only; historical body tamper on selected pages/retries is checked, but a privileged editor can require full reopen to detect all historical edits.",
+    "External expectedHead is required to detect rollback across restarts; it authenticates a supplied prefix, not an unknowable newer head.",
+    "No call cancellation or hard end-to-end timeout; five-second SQLite busy timeout and128 pending requests are not proof against a stuck kernel/filesystem.",
+    "SIGKILL probes tested process crashes, not host power loss or arbitrary filesystem corruption.",
+    "Review of these five files is not proof of core rule correctness, actor-view disclosure correctness, production isolation or independent trust-root approval.",
+    "Ten process-kill trials cover precommit and acknowledged-commit recovery; none observed a durable unacknowledged commit. The atomic SQLite transaction and exact-retry index are source-reviewed, not a proof over every crash point."
+  ],
+  "source_edits": false,
+  "board_mutations": false,
+  "remote_writes": false,
+  "paid_calls": 0,
+  "nested_agents": false,
+  "tested_assembled_commit": "d156819b3e988467148a615aaa0d528e1acae949",
+  "observed_assembled_head_after": "2dcd8fe5e00fa3fc72554272962c70bc2239abdb",
+  "concurrent_root_work": "Root advanced only unrelated integration-test/balance capture files during review; source/contracts/fixtures and both reviewed test files remained identical to the tested assembled commit.",
+  "runtime_dependency": {
+    "path": "packages/ledger/src/mortal/rules.ts",
+    "sha256": "fadca52771d69ef23ee4e37106ce366f9a8611f099f441d5d3613a032b87bdf5",
+    "implementation": "Real RP200 core; no shadow rules"
+  },
+  "evidence": [
+    {
+      "path": "/tmp/argo-rp300-review-tests.log",
+      "portable_name": "argo-rp300-review-tests.log",
+      "sha256": "ead5560dff9ab27b3a487fb339ea7b9e223ce4fa14042e092f75f92bfea90678",
+      "bytes": 1630
+    },
+    {
+      "path": "/tmp/argo-rp300-review-crash-early.mjs",
+      "portable_name": "argo-rp300-review-crash-early.mjs",
+      "sha256": "6dda9be081474556f6959fd929d6eccba33c51481dc80553d1c7508ab51af1cb",
+      "bytes": 4633
+    },
+    {
+      "path": "/tmp/argo-rp300-review-crash-early.log",
+      "portable_name": "argo-rp300-review-crash-early.log",
+      "sha256": "7c5aff78655a2da59ea50fe5302948f6c01765995861c1aa826fa799c02b0218",
+      "bytes": 1285
+    },
+    {
+      "path": "/tmp/argo-rp300-review-crash.mjs",
+      "portable_name": "argo-rp300-review-crash.mjs",
+      "sha256": "c486b219aad484d8ec534afcf34082af4f28de29b52ddcebdc2b3a9d71b45e42",
+      "bytes": 4623
+    },
+    {
+      "path": "/tmp/argo-rp300-review-crash-late.log",
+      "portable_name": "argo-rp300-review-crash-late.log",
+      "sha256": "0d1a0479c63a17007cddc8f718b2773ea34459079df4311e3cc0adc36d082de6",
+      "bytes": 421
+    }
+  ],
+  "rerun": [
+    "From the exact assembled checkout with pinned dependencies: node --test TESTS/mortal-journal.test.ts TESTS/mortal-storage.test.ts",
+    "node argo-rp300-review-crash-early.mjs /absolute/path/to/assembled/checkout",
+    "node argo-rp300-review-crash.mjs /absolute/path/to/assembled/checkout"
+  ]
+}

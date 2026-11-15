@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "ticket": "PC-001",
+  "profile": "projection/2.0.0",
+  "baseline_commit": "d32da3b16b9f463a9a094445ab92da9748ebc568",
+  "paid_model_calls": 0,
+  "files": {
+    "SYSTEMS/proposals/headless-v2/projection-v2.schema.json": "a9322a33f03f62b2c2fc656f3bb6cef0b771901bc09cb9f262c96f8cbbf2badb",
+    "SYSTEMS/proposals/headless-v2/CONTRACT.md": "6d443a5d3a8c8d7999e94cec2c145f5998fd64c7a38b9981d0763efe5c58fa5d",
+    "SYSTEMS/proposals/headless-v2/FREEZE.json": "3f45b293ab32829c6872cfc6221b77d8e66e81d3efa8faf1120f25d691504a28",
+    "packages/contracts/src/projection-v2.ts": "7177ab860e89f8e058fbebd30aa7b69bc8888711890c21ace08d4980f372f228",
+    "packages/contracts/src/projection-generated.ts": "1ca42c7d7c33156700371aa2cacb6c11a1101fb030ca903b2c38f8ee69f33663",
+    "TESTS/projection-contracts.test.ts": "5f052b36d3526190d53ddb9b6ec7d59110b7345006c6e8d6594404e5324ef531",
+    "TESTS/projection-fixtures.ts": "032d93f252349db226ba589a3df08b5b199980dd0fcb9924abff2566c56dab0e",
+    "scripts/generate-projection-types.py": "c6411f3a2267b8ab83dbb3bc59b41ddfce7be6eef857109ee2566b0b6375faa7"
+  },
+  "checks": {
+    "focused": {
+      "command": "node --test TESTS/projection-contracts.test.ts",
+      "status": "passed",
+      "passed": 28,
+      "failed": 0,
+      "skipped": 0,
+      "log_sha256": "6873561c54ca059b6abf739d91fa2021c5f240d2bd84e6b063561e2fbb87a873"
+    },
+    "typecheck": {
+      "command": "npm run typecheck",
+      "status": "passed"
+    },
+    "projection_generation": {
+      "command": "python3 scripts/generate-projection-types.py --check",
+      "status": "passed"
+    },
+    "v1_contracts": {
+      "command": "npm run contracts",
+      "status": "passed",
+      "definitions": 36
+    },
+    "red_before_implementation": {
+      "status": "expected_failure",
+      "reason": "ERR_MODULE_NOT_FOUND projection-v2.ts",
+      "log_sha256": "a598ef2b3eb9c37f5057489c753a79263da6cce765d58181e18acd0f44214eca"
+    }
+  },
+  "board": {
+    "scope": "staging_data_packet",
+    "target_branch": "argo/projection-contracts",
+    "id": "PC-001",
+    "status": "MERGED",
+    "attempt": 1,
+    "epoch": 1,
+    "base_commit": "3f162b6f5662b3c2805c62ba1f2a822768447443",
+    "commit_sha": "1231bc22d040454d43e41a305b553f77b45fff72",
+    "merged_commit": "1231bc22d040454d43e41a305b553f77b45fff72",
+    "gate_result": {
+      "at_us": 1794595146726492,
+      "candidate": "1231bc22d040454d43e41a305b553f77b45fff72",
+      "completed": true,
+      "exit_code": 0,
+      "output_sha256": "c8e5d333557dde8964d0c966ffdfc49e63fcb2e8ebb8826ce26e2f0f81e18c1f",
+      "output_tail": "PASS projection packet structure and unchanged v1 freeze; application acceptance is external\n\nARGO_GATE_COMPLETED 961568e1b2624f239a0a200b42cd2724\n",
+      "passed": true,
+      "policy_sha256": "decd87c0663c4b0837a5481bdc225942a0e7a2c848d4a70e0854ddb70e8fdf8a"
+    },
+    "reviewer_model": null,
+    "audit_valid": true,
+    "accepted_artifacts": [
+      {
+        "logical_path": "SYSTEMS/proposals/headless-v2/CONTRACT.md",
+        "sha256": "6d443a5d3a8c8d7999e94cec2c145f5998fd64c7a38b9981d0763efe5c58fa5d",
+        "accepted": 1
+      },
+      {
+        "logical_path": "SYSTEMS/proposals/headless-v2/FREEZE.json",
+        "sha256": "3f45b293ab32829c6872cfc6221b77d8e66e81d3efa8faf1120f25d691504a28",
+        "accepted": 1
+      },
+      {
+        "logical_path": "SYSTEMS/proposals/headless-v2/projection-v2.schema.json",
+        "sha256": "a9322a33f03f62b2c2fc656f3bb6cef0b771901bc09cb9f262c96f8cbbf2badb",
+        "accepted": 1
+      },
+      {
+        "logical_path": "TESTS/projection-contracts.test.ts",
+        "sha256": "5f052b36d3526190d53ddb9b6ec7d59110b7345006c6e8d6594404e5324ef531",
+        "accepted": 1
+      },
+      {
+        "logical_path": "TESTS/projection-fixtures.ts",
+        "sha256": "032d93f252349db226ba589a3df08b5b199980dd0fcb9924abff2566c56dab0e",
+        "accepted": 1
+      },
+      {
+        "logical_path": "docs/projection-contracts/INTERFACE.md",
+        "sha256": "1b0c23b28c9c82a1647fe5b4afb23d017dd1aec8aa80a587fb58339064408e58",
+        "accepted": 1
+      },
+      {
+        "logical_path": "docs/projection-contracts/profile.json",
+        "sha256": "78bfa5a2cf79044f295f6c164e14e39784b1b7c9b274d7b42c1cdd7d59624302",
+        "accepted": 1
+      },
+      {
+        "logical_path": "packages/contracts/src/index.ts",
+        "sha256": "f519ea803c2a05385d0b278a822e486369be3c13cb01e986d12d94e8c84fea31",
+        "accepted": 1
+      },
+      {
+        "logical_path": "packages/contracts/src/projection-generated.ts",
+        "sha256": "1ca42c7d7c33156700371aa2cacb6c11a1101fb030ca903b2c38f8ee69f33663",
+        "accepted": 1
+      },
+      {
+        "logical_path": "packages/contracts/src/projection-v2.ts",
+        "sha256": "7177ab860e89f8e058fbebd30aa7b69bc8888711890c21ace08d4980f372f228",
+        "accepted": 1
+      },
+      {
+        "logical_path": "scripts/generate-projection-types.py",
+        "sha256": "c6411f3a2267b8ab83dbb3bc59b41ddfce7be6eef857109ee2566b0b6375faa7",
+        "accepted": 1
+      }
+    ]
+  },
+  "application_acceptance": {
+    "status": "passed",
+    "candidate_commit": "140b644c0bb86f45141f23b7f00788aeae04e389",
+    "trusted_commit": "1231bc22d040454d43e41a305b553f77b45fff72",
+    "main_before": "d32da3b16b9f463a9a094445ab92da9748ebc568",
+    "main_after": "140b644c0bb86f45141f23b7f00788aeae04e389",
+    "command": "ARGO_CONTROLLER_TRUSTED_SHA=1231bc22d040454d43e41a305b553f77b45fff72 ARGO_NPM_CACHE=/home/agent/.npm node /workspace/ARGO/.worktrees/projection-trusted/controller/merge.mjs --repo /workspace/ARGO --candidate 140b644c0bb86f45141f23b7f00788aeae04e389 --trusted 1231bc22d040454d43e41a305b553f77b45fff72",
+    "log": "application-gate.log",
+    "log_sha256": "0b6dd5761b0257fe9605474a3b9d60974746e0aecd5020f8e70bb8c47387b779",
+    "gate": {
+      "controller": "deterministic-v1",
+      "commit": "f416a7395dc185b05e31029e34b8b6a8fbe81b1d",
+      "workspace_sha256": "001ff94e041f5992034a5350757fde47063e12f0a2d80588955b923bf8dceb3a",
+      "merge_ready": true,
+      "checks": [
+        {
+          "name": "generated-types",
+          "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "schema",
+          "output_sha256": "67f16524049736f5c7ae4797b3c9a1905b4a092f4b4819e31854fc4e493866db"
+        },
+        {
+          "name": "boundaries",
+          "output_sha256": "e1a82058bdf104f5dae57084cf0f571064eca0ca2e692c6ff85d4602d3e58191"
+        },
+        {
+          "name": "types",
+          "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "board-and-dispatch",
+          "output_sha256": "99940ca43ef26a63ade06f3e02b67c6e6bff8f973a96d53fc44285ae20a534bc"
+        },
+        {
+          "name": "research-python",
+          "output_sha256": "b090c4ad3ad4789aea4199247b8fc1f1ec38717c05e7c84cf176703d7f1f478f"
+        },
+        {
+          "name": "research-tests",
+          "output_sha256": "a5c2dfe85dd27c14043262b22ad979183f2e7b978385dbe35855369374847dbd"
+        },
+        {
+          "name": "research-package",
+          "output_sha256": "21cddbfa4ca6eac9315c754f50759b35411a03f74f5d79a7c5318c6833b4e1b1"
+        },
+        {
+          "name": "foundation",
+          "output_sha256": "b97c7cc256de55cfbb0742e3d0a12aa4822369b7a6c93fe801fc27915c3c622a"
+        },
+        {
+          "name": "model-and-process",
+          "output_sha256": "9473a44305d473ad7e1431d963a6399549f9dab21121829e6d2c00e86333b63e"
+        }
+      ]
+    },
+    "scope": "All ten checks passed and actual main fast-forward completed for the cited candidate. The gate commit identifies synthetic isolated staging; candidate_commit identifies actual accepted Git history. Later evidence-only commits still require the same controller before integration."
+  },
+  "limits": [
+    "Pure contracts/selectors only; no persistent graph or bus",
+    "Trusted host principal/policy/checkpoint/source inputs; no live authentication or source-signature proof",
+    "No 10000-event storage/replay workload",
+    "No v1 migration or closure of R06/R10/R12/R13",
+    "Native peers are not a paid cross-vendor pipeline"
+  ],
+  "implementation_commit": "1231bc22d040454d43e41a305b553f77b45fff72",
+  "policy_adoption": {
+    "trusted_commit": "1231bc22d040454d43e41a305b553f77b45fff72",
+    "record": "trust-release.json",
+    "review": "policy-review.json",
+    "existing_policy_unchanged": true
+  },
+  "independent_review": {
+    "record": "independent-review.json",
+    "sha256": "740e4f34f0d4577d2ae762e551c7ff76f91d2ee1c4f9513ca7c74f398c7a9681",
+    "candidate": "1231bc22d040454d43e41a305b553f77b45fff72",
+    "verdict": "APPROVED_WITH_DOCUMENTED_LIMITS",
+    "independent_focused_tests_passed": 28
+  }
+}

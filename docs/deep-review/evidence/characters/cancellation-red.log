@@ -1,0 +1,53 @@
+✔ unchanged character reads do no repeated signature work and an append verifies only its suffix (253.384506ms)
+✔ a warm character authority rejects rollback and a signed divergent observed prefix (222.548608ms)
+✔ changed cached carrier bytes fail even when the stored event hash is unchanged (97.151055ms)
+✔ a bad later suffix cannot publish earlier carrier mutations or poison the cache (241.628241ms)
+✔ overlapping event loads cannot publish a later prefix ahead of an older in-flight read (123.700122ms)
+✖ a character read cancelled before enqueue settles before the preceding source is released (94.652493ms)
+✖ a character read cancelled while queued settles before the preceding source is released (65.309789ms)
+✔ witness freshness, cancellation and exact retries survive intervening cached reads (215.032436ms)
+✔ incremental prefixes match cold replay without backdating same-tick acquisitions or profile revisions (746.712097ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 7
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2071.344056
+
+✖ failing tests:
+
+test at TESTS/character-cache.test.ts:96:64
+✖ a character read cancelled before enqueue settles before the preceding source is released (94.652493ms)
+  AssertionError [ERR_ASSERTION]: cancelled read remained queued behind the blocked source
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/deep-review/worktrees/DR-110-1-42e155104b/TESTS/character-cache.test.ts:113:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-cache.test.ts:96:64
+✖ a character read cancelled while queued settles before the preceding source is released (65.309789ms)
+  AssertionError [ERR_ASSERTION]: cancelled read remained queued behind the blocked source
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/deep-review/worktrees/DR-110-1-42e155104b/TESTS/character-cache.test.ts:113:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

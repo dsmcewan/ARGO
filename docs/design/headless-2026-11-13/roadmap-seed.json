@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "tickets": [
+    {
+      "id": "HD-002",
+      "wave": 0,
+      "lane": "roadmap-evidence-refresh",
+      "title": "Reconcile verified source and rules evidence without changing prerequisites",
+      "seat_model": "gpt-6-astra",
+      "reviewer_model": null,
+      "owned_paths": [
+        "docs/roadmap/system.json"
+      ],
+      "gate_cmd": [
+        "python3",
+        "-c",
+        "import json,hashlib\nfrom pathlib import Path\nr=json.loads(Path('docs/roadmap/system.json').read_text())\nassert hashlib.sha256(json.dumps([r['decisions'],r['work_items']],sort_keys=True,separators=(',',':')).encode()).hexdigest()=='ddf567b26b7a68cc051266e81ea535247823d1aeae1e209ac0756a225fd6bbbe'\na={x['id']:x for x in r['data_assets']}\nassert a['rules-license-pack']['availability']=='tracked'\nassert a['legacy-source-bundles']['availability']=='catalog_only'\nassert 'docs/design/headless-2026-11-13/source-evidence.json' in a['legacy-source-bundles']['evidence_paths']\nassert 'docs/design/headless-2026-11-13/evidence/knave-1e/manifest.json' in a['rules-license-pack']['evidence_paths']\nfor x in r['data_assets']:\n for path in x['evidence_paths']:assert Path(path).is_file(),path\nm=json.loads(Path('docs/design/headless-2026-11-13/evidence/knave-1e/manifest.json').read_text())\nassert m['kernel_selected'] is False and m['w17_contract_review_complete'] is False\nfor x in m['artifacts']:\n b=Path('docs/design/headless-2026-11-13/evidence/knave-1e',x['path']).read_bytes()\n assert len(b)==x['bytes'] and hashlib.sha256(b).hexdigest()==x['sha256']\nprint('PASS refreshed evidence availability, exact license bytes and unchanged dependency decisions')\n"
+      ],
+      "spec_path": "docs/design/headless-2026-11-13/HD-002.md",
+      "depends_on": [],
+      "max_attempts": 3
+    }
+  ]
+}

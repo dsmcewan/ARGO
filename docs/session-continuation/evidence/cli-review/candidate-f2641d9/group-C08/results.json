@@ -1,0 +1,22 @@
+{
+  "candidate": "f2641d92f5f07bc69b672ee6f6c3a189ee5f46cc",
+  "ordinary_process": true,
+  "paid_calls": 0,
+  "checks": [
+    {
+      "id": "C08",
+      "name": "real current PLAYER disclosure suppresses committed text after eviction and closure",
+      "status": "pass",
+      "elapsed_ms": 44223.084587,
+      "details": {
+        "evicting_real_events": 33,
+        "eviction_reads": 3,
+        "closure_reads": 3,
+        "receipts_preserved": true,
+        "current_player_positive_control": true
+      }
+    }
+  ],
+  "passed": 1,
+  "failed": 0
+}

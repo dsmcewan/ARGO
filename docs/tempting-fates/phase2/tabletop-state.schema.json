@@ -1,0 +1,495 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://argo.local/proposals/tempting-fates-tabletop-0.1.0.json",
+  "$comment": "Isolated human-referee record grammar. This is not an accepted authoritative event or a state import permission.",
+  "type": "object",
+  "properties": {
+    "version": {
+      "const": "tempting-fates-tabletop/0.1.0"
+    },
+    "source": {
+      "const": "human_referee"
+    },
+    "authoritative": {
+      "const": false
+    },
+    "rules_profile": {
+      "const": "tempting-fates-rules/0.1.0"
+    },
+    "scope": {
+      "$ref": "https://argo.local/contracts/1.0.0/argo.schema.json#/$defs/Scope"
+    },
+    "pack_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "minLength": 64,
+      "maxLength": 64
+    },
+    "variant": {
+      "enum": [
+        "genuine",
+        "counterfeit",
+        "legend"
+      ]
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "world_time": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "actors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "actor_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$",
+            "not": {
+              "enum": [
+                "constructor",
+                "prototype",
+                "__proto__"
+              ]
+            }
+          },
+          "location_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$",
+            "not": {
+              "enum": [
+                "constructor",
+                "prototype",
+                "__proto__"
+              ]
+            }
+          },
+          "hit_points": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "max_hit_points": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "abilities": {
+            "type": "object",
+            "properties": {
+              "strength": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 10
+              },
+              "dexterity": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 10
+              },
+              "constitution": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 10
+              },
+              "intelligence": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 10
+              },
+              "wisdom": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 10
+              },
+              "charisma": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 10
+              }
+            },
+            "required": [
+              "strength",
+              "dexterity",
+              "constitution",
+              "intelligence",
+              "wisdom",
+              "charisma"
+            ],
+            "additionalProperties": false
+          },
+          "armor_defense": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 30
+          },
+          "equipped_item_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$",
+              "not": {
+                "enum": [
+                  "constructor",
+                  "prototype",
+                  "__proto__"
+                ]
+              }
+            },
+            "maxItems": 64,
+            "uniqueItems": true
+          },
+          "resources": {
+            "type": "object",
+            "properties": {
+              "rations": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "water_units": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "oil_turns": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "obols": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              }
+            },
+            "required": [
+              "rations",
+              "water_units",
+              "oil_turns",
+              "obols"
+            ],
+            "additionalProperties": false
+          },
+          "conditions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "condition_id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$",
+                  "not": {
+                    "enum": [
+                      "constructor",
+                      "prototype",
+                      "__proto__"
+                    ]
+                  }
+                },
+                "source_record_id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$",
+                  "not": {
+                    "enum": [
+                      "constructor",
+                      "prototype",
+                      "__proto__"
+                    ]
+                  }
+                },
+                "expires_at": {
+                  "anyOf": [
+                    {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "condition_id",
+                "source_record_id",
+                "expires_at"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 64
+          }
+        },
+        "required": [
+          "actor_id",
+          "location_id",
+          "hit_points",
+          "max_hit_points",
+          "abilities",
+          "armor_defense",
+          "equipped_item_ids",
+          "resources",
+          "conditions"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 128
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "item_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$",
+            "not": {
+              "enum": [
+                "constructor",
+                "prototype",
+                "__proto__"
+              ]
+            }
+          },
+          "custodian_actor_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$",
+                "not": {
+                  "enum": [
+                    "constructor",
+                    "prototype",
+                    "__proto__"
+                  ]
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "location_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$",
+                "not": {
+                  "enum": [
+                    "constructor",
+                    "prototype",
+                    "__proto__"
+                  ]
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "slots": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 20
+          },
+          "destroyed": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "item_id",
+          "custodian_actor_id",
+          "location_id",
+          "slots",
+          "destroyed"
+        ],
+        "additionalProperties": false,
+        "oneOf": [
+          {
+            "properties": {
+              "custodian_actor_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$",
+                "not": {
+                  "enum": [
+                    "constructor",
+                    "prototype",
+                    "__proto__"
+                  ]
+                }
+              },
+              "location_id": {
+                "type": "null"
+              }
+            }
+          },
+          {
+            "properties": {
+              "custodian_actor_id": {
+                "type": "null"
+              },
+              "location_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$",
+                "not": {
+                  "enum": [
+                    "constructor",
+                    "prototype",
+                    "__proto__"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      },
+      "maxItems": 2048
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$",
+            "not": {
+              "enum": [
+                "constructor",
+                "prototype",
+                "__proto__"
+              ]
+            }
+          },
+          "faction_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$",
+            "not": {
+              "enum": [
+                "constructor",
+                "prototype",
+                "__proto__"
+              ]
+            }
+          },
+          "progress": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "segments": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "resources": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "project_id",
+          "faction_id",
+          "progress",
+          "segments",
+          "resources"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 128
+    },
+    "rulings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ruling_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$",
+            "not": {
+              "enum": [
+                "constructor",
+                "prototype",
+                "__proto__"
+              ]
+            }
+          },
+          "actor_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$",
+            "not": {
+              "enum": [
+                "constructor",
+                "prototype",
+                "__proto__"
+              ]
+            }
+          },
+          "world_time": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "procedure": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "supplied_dice": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            },
+            "maxItems": 32
+          },
+          "stated_risk": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2048
+          },
+          "result": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2048
+          }
+        },
+        "required": [
+          "ruling_id",
+          "actor_id",
+          "world_time",
+          "procedure",
+          "supplied_dice",
+          "stated_risk",
+          "result"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 4096
+    }
+  },
+  "required": [
+    "version",
+    "source",
+    "authoritative",
+    "rules_profile",
+    "scope",
+    "pack_hash",
+    "variant",
+    "revision",
+    "world_time",
+    "actors",
+    "items",
+    "projects",
+    "rulings"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,24 @@
+✖ mortal genesis retains explicit private world variant without adding it to actor views (546.863542ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1936.990125
+
+✖ failing tests:
+
+test at TESTS/mortal-contracts.test.ts:42:1
+✖ mortal genesis retains explicit private world variant without adding it to actor views (546.863542ms)
+  ArgoError: Invalid mortal Genesis contract
+      at fail (file:///workspace/ARGO/.board/rpg-phase2/worktrees/RP-100-1-a2fae89470/packages/contracts/src/index.ts:12:77)
+      at invalid (file:///workspace/ARGO/.board/rpg-phase2/worktrees/RP-100-1-a2fae89470/packages/contracts/src/mortal.ts:11:47)
+      at assertMortalContract (file:///workspace/ARGO/.board/rpg-phase2/worktrees/RP-100-1-a2fae89470/packages/contracts/src/mortal.ts:152:69)
+      at Module.assertMortalGenesis (file:///workspace/ARGO/.board/rpg-phase2/worktrees/RP-100-1-a2fae89470/packages/contracts/src/mortal.ts:166:83)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/rpg-phase2/worktrees/RP-100-1-a2fae89470/TESTS/mortal-contracts.test.ts:44:60)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    code: 'INVALID_CONTRACT'
+  }

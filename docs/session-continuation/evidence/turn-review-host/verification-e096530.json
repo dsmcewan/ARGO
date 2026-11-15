@@ -1,0 +1,87 @@
+{
+  "candidate": "e096530b2618119ab3dd545f3defe36b754021bd",
+  "scope": "Independent host/driver source and ordinary-process controls",
+  "verdict": "NOT_READY",
+  "findings": [
+    {
+      "id": "H1",
+      "severity": "Important",
+      "file": "packages/session/src/conversation.ts",
+      "line": 77
+    },
+    {
+      "id": "H2",
+      "severity": "Important",
+      "file": "packages/session/src/conversation.ts",
+      "line": 138
+    },
+    {
+      "id": "H3",
+      "severity": "Minor",
+      "file": "packages/session/src/conversation.ts",
+      "line": 34
+    }
+  ],
+  "prepared_semantic_groups_passing_across_runs": 19,
+  "original_main": {
+    "passing": 18,
+    "failed_reviewer_child_readiness": 1,
+    "process_end": "Reviewer stopped completed process after its timed-out readiness poll retained a timer; not a native successful completion"
+  },
+  "corrected_child": {
+    "passed": 1,
+    "failed": 0,
+    "exit_code": 0
+  },
+  "supplemental_lifecycle": {
+    "passed": 0,
+    "failed": 2,
+    "exit_code": 1
+  },
+  "supplemental_page_container": {
+    "passed": 0,
+    "failed": 1,
+    "exit_code": 1
+  },
+  "test_runner": false,
+  "full_native_gate_run": false,
+  "paid_calls": 0,
+  "repository_edits": false,
+  "head_after": "e096530b2618119ab3dd545f3defe36b754021bd",
+  "status_after": "",
+  "source_sha256": {
+    "packages/session/src/conversation.ts": "ae146e23070c71d8400f91582c87067df0e156426a6e747fe9bfb20bfb477aa6",
+    "packages/session/src/conversation-types.ts": "7007528fe9f72e3d4ee3d8091512b2065f1203bc52ecafd393dbdde78ddfaf38",
+    "packages/session/src/conversation-guards.ts": "e276e14a1bf9af48079673f5a2b163b9751a0b857036eedf4c5311ebe293407d",
+    "packages/session/src/conversation-store.ts": "9fe225478aa8847ed0cc6aa118850909007c60f96f1c198fc5e7e97b120269ef",
+    "packages/session/src/conversation-store-worker.ts": "0885ac35c25cd0426a63b88fe22b696d1187edf9571a2d45390a2e29370a2bf1",
+    "packages/session/src/index.ts": "7fa0a76a1310cfbee097364e7476bbdff756de18e347f80483ccb9d29578120c",
+    "packages/session/package.json": "23d621e04345400aca781aee4448548f6e9a3f3726d67006b5a6e191eeb113a0",
+    "docs/session-continuation/TURN_CONTRACT.md": "d4380e49c08d6b7f0435114bc2d50ab516aca6b56684ad6aec6fb3e4da80a2ee"
+  },
+  "evidence_sha256": {
+    "README.md": "a74cbdfd09cc8c5e21054f42605493c8d46b0047c709d52f5204ddce039fbaa1",
+    "REVIEW-e096530.md": "41a5bd3a16b0f53b467fe7cfe1f4420e8cde29d1820e6303c11e797ae419b63f",
+    "child-diagnostic-results-e096530.json": "7a82bf9ec56bc62cdfa5f40ef7ec6f2346e7431382350e41c43308521a6a1ba8",
+    "child-diagnostic-run-e096530.log": "0ac982d4bbea8ec3e19b118c56643d6e4d14168ad871b0f867f6906fa1609f36",
+    "child-diagnostic-stderr-e096530.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "child-fixed-results-e096530.json": "d00c36b53d342da2612a54030590397200eedf7372ba044cbc1ad01a381b6866",
+    "child-fixed-run-e096530.log": "86d12aff0a1f5679bf366205e5231efee5bdfefeb57e8bc1d0c0d1a9293c90e2",
+    "child-fixed-stderr-e096530.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "late-await-probes.mjs": "fd0f700c6c63861c8356406de944c8898a17edb3002697062d9d1af5b2026c3a",
+    "late-await-results-e096530.json": "ba118edabc40d879350255c38dd9886d1aa8bbafffaf6052ac33a13703ac71db",
+    "late-await-run-e096530.log": "2b2de570f1da2fdb2e8c4b1a4baa68c958ef49e85bccb94d92bb808e947a3a4b",
+    "late-await-stderr-e096530.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "page-container-probes.mjs": "1ead4e112f331f8876e28c7f35b692db4323b209af0d98fd274c96c3a27aef2c",
+    "page-container-results-e096530.json": "1f19a94ea86c827473a7fc7b825b805399d0cfa8edbd2c0d699654960f38ead7",
+    "page-container-run-e096530.log": "f823793d5d09324673be61496324c7e51d5ae3cd0a6703c0d23e554b32c99f17",
+    "page-container-stderr-e096530.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "prepared.json": "21c802ed234bffd11dd08e52817b7eb12ddbdf9ad4827f1efb6bd24e8dd07a21",
+    "probes-child-diagnostic.mjs": "6e7913e83711ee07bd4eb080765abf600352afcd5e179b98a8e276df2d4ee345",
+    "probes-harness-fixed.mjs": "0802f8d8f96f142c422759baa4b35cdde2f9320b67af0a963715860206bb1606",
+    "probes.mjs": "5b1d5d1343f97d7caffce3b44ea5df48d97479692ee180d20f0045956eac8cbd",
+    "results-e096530.json": "26d8524f70c802745e564b84e4250e68d0dab501dbaed1fbf2047c29eda80ce9",
+    "run-e096530.log": "9c23ef93817a7a06e79241540b9fd04149fb45f450c4e6671e9d48199f5490fd",
+    "stderr-e096530.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

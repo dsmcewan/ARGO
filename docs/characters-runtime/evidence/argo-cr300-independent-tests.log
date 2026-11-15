@@ -1,0 +1,31 @@
+✔ character interpretation builds an observer-owned proposal through its own nature and predecessor (13.51961ms)
+✔ an impression cannot use unseen evidence, another subject or another observers view (3.8766ms)
+✔ character callbacks may decline and ended or unconfigured characters never interpret (3.337502ms)
+✔ busy, ended, unaddressed, self-addressed and cooldown-bound characters stay silent without planning (3.689781ms)
+✔ an eligible addressed character returns only a bounded speech proposal at the supplied cursor (1.348626ms)
+✔ speech respects the configured Unicode code-point budget and never truncates planner output (2.658279ms)
+✔ caller mutations during character planning cannot change the callback view or returned proposal (1.26539ms)
+✔ character cancellation and deadline do not produce proposals after a late callback (12.259971ms)
+✔ narration sends the world-external voice and only a filtered record page to an injected provider (11.472998ms)
+✔ narrator suppresses a cutoff before generation without invoking a provider (0.912099ms)
+✔ a cutoff suppresses presentation even when no model context can fit the configured byte budget (0.825566ms)
+✔ a changed authorized page suppresses generated prose even without a cutoff (3.115064ms)
+✔ a current-prefix conflict after generation suppresses stale prose (1.837852ms)
+✔ a cutoff arriving during generation suppresses output while retaining the archive on the host (4.087255ms)
+✔ every retry rechecks disclosure and stops before a second provider call when it changes (6.596103ms)
+✔ narrator detaches mutable query and refreshed page before any provider request (3.652691ms)
+✔ narrator binds pagination and scope and refuses extra private fields before model invocation (1.959481ms)
+✔ narrator rejects oversized context explicitly rather than dropping records (0.825125ms)
+✔ narrator cache identity separates traveler and private versus party delivery (8.042933ms)
+✔ narrator caller cancellation after provider completion still propagates (2.28489ms)
+✔ active narrator inputs are refused without invoking getters or provider code (0.290724ms)
+✔ narrator refuses a completed provider envelope whose text is not prose (1.497003ms)
+✔ narrator refuses provider tool calls instead of treating them as world actions (2.686952ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1305.675193

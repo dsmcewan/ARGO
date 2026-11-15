@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "ticket": "MB-001",
+  "supervisor": "root",
+  "adopted_at": "2026-11-13T19:25:58.870611+00:00",
+  "authority": "User authorized offline Mesh implementation in ARGO blackboard/Pantheon and saving to private GitHub; independently reviewed control-plane additions only.",
+  "previous_trusted_commit": "1231bc22d040454d43e41a305b553f77b45fff72",
+  "adopted_trusted_commit": "eedd941fbdfe4207403ebf971c516d72ea40d483",
+  "trusted_checkout": "/workspace/ARGO/.worktrees/mesh-trusted",
+  "allowed_policy_additions": [
+    {
+      "path": "tools/mesh_dispatch.py",
+      "bytes": 32707,
+      "sha256": "b50a8bdabadc4a93053d3f1e3ed78b98af135e76e7b7cd4e58a702e724a2889b"
+    },
+    {
+      "path": "tools/mesh_trace.py",
+      "bytes": 18548,
+      "sha256": "f6eaa1cf839b743bd0b6174a2d0166b8f519b1487f64bdfa094717fa90ff2782"
+    },
+    {
+      "path": "tools/test_mesh_dispatch.py",
+      "bytes": 40905,
+      "sha256": "009a2393da099faacd14bd23831d03ea30e85c27c15e9923cb70b94a73521652"
+    },
+    {
+      "path": "tools/test_mesh_trace.py",
+      "bytes": 14672,
+      "sha256": "91e0e7b265e0a2d6430f064e183f3a216443d69889dc57ebd096e1df9db8bd25"
+    },
+    {
+      "path": "pantheon/tests/blackboard-mesh.test.mjs",
+      "bytes": 16052,
+      "sha256": "a35e6d950a9814dac8e9fd64ab91b22c0f15db1ecd9d4f1aa8f331ee6b60c471"
+    },
+    {
+      "path": "tools/MESH.md",
+      "bytes": 6179,
+      "sha256": "053195fa4d2e8a5420d48bc3db4d4c76607931b773e2a2e2eb5a1e29cae3f4dd"
+    }
+  ],
+  "policy_review_sha256": "485c20c476b2a3cf7b93c36bac4be5cc9d664cb52b63dc0496bc0c7d6688517a",
+  "existing_policy_unchanged": true,
+  "decision": "Supervisor explicitly pins these reviewed immutable policy bytes outside worker control. All ten controller checks remain required."
+}

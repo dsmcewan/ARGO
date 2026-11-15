@@ -1,0 +1,4 @@
+FAIL C10P actual executable stops after first output failure without recursive stdout write The expression evaluated to a falsy value:
+
+  assert(stderr.includes('OutputFailure: CLI output failed'))
+

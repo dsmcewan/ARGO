@@ -1,0 +1,15 @@
+✔ new owned state hashes reuse historical record encoding instead of inspecting old records again (123.301255ms)
+✔ private state encoding matches the unchanged canonical oracle through signed mixed transitions (224.418166ms)
+✔ encoded owned prefixes and divergent forks remain immutable and independent (24.111305ms)
+✔ caller clones, freezing and active inputs cannot confer encoding cache trust (21.943274ms)
+✔ owned transition admission does not inspect immutable genesis again for every command (13.858143ms)
+✔ command context admission matches the frozen oracle for every action and reference or policy failure (393.611716ms)
+✔ cached command context still rejects hostile DTOs and cannot be poisoned through raw genesis mutation (20.36571ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 860.385618

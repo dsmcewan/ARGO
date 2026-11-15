@@ -1,0 +1,41 @@
+{
+  "protocol": "mortal-balance/1.0.0",
+  "phase": "pilot",
+  "preregistered_first_study": false,
+  "protocol_sha256": "07c5cec8476cc88bdcea37fb1557a167ddcd578bd22d05b026e8b63b24183c98",
+  "source": {
+    "commit": "d156819b3e988467148a615aaa0d528e1acae949",
+    "node": "v24.22.1",
+    "files": {
+      "SYSTEMS/mortal-v2/FREEZE.json": "5e8130c3e774670073fdf1d3f07242ffa8c58d73330ede1baea3079ca5a19714",
+      "SYSTEMS/mortal-v2/mortal.schema.json": "070be914286893c86598578dccabe152bbdece23ba859d162776243f2b0b21ff",
+      "packages/contracts/src/character-types.ts": "1d5b1233d358730651c3c57ee84d810a6bb18ae589faff68c737ef9102a7f405",
+      "packages/contracts/src/characters.ts": "1e67ff2a1cd35d88997debd77898b922b1c041b8d4aafa15e64fcd11d1bea00c",
+      "packages/contracts/src/generated.ts": "fac420ed01eaa3eb64abb38450550ea2521bd6c31d70728e13487c42740497f4",
+      "packages/contracts/src/index.ts": "14f7c1488fc4dff21da330a2462f8d6bfb784e2d9a07b81aaa20507055468a31",
+      "packages/contracts/src/mortal-types.ts": "f798d4d9325b502006d871867d00805d95febc9ba8a8bdd7f79846808e31686f",
+      "packages/contracts/src/mortal.ts": "c51c63e6ae4c92ed4ce9b72f4fd0ae49fa4bbf9d74940e47bffb3e87ba753d75",
+      "packages/contracts/src/projection-generated.ts": "1ca42c7d7c33156700371aa2cacb6c11a1101fb030ca903b2c38f8ee69f33663",
+      "packages/contracts/src/projection-v2.ts": "7177ab860e89f8e058fbebd30aa7b69bc8888711890c21ace08d4980f372f228",
+      "packages/contracts/src/transport.ts": "0cf3648bf053644174762d2059e861d34d37f871cb0637505066903506cdb6e4",
+      "packages/ledger/src/mortal/rules.ts": "fadca52771d69ef23ee4e37106ce366f9a8611f099f441d5d3613a032b87bdf5",
+      "scenarios/tempted-fates/balance/cli.ts": "ba167265eb68ff2e996e85361f7542d9bcd177ec30c47e545ab2fca90d7ef2d1",
+      "scenarios/tempted-fates/balance/fixtures.ts": "51cac7b10b5217f6992140c9632478af1c1c727af3efe4ecec5519d1ea1a28e2",
+      "scenarios/tempted-fates/balance/protocol.json": "07c5cec8476cc88bdcea37fb1557a167ddcd578bd22d05b026e8b63b24183c98",
+      "scenarios/tempted-fates/balance/runner.ts": "3595916f928a7a6215f3b94f43025ae7a31ad3ed3807e5edbca060bde51b7abf",
+      "scenarios/tempted-fates/balance/statistics.ts": "718e1a01dd61055f9e44aa948b586d24e3f12e0db45f1f9e655c6e8d897fcfbb"
+    },
+    "fingerprint": "7c8a1f711c6c7382d8367b8f2612ac90df6ca962da119c062688205edf13b74e"
+  },
+  "frozen_decision": null,
+  "result": {
+    "seeds": 10,
+    "combat_trials": 210,
+    "resource_trials": 80,
+    "replayed_trials": 290,
+    "note": "Timing pilot only. Outcomes deliberately not summarized or used for seed/arm selection."
+  },
+  "elapsed_ms": 6385.032605,
+  "finished_at_utc": "2026-11-14T07:55:46.693Z",
+  "analysis_only": true
+}

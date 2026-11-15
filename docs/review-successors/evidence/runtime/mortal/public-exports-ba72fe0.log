@@ -1,0 +1,1 @@
+{"exports":["initialMortalV3State","resolveMortalV3","mortalV3StateHash","mortalV3Capacity","createMortalV3Event","verifyMortalV3Event","replayMortalV3","verifyMortalV3Receipt","openMortalV3Ledger","viewMortalV3Actor"],"passed":true}

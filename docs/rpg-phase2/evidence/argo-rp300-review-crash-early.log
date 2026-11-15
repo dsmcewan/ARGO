@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "trials": [
+    {
+      "delay_ms": 0,
+      "receipt_observed_before_kill": false,
+      "sequence_after_crash": 0,
+      "sequence_after_retry": 1
+    },
+    {
+      "delay_ms": 0,
+      "receipt_observed_before_kill": false,
+      "sequence_after_crash": 0,
+      "sequence_after_retry": 1
+    },
+    {
+      "delay_ms": 1,
+      "receipt_observed_before_kill": false,
+      "sequence_after_crash": 0,
+      "sequence_after_retry": 1
+    },
+    {
+      "delay_ms": 1,
+      "receipt_observed_before_kill": false,
+      "sequence_after_crash": 0,
+      "sequence_after_retry": 1
+    },
+    {
+      "delay_ms": 5,
+      "receipt_observed_before_kill": false,
+      "sequence_after_crash": 0,
+      "sequence_after_retry": 1
+    },
+    {
+      "delay_ms": 10,
+      "receipt_observed_before_kill": false,
+      "sequence_after_crash": 0,
+      "sequence_after_retry": 1
+    },
+    {
+      "delay_ms": 20,
+      "receipt_observed_before_kill": false,
+      "sequence_after_crash": 0,
+      "sequence_after_retry": 1
+    },
+    {
+      "delay_ms": 50,
+      "receipt_observed_before_kill": false,
+      "sequence_after_crash": 0,
+      "sequence_after_retry": 1
+    }
+  ],
+  "limits": "SIGKILL process crash, not host power loss; no private-key bytes retained"
+}

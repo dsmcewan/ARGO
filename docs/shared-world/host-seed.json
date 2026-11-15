@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "tickets": [
+    {
+      "id": "SW-510",
+      "wave": 1,
+      "lane": "host",
+      "title": "Runnable headless session and offline lamp demonstration",
+      "seat_model": "gpt-6-astra",
+      "reviewer_model": null,
+      "owned_paths": [
+        "packages/session/",
+        "scenarios/tempted-fates/shared-world/cli.ts",
+        "scenarios/tempted-fates/shared-world/README.md",
+        "TESTS/shared-world-session.test.ts"
+      ],
+      "gate_cmd": [
+        "python3",
+        "-c",
+        "raise SystemExit('Application acceptance remains external to the pinned data-only Board policy')"
+      ],
+      "spec_path": "docs/shared-world/tickets/SW-510.md",
+      "depends_on": [],
+      "max_attempts": 3
+    }
+  ]
+}

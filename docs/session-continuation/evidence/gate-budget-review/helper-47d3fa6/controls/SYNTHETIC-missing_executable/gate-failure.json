@@ -1,0 +1,22 @@
+{
+  "status": "failed",
+  "candidate": "47d3fa6a3b247986a0a6bb9aaad1f65cfff25273",
+  "failure": {
+    "stage": "clone",
+    "type": "FileNotFoundError",
+    "message": "Synthetic missing executable",
+    "timed_out": false,
+    "timeout_seconds": 300,
+    "returncode": null
+  },
+  "elapsed_seconds": 0.001,
+  "source_head_before": "47d3fa6a3b247986a0a6bb9aaad1f65cfff25273",
+  "source_head_after": "47d3fa6a3b247986a0a6bb9aaad1f65cfff25273",
+  "source_head_unchanged": true,
+  "source_head_check_error": null,
+  "merged": false,
+  "operational_trust_promoted": false,
+  "paid_model_calls": 0,
+  "remote_writes": false,
+  "logs": {}
+}

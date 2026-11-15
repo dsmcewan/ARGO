@@ -1,0 +1,1 @@
+{"probe":"fsynced_append_close_failure_rollback","closedAfterSync":true,"submitError":"injected post-fsync close EIO","durableBytes":1168,"accepted":true,"sequence":0}

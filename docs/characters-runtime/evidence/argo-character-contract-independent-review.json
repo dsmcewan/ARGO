@@ -1,0 +1,45 @@
+{
+  "reviewer": "character_contract_review",
+  "review_type": "independent same-model advisory review; not operational policy approval",
+  "commit": "3f231e8c45adb76277a1da86768cd5c0009a8883",
+  "tree_clean": true,
+  "files_verified": {
+    "SYSTEMS/characters-v1/API.md": "90b853e6e50309c0b204ab6c3e7ca9fbcd69d145f51ccd40dcd3ff61a45e3f77",
+    "SYSTEMS/characters-v1/CONTRACT.md": "41e4b54bee1fa95a198c437443432cbdd058e9b6192b2eb410fad1e43171a759",
+    "SYSTEMS/characters-v1/FREEZE.json": "66709119d921a239fabaa9409e7e79032c058f118ac5ed74d73a9a290b1f586f",
+    "SYSTEMS/characters-v1/characters.schema.json": "b1e62cc9fa5c3266da55d845b008d6d7c0a94255e1ce3cdd48744172dc43ec93",
+    "TESTS/character-contracts.test.ts": "270abbdaa97d98280e70db7bb6c664080e3a155ec08e2b4d85918ba52ef6bcfb",
+    "TESTS/character-fixtures.ts": "8f2c2e44dbf66d41239136a0a549497b3df27bc4a877e23f2e0effc1ef8e4b38",
+    "packages/contracts/src/character-types.ts": "1d5b1233d358730651c3c57ee84d810a6bb18ae589faff68c737ef9102a7f405",
+    "packages/contracts/src/characters.ts": "1e67ff2a1cd35d88997debd77898b922b1c041b8d4aafa15e64fcd11d1bea00c",
+    "packages/contracts/src/index.ts": "cda1fb92d72b5c336b5c4e351ecdb275be063aef84e81821220985e0a85cb15c"
+  },
+  "verdict": "No blocking defect found in the additive contract profile",
+  "independent_checks": {
+    "character_contract_tests": {
+      "passed": 15,
+      "failed": 0,
+      "command": "node --test --test-isolation=none --test-reporter=tap TESTS/character-contracts.test.ts"
+    },
+    "strict_typecheck_exit": 0,
+    "frozen_v1_check_exit": 0,
+    "frozen_v1_source_unchanged": true
+  },
+  "logs": {
+    "/tmp/argo-character-contract-independent-tests.log": "0703a0209772b0cb66e09d3abbda56fd768776561011e0f9aae626b66888c440",
+    "/tmp/argo-character-contract-independent-typecheck.log": "2cf20646d72113be26c6fbe14738bc101ebf909ab8a2374290f369e1d53c975c",
+    "/tmp/argo-character-contract-independent-frozen-v1.log": "2cd7874723b12ab43b0da644f0fa05f6af32153676d6e31de2c44c17c8e03428"
+  },
+  "scope": [
+    "source/requester binding",
+    "prefix/cutoff/owner consistency",
+    "passive JSON DTO guard",
+    "complete private history and bounded public pages",
+    "frozen gameplay v1 compatibility"
+  ],
+  "limits": [
+    "Contract review does not validate future runtime authentication, actual visibility, replay admission, latest-cursor checks, or prompt handling",
+    "No runtime implementation or live provider calls reviewed",
+    "No operational trust-root approval or board state change performed"
+  ]
+}

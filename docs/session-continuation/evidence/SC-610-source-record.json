@@ -1,0 +1,14 @@
+{
+  "ticket_id": "SC-610",
+  "source_commit": "c4654d52b1a08bdb4bfa18822d2cc74229d606b6",
+  "base_commit": "3a0996f9c5722d1687ab33ca4c38b6e6d9697b07",
+  "board_status": "VERIFYING",
+  "attempt": 1,
+  "artifacts": {
+    "TESTS/shared-world-cold.test.ts": "6835f6c74db913796a33320d08e435d545f81812a29e303d464744687d4e74a0",
+    "packages/ledger/src/world/rules/README.md": "c83f073e2554b63c01b351085d1b5f547d41cd543220b79431e869a2e4100a74",
+    "packages/ledger/src/world/rules/engine.ts": "76bef309f955b0a83fb6f52f20e0d9a26874c4b7aad244f46519ebfe88a79777"
+  },
+  "application_acceptance": "Recorded separately; data-only Board gate not run",
+  "paid_calls": 0
+}

@@ -1,0 +1,23 @@
+{
+  "candidate_commit": "9564af23fc52ff934c8ac39dd0777dc7c683120a",
+  "base_commit": "0c24b32f947143c5b1095f702c878ed92888aa8d",
+  "verdict": "READY",
+  "scope": "Independent review only; full immutable gate separately required",
+  "unresolved_findings": [],
+  "closed_findings": [
+    "IR-01",
+    "IR-02",
+    "IR-03",
+    "IR-04"
+  ],
+  "targeted_tests": {
+    "passed": 64,
+    "failed": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "independent_probe_cases": 7,
+  "source_mutations": false,
+  "provider_calls": 0,
+  "report": "review-final-9564af2.md"
+}

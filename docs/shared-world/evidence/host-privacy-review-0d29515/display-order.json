@@ -1,0 +1,40 @@
+{
+  "order": [
+    "submit",
+    "verified_receipt",
+    "current_query",
+    "current_view"
+  ],
+  "delivered": {
+    "receipt": {
+      "version": "shared-world/0.1.0",
+      "scope": {
+        "branch_id": "main",
+        "campaign_id": "campaign",
+        "rights_lane": "private_upload",
+        "tenant_id": "tenant",
+        "workspace_id": "workspace",
+        "workspace_tenant_id": "tenant:private_upload:workspace",
+        "world_id": "session_boundary_probe"
+      },
+      "genesis_hash": "a13a4fdab7426bd1b82d7c8834d463aee9fd1383e68baf8c1cbc3c471092df01",
+      "authority_key_id": "probe_key",
+      "request_id": "reply_3",
+      "request_hash": "002f8dfb4c80128344054446166f95f47494fc1079dcd538ffaccd295a318e14",
+      "event_hash": "e3dc9d1e78afd00a1e430d198643c9e79755d0c08dd306104d67c04962d3a473",
+      "cursor": {
+        "sequence": 2,
+        "head": "e3dc9d1e78afd00a1e430d198643c9e79755d0c08dd306104d67c04962d3a473",
+        "world_time": 0
+      },
+      "state_hash": "381902e779dfa9ab95e8902dcd1f1a71fd23b27ecae7237153391b2afb3fee2b",
+      "signature": "d4xamsbdvnFqwzgNR3D8amPPQihUhnunVRm6NUjHI6TTo25BoCWA+VFO9hixbx8AIZvGw/zP/joh8LYLVsySDw=="
+    },
+    "spoken": {
+      "type": "spoken",
+      "speaker_id": "melia",
+      "record_id": "fa2044250c6efda9ed7b1705e55ff23af2657865641c23cc49dd0c354612ba73",
+      "text": "GENERATOR_SENTINEL: No fee, no deposit; buy oil and agree the return."
+    }
+  }
+}

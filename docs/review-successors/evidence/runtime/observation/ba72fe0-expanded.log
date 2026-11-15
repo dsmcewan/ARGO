@@ -1,0 +1,40 @@
+✔ default admits only self-private data and reopening cannot enable outward delivery (185.100924ms)
+✔ slow host does not hold writer lock; another handle advances and makes its grant stale (129.182801ms)
+✔ caller cancellation wins against a host that ignores its signal, including its later reply (34.445723ms)
+✔ concurrent exact duplicate returns original receipt before stale-cursor checks and without another witness (145.540759ms)
+✔ legacy spoofed-source observation above the new recipient cap retries only with original authenticated identity (77.990279ms)
+✔ a willing host cannot override source authorship or a valid proxy grant (78.029587ms)
+✔ request/snapshot are frozen, caller edits cannot change a pending request, and returned grant is detached before relock (136.81644ms)
+✔ grant expiry during relocking cannot gain a fresh admission window (64.854939ms)
+✔ post-append derived-snapshot failure preserves verified prefix and retry skips witness work (99.272469ms)
+✔ preflight, verifier work, and relock all consume the original five-second window (52.192586ms)
+✖ cancellation during the second durable read is checked before returning an exact concurrent retry (63.120011ms)
+✔ review target remained immutable through the probe run (21.668773ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 11
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1108.068083
+
+✖ failing tests:
+
+test at reports/2026-11-14-argo-followup/runtime-observation-review/review.test.mjs:199:1
+✖ cancellation during the second durable read is checked before returning an exact concurrent retry (63.120011ms)
+  AssertionError [ERR_ASSERTION]: Unexpected successful submission
+  
+  true !== false
+  
+      at assertFailure (file:///workspace/reports/2026-11-14-argo-followup/runtime-observation-review/review.test.mjs:39:45)
+      at TestContext.<anonymous> (file:///workspace/reports/2026-11-14-argo-followup/runtime-observation-review/review.test.mjs:213:2)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

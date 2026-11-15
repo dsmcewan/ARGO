@@ -1,0 +1,361 @@
+✖ character commands accept five bounded variants without authorizing caller-chosen speech identity (3.910017ms)
+✖ character cursors reject inconsistent heads and noncanonical temporal integers (0.339176ms)
+✖ character scope identity and version are checked on nested public queries and envelopes (1.059335ms)
+✖ character DTO preflight rejects active objects without invoking user getters or proxy traps (0.757751ms)
+✖ character text and array bounds reject empty identity, unbounded speech and duplicate evidence (0.403586ms)
+✖ character experience variants distinguish authenticated speech from committed action summaries (0.584244ms)
+✖ character projection bounds every stored experience and acquisition to its authoritative cursor (0.594353ms)
+✖ character actor views bind impression ownership and profile to the queried actor (0.445274ms)
+✖ character narrator queries reject private viewer substitution, invalid page bounds and party mismatch (0.917831ms)
+✖ character narrator pages bind coverage and visible cursors without admitting observer metadata (1.173339ms)
+✖ character receipts bind event hash and cursor while preserving the exact command kind (0.60301ms)
+✖ character identity helpers bind scope, content and authenticated identity without receipt-list noise (0.421039ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 0
+ℹ fail 12
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 981.855382
+
+✖ failing tests:
+
+test at TESTS/character-contracts.test.ts:10:1
+✖ character commands accept five bounded variants without authorizing caller-chosen speech identity (3.910017ms)
+  AssertionError [ERR_ASSERTION]: Character contract validator must be exported
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at check (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:7:50)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:12:388)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-contracts.test.ts:16:1
+✖ character cursors reject inconsistent heads and noncanonical temporal integers (0.339176ms)
+  AssertionError [ERR_ASSERTION]: Character contract validator must be exported
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at check (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:7:50)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:17:2)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-contracts.test.ts:20:1
+✖ character scope identity and version are checked on nested public queries and envelopes (1.059335ms)
+  AssertionError [ERR_ASSERTION]: The validation function is expected to return "true". Received false
+  
+  Caught error:
+  
+  AssertionError [ERR_ASSERTION]: Character contract validator must be exported
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at refuse (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:8:51)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:22:2)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: AssertionError [ERR_ASSERTION]: Character contract validator must be exported
+    + actual - expected
+    
+    + 'undefined'
+    - 'function'
+    
+        at check (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:7:50)
+        at file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:8:62
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at refuse (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:8:51)
+        at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:22:2)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1402:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+        at Test.postRun (node:internal/test_runner/test:1542:19),
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at TESTS/character-contracts.test.ts:29:1
+✖ character DTO preflight rejects active objects without invoking user getters or proxy traps (0.757751ms)
+  AssertionError [ERR_ASSERTION]: The validation function is expected to return "true". Received false
+  
+  Caught error:
+  
+  AssertionError [ERR_ASSERTION]: Character contract validator must be exported
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at refuse (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:8:51)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:30:155)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: AssertionError [ERR_ASSERTION]: Character contract validator must be exported
+    + actual - expected
+    
+    + 'undefined'
+    - 'function'
+    
+        at check (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:7:50)
+        at file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:8:62
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at refuse (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:8:51)
+        at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:30:155)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1402:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+        at Test.postRun (node:internal/test_runner/test:1542:19),
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at TESTS/character-contracts.test.ts:36:1
+✖ character text and array bounds reject empty identity, unbounded speech and duplicate evidence (0.403586ms)
+  AssertionError [ERR_ASSERTION]: The validation function is expected to return "true". Received false
+  
+  Caught error:
+  
+  AssertionError [ERR_ASSERTION]: Character contract validator must be exported
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at refuse (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:8:51)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:38:409)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: AssertionError [ERR_ASSERTION]: Character contract validator must be exported
+    + actual - expected
+    
+    + 'undefined'
+    - 'function'
+    
+        at check (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:7:50)
+        at file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:8:62
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at refuse (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:8:51)
+        at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:38:409)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1402:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+        at Test.postRun (node:internal/test_runner/test:1542:19),
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at TESTS/character-contracts.test.ts:45:1
+✖ character experience variants distinguish authenticated speech from committed action summaries (0.584244ms)
+  AssertionError [ERR_ASSERTION]: Character contract validator must be exported
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at check (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:7:50)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:46:2)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-contracts.test.ts:54:1
+✖ character projection bounds every stored experience and acquisition to its authoritative cursor (0.594353ms)
+  AssertionError [ERR_ASSERTION]: Character contract validator must be exported
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at check (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:7:50)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:55:2)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-contracts.test.ts:62:1
+✖ character actor views bind impression ownership and profile to the queried actor (0.445274ms)
+  AssertionError [ERR_ASSERTION]: Character contract validator must be exported
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at check (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:7:50)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:63:2)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-contracts.test.ts:69:1
+✖ character narrator queries reject private viewer substitution, invalid page bounds and party mismatch (0.917831ms)
+  AssertionError [ERR_ASSERTION]: Character contract validator must be exported
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at check (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:7:50)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:70:2)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-contracts.test.ts:74:1
+✖ character narrator pages bind coverage and visible cursors without admitting observer metadata (1.173339ms)
+  AssertionError [ERR_ASSERTION]: Character contract validator must be exported
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at check (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:7:50)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:75:2)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-contracts.test.ts:83:1
+✖ character receipts bind event hash and cursor while preserving the exact command kind (0.60301ms)
+  AssertionError [ERR_ASSERTION]: Character contract validator must be exported
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at check (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:7:50)
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:85:2)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at TESTS/character-contracts.test.ts:90:1
+✖ character identity helpers bind scope, content and authenticated identity without receipt-list noise (0.421039ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at TestContext.<anonymous> (file:///workspace/ARGO/.board/character-runtime/worktrees/CR-000-1-003ee0d21e/TESTS/character-contracts.test.ts:91:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

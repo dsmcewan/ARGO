@@ -1,0 +1,24 @@
+{
+  "version": "shared-world/0.1.0",
+  "scope": {
+    "branch_id": "main",
+    "campaign_id": "campaign",
+    "rights_lane": "private_upload",
+    "tenant_id": "tenant",
+    "workspace_id": "workspace",
+    "workspace_tenant_id": "tenant:private_upload:workspace",
+    "world_id": "signed_boundary_probe"
+  },
+  "genesis_hash": "93f63eb0253545ccfd40547b8a3ee5bafb30666518ad7dd720e64161c8f662ee",
+  "authority_key_id": "probe_key",
+  "request_id": "actual_signed_reply",
+  "request_hash": "34d27c722ffed0807c09f1c1cf90762eae29925500fc15e17021382ade536823",
+  "event_hash": "24d84ae0b9b6a039dbffb3129fe9874b9adabb215c1e6821047fb59cf634462b",
+  "cursor": {
+    "sequence": 3,
+    "head": "24d84ae0b9b6a039dbffb3129fe9874b9adabb215c1e6821047fb59cf634462b",
+    "world_time": 0
+  },
+  "state_hash": "baf56dc5f372429dd3fe5e3a8647522a5ca5aa70f54aee1574431255e1015045",
+  "signature": "3+fyGk0qGM1ggoSXqIpibxJ9B/fTfm8EIqW+E8xIQGs4kY00S3pqqz2zyo9MnV5esrPGmSJrDvfePWlmdsU3BQ=="
+}

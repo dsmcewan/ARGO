@@ -1,0 +1,105 @@
+{
+  "reviewer": "character_contract_review",
+  "review_kind": "Independent read-only same-model adversarial review",
+  "commit": "d9094d6e1a045a328b21cb966ec064923c97f19c",
+  "clean_tree": true,
+  "scope": "Exactly the candidate rules implementation and its tests, against frozen mortal-v2 contract; additional short replay integration exercised identical rules source",
+  "verdict": "No concrete rules defect reproduced within reviewed scope; no confirmed blocker to the planned balance study",
+  "confirmed_defects": [],
+  "unconfirmed_hypotheses": [],
+  "files": {
+    "packages/ledger/src/mortal/rules.ts": "fadca52771d69ef23ee4e37106ce366f9a8611f099f441d5d3613a032b87bdf5",
+    "TESTS/mortal-rules.test.ts": "8419b789f36a9c06724ef9322063941e00260e9548c33526e108ef9eead57050"
+  },
+  "frozen_contract": {
+    "profile_version": "mortal-rules/0.2.0",
+    "files": {
+      "SYSTEMS/mortal-v2/CONTRACT.md": "ede698b24b62c4d47f6d45f3cbe4288b43dd230128a3a09edb59fee121f35447",
+      "SYSTEMS/mortal-v2/mortal.schema.json": "070be914286893c86598578dccabe152bbdece23ba859d162776243f2b0b21ff",
+      "packages/contracts/src/mortal-types.ts": "f798d4d9325b502006d871867d00805d95febc9ba8a8bdd7f79846808e31686f"
+    },
+    "scope": "Fresh-world mortal authority interface; does not migrate frozen v1 history, authenticate callers, or approve an operational merge"
+  },
+  "integration_probe_source": {
+    "head_observed": "2dcd8fe5e00fa3fc72554272962c70bc2239abdb",
+    "rules_sha256": "fadca52771d69ef23ee4e37106ce366f9a8611f099f441d5d3613a032b87bdf5",
+    "journal_sha256": "4a09c73e452fbe4f1f5adf5b8b0796de758f8eb3a8905c04eb0ca44ad1e3896b",
+    "journal_path": "packages/ledger/src/mortal/journal.ts"
+  },
+  "verification": {
+    "targeted_rules_tests": {
+      "passed": 19,
+      "failed": 0,
+      "command": "node --test --test-isolation=none --test-reporter=tap --test-skip-pattern='10,000' TESTS/mortal-rules.test.ts",
+      "omitted": "Already-passed 10,000-proposal suite intentionally not repeated; no source change or failure justified rerun"
+    },
+    "strict_typecheck": {
+      "exit_code": 0,
+      "command": "npm run typecheck"
+    },
+    "ordinary_process_probes": {
+      "status": "pass",
+      "ordinary_process": true,
+      "checks": 542,
+      "resolve_calls": 167,
+      "short_signed_history_events": 7,
+      "no_test_context": true,
+      "skipped_already_passed_10k_suite": true,
+      "cases": [
+        "controller denial on14 action types",
+        "currency/food/item conservation and posttransaction capacity",
+        "24-actor turn order, one charge per round and outsider isolation",
+        "personal rest allowance independent of global time",
+        "simultaneous starvation before task reward",
+        "alias separation and request-label-independent RNG",
+        "signed short-history replay and re-signed forged draw/effect/result/controller rejection"
+      ]
+    },
+    "probe_command": "node /tmp/argo-rp200-probes.mjs /path/to/rules-candidate /path/to/assembled-ARGO"
+  },
+  "artifacts": {
+    "/tmp/argo-rp200-tests.log": "ff53a3ec119a485feaf790a91c3823805fa1fa4e89aea1bf58f7f0bb112cfac7",
+    "/tmp/argo-rp200-typecheck.log": "2cf20646d72113be26c6fbe14738bc101ebf909ab8a2374290f369e1d53c975c",
+    "/tmp/argo-rp200-probes.mjs": "b7daf06da821d4c1c3b93238ef292e2cf01f2ac372264555be42826ba6a1c318",
+    "/tmp/argo-rp200-probes.log": "edc47e5e73ec4015c2c8fe61f386e78e54d76e87f7e30952e04395382bae2bba"
+  },
+  "coverage": [
+    "Authenticated controller/actor/kind and scope/cursor checks; wrong controller denied across14 action categories without state/RNG mutation",
+    "Post-purchase capacity and finite stock; currency, resource and item conservation including self-give and grounded pickup",
+    "24-participant encounter order, defend expiry, one6-second charge per round, outsider turn/action refusal and no outsider metabolic cost",
+    "Personal active-time rest allowance unaffected by another actor advancing global world time; full provision charge on valid subsequent rest",
+    "Accepted exploration records search/light/time before simultaneous starvation and suppresses task draw/reward after death",
+    "Canonical copy separates aliased actor resources; fixed-purpose RNG is unaffected by caller request IDs",
+    "Actual seven-event signed history replays exactly; separately re-signed incorrect draws, effects, after-hash and controller identity rejected; changed genesis variant also rejected"
+  ],
+  "limits": [
+    {
+      "id": "trusted-prefix",
+      "detail": "resolveMortal receives a trusted verified prior state. Its schema/genesis/immutable-definition guards cannot independently prove the complete provenance of mutable resources, HP, clocks or encounter history. The journal/storage verification path must supply that prefix."
+    },
+    {
+      "id": "host-authentication",
+      "detail": "Matching Principal fields is admission binding, not proof of external authentication. Host delivery and referee visible-situation/perception remain external responsibilities."
+    },
+    {
+      "id": "balance",
+      "detail": "Correctness probes do not establish campaign balance, fairness perception, optimal strategy or experiential quality. The planned balance study remains necessary."
+    },
+    {
+      "id": "sampling",
+      "detail": "Ordinary-process probes cover targeted adversarial paths and a maximum-size encounter; they are not an exhaustive proof over all million-event histories or a statistical RNG test."
+    },
+    {
+      "id": "other-lanes",
+      "detail": "Short journal probes validate integration of the identical reducer only. This is not an independent exhaustive audit of storage, views, the balance harness or all assembled files."
+    }
+  ],
+  "actions": {
+    "production_edits": false,
+    "board_mutations": false,
+    "push": false,
+    "paid_calls": 0,
+    "nested_workers": 0,
+    "operational_approval": false
+  }
+}

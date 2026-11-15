@@ -1,0 +1,29 @@
+[
+  {
+    "ticket": "T-R100",
+    "commit": "bc7ef4f031f3b7e640aa15d5cc7a651c4afb0bba",
+    "submission_refused": "Candidate changes pinned gate policy",
+    "status": "CLAIMED",
+    "artifacts": 2
+  },
+  {
+    "ticket": "T-R300",
+    "commit": "cdc1b42a4950c3dfc7ea18d60ef914b3e988f609",
+    "status": "VERIFYING",
+    "artifacts": 4
+  },
+  {
+    "ticket": "T-R200",
+    "commit": "8254503e6c191a247111ecd8c915538aac53867d",
+    "submission_refused": "Candidate changes pinned gate policy",
+    "status": "CLAIMED",
+    "artifacts": 8
+  },
+  {
+    "ticket": "T-R400",
+    "commit": "af4409680384be74db05e51578289f9f101f7390",
+    "submission_refused": "Candidate changes pinned gate policy",
+    "status": "CLAIMED",
+    "artifacts": 12
+  }
+]

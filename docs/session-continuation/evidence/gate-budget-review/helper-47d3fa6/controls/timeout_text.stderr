@@ -1,0 +1,24 @@
+Traceback (most recent call last):
+  File "/workspace/reports/2026-11-14-argo-continuation/gate-budget-review/helper-faults.py", line 43, in <module>
+    fixture_child(*sys.argv[2:]);raise SystemExit(0)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/reports/2026-11-14-argo-continuation/gate-budget-review/helper-faults.py", line 38, in fixture_child
+    exec(compile(source,helper,'exec'),{'__name__':'__main__','__file__':helper})
+  File "/workspace/reports/2026-11-14-argo-continuation/board-sc-640/worktrees/SC-640-1-aa7fa621ff/docs/characters-runtime/evidence/run-candidate-gate.py", line 65, in <module>
+    gate = run('application-gate', args, stage, 600)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/reports/2026-11-14-argo-continuation/board-sc-640/worktrees/SC-640-1-aa7fa621ff/docs/characters-runtime/evidence/run-candidate-gate.py", line 36, in run
+    result = subprocess.run(argv, cwd=cwd, env=env, stdout=subprocess.PIPE,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1204, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/reports/2026-11-14-argo-continuation/gate-budget-review/helper-faults.py", line 29, in run
+    raise subprocess.TimeoutExpired(argv,kwargs['timeout'],output=value)
+subprocess.TimeoutExpired: Command '['/usr/bin/bwrap', '--unshare-all', '--cap-drop', 'ALL', '--die-with-parent', '--new-session', '--ro-bind', '/usr', '/usr', '--symlink', 'usr/bin', '/bin', '--symlink', 'usr/sbin', '/sbin', '--symlink', 'usr/lib', '/lib', '--symlink', 'usr/lib64', '/lib64', '--dir', '/tools', '--ro-bind', '/SYNTHETIC/node', '/tools/node', '--proc', '/proc', '--dev', '/dev', '--tmpfs', '/tmp', '--ro-bind', '/tmp/argo-review-gate-93houb21/candidate', '/workspace', '--chdir', '/workspace', '--clearenv', '--setenv', 'PATH', '/tools:/usr/bin:/bin', '--setenv', 'HOME', '/tmp', '--setenv', 'LANG', 'C.UTF-8', '--', '/tools/node', 'scripts/gate.mjs', '--merge-ready']' timed out after 600 seconds

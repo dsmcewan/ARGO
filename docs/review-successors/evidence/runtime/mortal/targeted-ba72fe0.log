@@ -1,0 +1,48 @@
+✔ public campaign builder explicitly selects a fresh v3 identity without changing v2 initialization (380.101602ms)
+✔ fresh v3 campaign builder is not an import or continuation endpoint (14.217126ms)
+✔ v3 explicitly accepts fresh genesis and refuses v2 or continuation state as genesis (12.727706ms)
+✔ v3 retains genesis identity, equipment, location and capacity admission constraints (5.028601ms)
+✔ recovery intents require null actor identity and closed bounded turn and reason fields (21.415302ms)
+✔ ordinary v3 command grammar preserves direct actor and encounter roster constraints (3.740327ms)
+✔ v3 encounter state binds its site and positive turn token to the recorded prefix (14.643184ms)
+✔ recovery events retain referee provenance and reject role or nested version misbinding (16.613265ms)
+✔ v3 receipts and scoped views stay closed and cannot be accepted as v2 (28.79624ms)
+✔ actor activity locks explain roster and local-site exclusion without disclosing the battle (4.764036ms)
+✔ v3 contract inspection rejects proxies, accessors and noncanonical data before execution (1.541508ms)
+✔ v3 schema compiles independently and freeze preserves both versioned interfaces (219.575032ms)
+✔ v3 is explicit fresh-world authority with independently domain-separated initial identities (11.524091ms)
+✔ remote travel and rest advance shared time while leaving the encounter and combatants paused (24.722227ms)
+✔ whole roster and site refuse ordinary actions; remote actions cannot enter or mutate the locked site (96.509028ms)
+✔ activity locks explain escaped roster and site exclusion without revealing the fight to outsiders (45.873123ms)
+✔ recovery requires exact authenticated referee, scope, cursor, encounter and waiting-turn token (36.952263ms)
+✔ referee pass uses the ordinary turn transition, expires defense, and charges exactly at wrap (22.618144ms)
+✔ close always settles its pending round once without rewards, movement, healing or refunds (32.282641ms)
+✔ escaped participants pay their frozen round but no later rounds, and recovery respects terminal bounds (26.304832ms)
+✔ shared RNG uses the v3 domain and preserves serialized draw order across remote work and combat (19.524149ms)
+✔ signed v3 history replays referee provenance and rejects derived-field tampering, duplicates and v2 mixing (139.422697ms)
+✔ v3 retains resource custody, paid ranged attacks, and remote light costs through referee closure (22.249565ms)
+✔ referee pass settles needs and closes a nonviable round exactly as a voluntary pass (19.528406ms)
+✔ v3 rejects malformed active inputs and forged encounter principals before executing getters or mutating data (35.220114ms)
+✔ v3 replay checks duplicate request IDs across otherwise valid events and immutable genesis trust (53.014452ms)
+✔ SQLite commits replayable state and idempotency together, reopens, and pages host history (4176.117459ms)
+✔ concurrent handles serialize conflicting actions and duplicate retry never spends twice (3603.350257ms)
+✔ rejected command has no event/index/RNG effect and input mutation cannot alter queued work (1657.354317ms)
+✔ external trusted prefix detects rollback and divergent/mismatched genesis at reopen (7902.480447ms)
+✔ a worker-held write lock never blocks the parent loop and termination releases the OS lock (2118.822933ms)
+✔ storage refuses corrupt event/index/receipt bytes on reopen and never persists private PEM (3319.220873ms)
+✔ cached history pages and retries rebind event bytes to their signed receipt hash (1779.444521ms)
+✔ host API rejects active DTOs before cloning, bounds page requests, and closes idempotently (1708.562034ms)
+✔ recovery commits exact retries once across handles/restart and cannot borrow a refreshed cursor for an old turn (5276.617027ms)
+✔ ordinary turn racing referee recovery at the same cursor commits one transition and one settlement (3583.404711ms)
+✔ forged referee and site-crossing actions create no journal, request index, RNG or time changes (1693.161347ms)
+✔ waiting turn survives restart and a valid ancestor checkpoint is accepted without being treated as latest (6953.884316ms)
+✔ v3 opening rejects v2 and mixed application databases without changing their bytes or journal mode (5243.525006ms)
+✔ mismatched v3 genesis is refused before journal-mode, schema or metadata mutation (3137.913639ms)
+ℹ tests 40
+ℹ suites 0
+ℹ pass 40
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 55523.225764

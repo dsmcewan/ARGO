@@ -1,0 +1,23 @@
+{
+  "checks": [
+    "frozen input and pack stay unchanged; returned genesis is deterministic",
+    "physical selection and identity bind all three fixed variants",
+    "creation is deterministic across HP modes with exact starter inventory and bounds",
+    "options reject proxy/accessor execution and hidden, exotic or malformed data",
+    "initial actor view has exact public keys and only self inventory/local routes",
+    "scope, controller, actor kind, referee and genesis mismatches fail closed",
+    "returned actor view is deeply detached from host genesis/state and principal",
+    "view rejects active principal without executing traps"
+  ],
+  "source_hashes": {
+    "SYSTEMS/mortal-v2/CONTRACT.md": "ede698b24b62c4d47f6d45f3cbe4288b43dd230128a3a09edb59fee121f35447",
+    "SYSTEMS/mortal-v2/mortal.schema.json": "070be914286893c86598578dccabe152bbdece23ba859d162776243f2b0b21ff",
+    "packages/contracts/src/mortal-types.ts": "f798d4d9325b502006d871867d00805d95febc9ba8a8bdd7f79846808e31686f",
+    "packages/contracts/src/mortal.ts": "c51c63e6ae4c92ed4ce9b72f4fd0ae49fa4bbf9d74940e47bffb3e87ba753d75",
+    "scenarios/tempted-fates/runtime.ts": "ca99cb79519961ef13caa1eedfc51f511c4b8e72a0318c53878d8571c537e888",
+    "packages/ledger/src/mortal/view.ts": "70234a502a0250df58d3cb173131d30414319ec25f61f3eeb8247886a4516aa7",
+    "TESTS/mortal-integration.test.ts": "7dfffb05dc3b0631a86b9fa287e1875db9eccbfb883fb5c7769a99df9a094f89"
+  },
+  "fixture_scope": "Literal schema-validated initial state; no shadow mechanics, generated histories or fabricated accepted encounters",
+  "passed": true
+}

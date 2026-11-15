@@ -40,8 +40,10 @@ export async function routeCall({candidates,invoke,signal,deadline=Date.now()+90
     signal?.throwIfAborted();
     if(Date.now()>=deadline)throw new Error('Routing deadline exceeded');
     if(!seat.pool)throw new Error('Every candidate needs an explicit credential pool identity');
-    if(closed.has(seat.pool)||(await cooldown?.get(seat.pool))?.until>Date.now())continue;
+    if(closed.has(seat.pool))continue;
     for(let attempt=0;attempt<maxAttempts;attempt++){
+      // Another process can extend this pool's refusal while this request is waiting.
+      if((await cooldown?.get(seat.pool))?.until>Date.now()){closed.add(seat.pool);break;}
       try{
         const value=await boundedCall(s=>invoke(seat,{signal:s,attempt}),{signal,deadline});
         await cooldown?.success(seat.pool);
