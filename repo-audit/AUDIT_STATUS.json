@@ -57,5 +57,17 @@
   "independent_review_completed": true,
   "controller_exercise_passed": true,
   "active_pantheon_modified": true,
-  "verification_record": "evidence/foundation-verification.json"
+  "verification_record": "evidence/foundation-verification.json",
+  "source_repins": [
+    {
+      "id": "LEXI_4a9faf3",
+      "repo": "LEXI",
+      "original_pin": "c190e245965447b369a33d928c4f09da33a68d67",
+      "new_pin": "4a9faf3383108164fee74660f745de7650771177",
+      "recorded": "2026-11-15",
+      "record": "evidence/lexi-repin-4a9faf3.json",
+      "finding_files_unchanged": true,
+      "original_evidence_modified": false
+    }
+  ]
 }
