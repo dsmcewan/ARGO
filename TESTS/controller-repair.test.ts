@@ -77,6 +77,12 @@ async function controllerFixture(directory:string){
  const js="import {test} from 'node:test'; import assert from 'node:assert/strict'; test('fixture oracle',()=>assert.ok(true));\n";
  await put('TESTS/fixture.test.ts',js);await put('packages/model-client/tests/fixture.test.mjs',js);
  for(const file of ['spawn-bounds','acceptance-sandbox','google-long-decode','compaction-history','frontier-board','scoped-history','frontier-adapter'])await put(`pantheon/tests/${file}.test.mjs`,js);
+ // The trusted gate now runs the offline provider-admission suites. This small
+ // controller fixture does not model the provider implementation; it supplies
+ // fixed, trusted fixture oracles so the controller exercise still verifies
+ // that every gate command has its declared input surface.
+ await put('factory/provider/test_broker.py',"import unittest\nclass ProviderOracle(unittest.TestCase):\n def test_fixture(self): self.assertTrue(True)\n");
+ await put('factory/provider/test_transport.mjs',js);await put('factory/provider/test_guarded-scope.mjs',js);
  await put('tools/board.py','class Board: pass\n');await put('tools/dispatch.py','class Dispatcher: pass\n');await put('tools/board_support.py','# trusted support\n');
  await put('tools/test_board.py','import unittest\nfrom board import Board\nclass BoardOracle(unittest.TestCase):\n def test_available(self): self.assertTrue(callable(Board))\n');
  await put('tools/test_dispatch.py','import unittest\nfrom dispatch import Dispatcher\nclass DispatchOracle(unittest.TestCase):\n def test_available(self): self.assertTrue(callable(Dispatcher))\n');
