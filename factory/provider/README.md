@@ -23,6 +23,19 @@ model and credential reference; reserve before the injected physical attempt;
 fence dispatch; settle measured usage; and retain ambiguous outcomes as held.
 Exact count preflights use the same lifecycle as generation.
 
+## Hold and escalation boundary
+
+An ambiguous dispatch, timeout, reset, authentication refusal, missing usage,
+or overrun remains durably held. The broker does not retry, refund, reconcile,
+or approve that outcome by itself. It retains the immutable binding and blocks
+the same operation from spending again.
+
+This is a **hold for external disposition**, not an internal approval system.
+The candidate contains no TELOS signer, human-approval endpoint, funding grant,
+or policy activation path. A later adopted policy must identify the independent
+verifier and authorized operator that can reconcile a held outcome; until then,
+the safe result is `held`.
+
 The adapter refuses xAI, AGY/Google, and unknown vendors before a client is
 created. This is intentional: the accepted Pantheon AGY planner/implementer
 lane uses an external CLI, which this adapter cannot account for at the
