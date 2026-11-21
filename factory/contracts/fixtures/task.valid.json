@@ -1,0 +1,39 @@
+{
+  "schema_version": "argo.factory/v1",
+  "kind": "task",
+  "identity": {
+    "mission_id": "fixture-mission",
+    "wave_id": "fixture-wave",
+    "repo_id": "argo",
+    "ticket_id": "fixture-ticket",
+    "epoch": 1,
+    "spec_sha": "1111111111111111111111111111111111111111111111111111111111111111",
+    "base_oid": "1111111111111111111111111111111111111111",
+    "candidate_oid": "2222222222222222222222222222222222222222",
+    "tree_oid": "3333333333333333333333333333333333333333",
+    "policy_sha": "4444444444444444444444444444444444444444444444444444444444444444",
+    "attempt_id": "fixture-attempt-1",
+    "idempotency_key": "fixture-effect-1",
+    "dependency_versions": [
+      {
+        "repo_id": "telos",
+        "artifact_id": "fixture-producer",
+        "commit_oid": "5555555555555555555555555555555555555555",
+        "artifact_sha": "6666666666666666666666666666666666666666666666666666666666666666",
+        "acceptance_sha": "7777777777777777777777777777777777777777777777777777777777777777"
+      }
+    ]
+  },
+  "author": {
+    "principal_id": "fixture-builder",
+    "vendor": "fixture-vendor-a"
+  },
+  "review_required": true,
+  "publication": {
+    "required": true,
+    "remote_repo": "https://example.invalid/argo.git",
+    "remote_ref": "refs/heads/fixture",
+    "expected_prior_oid": "1111111111111111111111111111111111111111",
+    "policy_sha": "8888888888888888888888888888888888888888888888888888888888888888"
+  }
+}
