@@ -45,3 +45,5 @@ export function createLexiMock(readAuthoritySnapshot:(options:ServiceOptions)=>P
 }
 
 export * from './characters.ts';
+export {createLexiHttpTransport} from './http.ts';
+export type {LexiHttpOptions} from './http.ts';

@@ -12,6 +12,16 @@ As of 2026-11-13. **Phase 1 source audit is complete.** Pantheon was supplied in
 | Pantheon (active) | ARGO `6f75c29c8e66df2c76996c33b763390807d62bda` | 221 | 78 |
 | Pantheon seat-core (historical) | Same ARGO commit | 52 | 29 |
 
+### Later source identities
+
+Newer commits are pinned separately. The table above and every catalog derived from it still describe the original pins.
+
+| Repository | New pin | Recorded | Delta from original pin | Evidence |
+| --- | --- | --- | --- | --- |
+| LEXI | `4a9faf3383108164fee74660f745de7650771177` (committed 2026-11-14) | 2026-11-15 | One descendant commit. One modified path: `.claude/hooks/session-start.sh`, a development-session bootstrap hook. No runtime backend, frontend, migration or script source changed. | [repin record](repo-audit/evidence/lexi-repin-4a9faf3.json), [tree listing](repo-audit/evidence/LEXI-4a9faf3-tree.json), [script](repo-audit/repin_lexi.py) |
+
+Every file behind a LEXI finding below has an identical blob at `4a9faf3`: `auth.py`, `main.py`, `companion_build.py`, `model_fallback.py`, `anthropic_credentials.py`, `db_config.py`, `db_session.py`, `models.py`, `prompt_builder.py` and `canonical-json.mjs`. The LEXI findings therefore apply unchanged to `4a9faf3`. The route and model catalogs were not regenerated, because their source bytes did not change.
+
 567 retained source files match their Git blob hashes, including five symlinks restored from their actual Git blobs. Complete, non-truncated tree listings are retained. The original local source directories were audit snapshots, not Git worktrees or running deployments. This repository retains their derived evidence and pinned identities; copied LEXI, TELOS and claude-config source snapshots are excluded from this archive. No source repository was modified, no build was dispatched, and no vendor inference calls were made.
 
 The [per-module inventory](repo-audit/evidence/module-inventory.csv) assigns all 418 source modules in the surveyed trees one of the three requested dispositions. Module means a tracked `.py`, `.mjs`, `.js`, `.ts`, `.tsx`, `.jsx`, `.sh`, `.ps1`, or `.tf` source outside documentation, memory, fixture, example, and test paths. Infrastructure and configuration source are included. Test and asset files are retained in the tree index, not counted as runtime modules. Every cataloged module has source available. Classification is a proposed ARGO reuse disposition, not a claim that every file received a semantic review; targeted findings below identify the inspected implementation boundaries.
@@ -35,6 +45,8 @@ The extractor parses Python syntax without importing the application. Route decl
 - **Build Net-New:** the ARGO capability does not follow from the existing domain implementation. Existing forensic/product code remains intact; this label is not a deletion recommendation.
 
 No existing LEXI route qualifies for direct exposure to a player or autonomous agent as an ARGO knowledge API.
+
+In this repository, "LEXI" means one of two things. The **LEXI application** is the audited forensic case-analysis platform. The **LEXI bridge** (`packages/lexi-bridge`) is ARGO's knowledge-query contract plus its adapters. The bridge's HTTP transport targets a service that implements ARGO's contract. It does not call the application's existing routes, and the application does not serve that contract.
 
 ## LEXI: extracted capabilities and deltas
 
@@ -110,7 +122,7 @@ The first candidate was `claude-config`; source inspection identifies **Pantheon
 
 - `LEXI/lexi-dashboard/backend/companion_build.py:22–29`: loopback `http://127.0.0.1:7778`, references `src/view/build-server.mjs` and `src/board/run-item.mjs`.
 - `start_build` posts `{"ticket": ticket}` to `/build` and expects HTTP 202. `build_status` reads `/builds` and a run record. These calls were inspected, not executed.
-- The producer's ticket schema requires `key`, `repo_root`, `title`, `slot`, `path`, `copy`, `acceptance_cmd`, `question`, and `goal`; strings must be nonempty, `copy` is an array of strings, extra fields are forbidden. Pantheon's consumer validation remains unverified until its source is available.
+- The producer's ticket schema requires `key`, `repo_root`, `title`, `slot`, `path`, `copy`, `acceptance_cmd`, `question`, and `goal`; strings must be nonempty, `copy` is an array of strings, extra fields are forbidden. Pantheon's consumer validation remains unverified until its source is available. *(Superseded: see the admission-mismatch finding in [PANTHEON_AUDIT.md](repo-audit/PANTHEON_AUDIT.md).)*
 - `model_fallback.py:92–104` names `pantheon/src/route/cooldown.mjs` and a shared `{version:1,pools:{pool:{at,until,streak,why}}}` cooldown record using epoch seconds and `PANTHEON_COOLDOWN_DIR`.
 - `anthropic_credentials.py:35` references `pantheon/src/sdk/adapter.mjs`.
 - `scripts/probe-pantheon-wire.py:17–27` names `/home/colchis/Projects/pantheon`; that checkout is not present in this environment. The probe was not run because it launches a build service.
@@ -129,6 +141,8 @@ The first candidate was `claude-config`; source inspection identifies **Pantheon
 
 Cooldown storage deserves a concurrency audit: LEXI performs read-modify-write and atomic replacement. Replacement avoids partial JSON, but by itself does not prevent two processes from losing each other's pool updates. Pantheon's locking/coordination must be inspected before four pools or multiple build teams share this state.
 
+*Later finding (2026-11-15):* [PANTHEON_AUDIT.md](repo-audit/PANTHEON_AUDIT.md) confirmed that Pantheon's v1 writer had no lock either. Active `pantheon/src/route/cooldown.mjs` now holds a shared writer lock, `model-cooldowns.json.lock` (protocol v1, documented in that file), around every read-modify-write. The JSON shape is unchanged. LEXI's writer at `4a9faf3` is still unlocked and can still overwrite a Pantheon update until it adopts the same protocol. A matching LEXI patch was prepared but not pushed: this session had read-only access to LEXI. ARGO's own `packages/model-client` v2 store was already per-pool and locked.
+
 ## Phase 3 patch targets established during read-only audit
 
 These are findings and acceptance targets, not applied patches. [MODEL_API_AUDIT.md](repo-audit/MODEL_API_AUDIT.md) records the official documentation and corrections to the requested settings.
@@ -141,6 +155,8 @@ These are findings and acceptance targets, not applied patches. [MODEL_API_AUDIT
 6. Pantheon router/SDK source is required to apply these changes to the actual overnight execution path, inspect 429 tables, separate rate limiting from permanent quota/auth errors, and prove bounded non-retrying HTTP 400 handling.
 
 ## Dependency gate and remaining inputs
+
+*Phase 1 snapshot.* This table records the gate as it stood when Phase 1 finished. Phases 2–4 have since passed; current status is in [BUILD_PROGRESS.md](BUILD_PROGRESS.md) and [AUDIT_STATUS.json](repo-audit/AUDIT_STATUS.json).
 
 | Phase | Status | Gate to advance |
 | --- | --- | --- |

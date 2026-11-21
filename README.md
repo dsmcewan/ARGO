@@ -28,7 +28,7 @@ Use Node 24.22.1 and Linux Bubblewrap for process/isolation checks. The gate fai
 
 The monorepo's public package entry points are in each package manifest. [SYSTEMS/ARCHITECTURE.md](SYSTEMS/ARCHITECTURE.md), [ARGO_SYSTEM_BIBLE.md](ARGO_SYSTEM_BIBLE.md), and [OWNERSHIP.json](OWNERSHIP.json) define shared constraints. [The merge controller](controller/README.md) gates exact candidates with externally pinned test policy. Models do not certify merges.
 
-LEXI/TELOS transports are injected and default to unavailable. Their deterministic mocks do not claim deployed gameplay endpoints. Production authentication, entitlement and informed-consent capture remain integration responsibilities. Queue/fork scheduling is reserved by the schema and explicitly unsupported in v1. Current anomaly cutoffs apply across one world/branch encounter; see [the seed notes](scenarios/tempted-fates/README.md).
+LEXI/TELOS transports are injected and default to unavailable. Their deterministic mocks do not claim deployed gameplay endpoints. The LEXI bridge also has an HTTP transport for a service that implements ARGO's knowledge-query contract. The existing forensic LEXI application does not implement that contract; see [the bridge notes](packages/lexi-bridge/README.md). Production authentication, entitlement and informed-consent capture remain integration responsibilities. Queue/fork scheduling is reserved by the schema and explicitly unsupported in v1. Current anomaly cutoffs apply across one world/branch encounter; see [the seed notes](scenarios/tempted-fates/README.md).
 
 ## Start here
 
