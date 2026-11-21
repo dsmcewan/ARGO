@@ -175,7 +175,7 @@ let offer;
     entries: [{ kind: "repro", payload: { cmd: TEST_CMD, exit: 0 }, blob: "# tests 14\n# pass 14\n",
       links: { derived_from: [artifactCid] } }] });
 
-  const o = await publish({ ...board, ref: wip, author: seat, msg: "offer it",
+  const o = await publish({ ...board, ref: wip, author: seat, lease: { resource: `item:${ITEM}`, gen: lease.lease.gen }, msg: "offer it",
     entries: [{ kind: "work_item", links: { offer: [artifactCid] },
       payload: { key: ITEM, title: "wrap the read-modify-write in a fenced lease", state: "offered_review",
         offer_ref: wip, artifact_slots: [`artifact:${SLOT}`] } }] });

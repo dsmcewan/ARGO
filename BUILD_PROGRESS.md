@@ -45,6 +45,8 @@ Plan: `docs/superpowers/plans/2026-11-13-argo-foundation.md`.
 
 - Review repair closure: twelve contained findings repaired; four versioned-contract/storage decisions deferred. Combined code `ff22632` passed all ten acceptance groups. Five independent peer reviews and real-controller refusal probes are recorded under `REPAIRS/acceptance/`. The board recorded real claims/CAS; its immutable data-only batch is operationally retired without fabricated acceptance. All current CI/save identities are inspectable on the corresponding Git commits and Actions runs.
 
+- Pantheon local change PLC-001 (2026-11-15): the no-model board demo `pantheon/scripts/board-run.mjs` stopped at its offer publish because the worker did not present the lease it held; it now does, and `pantheon/tests/board-run-script.test.mjs` runs the demo end to end and checks the offer is fenced. No library code changed. Identities, evidence and independent review are in `repo-audit/PANTHEON_LOCAL_CHANGES.md`; the pinned audit and manifest are unchanged.
+
 ## 2026-11-15 LEXI follow-up
 
 - **LEXI repin.** `4a9faf3383108164fee74660f745de7650771177` is recorded as a separate source identity (`repo-audit/evidence/lexi-repin-4a9faf3.json`, made by `repo-audit/repin_lexi.py` from a read-only clone). It descends directly from `c190e24`. Its only change is the development-session hook `.claude/hooks/session-start.sh`. Every file behind a LEXI finding has the same blob, so the findings stand. The original pin, tree listing and derived catalogs are unchanged.

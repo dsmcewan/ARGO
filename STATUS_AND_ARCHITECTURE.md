@@ -16,6 +16,8 @@ The review of `a9745e72e93d82c72e87f5159edd5c59f4c426c0` found two P1, eight P2 
 
 The main CI at `a9745e7` [passed](https://github.com/dsmcewan/ARGO/actions/runs/43456584810). This closes the old pending-save instructions; it does not close the subsequent review findings. Board v1 coordinated real leases, path claims and CAS handoffs, but its immutable data-only policy cannot accept application/control-policy changes. The batch is operationally retired with its actual states preserved. External verification and retirement records are under `REPAIRS/acceptance/`; no board MERGED state was fabricated.
 
+Later itemized changes to the supplied Pantheon source are recorded in [Pantheon local changes](repo-audit/PANTHEON_LOCAL_CHANGES.md), starting with PLC-001 (2026-11-15): the no-model board demo `pantheon/scripts/board-run.mjs` now presents its lease on the offer publish, with a regression test. No library code changed.
+
 ## CI failures, repairs and timestamps
 
 All runs below belong to the same repository, **`dsmcewan/ARGO`**. `argo/foundation-spine` and `argo/rpg-research` are branches. Times are GitHub's run **last-updated** timestamps on November 13, converted to EST (UTC−05:00); they are not notification delivery or deployment timestamps.
