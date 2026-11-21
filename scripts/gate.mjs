@@ -23,6 +23,8 @@ for(const [name,cmd,args,opts] of [
  ['research-package',process.execPath,['RESEARCH/validate.mjs']],
  ['foundation',process.execPath,['scripts/run-tests.mjs',...(await readdir(resolve(root,'TESTS'))).filter(f=>f.endsWith('.test.ts')).sort().map(f=>'TESTS/'+f)],{timeout:1080000}],
  ['model-and-process',process.execPath,['../scripts/run-tests.mjs',...(await readdir(resolve(root,'packages/model-client/tests'))).filter(f=>f.endsWith('.test.mjs')).sort().map(f=>'../packages/model-client/tests/'+f),...(await readdir(resolve(root,'pantheon/tests'))).filter(f=>f.endsWith('.test.mjs')).sort().map(f=>'tests/'+f)],{cwd:resolve(root,'pantheon')}],
+ ['provider-broker','python3',['-I','-S','-B','scripts/run-python-tests.py','--trusted-import-root','factory/provider']],
+ ['provider-admission',process.execPath,['scripts/run-tests.mjs','factory/provider/test_transport.mjs','factory/provider/test_guarded-scope.mjs']],
 ]){
  const output=await run(cmd,args,opts);if(name==='schema'&&!output.includes('Frozen schemas: 36 definitions'))throw new Error('Schema checker did not complete');if(name==='research-package'&&!output.includes('PASS five starter reports, provenance, references, coverage paths and unchanged v1 freeze'))throw new Error('Research validator did not complete');checks.push({name,output_sha256:createHash('sha256').update(output).digest('hex')});console.log(`PASS ${name}`);
 }

@@ -103,3 +103,104 @@ test("pools are independent: one lab refusing says nothing about another", () =>
   assert.deepEqual([...shutPools({ dir, now: 1 })], ["anthropic"],
     "openai must not be tarred with anthropic's refusal -- that is the entire point of a fallback");
 });
+
+// ---------------------------------------------------------------------------------------------
+// Writers share a lock. Atomic rename protects readers, not concurrent read-modify-write: two
+// writers could each read the old store, and the second rename silently dropped the first pool.
+
+import { spawn } from "node:child_process";
+import { existsSync } from "node:fs";
+import { hostname } from "node:os";
+import { _lock, COOLDOWN_LOCK_FILE, LOCK_STALE_S } from "../src/route/cooldown.mjs";
+
+const lockPath = (dir) => join(dir, COOLDOWN_LOCK_FILE);
+const deadPid = () => {
+  // A pid that is certainly not alive: a child that has already exited and been reaped.
+  return new Promise((resolve, reject) => {
+    const child = spawn(process.execPath, ["-e", ""], { stdio: "ignore" });
+    child.on("error", reject);
+    child.on("exit", () => resolve(child.pid));
+  });
+};
+
+test("independent writer processes do not lose each other's pool updates", async () => {
+  const dir = here();
+  const module = new URL("../src/route/cooldown.mjs", import.meta.url).href;
+  const writers = 6, rounds = 25;
+  await Promise.all(Array.from({ length: writers }, (_, i) => new Promise((resolve, reject) => {
+    const code = `import { recordRefusal } from ${JSON.stringify(module)};
+      for (let r = 0; r < ${rounds}; r++) recordRefusal("pool-${i}-" + r, { dir: ${JSON.stringify(dir)}, now: 0 });`;
+    const child = spawn(process.execPath, ["--input-type=module", "-e", code], { stdio: ["ignore", "ignore", "pipe"] });
+    let stderr = "";
+    child.stderr.on("data", (d) => { stderr += d; });
+    child.on("error", reject);
+    child.on("exit", (n) => (n === 0 ? resolve() : reject(new Error(stderr))));
+  })));
+  const shut = shutPools({ dir, now: 1 });
+  assert.equal(shut.size, writers * rounds, "every distinct pool refusal must survive");
+  assert.equal(existsSync(lockPath(dir)), false, "no lock is left behind");
+});
+
+test("concurrent refusals of ONE pool escalate the streak instead of colliding", async () => {
+  const dir = here();
+  const module = new URL("../src/route/cooldown.mjs", import.meta.url).href;
+  const writers = 5, rounds = 10;
+  await Promise.all(Array.from({ length: writers }, () => new Promise((resolve, reject) => {
+    const code = `import { recordRefusal } from ${JSON.stringify(module)};
+      for (let r = 0; r < ${rounds}; r++) recordRefusal("anthropic", { dir: ${JSON.stringify(dir)}, now: 0 });`;
+    const child = spawn(process.execPath, ["--input-type=module", "-e", code], { stdio: ["ignore", "ignore", "pipe"] });
+    let stderr = "";
+    child.stderr.on("data", (d) => { stderr += d; });
+    child.on("error", reject);
+    child.on("exit", (n) => (n === 0 ? resolve() : reject(new Error(stderr))));
+  })));
+  const store = JSON.parse(readFileSync(join(dir, "model-cooldowns.json"), "utf8"));
+  assert.equal(store.version, 1, "the on-disk shape LEXI reads is unchanged");
+  assert.equal(store.pools.anthropic.streak, writers * rounds);
+});
+
+test("a live lock is respected: the write is skipped within the budget, not forced", () => {
+  const dir = here();
+  const live = JSON.stringify({ protocol: 1, pid: process.pid, host: hostname(), at: Date.now() / 1000, token: "live" });
+  writeFileSync(lockPath(dir), live);
+  const started = Date.now();
+  const ran = _lock.withLock(dir, () => { throw new Error("must not enter"); }, { waitMs: 30 });
+  assert.equal(ran, false);
+  assert.ok(Date.now() - started < 1000, "bounded wait");
+  assert.equal(readFileSync(lockPath(dir), "utf8"), live, "another writer's lock is never removed");
+  // recordRefusal still answers from the evidence it has, it just cannot persist it.
+  assert.equal(recordRefusal("anthropic", { dir, now: 0 }).streak, 1);
+  assert.deepEqual([...shutPools({ dir, now: 0 })], []);
+});
+
+test("a lock left by a dead writer on this host is broken and the write proceeds", async () => {
+  const dir = here();
+  const pid = await deadPid();
+  writeFileSync(lockPath(dir), JSON.stringify({ protocol: 1, pid, host: hostname(), at: Date.now() / 1000, token: "dead" }));
+  recordRefusal("anthropic", { dir, now: 0 });
+  assert.deepEqual([...shutPools({ dir, now: 0 })], ["anthropic"]);
+  assert.deepEqual(readdirSync(dir).sort(), ["model-cooldowns.json"], "lock and tombstone are gone");
+});
+
+test("an old lock from another host, or an old unreadable lock, counts as stale", () => {
+  const dir = here();
+  const now = Date.now() / 1000;
+  const foreign = JSON.stringify({ protocol: 1, pid: 1, host: "elsewhere", at: now - LOCK_STALE_S - 1, token: "x" });
+  writeFileSync(lockPath(dir), foreign);
+  assert.equal(_lock.isStale(foreign, lockPath(dir), now), true);
+  const fresh = JSON.stringify({ protocol: 1, pid: 1, host: "elsewhere", at: now, token: "x" });
+  assert.equal(_lock.isStale(fresh, lockPath(dir), now), false, "a fresh lock on another host may be live");
+  writeFileSync(lockPath(dir), "garbage");
+  assert.equal(_lock.isStale("garbage", lockPath(dir), now), false, "a just-written unreadable lock is not stale yet");
+  assert.equal(_lock.isStale("garbage", lockPath(dir), now + LOCK_STALE_S + 5), true);
+});
+
+test("breaking a stale lock restores a live lock that replaced it in between", () => {
+  const dir = here();
+  const live = JSON.stringify({ protocol: 1, pid: process.pid, host: hostname(), at: Date.now() / 1000, token: "new" });
+  writeFileSync(lockPath(dir), live);
+  // The breaker observed the OLD stale content, but a live writer has since taken the lock.
+  _lock.breakLock(lockPath(dir), JSON.stringify({ token: "old" }));
+  assert.equal(readFileSync(lockPath(dir), "utf8"), live);
+  assert.deepEqual(readdirSync(dir), [COOLDOWN_LOCK_FILE], "the tombstone is cleaned up");
+});

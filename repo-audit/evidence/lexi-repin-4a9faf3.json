@@ -1,0 +1,93 @@
+{
+  "repo": "LEXI",
+  "url": "https://github.com/dsmcewan/LEXI",
+  "purpose": "Separate source identity. The original pin and its derived catalogs are unchanged.",
+  "original_pin": "c190e245965447b369a33d928c4f09da33a68d67",
+  "new_pin": "4a9faf3383108164fee74660f745de7650771177",
+  "new_pin_committed_at": "2026-11-14T14:23:17-05:00",
+  "new_pin_subject": "Make remote session dependency bootstrap explicit (#78)",
+  "new_pin_tree": "2935518e1c76b9d667b0a7165f95e86eafd42efa",
+  "original_is_ancestor": true,
+  "commits_since_original": [
+    {
+      "sha": "4a9faf3383108164fee74660f745de7650771177",
+      "committed_at": "2026-11-14T14:23:17-05:00",
+      "subject": "Make remote session dependency bootstrap explicit (#78)"
+    }
+  ],
+  "tree_listing": "LEXI-4a9faf3-tree.json",
+  "blob_count": 460,
+  "path_delta": [
+    {
+      "path": ".claude/hooks/session-start.sh",
+      "status": "modified",
+      "old_blob_sha": "bb2dfd0debbc2d8173d2886ff1df24e3ebf0bc50",
+      "new_blob_sha": "bdbcdc0bf15b5ba8047614cee0aea5fff0b324a2",
+      "in_original_source_manifest": true
+    }
+  ],
+  "finding_file_checks": [
+    {
+      "path": "lexi-dashboard/backend/auth.py",
+      "original_blob_sha": "805aa2c2bed2eb465be819567961e209d5aabc2b",
+      "new_blob_sha": "805aa2c2bed2eb465be819567961e209d5aabc2b",
+      "unchanged": true
+    },
+    {
+      "path": "lexi-dashboard/backend/main.py",
+      "original_blob_sha": "a37727e6fdf8f3104b50d1211dec3b37b5134932",
+      "new_blob_sha": "a37727e6fdf8f3104b50d1211dec3b37b5134932",
+      "unchanged": true
+    },
+    {
+      "path": "lexi-dashboard/backend/companion_build.py",
+      "original_blob_sha": "fee90a4a7a42071d2b223dd98d22f24d329f9099",
+      "new_blob_sha": "fee90a4a7a42071d2b223dd98d22f24d329f9099",
+      "unchanged": true
+    },
+    {
+      "path": "lexi-dashboard/backend/model_fallback.py",
+      "original_blob_sha": "19d210df38ed4c8d50eec43e37c1451bcfaa63ee",
+      "new_blob_sha": "19d210df38ed4c8d50eec43e37c1451bcfaa63ee",
+      "unchanged": true
+    },
+    {
+      "path": "lexi-dashboard/backend/anthropic_credentials.py",
+      "original_blob_sha": "283b0809cbe398657c326e99b06ca029b8ab933d",
+      "new_blob_sha": "283b0809cbe398657c326e99b06ca029b8ab933d",
+      "unchanged": true
+    },
+    {
+      "path": "lexi-dashboard/backend/db_config.py",
+      "original_blob_sha": "32644785e1ebb49653296e02f51d304de315d55e",
+      "new_blob_sha": "32644785e1ebb49653296e02f51d304de315d55e",
+      "unchanged": true
+    },
+    {
+      "path": "lexi-dashboard/backend/db_session.py",
+      "original_blob_sha": "f557fb0634c8b4c5f4122b977d99f73cb03fb0dd",
+      "new_blob_sha": "f557fb0634c8b4c5f4122b977d99f73cb03fb0dd",
+      "unchanged": true
+    },
+    {
+      "path": "lexi-dashboard/backend/models.py",
+      "original_blob_sha": "84dc2079f9f834255b6ee4a2544bb308bd85aa21",
+      "new_blob_sha": "84dc2079f9f834255b6ee4a2544bb308bd85aa21",
+      "unchanged": true
+    },
+    {
+      "path": "lexi-dashboard/backend/prompt_builder.py",
+      "original_blob_sha": "8881b8101a3cf207eab181ed93562feee11235d9",
+      "new_blob_sha": "8881b8101a3cf207eab181ed93562feee11235d9",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/program/lib/canonical-json.mjs",
+      "original_blob_sha": "cd7a40814f5fc5d4115dff4fa4d9c77ccc70fc54",
+      "new_blob_sha": "cd7a40814f5fc5d4115dff4fa4d9c77ccc70fc54",
+      "unchanged": true
+    }
+  ],
+  "all_finding_files_unchanged": true,
+  "method": "git ls-tree/log/merge-base on a read-only clone; no LEXI code executed"
+}
